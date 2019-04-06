@@ -1,0 +1,64 @@
+<?php
+/**
+ * Piwik - free/libre analytics platform
+ *
+ * @link http://piwik.org
+ * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
+ */
+
+namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
+
+
+use Piwik\Config;
+use Piwik\Tests\Framework\Fixture;
+
+class ImportedFromGoogle extends Fixture
+{
+    public $idSite = 1;
+    public $dateTime = '2018-01-01 00:00:00';
+    public $importedDateRange = '2018-12-01,2018-12-31';
+
+    public $accessToken;
+    public $viewId;
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->getGoogleAnalyticsParams();
+
+        $this->runGoogleImporter();
+    }
+
+    private function getGoogleAnalyticsParams()
+    {
+        $this->accessToken = $this->getEnvVar('PIWIK_TEST_GA_ACCESS_TOKEN');
+        $this->viewId = $this->getEnvVar('PIWIK_TEST_GA_VIEW_ID');
+    }
+
+    private function getEnvVar($name)
+    {
+        $value = getenv($name);
+        if (empty($value)) {
+            throw new \Exception("The '$name' variable must be set for this test.");
+        }
+        return $value;
+    }
+
+    private function runGoogleImporter()
+    {
+        $domain = Config::getHostname();
+        $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
+
+        $command = "php " . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console ' . $domainParam
+            . ' googleanalyticsimporter:import-reports --view=' . $this->viewId . ' --access-token="' . $this->accessToken . '"'
+            . ' --dates=' . $this->importedDateRange;
+
+        print "\nImporting from google...\n";
+
+        exec($command, $output, $returnCode);
+        if ($returnCode) {
+            throw new \Exception("GA import failed, output: " . implode("\n", $output));
+        }
+     }
+}
