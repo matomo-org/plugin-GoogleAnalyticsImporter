@@ -1,0 +1,29 @@
+{
+  "name": "GoogleAnalyticsImporter",
+  "description": "Import reports from a Google Analytics account into Matomo.",
+  "version": "0.1.0",
+  "theme": false,
+  "require": {
+    "piwik": ">=3.9.0-b2,<4.0.0-b1"
+  },
+  "authors": [
+    {
+      "name": "Matomo",
+      "email": "",
+      "homepage": ""
+    }
+  ],
+  "support": {
+	    "email": "",
+	    "issues": "",
+	    "forum": "",
+	    "irc": "",
+	    "wiki": "",
+	    "source": "",
+	    "docs": "",
+	    "rss": ""
+  },
+  "homepage": "",
+  "license": "GPL v3+",
+  "keywords": []
+}
