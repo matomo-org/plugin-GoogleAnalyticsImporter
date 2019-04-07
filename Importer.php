@@ -16,6 +16,7 @@ use Piwik\Date;
 use Piwik\Period\Factory;
 use Piwik\Plugin\Report;
 use Piwik\Plugin\ReportsProvider;
+use Piwik\Plugins\SitesManager\API;
 use Piwik\Segment;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -64,9 +65,27 @@ class Importer
         $this->gaService = new \Google_Service_Analytics($this->client);
     }
 
-    public function makeSite($accountId, $propertyId)
+    public function makeSite($accountId, $propertyId, $viewId)
     {
-        // TODO
+        $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
+        $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
+
+        // TODO: mapping site settings?
+        // TODO: detecting excluded ips/user agents might be impossible
+        return API::getInstance()->addSite(
+            $siteName = $webproperty->getName(),
+            $urls = [$webproperty->getWebsiteUrl()],
+            $ecommerce = $view->eCommerceTracking ? 1 : 0,
+            $siteSearch = !empty($view->siteSearchQueryParameters),
+            $searchKeywordParams = $view->siteSearchQueryParameters, // TODO: is this right?
+            $searchCategoryParams = $view->siteSearchCategoryParameters,
+            $excludedIps = null,
+            $excludedParams = $view->excludeQueryParameters, // TODO: correct?
+            $timezone = $view->timezone,
+            $currency = $view->currency, // TODO: need to map?
+            $group = null,
+            $startDate = Date::factory($webproperty->getCreated())->toString()
+        );
     }
 
     public function import($idSite, $viewId, Date $start, Date $end)
@@ -89,7 +108,7 @@ class Importer
 
             foreach ($reports as $report) {
                 $dataTable = $this->importReport($viewId, $date, $report);
-                $this->insertArchive($dataTable); // TODO: this has to insert them into the proper record...
+                $this->insertArchive($report, $dataTable); // TODO: this has to insert them into the proper record...
             }
 
             $archiveWriter->finalizeArchive();
@@ -109,7 +128,7 @@ class Importer
         return $this->gaResponseConverter->makeDataTable($response); // TODO
     }
 
-    private function insertArchive(DataTable $dataTable)
+    private function insertArchive(Report $report, DataTable $dataTable)
     {
         // TODO
     }
@@ -123,23 +142,3 @@ class Importer
         return new ArchiveWriter($params, $isTemp = false);
     }
 }
-/*
- *  $actions = [];
-        foreach ($dimensionMapper->getVisitorDimensionMappings() as $matomoDimension => $googleDimension) {
-            $dimensions = array_merge($actionIdentifierDimensions, [$googleDimension]);
-            $dimensions = array_unique($dimensions);
-
-            $data = $service->data_ga->get('ga:' . $viewId, '2019-01-01', '2019-01-01', 'ga:users,ga:hits', [
-                'dimensions' => implode(',', $dimensions),
-            ]);
-
-            $rows = $data->getRows();
-            $this->mergeReport($actions, $rows, $actionIdentifierDimensions, $dimensions);
-
-            print $googleDimension . "\n";
-            print_r($data->getRows());
-        }
-
-        print "result:\n";
-        print_r($actions);
- */
