@@ -29,7 +29,8 @@ class ImportTest extends SystemTestCase
 
     public function getApiTestsToRun()
     {
-        $apiToTest = 'all';
+        // TODO: we should also test that the columns in the output match the columns in another matomo test output. make sure we're getting all the info we can.
+        $apiToTest = 'Referrers.getWebsites'; // TODO: change to 'all'
 
         return [
             [$apiToTest, [

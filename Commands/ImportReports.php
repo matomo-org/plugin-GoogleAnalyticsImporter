@@ -46,6 +46,7 @@ class ImportReports extends ConsoleCommand
     {
         $accessToken = $input->getOption('access-token');
 
+        /** @var \Google_Client $googleClient */
         $googleClient = StaticContainer::get('GoogleAnalyticsImporter.googleClient');
         $googleClient->setAccessToken($accessToken);
 

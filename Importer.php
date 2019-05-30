@@ -10,10 +10,12 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 
 use Piwik\ArchiveProcessor\Parameters;
+use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\ArchiveWriter;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Period\Factory;
+use Piwik\Plugin\Manager;
 use Piwik\Plugin\Report;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\SitesManager\API;
@@ -29,21 +31,6 @@ class Importer
     private $reportsProvider;
 
     /**
-     * @var \Google_Client
-     */
-    private $client;
-
-    /**
-     * @var GoogleAnalyticsQueryFactory
-     */
-    private $gaQueryFactory;
-
-    /**
-     * @var GoogleAnalyticsResponseConverter
-     */
-    private $gaResponseConverter;
-
-    /**
      * @var LoggerInterface
      */
     private $logger;
@@ -53,16 +40,16 @@ class Importer
      */
     private $gaService;
 
-    public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, GoogleAnalyticsQueryFactory $gaQueryFactory,
-                                GoogleAnalyticsResponseConverter $gaResponseConverter, LoggerInterface $logger)
+    /**
+     * @var array|null
+     */
+    private $recordImporters;
+
+    public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, LoggerInterface $logger)
     {
         $this->reportsProvider = $reportsProvider;
-        $this->client = $client;
+        $this->gaService = new \Google_Service_Analytics($client);
         $this->logger = $logger;
-        $this->gaQueryFactory = $gaQueryFactory;
-        $this->gaResponseConverter = $gaResponseConverter;
-
-        $this->gaService = new \Google_Service_Analytics($this->client);
     }
 
     public function makeSite($accountId, $propertyId, $viewId)
@@ -94,9 +81,9 @@ class Importer
             throw new \InvalidArgumentException("Invalid date range, start date is later than end date: {$start},{$end}");
         }
 
-        $site = new Site($idSite);
-        $reports = $this->reportsProvider->getAllReports();
+        $recordImporters = $this->getRecordImporters($idSite, $viewId);
 
+        $site = new Site($idSite);
         for ($date = $start; $date->getTimestamp() < $end->getTimestamp(); $date = $date->addDay(1)) {
             $archiveWriter = $this->makeArchiveWriter($site, $date);
             $archiveWriter->initNewArchive();
@@ -106,31 +93,17 @@ class Importer
                 'date' => $date->toString(),
             ]);
 
-            foreach ($reports as $report) {
-                $dataTable = $this->importReport($viewId, $date, $report);
-                $this->insertArchive($report, $dataTable); // TODO: this has to insert them into the proper record...
+            foreach ($recordImporters as $plugin => $recordImporter) {
+                $this->logger->debug("Importing data for the {plugin} plugin.", [
+                    'plugin' => $plugin,
+                ]);
+
+                $recordImporter->setArchiveWriter($archiveWriter);
+                $recordImporter->queryGoogleAnalyticsApi($date);
             }
 
             $archiveWriter->finalizeArchive();
         }
-    }
-
-    public function importReport($viewId, Date $date, Report $report)
-    {
-        $this->logger->debug("Importing report {$report->getName()} from GA View $viewId for day {$date->toString()}.");
-
-        $gaQuery = $this->gaQueryFactory->makeGaQuery($viewId, $date, $report); // TODO
-
-        /** @var \Google_Service_Analytics_GaData $response */
-        $response = $this->gaService->data_ga->get('ga:' . $viewId, $date->toString(), $date->toString(), $gaQuery['metrics'],
-            $gaQuery['optParams']);
-
-        return $this->gaResponseConverter->makeDataTable($response); // TODO
-    }
-
-    private function insertArchive(Report $report, DataTable $dataTable)
-    {
-        // TODO
     }
 
     private function makeArchiveWriter(Site $site, Date $date)
@@ -140,5 +113,35 @@ class Importer
 
         $params = new Parameters($site, $period, $segment);
         return new ArchiveWriter($params, $isTemp = false);
+    }
+
+    /**
+     * @param $idSite
+     * @param $viewId
+     * @return RecordImporter[]
+     * @throws \DI\NotFoundException
+     */
+    private function getRecordImporters($idSite, $viewId)
+    {
+        if (empty($this->recordImporters)) {
+            $activatedPlugins = Manager::getInstance()->getActivatedPlugins();
+
+            $this->recordImporters = StaticContainer::get('GoogleAnalyticsImporter.recordImporters');
+            foreach ($this->recordImporters as $index => $recordImporterClass) {
+                $pluginName = $recordImporterClass::PLUGIN_NAME;
+                if (!in_array($pluginName, $activatedPlugins)) {
+                    unset($this->recordImporters[$index]);
+                }
+            }
+            $this->recordImporters = array_values($this->recordImporters);
+        }
+
+        $gaQuery = new GoogleAnalyticsQueryService($this->gaService, $viewId);
+
+        $instances = [];
+        foreach ($this->recordImporters as $className) {
+            $instances[] = new $className($gaQuery, $idSite);
+        }
+        return $instances;
     }
 }

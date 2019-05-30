@@ -8,7 +8,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
-
 use Piwik\Config;
 use Piwik\Tests\Framework\Fixture;
 
@@ -24,6 +23,8 @@ class ImportedFromGoogle extends Fixture
     public function setUp()
     {
         parent::setUp();
+
+        Fixture::createWebsite('2012-02-03 04:23:45');
 
         $this->getGoogleAnalyticsParams();
 
@@ -51,8 +52,8 @@ class ImportedFromGoogle extends Fixture
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
 
         $command = "php " . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console ' . $domainParam
-            . ' googleanalyticsimporter:import-reports --view=' . $this->viewId . ' --access-token="' . $this->accessToken . '"'
-            . ' --dates=' . $this->importedDateRange;
+            . ' googleanalyticsimporter:import-reports -vvv --view=' . $this->viewId . ' --access-token="' . $this->accessToken . '"'
+            . ' --dates=' . $this->importedDateRange . ' --idsite=' . $this->idSite;
 
         print "\nImporting from google...\n";
 
