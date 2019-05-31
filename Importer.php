@@ -41,6 +41,11 @@ class Importer
     private $gaService;
 
     /**
+     * @var \Google_Service_AnalyticsReporting
+     */
+    private $gaServiceReporting;
+
+    /**
      * @var array|null
      */
     private $recordImporters;
@@ -49,6 +54,7 @@ class Importer
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = new \Google_Service_Analytics($client);
+        $this->gaServiceReporting = new \Google_Service_AnalyticsReporting($client);
         $this->logger = $logger;
     }
 
@@ -126,21 +132,24 @@ class Importer
         if (empty($this->recordImporters)) {
             $activatedPlugins = Manager::getInstance()->getActivatedPlugins();
 
-            $this->recordImporters = StaticContainer::get('GoogleAnalyticsImporter.recordImporters');
-            foreach ($this->recordImporters as $index => $recordImporterClass) {
+            $recordImporters = StaticContainer::get('GoogleAnalyticsImporter.recordImporters');
+
+            $this->recordImporters = [];
+            foreach ($recordImporters as $index => $recordImporterClass) {
                 $pluginName = $recordImporterClass::PLUGIN_NAME;
                 if (!in_array($pluginName, $activatedPlugins)) {
-                    unset($this->recordImporters[$index]);
+                    continue;
                 }
+
+                $this->recordImporters[$pluginName] = $recordImporterClass;
             }
-            $this->recordImporters = array_values($this->recordImporters);
         }
 
-        $gaQuery = new GoogleAnalyticsQueryService($this->gaService, $viewId);
+        $gaQuery = new GoogleAnalyticsQueryService($this->gaServiceReporting, $viewId);
 
         $instances = [];
-        foreach ($this->recordImporters as $className) {
-            $instances[] = new $className($gaQuery, $idSite);
+        foreach ($this->recordImporters as $pluginName => $className) {
+            $instances[$pluginName] = new $className($gaQuery, $idSite);
         }
         return $instances;
     }

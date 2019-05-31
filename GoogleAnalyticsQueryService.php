@@ -9,6 +9,8 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
+use Google_Service_AnalyticsReporting_GetReportsResponse;
+use Google_Service_AnalyticsReporting_ReportRow;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
@@ -27,7 +29,7 @@ class GoogleAnalyticsQueryService
      */
     private $viewId;
 
-    public function __construct(\Google_Service_Analytics $gaService, $viewId)
+    public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId)
     {
         $this->gaService = $gaService;
         $this->viewId = $viewId;
@@ -44,13 +46,8 @@ class GoogleAnalyticsQueryService
             $gaMetrics = $query['metrics'];
             $options = isset($query['options']) ? $query['options'] : [];
 
-            $metricsStr = implode(',', $gaMetrics);
-            $dimensionsStr = implode(',', $dimensions);
-
-            $response = $this->gaService->data_ga->get('ga:' . $this->viewId, $date, $date, $metricsStr, array_merge([ 'dimensions' => $dimensionsStr ], $options));
-            $rows = $response->getRows();
-
-            $this->mergeResult($result, $rows, $gaMetrics, $dimensions);
+            $response = $this->gaBatchGet($date, $gaMetrics, array_merge([ 'dimensions' => $dimensions ], $options));
+            $this->mergeResult($result, $response, $gaMetrics, $dimensions);
         }
         return $result;
     }
@@ -69,50 +66,59 @@ class GoogleAnalyticsQueryService
             $gaMetric = $mapping[$index];
 
             $segment = '';
+            $metric = $gaMetric;
             if (isset($gaMetric['segment'])) {
-                $segment = $gaMetric['segment'];
+                $metric = $gaMetric['metric'];
                 $queriesBySegment[$segment]['options'] = [
-                    'segments' => [$segment],
+                    'segment' => $segment,
                 ];
+
+                $segment = json_encode($gaMetric['segment']);
             }
 
-            $queriesBySegment[$segment]['metrics'][$index] = $gaMetric;
+            $queriesBySegment[$segment]['metrics'][$index] = $metric;
         }
 
         return array_values($queriesBySegment);
     }
 
     // TODO: can probably make some of this code more efficient
-    private function mergeResult(DataTable $table, $rows, $gaMetrics, $gaDimensions)
+    private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaMetrics, $gaDimensions)
     {
-        foreach ($rows as $gaRow) {
-            $tableRow = new DataTable\Row();
+        // always skip aggregating dimension columns
+        $columnAggregationOps = array_combine($gaDimensions, array_fill(0, count($gaDimensions), 'skip')); // TODO: store as member variable
 
-            $i = 0;
+        /** @var \Google_Service_AnalyticsReporting_Report $gaReport */
+        foreach ($response as $gaReport) {
+            /** @var \Google_Service_AnalyticsReporting_ReportRow $gaRow */
+            foreach ($gaReport->getData()->getRows() as $gaRow) {
+                $tableRow = new DataTable\Row();
 
-            $label = [];
-            foreach ($gaDimensions as $dimension) {
-                $labelValue = $gaRow[$i] == '(not set)' ? null : $gaRow[$i];
-                $tableRow->setColumn($dimension, $labelValue);
+                $label = [];
+                foreach (array_values($gaDimensions) as $index => $dimension) {
+                    $labelValue = $gaRow->dimensions[$index] == '(not set)' ? null : $gaRow->dimensions[$index];
+                    $tableRow->setColumn($dimension, $labelValue);
 
-                $label[$dimension] = $labelValue;
-                ++$i;
-            }
-            $label = implode(',', $label); // so we can call getRowFromLabel()
+                    $label[$dimension] = $labelValue;
+                }
+                $label = implode(',', $label); // so we can call getRowFromLabel()
 
-            $tableRow->setColumn('label', $label);
+                $tableRow->setColumn('label', $label);
 
-            foreach ($gaMetrics as $metricIndex => $gaMetricName) {
-                $tableRow->setColumn($metricIndex, $gaRow[$i]);
+                $gaRowMetrics = $gaRow->getMetrics()[0];
 
-                ++$i;
-            }
+                $i = 0;
+                foreach ($gaMetrics as $metricIndex => $gaMetricName) {
+                    $tableRow->setColumn($metricIndex, $gaRowMetrics[$i]);
+                    ++$i;
+                }
 
-            $existingRow = $table->getRowFromLabel($label);
-            if (!empty($existingRow)) {
-                $existingRow->sumRow($tableRow);
-            } else {
-                $table->addRow($tableRow);
+                $existingRow = $table->getRowFromLabel($label);
+                if (!empty($existingRow)) {
+                    $existingRow->sumRow($tableRow, true, $columnAggregationOps);
+                } else {
+                    $table->addRow($tableRow);
+                }
             }
         }
     }
@@ -130,7 +136,7 @@ class GoogleAnalyticsQueryService
             Metrics::INDEX_BOUNCE_COUNT => 'ga:bounces',
             Metrics::INDEX_NB_VISITS_CONVERTED => [
                 'metric' => 'ga:sessions',
-                'segment' => ['segmentId' => self::GA_SEGMENT_SESSIONS_WITH_CONVERSIONS],
+                'segment' => ['segmentId' => 'gaid::' . self::GA_SEGMENT_SESSIONS_WITH_CONVERSIONS],
             ],
             Metrics::INDEX_NB_CONVERSIONS => 'ga:goalCompletionsAll',
             Metrics::INDEX_REVENUE => 'ga:totalValue',
@@ -138,5 +144,79 @@ class GoogleAnalyticsQueryService
             // actions
             // TODO
         ];
+    }
+
+    private function gaBatchGet($date, $gaMetrics, $options)
+    {
+        $dimensions = [];
+        foreach ($options['dimensions'] as $gaDimension) {
+            $dimensions[] = $this->makeGaDimension($gaDimension);
+        }
+
+        $segments = [];
+        if (!empty($options['segment'])) {
+            $segments[] = $this->makeGaSegment($options['segment']);
+            $dimensions[] = $this->makeGaSegmentDimension();
+        }
+        
+        $metrics = [];
+        foreach ($gaMetrics as $gaMetric) {
+            $metrics[] = $this->makeGaMetric($gaMetric);
+        }
+
+        $request = new \Google_Service_AnalyticsReporting_ReportRequest();
+        $request->setViewId($this->viewId);
+        $request->setDateRanges([$this->makeGaDateRange($date)]);
+        $request->setDimensions($dimensions);
+        $request->setSegments($segments);
+        $request->setMetrics($metrics);
+
+        $getReport = new \Google_Service_AnalyticsReporting_GetReportsRequest();
+        $getReport->setReportRequests([$request]);
+
+        // Call the batchGet method.
+        $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body->setReportRequests([$request]);
+        return $this->gaService->reports->batchGet($body);
+    }
+
+    private function makeGaSegment($segment)
+    {
+        $segmentObj = new \Google_Service_AnalyticsReporting_Segment();
+        if (isset($segment['segmentId'])) {
+            $segmentObj->setSegmentId($segment['segmentId']);
+        } else {
+            $segmentObj->setDynamicSegment($segment['dynamicSegment']);
+        }
+        return $segmentObj;
+    }
+
+    private function makeGaDateRange($date)
+    {
+        $dateRange = new \Google_Service_AnalyticsReporting_DateRange();
+        $dateRange->setStartDate($date);
+        $dateRange->setEndDate($date);
+        return $dateRange;
+    }
+
+    private function makeGaSegmentDimension()
+    {
+        $segmentDimensions = new \Google_Service_AnalyticsReporting_Dimension();
+        $segmentDimensions->setName("ga:segment");
+        return $segmentDimensions;
+    }
+
+    private function makeGaDimension($gaDimension)
+    {
+        $result = new \Google_Service_AnalyticsReporting_Dimension();
+        $result->setName($gaDimension);
+        return $result;
+    }
+
+    private function makeGaMetric($gaMetric)
+    {
+        $metric = new \Google_Service_AnalyticsReporting_Metric();
+        $metric->setExpression($gaMetric);
+        return $metric;
     }
 }

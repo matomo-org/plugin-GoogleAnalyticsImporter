@@ -8,8 +8,10 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
+use Interop\Container\ContainerInterface;
 use Piwik\Config;
 use Piwik\Tests\Framework\Fixture;
+use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
 
 class ImportedFromGoogle extends Fixture
 {
@@ -58,8 +60,19 @@ class ImportedFromGoogle extends Fixture
         print "\nImporting from google...\n";
 
         exec($command, $output, $returnCode);
+        print implode("\n", $output);
         if ($returnCode) {
             throw new \Exception("GA import failed, output: " . implode("\n", $output));
         }
      }
+
+    public function provideContainerConfig()
+    {
+        return array(
+            'Psr\Log\LoggerInterface' => \DI\get('Monolog\Logger'),
+            'log.handlers' => [
+                \DI\get(ConsoleHandler::class),
+            ],
+        );
+    }
 }
