@@ -85,9 +85,6 @@ class GoogleAnalyticsQueryService
     // TODO: can probably make some of this code more efficient
     private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaMetrics, $gaDimensions)
     {
-        // always skip aggregating dimension columns
-        $columnAggregationOps = array_combine($gaDimensions, array_fill(0, count($gaDimensions), 'skip')); // TODO: store as member variable
-
         /** @var \Google_Service_AnalyticsReporting_Report $gaReport */
         foreach ($response as $gaReport) {
             /** @var \Google_Service_AnalyticsReporting_ReportRow $gaRow */
@@ -97,7 +94,7 @@ class GoogleAnalyticsQueryService
                 $label = [];
                 foreach (array_values($gaDimensions) as $index => $dimension) {
                     $labelValue = $gaRow->dimensions[$index] == '(not set)' ? null : $gaRow->dimensions[$index];
-                    $tableRow->setColumn($dimension, $labelValue);
+                    $tableRow->setMetadata($dimension, $labelValue);
 
                     $label[$dimension] = $labelValue;
                 }
@@ -115,7 +112,7 @@ class GoogleAnalyticsQueryService
 
                 $existingRow = $table->getRowFromLabel($label);
                 if (!empty($existingRow)) {
-                    $existingRow->sumRow($tableRow, true, $columnAggregationOps);
+                    $existingRow->sumRow($tableRow);
                 } else {
                     $table->addRow($tableRow);
                 }

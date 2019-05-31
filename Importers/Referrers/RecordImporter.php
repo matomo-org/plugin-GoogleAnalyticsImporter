@@ -63,8 +63,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $record = new DataTable();
         foreach ($table->getRows() as $rowIndex => $row) {
-            $referrerUrl = $row->getColumn('ga:fullReferrer');
-            $row->deleteColumn('ga:fullReferrer');
+            $referrerUrl = $row->getMetadata('ga:fullReferrer');
+            $row->deleteMetadata('ga:fullReferrer');
 
             // URLs don't have protocols in GA
             $referrerUrl = 'http://' . $referrerUrl;
