@@ -47,6 +47,7 @@ class GoogleAnalyticsQueryService
             $options = isset($query['options']) ? $query['options'] : [];
 
             $response = $this->gaBatchGet($date, $gaMetrics, array_merge([ 'dimensions' => $dimensions ], $options));
+            sleep(2);
             $this->mergeResult($result, $response, $gaMetrics, $dimensions);
         }
         return $result;
@@ -56,6 +57,7 @@ class GoogleAnalyticsQueryService
     {
         $mapping = $this->getMetricIndicesToGaMetrics();
 
+        // TODO: the GA api allows querying for multiple date ranges, should use that to get around api limits.
         // TODO: the GA api seems to allow specifying multiple segments. not sure if that means multiple results or if they jsut get and-ed together
         $queriesBySegment = [];
         foreach ($metrics as $index) {
@@ -98,9 +100,11 @@ class GoogleAnalyticsQueryService
 
                     $label[$dimension] = $labelValue;
                 }
-                $label = implode(',', $label); // so we can call getRowFromLabel()
 
-                $tableRow->setColumn('label', $label);
+                if (!empty($label)) {
+                    $label = implode(',', $label); // so we can call getRowFromLabel()
+                    $tableRow->setColumn('label', $label);
+                }
 
                 $gaRowMetrics = $gaRow->getMetrics()[0];
 
@@ -110,7 +114,7 @@ class GoogleAnalyticsQueryService
                     ++$i;
                 }
 
-                $existingRow = $table->getRowFromLabel($label);
+                $existingRow = empty($label) ? $table->getFirstRow() : $table->getRowFromLabel($label);
                 if (!empty($existingRow)) {
                     $existingRow->sumRow($tableRow);
                 } else {

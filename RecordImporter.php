@@ -38,10 +38,7 @@ abstract class RecordImporter
         $this->idSite = $idSite;
     }
 
-    /**
-     * @return mixed
-     */
-    public abstract function queryGoogleAnalyticsApi(Date $day);
+    public abstract function queryGoogleAnalyticsApi(Date $day); // TODO: rename to importRecords
 
     public function setArchiveWriter(ArchiveWriter $archiveWriter)
     {
@@ -73,6 +70,16 @@ abstract class RecordImporter
     protected function insertBlobRecord($name, $values)
     {
         $this->archiveWriter->insertBlobRecord($name, $values);
+    }
+
+    protected function insertNumericRecords(array $values)
+    {
+        foreach ($values as $name => $value) {
+            if (is_numeric($name)) {
+                $name = Metrics::getReadableColumnName($name);
+            }
+            $this->archiveWriter->insertRecord($name, $value);
+        }
     }
     /*
     return array(

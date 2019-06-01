@@ -40,6 +40,16 @@ class ImportTest extends SystemTestCase
             ]],
         ];
     }
+
+    public static function getOutputPrefix()
+    {
+        return '';
+    }
+
+    public static function getPathToTestDirectory()
+    {
+        return dirname(__FILE__);
+    }
 }
 
 ImportTest::$fixture = new ImportedFromGoogle();

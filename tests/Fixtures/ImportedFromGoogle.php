@@ -62,7 +62,7 @@ class ImportedFromGoogle extends Fixture
         exec($command, $output, $returnCode);
         print implode("\n", $output);
         if ($returnCode) {
-            throw new \Exception("GA import failed, output: " . implode("\n", $output));
+            throw new \Exception("GA import failed, code = $returnCode, output: " . implode("\n", $output));
         }
      }
 

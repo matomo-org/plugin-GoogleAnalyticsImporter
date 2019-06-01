@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>display-youring-ads-here.info</label>
+		<nb_uniq_visitors>20</nb_uniq_visitors>
+		<nb_visits>31</nb_visits>
+		<nb_actions>31</nb_actions>
+		<sum_visit_length>0.0</sum_visit_length>
+		<bounce_count>31</bounce_count>
+		<nb_visits_converted>31</nb_visits_converted>
+		<segment>referrerName==display-youring-ads-here.info</segment>
+		<subtable>
+			<row>
+				<label>/</label>
+				<nb_uniq_visitors>20</nb_uniq_visitors>
+				<nb_visits>31</nb_visits>
+				<nb_actions>31</nb_actions>
+				<sum_visit_length>0.0</sum_visit_length>
+				<bounce_count>31</bounce_count>
+				<nb_visits_converted>31</nb_visits_converted>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>qwant.com</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0.0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<segment>referrerName==qwant.com</segment>
+		<subtable>
+			<row>
+				<label>/</label>
+				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>0.0</sum_visit_length>
+				<bounce_count>1</bounce_count>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+		</subtable>
+	</row>
+</result>

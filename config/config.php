@@ -10,5 +10,6 @@ return [
 
     'GoogleAnalyticsImporter.recordImporters' => [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Referrers\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter::class,
     ],
 ];
