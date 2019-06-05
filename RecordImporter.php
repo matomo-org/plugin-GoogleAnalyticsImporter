@@ -62,6 +62,15 @@ abstract class RecordImporter
         ];
     }
 
+    protected function getConversionAwareVisitMetrics()
+    {
+        return array_merge($this->getVisitMetrics(), [
+            Metrics::INDEX_NB_CONVERSIONS,
+            Metrics::INDEX_REVENUE,
+            Metrics::INDEX_GOALS,
+        ]);
+    }
+
     protected function getIdSite()
     {
         return $this->idSite;

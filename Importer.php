@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 
+use Google_Service_Analytics_Goal;
 use Piwik\ArchiveProcessor\Parameters;
 use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\ArchiveWriter;
@@ -18,7 +19,9 @@ use Piwik\Period\Factory;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\Report;
 use Piwik\Plugin\ReportsProvider;
-use Piwik\Plugins\SitesManager\API;
+use Piwik\Plugins\Funnels\Model\FunnelsModel;
+use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
+use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Segment;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -50,12 +53,18 @@ class Importer
      */
     private $recordImporters;
 
-    public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, LoggerInterface $logger)
+    /**
+     * @var GoogleGoalMapper
+     */
+    private $goalMapper;
+
+    public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, LoggerInterface $logger, GoogleGoalMapper $goalMapper)
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = new \Google_Service_Analytics($client);
         $this->gaServiceReporting = new \Google_Service_AnalyticsReporting($client);
         $this->logger = $logger;
+        $this->goalMapper = $goalMapper;
     }
 
     public function makeSite($accountId, $propertyId, $viewId)
@@ -65,7 +74,7 @@ class Importer
 
         // TODO: mapping site settings?
         // TODO: detecting excluded ips/user agents might be impossible
-        return API::getInstance()->addSite(
+        $idSite = SitesManagerAPI::getInstance()->addSite(
             $siteName = $webproperty->getName(),
             $urls = [$webproperty->getWebsiteUrl()],
             $ecommerce = $view->eCommerceTracking ? 1 : 0,
@@ -79,6 +88,36 @@ class Importer
             $group = null,
             $startDate = Date::factory($webproperty->getCreated())->toString()
         );
+
+        $this->importGoals($idSite, $accountId, $propertyId, $viewId);
+
+        return $idSite;
+    }
+
+    private function importGoals($idSite, $accountId, $propertyId, $viewId)
+    {
+        $goals = $this->gaService->management_goals->listManagementGoals($accountId, $propertyId, $viewId);
+
+        /** @var Google_Service_Analytics_Goal $gaGoal */
+        foreach ($goals->getItems() as $gaGoal) {
+            try {
+                $goal = $this->goalMapper->map($gaGoal);
+            } catch (CannotImportGoalException $ex) {
+                $this->logger->info($ex->getMessage());
+                $this->logger->info('Importing this goal as a manually triggered goal. Metrics for this goal will be available, but tracking will not work for this goal in Matomo.');
+
+                $goal = $this->goalMapper->mapManualGoal($gaGoal);
+            }
+
+            // TODO: should probably use Request::processRequest here for hooks
+            $idGoal = GoalsAPI::getInstance()->addGoal($idSite, $gaGoal->getName(), $goal['match_attribute'], $goal['pattern'], $goal['pattern_type'],
+                $goal['case_sensitive'], $goal['revenue'], $goal['allow_multiple_conversions'], $goal['description'], $goal['use_event_value_as_revenue']);
+
+            if (!empty($goal['funnel'])) {
+                StaticContainer::get(\Piwik\Plugins\Funnels\Model\FunnelsModel::class)->clearGoalsCache();
+                \Piwik\Plugins\Funnels\API::getInstance()->setGoalFunnel($idSite, $idGoal, true, $goal['funnel']);
+            }
+        }
     }
 
     public function import($idSite, $viewId, Date $start, Date $end)
@@ -145,12 +184,26 @@ class Importer
             }
         }
 
-        $gaQuery = new GoogleAnalyticsQueryService($this->gaServiceReporting, $viewId);
+        $gaQuery = new GoogleAnalyticsQueryService($this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite);
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {
             $instances[$pluginName] = new $className($gaQuery, $idSite);
         }
         return $instances;
+    }
+
+    private function getGoalMapping($idSite)
+    {
+        $mapping = [];
+
+        $goals = GoalsAPI::getInstance()->getGoals($idSite); // should not use request hooks, only interested in what's in the DB
+        foreach ($goals as $idGoal => $goal) {
+            // TODO: should we store the GA goal ID somewhere else? not exactly sure where we'd put it, but we need it to be available in case of re-trying an import
+            $gaGoalId = $this->goalMapper->getGoalIdFromDescription($goal);
+            $mapping[$idGoal] = $gaGoalId;
+        }
+
+        return $mapping;
     }
 }

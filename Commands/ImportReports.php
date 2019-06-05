@@ -54,6 +54,8 @@ class ImportReports extends ConsoleCommand
 
         $viewId = $this->getViewId($input, $output, $service);
         $dates = $this->getDatesToImport($input);
+        $property = $input->getOption('property');
+        $account = $input->getOption('account');
 
         /** @var Importer $importer */
         $importer = StaticContainer::get(Importer::class);

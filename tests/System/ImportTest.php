@@ -14,6 +14,20 @@ use Piwik\Tests\Framework\TestCase\SystemTestCase;
 
 class ImportTest extends SystemTestCase
 {
+    public static $EXPECTED_API_COLUMNS = [
+        'Referrers.getWebsites' => [
+            'nb_uniq_visitors',
+            'nb_visits',
+            'nb_actions',
+            'sum_visit_length',
+            'bounce_count',
+            'nb_visits_converted',
+            'goals',
+            'nb_conversions',
+            'revenue',
+        ],
+    ];
+
     /**
      * @var ImportedFromGoogle
      */
@@ -41,6 +55,19 @@ class ImportTest extends SystemTestCase
         ];
     }
 
+    /**
+     * @dependsOn testApi
+     * @dataProvider getTestDataForTestApiColumns
+     */
+    public function testApiColumns($method, $columns)
+    {
+        if (empty(self::$EXPECTED_API_COLUMNS[$method])) {
+            throw new \Exception("No expected columns for $method");
+        }
+
+        $this->assertEquals(self::$EXPECTED_API_COLUMNS[$method], $columns);
+    }
+
     public static function getOutputPrefix()
     {
         return '';
@@ -49,6 +76,62 @@ class ImportTest extends SystemTestCase
     public static function getPathToTestDirectory()
     {
         return dirname(__FILE__);
+    }
+
+    public function getTestDataForTestApiColumns()
+    {
+        $tests = [];
+
+        $checkedApiMethods = [];
+
+        $expectedPath = PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/tests/System/expected';
+        $contents = scandir($expectedPath);
+        foreach ($contents as $filename) {
+            if (!preg_match('/([^_]+)_day.xml$/', $filename, $matches)) {
+                continue;
+            }
+
+            $method = $matches[1];
+            if (!empty($checkedApiMethods[$method])) {
+                continue;
+            }
+
+            $importedPath = $expectedPath . '/' . $filename;
+
+            $columns = $this->getColumnsFromXml($importedPath);
+            if (empty($columns)) {
+                continue;
+            }
+
+            $tests[] = [$method, $columns];
+        }
+
+        return $tests;
+    }
+
+    private function getColumnsFromXml($importedPath)
+    {
+        $contents = file_get_contents($importedPath);
+        $element = new \SimpleXMLElement($contents);
+
+        if (empty($element->row)
+            || empty($element->row[0])
+        ) {
+            return null;
+        }
+
+        $row = $element->row[0];
+        $children = $row->children();
+
+        $tagNames = [];
+        for ($i = 0; $i != $children->count(); ++$i) {
+            $tagName = $children[$i]->getName();
+            if ($tagName == 'segment' || $tagName == 'subtable' || $tagName == 'label') {
+                continue;
+            }
+            $tagNames[] = $tagName;
+        }
+        return $tagNames;
     }
 }
 

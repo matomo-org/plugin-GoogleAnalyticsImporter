@@ -9,12 +9,12 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
-use Google_Service_AnalyticsReporting_GetReportsResponse;
-use Google_Service_AnalyticsReporting_ReportRow;
 use Piwik\DataTable;
+use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Metrics;
 
+// TODO: would be simpler if this class just mirrored LogAggregator.
 class GoogleAnalyticsQueryService
 {
     const GA_SEGMENT_SESSIONS_WITH_CONVERSIONS = -9;
@@ -29,10 +29,29 @@ class GoogleAnalyticsQueryService
      */
     private $viewId;
 
-    public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId)
+    /**
+     * @var array
+     */
+    private $mapping;
+
+    /**
+     * @var array
+     */
+    private $goalsMapping;
+
+    /**
+     * @var int
+     */
+    private $idSite;
+
+    public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite)
     {
         $this->gaService = $gaService;
         $this->viewId = $viewId;
+        $this->goalsMapping = $goalsMapping;
+        $this->idSite = $idSite;
+
+        $this->mapping = $this->getMetricIndicesToGaMetrics();
     }
 
     public function query(Date $day, array $dimensions, array $metrics)
@@ -46,36 +65,91 @@ class GoogleAnalyticsQueryService
             $gaMetrics = $query['metrics'];
             $options = isset($query['options']) ? $query['options'] : [];
 
-            $response = $this->gaBatchGet($date, $gaMetrics, array_merge([ 'dimensions' => $dimensions ], $options));
-            sleep(2);
-            $this->mergeResult($result, $response, $gaMetrics, $dimensions);
+            $metricNames = [];
+            foreach ($gaMetrics as $metricsList) {
+                foreach ($metricsList as $gaMetric) {
+                    $metricNames[] = $gaMetric;
+                }
+            }
+
+            // TODO: count api queries made in the import command
+            $metricNames = array_unique($metricNames);
+
+            foreach (array_chunk($metricNames, 9) as $chunk) {
+                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
+                sleep(3); // TODO: must remove when oauth implemented
+                $this->mergeResult($result, $chunkResponse, $gaMetrics, $dimensions, $chunk);
+            }
         }
+        $this->convertGaColumnsToMetricIndexes($result, $metrics);
+
         return $result;
+    }
+
+    private function convertGaColumnsToMetricIndexes(DataTable $result, $metrics)
+    {
+        $metricNames = [];
+        foreach ($metrics as $metricIndex) {
+            if (is_array($this->mapping[$metricIndex])) {
+                $metricInfo = $this->mapping[$metricIndex];
+                if (is_array($metricInfo['metric'])) {
+                    $metricNames[$metricIndex] = $metricInfo['metric'][0];
+                } else {
+                    $metricNames[$metricIndex] = $metricInfo['metric'];
+                }
+            } else {
+                $metricNames[$metricIndex] = $this->mapping[$metricIndex];
+            }
+        }
+
+        foreach ($result->getRows() as $row) {
+            $newColumns = ['label' => $row->getColumn('label')];
+            foreach ($metrics as $metricIndex) {
+                $gaMetricName = $metricNames[$metricIndex];
+                $value = $row->getColumn($gaMetricName);
+
+                if ($value !== false
+                    && isset($this->mapping[$metricIndex]['calculate'])
+                ) {
+                    $fn = $this->mapping[$metricIndex]['calculate'];
+                    $value = $fn($row);
+                }
+
+                if ($value !== false) {
+                    $newColumns[$metricIndex] = $value;
+                }
+            }
+            $row->setColumns($newColumns);
+        }
+        $result->setLabelsHaveChanged();
     }
 
     private function getQueriesToMake($metrics)
     {
-        $mapping = $this->getMetricIndicesToGaMetrics();
-
-        // TODO: the GA api allows querying for multiple date ranges, should use that to get around api limits.
-        // TODO: the GA api seems to allow specifying multiple segments. not sure if that means multiple results or if they jsut get and-ed together
         $queriesBySegment = [];
         foreach ($metrics as $index) {
-            if (!isset($mapping[$index])) {
+            if (!isset($this->mapping[$index])) {
                 throw new \Exception("Don't know how to map metric index ${index} to GA metric.");
             }
 
-            $gaMetric = $mapping[$index];
+            $gaMetric = $this->mapping[$index];
 
             $segment = '';
             $metric = $gaMetric;
             if (isset($gaMetric['segment'])) {
-                $metric = $gaMetric['metric'];
                 $queriesBySegment[$segment]['options'] = [
                     'segment' => $segment,
                 ];
 
                 $segment = json_encode($gaMetric['segment']);
+            }
+
+            if (isset($gaMetric['metric'])) {
+                $metric = $gaMetric['metric'];
+            }
+
+            if (!is_array($metric)) {
+                $metric = [$metric];
             }
 
             $queriesBySegment[$segment]['metrics'][$index] = $metric;
@@ -84,11 +158,11 @@ class GoogleAnalyticsQueryService
         return array_values($queriesBySegment);
     }
 
-    // TODO: can probably make some of this code more efficient
-    private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaMetrics, $gaDimensions)
+    // TODO: can probably make some of this code more efficient, and made more clear (it's very not clear).
+    private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaMetrics, $gaDimensions, $metricsQueried)
     {
         /** @var \Google_Service_AnalyticsReporting_Report $gaReport */
-        foreach ($response as $gaReport) {
+        foreach ($response->getReports() as $gaReport) {
             /** @var \Google_Service_AnalyticsReporting_ReportRow $gaRow */
             foreach ($gaReport->getData()->getRows() as $gaRow) {
                 $tableRow = new DataTable\Row();
@@ -106,12 +180,11 @@ class GoogleAnalyticsQueryService
                     $tableRow->setColumn('label', $label);
                 }
 
-                $gaRowMetrics = $gaRow->getMetrics()[0];
+                $gaRowMetrics = $gaRow->getMetrics()[0]->getValues();
+                $gaRowMetrics = array_combine($metricsQueried, $gaRowMetrics);
 
-                $i = 0;
-                foreach ($gaMetrics as $metricIndex => $gaMetricName) {
-                    $tableRow->setColumn($metricIndex, $gaRowMetrics[$i]);
-                    ++$i;
+                foreach ($gaRowMetrics as $name => $value) {
+                    $tableRow->setColumn($name, $value);
                 }
 
                 $existingRow = empty($label) ? $table->getFirstRow() : $table->getRowFromLabel($label);
@@ -124,30 +197,97 @@ class GoogleAnalyticsQueryService
         }
     }
 
-    // TODO: need to map goals + goal metrics
     private function getMetricIndicesToGaMetrics() // TODO: Move to GoogleMetrics class or something
     {
-        // TODO: may need to map metric values as well
+        $goalSpecificMetrics = array_values($this->getEcommerceMetricIndicesToGaMetrics());
+        foreach ($this->goalsMapping as $idGoal => $gaIdGoal) {
+            $goalSpecificMetrics = array_merge($goalSpecificMetrics, array_values($this->getGoalSpecificMetricIndicesToGametrics($gaIdGoal)));
+        }
+        $goalSpecificMetrics[] = 'ga:sessions'; // for nb_visits_converted
+
         return [
             // visit metrics
             Metrics::INDEX_NB_UNIQ_VISITORS => 'ga:users',
             Metrics::INDEX_NB_VISITS => 'ga:sessions',
             Metrics::INDEX_NB_ACTIONS => 'ga:hits',
-            Metrics::INDEX_SUM_VISIT_LENGTH => 'ga:sessionDuration',
+            Metrics::INDEX_SUM_VISIT_LENGTH => [
+                'metric' => 'ga:sessionDuration',
+                'calculate' => function (Row $row) {
+                    return floor($row->getColumn('ga:sessionDuration'));
+                },
+            ],
             Metrics::INDEX_BOUNCE_COUNT => 'ga:bounces',
             Metrics::INDEX_NB_VISITS_CONVERTED => [
-                'metric' => 'ga:sessions',
-                'segment' => ['segmentId' => 'gaid::' . self::GA_SEGMENT_SESSIONS_WITH_CONVERSIONS],
+                'metric' => ['ga:goalConversionRateAll', 'ga:sessions'],
+                'calculate' => function (Row $row) {
+                    return floor(self::getQuotientFromPercentage($row->getColumn('ga:goalConversionRateAll') * $row->getColumn('ga:sessions')));
+                },
             ],
+
+            // conversion aware
             Metrics::INDEX_NB_CONVERSIONS => 'ga:goalCompletionsAll',
             Metrics::INDEX_REVENUE => 'ga:totalValue',
+
+            // goal specific
+            Metrics::INDEX_GOALS => [
+                'metric' => $goalSpecificMetrics,
+                'calculate' => function ($metrics) {
+                    return $this->createGoalSpecificMetricArray($metrics);
+                },
+            ],
 
             // actions
             // TODO
         ];
     }
 
-    private function gaBatchGet($date, $gaMetrics, $options)
+    private function createGoalSpecificMetricArray(Row $row)
+    {
+        $result = [];
+        foreach ($this->goalsMapping as $idGoal => $gaIdGoal) {
+            $goalSpecificMetrics = $this->getGoalSpecificMetricIndicesToGametrics($gaIdGoal);
+
+            $innerColumns = [];
+            foreach ($goalSpecificMetrics as $index => $gaName) {
+                if ($index == Metrics::INDEX_GOAL_NB_VISITS_CONVERTED
+                    && $row->getColumn($gaName) !== false
+                ) {
+                    $value = floor(self::getQuotientFromPercentage($row->getColumn($gaName)) * $row->getColumn('ga:sessions')); // TODO: code redundancy w/ above
+                } else {
+                    $value = $row->getColumn($gaName);
+                }
+
+                if ($value !== false) {
+                    $innerColumns[$index] = $value;
+                }
+            }
+            $result[$idGoal] = $innerColumns;
+        }
+        return $result;
+    }
+
+    private function getEcommerceMetricIndicesToGaMetrics()
+    {
+        return [
+            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SUBTOTAL => 'ga:transactionRevenue',
+            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_TAX => 'ga:transactionTax',
+            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SHIPPING => 'ga:transactionShipping',
+            Metrics::INDEX_GOAL_ECOMMERCE_ITEMS => 'ga:itemQuantity',
+        ];
+    }
+
+    private function getGoalSpecificMetricIndicesToGametrics($gaIdGoal)
+    {
+        return [
+            Metrics::INDEX_GOAL_NB_CONVERSIONS => "ga:goal{$gaIdGoal}Completions",
+            Metrics::INDEX_GOAL_REVENUE => "ga:goal{$gaIdGoal}Value",
+
+            // nb_visits_converted is calculated properly in createGoalSpecificMetricArray
+            Metrics::INDEX_GOAL_NB_VISITS_CONVERTED => "ga:goal{$gaIdGoal}ConversionRate",
+        ];
+    }
+
+    private function gaBatchGet($date, $metricNames, $options)
     {
         $dimensions = [];
         foreach ($options['dimensions'] as $gaDimension) {
@@ -159,11 +299,9 @@ class GoogleAnalyticsQueryService
             $segments[] = $this->makeGaSegment($options['segment']);
             $dimensions[] = $this->makeGaSegmentDimension();
         }
-        
-        $metrics = [];
-        foreach ($gaMetrics as $gaMetric) {
-            $metrics[] = $this->makeGaMetric($gaMetric);
-        }
+
+        $metricNames = array_values($metricNames);
+        $metrics = array_map(function ($name) { return $this->makeGaMetric($name); }, $metricNames);
 
         $request = new \Google_Service_AnalyticsReporting_ReportRequest();
         $request->setViewId($this->viewId);
@@ -175,7 +313,6 @@ class GoogleAnalyticsQueryService
         $getReport = new \Google_Service_AnalyticsReporting_GetReportsRequest();
         $getReport->setReportRequests([$request]);
 
-        // Call the batchGet method.
         $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
         $body->setReportRequests([$request]);
         return $this->gaService->reports->batchGet($body);
@@ -219,5 +356,18 @@ class GoogleAnalyticsQueryService
         $metric = new \Google_Service_AnalyticsReporting_Metric();
         $metric->setExpression($gaMetric);
         return $metric;
+    }
+
+    private static function getQuotientFromPercentage($percentage)
+    {
+        if ($percentage === false) {
+            return 0;
+        }
+
+        $quotient = trim($percentage);
+        $quotient = rtrim($quotient, '%');
+        $quotient = (float) $quotient;
+        $quotient = $quotient / 100;
+        return $quotient;
     }
 }

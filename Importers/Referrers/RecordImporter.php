@@ -59,7 +59,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getUrlByWebsite(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:fullReferrer'], $this->getVisitMetrics());
+        $table = $gaQuery->query($day, $dimensions = ['ga:fullReferrer'], $this->getConversionAwareVisitMetrics());
 
         $record = new DataTable();
         foreach ($table->getRows() as $rowIndex => $row) {

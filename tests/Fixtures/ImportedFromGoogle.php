@@ -22,11 +22,14 @@ class ImportedFromGoogle extends Fixture
     public $accessToken;
     public $viewId;
 
+    public function __construct()
+    {
+        $this->extraPluginsToLoad = ['Funnels'];
+    }
+
     public function setUp()
     {
         parent::setUp();
-
-        Fixture::createWebsite('2012-02-03 04:23:45');
 
         $this->getGoogleAnalyticsParams();
 
@@ -52,10 +55,12 @@ class ImportedFromGoogle extends Fixture
     {
         $domain = Config::getHostname();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
+        $property = $this->getEnvVar('GA_PROPERTY_ID');
+        $account = $this->getEnvVar('GA_ACCOUNT_ID');
 
         $command = "php " . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console ' . $domainParam
             . ' googleanalyticsimporter:import-reports -vvv --view=' . $this->viewId . ' --access-token="' . $this->accessToken . '"'
-            . ' --dates=' . $this->importedDateRange . ' --idsite=' . $this->idSite;
+            . ' --dates=' . $this->importedDateRange . ' --property=' . $property . ' --account=' . $account;
 
         print "\nImporting from google...\n";
 
