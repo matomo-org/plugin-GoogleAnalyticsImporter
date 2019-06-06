@@ -44,12 +44,12 @@ class ImportTest extends SystemTestCase
     public function getApiTestsToRun()
     {
         // TODO: we should also test that the columns in the output match the columns in another matomo test output. make sure we're getting all the info we can.
-        $apiToTest = 'Referrers.getWebsites'; // TODO: change to 'all'
+        $apiToTest = 'Referrers'; // TODO: change to 'all'
 
         return [
             [$apiToTest, [
                 'idSite' => self::$fixture->idSite,
-                'date' => '2018-12-01',
+                'date' => '2018-12-03',
                 'periods' => ['day', 'week', 'month', 'year'],
             ]],
         ];

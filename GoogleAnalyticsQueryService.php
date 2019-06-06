@@ -14,11 +14,8 @@ use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Metrics;
 
-// TODO: would be simpler if this class just mirrored LogAggregator.
 class GoogleAnalyticsQueryService
 {
-    const GA_SEGMENT_SESSIONS_WITH_CONVERSIONS = -9;
-
     /**
      * @var \Google_Service_Analytics
      */

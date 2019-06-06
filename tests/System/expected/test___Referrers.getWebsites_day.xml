@@ -1,35 +1,18 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>display-youring-ads-here.info</label>
-		<nb_uniq_visitors>20</nb_uniq_visitors>
-		<nb_visits>31</nb_visits>
-		<nb_actions>31</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>31</bounce_count>
-		<nb_visits_converted>31</nb_visits_converted>
-		<segment>referrerName==display-youring-ads-here.info</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_uniq_visitors>20</nb_uniq_visitors>
-				<nb_visits>31</nb_visits>
-				<nb_actions>31</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>31</bounce_count>
-				<nb_visits_converted>31</nb_visits_converted>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>qwant.com</label>
+		<label>fr.search.yahoo.com</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
 		<bounce_count>1</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<segment>referrerName==qwant.com</segment>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<goals>
+		</goals>
+		<segment>referrerName==fr.search.yahoo.com</segment>
 		<subtable>
 			<row>
 				<label>/</label>
@@ -38,7 +21,40 @@
 				<nb_actions>1</nb_actions>
 				<sum_visit_length>0</sum_visit_length>
 				<bounce_count>1</bounce_count>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0.0</revenue>
+				<goals>
+				</goals>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>search.lilo.org</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<goals>
+		</goals>
+		<segment>referrerName==search.lilo.org</segment>
+		<subtable>
+			<row>
+				<label>/</label>
+				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>0</sum_visit_length>
+				<bounce_count>1</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0.0</revenue>
+				<goals>
+				</goals>
 			</row>
 		</subtable>
 	</row>
