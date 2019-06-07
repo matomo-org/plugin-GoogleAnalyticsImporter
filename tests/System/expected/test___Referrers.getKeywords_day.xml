@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>(not provided)</label>
+		<nb_uniq_visitors>21</nb_uniq_visitors>
+		<nb_visits>21</nb_visits>
+		<nb_actions>27</nb_actions>
+		<sum_visit_length>317</sum_visit_length>
+		<bounce_count>17</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<goals>
+		</goals>
+		<segment>referrerType==search;referrerKeyword==%28not+provided%29</segment>
+		<subtable>
+			<row>
+				<label>Google</label>
+				<nb_uniq_visitors>21</nb_uniq_visitors>
+				<nb_visits>21</nb_visits>
+				<nb_actions>27</nb_actions>
+				<sum_visit_length>317</sum_visit_length>
+				<bounce_count>17</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0.0</revenue>
+				<goals>
+				</goals>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>top 10 spot plongée</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<goals>
+		</goals>
+		<segment>referrerType==search;referrerKeyword==top+10+spot+plong%C3%A9e</segment>
+		<subtable>
+			<row>
+				<label>Google</label>
+				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>0</sum_visit_length>
+				<bounce_count>1</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0.0</revenue>
+				<goals>
+				</goals>
+			</row>
+		</subtable>
+	</row>
+</result>

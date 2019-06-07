@@ -13,17 +13,14 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\Referrers;
 use Piwik\Common;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
-use Piwik\DataAccess\ArchiveWriter;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\SearchEngineMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Piwik\Plugins\Referrers\Archiver;
-use Piwik\Plugins\Referrers\SearchEngine;
-use Piwik\Url;
-
-// TODO: remove tracker related code
+use Piwik\Plugins\Referrers\Social;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
@@ -37,6 +34,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
      * @var SearchEngineMapper
      */
     private $searchEngineMapper;
+
+    /**
+     * @var DataTable|null
+     */
+    private $referrerTypeRecord;
 
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite)
     {
@@ -58,9 +60,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     public function queryGoogleAnalyticsApi(Date $day)
     {
-        /*
-        $urlBySocialNetwork = $this->getUrlsBySocialNetwork($day);
-        $keywordByCampaign = $this->getKeywordByCampaign($day);*/
+        $this->referrerTypeRecord = new DataTable();
+
+        $keywordByCampaign = $this->getKeywordByCampaign($day);
+        $blob = $keywordByCampaign->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
+        $this->insertBlobRecord(Archiver::CAMPAIGNS_RECORD_NAME, $blob);
+        Common::destroy($keywordByCampaign);
 
         list($keywordBySearchEngine, $searchEngineByKeyword) = $this->getKeywordsAndSearchEngineRecords($day);
 
@@ -72,51 +77,99 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertBlobRecord(Archiver::SEARCH_ENGINES_RECORD_NAME, $blob);
         Common::destroy($searchEngineByKeyword);
 
-        $urlByWebsite = $this->getUrlByWebsite($day);
+        list($urlByWebsite, $urlBySocialNetwork) = $this->getUrlByWebsite($day);
+
         $blob = $urlByWebsite->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         $this->insertBlobRecord(Archiver::WEBSITES_RECORD_NAME, $blob);
         Common::destroy($urlByWebsite);
 
+        $blob = $urlBySocialNetwork->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
+        $this->insertBlobRecord(Archiver::SOCIAL_NETWORKS_RECORD_NAME, $blob);
+        Common::destroy($urlBySocialNetwork);
+
+        $blob = $this->referrerTypeRecord->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
+        $this->insertBlobRecord(Archiver::REFERRER_TYPE_RECORD_NAME, $blob);
+        Common::destroy($this->referrerTypeRecord);
+        $this->referrerTypeRecord = null;
+
         unset($blob);
+    }
+
+    private function getKeywordByCampaign(Date $day)
+    {
+        $gaQuery = $this->getGaQuery();
+        $table = $gaQuery->query($day, $dimensions = ['ga:campaign', 'ga:keyword'], $this->getConversionAwareVisitMetrics());
+
+        $keywordByCampaign = new DataTable();
+        foreach ($table->getRows() as $row) {
+            $campaign = $row->getMetadata('ga:campaign');
+            if (empty($campaign)) {
+                continue;
+            }
+
+            $keyword = $row->getMetadata('ga:keyword');
+
+            $row->deleteMetadata();
+
+            $topLevelRow = $this->addRowToTable($keywordByCampaign, $row, $campaign);
+            $this->addRowToSubtable($topLevelRow, $row, $keyword);
+
+            // add to referrer type table
+            $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_CAMPAIGN);
+        }
+        return $keywordByCampaign;
     }
 
     private function getUrlByWebsite(Date $day)
     {
+        $social = Social::getInstance();
+
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:fullReferrer'], $this->getConversionAwareVisitMetrics());
 
-        $record = new DataTable();
-        foreach ($table->getRows() as $rowIndex => $row) {
+        $urlByWebsite = new DataTable();
+        $urlBySocialNetwork = new DataTable();
+        foreach ($table->getRows() as $row) {
             $referrerUrl = $row->getMetadata('ga:fullReferrer');
-            $row->deleteMetadata('ga:fullReferrer');
 
             // URLs don't have protocols in GA
             $referrerUrl = 'http://' . $referrerUrl;
 
             // invalid rows for direct entries and search engines (TODO: check for more possibilities?)
-            if ($referrerUrl == '(direct)'
-                || strrpos($referrerUrl, '/') !== strlen($referrerUrl) - 1
-            ) {
+            if ($referrerUrl == '(direct)') {
+                $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_DIRECT_ENTRY);
                 continue;
             }
 
-            $parsedUrl = @parse_url($referrerUrl);
-            $host = isset($parsedUrl['host']) ? $parsedUrl['host'] : null;
-            $path = isset($parsedUrl['path']) ? $parsedUrl['path'] : null;
-
-            $topLevelRow = $this->addRowToTable($record, $row, $host);
-
-            $subtable = $topLevelRow->getSubtable();
-            if (!$subtable) {
-                $subtable = new DataTable();
-                $topLevelRow->setSubtable($subtable);
+            if (strrpos($referrerUrl, '/') !== strlen($referrerUrl) - 1) {
+                continue;
             }
-            $this->addRowToTable($subtable, $row, $path);
+
+            $row->deleteMetadata();
+
+            $socialNetwork = $social->getSocialNetworkFromDomain($referrerUrl);
+            if (!empty($socialNetwork)
+                && $socialNetwork !== Piwik::translate('General_Unknown')
+            ) {
+                $topLevelRow = $this->addRowToTable($urlBySocialNetwork, $row, $socialNetwork);
+                $this->addRowToSubtable($topLevelRow, $row, $referrerUrl);
+
+                $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_SOCIAL_NETWORK);
+            } else {
+                $parsedUrl = @parse_url($referrerUrl);
+                $host = isset($parsedUrl['host']) ? $parsedUrl['host'] : null;
+                $path = isset($parsedUrl['path']) ? $parsedUrl['path'] : null;
+
+                $topLevelRow = $this->addRowToTable($urlByWebsite, $row, $host);
+                $this->addRowToSubtable($topLevelRow, $row, $path);
+
+                $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_WEBSITE);
+            }
         }
 
         Common::destroy($table);
 
-        return $record;
+        return [$urlByWebsite, $urlBySocialNetwork];
     }
 
     private function getKeywordsAndSearchEngineRecords(Date $day)
@@ -150,21 +203,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             // add to keyword by search engine record
             $topLevelRow = $this->addRowToTable($keywordBySearchEngine, $row, $keyword);
-            $subtable = $topLevelRow->getSubtable();
-            if (!$subtable) {
-                $subtable = new DataTable();
-                $topLevelRow->setSubtable($subtable);
-            }
-            $this->addRowToTable($subtable, $row, $searchEngineName);
+            $this->addRowToSubtable($topLevelRow, $row, $searchEngineName);
 
             // add to search engine by keyword record
             $topLevelRow = $this->addRowToTable($searchEngineByKeyword, $row, $searchEngineName);
-            $subtable = $topLevelRow->getSubtable();
-            if (!$subtable) {
-                $subtable = new DataTable();
-                $topLevelRow->setSubtable($subtable);
-            }
-            $this->addRowToTable($subtable, $row, $keyword);
+            $this->addRowToSubtable($topLevelRow, $row, $keyword);
+
+            $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_SEARCH_ENGINE);
         }
 
         Common::destroy($table);
@@ -183,5 +228,15 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $foundRow->sumRow($row);
         }
         return $foundRow;
+    }
+
+    private function addRowToSubtable(DataTable\Row $topLevelRow, DataTable\Row $rowToAdd, $newLabel)
+    {
+        $subtable = $topLevelRow->getSubtable();
+        if (!$subtable) {
+            $subtable = new DataTable();
+            $topLevelRow->setSubtable($subtable);
+        }
+        $this->addRowToTable($subtable, $rowToAdd, $newLabel);
     }
 }

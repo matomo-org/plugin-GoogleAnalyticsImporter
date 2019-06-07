@@ -8,24 +8,21 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\System;
 
-
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures\ImportedFromGoogle;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
 
 class ImportTest extends SystemTestCase
 {
-    public static $EXPECTED_API_COLUMNS = [
-        'Referrers.getWebsites' => [
-            'nb_uniq_visitors',
-            'nb_visits',
-            'nb_actions',
-            'sum_visit_length',
-            'bounce_count',
-            'nb_visits_converted',
-            'goals',
-            'nb_conversions',
-            'revenue',
-        ],
+    private static $CONVERSION_AWARE_VISIT_METRICS = [
+        'nb_uniq_visitors',
+        'nb_visits',
+        'nb_actions',
+        'sum_visit_length',
+        'bounce_count',
+        'nb_visits_converted',
+        'nb_conversions',
+        'revenue',
+        'goals',
     ];
 
     /**
@@ -43,7 +40,6 @@ class ImportTest extends SystemTestCase
 
     public function getApiTestsToRun()
     {
-        // TODO: we should also test that the columns in the output match the columns in another matomo test output. make sure we're getting all the info we can.
         $apiToTest = 'Referrers'; // TODO: change to 'all'
 
         return [
@@ -61,11 +57,12 @@ class ImportTest extends SystemTestCase
      */
     public function testApiColumns($method, $columns)
     {
-        if (empty(self::$EXPECTED_API_COLUMNS[$method])) {
+        $expectedApiColumns = self::getExpectedApiColumns();
+        if (empty($expectedApiColumns[$method])) {
             throw new \Exception("No expected columns for $method");
         }
 
-        $this->assertEquals(self::$EXPECTED_API_COLUMNS[$method], $columns);
+        $this->assertEquals($expectedApiColumns[$method], $columns);
     }
 
     public static function getOutputPrefix()
@@ -132,6 +129,25 @@ class ImportTest extends SystemTestCase
             $tagNames[] = $tagName;
         }
         return $tagNames;
+    }
+
+    private static function getExpectedApiColumns()
+    {
+        return [
+            'Referrers.getWebsites' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getReferrerType' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['referer_type']),
+            'Referrers.getAll' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getKeywords' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getKeywordsForPageUrl' => [],
+            'Referrers.getKeywordsForPageTitle' => [],
+            'Referrers.getSearchEnginesFromKeywordId' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getSearchEngines' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['url', 'logo']),
+            'Referrers.getCampaigns' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getKeywordsFromCampaignId' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getUrlsFromWebsiteId' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getSocials' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getUrlsForSocial' => self::$CONVERSION_AWARE_VISIT_METRICS,
+        ];
     }
 }
 

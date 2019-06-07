@@ -261,33 +261,4 @@
 			</row>
 		</subtable>
 	</row>
-	<row>
-		<label>m.facebook.com</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<goals>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==m.facebook.com</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_visits>1</nb_visits>
-				<nb_actions>1</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>1</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
-				<goals>
-				</goals>
-				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
 </result>
