@@ -1,9 +1,20 @@
 <?php
 
+use Piwik\Url;
+
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
 return [
-    'GoogleAnalyticsImporter.googleClient' => new \Google_Client(),
+    'GoogleAnalyticsImporter.googleClient' => function () {
+        $googleClient = new \Google_Client();
+        $googleClient->addScope(\Google_Service_Analytics::ANALYTICS_READONLY);
+        $googleClient->addScope(\Google_Service_AnalyticsReporting::ANALYTICS_READONLY);
+        $googleClient->setAccessType('offline');
+        $googleClient->setApprovalPrompt('force');
+        $redirectUrl = Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode&idSite=';
+        $googleClient->setRedirectUri($redirectUrl);
+        return $googleClient;
+    },
 
     \Piwik\Plugins\GoogleAnalyticsImporter\Importer::class =>
         \DI\object()->constructorParameter('client', DI\get('GoogleAnalyticsImporter.googleClient')),

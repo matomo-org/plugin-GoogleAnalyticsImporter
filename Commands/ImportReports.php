@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 
+use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Piwik;
@@ -37,14 +38,13 @@ class ImportReports extends ConsoleCommand
         $this->addOption('property', null, InputOption::VALUE_REQUIRED, 'The GA properties to import.');
         $this->addOption('account', null, InputOption::VALUE_REQUIRED, 'The account ID to get views from.');
         $this->addOption('view', null, InputOption::VALUE_REQUIRED, 'The View ID to use. If not supplied, the default View for the property is used.');
-        $this->addOption('access-token', null, InputOption::VALUE_REQUIRED, 'The oauth access token to use.');
         $this->addOption('dates', null, InputOption::VALUE_REQUIRED, 'The dates to import.');
         $this->addOption('idsite', null, InputOption::VALUE_REQUIRED, 'The site to import into.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $accessToken = $input->getOption('access-token');
+        $accessToken = $this->getAccessToken();
 
         /** @var \Google_Client $googleClient */
         $googleClient = StaticContainer::get('GoogleAnalyticsImporter.googleClient');
@@ -149,5 +149,10 @@ class ImportReports extends ConsoleCommand
             }
         }
         return $idSite;
+    }
+
+    private function getAccessToken()
+    {
+        // TODO
     }
 }

@@ -1,0 +1,54 @@
+{% extends 'admin.twig' %}
+
+{% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
+
+{% block content %}
+    <div piwik-content-block
+         content-title="{{ title|e('html_attr') }}"
+    >
+        {% if hasClientConfiguration %}
+            {% if isConfigured %}
+            <p>The importer is configured and you can start importing data through the command line.</p>
+
+            <a class="btn" href="{{ authUrl }}">Re-authorize</a>
+            {% else %}
+            <p>You've successfully uploaded your client configuration details! Now you just need to authorize Matomo to view your Google Analytics data. Click the button below:</p>
+
+            <a class="btn" href="{{ authUrl }}">Authorize</a>
+            {% endif %}
+        {% else %}
+            <form action="{{ linkTo({'action': 'configureClient'}) }}" method="POST" enctype="multipart/form-data" >
+                <p>In order to import your data from Google Analytics, Matomo need access to this data.</p>
+                <p>The first step is to provide your OAuth Client configuration. Upload your client configuration or paste it into the field below.</p>
+
+                <div piwik-field uicontrol="file" name="clientfile"
+                     title="Configuration File">
+                </div>
+
+                <div piwik-field uicontrol="textarea" name="client"
+                     title="Configuration Text">
+                </div>
+
+                <input type="hidden" name="config_nonce" value="{{ nonce }}" />
+
+                <button type="submit" class="btn">{{ 'General_Save'|translate }}</button>
+
+            </form>
+        {% endif %}
+    </div>
+
+    {% if hasClientConfiguration %}
+    <div
+        piwik-content-block
+        content-title="Remove Client Configuration"
+    >
+        <form action="{{ linkTo({'action': 'deleteClientCredentials'}) }}" method="POST" enctype="multipart/form-data">
+            <p>If you'd like to remove the uploaded client configuration, click below:</p>
+
+            <input type="hidden" name="config_nonce" value="{{ nonce }}" />
+
+            <button type="submit" class="btn">Remove</button>
+        </form>
+    </div>
+    {% endif %}
+{% endblock %}

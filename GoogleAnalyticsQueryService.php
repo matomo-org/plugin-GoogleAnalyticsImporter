@@ -13,6 +13,7 @@ use Piwik\DataTable;
 use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Tracker\Action;
 
 class GoogleAnalyticsQueryService
 {
@@ -51,7 +52,7 @@ class GoogleAnalyticsQueryService
         $this->mapping = $this->getMetricIndicesToGaMetrics();
     }
 
-    public function query(Date $day, array $dimensions, array $metrics)
+    public function query(Date $day, array $dimensions, array $metrics, array $options = [])
     {
         $queries = $this->getQueriesToMake($metrics);
 
@@ -60,7 +61,7 @@ class GoogleAnalyticsQueryService
         $result = new DataTable();
         foreach ($queries as $query) {
             $gaMetrics = $query['metrics'];
-            $options = isset($query['options']) ? $query['options'] : [];
+            $queryOptions = isset($query['options']) ? $query['options'] : [];
 
             $metricNames = [];
             foreach ($gaMetrics as $metricsList) {
@@ -73,7 +74,7 @@ class GoogleAnalyticsQueryService
             $metricNames = array_unique($metricNames);
 
             foreach (array_chunk($metricNames, 9) as $chunk) {
-                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
+                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $queryOptions, $options));
                 sleep(3); // TODO: must remove when oauth implemented
                 $this->mergeResult($result, $chunkResponse, $gaMetrics, $dimensions, $chunk);
             }
@@ -234,7 +235,9 @@ class GoogleAnalyticsQueryService
             ],
 
             // actions
-            // TODO
+            Metrics::INDEX_PAGE_NB_HITS => 'ga:pageviews',
+            Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 'ga:pageDownloadTime',
+            Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 'ga:pageLoadSample',
         ];
     }
 
@@ -307,6 +310,10 @@ class GoogleAnalyticsQueryService
         $request->setSegments($segments);
         $request->setMetrics($metrics);
 
+        if (isset($options['orderBys'])) {
+            $request->setOrderBys($this->makeGaOrderBys($options['orderBys']));
+        }
+
         $getReport = new \Google_Service_AnalyticsReporting_GetReportsRequest();
         $getReport->setReportRequests([$request]);
 
@@ -366,5 +373,17 @@ class GoogleAnalyticsQueryService
         $quotient = (float) $quotient;
         $quotient = $quotient / 100;
         return $quotient;
+    }
+
+    private function makeGaOrderBys($orderBys)
+    {
+        $gaOrderBys = [];
+        foreach ($orderBys as $orderByInfo) {
+            $orderBy = new \Google_Service_AnalyticsReporting_OrderBy();
+            $orderBy->setFieldName($orderByInfo['field']);
+            $orderBy->setOrderType('VALUE');
+            $orderBy->setSortOrder(strtoupper($orderByInfo['order']));
+        }
+        return $gaOrderBys;
     }
 }
