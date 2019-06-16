@@ -31,7 +31,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 {
     public function index($errorMessage = false)
     {
-        Piwik::checkUserHasSomeAdminAccess();
+        Piwik::checkUserHasSuperUserAccess();
 
         $errorMessage = $errorMessage ?: Common::getRequestVar('error', '');
         if (!empty($errorMessage)) {
@@ -68,7 +68,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
     public function deleteClientCredentials()
     {
-        Piwik::checkUserHasSomeAdminAccess();
+        Piwik::checkUserHasSuperUserAccess();
 
         Nonce::checkNonce('GoogleAnalyticsImporter.deleteGoogleClientConfig', Common::getRequestVar('config_nonce'));
 
@@ -88,7 +88,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
      */
     public function processAuthCode()
     {
-        Piwik::checkUserHasSomeAdminAccess();
+        Piwik::checkUserHasSuperUserAccess();
 
         $error     = Common::getRequestVar('error', '');
         $oauthCode = Common::getRequestVar('code', '');
@@ -116,7 +116,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
     public function configureClient()
     {
-        Piwik::checkUserHasSomeAdminAccess();
+        Piwik::checkUserHasSuperUserAccess();
 
         Nonce::checkNonce('GoogleAnalyticsImporter.googleClientConfig', Common::getRequestVar('config_nonce'));
 

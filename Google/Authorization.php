@@ -22,20 +22,25 @@ class Authorization
 
     public function hasAccessToken()
     {
-        $value = Option::get($this->getOptionName(self::ACCESS_TOKEN_OPTION_NAME));
+        $value = $this->getAccessToken();
         return !empty($value);
+    }
+
+    private function getAccessToken()
+    {
+        $value = Option::get(self::ACCESS_TOKEN_OPTION_NAME);
+        return $value;
     }
 
     public function hasClientConfiguration()
     {
-        $value = Option::get($this->getOptionName(self::CLIENT_CONFIG_OPTION_NAME));
-        $value = @json_decode($value, true);
+        $value = $this->getClientConfiguration();
         return !empty($value);
     }
 
     public function getClientConfiguration()
     {
-        $value = Option::get($this->getOptionName(self::CLIENT_CONFIG_OPTION_NAME));
+        $value = Option::get(self::CLIENT_CONFIG_OPTION_NAME);
         $value = @json_decode($value, true);
         return $value;
     }
@@ -50,7 +55,7 @@ class Authorization
 
     public function saveConfig($config)
     {
-        Option::set($this->getOptionName(self::CLIENT_CONFIG_OPTION_NAME), $config);
+        Option::set(self::CLIENT_CONFIG_OPTION_NAME, $config);
     }
 
     public function saveAccessToken($oauthCode, \Google_Client $client)
@@ -69,7 +74,7 @@ class Authorization
             $accessTokenStr = json_encode($accessToken);
         }
 
-        Option::set($this->getOptionName(self::ACCESS_TOKEN_OPTION_NAME), $accessTokenStr);
+        Option::set(self::ACCESS_TOKEN_OPTION_NAME, $accessTokenStr);
     }
 
     /**
@@ -99,12 +104,17 @@ class Authorization
         if (!$client->getClientId() || !$client->getClientSecret()) {
             throw new \Exception('Missing client configuration.'); // TODO: translate/handle
         }
+
+        $accessToken = $this->getAccessToken();
+        if (!empty($accessToken)) {
+            $client->setAccessToken($accessToken);
+        }
     }
 
     public function deleteClientConfiguration()
     {
-        Option::delete($this->getOptionName(self::ACCESS_TOKEN_OPTION_NAME));
-        Option::delete($this->getOptionName(self::CLIENT_CONFIG_OPTION_NAME));
+        Option::delete(self::ACCESS_TOKEN_OPTION_NAME);
+        Option::delete(self::CLIENT_CONFIG_OPTION_NAME);
     }
 
     public function getConfiguredClient()
@@ -118,10 +128,5 @@ class Authorization
     {
         $service = new \Google_Service_Oauth2($client);
         return $service->userinfo->get();
-    }
-
-    private function getOptionName($optionName)
-    {
-        return $optionName . '.' . Piwik::getCurrentUserLogin();
     }
 }

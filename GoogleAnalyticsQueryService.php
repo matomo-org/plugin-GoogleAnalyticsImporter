@@ -17,6 +17,8 @@ use Piwik\Tracker\Action;
 
 class GoogleAnalyticsQueryService
 {
+    const MAX_ATTEMPTS = 100;
+
     /**
      * @var \Google_Service_Analytics
      */
@@ -75,7 +77,9 @@ class GoogleAnalyticsQueryService
 
             foreach (array_chunk($metricNames, 9) as $chunk) {
                 $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $queryOptions, $options));
-                sleep(3); // TODO: must remove when oauth implemented
+
+                usleep(100 * 1000);
+
                 $this->mergeResult($result, $chunkResponse, $gaMetrics, $dimensions, $chunk);
             }
         }
@@ -236,6 +240,22 @@ class GoogleAnalyticsQueryService
 
             // actions
             Metrics::INDEX_PAGE_NB_HITS => 'ga:pageviews',
+            Metrics::INDEX_PAGE_SUM_TIME_SPENT => 'ga:timeOnPage',
+
+            // actions (requires correct dimension)
+            Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 'ga:users',
+            Metrics::INDEX_PAGE_EXIT_NB_VISITS => 'ga:sessions',
+
+            // actions (requires correct dimension)
+            Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 'ga:users',
+            Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 'ga:sessions',
+            Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 'ga:hits',
+            Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 'ga:sessionDuration',
+            Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 'ga:bounces',
+
+            // actions (requires correct dimensions)
+            Metrics::INDEX_PAGE_IS_FOLLOWING_SITE_SEARCH_NB_HITS => 'ga:hits',
+
             Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 'ga:pageDownloadTime',
             Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 'ga:pageLoadSample',
         ];
@@ -319,7 +339,20 @@ class GoogleAnalyticsQueryService
 
         $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
         $body->setReportRequests([$request]);
-        return $this->gaService->reports->batchGet($body);
+
+        $attempts = 0;
+        while ($attempts < self::MAX_ATTEMPTS) {
+            try {
+                return $this->gaService->reports->batchGet($body);
+            } catch (\Exception $ex) {
+                if ($ex->getCode() != 403 && $ex->getCode() != 429) {
+                    throw $ex;
+                }
+
+                ++$attempts;
+                sleep(1);
+            }
+        }
     }
 
     private function makeGaSegment($segment)

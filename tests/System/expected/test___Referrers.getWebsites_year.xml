@@ -1,263 +1,89 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>display-youring-ads-here.info</label>
-		<nb_visits>31</nb_visits>
-		<nb_actions>31</nb_actions>
+		<label>ecosia.org</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>31</bounce_count>
+		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
 		<goals>
 		</goals>
-		<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==display-youring-ads-here.info</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_visits>31</nb_visits>
-				<nb_actions>31</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>31</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
-				<goals>
-				</goals>
-				<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>blogarama.com</label>
-		<nb_visits>16</nb_visits>
-		<nb_actions>47</nb_actions>
-		<sum_visit_length>842</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-		</goals>
-		<sum_daily_nb_uniq_visitors>16</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==blogarama.com</segment>
-		<subtable>
-			<row>
-				<label>/blogs/552793-matthieu-aubry-matthieunet-blog/</label>
-				<nb_visits>16</nb_visits>
-				<nb_actions>47</nb_actions>
-				<sum_visit_length>842</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<goals>
-				</goals>
-				<sum_daily_nb_uniq_visitors>16</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>ecosia.org</label>
-		<nb_visits>10</nb_visits>
-		<nb_actions>12</nb_actions>
-		<sum_visit_length>787</sum_visit_length>
-		<bounce_count>9</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-		</goals>
-		<sum_daily_nb_uniq_visitors>10</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==ecosia.org</segment>
 		<subtable>
 			<row>
 				<label>/</label>
-				<nb_visits>10</nb_visits>
-				<nb_actions>12</nb_actions>
-				<sum_visit_length>787</sum_visit_length>
-				<bounce_count>9</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<goals>
-				</goals>
-				<sum_daily_nb_uniq_visitors>10</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>lezrwldgihtuhnt.com</label>
-		<nb_visits>9</nb_visits>
-		<nb_actions>9</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>9</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<goals>
-		</goals>
-		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==lezrwldgihtuhnt.com</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_visits>9</nb_visits>
-				<nb_actions>9</nb_actions>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
 				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>9</bounce_count>
+				<bounce_count>1</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0.0</revenue>
 				<goals>
 				</goals>
-				<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>qwant.com</label>
-		<nb_visits>5</nb_visits>
-		<nb_actions>6</nb_actions>
-		<sum_visit_length>248</sum_visit_length>
-		<bounce_count>4</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-		</goals>
-		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==qwant.com</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_visits>5</nb_visits>
-				<nb_actions>6</nb_actions>
-				<sum_visit_length>248</sum_visit_length>
-				<bounce_count>4</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<goals>
-				</goals>
-				<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>search.lilo.org</label>
-		<nb_visits>5</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>5</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-		</goals>
-		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==search.lilo.org</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_visits>5</nb_visits>
-				<nb_actions>5</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>5</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<goals>
-				</goals>
-				<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>com.google.android.googlequicksearchbox</label>
-		<nb_visits>3</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-		</goals>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==com.google.android.googlequicksearchbox</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>3</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<goals>
-				</goals>
-				<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>duckduckgo.com</label>
-		<nb_visits>3</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>142</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-		</goals>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==duckduckgo.com</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_visits>3</nb_visits>
-				<nb_actions>5</nb_actions>
-				<sum_visit_length>142</sum_visit_length>
-				<bounce_count>2</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<goals>
-				</goals>
-				<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>
 	<row>
 		<label>fr.search.yahoo.com</label>
-		<nb_visits>3</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>182</sum_visit_length>
-		<bounce_count>2</bounce_count>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
+		<revenue>0.0</revenue>
 		<goals>
 		</goals>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==fr.search.yahoo.com</segment>
 		<subtable>
 			<row>
 				<label>/</label>
-				<nb_visits>3</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>182</sum_visit_length>
-				<bounce_count>2</bounce_count>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>0</sum_visit_length>
+				<bounce_count>1</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
+				<revenue>0.0</revenue>
 				<goals>
 				</goals>
-				<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>search.lilo.org</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<goals>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>referrerName==search.lilo.org</segment>
+		<subtable>
+			<row>
+				<label>/</label>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>0</sum_visit_length>
+				<bounce_count>1</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0.0</revenue>
+				<goals>
+				</goals>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>

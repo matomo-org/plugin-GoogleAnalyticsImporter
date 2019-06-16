@@ -13,6 +13,7 @@ use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Piwik;
 use Piwik\Plugin\ConsoleCommand;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DimensionMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\SettingsPiwik;
@@ -44,11 +45,8 @@ class ImportReports extends ConsoleCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $accessToken = $this->getAccessToken();
-
-        /** @var \Google_Client $googleClient */
-        $googleClient = StaticContainer::get('GoogleAnalyticsImporter.googleClient');
-        $googleClient->setAccessToken($accessToken);
+        $googleAuth = StaticContainer::get(Authorization::class);
+        $googleClient = $googleAuth->getConfiguredClient();
 
         $service = new \Google_Service_Analytics($googleClient);
 
@@ -149,10 +147,5 @@ class ImportReports extends ConsoleCommand
             }
         }
         return $idSite;
-    }
-
-    private function getAccessToken()
-    {
-        // TODO
     }
 }

@@ -11,6 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\System;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures\ImportedFromGoogle;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
 
+// TODO: segments should be disabled for these imported reports (would need to mark records as imported and delete segment metadata in hooks)
 class ImportTest extends SystemTestCase
 {
     private static $CONVERSION_AWARE_VISIT_METRICS = [
@@ -23,6 +24,24 @@ class ImportTest extends SystemTestCase
         'nb_conversions',
         'revenue',
         'goals',
+    ];
+
+    private static $ACTION_METRICS = [
+        'nb_visits',
+        'nb_uniq_visitors',
+        'nb_hits',
+        'sum_time_spent',
+        'entry_nb_uniq_visitors',
+        'entry_nb_visits',
+        'entry_nb_actions',
+        'entry_sum_visit_length',
+        'entry_bounce_count',
+        'exit_nb_uniq_visitors',
+        'exit_nb_visits',
+        'avg_bandwidth',
+        'avg_time_on_page',
+        'bounce_rate',
+        'exit_rate',
     ];
 
     /**
@@ -40,7 +59,7 @@ class ImportTest extends SystemTestCase
 
     public function getApiTestsToRun()
     {
-        $apiToTest = ['Referrers', 'Actions']; // TODO: change to 'all'
+        $apiToTest = ['Referrers', 'Actions.getPageTitles', 'Actions.getPageUrls']; // TODO: change to 'all'
 
         return [
             [$apiToTest, [
@@ -58,7 +77,7 @@ class ImportTest extends SystemTestCase
     public function testApiColumns($method, $columns)
     {
         $expectedApiColumns = self::getExpectedApiColumns();
-        if (empty($expectedApiColumns[$method])) {
+        if (!isset($expectedApiColumns[$method])) {
             throw new \Exception("No expected columns for $method");
         }
 
@@ -135,8 +154,8 @@ class ImportTest extends SystemTestCase
     {
         return [
             'Referrers.getWebsites' => self::$CONVERSION_AWARE_VISIT_METRICS,
-            'Referrers.getReferrerType' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['referer_type']),
-            'Referrers.getAll' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getReferrerType' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getAll' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['referer_type']),
             'Referrers.getKeywords' => self::$CONVERSION_AWARE_VISIT_METRICS,
             'Referrers.getKeywordsForPageUrl' => [],
             'Referrers.getKeywordsForPageTitle' => [],
@@ -147,6 +166,22 @@ class ImportTest extends SystemTestCase
             'Referrers.getUrlsFromWebsiteId' => self::$CONVERSION_AWARE_VISIT_METRICS,
             'Referrers.getSocials' => self::$CONVERSION_AWARE_VISIT_METRICS,
             'Referrers.getUrlsForSocial' => self::$CONVERSION_AWARE_VISIT_METRICS,
+
+            'Actions.getPageTitles' => self::$ACTION_METRICS,
+            'Actions.getPageUrls' => [
+                'nb_visits',
+                'nb_hits',
+                'sum_time_spent',
+                'exit_nb_visits',
+                'entry_nb_visits',
+                'entry_nb_actions',
+                'entry_sum_visit_length',
+                'entry_bounce_count',
+                'avg_bandwidth',
+                'avg_time_on_page',
+                'bounce_rate',
+                'exit_rate',
+            ],
         ];
     }
 }
