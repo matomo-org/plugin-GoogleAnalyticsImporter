@@ -64,8 +64,13 @@ class Importer
      */
     private $customDimensionMapper;
 
+    /**
+     * @var IdMapper
+     */
+    private $idMapper;
+
     public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, LoggerInterface $logger, GoogleGoalMapper $goalMapper,
-                                GoogleCustomDimensionMapper $customDimensionMapper)
+                                GoogleCustomDimensionMapper $customDimensionMapper, IdMapper $idMapper)
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = new \Google_Service_Analytics($client);
@@ -73,6 +78,7 @@ class Importer
         $this->logger = $logger;
         $this->goalMapper = $goalMapper;
         $this->customDimensionMapper = $customDimensionMapper;
+        $this->idMapper = $idMapper;
     }
 
     public function makeSite($accountId, $propertyId, $viewId)
@@ -98,7 +104,7 @@ class Importer
         );
 
         $this->importGoals($idSite, $accountId, $propertyId, $viewId);
-        $this->importCustomDimensions($idSite, $accountId, $propertyId, $viewId);
+        $this->importCustomDimensions($idSite, $accountId, $propertyId);
 
         return $idSite;
     }
@@ -129,7 +135,7 @@ class Importer
         }
     }
 
-    private function importCustomDimensions($idSite, $accountId, $propertyId, $viewId)
+    private function importCustomDimensions($idSite, $accountId, $propertyId)
     {
         $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
 
@@ -142,9 +148,11 @@ class Importer
                 $this->logger->warning("Skipping this custom dimension.");
             }
 
-            CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+            $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
                 $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
                 $customDimension['case_sensitive']);
+
+            $this->idMapper->mapEntityId('customdimension', $gaCustomDimension->getId(), $idDimension);
         }
     }
 

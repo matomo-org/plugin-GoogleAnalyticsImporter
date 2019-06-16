@@ -105,6 +105,19 @@ abstract class RecordImporter
             $this->archiveWriter->insertRecord($name, $value);
         }
     }
+
+    protected function addRowToTable(DataTable $record, DataTable\Row $row, $newLabel)
+    {
+        $foundRow = $record->getRowFromLabel($newLabel);
+        if (empty($foundRow)) {
+            $foundRow = clone $row;
+            $foundRow->setColumn('label', $newLabel);
+            $record->addRow($foundRow);
+        } else {
+            $foundRow->sumRow($row);
+        }
+        return $foundRow;
+    }
     /*
     return array(
         Metrics::INDEX_MAX_ACTIONS                    => "max(" . self::LOG_VISIT_TABLE . ".visit_total_actions)",
