@@ -21,6 +21,7 @@ use Piwik\Tracker\Action;
 // TODO: numeric metrics
 // TODO: folder path metadata
 // TODO: sum_time_spent in actions reports seems off. it's 0 in a lot of cases...
+// TODO: site search is untested since we don't have the data
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
     const PLUGIN_NAME = 'Actions';
@@ -37,6 +38,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->dataTables = [
             Action::TYPE_PAGE_URL => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableLevelZero),
             Action::TYPE_PAGE_TITLE => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableLevelZero),
+            Action::TYPE_SITE_SEARCH => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableSiteSearch),
         ];
 
         $this->pageTitlesByPagePath = [];
@@ -47,9 +49,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->getPageUrlsRecord($day);
         $this->queryEntryPages($day);
         $this->queryExitPages($day);
-
-//        $folderPrefix = Site::getMainUrlFor($this->getIdSite());
-//        $folderPrefix = rtrim($folderPrefix, '/') . '/';
+        $this->getSiteSearchs($day);
 
         ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_TITLE], $isUrl = false);
         ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_URL], $isUrl = true, $folderPrefix = '');
@@ -63,8 +63,39 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         foreach ($this->dataTables as &$table) {
             Common::destroy($table);
         }
+
+        // TODO: bandwidth metrics
+        // TODO: downloads, outlinks (requires segment on event and event configuration)
+        // TODO: categories must go in custom variable record
     }
 
+    private function getSiteSearchs(Date $day)
+    {
+        $gaQuery = $this->getGaQuery();
+        $table = $gaQuery->query($day, $dimensions = ['ga:searchKeyword'], $this->getActionsMetrics(), [
+            'orderBys' => [
+                ['field' => 'ga:sessions', 'order' => 'descending'],
+                ['field' => 'ga:searchKeyword', 'order' => 'ascending']
+            ],
+        ]);
+
+        foreach ($table->getRows() as $row) {
+            $keyword = $row->getMetadata('ga:searchKeyword');
+
+            $actionRow = ArchivingHelper::getActionRow($keyword, Action::TYPE_SITE_SEARCH, $urlPrefix = '', $this->dataTables);
+
+            $row->deleteColumn('label');
+
+            $columns = $row->getColumns();
+            foreach ($columns as $name => $value) {
+                $actionRow->setColumn($name, $value);
+            }
+        }
+
+        Common::destroy($table);
+    }
+
+    // TODO: should we order by hits instead? check actions archiver
     private function queryEntryPages(Date $day)
     {
         $entryPageMetrics = [

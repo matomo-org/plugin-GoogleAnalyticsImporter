@@ -75,15 +75,15 @@ abstract class RecordImporter
 
     protected function getActionsMetrics()
     {
-        // TODO: event for bandwidth (if we care)
         return [
             Metrics::INDEX_NB_VISITS,
             Metrics::INDEX_NB_UNIQ_VISITORS,
             Metrics::INDEX_PAGE_NB_HITS,
             Metrics::INDEX_PAGE_SUM_TIME_GENERATION,
             Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION,
+
+            // TODO: bandwidth could be supported via GA event
         ];
-        // TODO: should cache this in transient cache after we use an event
     }
 
     protected function getIdSite()

@@ -59,7 +59,7 @@ class ImportTest extends SystemTestCase
 
     public function getApiTestsToRun()
     {
-        $apiToTest = ['Referrers', 'Actions.getPageTitles', 'Actions.getPageUrls']; // TODO: change to 'all'
+        $apiToTest = ['Referrers', 'Actions', 'CustomDimensions'];
 
         return [
             [$apiToTest, [

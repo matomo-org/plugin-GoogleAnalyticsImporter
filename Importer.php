@@ -22,6 +22,7 @@ use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Funnels\Model\FunnelsModel;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
+use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Segment;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -58,13 +59,20 @@ class Importer
      */
     private $goalMapper;
 
-    public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, LoggerInterface $logger, GoogleGoalMapper $goalMapper)
+    /**
+     * @var GoogleCustomDimensionMapper
+     */
+    private $customDimensionMapper;
+
+    public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, LoggerInterface $logger, GoogleGoalMapper $goalMapper,
+                                GoogleCustomDimensionMapper $customDimensionMapper)
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = new \Google_Service_Analytics($client);
         $this->gaServiceReporting = new \Google_Service_AnalyticsReporting($client);
         $this->logger = $logger;
         $this->goalMapper = $goalMapper;
+        $this->customDimensionMapper = $customDimensionMapper;
     }
 
     public function makeSite($accountId, $propertyId, $viewId)
@@ -90,6 +98,7 @@ class Importer
         );
 
         $this->importGoals($idSite, $accountId, $propertyId, $viewId);
+        $this->importCustomDimensions($idSite, $accountId, $propertyId, $viewId);
 
         return $idSite;
     }
@@ -103,8 +112,8 @@ class Importer
             try {
                 $goal = $this->goalMapper->map($gaGoal);
             } catch (CannotImportGoalException $ex) {
-                $this->logger->info($ex->getMessage());
-                $this->logger->info('Importing this goal as a manually triggered goal. Metrics for this goal will be available, but tracking will not work for this goal in Matomo.');
+                $this->logger->warning($ex->getMessage());
+                $this->logger->warning('Importing this goal as a manually triggered goal. Metrics for this goal will be available, but tracking will not work for this goal in Matomo.');
 
                 $goal = $this->goalMapper->mapManualGoal($gaGoal);
             }
@@ -117,6 +126,25 @@ class Importer
                 StaticContainer::get(\Piwik\Plugins\Funnels\Model\FunnelsModel::class)->clearGoalsCache();
                 \Piwik\Plugins\Funnels\API::getInstance()->setGoalFunnel($idSite, $idGoal, true, $goal['funnel']);
             }
+        }
+    }
+
+    private function importCustomDimensions($idSite, $accountId, $propertyId, $viewId)
+    {
+        $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
+
+        /** @var \Google_Service_Analytics_CustomDimension $gaCustomDimension */
+        foreach ($customDimensions->getItems() as $gaCustomDimension) {
+            try {
+                $customDimension = $this->customDimensionMapper->map($gaCustomDimension);
+            } catch (CannotImportCustomDimensionException $ex) {
+                $this->logger->warning($ex->getMessage());
+                $this->logger->warning("Skipping this custom dimension.");
+            }
+
+            CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+                $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
+                $customDimension['case_sensitive']);
         }
     }
 
