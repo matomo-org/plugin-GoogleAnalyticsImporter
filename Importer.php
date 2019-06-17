@@ -11,6 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Google_Service_Analytics_Goal;
 use Piwik\ArchiveProcessor\Parameters;
+use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\ArchiveWriter;
 use Piwik\DataTable;
@@ -19,10 +20,12 @@ use Piwik\Period\Factory;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\Report;
 use Piwik\Plugin\ReportsProvider;
+use Piwik\Plugins\CustomDimensions\Dimension\Name;
 use Piwik\Plugins\Funnels\Model\FunnelsModel;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
+use Piwik\Plugins\CustomVariables\API as CustomVariablesAPI;
 use Piwik\Segment;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -105,6 +108,7 @@ class Importer
 
         $this->importGoals($idSite, $accountId, $propertyId, $viewId);
         $this->importCustomDimensions($idSite, $accountId, $propertyId);
+        $this->importCustomDimensionSlots();
 
         return $idSite;
     }
@@ -154,6 +158,23 @@ class Importer
 
             $this->idMapper->mapEntityId('customdimension', $gaCustomDimension->getId(), $idDimension);
         }
+    }
+
+    private function importCustomDimensionSlots()
+    {
+        /** @var ImportConfiguration $importConfiguration */
+        $importConfiguration = StaticContainer::get(ImportConfiguration::class);
+        $numCustomVarSlots = (int) $importConfiguration->getNumCustomVariables();
+
+        $this->logger->info("Setting maximum number of custom variable slots to $numCustomVarSlots...");
+
+        $command = "php " . PIWIK_INCLUDE_PATH . '/console ';
+        $domain = Config::getInstance()->getConfigHostnameIfSet();
+        if (!empty($domain)) {
+            $command .= '--matomo-domain=' . $domain;
+        }
+        $command .= 'customvariables:set-max-custom-variables ' . $numCustomVarSlots;
+        passthru($command);
     }
 
     public function import($idSite, $viewId, Date $start, Date $end)

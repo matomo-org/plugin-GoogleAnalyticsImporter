@@ -258,6 +258,12 @@ class GoogleAnalyticsQueryService
 
             Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 'ga:pageDownloadTime',
             Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 'ga:pageLoadSample',
+
+            // ecommerce item metrics (requires correct dimensions)
+            Metrics::INDEX_ECOMMERCE_ITEM_REVENUE => 'ga:itemRevenue',
+            Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY => 'ga:itemQuantity',
+            Metrics::INDEX_ECOMMERCE_ITEM_PRICE => 'ga:revenuePerItem', // TODO: not sure how accurate this is
+            Metrics::INDEX_ECOMMERCE_ORDERS => 'ga:transactions',
         ];
     }
 

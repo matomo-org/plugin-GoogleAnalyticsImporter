@@ -72,7 +72,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getSiteSearchs(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:searchKeyword'], $this->getActionsMetrics(), [
+        $table = $gaQuery->query($day, $dimensions = ['ga:searchKeyword'], $this->getPageMetrics(), [
             'orderBys' => [
                 ['field' => 'ga:sessions', 'order' => 'descending'],
                 ['field' => 'ga:searchKeyword', 'order' => 'ascending']
@@ -176,7 +176,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getPageTitlesRecord(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle', 'ga:hostname', 'ga:pagePath'], $this->getActionsMetrics(), [
+        $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle', 'ga:hostname', 'ga:pagePath'], $this->getPageMetrics(), [
             'orderBys' => [
                 ['field' => 'ga:pageviews', 'order' => 'descending'],
                 ['field' => 'ga:pageTitle', 'order' => 'ascending']
@@ -205,7 +205,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getPageUrlsRecord(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:hostname', 'ga:pagePath'], $this->getActionsMetrics(), [
+        $table = $gaQuery->query($day, $dimensions = ['ga:hostname', 'ga:pagePath'], $this->getPageMetrics(), [
             'orderBys' => [
                 ['field' => 'ga:pageviews', 'order' => 'descending'],
                 ['field' => 'ga:pagePath', 'order' => 'ascending']

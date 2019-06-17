@@ -13,8 +13,10 @@ use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Piwik;
 use Piwik\Plugin\ConsoleCommand;
+use Piwik\Plugins\CustomVariables\Model;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DimensionMapper;
+use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\SettingsPiwik;
 use Piwik\Site;
@@ -41,6 +43,7 @@ class ImportReports extends ConsoleCommand
         $this->addOption('view', null, InputOption::VALUE_REQUIRED, 'The View ID to use. If not supplied, the default View for the property is used.');
         $this->addOption('dates', null, InputOption::VALUE_REQUIRED, 'The dates to import.');
         $this->addOption('idsite', null, InputOption::VALUE_REQUIRED, 'The site to import into.');
+        $this->addOption('cvar-count', null, InputOption::VALUE_REQUIRED, 'The number of custom variables to support.', Model::DEFAULT_CUSTOM_VAR_COUNT);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -54,6 +57,10 @@ class ImportReports extends ConsoleCommand
         $dates = $this->getDatesToImport($input);
         $property = $input->getOption('property');
         $account = $input->getOption('account');
+
+        /** @var ImportConfiguration $importerConfiguration */
+        $importerConfiguration = StaticContainer::get(ImportConfiguration::class);
+        $this->setImportRunConfiguration($importerConfiguration, $input);
 
         /** @var Importer $importer */
         $importer = StaticContainer::get(Importer::class);
@@ -147,5 +154,15 @@ class ImportReports extends ConsoleCommand
             }
         }
         return $idSite;
+    }
+
+    private function setImportRunConfiguration(ImportConfiguration $importerConfiguration, InputInterface $input)
+    {
+        $cvarCount = (int) $input->getOption('cvar-count');
+        if ($cvarCount <= 0) {
+            throw new \InvalidArgumentException('Invalid option value for "cvar-count", must be positive integer.');
+        }
+
+        $importerConfiguration->setNumCustomVariables($cvarCount);
     }
 }

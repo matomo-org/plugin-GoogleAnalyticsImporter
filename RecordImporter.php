@@ -14,7 +14,6 @@ use Piwik\DataAccess\ArchiveWriter;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
-use Piwik\Metrics as PiwikMetrics;
 use Piwik\Tracker\Action;
 
 abstract class RecordImporter
@@ -73,16 +72,33 @@ abstract class RecordImporter
         ]);
     }
 
-    protected function getActionsMetrics()
+    protected function getActionMetrics()
     {
         return [
             Metrics::INDEX_NB_VISITS,
             Metrics::INDEX_NB_UNIQ_VISITORS,
             Metrics::INDEX_PAGE_NB_HITS,
+        ];
+    }
+
+    protected function getPageMetrics()
+    {
+        return array_merge($this->getActionMetrics(), [
             Metrics::INDEX_PAGE_SUM_TIME_GENERATION,
             Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION,
 
             // TODO: bandwidth could be supported via GA event
+        ]);
+    }
+
+    protected function getEcommerceMetrics()
+    {
+        return [
+            Metrics::INDEX_ECOMMERCE_ITEM_REVENUE,
+            Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY,
+            Metrics::INDEX_ECOMMERCE_ITEM_PRICE,
+            Metrics::INDEX_ECOMMERCE_ORDERS,
+            // Metrics::INDEX_ECOMMERCE_ITEM_PRICE_VIEWED, TODO: should we support this? not sure it's possible in GA
         ];
     }
 
@@ -118,10 +134,14 @@ abstract class RecordImporter
         }
         return $foundRow;
     }
-    /*
-    return array(
-        Metrics::INDEX_MAX_ACTIONS                    => "max(" . self::LOG_VISIT_TABLE . ".visit_total_actions)",
-        Metrics::INDEX_NB_USERS                       => "count(distinct " . self::LOG_VISIT_TABLE . ".user_id)",
-    );
-     */
+
+    protected function addRowToSubtable(DataTable\Row $topLevelRow, DataTable\Row $rowToAdd, $newLabel)
+    {
+        $subtable = $topLevelRow->getSubtable();
+        if (!$subtable) {
+            $subtable = new DataTable();
+            $topLevelRow->setSubtable($subtable);
+        }
+        $this->addRowToTable($subtable, $rowToAdd, $newLabel);
+    }
 }

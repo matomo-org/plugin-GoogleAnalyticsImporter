@@ -216,14 +216,4 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         return [$keywordBySearchEngine, $searchEngineByKeyword];
     }
-
-    private function addRowToSubtable(DataTable\Row $topLevelRow, DataTable\Row $rowToAdd, $newLabel)
-    {
-        $subtable = $topLevelRow->getSubtable();
-        if (!$subtable) {
-            $subtable = new DataTable();
-            $topLevelRow->setSubtable($subtable);
-        }
-        $this->addRowToTable($subtable, $rowToAdd, $newLabel);
-    }
 }

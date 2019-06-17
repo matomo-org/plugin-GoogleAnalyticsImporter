@@ -9,6 +9,8 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 
+use Piwik\Plugins\CustomDimensions\Dimension\Name;
+
 class GoogleCustomDimensionMapper
 {
 
@@ -21,6 +23,9 @@ class GoogleCustomDimensionMapper
             'scope' => $this->mapScope($gaCustomDimension),
             'active' => $gaCustomDimension->getActive(),
         ];
+
+        $blockedChars = Name::getBlockedCharacters();
+        $result['name'] = str_replace($blockedChars, '', $result['name']);
 
         return $result;
     }
