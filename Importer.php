@@ -140,6 +140,9 @@ class Importer
 
         /** @var \Google_Service_Analytics_CustomDimension $gaCustomDimension */
         foreach ($customDimensions->getItems() as $gaCustomDimension) {
+            preg_match('/ga:dimension([0-9]+)/', $gaCustomDimension->getId(), $matches);
+            $gaId = $matches[1]; // TODO: check the match was successful and log if not
+
             try {
                 $customDimension = $this->customDimensionMapper->map($gaCustomDimension);
             } catch (CannotImportCustomDimensionException $ex) {
@@ -150,9 +153,6 @@ class Importer
             $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
                 $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
                 $customDimension['case_sensitive']);
-
-            preg_match('/ga:dimension([0-9]+)/', $gaCustomDimension->getId(), $matches);
-            $gaId = $matches[1]; // TODO: check it's there
 
             $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension);
         }

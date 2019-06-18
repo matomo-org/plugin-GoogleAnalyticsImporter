@@ -26,5 +26,6 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\DevicesDetection\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\CustomVariables\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\CustomDimensions\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Events\RecordImporter::class,
     ],
 ];
