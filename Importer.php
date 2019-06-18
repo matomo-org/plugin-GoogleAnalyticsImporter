@@ -14,18 +14,13 @@ use Piwik\ArchiveProcessor\Parameters;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\ArchiveWriter;
-use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Period\Factory;
 use Piwik\Plugin\Manager;
-use Piwik\Plugin\Report;
 use Piwik\Plugin\ReportsProvider;
-use Piwik\Plugins\CustomDimensions\Dimension\Name;
-use Piwik\Plugins\Funnels\Model\FunnelsModel;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
-use Piwik\Plugins\CustomVariables\API as CustomVariablesAPI;
 use Piwik\Segment;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -156,7 +151,10 @@ class Importer
                 $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
                 $customDimension['case_sensitive']);
 
-            $this->idMapper->mapEntityId('customdimension', $gaCustomDimension->getId(), $idDimension);
+            preg_match('/ga:dimension([0-9]+)/', $gaCustomDimension->getId(), $matches);
+            $gaId = $matches[1]; // TODO: check it's there
+
+            $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension);
         }
     }
 
@@ -245,7 +243,7 @@ class Importer
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {
-            $instances[$pluginName] = new $className($gaQuery, $idSite);
+            $instances[$pluginName] = new $className($gaQuery, $idSite, $this->logger);
         }
         return $instances;
     }

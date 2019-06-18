@@ -263,7 +263,7 @@ class GoogleAnalyticsQueryService
             Metrics::INDEX_ECOMMERCE_ITEM_REVENUE => 'ga:itemRevenue',
             Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY => 'ga:itemQuantity',
             Metrics::INDEX_ECOMMERCE_ITEM_PRICE => 'ga:revenuePerItem', // TODO: not sure how accurate this is
-            Metrics::INDEX_ECOMMERCE_ORDERS => 'ga:transactions',
+            Metrics::INDEX_ECOMMERCE_ORDERS => 'ga:uniquePurchases', // TODO: is this right? I think so, not sure tough
         ];
     }
 

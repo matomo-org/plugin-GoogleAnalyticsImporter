@@ -19,15 +19,18 @@ use Piwik\Plugins\CustomDimensions\API;
 use Piwik\Plugins\CustomDimensions\Archiver;
 use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\IdMapper;
+use Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
+    const PLUGIN_NAME = 'CustomDimensions';
+
     private $maximumRowsInDataTableLevelZero;
     private $maximumRowsInSubDataTable;
 
-    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite)
+    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
-        parent::__construct($gaQuery, $idSite);
+        parent::__construct($gaQuery, $idSite, $logger);
 
         $this->maximumRowsInDataTableLevelZero = Config::getInstance()->General['datatable_archiving_maximum_rows_custom_variables'];
         $this->maximumRowsInSubDataTable = Config::getInstance()->General['datatable_archiving_maximum_rows_subtable_custom_variables'];
@@ -39,7 +42,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $customDimensions = API::getInstance()->getConfiguredCustomDimensions($this->getIdSite());
         foreach ($customDimensions as $dimension) {
-            $gaId = $idMapper->getGoogleAnalyticsId('customdimension', $dimension['iddimension']);
+            $gaId = $idMapper->getGoogleAnalyticsId('customdimension', $dimension['idcustomdimension']);
 
             $record = $this->queryCustomDimension($gaId, $day);
             $this->insertCustomDimensionRecord($record, $dimension);

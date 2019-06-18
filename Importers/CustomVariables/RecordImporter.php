@@ -23,6 +23,7 @@ use Piwik\Plugins\CustomVariables\Model;
 use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Site;
+use Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
@@ -41,9 +42,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
      */
     private $metadataFlat;
 
-    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite)
+    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
-        parent::__construct($gaQuery, $idSite);
+        parent::__construct($gaQuery, $idSite, $logger);
 
         if (Site::isEcommerceEnabledFor($this->getIdSite())) {
             $this->maximumRowsInDataTableLevelZero = Archiver::MAX_ROWS_WHEN_ECOMMERCE;
@@ -62,14 +63,14 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $record = new DataTable();
 
-        for ($i = 0; $i != $this->importConfiguration->getNumCustomVariables(); ++$i) {
+        for ($i = 1; $i < $this->importConfiguration->getNumCustomVariables() + 1; ++$i) {
             $this->queryCustomVariableSlot($i, $day, $record);
         }
 
         $this->querySiteSearchCategories($day, $record);
         $this->queryEcommerce($day, $record);
 
-        $blob = $record->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, );
+        $blob = $record->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, Metrics::INDEX_NB_VISITS);
         $this->insertBlobRecord(Archiver::CUSTOM_VARIABLE_RECORD_NAME, $blob);
         Common::destroy($record);
 

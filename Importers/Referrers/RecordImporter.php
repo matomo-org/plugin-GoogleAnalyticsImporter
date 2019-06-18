@@ -21,6 +21,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\SearchEngineMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Piwik\Plugins\Referrers\Archiver;
 use Piwik\Plugins\Referrers\Social;
+use Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
@@ -40,9 +41,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
      */
     private $referrerTypeRecord;
 
-    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite)
+    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
-        parent::__construct($gaQuery, $idSite);
+        parent::__construct($gaQuery, $idSite, $logger);
 
         // TODO: code redundancy w/ referrers
         $this->columnToSortByBeforeTruncation = Metrics::INDEX_NB_VISITS;
@@ -109,8 +110,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             $keyword = $row->getMetadata('ga:keyword');
 
-            $row->deleteMetadata();
-
             $topLevelRow = $this->addRowToTable($keywordByCampaign, $row, $campaign);
             $this->addRowToSubtable($topLevelRow, $row, $keyword);
 
@@ -144,8 +143,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             if (strrpos($referrerUrl, '/') !== strlen($referrerUrl) - 1) {
                 continue;
             }
-
-            $row->deleteMetadata();
 
             $socialNetwork = $social->getSocialNetworkFromDomain($referrerUrl);
             if (!empty($socialNetwork)
@@ -198,8 +195,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             if (empty($keyword)) {
                 $keyword = '(not provided)';
             }
-
-            $row->deleteMetadata();
 
             // add to keyword by search engine record
             $topLevelRow = $this->addRowToTable($keywordBySearchEngine, $row, $keyword);

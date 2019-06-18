@@ -247,14 +247,3 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         unset($blob);
     }
 }
-
-/*
-records:
-    const DOWNLOADS_RECORD_NAME = 'Actions_downloads';
-    const OUTLINKS_RECORD_NAME = 'Actions_outlink';
-    const PAGE_TITLES_RECORD_NAME = 'Actions_actions';
-    const SITE_SEARCH_RECORD_NAME = 'Actions_sitesearch';
-    const PAGE_URLS_RECORD_NAME = 'Actions_actions_url';
-
-actions_actions
- */

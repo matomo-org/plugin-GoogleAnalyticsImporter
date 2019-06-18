@@ -9,12 +9,13 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
-
+use Piwik\Config as PiwikConfig;
 use Piwik\DataAccess\ArchiveWriter;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Tracker\Action;
+use Psr\Log\LoggerInterface;
 
 abstract class RecordImporter
 {
@@ -33,10 +34,23 @@ abstract class RecordImporter
      */
     private $archiveWriter;
 
-    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite)
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    /**
+     * @var int
+     */
+    private $standardMaximumRows;
+
+    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         $this->gaQuery = $gaQuery;
         $this->idSite = $idSite;
+        $this->logger = $logger;
+        $this->standardMaximumRows = PiwikConfig::getInstance()->General['datatable_archiving_maximum_rows_standard'];
+        $this->logger = $logger;
     }
 
     public abstract function queryGoogleAnalyticsApi(Date $day); // TODO: rename to importRecords
@@ -46,9 +60,22 @@ abstract class RecordImporter
         $this->archiveWriter = $archiveWriter;
     }
 
+    /**
+     * @return int
+     */
+    protected function getStandardMaximumRows()
+    {
+        return $this->standardMaximumRows;
+    }
+
     protected function getGaQuery()
     {
         return $this->gaQuery;
+    }
+
+    protected function getLogger()
+    {
+        return $this->logger;
     }
 
     protected function getVisitMetrics()
@@ -127,6 +154,7 @@ abstract class RecordImporter
         $foundRow = $record->getRowFromLabel($newLabel);
         if (empty($foundRow)) {
             $foundRow = clone $row;
+            $foundRow->deleteMetadata();
             $foundRow->setColumn('label', $newLabel);
             $record->addRow($foundRow);
         } else {

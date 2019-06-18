@@ -23,5 +23,8 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Referrers\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Actions\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\DevicesDetection\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\CustomVariables\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\CustomDimensions\RecordImporter::class,
     ],
 ];
