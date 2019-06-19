@@ -30,5 +30,8 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Goals\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Resolution\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\UserCountry\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\UserLanguage\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitorInterest\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitTime\RecordImporter::class,
     ],
 ];

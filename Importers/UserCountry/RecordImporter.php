@@ -8,7 +8,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\UserCountry;
 
-
 use Piwik\Common;
 use Piwik\DataTable;
 use Piwik\Date;
@@ -42,6 +41,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
 
         $this->insertRecord($recordName, $record);
+        Common::destroy($record);
+    }
+
+    private function insertRecord($recordName, DataTable $record)
+    {
+        $blob = $record->getSerialized();
+        $this->insertBlobRecord($recordName, $blob);
     }
 
     private function queryCities(Date $day)
@@ -70,12 +76,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
 
         $this->insertRecord(Archiver::CITY_RECORD_NAME, $record);
-    }
-
-    private function insertRecord($recordName, DataTable $record)
-    {
-        $blob = $record->getSerialized();
-        $this->insertBlobRecord($recordName, $blob);
         Common::destroy($record);
     }
 }
