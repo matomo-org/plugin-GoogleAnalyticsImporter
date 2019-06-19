@@ -230,6 +230,10 @@ class Importer
 
             $this->recordImporters = [];
             foreach ($recordImporters as $index => $recordImporterClass) {
+                if (!defined($recordImporterClass . '::PLUGIN_NAME')) {
+                    throw new \Exception("The $recordImporterClass record importer is missing the PLUGIN_NAME constant.");
+                }
+
                 $pluginName = $recordImporterClass::PLUGIN_NAME;
                 if (!in_array($pluginName, $activatedPlugins)) {
                     continue;

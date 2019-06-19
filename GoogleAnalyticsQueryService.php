@@ -56,7 +56,12 @@ class GoogleAnalyticsQueryService
 
     public function query(Date $day, array $dimensions, array $metrics, array $options = [])
     {
-        $queries = $this->getQueriesToMake($metrics);
+        $mappings = $this->mapping;
+        if (!empty($options['mappings'])) {
+            $mappings = array_merge($mappings, $options['mappings']);
+        }
+
+        $queries = $this->getQueriesToMake($metrics, $mappings);
 
         $date = $day->toString();
 
@@ -83,24 +88,24 @@ class GoogleAnalyticsQueryService
                 $this->mergeResult($result, $chunkResponse, $gaMetrics, $dimensions, $chunk);
             }
         }
-        $this->convertGaColumnsToMetricIndexes($result, $metrics);
+        $this->convertGaColumnsToMetricIndexes($result, $metrics, $mappings);
 
         return $result;
     }
 
-    private function convertGaColumnsToMetricIndexes(DataTable $result, $metrics)
+    private function convertGaColumnsToMetricIndexes(DataTable $result, $metrics, $mappings)
     {
         $metricNames = [];
         foreach ($metrics as $metricIndex) {
-            if (is_array($this->mapping[$metricIndex])) {
-                $metricInfo = $this->mapping[$metricIndex];
+            if (is_array($mappings[$metricIndex])) {
+                $metricInfo = $mappings[$metricIndex];
                 if (is_array($metricInfo['metric'])) {
                     $metricNames[$metricIndex] = $metricInfo['metric'][0];
                 } else {
                     $metricNames[$metricIndex] = $metricInfo['metric'];
                 }
             } else {
-                $metricNames[$metricIndex] = $this->mapping[$metricIndex];
+                $metricNames[$metricIndex] = $mappings[$metricIndex];
             }
         }
 
@@ -111,9 +116,9 @@ class GoogleAnalyticsQueryService
                 $value = $row->getColumn($gaMetricName);
 
                 if ($value !== false
-                    && isset($this->mapping[$metricIndex]['calculate'])
+                    && isset($mappings[$metricIndex]['calculate'])
                 ) {
-                    $fn = $this->mapping[$metricIndex]['calculate'];
+                    $fn = $mappings[$metricIndex]['calculate'];
                     $value = $fn($row);
                 }
 
@@ -126,15 +131,15 @@ class GoogleAnalyticsQueryService
         $result->setLabelsHaveChanged();
     }
 
-    private function getQueriesToMake($metrics)
+    private function getQueriesToMake($metrics, $mappings)
     {
         $queriesBySegment = [];
         foreach ($metrics as $index) {
-            if (!isset($this->mapping[$index])) {
+            if (!isset($mappings[$index])) {
                 throw new \Exception("Don't know how to map metric index ${index} to GA metric.");
             }
 
-            $gaMetric = $this->mapping[$index];
+            $gaMetric = $mappings[$index];
 
             $segment = '';
             $metric = $gaMetric;
@@ -199,7 +204,7 @@ class GoogleAnalyticsQueryService
         }
     }
 
-    private function getMetricIndicesToGaMetrics() // TODO: Move to GoogleMetrics class or something
+    public function getMetricIndicesToGaMetrics() // TODO: Move to GoogleMetrics class or something
     {
         $goalSpecificMetrics = array_values($this->getEcommerceMetricIndicesToGaMetrics());
         foreach ($this->goalsMapping as $idGoal => $gaIdGoal) {
@@ -292,7 +297,7 @@ class GoogleAnalyticsQueryService
         return $result;
     }
 
-    private function getEcommerceMetricIndicesToGaMetrics()
+    public function getEcommerceMetricIndicesToGaMetrics()
     {
         return [
             Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SUBTOTAL => 'ga:transactionRevenue',
@@ -302,7 +307,7 @@ class GoogleAnalyticsQueryService
         ];
     }
 
-    private function getGoalSpecificMetricIndicesToGametrics($gaIdGoal)
+    public function getGoalSpecificMetricIndicesToGametrics($gaIdGoal)
     {
         return [
             Metrics::INDEX_GOAL_NB_CONVERSIONS => "ga:goal{$gaIdGoal}Completions",

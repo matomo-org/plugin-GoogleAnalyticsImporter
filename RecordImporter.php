@@ -125,10 +125,32 @@ abstract class RecordImporter
             Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY,
             Metrics::INDEX_ECOMMERCE_ITEM_PRICE,
             Metrics::INDEX_ECOMMERCE_ORDERS,
+            Metrics::INDEX_NB_VISITS,
             // Metrics::INDEX_ECOMMERCE_ITEM_PRICE_VIEWED, TODO: should we support this? not sure it's possible in GA
         ];
     }
 
+    protected function getConversionOnlyMetrics()
+    {
+        return [
+            Metrics::INDEX_GOAL_NB_CONVERSIONS,
+            Metrics::INDEX_GOAL_NB_VISITS_CONVERTED,
+            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SUBTOTAL,
+            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_TAX,
+            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SHIPPING,
+            Metrics::INDEX_GOAL_ECOMMERCE_ITEMS,
+        ];
+    }
+/*
+              => "count(*)",
+                    => "count(distinct " . self::LOG_CONVERSION_TABLE . ".idvisit)",
+                                => self::getSqlConversionRevenueSum(self::TOTAL_REVENUE_FIELD),
+             => self::getSqlConversionRevenueSum(self::REVENUE_SUBTOTAL_FIELD),
+                  => self::getSqlConversionRevenueSum(self::REVENUE_TAX_FIELD),
+             => self::getSqlConversionRevenueSum(self::REVENUE_SHIPPING_FIELD),
+             => self::getSqlConversionRevenueSum(self::REVENUE_DISCOUNT_FIELD),
+
+ */
     protected function getIdSite()
     {
         return $this->idSite;
