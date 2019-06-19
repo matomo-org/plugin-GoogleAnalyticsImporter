@@ -141,16 +141,7 @@ abstract class RecordImporter
             Metrics::INDEX_GOAL_ECOMMERCE_ITEMS,
         ];
     }
-/*
-              => "count(*)",
-                    => "count(distinct " . self::LOG_CONVERSION_TABLE . ".idvisit)",
-                                => self::getSqlConversionRevenueSum(self::TOTAL_REVENUE_FIELD),
-             => self::getSqlConversionRevenueSum(self::REVENUE_SUBTOTAL_FIELD),
-                  => self::getSqlConversionRevenueSum(self::REVENUE_TAX_FIELD),
-             => self::getSqlConversionRevenueSum(self::REVENUE_SHIPPING_FIELD),
-             => self::getSqlConversionRevenueSum(self::REVENUE_DISCOUNT_FIELD),
 
- */
     protected function getIdSite()
     {
         return $this->idSite;
@@ -192,6 +183,6 @@ abstract class RecordImporter
             $subtable = new DataTable();
             $topLevelRow->setSubtable($subtable);
         }
-        $this->addRowToTable($subtable, $rowToAdd, $newLabel);
+        return $this->addRowToTable($subtable, $rowToAdd, $newLabel);
     }
 }

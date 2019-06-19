@@ -28,5 +28,7 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\CustomDimensions\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Events\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Goals\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Resolution\RecordImporter::class,
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\UserCountry\RecordImporter::class,
     ],
 ];

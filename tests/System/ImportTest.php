@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\System;
 
+use Piwik\Container\StaticContainer;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures\ImportedFromGoogle;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
 
@@ -59,15 +60,13 @@ class ImportTest extends SystemTestCase
 
     public function getApiTestsToRun()
     {
-        $apiToTest = [
-            'Referrers',
-            'Actions',
-            'CustomDimensions',
-            'CustomVariables',
-            'Goals',
-            'DevicesDetection',
-            'Events',
-        ];
+        $apiToTest = [];
+
+        $config = require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
+        $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
+        foreach ($recordImporterClasses as $class) {
+            $apiToTest[] = $class::PLUGIN_NAME;
+        }
 
         return [
             [$apiToTest, [
