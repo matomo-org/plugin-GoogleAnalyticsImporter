@@ -12,13 +12,13 @@ use Piwik\Common;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Metrics as PiwikMetrics;
 use Piwik\Period\Day;
 use Piwik\Plugins\Actions\Archiver;
 use Piwik\Plugins\Actions\ArchivingHelper;
 use Piwik\Site;
 use Piwik\Tracker\Action;
 
-// TODO: numeric metrics
 // TODO: folder path metadata
 // TODO: sum_time_spent in actions reports seems off. it's 0 in a lot of cases...
 // TODO: site search is untested since we don't have the data
@@ -57,6 +57,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertDataTable(Action::TYPE_PAGE_TITLE, Archiver::PAGE_TITLES_RECORD_NAME);
         $this->insertDataTable(Action::TYPE_PAGE_URL, Archiver::PAGE_URLS_RECORD_NAME);
 
+        $this->insertPageUrlNumericRecords($this->dataTables[Action::TYPE_PAGE_URL]);
+        $this->insertSiteSearchNumericRecords($this->dataTables[Action::TYPE_SITE_SEARCH]);
+
         unset($this->pageTitlesByPagePath);
         unset($this->pageUrlsByPagePath);
 
@@ -66,7 +69,25 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         // TODO: bandwidth metrics
         // TODO: downloads, outlinks (requires segment on event and event configuration)
-        // TODO: categories must go in custom variable record
+    }
+
+    private function insertPageUrlNumericRecords(DataTable $pageUrls)
+    {
+        $records = array(
+            Archiver::METRIC_PAGEVIEWS_RECORD_NAME      => array_sum($pageUrls->getColumn(Metrics::INDEX_PAGE_NB_HITS)),
+            Archiver::METRIC_UNIQ_PAGEVIEWS_RECORD_NAME => array_sum($pageUrls->getColumn(Metrics::INDEX_NB_VISITS)),
+            Archiver::METRIC_SUM_TIME_RECORD_NAME       => array_sum($pageUrls->getColumn(Metrics::INDEX_PAGE_SUM_TIME_GENERATION)),
+            Archiver::METRIC_HITS_TIMED_RECORD_NAME     => array_sum($pageUrls->getColumn(Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION))
+        );
+        $this->insertNumericRecords($records);
+    }
+
+    private function insertSiteSearchNumericRecords(DataTable $siteSearch)
+    {
+        $this->insertNumericRecords([
+            Archiver::METRIC_SEARCHES_RECORD_NAME => array_sum($siteSearch->getColumn(PiwikMetrics::INDEX_PAGE_NB_HITS)),
+            Archiver::METRIC_KEYWORDS_RECORD_NAME => $siteSearch->getRowsCount(),
+        ]);
     }
 
     private function getSiteSearchs(Date $day)

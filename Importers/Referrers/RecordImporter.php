@@ -64,15 +64,21 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->referrerTypeRecord = new DataTable();
 
         $keywordByCampaign = $this->getKeywordByCampaign($day);
+        $distinctCampaigns = $keywordByCampaign->getRowsCount();
+
         $blob = $keywordByCampaign->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         $this->insertBlobRecord(Archiver::CAMPAIGNS_RECORD_NAME, $blob);
         Common::destroy($keywordByCampaign);
 
         list($keywordBySearchEngine, $searchEngineByKeyword) = $this->getKeywordsAndSearchEngineRecords($day);
 
+        $distinctKeywords = $searchEngineByKeyword->getRowsCount();
+
         $blob = $keywordBySearchEngine->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         $this->insertBlobRecord(Archiver::KEYWORDS_RECORD_NAME, $blob);
         Common::destroy($keywordBySearchEngine);
+
+        $distinctSearchEngines = $searchEngineByKeyword->getRowsCount();
 
         $blob = $searchEngineByKeyword->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         $this->insertBlobRecord(Archiver::SEARCH_ENGINES_RECORD_NAME, $blob);
@@ -80,9 +86,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         list($urlByWebsite, $urlBySocialNetwork) = $this->getUrlByWebsite($day);
 
+        $distinctWebsites = $urlByWebsite->getRowsCount();
+
         $blob = $urlByWebsite->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         $this->insertBlobRecord(Archiver::WEBSITES_RECORD_NAME, $blob);
         Common::destroy($urlByWebsite);
+
+        $distinctSocialNetworks = $urlBySocialNetwork->getRowsCount();
 
         $blob = $urlBySocialNetwork->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         $this->insertBlobRecord(Archiver::SOCIAL_NETWORKS_RECORD_NAME, $blob);
@@ -94,6 +104,18 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->referrerTypeRecord = null;
 
         unset($blob);
+
+        // numeric records
+        $numericRecords = array(
+            Archiver::METRIC_DISTINCT_SEARCH_ENGINE_RECORD_NAME  => $distinctSearchEngines,
+            Archiver::METRIC_DISTINCT_SOCIAL_NETWORK_RECORD_NAME => $distinctSocialNetworks,
+            Archiver::METRIC_DISTINCT_KEYWORD_RECORD_NAME        => $distinctKeywords,
+            Archiver::METRIC_DISTINCT_CAMPAIGN_RECORD_NAME       => $distinctCampaigns,
+            Archiver::METRIC_DISTINCT_WEBSITE_RECORD_NAME        => $distinctWebsites,
+            // TODO: distinct urls? don't think the data is available
+        );
+
+        $this->insertNumericRecords($numericRecords);
     }
 
     private function getKeywordByCampaign(Date $day)

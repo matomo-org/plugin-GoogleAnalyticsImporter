@@ -24,6 +24,38 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     public function queryGoogleAnalyticsApi(Date $day)
     {
         $this->queryEcommerce($day);
+        $this->queryNumericRecords($day);
+    }
+
+    private function queryNumericRecords(Date $day)
+    {
+        $gaQuery = $this->getGaQuery();
+        $table = $gaQuery->query($day, $dimensions = [], $metrics = [Metrics::INDEX_GOALS]);
+
+        $numericRecords = [];
+
+        $goals = $table->getFirstRow()->getColumn(Metrics::INDEX_GOALS);
+        foreach ($goals as $idGoal => $metrics) {
+            foreach ($metrics as $metricId => $value) {
+                $metricName = Metrics::$mappingFromIdToNameGoal[$metricId];
+                $recordName = Archiver::getRecordName($metricName, $idGoal);
+                $numericRecords[$recordName] = $value;
+            }
+        }
+
+        Common::destroy($table);
+
+        $table = $gaQuery->query($day, $dimensions = [], [Metrics::INDEX_NB_VISITS_CONVERTED, Metrics::INDEX_NB_CONVERSIONS, Metrics::INDEX_REVENUE]);
+
+        $this->insertNumericRecords([
+            Archiver::getRecordName('nb_conversions') => $table->getFirstRow()->getColumn(Metrics::INDEX_NB_CONVERSIONS),
+            Archiver::getRecordName('nb_visits_converted') => $table->getFirstRow()->getColumn(Metrics::INDEX_NB_VISITS_CONVERTED),
+            Archiver::getRecordName('revenue') => $table->getFirstRow()->getColumn(Metrics::INDEX_REVENUE),
+        ]);
+
+        Common::destroy($table);
+
+        $this->insertNumericRecords($numericRecords);
     }
 
     private function queryEcommerce(Date $day)
