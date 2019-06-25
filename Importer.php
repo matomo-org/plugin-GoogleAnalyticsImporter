@@ -166,12 +166,12 @@ class Importer
 
         $this->logger->info("Setting maximum number of custom variable slots to $numCustomVarSlots...");
 
-        $command = "php " . PIWIK_INCLUDE_PATH . '/console ';
+        $command = "php " . PIWIK_INCLUDE_PATH . '/console';
         $domain = Config::getInstance()->getConfigHostnameIfSet();
         if (!empty($domain)) {
-            $command .= '--matomo-domain=' . $domain;
+            $command .= ' --matomo-domain=' . $domain;
         }
-        $command .= 'customvariables:set-max-custom-variables ' . $numCustomVarSlots;
+        $command .= ' customvariables:set-max-custom-variables ' . $numCustomVarSlots;
         passthru($command);
     }
 
@@ -183,8 +183,10 @@ class Importer
 
         $recordImporters = $this->getRecordImporters($idSite, $viewId);
 
+        $endPlusOne = $end->addDay(1);
+
         $site = new Site($idSite);
-        for ($date = $start; $date->getTimestamp() < $end->getTimestamp(); $date = $date->addDay(1)) {
+        for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
             $archiveWriter = $this->makeArchiveWriter($site, $date);
             $archiveWriter->initNewArchive();
 

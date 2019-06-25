@@ -32,7 +32,8 @@ class GoogleCustomDimensionMapper
 
     private function mapScope(\Google_Service_Analytics_CustomDimension $gaCustomDimension)
     {
-        switch (strtolower($gaCustomDimension->getScope())) {
+        $scope = $gaCustomDimension->getScope();
+        switch (strtolower($scope)) {
             case 'hit':
                 return 'action';
             case 'session':

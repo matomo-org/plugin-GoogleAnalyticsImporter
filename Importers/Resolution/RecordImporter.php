@@ -28,6 +28,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $table = $gaQuery->query($day, $dimension = ['ga:screenResolution'], $this->getConversionAwareVisitMetrics());
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata('ga:screenResolution');
+            if (empty($label)) {
+                $label = '(not set)';
+            }
             $this->addRowToTable($record, $row, $label);
         }
         Common::destroy($table);

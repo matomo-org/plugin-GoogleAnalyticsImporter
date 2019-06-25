@@ -56,6 +56,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $this->insertDataTable(Action::TYPE_PAGE_TITLE, Archiver::PAGE_TITLES_RECORD_NAME);
         $this->insertDataTable(Action::TYPE_PAGE_URL, Archiver::PAGE_URLS_RECORD_NAME);
+        $this->insertDataTable(Action::TYPE_SITE_SEARCH, Archiver::SITE_SEARCH_RECORD_NAME);
 
         $this->insertPageUrlNumericRecords($this->dataTables[Action::TYPE_PAGE_URL]);
         $this->insertSiteSearchNumericRecords($this->dataTables[Action::TYPE_SITE_SEARCH]);

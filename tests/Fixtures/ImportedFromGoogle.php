@@ -21,7 +21,7 @@ class ImportedFromGoogle extends Fixture
 {
     public $idSite = 1;
     public $dateTime = '2018-01-01 00:00:00';
-    public $importedDateRange = '2018-12-03,2018-12-05';
+    public $importedDateRange = '2019-06-23,2019-06-26';
 
     public $accessToken;
     public $viewId;
