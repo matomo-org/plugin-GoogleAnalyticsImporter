@@ -50,6 +50,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->queryEntryPages($day);
         $this->queryExitPages($day);
         $this->getSiteSearchs($day);
+        $this->queryPagesFollowingSiteSearch($day);
 
         ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_TITLE], $isUrl = false);
         ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_URL], $isUrl = true, $folderPrefix = '');
@@ -70,6 +71,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         // TODO: bandwidth metrics
         // TODO: downloads, outlinks (requires segment on event and event configuration)
+    }
+
+    private function queryPagesFollowingSiteSearch(Date $day)
+    {
+        // TODO: there is a ga:searchAfterDestinationPage dimension, but I am not sure how to get number of hits that were after site search, and not ALL hits
     }
 
     private function insertPageUrlNumericRecords(DataTable $pageUrls)

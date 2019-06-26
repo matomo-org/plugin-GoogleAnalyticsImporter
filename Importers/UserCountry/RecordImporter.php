@@ -21,8 +21,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     public function queryGoogleAnalyticsApi(Date $day)
     {
         $this->queryDimension($day, 'ga:countryIsoCode', Archiver::COUNTRY_RECORD_NAME);
-        $this->queryDimension($day, 'ga:regionIsoCode', Archiver::REGION_RECORD_NAME);
-        $this->queryCities($day);
+        $this->queryRegionsAndCities($day);
     }
 
     private function queryDimension(Date $day, $dimension, $recordName)
@@ -50,32 +49,44 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertBlobRecord($recordName, $blob);
     }
 
-    private function queryCities(Date $day)
+    private function queryRegionsAndCities(Date $day)
     {
-        $record = new DataTable();
+        $cities = new DataTable();
+        $regions = new DataTable();
 
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, ['ga:city', 'ga:latitude', 'ga:longitude'], $this->getConversionAwareVisitMetrics());
+        $table = $gaQuery->query($day, ['ga:countryIsoCode', 'ga:regionIsoCode', 'ga:city', 'ga:latitude', 'ga:longitude'],
+            $this->getConversionAwareVisitMetrics());
         foreach ($table->getRows() as $row) {
-            $label = $row->getMetadata('ga:city');
-            if (empty($label)) {
-                $label = 'xx'; // TODO: correct unknown value?
-            }
-
+            $country = $row->getMetadata('ga:countryIsoCode');
+            $region = $row->getMetadata('ga:regionIsoCode');
+            $city = $row->getMetadata('ga:city');
             $lat = $row->getMetadata('ga:latitude');
             $long = $row->getMetadata('ga:longitude');
 
-            $lat = round($lat, LocationProvider::GEOGRAPHIC_COORD_PRECISION);
-            $long = round($long, LocationProvider::GEOGRAPHIC_COORD_PRECISION);
+            $locationRegion = $region . Archiver::LOCATION_SEPARATOR . $country;
+            $locationCity = $city . Archiver::LOCATION_SEPARATOR . $locationRegion;
 
-            $topLevelRow = $this->addRowToTable($record, $row, $label);
+            $topLevelRowCity = $this->addRowToTable($cities, $row, $locationCity);
 
-            // set latitude + longitude metadata
-            $topLevelRow->setMetadata('lat', $lat);
-            $topLevelRow->setMetadata('long', $long);
+            if (is_numeric($lat)
+                && is_numeric($long)
+            ) {
+                $lat = round($lat, LocationProvider::GEOGRAPHIC_COORD_PRECISION);
+                $long = round($long, LocationProvider::GEOGRAPHIC_COORD_PRECISION);
+
+                // set latitude + longitude metadata
+                $topLevelRowCity->setMetadata('lat', $lat);
+                $topLevelRowCity->setMetadata('long', $long);
+            }
+
+            $this->addRowToTable($regions, $row, $locationRegion);
         }
 
-        $this->insertRecord(Archiver::CITY_RECORD_NAME, $record);
-        Common::destroy($record);
+        $this->insertRecord(Archiver::CITY_RECORD_NAME, $cities);
+        Common::destroy($cities);
+
+        $this->insertRecord(Archiver::REGION_RECORD_NAME, $regions);
+        Common::destroy($regions);
     }
 }

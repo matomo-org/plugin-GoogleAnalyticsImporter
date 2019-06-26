@@ -60,7 +60,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         unset($this->records);
     }
 
-    // TODO: does sumRow add INDEX_GOALS metrics together properly?
     private function queryEvents(Date $day)
     {
         $gaQuery = $this->getGaQuery();
@@ -70,6 +69,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $eventCategory = $row->getMetadata('ga:eventCategory');
             $eventAction = $row->getMetadata('ga:eventAction');
             $eventLabel = $row->getMetadata('ga:eventLabel');
+
+            $row->deleteMetadata();
 
             $this->addRowToTables($this->records[Archiver::EVENTS_CATEGORY_ACTION_RECORD_NAME], $row, $eventCategory, $eventAction);
             $this->addRowToTables($this->records[Archiver::EVENTS_CATEGORY_NAME_RECORD_NAME], $row, $eventCategory, $eventLabel);

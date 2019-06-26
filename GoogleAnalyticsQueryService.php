@@ -245,7 +245,12 @@ class GoogleAnalyticsQueryService
 
             // actions
             Metrics::INDEX_PAGE_NB_HITS => 'ga:pageviews',
-            Metrics::INDEX_PAGE_SUM_TIME_SPENT => 'ga:timeOnPage',
+            Metrics::INDEX_PAGE_SUM_TIME_SPENT => [
+                'metric' => 'ga:timeOnPage',
+                'calculate' => function (Row $row) {
+                    return round($row->getColumn('ga:timeOnPage'));
+                },
+            ],
 
             // actions (requires correct dimension)
             Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 'ga:users',

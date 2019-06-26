@@ -111,6 +111,7 @@ abstract class RecordImporter
     protected function getPageMetrics()
     {
         return array_merge($this->getActionMetrics(), [
+            Metrics::INDEX_PAGE_SUM_TIME_SPENT,
             Metrics::INDEX_PAGE_SUM_TIME_GENERATION,
             Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION,
 
@@ -171,7 +172,7 @@ abstract class RecordImporter
             $foundRow->setColumn('label', $newLabel);
             $record->addRow($foundRow);
         } else {
-            $foundRow->sumRow($row);
+            $foundRow->sumRow($row, $copyMetadata = false);
         }
         return $foundRow;
     }

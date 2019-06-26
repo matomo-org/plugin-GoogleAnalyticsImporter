@@ -54,8 +54,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->buildDeviceModelsRecord($day);
         $this->buildDeviceOsRecord($day);
         $this->buildDeviceOsVersionsRecord($day);
-        $this->buildBrowserRecord($day);
-        $this->buildBrowserVersionsRecord($day);
+        $this->buildBrowserRecords($day);
     }
 
     private function buildDeviceTypeRecord(Date $day)
@@ -83,14 +82,35 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->buildRecord($day, 'ga:operatingSystemVersion', Archiver::OS_VERSION_RECORD_NAME, [$this, 'mapOsVersion']);
     }
 
-    private function buildBrowserRecord(Date $day)
+    private function buildBrowserRecords(Date $day)
     {
-        $this->buildRecord($day, 'ga:browser', Archiver::BROWSER_RECORD_NAME, [$this, 'mapBrowser']);
-    }
+        $gaQuery = $this->getGaQuery();
+        $table = $gaQuery->query($day, $dimensions = ['ga:browser', 'ga:browserVersion'], $this->getConversionAwareVisitMetrics());
 
-    private function buildBrowserVersionsRecord(Date $day)
-    {
-        $this->buildRecord($day, 'ga:browserVersion', Archiver::BROWSER_VERSION_RECORD_NAME, [$this, 'mapBrowserVersion']);
+        $browsers = new DataTable();
+        $browserVersions = new DataTable();
+
+        foreach ($table->getRows() as $row) {
+            $browser = $this->mapBrowser($row->getMetadata('ga:browser'));
+            $browserVersion = $this->mapBrowserVersion($row->getMetadata('ga:browserVersion'));
+
+            if (empty($browser)) {
+                $browser = 'xx';
+            }
+
+            $this->addRowToTable($browsers, $row, $browser);
+            $this->addRowToTable($browserVersions, $row, $browser . ';' . $browserVersion);
+        }
+
+        Common::destroy($table);
+
+        $blob = $browsers->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
+        $this->insertBlobRecord(Archiver::BROWSER_RECORD_NAME, $blob);
+        Common::destroy($browsers);
+
+        $blob = $browserVersions->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
+        $this->insertBlobRecord(Archiver::BROWSER_VERSION_RECORD_NAME, $blob);
+        Common::destroy($browserVersions);
     }
 
     private function buildRecord(Date $day, $dimension, $recordName, callable $mapper)

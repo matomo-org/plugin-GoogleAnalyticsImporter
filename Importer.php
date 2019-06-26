@@ -148,6 +148,7 @@ class Importer
             } catch (CannotImportCustomDimensionException $ex) {
                 $this->logger->warning($ex->getMessage());
                 $this->logger->warning("Skipping this custom dimension.");
+                continue;
             }
 
             $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
