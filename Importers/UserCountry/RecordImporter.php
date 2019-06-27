@@ -64,6 +64,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $lat = $row->getMetadata('ga:latitude');
             $long = $row->getMetadata('ga:longitude');
 
+            // GA returns region as COUNTRY-REGION, we only want the last part here
+            $regionParts = explode('-', $region);
+            $region = end($regionParts);
+
             $locationRegion = $region . Archiver::LOCATION_SEPARATOR . $country;
             $locationCity = $city . Archiver::LOCATION_SEPARATOR . $locationRegion;
 
