@@ -2,45 +2,28 @@
 <result>
 	<row>
 		<label>Google</label>
-		<nb_uniq_visitors>22</nb_uniq_visitors>
-		<nb_visits>22</nb_visits>
-		<nb_actions>28</nb_actions>
-		<sum_visit_length>317</sum_visit_length>
-		<bounce_count>18</bounce_count>
+		<nb_uniq_visitors>6</nb_uniq_visitors>
+		<nb_visits>6</nb_visits>
+		<nb_actions>8</nb_actions>
+		<sum_visit_length>320</sum_visit_length>
+		<bounce_count>4</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-		</goals>
+		<revenue>0.0</revenue>
 		<segment>referrerType==search;referrerName==Google</segment>
 		<url>http://google.com</url>
 		<logo>plugins/Morpheus/icons/dist/searchEngines/google.com.png</logo>
 		<subtable>
 			<row>
 				<label>(not provided)</label>
-				<nb_uniq_visitors>21</nb_uniq_visitors>
-				<nb_visits>21</nb_visits>
-				<nb_actions>27</nb_actions>
-				<sum_visit_length>317</sum_visit_length>
-				<bounce_count>17</bounce_count>
+				<nb_uniq_visitors>6</nb_uniq_visitors>
+				<nb_visits>6</nb_visits>
+				<nb_actions>8</nb_actions>
+				<sum_visit_length>320</sum_visit_length>
+				<bounce_count>4</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0.0</revenue>
-				<goals>
-				</goals>
-			</row>
-			<row>
-				<label>top 10 spot plongée</label>
-				<nb_uniq_visitors>1</nb_uniq_visitors>
-				<nb_visits>1</nb_visits>
-				<nb_actions>1</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>1</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
-				<goals>
-				</goals>
 			</row>
 		</subtable>
 	</row>

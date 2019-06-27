@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>Unknown</label>
+		<nb_visits>395</nb_visits>
+		<nb_actions>546</nb_actions>
+		<sum_visit_length>204</sum_visit_length>
+		<bounce_count>16</bounce_count>
+		<nb_visits_converted>6</nb_visits_converted>
+		<nb_conversions>30</nb_conversions>
+		<revenue>152421</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>377</sum_daily_nb_uniq_visitors>
+		<segment>languageCode==xx</segment>
+	</row>
+	<row>
+		<label>French</label>
+		<nb_visits>37</nb_visits>
+		<nb_actions>44</nb_actions>
+		<sum_visit_length>858</sum_visit_length>
+		<bounce_count>32</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>34</sum_daily_nb_uniq_visitors>
+		<segment>languageCode==fr,languageCode=@fr-</segment>
+	</row>
+	<row>
+		<label>English</label>
+		<nb_visits>13</nb_visits>
+		<nb_actions>27</nb_actions>
+		<sum_visit_length>796</sum_visit_length>
+		<bounce_count>11</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>6899</revenue>
+		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>languageCode==en,languageCode=@en-</segment>
+	</row>
+	<row>
+		<label>German</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>languageCode==de,languageCode=@de-</segment>
+	</row>
+</result>

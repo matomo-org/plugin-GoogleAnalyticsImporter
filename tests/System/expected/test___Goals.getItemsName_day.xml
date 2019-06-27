@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>Curse of Morrac</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>14</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>Earnest Reprisal</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>16</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>Helm of Drasca</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>12</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>Keen Wyvern Vitaar</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>6</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>Mask of the Grand Duchess</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>8</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>Masterwork Prowler Armor</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>14</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>Misfortune's Bite</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>8</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>Path to Glory</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>14</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>The Fowl Wind</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>12</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>The Last Word</label>
+		<revenue>0</revenue>
+		<quantity>0</quantity>
+		<orders>16</orders>
+		<nb_visits>0</nb_visits>
+		<avg_price>0</avg_price>
+		<avg_quantity>0</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+</result>

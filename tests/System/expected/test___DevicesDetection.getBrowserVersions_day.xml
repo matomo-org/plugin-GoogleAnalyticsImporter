@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>Chrome 34.0.1847.</label>
+		<nb_uniq_visitors>8</nb_uniq_visitors>
+		<nb_visits>8</nb_visits>
+		<nb_actions>28</nb_actions>
+		<sum_visit_length>38</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>14761.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<segment>browserCode==CH;browserVersion==34.0.1847.114</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/CH.png</logo>
+	</row>
+	<row>
+		<label>Firefox 3.0.14</label>
+		<nb_uniq_visitors>7</nb_uniq_visitors>
+		<nb_visits>8</nb_visits>
+		<nb_actions>27</nb_actions>
+		<sum_visit_length>12</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>14687.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>browserCode==FF;browserVersion==3.0.14</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/FF.png</logo>
+	</row>
+	<row>
+		<label>Android Browser 4.0</label>
+		<nb_uniq_visitors>7</nb_uniq_visitors>
+		<nb_visits>7</nb_visits>
+		<nb_actions>33</nb_actions>
+		<sum_visit_length>81</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>16948.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>browserCode==AN;browserVersion==4.0</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/AN.png</logo>
+	</row>
+	<row>
+		<label>Internet Explorer 11.0</label>
+		<nb_uniq_visitors>6</nb_uniq_visitors>
+		<nb_visits>6</nb_visits>
+		<nb_actions>24</nb_actions>
+		<sum_visit_length>10</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>11765.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>browserCode==IE;browserVersion==11.0</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/IE.png</logo>
+	</row>
+	<row>
+		<label>Chrome 32.0.1700.</label>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_visits>4</nb_visits>
+		<nb_actions>10</nb_actions>
+		<sum_visit_length>61</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<segment>browserCode==CH;browserVersion==32.0.1700.76</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/CH.png</logo>
+	</row>
+	<row>
+		<label>Chrome 75.0.3770.</label>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_visits>4</nb_visits>
+		<nb_actions>6</nb_actions>
+		<sum_visit_length>320</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>browserCode==CH;browserVersion==75.0.3770.100</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/CH.png</logo>
+	</row>
+	<row>
+		<label>Internet Explorer 8.0</label>
+		<nb_uniq_visitors>3</nb_uniq_visitors>
+		<nb_visits>3</nb_visits>
+		<nb_actions>17</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>11091.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>browserCode==IE;browserVersion==8.0</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/IE.png</logo>
+	</row>
+	<row>
+		<label>Chrome 33.0.1750.</label>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
+		<nb_visits>2</nb_visits>
+		<nb_actions>12</nb_actions>
+		<sum_visit_length>2</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>6081.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>browserCode==CH;browserVersion==33.0.1750.136</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/CH.png</logo>
+	</row>
+	<row>
+		<label>Chrome 75.0.3770.</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>browserCode==CH;browserVersion==75.0.3770.101</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/CH.png</logo>
+	</row>
+	<row>
+		<label>Safari 12.1</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>browserCode==SF;browserVersion==12.1</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/SF.png</logo>
+	</row>
+</result>

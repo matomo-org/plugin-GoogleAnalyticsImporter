@@ -224,6 +224,8 @@ class GoogleAnalyticsQueryService
                 },
             ],
             Metrics::INDEX_BOUNCE_COUNT => 'ga:bounces',
+
+            // TODO: goalConversionRateAll doesn't seem to include ecommerce orders. not sure how to make it accurate in this case...
             Metrics::INDEX_NB_VISITS_CONVERTED => [
                 'metric' => ['ga:goalConversionRateAll', 'ga:sessions'],
                 'calculate' => function (Row $row) {
@@ -232,7 +234,12 @@ class GoogleAnalyticsQueryService
             ],
 
             // conversion aware
-            Metrics::INDEX_NB_CONVERSIONS => 'ga:goalCompletionsAll',
+            Metrics::INDEX_NB_CONVERSIONS => [
+                'metric' => ['ga:goalCompletionsAll', 'ga:transactions'],
+                'calculate' => function (Row $row) {
+                    return $row->getColumn('ga:goalCompletionsAll') + $row->getColumn('ga:transactions');
+                },
+            ],
             Metrics::INDEX_REVENUE => 'ga:totalValue',
 
             // goal specific
@@ -260,7 +267,12 @@ class GoogleAnalyticsQueryService
             Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 'ga:users',
             Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 'ga:sessions',
             Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 'ga:hits',
-            Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 'ga:sessionDuration',
+            Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => [
+                'metric' => 'ga:sessionDuration',
+                'calculate' => function (Row $row) {
+                    return floor($row->getColumn('ga:sessionDuration'));
+                },
+            ],
             Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 'ga:bounces',
 
             // actions (requires correct dimensions)

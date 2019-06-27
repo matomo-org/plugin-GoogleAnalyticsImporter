@@ -43,8 +43,18 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         parent::__construct($gaQuery, $idSite, $logger);
 
         $this->deviceBrandMap = $this->buildValueMapping(DeviceParserAbstract::$deviceBrands);
-        $this->operatingSystemMap = $this->buildValueMapping(OperatingSystem::getAvailableOperatingSystems());
-        $this->browserMap = $this->buildValueMapping(Browser::getAvailableBrowsers());
+
+        $operatingSystems = OperatingSystem::getAvailableOperatingSystems();
+        $this->operatingSystemMap = $this->buildValueMapping($operatingSystems);
+        $this->operatingSystemMap['linux'] = $this->operatingSystemMap['gnu/linux'];
+        $this->operatingSystemMap['macintosh'] = $this->operatingSystemMap['mac'];
+
+        $availableBrowsers = Browser::getAvailableBrowsers();
+        $this->browserMap = $this->buildValueMapping($availableBrowsers);
+        $this->browserMap['edge'] = $this->browserMap['microsoft edge'];
+        $this->browserMap['safari (in-app)'] = $this->browserMap['mobile safari'];
+        $this->browserMap['samsung internet'] = $this->browserMap['samsung browser'];
+        $this->browserMap['android webview'] = $this->browserMap['android browser'];
     }
 
     public function queryGoogleAnalyticsApi(Date $day)
@@ -167,6 +177,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function mapBrowser($browser)
     {
+        if (is_numeric($browser)) {
+            return 'xx'; // sometimes GA returns a numeric value for the browser (and no browser version). not sure why.
+        }
+
         return $this->getValueFromValueMapping($this->browserMap, $browser, 'browser');
     }
 
@@ -197,7 +211,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             return $valueMapping[$cleanValue];
         }
 
-        $this->getLogger()->warning("Encountered unknown $valueType: $value. A new mapping should be added.");
+        if (!empty($value)) {
+            $this->getLogger()->warning("Encountered unknown $valueType: $value. A new mapping should be added.");
+        }
 
         return $value;
     }

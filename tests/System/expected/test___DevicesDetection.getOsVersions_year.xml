@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>Unknown</label>
+		<nb_visits>446</nb_visits>
+		<nb_actions>618</nb_actions>
+		<sum_visit_length>1858</sum_visit_length>
+		<bounce_count>60</bounce_count>
+		<nb_visits_converted>6</nb_visits_converted>
+		<nb_conversions>31</nb_conversions>
+		<revenue>159320</revenue>
+		<sum_daily_nb_uniq_visitors>441</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<logo>plugins/Morpheus/icons/dist/os/UNK.png</logo>
+	</row>
+</result>

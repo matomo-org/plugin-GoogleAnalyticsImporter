@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>SGPT13</label>
+		<nb_uniq_visitors>8</nb_uniq_visitors>
+		<nb_visits>8</nb_visits>
+		<nb_actions>28</nb_actions>
+		<sum_visit_length>38</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>14761.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<segment>deviceBrand==;deviceModel==SGPT13</segment>
+	</row>
+	<row>
+		<label>SM-N9006</label>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_visits>4</nb_visits>
+		<nb_actions>15</nb_actions>
+		<sum_visit_length>81</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>5879.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>deviceBrand==;deviceModel==SM-N9006</segment>
+	</row>
+	<row>
+		<label>Desire</label>
+		<nb_uniq_visitors>3</nb_uniq_visitors>
+		<nb_visits>3</nb_visits>
+		<nb_actions>18</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>11069.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>deviceBrand==;deviceModel==Desire</segment>
+	</row>
+	<row>
+		<label>Nexus 4</label>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
+		<nb_visits>2</nb_visits>
+		<nb_actions>12</nb_actions>
+		<sum_visit_length>2</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>6081.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>deviceBrand==;deviceModel==Nexus+4</segment>
+	</row>
+	<row>
+		<label>COL-L29</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>deviceBrand==;deviceModel==COL-L29</segment>
+	</row>
+	<row>
+		<label>iPhone</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>deviceBrand==;deviceModel==iPhone</segment>
+	</row>
+</result>

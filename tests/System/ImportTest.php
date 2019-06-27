@@ -71,7 +71,7 @@ class ImportTest extends SystemTestCase
         return [
             [$apiToTest, [
                 'idSite' => self::$fixture->idSite,
-                'date' => '2019-06-25',
+                'date' => self::$fixture->dateTime,
                 'periods' => ['day', 'week', 'month', 'year'],
             ]],
         ];

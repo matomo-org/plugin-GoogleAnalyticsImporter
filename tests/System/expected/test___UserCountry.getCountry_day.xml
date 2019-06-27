@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>Canada</label>
+		<nb_uniq_visitors>13</nb_uniq_visitors>
+		<nb_visits>15</nb_visits>
+		<nb_actions>45</nb_actions>
+		<sum_visit_length>81</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>6</nb_conversions>
+		<revenue>18342.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<code>CA</code>
+		<logo>plugins/Morpheus/icons/dist/flags/CA.png</logo>
+		<segment>countryCode==CA</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>France</label>
+		<nb_uniq_visitors>7</nb_uniq_visitors>
+		<nb_visits>7</nb_visits>
+		<nb_actions>17</nb_actions>
+		<sum_visit_length>320</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>6305.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<code>FR</code>
+		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<segment>countryCode==FR</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>Indonesia</label>
+		<nb_uniq_visitors>6</nb_uniq_visitors>
+		<nb_visits>6</nb_visits>
+		<nb_actions>27</nb_actions>
+		<sum_visit_length>71</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
+		<revenue>12276.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<code>ID</code>
+		<logo>plugins/Morpheus/icons/dist/flags/ID.png</logo>
+		<segment>countryCode==ID</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>China</label>
+		<nb_uniq_visitors>5</nb_uniq_visitors>
+		<nb_visits>5</nb_visits>
+		<nb_actions>21</nb_actions>
+		<sum_visit_length>2</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
+		<revenue>13372.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<code>CN</code>
+		<logo>plugins/Morpheus/icons/dist/flags/CN.png</logo>
+		<segment>countryCode==CN</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>Italy</label>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_visits>5</nb_visits>
+		<nb_actions>24</nb_actions>
+		<sum_visit_length>12</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
+		<revenue>10665.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<code>IT</code>
+		<logo>plugins/Morpheus/icons/dist/flags/IT.png</logo>
+		<segment>countryCode==IT</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>Germany</label>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_visits>4</nb_visits>
+		<nb_actions>15</nb_actions>
+		<sum_visit_length>38</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>8456.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<code>DE</code>
+		<logo>plugins/Morpheus/icons/dist/flags/DE.png</logo>
+		<segment>countryCode==DE</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>Unknown</label>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
+		<nb_visits>2</nb_visits>
+		<nb_actions>10</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>5917.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<code>ZZ</code>
+		<logo>plugins/Morpheus/icons/dist/flags/xx.png</logo>
+		<segment>countryCode==ZZ</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+</result>

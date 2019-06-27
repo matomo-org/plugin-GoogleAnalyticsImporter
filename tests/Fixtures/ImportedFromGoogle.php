@@ -20,8 +20,8 @@ use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
 class ImportedFromGoogle extends Fixture
 {
     public $idSite = 1;
-    public $dateTime = '2018-01-01 00:00:00';
-    public $importedDateRange = '2019-06-23,2019-06-26';
+    public $dateTime = '2019-06-27 00:00:00';
+    public $importedDateRange = '2019-06-24,2019-06-27';
 
     public $accessToken;
     public $viewId;
@@ -84,8 +84,14 @@ class ImportedFromGoogle extends Fixture
         print "\nImporting from google...\n";
 
         exec($command, $output, $returnCode);
+        $allOutput = implode("\n", $output);
+
         if ($returnCode) {
-            throw new \Exception("GA import failed, code = $returnCode, output: " . implode("\n", $output));
+            throw new \Exception("GA import failed, code = $returnCode, output: " . $allOutput);
+        }
+
+        if (strpos($allOutput, 'Encountered unknown') !== false) {
+            throw new \Exception("Found problem warning in GA Import output: " . $allOutput);
         }
      }
 

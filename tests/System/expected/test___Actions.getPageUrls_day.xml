@@ -2,327 +2,535 @@
 <result>
 	<row>
 		<label>matthieu.net</label>
-		<nb_visits>29</nb_visits>
-		<nb_hits>37</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<exit_nb_visits>29</exit_nb_visits>
-		<entry_nb_visits>29</entry_nb_visits>
-		<entry_nb_actions>37</entry_nb_actions>
-		<entry_sum_visit_length>367</entry_sum_visit_length>
-		<entry_bounce_count>23</entry_bounce_count>
+		<nb_visits>44</nb_visits>
+		<nb_hits>63</nb_hits>
+		<sum_time_spent>524</sum_time_spent>
+		<entry_nb_visits>44</entry_nb_visits>
+		<entry_nb_actions>159</entry_nb_actions>
+		<entry_sum_visit_length>524</entry_sum_visit_length>
+		<entry_bounce_count>8</entry_bounce_count>
+		<exit_nb_visits>44</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>0</avg_time_on_page>
-		<bounce_rate>79%</bounce_rate>
+		<avg_time_on_page>8</avg_time_on_page>
+		<bounce_rate>18%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>pageUrl=^matthieu.net</segment>
 		<subtable>
 			<row>
 				<label>blog</label>
-				<nb_visits>29</nb_visits>
-				<nb_hits>37</nb_hits>
-				<sum_time_spent>0</sum_time_spent>
-				<exit_nb_visits>29</exit_nb_visits>
-				<entry_nb_visits>29</entry_nb_visits>
-				<entry_nb_actions>37</entry_nb_actions>
-				<entry_sum_visit_length>367</entry_sum_visit_length>
-				<entry_bounce_count>23</entry_bounce_count>
-				<avg_time_on_page>0</avg_time_on_page>
-				<bounce_rate>79%</bounce_rate>
-				<exit_rate>100%</exit_rate>
+				<nb_visits>43</nb_visits>
+				<nb_hits>60</nb_hits>
+				<sum_time_spent>524</sum_time_spent>
+				<entry_nb_visits>43</entry_nb_visits>
+				<entry_nb_actions>151</entry_nb_actions>
+				<entry_sum_visit_length>524</entry_sum_visit_length>
+				<entry_bounce_count>8</entry_bounce_count>
+				<exit_nb_visits>41</exit_nb_visits>
+				<avg_time_on_page>9</avg_time_on_page>
+				<bounce_rate>19%</bounce_rate>
+				<exit_rate>95%</exit_rate>
 				<segment>pageUrl=^matthieu.net%252Fblog</segment>
 				<subtable>
 					<row>
-						<label>itineraire-dun-voyage-en-indonesie</label>
-						<nb_visits>4</nb_visits>
-						<nb_hits>4</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>4</entry_nb_visits>
-						<entry_nb_actions>7</entry_nb_actions>
-						<entry_sum_visit_length>185</entry_sum_visit_length>
+						<label>orlais</label>
+						<nb_visits>11</nb_visits>
+						<nb_hits>13</nb_hits>
+						<sum_time_spent>73</sum_time_spent>
+						<entry_nb_visits>11</entry_nb_visits>
+						<entry_nb_actions>49</entry_nb_actions>
+						<entry_sum_visit_length>73</entry_sum_visit_length>
 						<entry_bounce_count>2</entry_bounce_count>
-						<exit_nb_visits>2</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>50%</bounce_rate>
-						<exit_rate>50%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fitineraire-dun-voyage-en-indonesie</segment>
+						<exit_nb_visits>10</exit_nb_visits>
+						<avg_time_on_page>6</avg_time_on_page>
+						<bounce_rate>18%</bounce_rate>
+						<exit_rate>91%</exit_rate>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Forlais</segment>
 						<subtable>
 							<row>
-								<label>/index</label>
-								<nb_visits>4</nb_visits>
-								<nb_uniq_visitors>4</nb_uniq_visitors>
-								<nb_hits>4</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>4</entry_nb_uniq_visitors>
-								<entry_nb_visits>4</entry_nb_visits>
-								<entry_nb_actions>7</entry_nb_actions>
-								<entry_sum_visit_length>185.0</entry_sum_visit_length>
-								<entry_bounce_count>2</entry_bounce_count>
-								<exit_nb_uniq_visitors>2</exit_nb_uniq_visitors>
-								<exit_nb_visits>2</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>50%</bounce_rate>
-								<exit_rate>50%</exit_rate>
-								<url>http://matthieu.net/blog/itineraire-dun-voyage-en-indonesie/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fitineraire-dun-voyage-en-indonesie%2F</segment>
+								<label>halamshiral</label>
+								<nb_visits>5</nb_visits>
+								<nb_hits>6</nb_hits>
+								<sum_time_spent>63</sum_time_spent>
+								<entry_nb_visits>5</entry_nb_visits>
+								<entry_nb_actions>19</entry_nb_actions>
+								<entry_sum_visit_length>63</entry_sum_visit_length>
+								<entry_bounce_count>1</entry_bounce_count>
+								<exit_nb_visits>4</exit_nb_visits>
+								<avg_time_on_page>11</avg_time_on_page>
+								<bounce_rate>20%</bounce_rate>
+								<exit_rate>80%</exit_rate>
+								<segment>pageUrl=^matthieu.net%252Fblog%252Forlais%252Fhalamshiral</segment>
+								<subtable>
+									<row>
+										<label>/winter-palace</label>
+										<nb_visits>5</nb_visits>
+										<nb_uniq_visitors>6</nb_uniq_visitors>
+										<nb_hits>6</nb_hits>
+										<sum_time_spent>63</sum_time_spent>
+										<entry_nb_uniq_visitors>5</entry_nb_uniq_visitors>
+										<entry_nb_visits>5</entry_nb_visits>
+										<entry_nb_actions>19</entry_nb_actions>
+										<entry_sum_visit_length>63</entry_sum_visit_length>
+										<entry_bounce_count>1</entry_bounce_count>
+										<exit_nb_uniq_visitors>4</exit_nb_uniq_visitors>
+										<exit_nb_visits>4</exit_nb_visits>
+										<avg_time_on_page>11</avg_time_on_page>
+										<bounce_rate>20%</bounce_rate>
+										<exit_rate>80%</exit_rate>
+										<url>http://matthieu.net/blog/orlais/halamshiral/winter-palace</url>
+										<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fhalamshiral%2Fwinter-palace</segment>
+									</row>
+								</subtable>
 							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>avis-de-mickael-sur-la-vie-a-chennai-en-inde</label>
-						<nb_visits>3</nb_visits>
-						<nb_hits>3</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>3</entry_nb_visits>
-						<entry_nb_actions>4</entry_nb_actions>
-						<entry_sum_visit_length>20</entry_sum_visit_length>
-						<entry_bounce_count>2</entry_bounce_count>
-						<exit_nb_visits>2</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>67%</bounce_rate>
-						<exit_rate>67%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Favis-de-mickael-sur-la-vie-a-chennai-en-inde</segment>
-						<subtable>
 							<row>
-								<label>/index</label>
+								<label>emprise-du-lion</label>
 								<nb_visits>3</nb_visits>
+								<nb_hits>3</nb_hits>
+								<sum_time_spent>0</sum_time_spent>
+								<entry_nb_visits>3</entry_nb_visits>
+								<entry_nb_actions>11</entry_nb_actions>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
+								<entry_bounce_count>1</entry_bounce_count>
+								<exit_nb_visits>3</exit_nb_visits>
+								<avg_time_on_page>0</avg_time_on_page>
+								<bounce_rate>33%</bounce_rate>
+								<exit_rate>100%</exit_rate>
+								<segment>pageUrl=^matthieu.net%252Fblog%252Forlais%252Femprise-du-lion</segment>
+								<subtable>
+									<row>
+										<label>/sahrnia</label>
+										<nb_visits>3</nb_visits>
+										<nb_uniq_visitors>3</nb_uniq_visitors>
+										<nb_hits>3</nb_hits>
+										<sum_time_spent>0</sum_time_spent>
+										<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
+										<entry_nb_visits>3</entry_nb_visits>
+										<entry_nb_actions>11</entry_nb_actions>
+										<entry_sum_visit_length>0</entry_sum_visit_length>
+										<entry_bounce_count>1</entry_bounce_count>
+										<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
+										<exit_nb_visits>3</exit_nb_visits>
+										<avg_time_on_page>0</avg_time_on_page>
+										<bounce_rate>33%</bounce_rate>
+										<exit_rate>100%</exit_rate>
+										<url>http://matthieu.net/blog/orlais/emprise-du-lion/sahrnia</url>
+										<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Femprise-du-lion%2Fsahrnia</segment>
+									</row>
+								</subtable>
+							</row>
+							<row>
+								<label>/the-western-approach</label>
+								<nb_visits>2</nb_visits>
 								<nb_uniq_visitors>3</nb_uniq_visitors>
 								<nb_hits>3</nb_hits>
 								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
-								<entry_nb_visits>3</entry_nb_visits>
-								<entry_nb_actions>4</entry_nb_actions>
-								<entry_sum_visit_length>20.0</entry_sum_visit_length>
-								<entry_bounce_count>2</entry_bounce_count>
-								<exit_nb_uniq_visitors>2</exit_nb_uniq_visitors>
-								<exit_nb_visits>2</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>67%</bounce_rate>
-								<exit_rate>67%</exit_rate>
-								<url>http://matthieu.net/blog/avis-de-mickael-sur-la-vie-a-chennai-en-inde/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Favis-de-mickael-sur-la-vie-a-chennai-en-inde%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>cout-de-la-vie-en-inde</label>
-						<nb_visits>3</nb_visits>
-						<nb_hits>3</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>3</entry_nb_visits>
-						<entry_nb_actions>3</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>3</entry_bounce_count>
-						<exit_nb_visits>3</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fcout-de-la-vie-en-inde</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>3</nb_visits>
-								<nb_uniq_visitors>3</nb_uniq_visitors>
-								<nb_hits>3</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
-								<entry_nb_visits>3</entry_nb_visits>
-								<entry_nb_actions>3</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>3</entry_bounce_count>
+								<entry_nb_uniq_visitors>2</entry_nb_uniq_visitors>
+								<entry_nb_visits>2</entry_nb_visits>
+								<entry_nb_actions>10</entry_nb_actions>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
 								<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
 								<exit_nb_visits>3</exit_nb_visits>
 								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/cout-de-la-vie-en-inde/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcout-de-la-vie-en-inde%2F</segment>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>150%</exit_rate>
+								<url>http://matthieu.net/blog/orlais/the-western-approach</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fthe-western-approach</segment>
 							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>top-10-des-plus-belles-plongees-sous-marine-dans-le-monde</label>
-						<nb_visits>3</nb_visits>
-						<nb_hits>4</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>3</entry_nb_visits>
-						<entry_nb_actions>3</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>3</entry_bounce_count>
-						<exit_nb_visits>3</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde</segment>
-						<subtable>
 							<row>
-								<label>/index</label>
-								<nb_visits>3</nb_visits>
-								<nb_uniq_visitors>4</nb_uniq_visitors>
-								<nb_hits>4</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
-								<entry_nb_visits>3</entry_nb_visits>
-								<entry_nb_actions>3</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>3</entry_bounce_count>
-								<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
-								<exit_nb_visits>3</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>category</label>
-						<nb_visits>2</nb_visits>
-						<nb_hits>3</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>2</entry_nb_visits>
-						<entry_nb_actions>3</entry_nb_actions>
-						<entry_sum_visit_length>45</entry_sum_visit_length>
-						<entry_bounce_count>1</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>50%</bounce_rate>
-						<exit_rate>50%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fcategory</segment>
-						<subtable>
-							<row>
-								<label>edinburgh</label>
+								<label>/the-arbor-wilds</label>
 								<nb_visits>1</nb_visits>
+								<nb_uniq_visitors>1</nb_uniq_visitors>
 								<nb_hits>1</nb_hits>
+								<sum_time_spent>10</sum_time_spent>
+								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+								<entry_nb_visits>1</entry_nb_visits>
+								<entry_nb_actions>9</entry_nb_actions>
+								<entry_sum_visit_length>10</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
+								<avg_time_on_page>10</avg_time_on_page>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>0%</exit_rate>
+								<url>http://matthieu.net/blog/orlais/the-arbor-wilds</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fthe-arbor-wilds</segment>
+							</row>
+						</subtable>
+					</row>
+					<row>
+						<label>ferelden</label>
+						<nb_visits>6</nb_visits>
+						<nb_hits>11</nb_hits>
+						<sum_time_spent>13</sum_time_spent>
+						<entry_nb_visits>6</entry_nb_visits>
+						<entry_nb_actions>28</entry_nb_actions>
+						<entry_sum_visit_length>1</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<exit_nb_visits>10</exit_nb_visits>
+						<avg_time_on_page>1</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>167%</exit_rate>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Fferelden</segment>
+						<subtable>
+							<row>
+								<label>/crestwood</label>
+								<nb_visits>3</nb_visits>
+								<nb_uniq_visitors>5</nb_uniq_visitors>
+								<nb_hits>5</nb_hits>
+								<sum_time_spent>13</sum_time_spent>
+								<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
+								<entry_nb_visits>3</entry_nb_visits>
+								<entry_nb_actions>17</entry_nb_actions>
+								<entry_sum_visit_length>1</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
+								<exit_nb_uniq_visitors>4</exit_nb_uniq_visitors>
+								<exit_nb_visits>4</exit_nb_visits>
+								<avg_time_on_page>3</avg_time_on_page>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>133%</exit_rate>
+								<url>http://matthieu.net/blog/ferelden/crestwood</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fcrestwood</segment>
+							</row>
+							<row>
+								<label>crestwood</label>
+								<nb_visits>2</nb_visits>
+								<nb_hits>3</nb_hits>
+								<sum_time_spent>0</sum_time_spent>
+								<entry_nb_visits>2</entry_nb_visits>
+								<entry_nb_actions>9</entry_nb_actions>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
+								<exit_nb_visits>3</exit_nb_visits>
+								<avg_time_on_page>0</avg_time_on_page>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>150%</exit_rate>
+								<segment>pageUrl=^matthieu.net%252Fblog%252Fferelden%252Fcrestwood</segment>
+								<subtable>
+									<row>
+										<label>/caer-bronach</label>
+										<nb_visits>2</nb_visits>
+										<nb_uniq_visitors>3</nb_uniq_visitors>
+										<nb_hits>3</nb_hits>
+										<sum_time_spent>0</sum_time_spent>
+										<entry_nb_uniq_visitors>2</entry_nb_uniq_visitors>
+										<entry_nb_visits>2</entry_nb_visits>
+										<entry_nb_actions>9</entry_nb_actions>
+										<entry_sum_visit_length>0</entry_sum_visit_length>
+										<entry_bounce_count>0</entry_bounce_count>
+										<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
+										<exit_nb_visits>3</exit_nb_visits>
+										<avg_time_on_page>0</avg_time_on_page>
+										<bounce_rate>0%</bounce_rate>
+										<exit_rate>150%</exit_rate>
+										<url>http://matthieu.net/blog/ferelden/crestwood/caer-bronach</url>
+										<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fcrestwood%2Fcaer-bronach</segment>
+									</row>
+								</subtable>
+							</row>
+							<row>
+								<label>the-hinterlands</label>
+								<nb_visits>1</nb_visits>
+								<nb_hits>3</nb_hits>
 								<sum_time_spent>0</sum_time_spent>
 								<entry_nb_visits>1</entry_nb_visits>
 								<entry_nb_actions>2</entry_nb_actions>
-								<entry_sum_visit_length>45</entry_sum_visit_length>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
 								<entry_bounce_count>0</entry_bounce_count>
+								<exit_nb_visits>3</exit_nb_visits>
 								<avg_time_on_page>0</avg_time_on_page>
 								<bounce_rate>0%</bounce_rate>
-								<exit_rate>0%</exit_rate>
-								<segment>pageUrl=^matthieu.net%252Fblog%252Fcategory%252Fedinburgh</segment>
+								<exit_rate>300%</exit_rate>
+								<segment>pageUrl=^matthieu.net%252Fblog%252Fferelden%252Fthe-hinterlands</segment>
 								<subtable>
 									<row>
-										<label>/index</label>
+										<label>/redcliffe</label>
 										<nb_visits>1</nb_visits>
-										<nb_uniq_visitors>1</nb_uniq_visitors>
-										<nb_hits>1</nb_hits>
+										<nb_uniq_visitors>3</nb_uniq_visitors>
+										<nb_hits>3</nb_hits>
 										<sum_time_spent>0</sum_time_spent>
 										<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
 										<entry_nb_visits>1</entry_nb_visits>
 										<entry_nb_actions>2</entry_nb_actions>
-										<entry_sum_visit_length>45.0</entry_sum_visit_length>
+										<entry_sum_visit_length>0</entry_sum_visit_length>
 										<entry_bounce_count>0</entry_bounce_count>
+										<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
+										<exit_nb_visits>3</exit_nb_visits>
 										<avg_time_on_page>0</avg_time_on_page>
 										<bounce_rate>0%</bounce_rate>
-										<exit_rate>0%</exit_rate>
-										<url>http://matthieu.net/blog/category/edinburgh/</url>
-										<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcategory%2Fedinburgh%2F</segment>
-									</row>
-								</subtable>
-							</row>
-							<row>
-								<label>londres</label>
-								<nb_visits>1</nb_visits>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0</entry_sum_visit_length>
-								<entry_bounce_count>1</entry_bounce_count>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<segment>pageUrl=^matthieu.net%252Fblog%252Fcategory%252Flondres</segment>
-								<subtable>
-									<row>
-										<label>/index</label>
-										<nb_visits>1</nb_visits>
-										<nb_uniq_visitors>1</nb_uniq_visitors>
-										<nb_hits>1</nb_hits>
-										<sum_time_spent>0</sum_time_spent>
-										<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
-										<entry_nb_visits>1</entry_nb_visits>
-										<entry_nb_actions>1</entry_nb_actions>
-										<entry_sum_visit_length>0.0</entry_sum_visit_length>
-										<entry_bounce_count>1</entry_bounce_count>
-										<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-										<exit_nb_visits>1</exit_nb_visits>
-										<avg_time_on_page>0</avg_time_on_page>
-										<bounce_rate>100%</bounce_rate>
-										<exit_rate>100%</exit_rate>
-										<url>http://matthieu.net/blog/category/londres/</url>
-										<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcategory%2Flondres%2F</segment>
-									</row>
-								</subtable>
-							</row>
-							<row>
-								<label>inde</label>
-								<nb_visits>0</nb_visits>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>0%</bounce_rate>
-								<exit_rate>0%</exit_rate>
-								<segment>pageUrl=^matthieu.net%252Fblog%252Fcategory%252Finde</segment>
-								<subtable>
-									<row>
-										<label>/index</label>
-										<nb_visits>0</nb_visits>
-										<nb_uniq_visitors>1</nb_uniq_visitors>
-										<nb_hits>1</nb_hits>
-										<sum_time_spent>0</sum_time_spent>
-										<avg_time_on_page>0</avg_time_on_page>
-										<bounce_rate>0%</bounce_rate>
-										<exit_rate>0%</exit_rate>
-										<url>http://matthieu.net/blog/category/inde/</url>
-										<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcategory%2Finde%2F</segment>
+										<exit_rate>300%</exit_rate>
+										<url>http://matthieu.net/blog/ferelden/the-hinterlands/redcliffe</url>
+										<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fthe-hinterlands%2Fredcliffe</segment>
 									</row>
 								</subtable>
 							</row>
 						</subtable>
 					</row>
 					<row>
-						<label>chateau-de-chambord-photos-de-ce-beau-chateau</label>
+						<label>anderfels</label>
+						<nb_visits>4</nb_visits>
+						<nb_hits>4</nb_hits>
+						<sum_time_spent>37</sum_time_spent>
+						<entry_nb_visits>4</entry_nb_visits>
+						<entry_nb_actions>15</entry_nb_actions>
+						<entry_sum_visit_length>37</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<exit_nb_visits>3</exit_nb_visits>
+						<avg_time_on_page>9</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>75%</exit_rate>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Fanderfels</segment>
+						<subtable>
+							<row>
+								<label>/laysh</label>
+								<nb_visits>4</nb_visits>
+								<nb_uniq_visitors>4</nb_uniq_visitors>
+								<nb_hits>4</nb_hits>
+								<sum_time_spent>37</sum_time_spent>
+								<entry_nb_uniq_visitors>4</entry_nb_uniq_visitors>
+								<entry_nb_visits>4</entry_nb_visits>
+								<entry_nb_actions>15</entry_nb_actions>
+								<entry_sum_visit_length>37</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
+								<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
+								<exit_nb_visits>3</exit_nb_visits>
+								<avg_time_on_page>9</avg_time_on_page>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>75%</exit_rate>
+								<url>http://matthieu.net/blog/anderfels/laysh</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fanderfels%2Flaysh</segment>
+							</row>
+						</subtable>
+					</row>
+					<row>
+						<label>about</label>
+						<nb_visits>3</nb_visits>
+						<nb_hits>3</nb_hits>
+						<sum_time_spent>81</sum_time_spent>
+						<entry_nb_visits>3</entry_nb_visits>
+						<entry_nb_actions>6</entry_nb_actions>
+						<entry_sum_visit_length>81</entry_sum_visit_length>
+						<entry_bounce_count>1</entry_bounce_count>
+						<exit_nb_visits>2</exit_nb_visits>
+						<avg_time_on_page>27</avg_time_on_page>
+						<bounce_rate>33%</bounce_rate>
+						<exit_rate>67%</exit_rate>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Fabout</segment>
+						<subtable>
+							<row>
+								<label>/index</label>
+								<nb_visits>3</nb_visits>
+								<nb_uniq_visitors>3</nb_uniq_visitors>
+								<nb_hits>3</nb_hits>
+								<sum_time_spent>81</sum_time_spent>
+								<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
+								<entry_nb_visits>3</entry_nb_visits>
+								<entry_nb_actions>6</entry_nb_actions>
+								<entry_sum_visit_length>81</entry_sum_visit_length>
+								<entry_bounce_count>1</entry_bounce_count>
+								<exit_nb_uniq_visitors>2</exit_nb_uniq_visitors>
+								<exit_nb_visits>2</exit_nb_visits>
+								<avg_time_on_page>27</avg_time_on_page>
+								<bounce_rate>33%</bounce_rate>
+								<exit_rate>67%</exit_rate>
+								<url>http://matthieu.net/blog/about/</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fabout%2F</segment>
+							</row>
+						</subtable>
+					</row>
+					<row>
+						<label>antiva</label>
+						<nb_visits>3</nb_visits>
+						<nb_hits>3</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<entry_nb_visits>3</entry_nb_visits>
+						<entry_nb_actions>12</entry_nb_actions>
+						<entry_sum_visit_length>0</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<exit_nb_visits>3</exit_nb_visits>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>100%</exit_rate>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Fantiva</segment>
+						<subtable>
+							<row>
+								<label>/seleny</label>
+								<nb_visits>3</nb_visits>
+								<nb_uniq_visitors>3</nb_uniq_visitors>
+								<nb_hits>3</nb_hits>
+								<sum_time_spent>0</sum_time_spent>
+								<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
+								<entry_nb_visits>3</entry_nb_visits>
+								<entry_nb_actions>12</entry_nb_actions>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
+								<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
+								<exit_nb_visits>3</exit_nb_visits>
+								<avg_time_on_page>0</avg_time_on_page>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>100%</exit_rate>
+								<url>http://matthieu.net/blog/antiva/seleny</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fantiva%2Fseleny</segment>
+							</row>
+						</subtable>
+					</row>
+					<row>
+						<label>inde-par-region-et-ville</label>
+						<nb_visits>2</nb_visits>
+						<nb_hits>3</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<entry_nb_visits>2</entry_nb_visits>
+						<entry_nb_actions>3</entry_nb_actions>
+						<entry_sum_visit_length>0</entry_sum_visit_length>
+						<entry_bounce_count>1</entry_bounce_count>
+						<exit_nb_visits>3</exit_nb_visits>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>50%</bounce_rate>
+						<exit_rate>150%</exit_rate>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Finde-par-region-et-ville</segment>
+						<subtable>
+							<row>
+								<label>/index</label>
+								<nb_visits>2</nb_visits>
+								<nb_uniq_visitors>3</nb_uniq_visitors>
+								<nb_hits>3</nb_hits>
+								<sum_time_spent>0</sum_time_spent>
+								<entry_nb_uniq_visitors>2</entry_nb_uniq_visitors>
+								<entry_nb_visits>2</entry_nb_visits>
+								<entry_nb_actions>3</entry_nb_actions>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
+								<entry_bounce_count>1</entry_bounce_count>
+								<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
+								<exit_nb_visits>3</exit_nb_visits>
+								<avg_time_on_page>0</avg_time_on_page>
+								<bounce_rate>50%</bounce_rate>
+								<exit_rate>150%</exit_rate>
+								<url>http://matthieu.net/blog/inde-par-region-et-ville/</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Finde-par-region-et-ville%2F</segment>
+							</row>
+						</subtable>
+					</row>
+					<row>
+						<label>tevinter</label>
 						<nb_visits>2</nb_visits>
 						<nb_hits>2</nb_hits>
 						<sum_time_spent>0</sum_time_spent>
 						<entry_nb_visits>2</entry_nb_visits>
-						<entry_nb_actions>2</entry_nb_actions>
+						<entry_nb_actions>16</entry_nb_actions>
 						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>2</entry_bounce_count>
+						<entry_bounce_count>0</entry_bounce_count>
 						<exit_nb_visits>2</exit_nb_visits>
 						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
+						<bounce_rate>0%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fchateau-de-chambord-photos-de-ce-beau-chateau</segment>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Ftevinter</segment>
 						<subtable>
 							<row>
-								<label>/index</label>
+								<label>/solas</label>
 								<nb_visits>2</nb_visits>
 								<nb_uniq_visitors>2</nb_uniq_visitors>
 								<nb_hits>2</nb_hits>
 								<sum_time_spent>0</sum_time_spent>
 								<entry_nb_uniq_visitors>2</entry_nb_uniq_visitors>
 								<entry_nb_visits>2</entry_nb_visits>
-								<entry_nb_actions>2</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>2</entry_bounce_count>
+								<entry_nb_actions>16</entry_nb_actions>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
 								<exit_nb_uniq_visitors>2</exit_nb_uniq_visitors>
 								<exit_nb_visits>2</exit_nb_visits>
 								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
+								<bounce_rate>0%</bounce_rate>
 								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/chateau-de-chambord-photos-de-ce-beau-chateau/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fchateau-de-chambord-photos-de-ce-beau-chateau%2F</segment>
+								<url>http://matthieu.net/blog/tevinter/solas</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftevinter%2Fsolas</segment>
 							</row>
 						</subtable>
 					</row>
 					<row>
-						<label>accouplement-de-singes</label>
+						<label>/search?q=rift at caer bronach&amp;search_category=inner circle</label>
+						<nb_visits>1</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>0</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=rift at caer bronach&amp;search_category=inner circle</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dinner+circle</segment>
+					</row>
+					<row>
+						<label>/search?q=the spirit calmed&amp;search_category=hissing wastes</label>
+						<nb_visits>1</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>0</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=the spirit calmed&amp;search_category=hissing wastes</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+spirit+calmed%26search_category%3Dhissing+wastes</segment>
+					</row>
+					<row>
+						<label>/search?q=the spirit calmed&amp;search_category=specializations</label>
+						<nb_visits>1</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>4</entry_nb_actions>
+						<entry_sum_visit_length>12</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=the spirit calmed&amp;search_category=specializations</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+spirit+calmed%26search_category%3Dspecializations</segment>
+					</row>
+					<row>
+						<label>/search?q=the spirit calmed&amp;search_category=winter palace</label>
+						<nb_visits>1</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>0</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=the spirit calmed&amp;search_category=winter palace</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+spirit+calmed%26search_category%3Dwinter+palace</segment>
+					</row>
+					<row>
+						<label>/search?q=where the drufallo roam&amp;search_category=inquisitor's path</label>
+						<nb_visits>1</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>0</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=where the drufallo roam&amp;search_category=inquisitor's path</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dwhere+the+drufallo+roam%26search_category%3Dinquisitor%27s+path</segment>
+					</row>
+					<row>
+						<label>avis-de-mickael-sur-la-vie-a-chennai-en-inde</label>
 						<nb_visits>1</nb_visits>
 						<nb_hits>1</nb_hits>
 						<sum_time_spent>0</sum_time_spent>
@@ -334,7 +542,7 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Faccouplement-de-singes</segment>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Favis-de-mickael-sur-la-vie-a-chennai-en-inde</segment>
 						<subtable>
 							<row>
 								<label>/index</label>
@@ -345,20 +553,56 @@
 								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
 								<entry_nb_visits>1</entry_nb_visits>
 								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
 								<entry_bounce_count>1</entry_bounce_count>
 								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
 								<exit_nb_visits>1</exit_nb_visits>
 								<avg_time_on_page>0</avg_time_on_page>
 								<bounce_rate>100%</bounce_rate>
 								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/accouplement-de-singes/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Faccouplement-de-singes%2F</segment>
+								<url>http://matthieu.net/blog/avis-de-mickael-sur-la-vie-a-chennai-en-inde/</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Favis-de-mickael-sur-la-vie-a-chennai-en-inde%2F</segment>
 							</row>
 						</subtable>
 					</row>
 					<row>
-						<label>le-haka-danse-maori-nouvelle-zelande</label>
+						<label>free-marches</label>
+						<nb_visits>1</nb_visits>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>0</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<exit_nb_visits>1</exit_nb_visits>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>100%</exit_rate>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Ffree-marches</segment>
+						<subtable>
+							<row>
+								<label>/markhem</label>
+								<nb_visits>1</nb_visits>
+								<nb_uniq_visitors>1</nb_uniq_visitors>
+								<nb_hits>1</nb_hits>
+								<sum_time_spent>0</sum_time_spent>
+								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+								<entry_nb_visits>1</entry_nb_visits>
+								<entry_nb_actions>2</entry_nb_actions>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
+								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
+								<exit_nb_visits>1</exit_nb_visits>
+								<avg_time_on_page>0</avg_time_on_page>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>100%</exit_rate>
+								<url>http://matthieu.net/blog/free-marches/markhem</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ffree-marches%2Fmarkhem</segment>
+							</row>
+						</subtable>
+					</row>
+					<row>
+						<label>interdiction-de-sembrasser-en-angleterre</label>
 						<nb_visits>1</nb_visits>
 						<nb_hits>1</nb_hits>
 						<sum_time_spent>0</sum_time_spent>
@@ -370,7 +614,7 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fle-haka-danse-maori-nouvelle-zelande</segment>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Finterdiction-de-sembrasser-en-angleterre</segment>
 						<subtable>
 							<row>
 								<label>/index</label>
@@ -381,15 +625,51 @@
 								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
 								<entry_nb_visits>1</entry_nb_visits>
 								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
 								<entry_bounce_count>1</entry_bounce_count>
 								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
 								<exit_nb_visits>1</exit_nb_visits>
 								<avg_time_on_page>0</avg_time_on_page>
 								<bounce_rate>100%</bounce_rate>
 								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/le-haka-danse-maori-nouvelle-zelande/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fle-haka-danse-maori-nouvelle-zelande%2F</segment>
+								<url>http://matthieu.net/blog/interdiction-de-sembrasser-en-angleterre/</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Finterdiction-de-sembrasser-en-angleterre%2F</segment>
+							</row>
+						</subtable>
+					</row>
+					<row>
+						<label>le-theisme-philosophique</label>
+						<nb_visits>1</nb_visits>
+						<nb_hits>2</nb_hits>
+						<sum_time_spent>261</sum_time_spent>
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>261</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<exit_nb_visits>1</exit_nb_visits>
+						<avg_time_on_page>131</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>100%</exit_rate>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Fle-theisme-philosophique</segment>
+						<subtable>
+							<row>
+								<label>/index</label>
+								<nb_visits>1</nb_visits>
+								<nb_uniq_visitors>1</nb_uniq_visitors>
+								<nb_hits>2</nb_hits>
+								<sum_time_spent>261</sum_time_spent>
+								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+								<entry_nb_visits>1</entry_nb_visits>
+								<entry_nb_actions>2</entry_nb_actions>
+								<entry_sum_visit_length>261</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
+								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
+								<exit_nb_visits>1</exit_nb_visits>
+								<avg_time_on_page>131</avg_time_on_page>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>100%</exit_rate>
+								<url>http://matthieu.net/blog/le-theisme-philosophique/</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fle-theisme-philosophique%2F</segment>
 							</row>
 						</subtable>
 					</row>
@@ -417,7 +697,7 @@
 								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
 								<entry_nb_visits>1</entry_nb_visits>
 								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
 								<entry_bounce_count>1</entry_bounce_count>
 								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
 								<exit_nb_visits>1</exit_nb_visits>
@@ -433,15 +713,14 @@
 						<label>plongee-sur-une-epave-3-des-meilleurs-bateaux-a-visiter-sous-leau</label>
 						<nb_visits>1</nb_visits>
 						<nb_hits>1</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
+						<sum_time_spent>59</sum_time_spent>
 						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>1</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>1</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>59</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<avg_time_on_page>59</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
 						<segment>pageUrl=^matthieu.net%252Fblog%252Fplongee-sur-une-epave-3-des-meilleurs-bateaux-a-visiter-sous-leau</segment>
 						<subtable>
 							<row>
@@ -449,286 +728,32 @@
 								<nb_visits>1</nb_visits>
 								<nb_uniq_visitors>1</nb_uniq_visitors>
 								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
+								<sum_time_spent>59</sum_time_spent>
 								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
 								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>1</entry_bounce_count>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
+								<entry_nb_actions>2</entry_nb_actions>
+								<entry_sum_visit_length>59</entry_sum_visit_length>
+								<entry_bounce_count>0</entry_bounce_count>
+								<avg_time_on_page>59</avg_time_on_page>
+								<bounce_rate>0%</bounce_rate>
+								<exit_rate>0%</exit_rate>
 								<url>http://matthieu.net/blog/plongee-sur-une-epave-3-des-meilleurs-bateaux-a-visiter-sous-leau/</url>
 								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fplongee-sur-une-epave-3-des-meilleurs-bateaux-a-visiter-sous-leau%2F</segment>
 							</row>
 						</subtable>
 					</row>
 					<row>
-						<label>premier-jour-de-folie-a-munnar</label>
-						<nb_visits>1</nb_visits>
-						<nb_hits>1</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>1</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>1</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fpremier-jour-de-folie-a-munnar</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>1</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
-								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>1</entry_bounce_count>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/premier-jour-de-folie-a-munnar/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fpremier-jour-de-folie-a-munnar%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>superbe-soiree</label>
-						<nb_visits>1</nb_visits>
-						<nb_hits>1</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>1</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>1</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fsuperbe-soiree</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>1</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
-								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>1</entry_bounce_count>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/superbe-soiree/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsuperbe-soiree%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>trek-madikeri-et-alentour-jour-1</label>
-						<nb_visits>1</nb_visits>
-						<nb_hits>1</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>1</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>1</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Ftrek-madikeri-et-alentour-jour-1</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>1</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
-								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>1</entry_bounce_count>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/trek-madikeri-et-alentour-jour-1/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftrek-madikeri-et-alentour-jour-1%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>trek-waterfalls-chutes-deau-a-munnar</label>
-						<nb_visits>1</nb_visits>
-						<nb_hits>1</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>1</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>1</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Ftrek-waterfalls-chutes-deau-a-munnar</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>1</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
-								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>1</entry_bounce_count>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/trek-waterfalls-chutes-deau-a-munnar/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftrek-waterfalls-chutes-deau-a-munnar%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>tu-me-cherches</label>
-						<nb_visits>1</nb_visits>
-						<nb_hits>1</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>1</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>1</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Ftu-me-cherches</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>1</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
-								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>1</entry_bounce_count>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/tu-me-cherches/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftu-me-cherches%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>vacances-a-la-campagne</label>
-						<nb_visits>1</nb_visits>
-						<nb_hits>1</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>1</entry_nb_actions>
-						<entry_sum_visit_length>0</entry_sum_visit_length>
-						<entry_bounce_count>1</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>100%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fvacances-a-la-campagne</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>1</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
-								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>1</entry_nb_actions>
-								<entry_sum_visit_length>0.0</entry_sum_visit_length>
-								<entry_bounce_count>1</entry_bounce_count>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>100%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/vacances-a-la-campagne/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fvacances-a-la-campagne%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
-						<label>video-du-combat-entre-lions-buffles-et-crocodiles-incroyable-nature</label>
-						<nb_visits>1</nb_visits>
-						<nb_hits>2</nb_hits>
-						<sum_time_spent>0</sum_time_spent>
-						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>2</entry_nb_actions>
-						<entry_sum_visit_length>5</entry_sum_visit_length>
-						<entry_bounce_count>0</entry_bounce_count>
-						<exit_nb_visits>1</exit_nb_visits>
-						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>0%</bounce_rate>
-						<exit_rate>100%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fvideo-du-combat-entre-lions-buffles-et-crocodiles-incroyable-nature</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>1</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>2</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
-								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>2</entry_nb_actions>
-								<entry_sum_visit_length>5.0</entry_sum_visit_length>
-								<entry_bounce_count>0</entry_bounce_count>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>0%</bounce_rate>
-								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/video-du-combat-entre-lions-buffles-et-crocodiles-incroyable-nature/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fvideo-du-combat-entre-lions-buffles-et-crocodiles-incroyable-nature%2F</segment>
-							</row>
-						</subtable>
-					</row>
-					<row>
 						<label>visite-de-madurai</label>
 						<nb_visits>1</nb_visits>
-						<nb_hits>2</nb_hits>
+						<nb_hits>1</nb_hits>
 						<sum_time_spent>0</sum_time_spent>
 						<entry_nb_visits>1</entry_nb_visits>
-						<entry_nb_actions>3</entry_nb_actions>
-						<entry_sum_visit_length>112</entry_sum_visit_length>
-						<entry_bounce_count>0</entry_bounce_count>
+						<entry_nb_actions>1</entry_nb_actions>
+						<entry_sum_visit_length>0</entry_sum_visit_length>
+						<entry_bounce_count>1</entry_bounce_count>
 						<exit_nb_visits>1</exit_nb_visits>
 						<avg_time_on_page>0</avg_time_on_page>
-						<bounce_rate>0%</bounce_rate>
+						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
 						<segment>pageUrl=^matthieu.net%252Fblog%252Fvisite-de-madurai</segment>
 						<subtable>
@@ -736,17 +761,17 @@
 								<label>/index</label>
 								<nb_visits>1</nb_visits>
 								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>2</nb_hits>
+								<nb_hits>1</nb_hits>
 								<sum_time_spent>0</sum_time_spent>
 								<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
 								<entry_nb_visits>1</entry_nb_visits>
-								<entry_nb_actions>3</entry_nb_actions>
-								<entry_sum_visit_length>112.0</entry_sum_visit_length>
-								<entry_bounce_count>0</entry_bounce_count>
+								<entry_nb_actions>1</entry_nb_actions>
+								<entry_sum_visit_length>0</entry_sum_visit_length>
+								<entry_bounce_count>1</entry_bounce_count>
 								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
 								<exit_nb_visits>1</exit_nb_visits>
 								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>0%</bounce_rate>
+								<bounce_rate>100%</bounce_rate>
 								<exit_rate>100%</exit_rate>
 								<url>http://matthieu.net/blog/visite-de-madurai/</url>
 								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fvisite-de-madurai%2F</segment>
@@ -754,61 +779,79 @@
 						</subtable>
 					</row>
 					<row>
-						<label>about</label>
+						<label>/search?q=high stakes&amp;search_category=inquisitor's path</label>
 						<nb_visits>0</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
 						<nb_hits>1</nb_hits>
 						<sum_time_spent>0</sum_time_spent>
-						<exit_nb_visits>1</exit_nb_visits>
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fabout</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>0</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>0%</bounce_rate>
-								<exit_rate>0%</exit_rate>
-								<url>http://matthieu.net/blog/about/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fabout%2F</segment>
-							</row>
-						</subtable>
+						<url>http://matthieu.net/blog/search?q=high stakes&amp;search_category=inquisitor's path</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dinquisitor%27s+path</segment>
 					</row>
 					<row>
-						<label>dragons-de-komodo-indonesie</label>
+						<label>/search?q=measuring the veil&amp;search_category=hissing wastes</label>
 						<nb_visits>0</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
 						<nb_hits>1</nb_hits>
 						<sum_time_spent>0</sum_time_spent>
-						<exit_nb_visits>1</exit_nb_visits>
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fdragons-de-komodo-indonesie</segment>
-						<subtable>
-							<row>
-								<label>/index</label>
-								<nb_visits>0</nb_visits>
-								<nb_uniq_visitors>1</nb_uniq_visitors>
-								<nb_hits>1</nb_hits>
-								<sum_time_spent>0</sum_time_spent>
-								<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-								<exit_nb_visits>1</exit_nb_visits>
-								<avg_time_on_page>0</avg_time_on_page>
-								<bounce_rate>0%</bounce_rate>
-								<exit_rate>0%</exit_rate>
-								<url>http://matthieu.net/blog/dragons-de-komodo-indonesie/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fdragons-de-komodo-indonesie%2F</segment>
-							</row>
-						</subtable>
+						<url>http://matthieu.net/blog/search?q=measuring the veil&amp;search_category=hissing wastes</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dhissing+wastes</segment>
 					</row>
 					<row>
-						<label>la-plage-a-chennai</label>
+						<label>/search?q=one less venatori&amp;search_category=inquisitor's path</label>
+						<nb_visits>0</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=one less venatori&amp;search_category=inquisitor's path</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dinquisitor%27s+path</segment>
+					</row>
+					<row>
+						<label>/search?q=the magister's birthright&amp;search_category=skyhold</label>
+						<nb_visits>0</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=the magister's birthright&amp;search_category=skyhold</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+magister%27s+birthright%26search_category%3Dskyhold</segment>
+					</row>
+					<row>
+						<label>/search?q=the spirit calmed&amp;search_category=lost temple of dirthamen</label>
+						<nb_visits>0</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=the spirit calmed&amp;search_category=lost temple of dirthamen</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+spirit+calmed%26search_category%3Dlost+temple+of+dirthamen</segment>
+					</row>
+					<row>
+						<label>/search?q=where the drufallo roam&amp;search_category=specializations</label>
+						<nb_visits>0</nb_visits>
+						<nb_uniq_visitors>1</nb_uniq_visitors>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>0</sum_time_spent>
+						<avg_time_on_page>0</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/blog/search?q=where the drufallo roam&amp;search_category=specializations</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dwhere+the+drufallo+roam%26search_category%3Dspecializations</segment>
+					</row>
+					<row>
+						<label>nevarra</label>
 						<nb_visits>0</nb_visits>
 						<nb_hits>1</nb_hits>
 						<sum_time_spent>0</sum_time_spent>
@@ -816,10 +859,10 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<segment>pageUrl=^matthieu.net%252Fblog%252Fla-plage-a-chennai</segment>
+						<segment>pageUrl=^matthieu.net%252Fblog%252Fnevarra</segment>
 						<subtable>
 							<row>
-								<label>/index</label>
+								<label>/trevis</label>
 								<nb_visits>0</nb_visits>
 								<nb_uniq_visitors>1</nb_uniq_visitors>
 								<nb_hits>1</nb_hits>
@@ -829,8 +872,8 @@
 								<avg_time_on_page>0</avg_time_on_page>
 								<bounce_rate>0%</bounce_rate>
 								<exit_rate>0%</exit_rate>
-								<url>http://matthieu.net/blog/la-plage-a-chennai/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fla-plage-a-chennai%2F</segment>
+								<url>http://matthieu.net/blog/nevarra/trevis</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fnevarra%2Ftrevis</segment>
 							</row>
 						</subtable>
 					</row>
@@ -863,6 +906,38 @@
 					</row>
 				</subtable>
 			</row>
+			<row>
+				<label>/index</label>
+				<nb_visits>1</nb_visits>
+				<nb_uniq_visitors>3</nb_uniq_visitors>
+				<nb_hits>3</nb_hits>
+				<sum_time_spent>0</sum_time_spent>
+				<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+				<entry_nb_visits>1</entry_nb_visits>
+				<entry_nb_actions>8</entry_nb_actions>
+				<entry_sum_visit_length>0</entry_sum_visit_length>
+				<entry_bounce_count>0</entry_bounce_count>
+				<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
+				<exit_nb_visits>3</exit_nb_visits>
+				<avg_time_on_page>0</avg_time_on_page>
+				<bounce_rate>0%</bounce_rate>
+				<exit_rate>300%</exit_rate>
+				<url>http://matthieu.net/</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2F</segment>
+			</row>
 		</subtable>
+	</row>
+	<row>
+		<label>/matthieu.net</label>
+		<nb_visits>0</nb_visits>
+		<nb_uniq_visitors>17</nb_uniq_visitors>
+		<nb_hits>0</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<url>http://matthieu.net</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net</segment>
 	</row>
 </result>
