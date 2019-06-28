@@ -16,7 +16,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 {
     const PLUGIN_NAME = 'VisitsSummary';
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $gaQuery = $this->getGaQuery();
         $result = $gaQuery->query($day, [], $this->getVisitMetrics());

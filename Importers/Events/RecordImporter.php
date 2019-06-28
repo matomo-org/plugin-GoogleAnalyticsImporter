@@ -36,7 +36,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->maximumRowsInSubDataTable = Config::getInstance()->General['datatable_archiving_maximum_rows_subtable_events'];
     }
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $this->records = [
             Archiver::EVENTS_ACTION_CATEGORY_RECORD_NAME => new DataTable(),

@@ -2,24 +2,24 @@
 <result>
 	<row>
 		<label>(not set)</label>
-		<nb_uniq_visitors>20</nb_uniq_visitors>
-		<nb_visits>38</nb_visits>
-		<nb_actions>151</nb_actions>
-		<sum_visit_length>204</sum_visit_length>
-		<bounce_count>4</bounce_count>
-		<nb_visits_converted>6</nb_visits_converted>
-		<nb_conversions>18</nb_conversions>
-		<revenue>75333.0</revenue>
+		<nb_uniq_visitors>25</nb_uniq_visitors>
+		<nb_visits>174</nb_visits>
+		<nb_actions>769</nb_actions>
+		<sum_visit_length>2559</sum_visit_length>
+		<bounce_count>21</bounce_count>
+		<nb_visits_converted>24</nb_visits_converted>
+		<nb_conversions>87</nb_conversions>
+		<revenue>797955.0</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>13</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>13</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>11</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>11</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -30,7 +30,31 @@
 		<segment>resolution==%28not+set%29</segment>
 	</row>
 	<row>
-		<label>1920x1080</label>
+		<label>360x640</label>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_visits>4</nb_visits>
+		<nb_actions>5</nb_actions>
+		<sum_visit_length>52</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==360x640</segment>
+	</row>
+	<row>
+		<label>375x812</label>
+		<nb_uniq_visitors>3</nb_uniq_visitors>
+		<nb_visits>4</nb_visits>
+		<nb_actions>6</nb_actions>
+		<sum_visit_length>3340</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==375x812</segment>
+	</row>
+	<row>
+		<label>360x740</label>
 		<nb_uniq_visitors>2</nb_uniq_visitors>
 		<nb_visits>2</nb_visits>
 		<nb_actions>2</nb_actions>
@@ -39,10 +63,22 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
-		<segment>resolution==1920x1080</segment>
+		<segment>resolution==360x740</segment>
 	</row>
 	<row>
-		<label>360x760</label>
+		<label>768x1024</label>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
+		<nb_visits>2</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>152</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==768x1024</segment>
+	</row>
+	<row>
+		<label>320x568</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -51,7 +87,31 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
-		<segment>resolution==360x760</segment>
+		<segment>resolution==320x568</segment>
+	</row>
+	<row>
+		<label>360x720</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==360x720</segment>
+	</row>
+	<row>
+		<label>360x780</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==360x780</segment>
 	</row>
 	<row>
 		<label>375x667</label>
@@ -66,27 +126,75 @@
 		<segment>resolution==375x667</segment>
 	</row>
 	<row>
-		<label>1440x900</label>
+		<label>412x846</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>261</sum_visit_length>
-		<bounce_count>0</bounce_count>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
-		<segment>resolution==1440x900</segment>
+		<segment>resolution==412x846</segment>
 	</row>
 	<row>
-		<label>1600x900</label>
+		<label>640x360</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
-		<sum_visit_length>59</sum_visit_length>
+		<sum_visit_length>44</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
-		<segment>resolution==1600x900</segment>
+		<segment>resolution==640x360</segment>
+	</row>
+	<row>
+		<label>1280x1024</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==1280x1024</segment>
+	</row>
+	<row>
+		<label>1536x864</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==1536x864</segment>
+	</row>
+	<row>
+		<label>1920x1080</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>151</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==1920x1080</segment>
+	</row>
+	<row>
+		<label>2048x1152</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>14</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>resolution==2048x1152</segment>
 	</row>
 </result>

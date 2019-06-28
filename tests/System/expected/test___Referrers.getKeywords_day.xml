@@ -2,11 +2,11 @@
 <result>
 	<row>
 		<label>(not provided)</label>
-		<nb_uniq_visitors>6</nb_uniq_visitors>
-		<nb_visits>6</nb_visits>
-		<nb_actions>8</nb_actions>
-		<sum_visit_length>320</sum_visit_length>
-		<bounce_count>4</bounce_count>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_visits>4</nb_visits>
+		<nb_actions>5</nb_actions>
+		<sum_visit_length>151</sum_visit_length>
+		<bounce_count>3</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
@@ -14,11 +14,11 @@
 		<subtable>
 			<row>
 				<label>Google</label>
-				<nb_uniq_visitors>6</nb_uniq_visitors>
-				<nb_visits>6</nb_visits>
-				<nb_actions>8</nb_actions>
-				<sum_visit_length>320</sum_visit_length>
-				<bounce_count>4</bounce_count>
+				<nb_uniq_visitors>4</nb_uniq_visitors>
+				<nb_visits>4</nb_visits>
+				<nb_actions>5</nb_actions>
+				<sum_visit_length>151</sum_visit_length>
+				<bounce_count>3</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0.0</revenue>

@@ -1,20 +1,57 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</label>
-		<nb_uniq_visitors>4</nb_uniq_visitors>
-		<nb_visits>4</nb_visits>
-		<nb_actions>9</nb_actions>
-		<sum_visit_length>2</sum_visit_length>
-		<bounce_count>1</bounce_count>
+		<label>m.facebook.com/</label>
+		<nb_uniq_visitors>13</nb_uniq_visitors>
+		<nb_visits>14</nb_visits>
+		<nb_actions>18</nb_actions>
+		<sum_visit_length>1876</sum_visit_length>
+		<bounce_count>11</bounce_count>
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
 		<revenue>0.0</revenue>
+		<segment>referrerUrl==http%3A%2F%2Fm.facebook.com%2F</segment>
+		<url>http://m.facebook.com/</url>
+	</row>
+	<row>
+		<label>reddit.com/r/scuba/comments/8mpl4j/open_water_divers_being_born/</label>
+		<nb_uniq_visitors>8</nb_uniq_visitors>
+		<nb_visits>12</nb_visits>
+		<nb_actions>46</nb_actions>
+		<sum_visit_length>602</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>25236.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mpl4j%2Fopen_water_divers_being_born%2F</segment>
+		<url>http://reddit.com/r/scuba/comments/8mpl4j/open_water_divers_being_born/</url>
+	</row>
+	<row>
+		<label>reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</label>
+		<nb_uniq_visitors>7</nb_uniq_visitors>
+		<nb_visits>12</nb_visits>
+		<nb_actions>57</nb_actions>
+		<sum_visit_length>124</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>6</nb_conversions>
+		<revenue>61220.0</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>0</nb_conversions>
@@ -25,28 +62,15 @@
 		<url>http://reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</url>
 	</row>
 	<row>
-		<label>reddit.com/r/scuba/comments/8mpl4j/open_water_divers_being_born/</label>
-		<nb_uniq_visitors>2</nb_uniq_visitors>
-		<nb_visits>2</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mpl4j%2Fopen_water_divers_being_born%2F</segment>
-		<url>http://reddit.com/r/scuba/comments/8mpl4j/open_water_divers_being_born/</url>
-	</row>
-	<row>
 		<label>reddit.com/r/scuba/comments/8mtp0i/five_rules_shearwater_broke_with_the_teric/</label>
-		<nb_uniq_visitors>2</nb_uniq_visitors>
-		<nb_visits>2</nb_visits>
-		<nb_actions>9</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>2</nb_conversions>
-		<revenue>6305.0</revenue>
+		<nb_uniq_visitors>7</nb_uniq_visitors>
+		<nb_visits>10</nb_visits>
+		<nb_actions>55</nb_actions>
+		<sum_visit_length>187</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>7</nb_conversions>
+		<revenue>67109.0</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>1</nb_conversions>
@@ -54,11 +78,30 @@
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mtp0i%2Ffive_rules_shearwater_broke_with_the_teric%2F</segment>
 		<url>http://reddit.com/r/scuba/comments/8mtp0i/five_rules_shearwater_broke_with_the_teric/</url>
+	</row>
+	<row>
+		<label>facebook.com/</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<segment>referrerUrl==http%3A%2F%2Ffacebook.com%2F</segment>
+		<url>http://facebook.com/</url>
 	</row>
 </result>

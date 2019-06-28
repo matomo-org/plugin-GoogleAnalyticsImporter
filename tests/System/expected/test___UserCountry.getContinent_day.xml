@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>Europe</label>
+		<nb_uniq_visitors>62</nb_uniq_visitors>
+		<nb_visits>87</nb_visits>
+		<nb_actions>338</nb_actions>
+		<sum_visit_length>4644</sum_visit_length>
+		<bounce_count>22</bounce_count>
+		<nb_visits_converted>13</nb_visits_converted>
+		<nb_conversions>41</nb_conversions>
+		<revenue>356753</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>6</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>5</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>5</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>4</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+		</goals>
+		<code>Europe</code>
+	</row>
+	<row>
+		<label>North America</label>
+		<nb_uniq_visitors>21</nb_uniq_visitors>
+		<nb_visits>45</nb_visits>
+		<nb_actions>181</nb_actions>
+		<sum_visit_length>607</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>4</nb_visits_converted>
+		<nb_conversions>17</nb_conversions>
+		<revenue>163201</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<code>North America</code>
+	</row>
+	<row>
+		<label>Asia</label>
+		<nb_uniq_visitors>27</nb_uniq_visitors>
+		<nb_visits>33</nb_visits>
+		<nb_actions>172</nb_actions>
+		<sum_visit_length>758</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>5</nb_visits_converted>
+		<nb_conversions>20</nb_conversions>
+		<revenue>185260</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<code>Asia</code>
+	</row>
+	<row>
+		<label>Unknown</label>
+		<nb_uniq_visitors>16</nb_uniq_visitors>
+		<nb_visits>31</nb_visits>
+		<nb_actions>108</nb_actions>
+		<sum_visit_length>303</sum_visit_length>
+		<bounce_count>6</bounce_count>
+		<nb_visits_converted>4</nb_visits_converted>
+		<nb_conversions>11</nb_conversions>
+		<revenue>92741.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<code>Unknown</code>
+	</row>
+</result>

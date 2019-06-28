@@ -2,24 +2,24 @@
 <result>
 	<row>
 		<label>Unknown</label>
-		<nb_uniq_visitors>43</nb_uniq_visitors>
-		<nb_visits>44</nb_visits>
-		<nb_actions>159</nb_actions>
-		<sum_visit_length>524</sum_visit_length>
-		<bounce_count>8</bounce_count>
-		<nb_visits_converted>6</nb_visits_converted>
-		<nb_conversions>18</nb_conversions>
-		<revenue>75333</revenue>
+		<nb_uniq_visitors>145</nb_uniq_visitors>
+		<nb_visits>196</nb_visits>
+		<nb_actions>799</nb_actions>
+		<sum_visit_length>6312</sum_visit_length>
+		<bounce_count>36</bounce_count>
+		<nb_visits_converted>24</nb_visits_converted>
+		<nb_conversions>89</nb_conversions>
+		<revenue>797955</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>13</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>11</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>11</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>9</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>

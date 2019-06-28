@@ -2,43 +2,44 @@
 <result>
 	<row>
 		<label>1+ visits</label>
-		<nb_visits>422</nb_visits>
-		<nb_actions>509</nb_actions>
-		<sum_visit_length>758</sum_visit_length>
-		<bounce_count>54</bounce_count>
-		<nb_visits_converted>3</nb_visits_converted>
-		<nb_conversions>18</nb_conversions>
-		<revenue>95246</revenue>
-		<sum_daily_nb_uniq_visitors>422</sum_daily_nb_uniq_visitors>
+		<nb_visits>436</nb_visits>
+		<nb_actions>558</nb_actions>
+		<sum_visit_length>4562</sum_visit_length>
+		<bounce_count>57</bounce_count>
+		<nb_visits_converted>7</nb_visits_converted>
+		<nb_conversions>25</nb_conversions>
+		<revenue>135287</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
+				<nb_visits_converted>2</nb_visits_converted>
 			</row>
 		</goals>
-		<nb_visits_percentage>95%</nb_visits_percentage>
+		<sum_daily_nb_uniq_visitors>436</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>69%</nb_visits_percentage>
 		<segment>visitCount&gt;=1</segment>
 	</row>
 	<row>
 		<label>2+ visits</label>
-		<nb_visits>17</nb_visits>
-		<nb_actions>71</nb_actions>
-		<sum_visit_length>802</sum_visit_length>
-		<bounce_count>6</bounce_count>
-		<nb_visits_converted>3</nb_visits_converted>
-		<nb_conversions>9</nb_conversions>
-		<revenue>39080</revenue>
+		<nb_visits>30</nb_visits>
+		<nb_actions>108</nb_actions>
+		<sum_visit_length>167</sum_visit_length>
+		<bounce_count>9</bounce_count>
+		<nb_visits_converted>4</nb_visits_converted>
+		<nb_conversions>13</nb_conversions>
+		<revenue>76261</revenue>
+		<sum_daily_nb_uniq_visitors>30</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>1</nb_conversions>
@@ -46,7 +47,7 @@
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
@@ -56,19 +57,134 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
-		<nb_visits_percentage>4%</nb_visits_percentage>
+		<nb_visits_percentage>5%</nb_visits_percentage>
 		<segment>visitCount&gt;=2</segment>
 	</row>
 	<row>
 		<label>3+ visits</label>
-		<nb_visits>6</nb_visits>
-		<nb_actions>36</nb_actions>
-		<sum_visit_length>298</sum_visit_length>
+		<nb_visits>26</nb_visits>
+		<nb_actions>124</nb_actions>
+		<sum_visit_length>489</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>4</nb_visits_converted>
+		<nb_conversions>16</nb_conversions>
+		<revenue>111859</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>26</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>4%</nb_visits_percentage>
+		<segment>visitCount&gt;=3</segment>
+	</row>
+	<row>
+		<label>4+ visits</label>
+		<nb_visits>23</nb_visits>
+		<nb_actions>90</nb_actions>
+		<sum_visit_length>155</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>10</nb_conversions>
+		<revenue>86244</revenue>
+		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<nb_visits_percentage>4%</nb_visits_percentage>
+		<segment>visitCount&gt;=4</segment>
+	</row>
+	<row>
+		<label>10+ visits</label>
+		<nb_visits>10</nb_visits>
+		<nb_actions>48</nb_actions>
+		<sum_visit_length>171</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>5</nb_conversions>
+		<revenue>41997.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>10</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>2%</nb_visits_percentage>
+		<segment>visitCount&gt;=10</segment>
+	</row>
+	<row>
+		<label>11+ visits</label>
+		<nb_visits>5</nb_visits>
+		<nb_actions>13</nb_actions>
+		<sum_visit_length>64</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>1%</nb_visits_percentage>
+		<segment>visitCount&gt;=11</segment>
+	</row>
+	<row>
+		<label>12+ visits</label>
+		<nb_visits>2</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>0%</nb_visits_percentage>
+		<segment>visitCount&gt;=12</segment>
+	</row>
+	<row>
+		<label>13+ visits</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>8</nb_actions>
+		<sum_visit_length>1</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>4</nb_conversions>
-		<revenue>24994.0</revenue>
+		<nb_conversions>1</nb_conversions>
+		<revenue>13877.0</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -80,12 +196,25 @@
 				<revenue>0</revenue>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
-		<nb_visits_percentage>1%</nb_visits_percentage>
-		<segment>visitCount&gt;=3</segment>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>0%</nb_visits_percentage>
+		<segment>visitCount&gt;=13</segment>
 	</row>
 	<row>
-		<label>4+ visits</label>
+		<label>14+ visits</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>9</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>0%</nb_visits_percentage>
+		<segment>visitCount&gt;=14</segment>
+	</row>
+	<row>
+		<label>15+ visits</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -95,6 +224,144 @@
 		<revenue>0.0</revenue>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_visits_percentage>0%</nb_visits_percentage>
-		<segment>visitCount&gt;=4</segment>
+		<segment>visitCount&gt;=15</segment>
+	</row>
+	<row>
+		<label>5+ visits</label>
+		<nb_visits>23</nb_visits>
+		<nb_actions>104</nb_actions>
+		<sum_visit_length>90</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>12</nb_conversions>
+		<revenue>120652.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>4%</nb_visits_percentage>
+		<segment>visitCount&gt;=5</segment>
+	</row>
+	<row>
+		<label>6+ visits</label>
+		<nb_visits>22</nb_visits>
+		<nb_actions>118</nb_actions>
+		<sum_visit_length>1055</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>5</nb_visits_converted>
+		<nb_conversions>14</nb_conversions>
+		<revenue>128706.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>5</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>5</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>22</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>3%</nb_visits_percentage>
+		<segment>visitCount&gt;=6</segment>
+	</row>
+	<row>
+		<label>7+ visits</label>
+		<nb_visits>20</nb_visits>
+		<nb_actions>106</nb_actions>
+		<sum_visit_length>374</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>13</nb_conversions>
+		<revenue>115947.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>3%</nb_visits_percentage>
+		<segment>visitCount&gt;=7</segment>
+	</row>
+	<row>
+		<label>8+ visits</label>
+		<nb_visits>17</nb_visits>
+		<nb_actions>56</nb_actions>
+		<sum_visit_length>99</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>57108.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>3%</nb_visits_percentage>
+		<segment>visitCount&gt;=8</segment>
+	</row>
+	<row>
+		<label>9+ visits</label>
+		<nb_visits>12</nb_visits>
+		<nb_actions>49</nb_actions>
+		<sum_visit_length>138</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>6</nb_conversions>
+		<revenue>62438.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
+		<nb_visits_percentage>2%</nb_visits_percentage>
+		<segment>visitCount&gt;=9</segment>
 	</row>
 </result>

@@ -21,7 +21,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private $itemRecords;
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $this->queryEcommerce($day);
         $this->queryNumericRecords($day);
@@ -100,8 +100,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
 
-            // TODO: would be better to support this in GoogleAnalyticsQueryService, but there's no way to tell INDEX_GOAL_REVENUE is for
-            // the ecommerce goal...
+            // we don't use INDEX_GOAL_REVENUE in our query since there's no way to tell if it is for the ecommerce goal or not at the time of query.
+            // instead we compute it manually here.
             $totalRevenue = $row->getColumn(Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SHIPPING)
                 + $row->getColumn(Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SUBTOTAL)
                 + $row->getColumn(Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_TAX);

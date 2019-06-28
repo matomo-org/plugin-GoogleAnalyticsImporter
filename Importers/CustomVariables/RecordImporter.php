@@ -57,7 +57,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->importConfiguration = StaticContainer::get(ImportConfiguration::class);
     }
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $this->metadataFlat = [];
 
@@ -112,7 +112,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function querySiteSearchCategories(Date $day, DataTable $record)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:searchCategory'], $this->getActionMetrics());
+        $table = $gaQuery->query($day, $dimensions = ['ga:searchCategory'], array_merge($this->getConversionAwareVisitMetrics(), $this->getActionMetrics()));
 
         foreach ($table->getRows() as $row) {
             $searchCategory = $row->getMetadata('ga:searchCategory');
@@ -126,7 +126,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function queryEcommerce(Date $day, DataTable $record)
     {
         if (!Site::isEcommerceEnabledFor($this->getIdSite())) {
-            // TODO: log here
+            $this->getLogger()->info('Site is not marked as ecommerce in GA, skipping import of ecommerce category reports.');
             return;
         }
 

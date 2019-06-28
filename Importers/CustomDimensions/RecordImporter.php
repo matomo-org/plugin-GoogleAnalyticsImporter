@@ -36,7 +36,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->maximumRowsInSubDataTable = Config::getInstance()->General['datatable_archiving_maximum_rows_subtable_custom_variables'];
     }
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $idMapper = StaticContainer::get(IdMapper::class);
 
@@ -57,7 +57,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $record = new DataTable();
 
-        // TODO: should auto sort based on metrics requested
         $table = $gaQuery->query($day, $dimensions = [$dimension], $this->getVisitMetrics());
         foreach ($table->getRows() as $row) {
             $label = $row->getColumn($dimension);

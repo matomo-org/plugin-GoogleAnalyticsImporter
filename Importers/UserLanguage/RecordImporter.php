@@ -19,7 +19,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 {
     const PLUGIN_NAME = 'UserLanguage';
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $dimension = 'ga:language';
         $recordName = Archiver::LANGUAGE_RECORD_NAME;
@@ -35,7 +35,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
             if (empty($label)) {
-                $label = 'xx'; // TODO: is this the correct unknown value
+                $label = 'xx';
             }
 
             $langCode = Common::extractLanguageCodeFromBrowserLanguage($label);

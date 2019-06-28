@@ -2,31 +2,31 @@
 <result>
 	<row>
 		<label>0+ days</label>
-		<nb_visits>444</nb_visits>
-		<nb_actions>615</nb_actions>
-		<sum_visit_length>1597</sum_visit_length>
-		<bounce_count>59</bounce_count>
-		<nb_visits_converted>6</nb_visits_converted>
-		<nb_conversions>31</nb_conversions>
-		<revenue>159320</revenue>
+		<nb_visits>627</nb_visits>
+		<nb_actions>1387</nb_actions>
+		<sum_visit_length>7113</sum_visit_length>
+		<bounce_count>84</bounce_count>
+		<nb_visits_converted>32</nb_visits_converted>
+		<nb_conversions>119</nb_conversions>
+		<revenue>950376</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>16</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>2</nb_visits_converted>
+				<nb_visits_converted>15</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>14</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>2</nb_visits_converted>
+				<nb_visits_converted>13</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
+				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>422</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>456</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
 		<label>1+ days</label>

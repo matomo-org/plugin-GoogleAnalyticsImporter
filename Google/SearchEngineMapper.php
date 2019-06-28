@@ -36,7 +36,7 @@ class SearchEngineMapper
     public function mapSourceToSearchEngine($source)
     {
         if (empty(self::$sourcesToSearchEngines[$source])) {
-            $this->logger->warning("Unknown search engine source received from Google Analytics: $source"); // TODO: directions to create issue
+            $this->logger->warning("Unknown search engine source received from Google Analytics: $source");
             return $source;
         }
 

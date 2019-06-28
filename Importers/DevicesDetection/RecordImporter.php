@@ -12,7 +12,9 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\DevicesDetection;
 use DeviceDetector\Parser\Client\Browser;
 use DeviceDetector\Parser\Device\DeviceParserAbstract;
 use DeviceDetector\Parser\OperatingSystem;
+use Piwik\Cache\Transient;
 use Piwik\Common;
+use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Plugins\DevicesDetection\Archiver;
@@ -38,26 +40,23 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
      */
     private $browserMap;
 
+    /**
+     * @var Transient
+     */
+    private $cache;
+
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
 
-        $this->deviceBrandMap = $this->buildValueMapping(DeviceParserAbstract::$deviceBrands);
+        $this->cache = StaticContainer::get(Transient::class);
 
-        $operatingSystems = OperatingSystem::getAvailableOperatingSystems();
-        $this->operatingSystemMap = $this->buildValueMapping($operatingSystems);
-        $this->operatingSystemMap['linux'] = $this->operatingSystemMap['gnu/linux'];
-        $this->operatingSystemMap['macintosh'] = $this->operatingSystemMap['mac'];
-
-        $availableBrowsers = Browser::getAvailableBrowsers();
-        $this->browserMap = $this->buildValueMapping($availableBrowsers);
-        $this->browserMap['edge'] = $this->browserMap['microsoft edge'];
-        $this->browserMap['safari (in-app)'] = $this->browserMap['mobile safari'];
-        $this->browserMap['samsung internet'] = $this->browserMap['samsung browser'];
-        $this->browserMap['android webview'] = $this->browserMap['android browser'];
+        $this->deviceBrandMap = $this->getDeviceBrandMap();
+        $this->operatingSystemMap = $this->getOperatingSystemMap();
+        $this->browserMap = $this->getBrowserMap();
     }
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $this->buildDeviceTypeRecord($day);
         $this->buildDeviceBrandsRecord($day);
@@ -146,7 +145,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         Common::destroy($record);
     }
 
-    private function mapCategory($category)
+    protected function mapCategory($category)
     {
         switch ($category) {
             case 'desktop':
@@ -160,22 +159,22 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
     }
 
-    private function mapBrand($brand)
+    protected function mapBrand($brand)
     {
         return $this->getValueFromValueMapping($this->deviceBrandMap, $brand, 'device brand');
     }
 
-    private function mapModel($model)
+    protected function mapModel($model)
     {
         return $model;
     }
 
-    private function mapOs($os)
+    protected function mapOs($os)
     {
         return $this->getValueFromValueMapping($this->operatingSystemMap, $os, 'operating system');
     }
 
-    private function mapBrowser($browser)
+    protected function mapBrowser($browser)
     {
         if (is_numeric($browser)) {
             return 'xx'; // sometimes GA returns a numeric value for the browser (and no browser version). not sure why.
@@ -184,17 +183,16 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         return $this->getValueFromValueMapping($this->browserMap, $browser, 'browser');
     }
 
-    private function mapOsVersion($osVersion)
+    protected function mapOsVersion($osVersion)
     {
         return $osVersion;
     }
 
-    private function mapBrowserVersion($browserVersion)
+    protected function mapBrowserVersion($browserVersion)
     {
         return $browserVersion;
     }
 
-    // TODO: cache these in transient cache
     private function buildValueMapping($deviceParserValues)
     {
         $map = [];
@@ -216,5 +214,50 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
 
         return $value;
+    }
+
+    private function getDeviceBrandMap()
+    {
+        $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.deviceBrandMap';
+
+        $result = $this->cache->fetch($cacheKey);
+        if (empty($result)) {
+            $result = $this->buildValueMapping(DeviceParserAbstract::$deviceBrands);
+            $result['oukitel'] = $result['ouki'];
+            $this->cache->save($cacheKey, $result);
+        }
+        return $result;
+    }
+
+    private function getOperatingSystemMap()
+    {
+        $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.operatingSystemMap';
+
+        $operatingSystems = OperatingSystem::getAvailableOperatingSystems();
+        $result = $this->cache->fetch($cacheKey);
+        if (empty($result)) {
+            $result = $this->buildValueMapping($operatingSystems);
+            $result['linux'] = $result['gnu/linux'];
+            $result['macintosh'] = $result['mac'];
+            $this->cache->save($cacheKey, $result);
+        }
+        return $result;
+    }
+
+    private function getBrowserMap()
+    {
+        $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.browserMap';
+
+        $availableBrowsers = Browser::getAvailableBrowsers();
+        $result = $this->cache->fetch($cacheKey);
+        if (empty($result)) {
+            $result = $this->buildValueMapping($availableBrowsers);
+            $result['edge'] = $result['microsoft edge'];
+            $result['safari (in-app)'] = $result['mobile safari'];
+            $result['samsung internet'] = $result['samsung browser'];
+            $result['android webview'] = $result['android browser'];
+            $this->cache->save($cacheKey, $result);
+        }
+        return $result;
     }
 }

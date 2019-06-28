@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 
 use Google_Service_Analytics_Goal;
+use Piwik\API\Request;
 use Piwik\ArchiveProcessor\Parameters;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
@@ -67,6 +68,11 @@ class Importer
      */
     private $idMapper;
 
+    /**
+     * @var int
+     */
+    private $queryCount;
+
     public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, LoggerInterface $logger, GoogleGoalMapper $goalMapper,
                                 GoogleCustomDimensionMapper $customDimensionMapper, IdMapper $idMapper)
     {
@@ -123,9 +129,18 @@ class Importer
                 $goal = $this->goalMapper->mapManualGoal($gaGoal);
             }
 
-            // TODO: should probably use Request::processRequest here for hooks
-            $idGoal = GoalsAPI::getInstance()->addGoal($idSite, $gaGoal->getName(), $goal['match_attribute'], $goal['pattern'], $goal['pattern_type'],
-                $goal['case_sensitive'], $goal['revenue'], $goal['allow_multiple_conversions'], $goal['description'], $goal['use_event_value_as_revenue']);
+            $idGoal = Request::processRequest('Goals.addGoal', [
+                'idSite' => $idSite,
+                'name' => $gaGoal->getName(),
+                'matchAttribute' => $goal['match_attribute'],
+                'pattern' => $goal['pattern'],
+                'patternType' => $goal['pattern_type'],
+                'caseSensitive' => $goal['case_sensitive'],
+                'revenue' => $goal['revenue'],
+                'allowMultipleConversionsPerVisit' => $goal['allow_multiple_conversions'],
+                'description' => $goal['description'],
+                'useEventValueAsRevenue' => $goal['use_event_value_as_revenue'],
+            ], $default = []);
 
             if (!empty($goal['funnel'])) {
                 StaticContainer::get(\Piwik\Plugins\Funnels\Model\FunnelsModel::class)->clearGoalsCache();
@@ -140,8 +155,12 @@ class Importer
 
         /** @var \Google_Service_Analytics_CustomDimension $gaCustomDimension */
         foreach ($customDimensions->getItems() as $gaCustomDimension) {
-            preg_match('/ga:dimension([0-9]+)/', $gaCustomDimension->getId(), $matches);
-            $gaId = $matches[1]; // TODO: check the match was successful and log if not
+            if (!preg_match('/ga:dimension([0-9]+)/', $gaCustomDimension->getId(), $matches)) {
+                $this->logger->warning("Could not parse custom dimension ID from GA: {$gaCustomDimension->getId()}");
+                continue;
+            }
+
+            $gaId = $matches[1];
 
             try {
                 $customDimension = $this->customDimensionMapper->map($gaCustomDimension);
@@ -178,6 +197,8 @@ class Importer
 
     public function import($idSite, $viewId, Date $start, Date $end)
     {
+        $this->queryCount = 0;
+
         if ($start->getTimestamp() >= $end->getTimestamp()) {
             throw new \InvalidArgumentException("Invalid date range, start date is later than end date: {$start},{$end}");
         }
@@ -202,7 +223,7 @@ class Importer
                 ]);
 
                 $recordImporter->setArchiveWriter($archiveWriter);
-                $recordImporter->queryGoogleAnalyticsApi($date);
+                $recordImporter->importRecords($date);
             }
 
             $archiveWriter->finalizeArchive();
@@ -247,6 +268,9 @@ class Importer
         }
 
         $gaQuery = new GoogleAnalyticsQueryService($this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite);
+        $gaQuery->setOnQueryMade(function () {
+            ++$this->queryCount;
+        });
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {
@@ -267,5 +291,10 @@ class Importer
         }
 
         return $mapping;
+    }
+
+    public function getQueryCount()
+    {
+        return $this->queryCount;
     }
 }

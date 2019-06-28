@@ -44,6 +44,11 @@ class GoogleAnalyticsQueryService
      */
     private $idSite;
 
+    /**
+     * @var callable
+     */
+    private $onQueryMade;
+
     public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite)
     {
         $this->gaService = $gaService;
@@ -61,33 +66,34 @@ class GoogleAnalyticsQueryService
             $mappings = array_merge($mappings, $options['mappings']);
         }
 
-        $queries = $this->getQueriesToMake($metrics, $mappings);
+        $gaMetrics = $this->getMappedMetricsToQuery($metrics, $mappings);
 
         $date = $day->toString();
 
         $result = new DataTable();
-        foreach ($queries as $query) {
-            $gaMetrics = $query['metrics'];
-            $queryOptions = isset($query['options']) ? $query['options'] : [];
 
-            $metricNames = [];
-            foreach ($gaMetrics as $metricsList) {
-                foreach ($metricsList as $gaMetric) {
-                    $metricNames[] = $gaMetric;
-                }
-            }
-
-            // TODO: count api queries made in the import command
-            $metricNames = array_unique($metricNames);
-
-            foreach (array_chunk($metricNames, 9) as $chunk) {
-                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $queryOptions, $options));
-
-                usleep(100 * 1000);
-
-                $this->mergeResult($result, $chunkResponse, $gaMetrics, $dimensions, $chunk);
+        $metricNames = [];
+        foreach ($gaMetrics as $metricsList) {
+            foreach ($metricsList as $gaMetric) {
+                $metricNames[] = $gaMetric;
             }
         }
+
+        $metricNames = array_unique($metricNames);
+
+        foreach (array_chunk($metricNames, 9) as $chunk) {
+            $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
+
+            if ($this->onQueryMade) {
+                $callable = $this->onQueryMade;
+                $callable();
+            }
+
+            usleep(100 * 1000);
+
+            $this->mergeResult($result, $chunkResponse, $dimensions, $chunk);
+        }
+
         $this->convertGaColumnsToMetricIndexes($result, $metrics, $mappings);
 
         return $result;
@@ -131,9 +137,9 @@ class GoogleAnalyticsQueryService
         $result->setLabelsHaveChanged();
     }
 
-    private function getQueriesToMake($metrics, $mappings)
+    private function getMappedMetricsToQuery($metrics, $mappings)
     {
-        $queriesBySegment = [];
+        $mappedMetrics = [];
         foreach ($metrics as $index) {
             if (!isset($mappings[$index])) {
                 throw new \Exception("Don't know how to map metric index ${index} to GA metric.");
@@ -141,16 +147,7 @@ class GoogleAnalyticsQueryService
 
             $gaMetric = $mappings[$index];
 
-            $segment = '';
             $metric = $gaMetric;
-            if (isset($gaMetric['segment'])) {
-                $queriesBySegment[$segment]['options'] = [
-                    'segment' => $segment,
-                ];
-
-                $segment = json_encode($gaMetric['segment']);
-            }
-
             if (isset($gaMetric['metric'])) {
                 $metric = $gaMetric['metric'];
             }
@@ -159,14 +156,12 @@ class GoogleAnalyticsQueryService
                 $metric = [$metric];
             }
 
-            $queriesBySegment[$segment]['metrics'][$index] = $metric;
+            $mappedMetrics[$index] = $metric;
         }
-
-        return array_values($queriesBySegment);
+        return $mappedMetrics;
     }
 
-    // TODO: can probably make some of this code more efficient, and made more clear (it's very not clear).
-    private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaMetrics, $gaDimensions, $metricsQueried)
+    private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaDimensions, $metricsQueried)
     {
         /** @var \Google_Service_AnalyticsReporting_Report $gaReport */
         foreach ($response->getReports() as $gaReport) {
@@ -174,6 +169,14 @@ class GoogleAnalyticsQueryService
             foreach ($gaReport->getData()->getRows() as $gaRow) {
                 $tableRow = new DataTable\Row();
 
+                // convert GA row which is just array of values w/ integer indexes to matomo row
+                // mapping GA metric names => values
+                $gaRowMetrics = $gaRow->getMetrics()[0]->getValues();
+                $gaRowMetrics = array_combine($metricsQueried, $gaRowMetrics);
+                $tableRow->setColumns($gaRowMetrics);
+
+                // gather all dimensions to create the label column (we need to be able to find existing rows from dimensions
+                // so we combine these dimensions into a single label)
                 $label = [];
                 foreach (array_values($gaDimensions) as $index => $dimension) {
                     $labelValue = $gaRow->dimensions[$index] == '(not set)' ? null : $gaRow->dimensions[$index];
@@ -187,13 +190,6 @@ class GoogleAnalyticsQueryService
                     $tableRow->setColumn('label', $label);
                 }
 
-                $gaRowMetrics = $gaRow->getMetrics()[0]->getValues();
-                $gaRowMetrics = array_combine($metricsQueried, $gaRowMetrics);
-
-                foreach ($gaRowMetrics as $name => $value) {
-                    $tableRow->setColumn($name, $value);
-                }
-
                 $existingRow = empty($label) ? $table->getFirstRow() : $table->getRowFromLabel($label);
                 if (!empty($existingRow)) {
                     $existingRow->sumRow($tableRow);
@@ -204,7 +200,7 @@ class GoogleAnalyticsQueryService
         }
     }
 
-    public function getMetricIndicesToGaMetrics() // TODO: Move to GoogleMetrics class or something
+    public function getMetricIndicesToGaMetrics()
     {
         $goalSpecificMetrics = array_values($this->getEcommerceMetricIndicesToGaMetrics());
         foreach ($this->goalsMapping as $idGoal => $gaIdGoal) {
@@ -229,7 +225,7 @@ class GoogleAnalyticsQueryService
             Metrics::INDEX_NB_VISITS_CONVERTED => [
                 'metric' => ['ga:goalConversionRateAll', 'ga:sessions'],
                 'calculate' => function (Row $row) {
-                    return floor(self::getQuotientFromPercentage($row->getColumn('ga:goalConversionRateAll') * $row->getColumn('ga:sessions')));
+                    return self::calculateConvertedVisits($row, 'ga:goalConversionRateAll');
                 },
             ],
 
@@ -285,7 +281,7 @@ class GoogleAnalyticsQueryService
             Metrics::INDEX_ECOMMERCE_ITEM_REVENUE => 'ga:itemRevenue',
             Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY => 'ga:itemQuantity',
             Metrics::INDEX_ECOMMERCE_ITEM_PRICE => 'ga:revenuePerItem', // TODO: not sure how accurate this is
-            Metrics::INDEX_ECOMMERCE_ORDERS => 'ga:uniquePurchases', // TODO: is this right? I think so, not sure tough
+            Metrics::INDEX_ECOMMERCE_ORDERS => 'ga:uniquePurchases',
         ];
     }
 
@@ -300,7 +296,7 @@ class GoogleAnalyticsQueryService
                 if ($index == Metrics::INDEX_GOAL_NB_VISITS_CONVERTED
                     && $row->getColumn($gaName) !== false
                 ) {
-                    $value = floor(self::getQuotientFromPercentage($row->getColumn($gaName)) * $row->getColumn('ga:sessions')); // TODO: code redundancy w/ above
+                    $value = self::calculateConvertedVisits($row, $gaName);
                 } else {
                     $value = $row->getColumn($gaName);
                 }
@@ -358,9 +354,14 @@ class GoogleAnalyticsQueryService
         $request->setSegments($segments);
         $request->setMetrics($metrics);
 
-        if (isset($options['orderBys'])) {
-            $request->setOrderBys($this->makeGaOrderBys($options['orderBys']));
+        if (!isset($options['orderBys'])) {
+            $options['orderBys'][] = [
+                'field' => 'ga:sessions',
+                'order' => 'descending',
+            ];
         }
+
+        $request->setOrderBys($this->makeGaOrderBys($options['orderBys']));
 
         $getReport = new \Google_Service_AnalyticsReporting_GetReportsRequest();
         $getReport->setReportRequests([$request]);
@@ -446,5 +447,18 @@ class GoogleAnalyticsQueryService
             $orderBy->setSortOrder(strtoupper($orderByInfo['order']));
         }
         return $gaOrderBys;
+    }
+
+    /**
+     * @param callable $onQueryMade
+     */
+    public function setOnQueryMade($onQueryMade)
+    {
+        $this->onQueryMade = $onQueryMade;
+    }
+
+    private static function calculateConvertedVisits(Row $row, $gaName)
+    {
+        return floor(self::getQuotientFromPercentage($row->getColumn($gaName)) * $row->getColumn('ga:sessions'));
     }
 }

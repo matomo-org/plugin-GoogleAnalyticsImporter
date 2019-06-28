@@ -2,22 +2,51 @@
 <result>
 	<row>
 		<label>0-10s</label>
-		<nb_visits>436</nb_visits>
-		<nb_actions>579</nb_actions>
-		<sum_visit_length>18</sum_visit_length>
-		<bounce_count>60</bounce_count>
-		<nb_visits_converted>4</nb_visits_converted>
-		<nb_conversions>28</nb_conversions>
-		<revenue>152421</revenue>
-		<sum_daily_nb_uniq_visitors>420</sum_daily_nb_uniq_visitors>
+		<nb_visits>580</nb_visits>
+		<nb_actions>1121</nb_actions>
+		<sum_visit_length>28</sum_visit_length>
+		<bounce_count>85</bounce_count>
+		<nb_visits_converted>23</nb_visits_converted>
+		<nb_conversions>94</nb_conversions>
+		<revenue>743111</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>12</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>11</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>11</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>9</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>453</sum_daily_nb_uniq_visitors>
+		<segment>visitDuration&gt;=0;visitDuration&lt;=10</segment>
+	</row>
+	<row>
+		<label>11-30s</label>
+		<nb_visits>7</nb_visits>
+		<nb_actions>37</nb_actions>
+		<sum_visit_length>120</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>24882</revenue>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
@@ -27,47 +56,52 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
-		<segment>visitDuration&gt;=0;visitDuration&lt;=10</segment>
-	</row>
-	<row>
-		<label>11-30s</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>12</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
 	</row>
 	<row>
 		<label>31-60s</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>96</sum_visit_length>
+		<nb_visits>17</nb_visits>
+		<nb_actions>98</nb_actions>
+		<sum_visit_length>748</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>8</nb_conversions>
+		<revenue>91811</revenue>
+		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
 		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
 	</row>
 	<row>
 		<label>1-2 min</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>11</nb_actions>
-		<sum_visit_length>300</sum_visit_length>
+		<nb_visits>12</nb_visits>
+		<nb_actions>67</nb_actions>
+		<sum_visit_length>1045</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>2</nb_visits_converted>
-		<nb_conversions>2</nb_conversions>
-		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>7</nb_conversions>
+		<revenue>49288</revenue>
+		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>2</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>1</nb_conversions>
@@ -83,26 +117,38 @@
 		<segment>visitDuration&gt;=60;visitDuration&lt;=120</segment>
 	</row>
 	<row>
-		<label>4-7 min</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>641</sum_visit_length>
+		<label>2-4 min</label>
+		<nb_visits>8</nb_visits>
+		<nb_actions>47</nb_actions>
+		<sum_visit_length>1189</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=240;visitDuration&lt;=420</segment>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
+		<revenue>25732</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
+		<segment>visitDuration&gt;=120;visitDuration&lt;=240</segment>
 	</row>
 	<row>
-		<label>10-15 min</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>14</nb_actions>
-		<sum_visit_length>791</sum_visit_length>
+		<label>4-7 min</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>16</nb_actions>
+		<sum_visit_length>904</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
-		<revenue>6899.0</revenue>
+		<revenue>15552</revenue>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -114,7 +160,18 @@
 				<revenue>0</revenue>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=600;visitDuration&lt;=900</segment>
+		<segment>visitDuration&gt;=240;visitDuration&lt;=420</segment>
+	</row>
+	<row>
+		<label>15-30 min</label>
+		<nb_visits>2</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>3340</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<segment>visitDuration&gt;=900;visitDuration&lt;=1800</segment>
 	</row>
 </result>

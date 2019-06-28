@@ -12,15 +12,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 use Piwik\Container\StaticContainer;
 use Psr\Log\LoggerInterface;
 
-/*
- - map each goal, for ones we can't map, set to 'manual' (ask about funnels)
- - return summary (imported vs not)
- - add google analytics goal id to description
- - test site/goal import
-- TODO: add a --reimport-goals option to command
-- TODO: if site already exists, must find google analytics mapped goal IDs via goal manager
- */
-
 class GoogleGoalMapper
 {
     const FUNNELS_URL = 'https://plugins.matomo.org/Funnels';
@@ -129,7 +120,7 @@ class GoogleGoalMapper
         $result['pattern'] = $visitDurationGoalDetails->getComparisonValue();
     }
 
-    public function mapManualGoal(\Google_Service_Analytics_Goal $gaGoal) // TODO: output logs in parent class
+    public function mapManualGoal(\Google_Service_Analytics_Goal $gaGoal)
     {
         $result = $this->mapBasicGoalProperties($gaGoal);
         $result['match_attribute'] = 'manually';

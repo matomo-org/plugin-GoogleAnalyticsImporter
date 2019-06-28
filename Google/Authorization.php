@@ -49,7 +49,7 @@ class Authorization
     {
         $value = @json_encode($config, true);
         if (empty($value)) {
-            throw new \Exception('Invalid JSON in credentials file, try re-downloading the file from the Google API Console.'); // TODO: translate
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_InvalidClientJson'));
         }
     }
 
@@ -97,12 +97,12 @@ class Authorization
         try {
             @$client->setAuthConfig($clientConfig);
         } catch (\Exception $e) {
-            throw new \Exception('Missing client configuration.'); // TODO: translate/handle
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
         }
 
         // no client config available
         if (!$client->getClientId() || !$client->getClientSecret()) {
-            throw new \Exception('Missing client configuration.'); // TODO: translate/handle
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
         }
 
         $accessToken = $this->getAccessToken();

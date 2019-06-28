@@ -18,12 +18,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 {
     const PLUGIN_NAME = 'VisitTime';
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $this->queryDimension($day, 'ga:hour', Archiver::LOCAL_TIME_RECORD_NAME);
     }
 
-    // TODO: definitely could put this method into the base class and reuse in a couple importers
     private function queryDimension(Date $day, $dimension, $recordName)
     {
         $record = new DataTable();

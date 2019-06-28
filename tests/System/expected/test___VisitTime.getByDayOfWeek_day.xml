@@ -17,18 +17,18 @@
 	</row>
 	<row>
 		<label>Thursday</label>
-		<nb_visits>44</nb_visits>
-		<nb_uniq_visitors>26</nb_uniq_visitors>
-		<nb_actions>159</nb_actions>
-		<nb_users>0</nb_users>
-		<sum_visit_length>524</sum_visit_length>
-		<bounce_count>8</bounce_count>
-		<nb_visits_converted>6</nb_visits_converted>
+		<nb_visits>0</nb_visits>
 		<day_of_week>4</day_of_week>
 	</row>
 	<row>
 		<label>Friday</label>
-		<nb_visits>0</nb_visits>
+		<nb_visits>196</nb_visits>
+		<nb_uniq_visitors>46</nb_uniq_visitors>
+		<nb_actions>799</nb_actions>
+		<nb_users>0</nb_users>
+		<sum_visit_length>6312</sum_visit_length>
+		<bounce_count>36</bounce_count>
+		<nb_visits_converted>26</nb_visits_converted>
 		<day_of_week>5</day_of_week>
 	</row>
 	<row>

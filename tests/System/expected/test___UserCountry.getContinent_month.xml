@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>North America</label>
+		<nb_visits>352</nb_visits>
+		<nb_actions>526</nb_actions>
+		<sum_visit_length>688</sum_visit_length>
+		<bounce_count>15</bounce_count>
+		<nb_visits_converted>7</nb_visits_converted>
+		<nb_conversions>28</nb_conversions>
+		<revenue>214763</revenue>
+		<sum_daily_nb_uniq_visitors>326</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>5</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<code>North America</code>
+	</row>
+	<row>
+		<label>Europe</label>
+		<nb_visits>157</nb_visits>
+		<nb_actions>465</nb_actions>
+		<sum_visit_length>5172</sum_visit_length>
+		<bounce_count>47</bounce_count>
+		<nb_visits_converted>14</nb_visits_converted>
+		<nb_conversions>49</nb_conversions>
+		<revenue>402013</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>6</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>5</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>6</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>5</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>128</sum_daily_nb_uniq_visitors>
+		<code>Europe</code>
+	</row>
+	<row>
+		<label>Asia</label>
+		<nb_visits>70</nb_visits>
+		<nb_actions>262</nb_actions>
+		<sum_visit_length>831</sum_visit_length>
+		<bounce_count>7</bounce_count>
+		<nb_visits_converted>6</nb_visits_converted>
+		<nb_conversions>29</nb_conversions>
+		<revenue>230378</revenue>
+		<sum_daily_nb_uniq_visitors>64</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>4</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>4</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<code>Asia</code>
+	</row>
+	<row>
+		<label>Unknown</label>
+		<nb_visits>44</nb_visits>
+		<nb_actions>129</nb_actions>
+		<sum_visit_length>303</sum_visit_length>
+		<bounce_count>11</bounce_count>
+		<nb_visits_converted>4</nb_visits_converted>
+		<nb_conversions>13</nb_conversions>
+		<revenue>103222</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>29</sum_daily_nb_uniq_visitors>
+		<code>Unknown</code>
+	</row>
+	<row>
+		<label>Africa</label>
+		<nb_visits>5</nb_visits>
+		<nb_actions>7</nb_actions>
+		<sum_visit_length>380</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
+		<code>Africa</code>
+	</row>
+	<row>
+		<label>Oceania</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<code>Oceania</code>
+	</row>
+</result>

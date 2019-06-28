@@ -2,24 +2,24 @@
 <result>
 	<row>
 		<label>0-10s</label>
-		<nb_uniq_visitors>24</nb_uniq_visitors>
-		<nb_visits>38</nb_visits>
-		<nb_actions>141</nb_actions>
-		<sum_visit_length>13</sum_visit_length>
-		<bounce_count>8</bounce_count>
-		<nb_visits_converted>4</nb_visits_converted>
-		<nb_conversions>16</nb_conversions>
-		<revenue>75333</revenue>
+		<nb_uniq_visitors>45</nb_uniq_visitors>
+		<nb_visits>156</nb_visits>
+		<nb_actions>555</nb_actions>
+		<sum_visit_length>15</sum_visit_length>
+		<bounce_count>36</bounce_count>
+		<nb_visits_converted>19</nb_visits_converted>
+		<nb_conversions>66</nb_conversions>
+		<revenue>590690</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>10</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>9</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>8</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -31,38 +31,14 @@
 	</row>
 	<row>
 		<label>11-30s</label>
-		<nb_uniq_visitors>1</nb_uniq_visitors>
-		<nb_visits>1</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>12</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
-	</row>
-	<row>
-		<label>31-60s</label>
-		<nb_uniq_visitors>2</nb_uniq_visitors>
-		<nb_visits>2</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>96</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
-	</row>
-	<row>
-		<label>1-2 min</label>
-		<nb_uniq_visitors>2</nb_uniq_visitors>
-		<nb_visits>2</nb_visits>
-		<nb_actions>7</nb_actions>
-		<sum_visit_length>142</sum_visit_length>
+		<nb_uniq_visitors>6</nb_uniq_visitors>
+		<nb_visits>6</nb_visits>
+		<nb_actions>33</nb_actions>
+		<sum_visit_length>108</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>2</nb_visits_converted>
-		<nb_conversions>2</nb_conversions>
-		<revenue>0</revenue>
+		<nb_conversions>4</nb_conversions>
+		<revenue>24882</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>1</nb_conversions>
@@ -80,18 +56,116 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
+		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
+	</row>
+	<row>
+		<label>31-60s</label>
+		<nb_uniq_visitors>15</nb_uniq_visitors>
+		<nb_visits>15</nb_visits>
+		<nb_actions>93</nb_actions>
+		<sum_visit_length>652</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>8</nb_conversions>
+		<revenue>91811</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
+	</row>
+	<row>
+		<label>1-2 min</label>
+		<nb_uniq_visitors>8</nb_uniq_visitors>
+		<nb_visits>8</nb_visits>
+		<nb_actions>56</nb_actions>
+		<sum_visit_length>745</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>5</nb_conversions>
+		<revenue>49288</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
 		<segment>visitDuration&gt;=60;visitDuration&lt;=120</segment>
+	</row>
+	<row>
+		<label>2-4 min</label>
+		<nb_uniq_visitors>8</nb_uniq_visitors>
+		<nb_visits>8</nb_visits>
+		<nb_actions>47</nb_actions>
+		<sum_visit_length>1189</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
+		<revenue>25732</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<segment>visitDuration&gt;=120;visitDuration&lt;=240</segment>
 	</row>
 	<row>
 		<label>4-7 min</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>261</sum_visit_length>
+		<nb_actions>11</nb_actions>
+		<sum_visit_length>263</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
+		<nb_conversions>1</nb_conversions>
+		<revenue>15552.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
 		<segment>visitDuration&gt;=240;visitDuration&lt;=420</segment>
+	</row>
+	<row>
+		<label>15-30 min</label>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
+		<nb_visits>2</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>3340</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>0</revenue>
+		<segment>visitDuration&gt;=900;visitDuration&lt;=1800</segment>
 	</row>
 </result>

@@ -1,6 +1,8 @@
 {
   "GoogleAnalyticsImporter": {
     "AdminMenuTitle": "Google Analytics Import",
-    "ConfigureTheImporter": "Configure the Importer"
+    "ConfigureTheImporter": "Configure the Importer",
+    "InvalidClientJson": "Invalid JSON in credentials file, try re-downloading the file from the Google API Console.",
+    "MissingClientConfiguration": "Missing client configuration."
   }
 }

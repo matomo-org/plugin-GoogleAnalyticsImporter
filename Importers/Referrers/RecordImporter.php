@@ -45,7 +45,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     {
         parent::__construct($gaQuery, $idSite, $logger);
 
-        // TODO: code redundancy w/ referrers
         $this->columnToSortByBeforeTruncation = Metrics::INDEX_NB_VISITS;
 
         // Reading pre 2.0 config file settings
@@ -59,7 +58,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->searchEngineMapper = StaticContainer::get(SearchEngineMapper::class);
     }
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $this->referrerTypeRecord = new DataTable();
 
@@ -162,7 +161,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 continue;
             }
 
+            // skip if this isn't a URL
             if (strrpos($referrerUrl, '/') !== strlen($referrerUrl) - 1) {
+                $this->getLogger()->debug("Non referrer URL encountered: $referrerUrl");
                 continue;
             }
 

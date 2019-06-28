@@ -16,6 +16,7 @@ use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugins\CustomVariables\Model;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DimensionMapper;
+use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\SettingsPiwik;
@@ -79,7 +80,8 @@ class ImportReports extends ConsoleCommand
 
         $importer->import($idSite, $viewId, $dates[0], $dates[1]);
 
-        $output->writeln("Done in $timer.");
+        $queryCount = $importer->getQueryCount();
+        $output->writeln("Done in $timer. [$queryCount API requests made to GA]");
     }
 
     private function getViewId(InputInterface $input, OutputInterface $output, \Google_Service_Analytics $service)
@@ -97,7 +99,6 @@ class ImportReports extends ConsoleCommand
             throw new \Exception("Either a single --view or both --property and --account must be supplied.");
         }
 
-        // TODO: detect authorization issues & print required ID
         $profiles = $service->management_profiles->listManagementProfiles($accountId, $propertyId);
 
         /** @var \Google_Service_Analytics_Profile $profile */

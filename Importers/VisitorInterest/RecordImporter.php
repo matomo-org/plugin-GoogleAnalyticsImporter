@@ -19,7 +19,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 {
     const PLUGIN_NAME = 'VisitorInterest';
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $this->queryDimension($day, 'ga:sessionCount', Archiver::VISITS_COUNT_RECORD_NAME);
         $this->queryDimension($day, 'ga:daysSinceLastSession', Archiver::DAYS_SINCE_LAST_RECORD_NAME);

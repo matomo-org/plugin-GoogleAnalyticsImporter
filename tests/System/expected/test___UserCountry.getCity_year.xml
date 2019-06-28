@@ -23,44 +23,100 @@
 		<sum_daily_nb_uniq_visitors>265</sum_daily_nb_uniq_visitors>
 		<lat>47.606</lat>
 		<long>-122.332</long>
-		<segment>city==Seattle;regionCode==WA;countryCode==US</segment>
+		<segment>city==Seattle;regionCode==WA;countryCode==us</segment>
 		<city_name>Seattle</city_name>
 		<region>WA</region>
-		<country>US</country>
+		<country>us</country>
 		<country_name>United States</country_name>
 		<region_name>Washington</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/US.png</logo>
-	</row>
-	<row>
-		<label>Unknown, British Columbia, Canada</label>
-		<nb_visits>19</nb_visits>
-		<nb_actions>19</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>19</sum_daily_nb_uniq_visitors>
-		<lat>0</lat>
-		<long>0</long>
-		<segment>city==;regionCode==BC;countryCode==CA</segment>
-		<city_name>Unknown</city_name>
-		<city>xx</city>
-		<region>BC</region>
-		<country>CA</country>
-		<country_name>Canada</country_name>
-		<region_name>British Columbia</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/CA.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/us.png</logo>
 	</row>
 	<row>
 		<label>Unknown, Canada</label>
-		<nb_visits>16</nb_visits>
-		<nb_actions>53</nb_actions>
+		<nb_visits>44</nb_visits>
+		<nb_actions>179</nb_actions>
+		<sum_visit_length>563</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>4</nb_visits_converted>
+		<nb_conversions>17</nb_conversions>
+		<revenue>163201.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
+		<lat>0</lat>
+		<long>0</long>
+		<segment>city==;regionCode==;countryCode==ca</segment>
+		<city_name>Unknown</city_name>
+		<city>xx</city>
+		<region>xx</region>
+		<country>ca</country>
+		<country_name>Canada</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/ca.png</logo>
+	</row>
+	<row>
+		<label>Unknown, Unknown</label>
+		<nb_visits>44</nb_visits>
+		<nb_actions>129</nb_actions>
+		<sum_visit_length>303</sum_visit_length>
+		<bounce_count>11</bounce_count>
+		<nb_visits_converted>4</nb_visits_converted>
+		<nb_conversions>13</nb_conversions>
+		<revenue>103222</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>29</sum_daily_nb_uniq_visitors>
+		<lat>0</lat>
+		<long>0</long>
+		<segment>city==;regionCode==;countryCode==zz</segment>
+		<city_name>Unknown</city_name>
+		<city>xx</city>
+		<region>xx</region>
+		<country>zz</country>
+		<country_name>Unknown</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/xx.png</logo>
+	</row>
+	<row>
+		<label>Unknown, British Columbia, Canada</label>
+		<nb_visits>35</nb_visits>
+		<nb_actions>72</nb_actions>
 		<sum_visit_length>81</sum_visit_length>
 		<bounce_count>4</bounce_count>
 		<nb_visits_converted>3</nb_visits_converted>
 		<nb_conversions>7</nb_conversions>
 		<revenue>24550</revenue>
+		<sum_daily_nb_uniq_visitors>33</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>2</nb_conversions>
@@ -78,110 +134,26 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>14</sum_daily_nb_uniq_visitors>
 		<lat>0</lat>
 		<long>0</long>
-		<segment>city==;regionCode==;countryCode==CA</segment>
+		<segment>city==;regionCode==BC;countryCode==ca</segment>
 		<city_name>Unknown</city_name>
 		<city>xx</city>
-		<region>xx</region>
-		<country>CA</country>
+		<region>BC</region>
+		<country>ca</country>
 		<country_name>Canada</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/CA.png</logo>
+		<region_name>British Columbia</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/ca.png</logo>
 	</row>
 	<row>
-		<label>Unknown, Unknown</label>
-		<nb_visits>13</nb_visits>
-		<nb_actions>21</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>5</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>2</nb_conversions>
-		<revenue>10481</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>13</sum_daily_nb_uniq_visitors>
-		<lat>0</lat>
-		<long>0</long>
-		<segment>city==;regionCode==;countryCode==ZZ</segment>
-		<city_name>Unknown</city_name>
-		<city>xx</city>
-		<region>xx</region>
-		<country>ZZ</country>
-		<country_name>Unknown</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/xx.png</logo>
-	</row>
-	<row>
-		<label>Denpasar, Bali, Indonesia</label>
-		<nb_visits>12</nb_visits>
-		<nb_actions>12</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>7714.0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
-		<lat>-8.671</lat>
-		<long>115.213</long>
-		<segment>city==Denpasar;regionCode==BA;countryCode==ID</segment>
-		<city_name>Denpasar</city_name>
-		<region>BA</region>
-		<country>ID</country>
-		<country_name>Indonesia</country_name>
-		<region_name>Bali</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/ID.png</logo>
-	</row>
-	<row>
-		<label>Suzhou, Sichuan, China</label>
-		<nb_visits>12</nb_visits>
-		<nb_actions>12</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
-		<lat>31.299</lat>
-		<long>120.585</long>
-		<segment>city==Suzhou;regionCode==32;countryCode==CN</segment>
-		<city_name>Suzhou</city_name>
-		<region>32</region>
-		<country>CN</country>
-		<country_name>China</country_name>
-		<region_name>Sichuan</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/CN.png</logo>
-	</row>
-	<row>
-		<label>Wurzburg, Bayern, Germany</label>
-		<nb_visits>12</nb_visits>
-		<nb_actions>12</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
+		<label>Besancon, France</label>
+		<nb_visits>26</nb_visits>
+		<nb_actions>121</nb_actions>
+		<sum_visit_length>238</sum_visit_length>
 		<bounce_count>2</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>6612.0</revenue>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>14</nb_conversions>
+		<revenue>122581.0</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -189,70 +161,110 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
-		<lat>49.791</lat>
-		<long>9.953</long>
-		<segment>city==Wurzburg;regionCode==BY;countryCode==DE</segment>
-		<city_name>Wurzburg</city_name>
-		<region>BY</region>
-		<country>DE</country>
-		<country_name>Germany</country_name>
-		<region_name>Bayern</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/DE.png</logo>
-	</row>
-	<row>
-		<label>Rome, Lazio, Italy</label>
-		<nb_visits>11</nb_visits>
-		<nb_actions>11</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
-		<lat>41.903</lat>
-		<long>12.496</long>
-		<segment>city==Rome;regionCode==62;countryCode==IT</segment>
-		<city_name>Rome</city_name>
-		<region>62</region>
-		<country>IT</country>
-		<country_name>Italy</country_name>
-		<region_name>Lazio</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/IT.png</logo>
-	</row>
-	<row>
-		<label>Besancon, Bourgogne-Franche-Comté, France</label>
-		<nb_visits>8</nb_visits>
-		<nb_actions>8</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
 		<lat>47.238</lat>
 		<long>6.024</long>
-		<segment>city==Besancon;regionCode==BFC;countryCode==FR</segment>
+		<segment>city==Besancon;regionCode==;countryCode==fr</segment>
 		<city_name>Besancon</city_name>
-		<region>BFC</region>
-		<country>FR</country>
+		<region>xx</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Bourgogne-Franche-Comté</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Wurzburg, Germany</label>
+		<nb_visits>23</nb_visits>
+		<nb_actions>104</nb_actions>
+		<sum_visit_length>417</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>5</nb_visits_converted>
+		<nb_conversions>14</nb_conversions>
+		<revenue>116740.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>4</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>14</sum_daily_nb_uniq_visitors>
+		<lat>49.791</lat>
+		<long>9.953</long>
+		<segment>city==Wurzburg;regionCode==;countryCode==de</segment>
+		<city_name>Wurzburg</city_name>
+		<region>xx</region>
+		<country>de</country>
+		<country_name>Germany</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/de.png</logo>
 	</row>
 	<row>
 		<label>Denpasar, Indonesia</label>
-		<nb_visits>7</nb_visits>
-		<nb_actions>36</nb_actions>
+		<nb_visits>20</nb_visits>
+		<nb_actions>122</nb_actions>
+		<sum_visit_length>697</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>14</nb_conversions>
+		<revenue>141034.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>15</sum_daily_nb_uniq_visitors>
+		<lat>-8.671</lat>
+		<long>115.213</long>
+		<segment>city==Denpasar;regionCode==;countryCode==id</segment>
+		<city_name>Denpasar</city_name>
+		<region>xx</region>
+		<country>id</country>
+		<country_name>Indonesia</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/id.png</logo>
+	</row>
+	<row>
+		<label>Denpasar, Bali, Indonesia</label>
+		<nb_visits>19</nb_visits>
+		<nb_actions>48</nb_actions>
 		<sum_visit_length>71</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>4</nb_conversions>
-		<revenue>19246</revenue>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>5</nb_conversions>
+		<revenue>26960</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -270,26 +282,27 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>19</sum_daily_nb_uniq_visitors>
 		<lat>-8.671</lat>
 		<long>115.213</long>
-		<segment>city==Denpasar;regionCode==;countryCode==ID</segment>
+		<segment>city==Denpasar;regionCode==BA;countryCode==id</segment>
 		<city_name>Denpasar</city_name>
-		<region>xx</region>
-		<country>ID</country>
+		<region>BA</region>
+		<country>id</country>
 		<country_name>Indonesia</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/ID.png</logo>
+		<region_name>Bali</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/id.png</logo>
 	</row>
 	<row>
-		<label>Suzhou, China</label>
-		<nb_visits>6</nb_visits>
-		<nb_actions>30</nb_actions>
+		<label>Suzhou, Sichuan, China</label>
+		<nb_visits>18</nb_visits>
+		<nb_actions>42</nb_actions>
 		<sum_visit_length>2</sum_visit_length>
-		<bounce_count>1</bounce_count>
+		<bounce_count>2</bounce_count>
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>4</nb_conversions>
 		<revenue>18158</revenue>
+		<sum_daily_nb_uniq_visitors>18</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>1</nb_conversions>
@@ -301,46 +314,94 @@
 				<revenue>0</revenue>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
 		<lat>31.299</lat>
 		<long>120.585</long>
-		<segment>city==Suzhou;regionCode==;countryCode==CN</segment>
+		<segment>city==Suzhou;regionCode==32;countryCode==cn</segment>
 		<city_name>Suzhou</city_name>
-		<region>xx</region>
-		<country>CN</country>
+		<region>32</region>
+		<country>cn</country>
 		<country_name>China</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/CN.png</logo>
-	</row>
-	<row>
-		<label>Paris, Île-de-France, France</label>
-		<nb_visits>5</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>5</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-		<lat>48.857</lat>
-		<long>2.352</long>
-		<segment>city==Paris;regionCode==IDF;countryCode==FR</segment>
-		<city_name>Paris</city_name>
-		<region>IDF</region>
-		<country>FR</country>
-		<country_name>France</country_name>
-		<region_name>Île-de-France</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Sichuan</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/cn.png</logo>
 	</row>
 	<row>
 		<label>Rome, Italy</label>
-		<nb_visits>5</nb_visits>
-		<nb_actions>24</nb_actions>
+		<nb_visits>17</nb_visits>
+		<nb_actions>85</nb_actions>
+		<sum_visit_length>280</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>11</nb_conversions>
+		<revenue>117432.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
+		<lat>41.903</lat>
+		<long>12.496</long>
+		<segment>city==Rome;regionCode==;countryCode==it</segment>
+		<city_name>Rome</city_name>
+		<region>xx</region>
+		<country>it</country>
+		<country_name>Italy</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/it.png</logo>
+	</row>
+	<row>
+		<label>Wurzburg, Bayern, Germany</label>
+		<nb_visits>17</nb_visits>
+		<nb_actions>28</nb_actions>
+		<sum_visit_length>38</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>15068</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
+		<lat>49.791</lat>
+		<long>9.953</long>
+		<segment>city==Wurzburg;regionCode==BY;countryCode==de</segment>
+		<city_name>Wurzburg</city_name>
+		<region>BY</region>
+		<country>de</country>
+		<country_name>Germany</country_name>
+		<region_name>Bayern</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/de.png</logo>
+	</row>
+	<row>
+		<label>Rome, Lazio, Italy</label>
+		<nb_visits>16</nb_visits>
+		<nb_actions>35</nb_actions>
 		<sum_visit_length>12</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>3</nb_conversions>
-		<revenue>10665.0</revenue>
+		<revenue>10665</revenue>
+		<sum_daily_nb_uniq_visitors>15</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -358,57 +419,63 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
 		<lat>41.903</lat>
 		<long>12.496</long>
-		<segment>city==Rome;regionCode==;countryCode==IT</segment>
+		<segment>city==Rome;regionCode==62;countryCode==it</segment>
 		<city_name>Rome</city_name>
-		<region>xx</region>
-		<country>IT</country>
+		<region>62</region>
+		<country>it</country>
 		<country_name>Italy</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/IT.png</logo>
+		<region_name>Lazio</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/it.png</logo>
 	</row>
 	<row>
-		<label>Wurzburg, Germany</label>
-		<nb_visits>5</nb_visits>
-		<nb_actions>16</nb_actions>
-		<sum_visit_length>38</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>8456</revenue>
-		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
+		<label>Suzhou, China</label>
+		<nb_visits>13</nb_visits>
+		<nb_actions>50</nb_actions>
+		<sum_visit_length>61</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>6</nb_conversions>
+		<revenue>44226.0</revenue>
 		<goals>
 			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
 		</goals>
-		<lat>49.791</lat>
-		<long>9.953</long>
-		<segment>city==Wurzburg;regionCode==;countryCode==DE</segment>
-		<city_name>Wurzburg</city_name>
+		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
+		<lat>31.299</lat>
+		<long>120.585</long>
+		<segment>city==Suzhou;regionCode==;countryCode==cn</segment>
+		<city_name>Suzhou</city_name>
 		<region>xx</region>
-		<country>DE</country>
-		<country_name>Germany</country_name>
+		<country>cn</country>
+		<country_name>China</country_name>
 		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/DE.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/cn.png</logo>
 	</row>
 	<row>
-		<label>Besancon, France</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>27</nb_actions>
+		<label>Besancon, Bourgogne-Franche-Comté, France</label>
+		<nb_visits>12</nb_visits>
+		<nb_actions>35</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>3</nb_conversions>
 		<revenue>19527</revenue>
+		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -420,19 +487,58 @@
 				<revenue>0</revenue>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
 		<lat>47.238</lat>
 		<long>6.024</long>
-		<segment>city==Besancon;regionCode==;countryCode==FR</segment>
+		<segment>city==Besancon;regionCode==BFC;countryCode==fr</segment>
 		<city_name>Besancon</city_name>
-		<region>xx</region>
-		<country>FR</country>
+		<region>BFC</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Bourgogne-Franche-Comté</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Chicago, United States</label>
+		<label>Paris, France</label>
+		<nb_visits>10</nb_visits>
+		<nb_actions>13</nb_actions>
+		<sum_visit_length>3392</sum_visit_length>
+		<bounce_count>7</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
+		<lat>48.857</lat>
+		<long>2.352</long>
+		<segment>city==Paris;regionCode==;countryCode==fr</segment>
+		<city_name>Paris</city_name>
+		<region>xx</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Paris, Île-de-France, France</label>
+		<nb_visits>7</nb_visits>
+		<nb_actions>7</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>7</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
+		<lat>48.857</lat>
+		<long>2.352</long>
+		<segment>city==Paris;regionCode==IDF;countryCode==fr</segment>
+		<city_name>Paris</city_name>
+		<region>IDF</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Île-de-France</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Chicago, Illinois, United States</label>
 		<nb_visits>4</nb_visits>
 		<nb_actions>4</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -443,16 +549,16 @@
 		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
 		<lat>41.878</lat>
 		<long>-87.63</long>
-		<segment>city==Chicago;regionCode==;countryCode==US</segment>
+		<segment>city==Chicago;regionCode==IL;countryCode==us</segment>
 		<city_name>Chicago</city_name>
-		<region>xx</region>
-		<country>US</country>
+		<region>IL</region>
+		<country>us</country>
 		<country_name>United States</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/US.png</logo>
+		<region_name>Illinois</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/us.png</logo>
 	</row>
 	<row>
-		<label>Cannes, France</label>
+		<label>Cannes, Provence-Alpes-Côte-d’Azur, France</label>
 		<nb_visits>3</nb_visits>
 		<nb_actions>4</nb_actions>
 		<sum_visit_length>261</sum_visit_length>
@@ -463,56 +569,16 @@
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<lat>43.553</lat>
 		<long>7.017</long>
-		<segment>city==Cannes;regionCode==;countryCode==FR</segment>
+		<segment>city==Cannes;regionCode==PAC;countryCode==fr</segment>
 		<city_name>Cannes</city_name>
-		<region>xx</region>
-		<country>FR</country>
+		<region>PAC</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Provence-Alpes-Côte-d’Azur</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Chicago, Illinois, United States</label>
-		<nb_visits>3</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<lat>41.878</lat>
-		<long>-87.63</long>
-		<segment>city==Chicago;regionCode==IL;countryCode==US</segment>
-		<city_name>Chicago</city_name>
-		<region>IL</region>
-		<country>US</country>
-		<country_name>United States</country_name>
-		<region_name>Illinois</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/US.png</logo>
-	</row>
-	<row>
-		<label>Paris, France</label>
-		<nb_visits>3</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<lat>48.857</lat>
-		<long>2.352</long>
-		<segment>city==Paris;regionCode==;countryCode==FR</segment>
-		<city_name>Paris</city_name>
-		<region>xx</region>
-		<country>FR</country>
-		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
-	</row>
-	<row>
-		<label>Ho Chi Minh City, Hồ Chí Minh [Sài Gòn], Vietnam</label>
+		<label>Lyon, France</label>
 		<nb_visits>2</nb_visits>
 		<nb_actions>2</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -521,35 +587,15 @@
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<lat>10.823</lat>
-		<long>106.63</long>
-		<segment>city==Ho+Chi+Minh+City;regionCode==SG;countryCode==VN</segment>
-		<city_name>Ho Chi Minh City</city_name>
-		<region>SG</region>
-		<country>VN</country>
-		<country_name>Vietnam</country_name>
-		<region_name>Hồ Chí Minh [Sài Gòn]</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/VN.png</logo>
-	</row>
-	<row>
-		<label>Lille, Hauts-de-France, France</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<lat>50.629</lat>
-		<long>3.057</long>
-		<segment>city==Lille;regionCode==HDF;countryCode==FR</segment>
-		<city_name>Lille</city_name>
-		<region>HDF</region>
-		<country>FR</country>
+		<lat>45.764</lat>
+		<long>4.836</long>
+		<segment>city==Lyon;regionCode==;countryCode==fr</segment>
+		<city_name>Lyon</city_name>
+		<region>xx</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Hauts-de-France</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
 		<label>Marseille, Provence-Alpes-Côte-d’Azur, France</label>
@@ -563,44 +609,13 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>43.297</lat>
 		<long>5.37</long>
-		<segment>city==Marseille;regionCode==PAC;countryCode==FR</segment>
+		<segment>city==Marseille;regionCode==PAC;countryCode==fr</segment>
 		<city_name>Marseille</city_name>
 		<region>PAC</region>
-		<country>FR</country>
+		<country>fr</country>
 		<country_name>France</country_name>
 		<region_name>Provence-Alpes-Côte-d’Azur</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
-	</row>
-	<row>
-		<label>Wellington, Wellington, New Zealand</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>16</nb_actions>
-		<sum_visit_length>796</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>6899.0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>-41.287</lat>
-		<long>174.776</long>
-		<segment>city==Wellington;regionCode==WGN;countryCode==NZ</segment>
-		<city_name>Wellington</city_name>
-		<region>WGN</region>
-		<country>NZ</country>
-		<country_name>New Zealand</country_name>
-		<region_name>Wellington</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/NZ.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
 		<label>Agadir, Chaouia-Ouardigha, Morocco</label>
@@ -614,13 +629,13 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>30.428</lat>
 		<long>-9.598</long>
-		<segment>city==Agadir;regionCode==09;countryCode==MA</segment>
+		<segment>city==Agadir;regionCode==09;countryCode==ma</segment>
 		<city_name>Agadir</city_name>
 		<region>09</region>
-		<country>MA</country>
+		<country>ma</country>
 		<country_name>Morocco</country_name>
 		<region_name>Chaouia-Ouardigha</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/MA.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/ma.png</logo>
 	</row>
 	<row>
 		<label>Antananarivo, Antananarivo, Madagascar</label>
@@ -634,13 +649,13 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>-18.879</lat>
 		<long>47.508</long>
-		<segment>city==Antananarivo;regionCode==T;countryCode==MG</segment>
+		<segment>city==Antananarivo;regionCode==T;countryCode==mg</segment>
 		<city_name>Antananarivo</city_name>
 		<region>T</region>
-		<country>MG</country>
+		<country>mg</country>
 		<country_name>Madagascar</country_name>
 		<region_name>Antananarivo</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/MG.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/mg.png</logo>
 	</row>
 	<row>
 		<label>Barcelona, Catalunya, Spain</label>
@@ -654,16 +669,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>41.385</lat>
 		<long>2.173</long>
-		<segment>city==Barcelona;regionCode==CT;countryCode==ES</segment>
+		<segment>city==Barcelona;regionCode==CT;countryCode==es</segment>
 		<city_name>Barcelona</city_name>
 		<region>CT</region>
-		<country>ES</country>
+		<country>es</country>
 		<country_name>Spain</country_name>
 		<region_name>Catalunya</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/ES.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/es.png</logo>
 	</row>
 	<row>
-		<label>Brisbane, Australia</label>
+		<label>Brisbane, Queensland, Australia</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -674,13 +689,13 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>-27.47</lat>
 		<long>153.025</long>
-		<segment>city==Brisbane;regionCode==;countryCode==AU</segment>
+		<segment>city==Brisbane;regionCode==QLD;countryCode==au</segment>
 		<city_name>Brisbane</city_name>
-		<region>xx</region>
-		<country>AU</country>
+		<region>QLD</region>
+		<country>au</country>
 		<country_name>Australia</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/AU.png</logo>
+		<region_name>Queensland</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/au.png</logo>
 	</row>
 	<row>
 		<label>Casablanca, Meknès-Tafilalet, Morocco</label>
@@ -694,13 +709,13 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>33.573</lat>
 		<long>-7.59</long>
-		<segment>city==Casablanca;regionCode==06;countryCode==MA</segment>
+		<segment>city==Casablanca;regionCode==06;countryCode==ma</segment>
 		<city_name>Casablanca</city_name>
 		<region>06</region>
-		<country>MA</country>
+		<country>ma</country>
 		<country_name>Morocco</country_name>
 		<region_name>Meknès-Tafilalet</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/MA.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/ma.png</logo>
 	</row>
 	<row>
 		<label>Chateauguay, Quebec, Canada</label>
@@ -714,16 +729,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>45.36</lat>
 		<long>-73.749</long>
-		<segment>city==Chateauguay;regionCode==QC;countryCode==CA</segment>
+		<segment>city==Chateauguay;regionCode==QC;countryCode==ca</segment>
 		<city_name>Chateauguay</city_name>
 		<region>QC</region>
-		<country>CA</country>
+		<country>ca</country>
 		<country_name>Canada</country_name>
 		<region_name>Quebec</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/CA.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/ca.png</logo>
 	</row>
 	<row>
-		<label>Chaville, France</label>
+		<label>Chaville, Île-de-France, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -734,16 +749,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>48.808</lat>
 		<long>2.192</long>
-		<segment>city==Chaville;regionCode==;countryCode==FR</segment>
+		<segment>city==Chaville;regionCode==IDF;countryCode==fr</segment>
 		<city_name>Chaville</city_name>
-		<region>xx</region>
-		<country>FR</country>
+		<region>IDF</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Île-de-France</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Deux-Montagnes, Canada</label>
+		<label>Deux-Montagnes, Quebec, Canada</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -754,16 +769,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>45.542</lat>
 		<long>-73.893</long>
-		<segment>city==Deux-Montagnes;regionCode==;countryCode==CA</segment>
+		<segment>city==Deux-Montagnes;regionCode==QC;countryCode==ca</segment>
 		<city_name>Deux-Montagnes</city_name>
-		<region>xx</region>
-		<country>CA</country>
+		<region>QC</region>
+		<country>ca</country>
 		<country_name>Canada</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/CA.png</logo>
+		<region_name>Quebec</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/ca.png</logo>
 	</row>
 	<row>
-		<label>Etterbeek, Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest, Belgium</label>
+		<label>Lausanne, Switzerland</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -772,18 +787,58 @@
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>50.833</lat>
-		<long>4.389</long>
-		<segment>city==Etterbeek;regionCode==BRU;countryCode==BE</segment>
-		<city_name>Etterbeek</city_name>
-		<region>BRU</region>
-		<country>BE</country>
-		<country_name>Belgium</country_name>
-		<region_name>Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/BE.png</logo>
+		<lat>46.52</lat>
+		<long>6.632</long>
+		<segment>city==Lausanne;regionCode==;countryCode==ch</segment>
+		<city_name>Lausanne</city_name>
+		<region>xx</region>
+		<country>ch</country>
+		<country_name>Switzerland</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/ch.png</logo>
 	</row>
 	<row>
-		<label>Lodeve, France</label>
+		<label>Le Coudray-Montceaux, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>48.566</lat>
+		<long>2.486</long>
+		<segment>city==Le+Coudray-Montceaux;regionCode==;countryCode==fr</segment>
+		<city_name>Le Coudray-Montceaux</city_name>
+		<region>xx</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Lille, Hauts-de-France, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>50.629</lat>
+		<long>3.057</long>
+		<segment>city==Lille;regionCode==HDF;countryCode==fr</segment>
+		<city_name>Lille</city_name>
+		<region>HDF</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Hauts-de-France</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Lodeve, Occitanie, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -794,56 +849,36 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>43.734</lat>
 		<long>3.314</long>
-		<segment>city==Lodeve;regionCode==;countryCode==FR</segment>
+		<segment>city==Lodeve;regionCode==OCC;countryCode==fr</segment>
 		<city_name>Lodeve</city_name>
-		<region>xx</region>
-		<country>FR</country>
-		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
-	</row>
-	<row>
-		<label>Lome, Région Maritime, Togo</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>6.126</lat>
-		<long>1.225</long>
-		<segment>city==Lome;regionCode==M;countryCode==TG</segment>
-		<city_name>Lome</city_name>
-		<region>M</region>
-		<country>TG</country>
-		<country_name>Togo</country_name>
-		<region_name>Région Maritime</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/TG.png</logo>
-	</row>
-	<row>
-		<label>Mauguio, Occitanie, France</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>43.615</lat>
-		<long>4.01</long>
-		<segment>city==Mauguio;regionCode==OCC;countryCode==FR</segment>
-		<city_name>Mauguio</city_name>
 		<region>OCC</region>
-		<country>FR</country>
+		<country>fr</country>
 		<country_name>France</country_name>
 		<region_name>Occitanie</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Munich, Germany</label>
+		<label>Mazeikiai, Lithuania</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>56.309</lat>
+		<long>22.342</long>
+		<segment>city==Mazeikiai;regionCode==;countryCode==lt</segment>
+		<city_name>Mazeikiai</city_name>
+		<region>xx</region>
+		<country>lt</country>
+		<country_name>Lithuania</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/lt.png</logo>
+	</row>
+	<row>
+		<label>Munich, Bayern, Germany</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -854,16 +889,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>48.135</lat>
 		<long>11.582</long>
-		<segment>city==Munich;regionCode==;countryCode==DE</segment>
+		<segment>city==Munich;regionCode==BY;countryCode==de</segment>
 		<city_name>Munich</city_name>
-		<region>xx</region>
-		<country>DE</country>
+		<region>BY</region>
+		<country>de</country>
 		<country_name>Germany</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/DE.png</logo>
+		<region_name>Bayern</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/de.png</logo>
 	</row>
 	<row>
-		<label>Nice, France</label>
+		<label>Nice, Provence-Alpes-Côte-d’Azur, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -874,16 +909,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>43.71</lat>
 		<long>7.262</long>
-		<segment>city==Nice;regionCode==;countryCode==FR</segment>
+		<segment>city==Nice;regionCode==PAC;countryCode==fr</segment>
 		<city_name>Nice</city_name>
-		<region>xx</region>
-		<country>FR</country>
+		<region>PAC</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Provence-Alpes-Côte-d’Azur</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Orange, France</label>
+		<label>Orange, Provence-Alpes-Côte-d’Azur, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -894,16 +929,56 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>44.138</lat>
 		<long>4.808</long>
-		<segment>city==Orange;regionCode==;countryCode==FR</segment>
+		<segment>city==Orange;regionCode==PAC;countryCode==fr</segment>
 		<city_name>Orange</city_name>
-		<region>xx</region>
-		<country>FR</country>
+		<region>PAC</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Provence-Alpes-Côte-d’Azur</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Rouen, France</label>
+		<label>Pelussin, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>152</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>45.418</lat>
+		<long>4.676</long>
+		<segment>city==Pelussin;regionCode==;countryCode==fr</segment>
+		<city_name>Pelussin</city_name>
+		<region>xx</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Poissy, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>48.93</lat>
+		<long>2.047</long>
+		<segment>city==Poissy;regionCode==;countryCode==fr</segment>
+		<city_name>Poissy</city_name>
+		<region>xx</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Rouen, Normandie, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -914,13 +989,33 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>49.443</lat>
 		<long>1.1</long>
-		<segment>city==Rouen;regionCode==;countryCode==FR</segment>
+		<segment>city==Rouen;regionCode==NOR;countryCode==fr</segment>
 		<city_name>Rouen</city_name>
+		<region>NOR</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Normandie</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Royan, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>14</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>45.623</lat>
+		<long>-1.043</long>
+		<segment>city==Royan;regionCode==;countryCode==fr</segment>
+		<city_name>Royan</city_name>
 		<region>xx</region>
-		<country>FR</country>
+		<country>fr</country>
 		<country_name>France</country_name>
 		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
 		<label>Sallanches, Auvergne-Rhône-Alpes, France</label>
@@ -934,16 +1029,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>45.937</lat>
 		<long>6.631</long>
-		<segment>city==Sallanches;regionCode==ARA;countryCode==FR</segment>
+		<segment>city==Sallanches;regionCode==ARA;countryCode==fr</segment>
 		<city_name>Sallanches</city_name>
 		<region>ARA</region>
-		<country>FR</country>
+		<country>fr</country>
 		<country_name>France</country_name>
 		<region_name>Auvergne-Rhône-Alpes</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Sherbrooke, Canada</label>
+		<label>Sherbrooke, Quebec, Canada</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -954,13 +1049,53 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>45.404</lat>
 		<long>-71.893</long>
-		<segment>city==Sherbrooke;regionCode==;countryCode==CA</segment>
+		<segment>city==Sherbrooke;regionCode==QC;countryCode==ca</segment>
 		<city_name>Sherbrooke</city_name>
-		<region>xx</region>
-		<country>CA</country>
+		<region>QC</region>
+		<country>ca</country>
 		<country_name>Canada</country_name>
+		<region_name>Quebec</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/ca.png</logo>
+	</row>
+	<row>
+		<label>Spartanburg, United States</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>44</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>34.95</lat>
+		<long>-81.932</long>
+		<segment>city==Spartanburg;regionCode==;countryCode==us</segment>
+		<city_name>Spartanburg</city_name>
+		<region>xx</region>
+		<country>us</country>
+		<country_name>United States</country_name>
 		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/CA.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/us.png</logo>
+	</row>
+	<row>
+		<label>Toulon, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>151</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>43.124</lat>
+		<long>5.928</long>
+		<segment>city==Toulon;regionCode==;countryCode==fr</segment>
+		<city_name>Toulon</city_name>
+		<region>xx</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
 		<label>Toulon, Provence-Alpes-Côte-d’Azur, France</label>
@@ -974,16 +1109,36 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>43.124</lat>
 		<long>5.928</long>
-		<segment>city==Toulon;regionCode==PAC;countryCode==FR</segment>
+		<segment>city==Toulon;regionCode==PAC;countryCode==fr</segment>
 		<city_name>Toulon</city_name>
 		<region>PAC</region>
-		<country>FR</country>
+		<country>fr</country>
 		<country_name>France</country_name>
 		<region_name>Provence-Alpes-Côte-d’Azur</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Tunis, Tunisia</label>
+		<label>Toulouse, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>43.605</lat>
+		<long>1.444</long>
+		<segment>city==Toulouse;regionCode==;countryCode==fr</segment>
+		<city_name>Toulouse</city_name>
+		<region>xx</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Tunis, Tunis, Tunisia</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>3</nb_actions>
 		<sum_visit_length>380</sum_visit_length>
@@ -994,13 +1149,34 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>36.807</lat>
 		<long>10.182</long>
-		<segment>city==Tunis;regionCode==;countryCode==TN</segment>
+		<segment>city==Tunis;regionCode==11;countryCode==tn</segment>
 		<city_name>Tunis</city_name>
-		<region>xx</region>
-		<country>TN</country>
+		<region>11</region>
+		<country>tn</country>
 		<country_name>Tunisia</country_name>
+		<region_name>Tunis</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/tn.png</logo>
+	</row>
+	<row>
+		<label>Unknown, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>0</lat>
+		<long>0</long>
+		<segment>city==;regionCode==;countryCode==fr</segment>
+		<city_name>Unknown</city_name>
+		<city>xx</city>
+		<region>xx</region>
+		<country>fr</country>
+		<country_name>France</country_name>
 		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/TN.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
 		<label>Unknown, Réunion</label>
@@ -1014,17 +1190,17 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>0</lat>
 		<long>0</long>
-		<segment>city==;regionCode==;countryCode==RE</segment>
+		<segment>city==;regionCode==;countryCode==re</segment>
 		<city_name>Unknown</city_name>
 		<city>xx</city>
 		<region>xx</region>
-		<country>RE</country>
+		<country>re</country>
 		<country_name>Réunion</country_name>
 		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/RE.png</logo>
+		<logo>plugins/Morpheus/icons/dist/flags/re.png</logo>
 	</row>
 	<row>
-		<label>Villabe, France</label>
+		<label>Villabe, Île-de-France, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
 		<sum_visit_length>59</sum_visit_length>
@@ -1035,16 +1211,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>48.59</lat>
 		<long>2.455</long>
-		<segment>city==Villabe;regionCode==;countryCode==FR</segment>
+		<segment>city==Villabe;regionCode==IDF;countryCode==fr</segment>
 		<city_name>Villabe</city_name>
-		<region>xx</region>
-		<country>FR</country>
+		<region>IDF</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Île-de-France</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Villeneuve-Saint-Georges, France</label>
+		<label>Villeneuve-Saint-Georges, Île-de-France, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -1055,16 +1231,16 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>48.731</lat>
 		<long>2.448</long>
-		<segment>city==Villeneuve-Saint-Georges;regionCode==;countryCode==FR</segment>
+		<segment>city==Villeneuve-Saint-Georges;regionCode==IDF;countryCode==fr</segment>
 		<city_name>Villeneuve-Saint-Georges</city_name>
-		<region>xx</region>
-		<country>FR</country>
+		<region>IDF</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
+		<region_name>Île-de-France</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Villeurbanne, France</label>
+		<label>Villeurbanne, Auvergne-Rhône-Alpes, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -1075,32 +1251,12 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<lat>45.772</lat>
 		<long>4.89</long>
-		<segment>city==Villeurbanne;regionCode==;countryCode==FR</segment>
+		<segment>city==Villeurbanne;regionCode==ARA;countryCode==fr</segment>
 		<city_name>Villeurbanne</city_name>
-		<region>xx</region>
-		<country>FR</country>
+		<region>ARA</region>
+		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/FR.png</logo>
-	</row>
-	<row>
-		<label>Yokohama, Kanagawa, Japan</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>35.444</lat>
-		<long>139.638</long>
-		<segment>city==Yokohama;regionCode==14;countryCode==JP</segment>
-		<city_name>Yokohama</city_name>
-		<region>14</region>
-		<country>JP</country>
-		<country_name>Japan</country_name>
-		<region_name>Kanagawa</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/JP.png</logo>
+		<region_name>Auvergne-Rhône-Alpes</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 </result>

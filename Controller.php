@@ -25,8 +25,8 @@ use Piwik\Plugins\SearchEngineKeywordsPerformance\Provider\ProviderAbstract;
 use Piwik\Plugins\WebsiteMeasurable\Type as WebsiteMeasurableType;
 use Piwik\Site;
 use Piwik\Url;
+use Psr\Log\LoggerInterface;
 
-// TODO: ability to clear saved config
 class Controller extends \Piwik\Plugin\ControllerAdmin
 {
     public function index($errorMessage = false)
@@ -136,7 +136,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
                 $file = $_FILES['clientfile']['tmp_name'];
                 if (!file_exists($file)) {
-                    // TODO: log
+                    $logger = StaticContainer::get(LoggerInterface::class);
+                    $logger->error('Client file upload failed: temporary file does not exist (path is {path})', [
+                        'path' => $file,
+                    ]);
+
                     throw new \Exception('Client file upload failed: temporary file does not exist');
                 }
 

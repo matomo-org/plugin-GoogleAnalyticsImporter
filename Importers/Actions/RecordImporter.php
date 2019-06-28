@@ -19,9 +19,6 @@ use Piwik\Plugins\Actions\ArchivingHelper;
 use Piwik\Site;
 use Piwik\Tracker\Action;
 
-// TODO: folder path metadata
-// TODO: sum_time_spent in actions reports seems off. it's 0 in a lot of cases...
-// TODO: site search is untested since we don't have the data
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
     const PLUGIN_NAME = 'Actions';
@@ -31,7 +28,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private $pageTitlesByPagePath;
     private $pageUrlsByPagePath;
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         ArchivingHelper::reloadConfig();
 
@@ -123,7 +120,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         Common::destroy($table);
     }
 
-    // TODO: should we order by hits instead? check actions archiver
     private function queryEntryPages(Date $day)
     {
         $entryPageMetrics = [

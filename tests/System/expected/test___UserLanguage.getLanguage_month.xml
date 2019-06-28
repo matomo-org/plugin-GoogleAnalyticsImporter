@@ -2,23 +2,23 @@
 <result>
 	<row>
 		<label>Unknown</label>
-		<nb_visits>395</nb_visits>
-		<nb_actions>546</nb_actions>
-		<sum_visit_length>204</sum_visit_length>
-		<bounce_count>16</bounce_count>
-		<nb_visits_converted>6</nb_visits_converted>
-		<nb_conversions>30</nb_conversions>
-		<revenue>152421</revenue>
+		<nb_visits>569</nb_visits>
+		<nb_actions>1315</nb_actions>
+		<sum_visit_length>2763</sum_visit_length>
+		<bounce_count>37</bounce_count>
+		<nb_visits_converted>30</nb_visits_converted>
+		<nb_conversions>117</nb_conversions>
+		<revenue>950376</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>16</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>16</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>14</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>14</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -26,42 +26,31 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>377</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>402</sum_daily_nb_uniq_visitors>
 		<segment>languageCode==xx</segment>
 	</row>
 	<row>
 		<label>French</label>
-		<nb_visits>37</nb_visits>
-		<nb_actions>44</nb_actions>
-		<sum_visit_length>858</sum_visit_length>
-		<bounce_count>32</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
+		<nb_visits>51</nb_visits>
+		<nb_actions>65</nb_actions>
+		<sum_visit_length>4567</sum_visit_length>
+		<bounce_count>40</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
 		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>34</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>47</sum_daily_nb_uniq_visitors>
 		<segment>languageCode==fr,languageCode=@fr-</segment>
 	</row>
 	<row>
 		<label>English</label>
-		<nb_visits>13</nb_visits>
-		<nb_actions>27</nb_actions>
-		<sum_visit_length>796</sum_visit_length>
-		<bounce_count>11</bounce_count>
+		<nb_visits>7</nb_visits>
+		<nb_actions>8</nb_actions>
+		<sum_visit_length>44</sum_visit_length>
+		<bounce_count>6</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>6899</revenue>
-		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 		<segment>languageCode==en,languageCode=@en-</segment>
 	</row>
 	<row>
@@ -75,5 +64,17 @@
 		<revenue>0.0</revenue>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>languageCode==de,languageCode=@de-</segment>
+	</row>
+	<row>
+		<label>Lithuanian</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>languageCode==lt,languageCode=@lt-</segment>
 	</row>
 </result>

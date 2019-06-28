@@ -53,7 +53,7 @@ abstract class RecordImporter
         $this->logger = $logger;
     }
 
-    public abstract function queryGoogleAnalyticsApi(Date $day); // TODO: rename to importRecords
+    public abstract function importRecords(Date $day);
 
     public function setArchiveWriter(ArchiveWriter $archiveWriter)
     {
@@ -127,7 +127,9 @@ abstract class RecordImporter
             Metrics::INDEX_ECOMMERCE_ITEM_PRICE,
             Metrics::INDEX_ECOMMERCE_ORDERS,
             Metrics::INDEX_NB_VISITS,
-            // Metrics::INDEX_ECOMMERCE_ITEM_PRICE_VIEWED, TODO: should we support this? not sure it's possible in GA
+            Metrics::INDEX_NB_ACTIONS,
+
+            // Metrics::INDEX_ECOMMERCE_ITEM_PRICE_VIEWED is not supported
         ];
     }
 

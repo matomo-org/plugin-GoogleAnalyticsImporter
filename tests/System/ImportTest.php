@@ -12,11 +12,11 @@ use Piwik\Container\StaticContainer;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures\ImportedFromGoogle;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
 
-// TODO: segments should be disabled for these imported reports (would need to mark records as imported and delete segment metadata in hooks)
+// TODO: in-table segments should be disabled for these imported reports (would need to mark records as imported and delete segment metadata in hooks)
+
 class ImportTest extends SystemTestCase
 {
     private static $CONVERSION_AWARE_VISIT_METRICS = [
-        'nb_uniq_visitors',
         'nb_visits',
         'nb_actions',
         'sum_visit_length',
@@ -25,20 +25,56 @@ class ImportTest extends SystemTestCase
         'nb_conversions',
         'revenue',
         'goals',
+        'sum_daily_nb_uniq_visitors',
     ];
 
     private static $ACTION_METRICS = [
         'nb_visits',
-        'nb_uniq_visitors',
         'nb_hits',
         'sum_time_spent',
-        'entry_nb_uniq_visitors',
+        'exit_nb_visits',
         'entry_nb_visits',
         'entry_nb_actions',
         'entry_sum_visit_length',
         'entry_bounce_count',
-        'exit_nb_uniq_visitors',
-        'exit_nb_visits',
+        'avg_bandwidth',
+        'avg_time_on_page',
+        'bounce_rate',
+        'exit_rate',
+        'avg_time_generation',
+        'nb_hits_with_time_generation',
+        'sum_daily_entry_nb_uniq_visitors',
+        'sum_daily_exit_nb_uniq_visitors',
+        'sum_daily_nb_uniq_visitors',
+    ];
+
+    private static $VISIT_TIME_METRICS = [
+        'nb_visits',
+        'nb_uniq_visitors',
+        'nb_visits_converted',
+        'nb_users',
+        'nb_actions',
+        'sum_visit_length',
+        'bounce_count',
+    ];
+
+    private static $ECOMMERCE_ITEM_METRICS = [
+        'revenue',
+        'quantity',
+        'orders',
+        'nb_visits',
+        'nb_actions',
+        'avg_price',
+        'avg_quantity',
+        'conversion_rate',
+    ];
+
+    private static $SITESEARCH_METRICS = [
+        'nb_visits',
+        'nb_hits',
+        'sum_time_spent',
+        'sum_daily_nb_uniq_visitors',
+        'nb_pages_per_search',
         'avg_bandwidth',
         'avg_time_on_page',
         'bounce_rate',
@@ -78,7 +114,6 @@ class ImportTest extends SystemTestCase
     }
 
     /**
-     * @dependsOn testApi
      * @dataProvider getTestDataForTestApiColumns
      */
     public function testApiColumns($method, $columns)
@@ -87,8 +122,15 @@ class ImportTest extends SystemTestCase
         if (!isset($expectedApiColumns[$method])) {
             throw new \Exception("No expected columns for $method");
         }
+        $expectedColumns = $expectedApiColumns[$method];
 
-        $this->assertEquals($expectedApiColumns[$method], $columns);
+        $expectedColumns = array_values($expectedColumns);
+        $columns = array_values($columns);
+
+        sort($expectedColumns);
+        sort($columns);
+
+        $this->assertEquals($expectedColumns, $columns);
     }
 
     public static function getOutputPrefix()
@@ -110,12 +152,16 @@ class ImportTest extends SystemTestCase
         $expectedPath = PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/tests/System/expected';
         $contents = scandir($expectedPath);
         foreach ($contents as $filename) {
-            if (!preg_match('/([^_]+)_day.xml$/', $filename, $matches)) {
+            if (!preg_match('/([^_]+)_year.xml$/', $filename, $matches)) {
                 continue;
             }
 
             $method = $matches[1];
             if (!empty($checkedApiMethods[$method])) {
+                continue;
+            }
+
+            if (preg_match('/^VisitorInterest\./', $method)) {
                 continue;
             }
 
@@ -143,18 +189,20 @@ class ImportTest extends SystemTestCase
             return null;
         }
 
-        $row = $element->row[0];
-        $children = $row->children();
-
         $tagNames = [];
-        for ($i = 0; $i != $children->count(); ++$i) {
-            $tagName = $children[$i]->getName();
-            if ($tagName == 'segment' || $tagName == 'subtable' || $tagName == 'label') {
-                continue;
+        for ($j = 0; $j != $element->children()->count(); ++$j) {
+            $row = $element->row[$j];
+            $children = $row->children();
+
+            for ($i = 0; $i != $children->count(); ++$i) {
+                $tagName = $children[$i]->getName();
+                if ($tagName == 'segment' || $tagName == 'subtable' || $tagName == 'label') {
+                    continue;
+                }
+                $tagNames[] = $tagName;
             }
-            $tagNames[] = $tagName;
         }
-        return $tagNames;
+        return array_unique($tagNames);
     }
 
     private static function getExpectedApiColumns()
@@ -162,7 +210,7 @@ class ImportTest extends SystemTestCase
         return [
             'Referrers.getWebsites' => self::$CONVERSION_AWARE_VISIT_METRICS,
             'Referrers.getReferrerType' => self::$CONVERSION_AWARE_VISIT_METRICS,
-            'Referrers.getAll' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['referer_type']),
+            'Referrers.getAll' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['referer_type', 'logo', 'url']),
             'Referrers.getKeywords' => self::$CONVERSION_AWARE_VISIT_METRICS,
             'Referrers.getKeywordsForPageUrl' => [],
             'Referrers.getKeywordsForPageTitle' => [],
@@ -171,24 +219,62 @@ class ImportTest extends SystemTestCase
             'Referrers.getCampaigns' => self::$CONVERSION_AWARE_VISIT_METRICS,
             'Referrers.getKeywordsFromCampaignId' => self::$CONVERSION_AWARE_VISIT_METRICS,
             'Referrers.getUrlsFromWebsiteId' => self::$CONVERSION_AWARE_VISIT_METRICS,
-            'Referrers.getSocials' => self::$CONVERSION_AWARE_VISIT_METRICS,
-            'Referrers.getUrlsForSocial' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Referrers.getSocials' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['url', 'logo']),
+            'Referrers.getUrlsForSocial' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['url']),
 
             'Actions.getPageTitles' => self::$ACTION_METRICS,
-            'Actions.getPageUrls' => [
+            'Actions.getPageUrls' => array_merge(self::$ACTION_METRICS, ['url']),
+            'Actions.getExitPageTitles' => self::$ACTION_METRICS,
+            'Actions.getExitPageUrls' => array_merge(self::$ACTION_METRICS, ['url']),
+            'Actions.getEntryPageTitles' => self::$ACTION_METRICS,
+            'Actions.getEntryPageUrls' => array_merge(self::$ACTION_METRICS, ['url']),
+
+            'Actions.getSiteSearchKeywords' => self::$SITESEARCH_METRICS,
+            'Actions.getSiteSearchCategories' => [
                 'nb_visits',
+                'nb_actions',
+                'sum_visit_length',
+                'bounce_count',
+                'nb_visits_converted',
+                'nb_conversions',
+                'revenue',
                 'nb_hits',
-                'sum_time_spent',
-                'exit_nb_visits',
-                'entry_nb_visits',
-                'entry_nb_actions',
-                'entry_sum_visit_length',
-                'entry_bounce_count',
-                'avg_bandwidth',
-                'avg_time_on_page',
-                'bounce_rate',
-                'exit_rate',
+                'sum_daily_nb_uniq_visitors',
+                'nb_pages_per_search',
             ],
+
+            'VisitTime.getByDayOfWeek' => array_merge(self::$VISIT_TIME_METRICS, ['day_of_week']),
+
+            'UserLanguage.getLanguage' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'UserLanguage.getLanguageCode' => self::$CONVERSION_AWARE_VISIT_METRICS,
+
+            'UserCountry.getContinent' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['code']),
+            'UserCountry.getRegion' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['country', 'country_name', 'region', 'region_name', 'logo']),
+            'UserCountry.getCountry' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['code', 'logo', 'logoHeight']),
+            'UserCountry.getCity' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS,
+                ['city', 'city_name', 'country', 'country_name', 'region', 'region_name', 'logo', 'lat', 'long']),
+
+            'Resolution.getResolution' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'Resolution.getConfiguration' => self::$CONVERSION_AWARE_VISIT_METRICS,
+
+            'Goals.getItemsSku' => self::$ECOMMERCE_ITEM_METRICS,
+            'Goals.getItemsName' => self::$ECOMMERCE_ITEM_METRICS,
+            'Goals.getItemsCategory' => self::$ECOMMERCE_ITEM_METRICS,
+
+            'Events.getName' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['avg_event_value']),
+            'Events.getCategory' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['avg_event_value']),
+            'Events.getAction' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['avg_event_value']),
+
+            'VisitTime.getVisitInformationPerLocalTime' => self::$CONVERSION_AWARE_VISIT_METRICS,
+
+            'DevicesDetection.getType' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['logo']),
+            'DevicesDetection.getOsVersions' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['logo']),
+            'DevicesDetection.getOsFamilies' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['logo']),
+            'DevicesDetection.getModel' => self::$CONVERSION_AWARE_VISIT_METRICS,
+            'DevicesDetection.getBrowsers' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['logo']),
+            'DevicesDetection.getBrowserVersions' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['logo']),
+            'DevicesDetection.getBrowserFamilies' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['logo']),
+            'DevicesDetection.getBrand' => array_merge(self::$CONVERSION_AWARE_VISIT_METRICS, ['logo']),
         ];
     }
 }

@@ -18,7 +18,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 {
     const PLUGIN_NAME = 'UserCountry';
 
-    public function queryGoogleAnalyticsApi(Date $day)
+    public function importRecords(Date $day)
     {
         $this->queryDimension($day, 'ga:countryIsoCode', Archiver::COUNTRY_RECORD_NAME);
         $this->queryRegionsAndCities($day);
@@ -31,9 +31,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, [$dimension], $this->getConversionAwareVisitMetrics());
         foreach ($table->getRows() as $row) {
-            $label = $row->getMetadata($dimension);
+            $label = strtolower($row->getMetadata($dimension));
             if (empty($label)) {
-                $label = 'xx'; // TODO: is this the correct unknown value
+                $label = 'xx';
             }
 
             $this->addRowToTable($record, $row, $label);
@@ -58,7 +58,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $table = $gaQuery->query($day, ['ga:countryIsoCode', 'ga:regionIsoCode', 'ga:city', 'ga:latitude', 'ga:longitude'],
             $this->getConversionAwareVisitMetrics());
         foreach ($table->getRows() as $row) {
-            $country = $row->getMetadata('ga:countryIsoCode');
+            $country = strtolower($row->getMetadata('ga:countryIsoCode'));
             $region = $row->getMetadata('ga:regionIsoCode');
             $city = $row->getMetadata('ga:city');
             $lat = $row->getMetadata('ga:latitude');
