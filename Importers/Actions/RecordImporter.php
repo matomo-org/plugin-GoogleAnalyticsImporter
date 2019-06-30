@@ -229,7 +229,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getPageUrlsRecord(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:hostname', 'ga:pagePath'], $this->getPageMetrics(), [
+        $table = $gaQuery->query($day, $dimensions = ['ga:pagePath'], $this->getPageMetrics(), [
             'orderBys' => [
                 ['field' => 'ga:pageviews', 'order' => 'descending'],
                 ['field' => 'ga:pagePath', 'order' => 'ascending']
@@ -237,8 +237,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         ]);
 
         foreach ($table->getRows() as $row) {
-            $hostname = $row->getMetadata('ga:hostname');
-            $actionName = 'http://' . $hostname . $row->getMetadata('ga:pagePath');
+            $actionName = $row->getMetadata('ga:pagePath');
             $actionRow = ArchivingHelper::getActionRow($actionName, Action::TYPE_PAGE_URL, $urlPrefix = '', $this->dataTables);
 
             $row->deleteColumn('label');
