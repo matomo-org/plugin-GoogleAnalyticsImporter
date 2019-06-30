@@ -2,73 +2,60 @@
 <result>
 	<row>
 		<label>oahuscubadiving.com</label>
-		<nb_uniq_visitors>5</nb_uniq_visitors>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
 		<nb_visits>5</nb_visits>
-		<nb_actions>24</nb_actions>
-		<sum_visit_length>64</sum_visit_length>
+		<nb_actions>18</nb_actions>
+		<sum_visit_length>177</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>2</nb_conversions>
-		<revenue>36673.0</revenue>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>17958.0</revenue>
 		<goals>
 			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
 			</row>
 		</goals>
 		<segment>referrerName==oahuscubadiving.com</segment>
 		<subtable>
 			<row>
 				<label>/oahu-dive-sites/</label>
-				<nb_uniq_visitors>5</nb_uniq_visitors>
+				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_visits>5</nb_visits>
-				<nb_actions>24</nb_actions>
-				<sum_visit_length>64</sum_visit_length>
+				<nb_actions>18</nb_actions>
+				<sum_visit_length>177</sum_visit_length>
 				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>36673.0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+				<nb_conversions>4</nb_conversions>
+				<revenue>17958.0</revenue>
 				<goals>
 					<row idgoal='1'>
+						<nb_conversions>1</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>1</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>1</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>1</nb_visits_converted>
+					</row>
+					<row idgoal='3'>
 						<nb_conversions>0</nb_conversions>
 						<revenue>0</revenue>
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
 				</goals>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>qwant.com</label>
-		<nb_uniq_visitors>1</nb_uniq_visitors>
-		<nb_visits>1</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>14</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<segment>referrerName==qwant.com</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_uniq_visitors>1</nb_uniq_visitors>
-				<nb_visits>1</nb_visits>
-				<nb_actions>2</nb_actions>
-				<sum_visit_length>14</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
 			</row>
 		</subtable>
 	</row>

@@ -2,82 +2,81 @@
 <result>
 	<row>
 		<label>Desktop</label>
-		<nb_visits>459</nb_visits>
-		<nb_actions>893</nb_actions>
-		<sum_visit_length>2638</sum_visit_length>
-		<bounce_count>44</bounce_count>
-		<nb_visits_converted>16</nb_visits_converted>
-		<nb_conversions>68</nb_conversions>
-		<revenue>552814</revenue>
+		<nb_visits>233</nb_visits>
+		<nb_actions>880</nb_actions>
+		<sum_visit_length>6749</sum_visit_length>
+		<bounce_count>50</bounce_count>
+		<nb_visits_converted>56</nb_visits_converted>
+		<nb_conversions>134</nb_conversions>
+		<revenue>781426</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>11</nb_conversions>
+				<nb_conversions>32</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>10</nb_visits_converted>
+				<nb_visits_converted>31</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>6</nb_conversions>
+				<nb_conversions>24</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>5</nb_visits_converted>
+				<nb_visits_converted>23</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
+				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>382</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>101</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
 	</row>
 	<row>
 		<label>Smartphone</label>
-		<nb_visits>144</nb_visits>
-		<nb_actions>405</nb_actions>
-		<sum_visit_length>4351</sum_visit_length>
-		<bounce_count>39</bounce_count>
-		<nb_visits_converted>11</nb_visits_converted>
-		<nb_conversions>41</nb_conversions>
-		<revenue>335814</revenue>
+		<nb_visits>175</nb_visits>
+		<nb_actions>626</nb_actions>
+		<sum_visit_length>12375</sum_visit_length>
+		<bounce_count>54</bounce_count>
+		<nb_visits_converted>39</nb_visits_converted>
+		<nb_conversions>92</nb_conversions>
+		<revenue>534286</revenue>
 		<goals>
 			<row idgoal='1'>
+				<nb_conversions>17</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>16</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>19</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>18</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
 				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>2</nb_visits_converted>
 			</row>
-			<row idgoal='2'>
-				<nb_conversions>6</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>5</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>2</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>96</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>98</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
 	</row>
 	<row>
 		<label>Tablet</label>
-		<nb_visits>26</nb_visits>
-		<nb_actions>92</nb_actions>
-		<sum_visit_length>385</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>4</nb_visits_converted>
-		<nb_conversions>10</nb_conversions>
-		<revenue>61748</revenue>
-		<sum_daily_nb_uniq_visitors>25</sum_daily_nb_uniq_visitors>
+		<nb_visits>40</nb_visits>
+		<nb_actions>143</nb_actions>
+		<sum_visit_length>700</sum_visit_length>
+		<bounce_count>7</bounce_count>
+		<nb_visits_converted>14</nb_visits_converted>
+		<nb_conversions>25</nb_conversions>
+		<revenue>104979</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>7</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>5</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>7</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>2</nb_visits_converted>
+				<nb_visits_converted>6</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -85,6 +84,7 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
+		<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
 	</row>
 	<row>

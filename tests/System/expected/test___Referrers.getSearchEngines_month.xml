@@ -2,28 +2,28 @@
 <result>
 	<row>
 		<label>Google</label>
-		<nb_visits>33</nb_visits>
+		<nb_visits>28</nb_visits>
 		<nb_actions>39</nb_actions>
-		<sum_visit_length>629</sum_visit_length>
-		<bounce_count>28</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
+		<sum_visit_length>5564</sum_visit_length>
+		<bounce_count>19</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
 		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>30</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
 		<segment>referrerType==search;referrerName==Google</segment>
 		<url>http://google.com</url>
 		<logo>plugins/Morpheus/icons/dist/searchEngines/google.com.png</logo>
 		<subtable>
 			<row>
 				<label>(not provided)</label>
-				<nb_visits>33</nb_visits>
+				<nb_visits>28</nb_visits>
 				<nb_actions>39</nb_actions>
-				<sum_visit_length>629</sum_visit_length>
-				<bounce_count>28</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
+				<sum_visit_length>5564</sum_visit_length>
+				<bounce_count>19</bounce_count>
+				<nb_visits_converted>3</nb_visits_converted>
+				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
-				<sum_daily_nb_uniq_visitors>30</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>

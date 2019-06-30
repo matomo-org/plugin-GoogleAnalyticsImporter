@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>Crimson Viper</label>
-		<nb_uniq_visitors>19</nb_uniq_visitors>
-		<nb_visits>21</nb_visits>
-		<nb_actions>21</nb_actions>
-		<sum_visit_length>59</sum_visit_length>
+		<label>Ibuki</label>
+		<nb_uniq_visitors>23</nb_uniq_visitors>
+		<nb_visits>23</nb_visits>
+		<nb_actions>23</nb_actions>
+		<sum_visit_length>999</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>7</nb_conversions>
-		<revenue>89908</revenue>
+		<nb_conversions>8</nb_conversions>
+		<revenue>60320</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -22,41 +22,18 @@
 			</row>
 		</goals>
 		<avg_event_value>0</avg_event_value>
-		<segment>eventName==Crimson+Viper</segment>
+		<segment>eventName==Ibuki</segment>
 		<subtable>
 			<row>
-				<label>izuna drop</label>
+				<label>spear throw</label>
 				<nb_uniq_visitors>6</nb_uniq_visitors>
 				<nb_visits>6</nb_visits>
 				<nb_actions>6</nb_actions>
-				<sum_visit_length>19</sum_visit_length>
+				<sum_visit_length>499</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
-				<revenue>26611</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>dragon punch</label>
-				<nb_uniq_visitors>4</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>1</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>20496</revenue>
+				<revenue>15804</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -72,132 +49,14 @@
 			</row>
 			<row>
 				<label>falcon punch</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<nb_uniq_visitors>5</nb_uniq_visitors>
+				<nb_visits>5</nb_visits>
+				<nb_actions>5</nb_actions>
+				<sum_visit_length>5</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>1</nb_conversions>
-				<revenue>15818</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>spear throw</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>39</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>15159.0</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>burn knuckle</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>11824.0</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>Cammy</label>
-		<nb_uniq_visitors>20</nb_uniq_visitors>
-		<nb_visits>20</nb_visits>
-		<nb_actions>20</nb_actions>
-		<sum_visit_length>468</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>9</nb_conversions>
-		<revenue>100824</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
-		<avg_event_value>0</avg_event_value>
-		<segment>eventName==Cammy</segment>
-		<subtable>
-			<row>
-				<label>falcon punch</label>
-				<nb_uniq_visitors>8</nb_uniq_visitors>
-				<nb_visits>8</nb_visits>
-				<nb_actions>8</nb_actions>
-				<sum_visit_length>111</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>20017</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>dragon punch</label>
-				<nb_uniq_visitors>4</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>204</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>27911</revenue>
+				<revenue>7141</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -213,14 +72,14 @@
 			</row>
 			<row>
 				<label>uppercut</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<nb_uniq_visitors>4</nb_uniq_visitors>
+				<nb_visits>4</nb_visits>
+				<nb_actions>4</nb_actions>
+				<sum_visit_length>223</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
-				<revenue>20591</revenue>
+				<revenue>9371</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -236,14 +95,14 @@
 			</row>
 			<row>
 				<label>burn knuckle</label>
-				<nb_uniq_visitors>2</nb_uniq_visitors>
-				<nb_visits>2</nb_visits>
-				<nb_actions>2</nb_actions>
-				<sum_visit_length>108</sum_visit_length>
+				<nb_uniq_visitors>3</nb_uniq_visitors>
+				<nb_visits>3</nb_visits>
+				<nb_actions>3</nb_actions>
+				<sum_visit_length>4</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>1</nb_conversions>
-				<revenue>9684</revenue>
+				<revenue>7315</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -258,52 +117,52 @@
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
-				<label>spear throw</label>
-				<nb_uniq_visitors>2</nb_uniq_visitors>
-				<nb_visits>2</nb_visits>
-				<nb_actions>2</nb_actions>
-				<sum_visit_length>45</sum_visit_length>
+				<label>dragon punch</label>
+				<nb_uniq_visitors>3</nb_uniq_visitors>
+				<nb_visits>3</nb_visits>
+				<nb_actions>3</nb_actions>
+				<sum_visit_length>98</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>22621</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
 				<label>izuna drop</label>
-				<nb_uniq_visitors>1</nb_uniq_visitors>
-				<nb_visits>1</nb_visits>
-				<nb_actions>1</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<nb_uniq_visitors>2</nb_uniq_visitors>
+				<nb_visits>2</nb_visits>
+				<nb_actions>2</nb_actions>
+				<sum_visit_length>170</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
+				<nb_conversions>2</nb_conversions>
+				<revenue>20689</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 		</subtable>
 	</row>
 	<row>
 		<label>Ryu</label>
-		<nb_uniq_visitors>19</nb_uniq_visitors>
-		<nb_visits>20</nb_visits>
-		<nb_actions>20</nb_actions>
-		<sum_visit_length>44</sum_visit_length>
+		<nb_uniq_visitors>20</nb_uniq_visitors>
+		<nb_visits>21</nb_visits>
+		<nb_actions>21</nb_actions>
+		<sum_visit_length>2128</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>10</nb_conversions>
-		<revenue>140282</revenue>
+		<revenue>92661</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -320,14 +179,14 @@
 		<subtable>
 			<row>
 				<label>burn knuckle</label>
-				<nb_uniq_visitors>4</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>2</sum_visit_length>
+				<nb_uniq_visitors>7</nb_uniq_visitors>
+				<nb_visits>7</nb_visits>
+				<nb_actions>7</nb_actions>
+				<sum_visit_length>639</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>3</nb_conversions>
-				<revenue>52713</revenue>
+				<nb_conversions>4</nb_conversions>
+				<revenue>35948</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -344,13 +203,13 @@
 			<row>
 				<label>falcon punch</label>
 				<nb_uniq_visitors>4</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>19</sum_visit_length>
+				<nb_visits>5</nb_visits>
+				<nb_actions>5</nb_actions>
+				<sum_visit_length>848</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>31940</revenue>
+				<nb_conversions>1</nb_conversions>
+				<revenue>12741</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -366,14 +225,14 @@
 			</row>
 			<row>
 				<label>dragon punch</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<nb_uniq_visitors>4</nb_uniq_visitors>
+				<nb_visits>4</nb_visits>
+				<nb_actions>4</nb_actions>
+				<sum_visit_length>6</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
-				<revenue>29489</revenue>
+				<revenue>14989</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -392,11 +251,11 @@
 				<nb_uniq_visitors>3</nb_uniq_visitors>
 				<nb_visits>3</nb_visits>
 				<nb_actions>3</nb_actions>
-				<sum_visit_length>23</sum_visit_length>
+				<sum_visit_length>222</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>8068</revenue>
+				<nb_conversions>2</nb_conversions>
+				<revenue>14759</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -412,14 +271,14 @@
 			</row>
 			<row>
 				<label>spear throw</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>317</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>1</nb_conversions>
-				<revenue>4360</revenue>
+				<revenue>14224.0</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -435,14 +294,156 @@
 			</row>
 			<row>
 				<label>uppercut</label>
-				<nb_uniq_visitors>2</nb_uniq_visitors>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>96</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0.0</revenue>
+				<avg_event_value>0</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>Cammy</label>
+		<nb_uniq_visitors>18</nb_uniq_visitors>
+		<nb_visits>18</nb_visits>
+		<nb_actions>18</nb_actions>
+		<sum_visit_length>1803</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>7</nb_conversions>
+		<revenue>55244</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<avg_event_value>0</avg_event_value>
+		<segment>eventName==Cammy</segment>
+		<subtable>
+			<row>
+				<label>dragon punch</label>
+				<nb_uniq_visitors>5</nb_uniq_visitors>
+				<nb_visits>5</nb_visits>
+				<nb_actions>5</nb_actions>
+				<sum_visit_length>1240</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>3</nb_conversions>
+				<revenue>29687</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>falcon punch</label>
+				<nb_uniq_visitors>5</nb_uniq_visitors>
+				<nb_visits>5</nb_visits>
+				<nb_actions>5</nb_actions>
+				<sum_visit_length>411</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>1</nb_conversions>
-				<revenue>13712</revenue>
+				<revenue>2109</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>uppercut</label>
+				<nb_uniq_visitors>3</nb_uniq_visitors>
+				<nb_visits>3</nb_visits>
+				<nb_actions>3</nb_actions>
+				<sum_visit_length>24</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>izuna drop</label>
+				<nb_uniq_visitors>2</nb_uniq_visitors>
+				<nb_visits>2</nb_visits>
+				<nb_actions>2</nb_actions>
+				<sum_visit_length>101</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>1</nb_conversions>
+				<revenue>5995</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>spear throw</label>
+				<nb_uniq_visitors>2</nb_uniq_visitors>
+				<nb_visits>2</nb_visits>
+				<nb_actions>2</nb_actions>
+				<sum_visit_length>25</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>1</nb_conversions>
+				<revenue>8736</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>burn knuckle</label>
+				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>2</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>1</nb_conversions>
+				<revenue>8717.0</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -460,14 +461,14 @@
 	</row>
 	<row>
 		<label>Akuma</label>
-		<nb_uniq_visitors>18</nb_uniq_visitors>
-		<nb_visits>18</nb_visits>
-		<nb_actions>18</nb_actions>
-		<sum_visit_length>34</sum_visit_length>
+		<nb_uniq_visitors>17</nb_uniq_visitors>
+		<nb_visits>17</nb_visits>
+		<nb_actions>17</nb_actions>
+		<sum_visit_length>858</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>3</nb_conversions>
-		<revenue>34063</revenue>
+		<nb_conversions>10</nb_conversions>
+		<revenue>102442</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -483,124 +484,15 @@
 		<segment>eventName==Akuma</segment>
 		<subtable>
 			<row>
-				<label>izuna drop</label>
-				<nb_uniq_visitors>6</nb_uniq_visitors>
-				<nb_visits>6</nb_visits>
-				<nb_actions>6</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>3</nb_conversions>
-				<revenue>34063</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>burn knuckle</label>
-				<nb_uniq_visitors>5</nb_uniq_visitors>
-				<nb_visits>5</nb_visits>
-				<nb_actions>5</nb_actions>
-				<sum_visit_length>34</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
 				<label>dragon punch</label>
-				<nb_uniq_visitors>2</nb_uniq_visitors>
-				<nb_visits>2</nb_visits>
-				<nb_actions>2</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>spear throw</label>
-				<nb_uniq_visitors>2</nb_uniq_visitors>
-				<nb_visits>2</nb_visits>
-				<nb_actions>2</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>uppercut</label>
-				<nb_uniq_visitors>2</nb_uniq_visitors>
-				<nb_visits>2</nb_visits>
-				<nb_actions>2</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>falcon punch</label>
-				<nb_uniq_visitors>1</nb_uniq_visitors>
-				<nb_visits>1</nb_visits>
-				<nb_actions>1</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
-				<avg_event_value>0</avg_event_value>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>Ibuki</label>
-		<nb_uniq_visitors>16</nb_uniq_visitors>
-		<nb_visits>16</nb_visits>
-		<nb_actions>16</nb_actions>
-		<sum_visit_length>408</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>6</nb_conversions>
-		<revenue>86287</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
-		<avg_event_value>0</avg_event_value>
-		<segment>eventName==Ibuki</segment>
-		<subtable>
-			<row>
-				<label>burn knuckle</label>
 				<nb_uniq_visitors>4</nb_uniq_visitors>
 				<nb_visits>4</nb_visits>
 				<nb_actions>4</nb_actions>
-				<sum_visit_length>173</sum_visit_length>
+				<sum_visit_length>40</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>10483</revenue>
+				<nb_conversions>4</nb_conversions>
+				<revenue>40547</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -615,15 +507,15 @@
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
-				<label>dragon punch</label>
+				<label>burn knuckle</label>
 				<nb_uniq_visitors>3</nb_uniq_visitors>
 				<nb_visits>3</nb_visits>
 				<nb_actions>3</nb_actions>
-				<sum_visit_length>235</sum_visit_length>
+				<sum_visit_length>156</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>29011</revenue>
+				<nb_conversions>1</nb_conversions>
+				<revenue>12488</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -642,11 +534,34 @@
 				<nb_uniq_visitors>3</nb_uniq_visitors>
 				<nb_visits>3</nb_visits>
 				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<sum_visit_length>554</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
-				<revenue>37899</revenue>
+				<revenue>27720</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>uppercut</label>
+				<nb_uniq_visitors>3</nb_uniq_visitors>
+				<nb_visits>3</nb_visits>
+				<nb_actions>3</nb_actions>
+				<sum_visit_length>102</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>1</nb_conversions>
+				<revenue>6676.0</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -662,14 +577,14 @@
 			</row>
 			<row>
 				<label>izuna drop</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<nb_uniq_visitors>2</nb_uniq_visitors>
+				<nb_visits>2</nb_visits>
+				<nb_actions>2</nb_actions>
+				<sum_visit_length>3</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>1</nb_conversions>
-				<revenue>8894</revenue>
+				<revenue>3917</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -688,23 +603,22 @@
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_visits>2</nb_visits>
 				<nb_actions>2</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<sum_visit_length>3</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>uppercut</label>
-				<nb_uniq_visitors>1</nb_uniq_visitors>
-				<nb_visits>1</nb_visits>
-				<nb_actions>1</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
+				<nb_conversions>1</nb_conversions>
+				<revenue>11094</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 		</subtable>
@@ -714,11 +628,11 @@
 		<nb_uniq_visitors>15</nb_uniq_visitors>
 		<nb_visits>15</nb_visits>
 		<nb_actions>15</nb_actions>
-		<sum_visit_length>437</sum_visit_length>
+		<sum_visit_length>1002</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>5</nb_conversions>
-		<revenue>70861</revenue>
+		<nb_conversions>10</nb_conversions>
+		<revenue>65944</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -734,61 +648,15 @@
 		<segment>eventName==Vega</segment>
 		<subtable>
 			<row>
-				<label>izuna drop</label>
-				<nb_uniq_visitors>4</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>132</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>14788</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>uppercut</label>
-				<nb_uniq_visitors>4</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>4</nb_actions>
-				<sum_visit_length>111</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>14268</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
 				<label>burn knuckle</label>
-				<nb_uniq_visitors>2</nb_uniq_visitors>
-				<nb_visits>2</nb_visits>
-				<nb_actions>2</nb_actions>
-				<sum_visit_length>46</sum_visit_length>
+				<nb_uniq_visitors>4</nb_uniq_visitors>
+				<nb_visits>4</nb_visits>
+				<nb_actions>4</nb_actions>
+				<sum_visit_length>309</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>14430.0</revenue>
+				<nb_conversions>3</nb_conversions>
+				<revenue>16085</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -804,14 +672,60 @@
 			</row>
 			<row>
 				<label>dragon punch</label>
+				<nb_uniq_visitors>4</nb_uniq_visitors>
+				<nb_visits>4</nb_visits>
+				<nb_actions>4</nb_actions>
+				<sum_visit_length>7</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>3</nb_conversions>
+				<revenue>29527</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>izuna drop</label>
+				<nb_uniq_visitors>3</nb_uniq_visitors>
+				<nb_visits>3</nb_visits>
+				<nb_actions>3</nb_actions>
+				<sum_visit_length>81</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>1</nb_conversions>
+				<revenue>4914</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>falcon punch</label>
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_visits>2</nb_visits>
 				<nb_actions>2</nb_actions>
-				<sum_visit_length>148</sum_visit_length>
+				<sum_visit_length>594</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
-				<revenue>27375</revenue>
+				<revenue>10606</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -830,7 +744,79 @@
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_visits>2</nb_visits>
 				<nb_actions>2</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<sum_visit_length>11</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>1</nb_conversions>
+				<revenue>4812</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>Crimson Viper</label>
+		<nb_uniq_visitors>13</nb_uniq_visitors>
+		<nb_visits>13</nb_visits>
+		<nb_actions>13</nb_actions>
+		<sum_visit_length>791</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>7</nb_conversions>
+		<revenue>50336</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+			</row>
+		</goals>
+		<avg_event_value>0</avg_event_value>
+		<segment>eventName==Crimson+Viper</segment>
+		<subtable>
+			<row>
+				<label>izuna drop</label>
+				<nb_uniq_visitors>7</nb_uniq_visitors>
+				<nb_visits>7</nb_visits>
+				<nb_actions>7</nb_actions>
+				<sum_visit_length>611</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>4</nb_conversions>
+				<revenue>27740</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>falcon punch</label>
+				<nb_uniq_visitors>2</nb_uniq_visitors>
+				<nb_visits>2</nb_visits>
+				<nb_actions>2</nb_actions>
+				<sum_visit_length>2</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
@@ -838,29 +824,75 @@
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
-				<label>falcon punch</label>
+				<label>spear throw</label>
+				<nb_uniq_visitors>2</nb_uniq_visitors>
+				<nb_visits>2</nb_visits>
+				<nb_actions>2</nb_actions>
+				<sum_visit_length>4</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>2</nb_conversions>
+				<revenue>20749</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>dragon punch</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_visits>1</nb_visits>
 				<nb_actions>1</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<sum_visit_length>172</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0.0</revenue>
 				<avg_event_value>0</avg_event_value>
 			</row>
+			<row>
+				<label>uppercut</label>
+				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>2</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>1</nb_conversions>
+				<revenue>1847.0</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+				<avg_event_value>0</avg_event_value>
+			</row>
 		</subtable>
 	</row>
 	<row>
 		<label>Chun-Li</label>
-		<nb_uniq_visitors>14</nb_uniq_visitors>
-		<nb_visits>14</nb_visits>
-		<nb_actions>14</nb_actions>
-		<sum_visit_length>85</sum_visit_length>
+		<nb_uniq_visitors>11</nb_uniq_visitors>
+		<nb_visits>11</nb_visits>
+		<nb_actions>11</nb_actions>
+		<sum_visit_length>529</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>6</nb_conversions>
-		<revenue>73250</revenue>
+		<revenue>43868</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -876,15 +908,15 @@
 		<segment>eventName==Chun-Li</segment>
 		<subtable>
 			<row>
-				<label>falcon punch</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<label>uppercut</label>
+				<nb_uniq_visitors>4</nb_uniq_visitors>
+				<nb_visits>4</nb_visits>
+				<nb_actions>4</nb_actions>
+				<sum_visit_length>7</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>14210</revenue>
+				<nb_conversions>3</nb_conversions>
+				<revenue>18825</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -903,34 +935,11 @@
 				<nb_uniq_visitors>3</nb_uniq_visitors>
 				<nb_visits>3</nb_visits>
 				<nb_actions>3</nb_actions>
-				<sum_visit_length>85</sum_visit_length>
+				<sum_visit_length>184</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>12829</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>uppercut</label>
-				<nb_uniq_visitors>3</nb_uniq_visitors>
-				<nb_visits>3</nb_visits>
-				<nb_actions>3</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>6786</revenue>
+				<nb_conversions>2</nb_conversions>
+				<revenue>18232</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -949,11 +958,23 @@
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_visits>2</nb_visits>
 				<nb_actions>2</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<sum_visit_length>294</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>29020</revenue>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<avg_event_value>0</avg_event_value>
+			</row>
+			<row>
+				<label>falcon punch</label>
+				<nb_uniq_visitors>1</nb_uniq_visitors>
+				<nb_visits>1</nb_visits>
+				<nb_actions>1</nb_actions>
+				<sum_visit_length>13</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>1</nb_conversions>
+				<revenue>6811.0</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -969,37 +990,14 @@
 			</row>
 			<row>
 				<label>izuna drop</label>
-				<nb_uniq_visitors>2</nb_uniq_visitors>
-				<nb_visits>2</nb_visits>
-				<nb_actions>2</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<avg_event_value>0</avg_event_value>
-			</row>
-			<row>
-				<label>burn knuckle</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_visits>1</nb_visits>
 				<nb_actions>1</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
+				<sum_visit_length>31</sum_visit_length>
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>10405.0</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0.0</revenue>
 				<avg_event_value>0</avg_event_value>
 			</row>
 		</subtable>

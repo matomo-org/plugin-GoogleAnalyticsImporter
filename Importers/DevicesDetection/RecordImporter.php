@@ -20,6 +20,7 @@ use Piwik\Date;
 use Piwik\Plugins\DevicesDetection\Archiver;
 use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Psr\Log\LoggerInterface;
+use DeviceDetector\Parser\Device\DeviceParserAbstract AS DeviceParser;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
@@ -61,8 +62,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->buildDeviceTypeRecord($day);
         $this->buildDeviceBrandsRecord($day);
         $this->buildDeviceModelsRecord($day);
-        $this->buildDeviceOsRecord($day);
-        $this->buildDeviceOsVersionsRecord($day);
+        $this->buildDeviceOsRecords($day);
         $this->buildBrowserRecords($day);
     }
 
@@ -81,14 +81,38 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->buildRecord($day, 'ga:mobileDeviceModel', Archiver::DEVICE_MODEL_RECORD_NAME, [$this, 'mapModel']);
     }
 
-    private function buildDeviceOsRecord(Date $day)
+    private function buildDeviceOsRecords(Date $day)
     {
         $this->buildRecord($day, 'ga:operatingSystem', Archiver::OS_RECORD_NAME, [$this, 'mapOs']);
-    }
-
-    private function buildDeviceOsVersionsRecord(Date $day)
-    {
         $this->buildRecord($day, 'ga:operatingSystemVersion', Archiver::OS_VERSION_RECORD_NAME, [$this, 'mapOsVersion']);
+
+        $gaQuery = $this->getGaQuery();
+        $table = $gaQuery->query($day, $dimensions = ['ga:operatingSystem', 'ga:operatingSystemVersion'], $this->getConversionAwareVisitMetrics());
+
+        $operatingSystems = new DataTable();
+        $operatingSystemVersions = new DataTable();
+
+        foreach ($table->getRows() as $row) {
+            $os = $this->mapOs($row->getMetadata('ga:operatingSystem'));
+            $osVersion = $this->mapOsVersion($row->getMetadata('ga:operatingSystemVersion'));
+
+            if (empty($os)) {
+                $os = 'xx';
+            }
+
+            $this->addRowToTable($operatingSystems, $row, $os);
+            $this->addRowToTable($operatingSystemVersions, $row, $os . ';' . $osVersion);
+        }
+
+        Common::destroy($table);
+
+        $blob = $operatingSystems->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
+        $this->insertBlobRecord(Archiver::OS_RECORD_NAME, $blob);
+        Common::destroy($operatingSystems);
+
+        $blob = $operatingSystemVersions->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
+        $this->insertBlobRecord(Archiver::OS_VERSION_RECORD_NAME, $blob);
+        Common::destroy($operatingSystemVersions);
     }
 
     private function buildBrowserRecords(Date $day)
@@ -149,10 +173,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     {
         switch ($category) {
             case 'desktop':
+                return DeviceParser::DEVICE_TYPE_DESKTOP;
             case 'tablet':
-                return $category;
+                return DeviceParser::DEVICE_TYPE_TABLET;
             case 'mobile':
-                return 'smartphone';
+                return DeviceParser::DEVICE_TYPE_SMARTPHONE;
             default:
                 $this->getLogger()->warning("Unknown device category found in google analytics: $category");
                 return 'xx';

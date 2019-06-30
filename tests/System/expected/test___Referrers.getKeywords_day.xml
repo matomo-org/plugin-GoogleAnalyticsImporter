@@ -2,25 +2,25 @@
 <result>
 	<row>
 		<label>(not provided)</label>
-		<nb_uniq_visitors>4</nb_uniq_visitors>
-		<nb_visits>4</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>151</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
+		<nb_uniq_visitors>11</nb_uniq_visitors>
+		<nb_visits>11</nb_visits>
+		<nb_actions>16</nb_actions>
+		<sum_visit_length>3027</sum_visit_length>
+		<bounce_count>7</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
 		<revenue>0.0</revenue>
 		<segment>referrerType==search;referrerKeyword==%28not+provided%29</segment>
 		<subtable>
 			<row>
 				<label>Google</label>
-				<nb_uniq_visitors>4</nb_uniq_visitors>
-				<nb_visits>4</nb_visits>
-				<nb_actions>5</nb_actions>
-				<sum_visit_length>151</sum_visit_length>
-				<bounce_count>3</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
+				<nb_uniq_visitors>11</nb_uniq_visitors>
+				<nb_visits>11</nb_visits>
+				<nb_actions>16</nb_actions>
+				<sum_visit_length>3027</sum_visit_length>
+				<bounce_count>7</bounce_count>
+				<nb_visits_converted>2</nb_visits_converted>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0.0</revenue>
 			</row>
 		</subtable>

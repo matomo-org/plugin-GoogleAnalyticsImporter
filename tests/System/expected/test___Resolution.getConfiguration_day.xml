@@ -1,25 +1,53 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>Android / Android Browser / (not set)</label>
-		<nb_uniq_visitors>23</nb_uniq_visitors>
-		<nb_visits>52</nb_visits>
-		<nb_actions>221</nb_actions>
-		<sum_visit_length>675</sum_visit_length>
-		<bounce_count>6</bounce_count>
-		<nb_visits_converted>5</nb_visits_converted>
-		<nb_conversions>23</nb_conversions>
-		<revenue>232980.0</revenue>
+		<label>Android / Chrome / (not set)</label>
+		<nb_uniq_visitors>26</nb_uniq_visitors>
+		<nb_visits>43</nb_visits>
+		<nb_actions>155</nb_actions>
+		<sum_visit_length>2126</sum_visit_length>
+		<bounce_count>13</bounce_count>
+		<nb_visits_converted>19</nb_visits_converted>
+		<nb_conversions>34</nb_conversions>
+		<revenue>110953.0</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>10</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>9</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>9</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>9</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
-			<row idgoal='2'>
-				<nb_conversions>4</nb_conversions>
+		</goals>
+	</row>
+	<row>
+		<label>Android / Android Browser / (not set)</label>
+		<nb_uniq_visitors>25</nb_uniq_visitors>
+		<nb_visits>40</nb_visits>
+		<nb_actions>159</nb_actions>
+		<sum_visit_length>2526</sum_visit_length>
+		<bounce_count>13</bounce_count>
+		<nb_visits_converted>18</nb_visits_converted>
+		<nb_conversions>33</nb_conversions>
+		<revenue>150200.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>9</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
+				<nb_visits_converted>9</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>9</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>9</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -30,80 +58,24 @@
 	</row>
 	<row>
 		<label>Windows / Internet Explorer / (not set)</label>
-		<nb_uniq_visitors>20</nb_uniq_visitors>
-		<nb_visits>49</nb_visits>
-		<nb_actions>235</nb_actions>
-		<sum_visit_length>865</sum_visit_length>
-		<bounce_count>6</bounce_count>
-		<nb_visits_converted>6</nb_visits_converted>
-		<nb_conversions>26</nb_conversions>
-		<revenue>243350.0</revenue>
+		<nb_uniq_visitors>22</nb_uniq_visitors>
+		<nb_visits>37</nb_visits>
+		<nb_actions>149</nb_actions>
+		<sum_visit_length>1174</sum_visit_length>
+		<bounce_count>7</bounce_count>
+		<nb_visits_converted>15</nb_visits_converted>
+		<nb_conversions>31</nb_conversions>
+		<revenue>147119.0</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>8</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>8</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>4</nb_conversions>
+				<nb_conversions>7</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-		</goals>
-	</row>
-	<row>
-		<label>Android / Chrome / (not set)</label>
-		<nb_uniq_visitors>16</nb_uniq_visitors>
-		<nb_visits>29</nb_visits>
-		<nb_actions>116</nb_actions>
-		<sum_visit_length>194</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>5</nb_visits_converted>
-		<nb_conversions>14</nb_conversions>
-		<revenue>107342.0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>3</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>2</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-		</goals>
-	</row>
-	<row>
-		<label>GNU/Linux / Firefox / (not set)</label>
-		<nb_uniq_visitors>18</nb_uniq_visitors>
-		<nb_visits>24</nb_visits>
-		<nb_actions>121</nb_actions>
-		<sum_visit_length>503</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>5</nb_visits_converted>
-		<nb_conversions>16</nb_conversions>
-		<revenue>135917.0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>4</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>7</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -114,39 +86,62 @@
 	</row>
 	<row>
 		<label>Windows / Chrome / (not set)</label>
-		<nb_uniq_visitors>16</nb_uniq_visitors>
-		<nb_visits>20</nb_visits>
-		<nb_actions>76</nb_actions>
-		<sum_visit_length>322</sum_visit_length>
-		<bounce_count>4</bounce_count>
-		<nb_visits_converted>3</nb_visits_converted>
-		<nb_conversions>8</nb_conversions>
-		<revenue>78366.0</revenue>
+		<nb_uniq_visitors>23</nb_uniq_visitors>
+		<nb_visits>34</nb_visits>
+		<nb_actions>110</nb_actions>
+		<sum_visit_length>1007</sum_visit_length>
+		<bounce_count>10</bounce_count>
+		<nb_visits_converted>12</nb_visits_converted>
+		<nb_conversions>23</nb_conversions>
+		<revenue>96650.0</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>6</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>5</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
+				<nb_conversions>6</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>5</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
 	</row>
 	<row>
-		<label>Android / Android Browser / 360x640</label>
-		<nb_uniq_visitors>4</nb_uniq_visitors>
-		<nb_visits>4</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>52</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
+		<label>GNU/Linux / Firefox / (not set)</label>
+		<nb_uniq_visitors>19</nb_uniq_visitors>
+		<nb_visits>27</nb_visits>
+		<nb_actions>82</nb_actions>
+		<sum_visit_length>1034</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>12</nb_visits_converted>
+		<nb_conversions>20</nb_conversions>
+		<revenue>42481.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>7</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>7</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>5</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>5</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
 	</row>
 	<row>
-		<label>Android / Android Browser / 360x740</label>
+		<label>Android / Chrome / 360x640</label>
 		<nb_uniq_visitors>2</nb_uniq_visitors>
 		<nb_visits>2</nb_visits>
 		<nb_actions>2</nb_actions>
@@ -157,78 +152,56 @@
 		<revenue>0.0</revenue>
 	</row>
 	<row>
-		<label>iOS / Mobile Safari / 375x812</label>
-		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<label>Windows / Chrome / 1366x768</label>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
 		<nb_visits>2</nb_visits>
 		<nb_actions>3</nb_actions>
-		<sum_visit_length>1672</sum_visit_length>
+		<sum_visit_length>1193</sum_visit_length>
 		<bounce_count>1</bounce_count>
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
 		<revenue>0.0</revenue>
 	</row>
 	<row>
-		<label>iOS / Mobile Safari / 768x1024</label>
-		<nb_uniq_visitors>2</nb_uniq_visitors>
-		<nb_visits>2</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>152</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-	</row>
-	<row>
-		<label>iOS / Safari / 375x812</label>
-		<nb_uniq_visitors>2</nb_uniq_visitors>
-		<nb_visits>2</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>1668</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0.0</revenue>
-	</row>
-	<row>
-		<label>Android / Android Browser / 360x720</label>
-		<nb_uniq_visitors>1</nb_uniq_visitors>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-	</row>
-	<row>
-		<label>Android / Android Browser / 360x780</label>
-		<nb_uniq_visitors>1</nb_uniq_visitors>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-	</row>
-	<row>
-		<label>Android / Android Browser / 412x846</label>
-		<nb_uniq_visitors>1</nb_uniq_visitors>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-	</row>
-	<row>
-		<label>Android / Chrome / 640x360</label>
+		<label>Android / Android Browser / 360x640</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
-		<sum_visit_length>44</sum_visit_length>
+		<sum_visit_length>1726</sum_visit_length>
 		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0.0</revenue>
+	</row>
+	<row>
+		<label>Android / Chrome / 360x720</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+	</row>
+	<row>
+		<label>Android / Samsung Browser / 360x640</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>53</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+	</row>
+	<row>
+		<label>Android / Samsung Browser / 412x846</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
@@ -245,7 +218,7 @@
 		<revenue>0.0</revenue>
 	</row>
 	<row>
-		<label>iOS / Safari / 320x568</label>
+		<label>Mac / Chrome / 1440x900</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -256,18 +229,29 @@
 		<revenue>0.0</revenue>
 	</row>
 	<row>
-		<label>Mac / Safari / 1920x1080</label>
+		<label>Windows / Chrome / 1280x720</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>151</sum_visit_length>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+	</row>
+	<row>
+		<label>Windows / Chrome / 1536x864</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>55</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
 	</row>
 	<row>
-		<label>Windows / Chrome / 1280x1024</label>
+		<label>Windows / Chrome / 1920x1080</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -278,7 +262,7 @@
 		<revenue>0.0</revenue>
 	</row>
 	<row>
-		<label>Windows / Firefox / 1536x864</label>
+		<label>Windows / Microsoft Edge / 1366x768</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -289,11 +273,11 @@
 		<revenue>0.0</revenue>
 	</row>
 	<row>
-		<label>Windows / Firefox / 2048x1152</label>
+		<label>Windows / Microsoft Edge / 1680x1050</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
-		<sum_visit_length>14</sum_visit_length>
+		<sum_visit_length>28</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>

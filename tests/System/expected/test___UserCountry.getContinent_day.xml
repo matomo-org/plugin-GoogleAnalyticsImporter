@@ -2,53 +2,53 @@
 <result>
 	<row>
 		<label>Europe</label>
-		<nb_uniq_visitors>62</nb_uniq_visitors>
-		<nb_visits>87</nb_visits>
-		<nb_actions>338</nb_actions>
-		<sum_visit_length>4644</sum_visit_length>
-		<bounce_count>22</bounce_count>
-		<nb_visits_converted>13</nb_visits_converted>
+		<nb_uniq_visitors>56</nb_uniq_visitors>
+		<nb_visits>69</nb_visits>
+		<nb_actions>205</nb_actions>
+		<sum_visit_length>3975</sum_visit_length>
+		<bounce_count>24</bounce_count>
+		<nb_visits_converted>25</nb_visits_converted>
 		<nb_conversions>41</nb_conversions>
-		<revenue>356753</revenue>
+		<revenue>129086</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>6</nb_conversions>
+				<nb_conversions>11</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>5</nb_visits_converted>
+				<nb_visits_converted>11</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>5</nb_conversions>
+				<nb_conversions>13</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
+				<nb_visits_converted>12</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 		</goals>
 		<code>Europe</code>
 	</row>
 	<row>
 		<label>North America</label>
-		<nb_uniq_visitors>21</nb_uniq_visitors>
-		<nb_visits>45</nb_visits>
-		<nb_actions>181</nb_actions>
-		<sum_visit_length>607</sum_visit_length>
-		<bounce_count>4</bounce_count>
-		<nb_visits_converted>4</nb_visits_converted>
-		<nb_conversions>17</nb_conversions>
-		<revenue>163201</revenue>
+		<nb_uniq_visitors>31</nb_uniq_visitors>
+		<nb_visits>53</nb_visits>
+		<nb_actions>210</nb_actions>
+		<sum_visit_length>2735</sum_visit_length>
+		<bounce_count>15</bounce_count>
+		<nb_visits_converted>24</nb_visits_converted>
+		<nb_conversions>45</nb_conversions>
+		<revenue>193331.0</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>12</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>2</nb_visits_converted>
+				<nb_visits_converted>11</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>12</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>11</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -60,24 +60,24 @@
 	</row>
 	<row>
 		<label>Asia</label>
-		<nb_uniq_visitors>27</nb_uniq_visitors>
-		<nb_visits>33</nb_visits>
-		<nb_actions>172</nb_actions>
-		<sum_visit_length>758</sum_visit_length>
-		<bounce_count>4</bounce_count>
-		<nb_visits_converted>5</nb_visits_converted>
-		<nb_conversions>20</nb_conversions>
-		<revenue>185260</revenue>
+		<nb_uniq_visitors>33</nb_uniq_visitors>
+		<nb_visits>50</nb_visits>
+		<nb_actions>179</nb_actions>
+		<sum_visit_length>1750</sum_visit_length>
+		<bounce_count>13</bounce_count>
+		<nb_visits_converted>17</nb_visits_converted>
+		<nb_conversions>37</nb_conversions>
+		<revenue>155005</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>12</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>2</nb_visits_converted>
+				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>5</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>4</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -89,24 +89,24 @@
 	</row>
 	<row>
 		<label>Unknown</label>
-		<nb_uniq_visitors>16</nb_uniq_visitors>
-		<nb_visits>31</nb_visits>
-		<nb_actions>108</nb_actions>
-		<sum_visit_length>303</sum_visit_length>
-		<bounce_count>6</bounce_count>
-		<nb_visits_converted>4</nb_visits_converted>
-		<nb_conversions>11</nb_conversions>
-		<revenue>92741.0</revenue>
+		<nb_uniq_visitors>17</nb_uniq_visitors>
+		<nb_visits>23</nb_visits>
+		<nb_actions>80</nb_actions>
+		<sum_visit_length>736</sum_visit_length>
+		<bounce_count>5</bounce_count>
+		<nb_visits_converted>11</nb_visits_converted>
+		<nb_conversions>19</nb_conversions>
+		<revenue>69981.0</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>5</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>5</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>2</nb_conversions>
+				<nb_conversions>6</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>5</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -115,5 +115,17 @@
 			</row>
 		</goals>
 		<code>Unknown</code>
+	</row>
+	<row>
+		<label>Africa</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>1726</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0.0</revenue>
+		<code>Africa</code>
 	</row>
 </result>

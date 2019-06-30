@@ -3,23 +3,23 @@
 	<row>
 		<label>reddit</label>
 		<nb_uniq_visitors>22</nb_uniq_visitors>
-		<nb_visits>34</nb_visits>
-		<nb_actions>158</nb_actions>
-		<sum_visit_length>913</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>3</nb_visits_converted>
-		<nb_conversions>17</nb_conversions>
-		<revenue>153565</revenue>
+		<nb_visits>28</nb_visits>
+		<nb_actions>113</nb_actions>
+		<sum_visit_length>1651</sum_visit_length>
+		<bounce_count>6</bounce_count>
+		<nb_visits_converted>11</nb_visits_converted>
+		<nb_conversions>21</nb_conversions>
+		<revenue>75296</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>4</nb_conversions>
+				<nb_conversions>5</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>3</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>7</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>6</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -32,64 +32,58 @@
 		<referer_type>7</referer_type>
 	</row>
 	<row>
-		<label>Facebook</label>
-		<nb_uniq_visitors>14</nb_uniq_visitors>
-		<nb_visits>15</nb_visits>
-		<nb_actions>19</nb_actions>
-		<sum_visit_length>1876</sum_visit_length>
-		<bounce_count>12</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<url>facebook.com</url>
-		<logo>plugins/Morpheus/icons/dist/socials/facebook.com.png</logo>
-		<referer_type>7</referer_type>
+		<label>(not provided)</label>
+		<nb_uniq_visitors>11</nb_uniq_visitors>
+		<nb_visits>11</nb_visits>
+		<nb_actions>16</nb_actions>
+		<sum_visit_length>3027</sum_visit_length>
+		<bounce_count>7</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>0.0</revenue>
+		<referer_type>2</referer_type>
 	</row>
 	<row>
 		<label>oahuscubadiving.com</label>
-		<nb_uniq_visitors>5</nb_uniq_visitors>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
 		<nb_visits>5</nb_visits>
-		<nb_actions>24</nb_actions>
-		<sum_visit_length>64</sum_visit_length>
+		<nb_actions>18</nb_actions>
+		<sum_visit_length>177</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>2</nb_conversions>
-		<revenue>36673.0</revenue>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>17958.0</revenue>
 		<goals>
 			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
 			</row>
 		</goals>
 		<referer_type>3</referer_type>
 	</row>
 	<row>
-		<label>(not provided)</label>
-		<nb_uniq_visitors>4</nb_uniq_visitors>
-		<nb_visits>4</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>151</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<referer_type>2</referer_type>
-	</row>
-	<row>
-		<label>qwant.com</label>
+		<label>Facebook</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>14</sum_visit_length>
-		<bounce_count>0</bounce_count>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
-		<referer_type>3</referer_type>
+		<url>facebook.com</url>
+		<logo>plugins/Morpheus/icons/dist/socials/facebook.com.png</logo>
+		<referer_type>7</referer_type>
 	</row>
 </result>

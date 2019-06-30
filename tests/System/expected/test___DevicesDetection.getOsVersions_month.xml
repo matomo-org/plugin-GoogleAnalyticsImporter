@@ -2,31 +2,31 @@
 <result>
 	<row>
 		<label>Unknown</label>
-		<nb_visits>629</nb_visits>
-		<nb_actions>1390</nb_actions>
-		<sum_visit_length>7374</sum_visit_length>
-		<bounce_count>85</bounce_count>
-		<nb_visits_converted>30</nb_visits_converted>
-		<nb_conversions>119</nb_conversions>
-		<revenue>950376</revenue>
+		<nb_visits>448</nb_visits>
+		<nb_actions>1649</nb_actions>
+		<sum_visit_length>19824</sum_visit_length>
+		<bounce_count>111</bounce_count>
+		<nb_visits_converted>108</nb_visits_converted>
+		<nb_conversions>251</nb_conversions>
+		<revenue>1420691</revenue>
+		<sum_daily_nb_uniq_visitors>351</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>16</nb_conversions>
+				<nb_conversions>56</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>14</nb_visits_converted>
+				<nb_visits_converted>48</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>14</nb_conversions>
+				<nb_conversions>50</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>12</nb_visits_converted>
+				<nb_visits_converted>46</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
+				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
+				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>574</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/os/UNK.png</logo>
 	</row>
 </result>

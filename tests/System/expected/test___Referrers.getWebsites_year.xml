@@ -2,73 +2,60 @@
 <result>
 	<row>
 		<label>oahuscubadiving.com</label>
-		<nb_visits>5</nb_visits>
-		<nb_actions>24</nb_actions>
-		<sum_visit_length>64</sum_visit_length>
+		<nb_visits>10</nb_visits>
+		<nb_actions>42</nb_actions>
+		<sum_visit_length>241</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>2</nb_conversions>
-		<revenue>36673.0</revenue>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>6</nb_conversions>
+		<revenue>54631</revenue>
 		<goals>
 			<row idgoal='1'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==oahuscubadiving.com</segment>
 		<subtable>
 			<row>
 				<label>/oahu-dive-sites/</label>
-				<nb_visits>5</nb_visits>
-				<nb_actions>24</nb_actions>
-				<sum_visit_length>64</sum_visit_length>
+				<nb_visits>10</nb_visits>
+				<nb_actions>42</nb_actions>
+				<sum_visit_length>241</sum_visit_length>
 				<bounce_count>0</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>2</nb_conversions>
-				<revenue>36673.0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+				<nb_conversions>6</nb_conversions>
+				<revenue>54631</revenue>
 				<goals>
 					<row idgoal='1'>
+						<nb_conversions>1</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>1</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>1</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>1</nb_visits_converted>
+					</row>
+					<row idgoal='3'>
 						<nb_conversions>0</nb_conversions>
 						<revenue>0</revenue>
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-			</row>
-		</subtable>
-	</row>
-	<row>
-		<label>ecosia.org</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>referrerName==ecosia.org</segment>
-		<subtable>
-			<row>
-				<label>/</label>
-				<nb_visits>1</nb_visits>
-				<nb_actions>1</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>1</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
-				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>

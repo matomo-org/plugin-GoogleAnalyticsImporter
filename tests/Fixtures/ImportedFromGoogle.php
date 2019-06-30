@@ -20,8 +20,8 @@ use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
 class ImportedFromGoogle extends Fixture
 {
     public $idSite = 1;
-    public $dateTime = '2019-06-28 00:00:00';
-    public $importedDateRange = '2019-06-25,2019-06-28';
+    public $dateTime = '2019-06-30 00:00:00';
+    public $importedDateRange = '2019-06-27,2019-06-30';
 
     public $accessToken;
     public $viewId;

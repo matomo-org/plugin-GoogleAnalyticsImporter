@@ -2,19 +2,77 @@
 <result>
 	<row>
 		<label>Desktop</label>
-		<nb_uniq_visitors>29</nb_uniq_visitors>
-		<nb_visits>97</nb_visits>
-		<nb_actions>438</nb_actions>
-		<sum_visit_length>1855</sum_visit_length>
-		<bounce_count>14</bounce_count>
-		<nb_visits_converted>13</nb_visits_converted>
-		<nb_conversions>50</nb_conversions>
-		<revenue>457633.0</revenue>
+		<nb_uniq_visitors>49</nb_uniq_visitors>
+		<nb_visits>106</nb_visits>
+		<nb_actions>353</nb_actions>
+		<sum_visit_length>4491</sum_visit_length>
+		<bounce_count>26</bounce_count>
+		<nb_visits_converted>40</nb_visits_converted>
+		<nb_conversions>75</nb_conversions>
+		<revenue>286250.0</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>9</nb_conversions>
+				<nb_conversions>21</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>8</nb_visits_converted>
+				<nb_visits_converted>21</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>18</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>18</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+		</goals>
+		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
+	</row>
+	<row>
+		<label>Smartphone</label>
+		<nb_uniq_visitors>41</nb_uniq_visitors>
+		<nb_visits>71</nb_visits>
+		<nb_actions>259</nb_actions>
+		<sum_visit_length>6050</sum_visit_length>
+		<bounce_count>26</bounce_count>
+		<nb_visits_converted>27</nb_visits_converted>
+		<nb_conversions>52</nb_conversions>
+		<revenue>210750.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>14</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>14</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>13</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>13</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+		</goals>
+		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
+	</row>
+	<row>
+		<label>Tablet</label>
+		<nb_uniq_visitors>17</nb_uniq_visitors>
+		<nb_visits>19</nb_visits>
+		<nb_actions>64</nb_actions>
+		<sum_visit_length>381</sum_visit_length>
+		<bounce_count>5</bounce_count>
+		<nb_visits_converted>10</nb_visits_converted>
+		<nb_conversions>16</nb_conversions>
+		<revenue>50403.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>5</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>4</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>5</nb_conversions>
@@ -25,58 +83,6 @@
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-		</goals>
-		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
-	</row>
-	<row>
-		<label>Smartphone</label>
-		<nb_uniq_visitors>39</nb_uniq_visitors>
-		<nb_visits>86</nb_visits>
-		<nb_actions>310</nb_actions>
-		<sum_visit_length>4176</sum_visit_length>
-		<bounce_count>21</bounce_count>
-		<nb_visits_converted>10</nb_visits_converted>
-		<nb_conversions>34</nb_conversions>
-		<revenue>300507.0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>6</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>5</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>2</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-		</goals>
-		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
-	</row>
-	<row>
-		<label>Tablet</label>
-		<nb_uniq_visitors>12</nb_uniq_visitors>
-		<nb_visits>13</nb_visits>
-		<nb_actions>51</nb_actions>
-		<sum_visit_length>281</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>2</nb_visits_converted>
-		<nb_conversions>5</nb_conversions>
-		<revenue>39815.0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
 			</row>
 		</goals>
 		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>

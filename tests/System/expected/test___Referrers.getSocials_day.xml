@@ -3,23 +3,23 @@
 	<row>
 		<label>reddit</label>
 		<nb_uniq_visitors>22</nb_uniq_visitors>
-		<nb_visits>34</nb_visits>
-		<nb_actions>158</nb_actions>
-		<sum_visit_length>913</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>3</nb_visits_converted>
-		<nb_conversions>17</nb_conversions>
-		<revenue>153565</revenue>
+		<nb_visits>28</nb_visits>
+		<nb_actions>113</nb_actions>
+		<sum_visit_length>1651</sum_visit_length>
+		<bounce_count>6</bounce_count>
+		<nb_visits_converted>11</nb_visits_converted>
+		<nb_conversions>21</nb_conversions>
+		<revenue>75296</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>4</nb_conversions>
+				<nb_conversions>5</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>3</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>7</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>6</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -31,37 +31,15 @@
 		<logo>plugins/Morpheus/icons/dist/socials/reddit.com.png</logo>
 		<subtable>
 			<row>
-				<label>http://reddit.com/r/scuba/comments/8mpl4j/open_water_divers_being_born/</label>
-				<nb_uniq_visitors>8</nb_uniq_visitors>
+				<label>http://reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</label>
+				<nb_uniq_visitors>10</nb_uniq_visitors>
 				<nb_visits>12</nb_visits>
 				<nb_actions>46</nb_actions>
-				<sum_visit_length>602</sum_visit_length>
-				<bounce_count>1</bounce_count>
-				<nb_visits_converted>1</nb_visits_converted>
-				<nb_conversions>4</nb_conversions>
-				<revenue>25236.0</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>2</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>2</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
-			</row>
-			<row>
-				<label>http://reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</label>
-				<nb_uniq_visitors>7</nb_uniq_visitors>
-				<nb_visits>12</nb_visits>
-				<nb_actions>57</nb_actions>
-				<sum_visit_length>124</sum_visit_length>
-				<bounce_count>1</bounce_count>
-				<nb_visits_converted>0</nb_visits_converted>
-				<nb_conversions>6</nb_conversions>
-				<revenue>61220.0</revenue>
+				<sum_visit_length>684</sum_visit_length>
+				<bounce_count>3</bounce_count>
+				<nb_visits_converted>5</nb_visits_converted>
+				<nb_conversions>8</nb_conversions>
+				<revenue>24690.0</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>1</nb_conversions>
@@ -69,31 +47,9 @@
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
 					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
+						<nb_conversions>4</nb_conversions>
 						<revenue>0</revenue>
-					</row>
-				</goals>
-			</row>
-			<row>
-				<label>http://reddit.com/r/scuba/comments/8mtp0i/five_rules_shearwater_broke_with_the_teric/</label>
-				<nb_uniq_visitors>7</nb_uniq_visitors>
-				<nb_visits>10</nb_visits>
-				<nb_actions>55</nb_actions>
-				<sum_visit_length>187</sum_visit_length>
-				<bounce_count>0</bounce_count>
-				<nb_visits_converted>2</nb_visits_converted>
-				<nb_conversions>7</nb_conversions>
-				<revenue>67109.0</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>1</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>1</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>1</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>1</nb_visits_converted>
+						<nb_visits_converted>3</nb_visits_converted>
 					</row>
 					<row idgoal='3'>
 						<nb_conversions>0</nb_conversions>
@@ -102,34 +58,73 @@
 					</row>
 				</goals>
 			</row>
+			<row>
+				<label>http://reddit.com/r/scuba/comments/8mtp0i/five_rules_shearwater_broke_with_the_teric/</label>
+				<nb_uniq_visitors>8</nb_uniq_visitors>
+				<nb_visits>10</nb_visits>
+				<nb_actions>37</nb_actions>
+				<sum_visit_length>695</sum_visit_length>
+				<bounce_count>2</bounce_count>
+				<nb_visits_converted>5</nb_visits_converted>
+				<nb_conversions>7</nb_conversions>
+				<revenue>15037.0</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>2</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>2</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>3</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>3</nb_visits_converted>
+					</row>
+					<row idgoal='3'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+				</goals>
+			</row>
+			<row>
+				<label>http://reddit.com/r/scuba/comments/8mpl4j/open_water_divers_being_born/</label>
+				<nb_uniq_visitors>4</nb_uniq_visitors>
+				<nb_visits>6</nb_visits>
+				<nb_actions>30</nb_actions>
+				<sum_visit_length>272</sum_visit_length>
+				<bounce_count>1</bounce_count>
+				<nb_visits_converted>1</nb_visits_converted>
+				<nb_conversions>6</nb_conversions>
+				<revenue>35569.0</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>2</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>1</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+					</row>
+				</goals>
+			</row>
 		</subtable>
 	</row>
 	<row>
 		<label>Facebook</label>
-		<nb_uniq_visitors>14</nb_uniq_visitors>
-		<nb_visits>15</nb_visits>
-		<nb_actions>19</nb_actions>
-		<sum_visit_length>1876</sum_visit_length>
-		<bounce_count>12</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
 		<url>facebook.com</url>
 		<logo>plugins/Morpheus/icons/dist/socials/facebook.com.png</logo>
 		<subtable>
 			<row>
 				<label>http://m.facebook.com/</label>
-				<nb_uniq_visitors>13</nb_uniq_visitors>
-				<nb_visits>14</nb_visits>
-				<nb_actions>18</nb_actions>
-				<sum_visit_length>1876</sum_visit_length>
-				<bounce_count>11</bounce_count>
-				<nb_visits_converted>1</nb_visits_converted>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0.0</revenue>
-			</row>
-			<row>
-				<label>http://facebook.com/</label>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_visits>1</nb_visits>
 				<nb_actions>1</nb_actions>

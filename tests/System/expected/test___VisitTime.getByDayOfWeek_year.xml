@@ -7,24 +7,12 @@
 	</row>
 	<row>
 		<label>Tuesday</label>
-		<nb_visits>363</nb_visits>
-		<nb_uniq_visitors>361</nb_uniq_visitors>
-		<nb_actions>365</nb_actions>
-		<nb_users>0</nb_users>
-		<sum_visit_length>158</sum_visit_length>
-		<bounce_count>21</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
+		<nb_visits>0</nb_visits>
 		<day_of_week>2</day_of_week>
 	</row>
 	<row>
 		<label>Wednesday</label>
-		<nb_visits>26</nb_visits>
-		<nb_uniq_visitors>25</nb_uniq_visitors>
-		<nb_actions>67</nb_actions>
-		<nb_users>0</nb_users>
-		<sum_visit_length>380</sum_visit_length>
-		<bounce_count>20</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
+		<nb_visits>0</nb_visits>
 		<day_of_week>3</day_of_week>
 	</row>
 	<row>
@@ -51,12 +39,24 @@
 	</row>
 	<row>
 		<label>Saturday</label>
-		<nb_visits>0</nb_visits>
+		<nb_visits>12</nb_visits>
+		<nb_uniq_visitors>12</nb_uniq_visitors>
+		<nb_actions>15</nb_actions>
+		<nb_users>0</nb_users>
+		<sum_visit_length>2066</sum_visit_length>
+		<bounce_count>10</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
 		<day_of_week>6</day_of_week>
 	</row>
 	<row>
 		<label>Sunday</label>
-		<nb_visits>0</nb_visits>
+		<nb_visits>196</nb_visits>
+		<nb_uniq_visitors>75</nb_uniq_visitors>
+		<nb_actions>676</nb_actions>
+		<nb_users>0</nb_users>
+		<sum_visit_length>10922</sum_visit_length>
+		<bounce_count>57</bounce_count>
+		<nb_visits_converted>77</nb_visits_converted>
 		<day_of_week>7</day_of_week>
 	</row>
 </result>
