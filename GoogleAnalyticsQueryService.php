@@ -255,6 +255,10 @@ class GoogleAnalyticsQueryService
                 },
             ],
 
+            // events
+            Metrics::INDEX_EVENT_NB_HITS => 'ga:totalEvents',
+            Metrics::INDEX_EVENT_SUM_EVENT_VALUE => 'ga:eventValue',
+
             // actions (requires correct dimension)
             Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 'ga:users',
             Metrics::INDEX_PAGE_EXIT_NB_VISITS => 'ga:sessions',

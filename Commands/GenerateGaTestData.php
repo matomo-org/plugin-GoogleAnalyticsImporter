@@ -470,7 +470,7 @@ class GenerateGaTestData extends ConsoleCommand
         $searchCategory = $this->getRandomElement($this->searchCategories);
 
         $params['t'] = 'pageview';
-        $params['dl'] = 'http://matthieu.net/blog/search?q=' . urlencode($searchQuery) . '&search_category=' . urlencode($searchCategory);
+        $params['dl'] = 'http://matthieu.net/search?s=' . urlencode($searchQuery) . '&search_category=' . urlencode($searchCategory);
         $params['dt'] = 'Search';
 
         $this->send($params);

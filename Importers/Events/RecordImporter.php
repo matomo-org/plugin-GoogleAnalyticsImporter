@@ -62,8 +62,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function queryEvents(Date $day)
     {
+        $metrics = array_merge($this->getConversionAwareVisitMetrics(), [
+            Metrics::INDEX_EVENT_NB_HITS,
+            Metrics::INDEX_EVENT_SUM_EVENT_VALUE,
+        ]);
+
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:eventCategory', 'ga:eventAction', 'ga:eventLabel'], $this->getConversionAwareVisitMetrics());
+        $table = $gaQuery->query($day, $dimensions = ['ga:eventCategory', 'ga:eventAction', 'ga:eventLabel'], $metrics);
 
         foreach ($table->getRows() as $row) {
             $eventCategory = $row->getMetadata('ga:eventCategory');

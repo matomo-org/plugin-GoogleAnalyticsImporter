@@ -8,12 +8,14 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\Actions;
 
+use Piwik\API\Request;
 use Piwik\Common;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Metrics as PiwikMetrics;
 use Piwik\Period\Day;
+use Piwik\Plugins\Actions\Actions\ActionSiteSearch;
 use Piwik\Plugins\Actions\Archiver;
 use Piwik\Plugins\Actions\ArchivingHelper;
 use Piwik\Site;
@@ -229,15 +231,29 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getPageUrlsRecord(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:pagePath'], $this->getPageMetrics(), [
+        $table = $gaQuery->query($day, $dimensions = ['ga:hostname', 'ga:pagePath'], $this->getPageMetrics(), [
             'orderBys' => [
                 ['field' => 'ga:pageviews', 'order' => 'descending'],
                 ['field' => 'ga:pagePath', 'order' => 'ascending']
             ],
         ]);
 
+        $siteDetails = Request::processRequest('SitesManager.getSiteFromId', [
+            'idSite' => $this->getIdSite(),
+        ], $defaultRequest = []);
+        $siteDetails['sitesearch_keyword_parameters'] = explode(',', $siteDetails['sitesearch_keyword_parameters']);
+        $siteDetails['sitesearch_category_parameters'] = explode(',', $siteDetails['sitesearch_category_parameters']);
+
         foreach ($table->getRows() as $row) {
+            $hostname = $row->getMetadata('ga:hostname');
             $actionName = $row->getMetadata('ga:pagePath');
+
+            $parsedUrl = parse_url('http://' . $hostname . $actionName);
+            $isSiteSearch = ActionSiteSearch::detectSiteSearchFromUrl($siteDetails, $parsedUrl);
+            if ($isSiteSearch) {
+                continue;
+            }
+
             $actionRow = ArchivingHelper::getActionRow($actionName, Action::TYPE_PAGE_URL, $urlPrefix = '', $this->dataTables);
 
             $row->deleteColumn('label');

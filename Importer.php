@@ -97,12 +97,12 @@ class Importer
             $urls = [$webproperty->getWebsiteUrl()],
             $ecommerce = $view->eCommerceTracking ? 1 : 0,
             $siteSearch = !empty($view->siteSearchQueryParameters),
-            $searchKeywordParams = $view->siteSearchQueryParameters, // TODO: is this right?
+            $searchKeywordParams = $view->siteSearchQueryParameters,
             $searchCategoryParams = $view->siteSearchCategoryParameters,
             $excludedIps = null,
             $excludedParams = $view->excludeQueryParameters, // TODO: correct?
             $timezone = $view->timezone,
-            $currency = $view->currency, // TODO: need to map?
+            $currency = $view->currency,
             $group = null,
             $startDate = Date::factory($webproperty->getCreated())->toString()
         );
