@@ -16,7 +16,9 @@ use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\ArchiveWriter;
 use Piwik\Date;
+use Piwik\Option;
 use Piwik\Period\Factory;
+use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
@@ -24,6 +26,7 @@ use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Segment;
 use Piwik\Site;
+use Piwik\Tracker\GoalManager;
 use Psr\Log\LoggerInterface;
 
 class Importer
@@ -228,6 +231,8 @@ class Importer
 
             $archiveWriter->finalizeArchive();
         }
+
+        $this->removeNoDataMessage($idSite);
     }
 
     private function makeArchiveWriter(Site $site, Date $date)
@@ -296,5 +301,11 @@ class Importer
     public function getQueryCount()
     {
         return $this->queryCount;
+    }
+
+    private function removeNoDataMessage($idSite)
+    {
+        $hadTrafficKey = 'SitesManagerHadTrafficInPast_' . (int) $idSite;
+        Option::set($hadTrafficKey, 1);
     }
 }

@@ -19,21 +19,28 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 {
     const PLUGIN_NAME = 'VisitorInterest';
 
+    private $secondsGap;
+
     public function importRecords(Date $day)
     {
-        $this->queryDimension($day, 'ga:sessionCount', Archiver::VISITS_COUNT_RECORD_NAME);
-        $this->queryDimension($day, 'ga:daysSinceLastSession', Archiver::DAYS_SINCE_LAST_RECORD_NAME);
+        $this->secondsGap = Archiver::getSecondsGap();
+
+        $this->queryDimension($day, 'ga:sessionCount', Archiver::$visitNumberGap, Archiver::VISITS_COUNT_RECORD_NAME,
+            function ($value) { return $this->getVisitByNumberLabel($value); });
+        $this->queryDimension($day, 'ga:daysSinceLastSession', Archiver::$daysSinceLastVisitGap, Archiver::DAYS_SINCE_LAST_RECORD_NAME,
+            function ($value) { return $this->getVisitsByDaysSinceLastLabel($value); });
         $this->queryVisitsByDuration($day);
     }
 
-    private function queryDimension(Date $day, $dimension, $recordName)
+    private function queryDimension(Date $day, $dimension, $gap, $recordName, $labelMapper)
     {
-        $record = new DataTable();
+        $record = $this->createTableFromGap($gap);
 
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, [$dimension], $this->getConversionAwareVisitMetrics());
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
+            $label = $labelMapper($label);
             $this->addRowToTable($record, $row, $label);
         }
 
@@ -44,15 +51,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function queryVisitsByDuration(Date $day)
     {
-        $gap = Archiver::getSecondsGap();
-
-        $record = new DataTable();
+        $record = $this->createTableFromGap($this->secondsGap);
 
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, ['ga:sessionDurationBucket'], $this->getConversionAwareVisitMetrics());
         foreach ($table->getRows() as $row) {
             $durationInSecs = $row->getMetadata('ga:sessionDurationBucket');
-            $label = $this->getDurationGapLabel($gap, $durationInSecs);
+            $label = $this->getDurationGapLabel($durationInSecs);
 
             $this->addRowToTable($record, $row, $label);
         }
@@ -68,13 +73,28 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertBlobRecord($recordName, $blob);
     }
 
-    private function getDurationGapLabel(array $gap, $durationInSecs)
+    private function getVisitByNumberLabel($value)
+    {
+        return $this->getGapLabel(Archiver::$visitNumberGap, $value);
+    }
+
+    private function getVisitsByDaysSinceLastLabel($value)
+    {
+        return $this->getGapLabel(Archiver::$daysSinceLastVisitGap, $value);
+    }
+
+    private function getDurationGapLabel($value)
+    {
+        return $this->getGapLabel($this->secondsGap, $value);
+    }
+
+    private function getGapLabel(array $gap, $value)
     {
         $range = null;
 
         foreach ($gap as $bounds) {
             $upperBound = end($bounds);
-            if ($durationInSecs <= $upperBound) {
+            if ($value <= $upperBound) {
                 $range = reset($bounds) . ' - ' . $upperBound;
                 break;
             }
@@ -86,5 +106,20 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
 
         return $range;
+    }
+
+    private function createTableFromGap($gap)
+    {
+        $record = new DataTable();
+        foreach ($gap as $bounds) {
+            $row = new DataTable\Row();
+            if (count($bounds) === 1) {
+                $row->setColumn('label', ($bounds[0] + 1) . urlencode('+'));
+            } else {
+                $row->setColumn('label', $bounds[0]. ' - ' . $bounds[1]);
+            }
+            $record->addRow($row);
+        }
+        return $record;
     }
 }

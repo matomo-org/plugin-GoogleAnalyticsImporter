@@ -13,7 +13,10 @@ use Piwik\DataTable;
 use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Piwik;
+use Piwik\Site;
 use Piwik\Tracker\Action;
+use Piwik\Tracker\GoalManager;
 
 class GoogleAnalyticsQueryService
 {
@@ -202,9 +205,12 @@ class GoogleAnalyticsQueryService
 
     public function getMetricIndicesToGaMetrics()
     {
-        $goalSpecificMetrics = array_values($this->getEcommerceMetricIndicesToGaMetrics());
+        $goalSpecificMetrics = [];
         foreach ($this->goalsMapping as $idGoal => $gaIdGoal) {
             $goalSpecificMetrics = array_merge($goalSpecificMetrics, array_values($this->getGoalSpecificMetricIndicesToGametrics($gaIdGoal)));
+        }
+        if (Site::isEcommerceEnabledFor($this->idSite)) {
+            $goalSpecificMetrics = array_merge($goalSpecificMetrics, array_values($this->getEcommerceGoalSpecificMetrics()));
         }
         $goalSpecificMetrics[] = 'ga:sessions'; // for nb_visits_converted
 
@@ -311,6 +317,21 @@ class GoogleAnalyticsQueryService
             }
             $result[$idGoal] = $innerColumns;
         }
+
+        if (Site::isEcommerceEnabledFor($this->idSite)) {
+            $goalSpecificMetrics = $this->getEcommerceGoalSpecificMetrics();
+
+            $innerColumns = [];
+            foreach ($goalSpecificMetrics as $index => $gaName) {
+                $value = $row->getColumn($gaName);
+                if ($value !== false) {
+                    $innerColumns[$index] = $value;
+                }
+            }
+
+            $result[GoalManager::IDGOAL_ORDER] = $innerColumns;
+        }
+
         return $result;
     }
 
@@ -335,6 +356,15 @@ class GoogleAnalyticsQueryService
         ];
     }
 
+    private function getEcommerceGoalSpecificMetrics()
+    {
+        return [
+            Metrics::INDEX_GOAL_NB_CONVERSIONS => 'ga:transactions',
+            Metrics::INDEX_GOAL_REVENUE => 'ga:transactionRevenue',
+            Metrics::INDEX_GOAL_ECOMMERCE_ITEMS => 'ga:itemQuantity',
+        ];
+    }
+
     private function gaBatchGet($date, $metricNames, $options)
     {
         $dimensions = [];
@@ -348,7 +378,7 @@ class GoogleAnalyticsQueryService
             $dimensions[] = $this->makeGaSegmentDimension();
         }
 
-        $metricNames = array_values($metricNames);
+        $metricNames = array_values($metricNames);print_r($metricNames);
         $metrics = array_map(function ($name) { return $this->makeGaMetric($name); }, $metricNames);
 
         $request = new \Google_Service_AnalyticsReporting_ReportRequest();

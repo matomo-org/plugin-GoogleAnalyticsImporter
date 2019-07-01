@@ -14,6 +14,7 @@ use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Plugins\Goals\Archiver;
+use Piwik\Site;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
@@ -35,11 +36,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $numericRecords = [];
 
         $goals = $table->getFirstRow()->getColumn(Metrics::INDEX_GOALS);
-        foreach ($goals as $idGoal => $metrics) {
-            foreach ($metrics as $metricId => $value) {
-                $metricName = Metrics::$mappingFromIdToNameGoal[$metricId];
-                $recordName = Archiver::getRecordName($metricName, $idGoal);
-                $numericRecords[$recordName] = $value;
+        if (!empty($goals)) {
+            foreach ($goals as $idGoal => $metrics) {
+                foreach ($metrics as $metricId => $value) {
+                    $metricName = Metrics::$mappingFromIdToNameGoal[$metricId];
+                    $recordName = Archiver::getRecordName($metricName, $idGoal);
+                    $numericRecords[$recordName] = $value;
+                }
             }
         }
 

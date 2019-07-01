@@ -281,6 +281,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['safari (in-app)'] = $result['mobile safari'];
             $result['samsung internet'] = $result['samsung browser'];
             $result['android webview'] = $result['android browser'];
+            $result['mozilla compatible agent'] = 'xx'; // TODO: mostly bots, we could ignore these...
             $this->cache->save($cacheKey, $result);
         }
         return $result;
