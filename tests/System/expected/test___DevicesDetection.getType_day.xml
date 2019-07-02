@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>Desktop</label>
+		<label>Unknown</label>
 		<nb_uniq_visitors>49</nb_uniq_visitors>
 		<nb_visits>106</nb_visits>
 		<nb_actions>353</nb_actions>
@@ -25,6 +25,11 @@
 				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>35</nb_conversions>
+				<revenue>286250</revenue>
+				<items>215</items>
 			</row>
 		</goals>
 		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
@@ -55,8 +60,14 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>24</nb_conversions>
+				<revenue>210750</revenue>
+				<items>162</items>
+			</row>
 		</goals>
-		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
+		<segment>deviceType==smartphone</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/smartphone.png</logo>
 	</row>
 	<row>
 		<label>Tablet</label>
@@ -84,8 +95,14 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>6</nb_conversions>
+				<revenue>50403</revenue>
+				<items>47</items>
+			</row>
 		</goals>
-		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
+		<segment>deviceType==tablet</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/tablet.png</logo>
 	</row>
 	<row>
 		<label>Camera</label>
@@ -104,6 +121,12 @@
 		<nb_visits>0</nb_visits>
 		<segment>deviceType==console</segment>
 		<logo>plugins/Morpheus/icons/dist/devices/console.png</logo>
+	</row>
+	<row>
+		<label>Desktop</label>
+		<nb_visits>0</nb_visits>
+		<segment>deviceType==desktop</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/desktop.png</logo>
 	</row>
 	<row>
 		<label>Feature phone</label>

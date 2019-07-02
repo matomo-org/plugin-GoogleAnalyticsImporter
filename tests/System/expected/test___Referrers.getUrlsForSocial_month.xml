@@ -25,6 +25,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>8</nb_conversions>
+				<revenue>85910</revenue>
+				<items>67</items>
+			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>21</sum_daily_nb_uniq_visitors>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mrd88%2Fsnapped_this_pic_on_my_first_dive_post_cert%2F</segment>
@@ -55,6 +60,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>8</nb_conversions>
+				<revenue>88451</revenue>
+				<items>58</items>
+			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mtp0i%2Ffive_rules_shearwater_broke_with_the_teric%2F</segment>
@@ -79,6 +89,17 @@
 			<row idgoal='2'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>6</nb_conversions>
+				<revenue>60805</revenue>
+				<items>46</items>
 			</row>
 		</goals>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mpl4j%2Fopen_water_divers_being_born%2F</segment>
@@ -93,6 +114,26 @@
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
 		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
 		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
 		<segment>referrerUrl==http%3A%2F%2Fm.facebook.com%2F</segment>
 		<url>http://m.facebook.com/</url>

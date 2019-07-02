@@ -26,6 +26,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>9</nb_conversions>
+				<revenue>75296</revenue>
+				<items>54</items>
+			</row>
 		</goals>
 		<url>reddit.com</url>
 		<logo>plugins/Morpheus/icons/dist/socials/reddit.com.png</logo>
@@ -56,6 +61,11 @@
 						<revenue>0</revenue>
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>3</nb_conversions>
+						<revenue>24690</revenue>
+						<items>18</items>
+					</row>
 				</goals>
 			</row>
 			<row>
@@ -84,6 +94,11 @@
 						<revenue>0</revenue>
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>2</nb_conversions>
+						<revenue>15037</revenue>
+						<items>11</items>
+					</row>
 				</goals>
 			</row>
 			<row>
@@ -105,6 +120,17 @@
 					<row idgoal='2'>
 						<nb_conversions>0</nb_conversions>
 						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='3'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>4</nb_conversions>
+						<revenue>35569</revenue>
+						<items>25</items>
 					</row>
 				</goals>
 			</row>

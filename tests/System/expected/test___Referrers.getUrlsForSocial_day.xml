@@ -26,6 +26,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>24690</revenue>
+				<items>18</items>
+			</row>
 		</goals>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mrd88%2Fsnapped_this_pic_on_my_first_dive_post_cert%2F</segment>
 		<url>http://reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</url>
@@ -56,6 +61,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>15037</revenue>
+				<items>11</items>
+			</row>
 		</goals>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mtp0i%2Ffive_rules_shearwater_broke_with_the_teric%2F</segment>
 		<url>http://reddit.com/r/scuba/comments/8mtp0i/five_rules_shearwater_broke_with_the_teric/</url>
@@ -79,6 +89,17 @@
 			<row idgoal='2'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>4</nb_conversions>
+				<revenue>35569</revenue>
+				<items>25</items>
 			</row>
 		</goals>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mpl4j%2Fopen_water_divers_being_born%2F</segment>

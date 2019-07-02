@@ -2,345 +2,383 @@
 <result>
 	<row>
 		<label> BLOG!!</label>
-		<nb_visits>54</nb_visits>
-		<nb_hits>71</nb_hits>
-		<sum_time_spent>1188</sum_time_spent>
-		<entry_nb_visits>54</entry_nb_visits>
-		<entry_nb_actions>243</entry_nb_actions>
-		<entry_sum_visit_length>1917</entry_sum_visit_length>
-		<entry_bounce_count>13</entry_bounce_count>
-		<exit_nb_visits>57</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>44</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>40</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>39</sum_daily_exit_nb_uniq_visitors>
+		<nb_visits>103</nb_visits>
+		<nb_hits>127</nb_hits>
+		<sum_time_spent>3202</sum_time_spent>
+		<entry_nb_visits>103</entry_nb_visits>
+		<entry_nb_actions>384</entry_nb_actions>
+		<entry_sum_visit_length>3936</entry_sum_visit_length>
+		<entry_bounce_count>28</entry_bounce_count>
+		<exit_nb_visits>107</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>76</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>71</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>71</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>17</avg_time_on_page>
-		<bounce_rate>24%</bounce_rate>
-		<exit_rate>106%</exit_rate>
+		<avg_time_on_page>25</avg_time_on_page>
+		<bounce_rate>27%</bounce_rate>
+		<exit_rate>104%</exit_rate>
 		<segment>entryPageTitle==BLOG%21%21</segment>
 	</row>
 	<row>
 		<label> ABOUT!!</label>
-		<nb_visits>52</nb_visits>
-		<nb_hits>58</nb_hits>
-		<sum_time_spent>1600</sum_time_spent>
-		<entry_nb_visits>52</entry_nb_visits>
-		<entry_nb_actions>195</entry_nb_actions>
-		<entry_sum_visit_length>1572</entry_sum_visit_length>
-		<entry_bounce_count>13</entry_bounce_count>
-		<exit_nb_visits>50</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>36</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>34</sum_daily_exit_nb_uniq_visitors>
+		<nb_visits>95</nb_visits>
+		<nb_hits>112</nb_hits>
+		<sum_time_spent>3314</sum_time_spent>
+		<entry_nb_visits>97</entry_nb_visits>
+		<entry_nb_actions>349</entry_nb_actions>
+		<entry_sum_visit_length>2943</entry_sum_visit_length>
+		<entry_bounce_count>19</entry_bounce_count>
+		<exit_nb_visits>95</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>66</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>67</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>64</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>28</avg_time_on_page>
-		<bounce_rate>25%</bounce_rate>
-		<exit_rate>96%</exit_rate>
+		<avg_time_on_page>30</avg_time_on_page>
+		<bounce_rate>20%</bounce_rate>
+		<exit_rate>100%</exit_rate>
 		<segment>entryPageTitle==ABOUT%21%21</segment>
 	</row>
 	<row>
 		<label> inde par region et ville</label>
-		<nb_visits>43</nb_visits>
-		<nb_hits>54</nb_hits>
-		<sum_time_spent>1834</sum_time_spent>
-		<entry_nb_visits>43</entry_nb_visits>
-		<entry_nb_actions>174</entry_nb_actions>
-		<entry_sum_visit_length>1487</entry_sum_visit_length>
-		<entry_bounce_count>8</entry_bounce_count>
-		<exit_nb_visits>41</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>35</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>31</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>29</sum_daily_exit_nb_uniq_visitors>
+		<nb_visits>76</nb_visits>
+		<nb_hits>100</nb_hits>
+		<sum_time_spent>4153</sum_time_spent>
+		<entry_nb_visits>76</entry_nb_visits>
+		<entry_nb_actions>311</entry_nb_actions>
+		<entry_sum_visit_length>2551</entry_sum_visit_length>
+		<entry_bounce_count>13</entry_bounce_count>
+		<exit_nb_visits>77</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>62</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>52</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>52</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>34</avg_time_on_page>
-		<bounce_rate>19%</bounce_rate>
-		<exit_rate>95%</exit_rate>
+		<avg_time_on_page>42</avg_time_on_page>
+		<bounce_rate>17%</bounce_rate>
+		<exit_rate>101%</exit_rate>
 		<segment>entryPageTitle==inde+par+region+et+ville</segment>
 	</row>
 	<row>
-		<label> Crestwood</label>
-		<nb_visits>27</nb_visits>
-		<nb_hits>33</nb_hits>
-		<sum_time_spent>1101</sum_time_spent>
-		<entry_nb_visits>27</entry_nb_visits>
-		<entry_nb_actions>123</entry_nb_actions>
-		<entry_sum_visit_length>1299</entry_sum_visit_length>
-		<entry_bounce_count>5</entry_bounce_count>
-		<exit_nb_visits>26</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>26</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>23</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>33</avg_time_on_page>
-		<bounce_rate>19%</bounce_rate>
-		<exit_rate>96%</exit_rate>
-		<segment>entryPageTitle==Crestwood</segment>
-	</row>
-	<row>
 		<label> Solas</label>
-		<nb_visits>21</nb_visits>
-		<nb_hits>25</nb_hits>
-		<sum_time_spent>841</sum_time_spent>
-		<entry_nb_visits>21</entry_nb_visits>
-		<entry_nb_actions>84</entry_nb_actions>
-		<entry_sum_visit_length>613</entry_sum_visit_length>
-		<entry_bounce_count>2</entry_bounce_count>
-		<exit_nb_visits>22</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>20</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>18</sum_daily_exit_nb_uniq_visitors>
+		<nb_visits>35</nb_visits>
+		<nb_hits>41</nb_hits>
+		<sum_time_spent>1783</sum_time_spent>
+		<entry_nb_visits>35</entry_nb_visits>
+		<entry_nb_actions>144</entry_nb_actions>
+		<entry_sum_visit_length>1931</entry_sum_visit_length>
+		<entry_bounce_count>5</entry_bounce_count>
+		<exit_nb_visits>34</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>34</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>33</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>29</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>34</avg_time_on_page>
-		<bounce_rate>10%</bounce_rate>
-		<exit_rate>105%</exit_rate>
+		<avg_time_on_page>43</avg_time_on_page>
+		<bounce_rate>14%</bounce_rate>
+		<exit_rate>97%</exit_rate>
 		<segment>entryPageTitle==Solas</segment>
 	</row>
 	<row>
-		<label> Laysh</label>
-		<nb_visits>20</nb_visits>
-		<nb_hits>22</nb_hits>
-		<sum_time_spent>177</sum_time_spent>
-		<entry_nb_visits>20</entry_nb_visits>
-		<entry_nb_actions>101</entry_nb_actions>
-		<entry_sum_visit_length>287</entry_sum_visit_length>
-		<entry_bounce_count>2</entry_bounce_count>
-		<exit_nb_visits>16</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>18</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>17</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>15</sum_daily_exit_nb_uniq_visitors>
+		<label> Crestwood</label>
+		<nb_visits>34</nb_visits>
+		<nb_hits>42</nb_hits>
+		<sum_time_spent>1107</sum_time_spent>
+		<entry_nb_visits>34</entry_nb_visits>
+		<entry_nb_actions>142</entry_nb_actions>
+		<entry_sum_visit_length>1305</entry_sum_visit_length>
+		<entry_bounce_count>8</entry_bounce_count>
+		<exit_nb_visits>35</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>33</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>32</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>8</avg_time_on_page>
-		<bounce_rate>10%</bounce_rate>
-		<exit_rate>80%</exit_rate>
-		<segment>entryPageTitle==Laysh</segment>
+		<avg_time_on_page>26</avg_time_on_page>
+		<bounce_rate>24%</bounce_rate>
+		<exit_rate>103%</exit_rate>
+		<segment>entryPageTitle==Crestwood</segment>
 	</row>
 	<row>
 		<label> Trevis</label>
-		<nb_visits>19</nb_visits>
-		<nb_hits>25</nb_hits>
-		<sum_time_spent>217</sum_time_spent>
-		<exit_nb_visits>21</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>21</sum_daily_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>17</sum_daily_exit_nb_uniq_visitors>
-		<entry_nb_visits>19</entry_nb_visits>
-		<entry_nb_actions>68</entry_nb_actions>
-		<entry_sum_visit_length>171</entry_sum_visit_length>
-		<entry_bounce_count>4</entry_bounce_count>
-		<sum_daily_entry_nb_uniq_visitors>16</sum_daily_entry_nb_uniq_visitors>
+		<nb_visits>29</nb_visits>
+		<nb_hits>37</nb_hits>
+		<sum_time_spent>297</sum_time_spent>
+		<exit_nb_visits>32</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>31</sum_daily_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>26</sum_daily_exit_nb_uniq_visitors>
+		<entry_nb_visits>29</entry_nb_visits>
+		<entry_nb_actions>96</entry_nb_actions>
+		<entry_sum_visit_length>252</entry_sum_visit_length>
+		<entry_bounce_count>7</entry_bounce_count>
+		<sum_daily_entry_nb_uniq_visitors>25</sum_daily_entry_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>9</avg_time_on_page>
-		<bounce_rate>21%</bounce_rate>
-		<exit_rate>111%</exit_rate>
+		<avg_time_on_page>8</avg_time_on_page>
+		<bounce_rate>24%</bounce_rate>
+		<exit_rate>110%</exit_rate>
 		<segment>entryPageTitle==Trevis</segment>
 	</row>
 	<row>
+		<label> Laysh</label>
+		<nb_visits>27</nb_visits>
+		<nb_hits>30</nb_hits>
+		<sum_time_spent>275</sum_time_spent>
+		<entry_nb_visits>27</entry_nb_visits>
+		<entry_nb_actions>116</entry_nb_actions>
+		<entry_sum_visit_length>388</entry_sum_visit_length>
+		<entry_bounce_count>5</entry_bounce_count>
+		<exit_nb_visits>22</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>26</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>24</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>21</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>9</avg_time_on_page>
+		<bounce_rate>19%</bounce_rate>
+		<exit_rate>81%</exit_rate>
+		<segment>entryPageTitle==Laysh</segment>
+	</row>
+	<row>
 		<label> Redcliffe</label>
-		<nb_visits>18</nb_visits>
-		<nb_hits>27</nb_hits>
-		<sum_time_spent>804</sum_time_spent>
-		<entry_nb_visits>18</entry_nb_visits>
-		<entry_nb_actions>85</entry_nb_actions>
-		<entry_sum_visit_length>536</entry_sum_visit_length>
+		<nb_visits>24</nb_visits>
+		<nb_hits>35</nb_hits>
+		<sum_time_spent>1061</sum_time_spent>
+		<entry_nb_visits>24</entry_nb_visits>
+		<entry_nb_actions>116</entry_nb_actions>
+		<entry_sum_visit_length>794</entry_sum_visit_length>
 		<entry_bounce_count>1</entry_bounce_count>
-		<exit_nb_visits>19</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>21</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>15</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>16</sum_daily_exit_nb_uniq_visitors>
+		<exit_nb_visits>26</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>20</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>22</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>30</avg_time_on_page>
-		<bounce_rate>6%</bounce_rate>
-		<exit_rate>106%</exit_rate>
+		<bounce_rate>4%</bounce_rate>
+		<exit_rate>108%</exit_rate>
 		<segment>entryPageTitle==Redcliffe</segment>
 	</row>
 	<row>
 		<label> Sahrnia</label>
-		<nb_visits>18</nb_visits>
-		<nb_hits>25</nb_hits>
-		<sum_time_spent>457</sum_time_spent>
-		<entry_nb_visits>18</entry_nb_visits>
-		<entry_nb_actions>76</entry_nb_actions>
-		<entry_sum_visit_length>901</entry_sum_visit_length>
-		<entry_bounce_count>3</entry_bounce_count>
-		<exit_nb_visits>21</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>19</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>15</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>15</sum_daily_exit_nb_uniq_visitors>
+		<nb_visits>24</nb_visits>
+		<nb_hits>32</nb_hits>
+		<sum_time_spent>475</sum_time_spent>
+		<entry_nb_visits>24</entry_nb_visits>
+		<entry_nb_actions>101</entry_nb_actions>
+		<entry_sum_visit_length>920</entry_sum_visit_length>
+		<entry_bounce_count>4</entry_bounce_count>
+		<exit_nb_visits>27</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>26</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>21</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>21</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>18</avg_time_on_page>
+		<avg_time_on_page>15</avg_time_on_page>
 		<bounce_rate>17%</bounce_rate>
-		<exit_rate>117%</exit_rate>
+		<exit_rate>113%</exit_rate>
 		<segment>entryPageTitle==Sahrnia</segment>
 	</row>
 	<row>
-		<label> Winter Palace</label>
-		<nb_visits>18</nb_visits>
-		<nb_hits>23</nb_hits>
-		<sum_time_spent>176</sum_time_spent>
-		<entry_nb_visits>18</entry_nb_visits>
-		<entry_nb_actions>70</entry_nb_actions>
-		<entry_sum_visit_length>197</entry_sum_visit_length>
+		<label> Caer Bronach</label>
+		<nb_visits>23</nb_visits>
+		<nb_hits>32</nb_hits>
+		<sum_time_spent>1046</sum_time_spent>
+		<entry_nb_visits>23</entry_nb_visits>
+		<entry_nb_actions>95</entry_nb_actions>
+		<entry_sum_visit_length>1103</entry_sum_visit_length>
 		<entry_bounce_count>2</entry_bounce_count>
-		<exit_nb_visits>18</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>19</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>16</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>15</sum_daily_exit_nb_uniq_visitors>
+		<exit_nb_visits>30</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>25</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>20</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>25</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>8</avg_time_on_page>
-		<bounce_rate>11%</bounce_rate>
-		<exit_rate>100%</exit_rate>
+		<avg_time_on_page>33</avg_time_on_page>
+		<bounce_rate>9%</bounce_rate>
+		<exit_rate>130%</exit_rate>
+		<segment>entryPageTitle==Caer+Bronach</segment>
+	</row>
+	<row>
+		<label> Western Approach</label>
+		<nb_visits>22</nb_visits>
+		<nb_hits>30</nb_hits>
+		<sum_time_spent>1653</sum_time_spent>
+		<entry_nb_visits>22</entry_nb_visits>
+		<entry_nb_actions>81</entry_nb_actions>
+		<entry_sum_visit_length>1479</entry_sum_visit_length>
+		<entry_bounce_count>4</entry_bounce_count>
+		<exit_nb_visits>25</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>26</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>20</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>21</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>55</avg_time_on_page>
+		<bounce_rate>18%</bounce_rate>
+		<exit_rate>114%</exit_rate>
+		<segment>entryPageTitle==Western+Approach</segment>
+	</row>
+	<row>
+		<label> Winter Palace</label>
+		<nb_visits>21</nb_visits>
+		<nb_hits>28</nb_hits>
+		<sum_time_spent>179</sum_time_spent>
+		<entry_nb_visits>21</entry_nb_visits>
+		<entry_nb_actions>78</entry_nb_actions>
+		<entry_sum_visit_length>200</entry_sum_visit_length>
+		<entry_bounce_count>3</entry_bounce_count>
+		<exit_nb_visits>23</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>24</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>19</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>20</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>6</avg_time_on_page>
+		<bounce_rate>14%</bounce_rate>
+		<exit_rate>110%</exit_rate>
 		<segment>entryPageTitle==Winter+Palace</segment>
 	</row>
 	<row>
 		<label> Seleny</label>
-		<nb_visits>16</nb_visits>
-		<nb_hits>28</nb_hits>
-		<sum_time_spent>470</sum_time_spent>
-		<entry_nb_visits>16</entry_nb_visits>
-		<entry_nb_actions>50</entry_nb_actions>
-		<entry_sum_visit_length>360</entry_sum_visit_length>
-		<entry_bounce_count>5</entry_bounce_count>
-		<exit_nb_visits>21</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>25</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>16</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>18</sum_daily_exit_nb_uniq_visitors>
+		<nb_visits>20</nb_visits>
+		<nb_hits>35</nb_hits>
+		<sum_time_spent>474</sum_time_spent>
+		<entry_nb_visits>20</entry_nb_visits>
+		<entry_nb_actions>60</entry_nb_actions>
+		<entry_sum_visit_length>364</entry_sum_visit_length>
+		<entry_bounce_count>6</entry_bounce_count>
+		<exit_nb_visits>28</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>30</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>20</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>23</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>17</avg_time_on_page>
-		<bounce_rate>31%</bounce_rate>
-		<exit_rate>131%</exit_rate>
+		<avg_time_on_page>14</avg_time_on_page>
+		<bounce_rate>30%</bounce_rate>
+		<exit_rate>140%</exit_rate>
 		<segment>entryPageTitle==Seleny</segment>
 	</row>
 	<row>
 		<label> Markhem</label>
-		<nb_visits>15</nb_visits>
-		<nb_hits>20</nb_hits>
-		<sum_time_spent>406</sum_time_spent>
-		<entry_nb_visits>15</entry_nb_visits>
-		<entry_nb_actions>68</entry_nb_actions>
-		<entry_sum_visit_length>361</entry_sum_visit_length>
-		<entry_bounce_count>1</entry_bounce_count>
-		<exit_nb_visits>16</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>12</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>14</sum_daily_exit_nb_uniq_visitors>
+		<nb_visits>19</nb_visits>
+		<nb_hits>26</nb_hits>
+		<sum_time_spent>470</sum_time_spent>
+		<entry_nb_visits>19</entry_nb_visits>
+		<entry_nb_actions>79</entry_nb_actions>
+		<entry_sum_visit_length>366</entry_sum_visit_length>
+		<entry_bounce_count>2</entry_bounce_count>
+		<exit_nb_visits>22</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>16</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>20</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>20</avg_time_on_page>
-		<bounce_rate>7%</bounce_rate>
-		<exit_rate>107%</exit_rate>
+		<avg_time_on_page>18</avg_time_on_page>
+		<bounce_rate>11%</bounce_rate>
+		<exit_rate>116%</exit_rate>
 		<segment>entryPageTitle==Markhem</segment>
 	</row>
 	<row>
 		<label> The Arbor Wilds</label>
-		<nb_visits>15</nb_visits>
-		<nb_hits>19</nb_hits>
-		<sum_time_spent>868</sum_time_spent>
-		<entry_nb_visits>15</entry_nb_visits>
-		<entry_nb_actions>63</entry_nb_actions>
-		<entry_sum_visit_length>487</entry_sum_visit_length>
+		<nb_visits>19</nb_visits>
+		<nb_hits>24</nb_hits>
+		<sum_time_spent>873</sum_time_spent>
+		<entry_nb_visits>19</entry_nb_visits>
+		<entry_nb_actions>72</entry_nb_actions>
+		<entry_sum_visit_length>492</entry_sum_visit_length>
 		<entry_bounce_count>1</entry_bounce_count>
-		<sum_daily_nb_uniq_visitors>18</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>15</sum_daily_entry_nb_uniq_visitors>
-		<exit_nb_visits>16</exit_nb_visits>
-		<sum_daily_exit_nb_uniq_visitors>15</sum_daily_exit_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>19</sum_daily_entry_nb_uniq_visitors>
+		<exit_nb_visits>21</exit_nb_visits>
+		<sum_daily_exit_nb_uniq_visitors>20</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>46</avg_time_on_page>
-		<bounce_rate>7%</bounce_rate>
-		<exit_rate>107%</exit_rate>
+		<avg_time_on_page>36</avg_time_on_page>
+		<bounce_rate>5%</bounce_rate>
+		<exit_rate>111%</exit_rate>
 		<segment>entryPageTitle==The+Arbor+Wilds</segment>
 	</row>
 	<row>
-		<label> Western Approach</label>
-		<nb_visits>15</nb_visits>
-		<nb_hits>21</nb_hits>
-		<sum_time_spent>161</sum_time_spent>
-		<entry_nb_visits>15</entry_nb_visits>
-		<entry_nb_actions>56</entry_nb_actions>
-		<entry_sum_visit_length>87</entry_sum_visit_length>
-		<entry_bounce_count>4</entry_bounce_count>
-		<exit_nb_visits>17</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>18</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>14</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>14</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>8</avg_time_on_page>
-		<bounce_rate>27%</bounce_rate>
-		<exit_rate>113%</exit_rate>
-		<segment>entryPageTitle==Western+Approach</segment>
-	</row>
-	<row>
-		<label> Caer Bronach</label>
-		<nb_visits>14</nb_visits>
-		<nb_hits>20</nb_hits>
-		<sum_time_spent>24</sum_time_spent>
-		<entry_nb_visits>14</entry_nb_visits>
-		<entry_nb_actions>62</entry_nb_actions>
-		<entry_sum_visit_length>80</entry_sum_visit_length>
-		<entry_bounce_count>1</entry_bounce_count>
-		<exit_nb_visits>19</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>16</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>13</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>16</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>1</avg_time_on_page>
-		<bounce_rate>7%</bounce_rate>
-		<exit_rate>136%</exit_rate>
-		<segment>entryPageTitle==Caer+Bronach</segment>
-	</row>
-	<row>
-		<label> Top 10 des plus belles Plongées Sous Marine dans le Monde ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>5</nb_visits>
-		<nb_hits>6</nb_hits>
-		<sum_time_spent>53</sum_time_spent>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>6</entry_nb_actions>
-		<entry_sum_visit_length>53</entry_sum_visit_length>
-		<entry_bounce_count>4</entry_bounce_count>
-		<exit_nb_visits>5</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>5</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>5</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>9</avg_time_on_page>
-		<bounce_rate>80%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Top+10+des+plus+belles+Plong%C3%A9es+Sous+Marine+dans+le+Monde+%21+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
-	</row>
-	<row>
 		<label> Coût de la vie en Inde - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>4</nb_visits>
-		<nb_hits>6</nb_hits>
+		<nb_visits>7</nb_visits>
+		<nb_hits>9</nb_hits>
 		<sum_time_spent>3317</sum_time_spent>
-		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>6</entry_nb_actions>
+		<entry_nb_visits>7</entry_nb_visits>
+		<entry_nb_actions>9</entry_nb_actions>
 		<entry_sum_visit_length>3317</entry_sum_visit_length>
-		<entry_bounce_count>2</entry_bounce_count>
-		<exit_nb_visits>4</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>4</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>4</sum_daily_exit_nb_uniq_visitors>
+		<entry_bounce_count>5</entry_bounce_count>
+		<exit_nb_visits>7</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>7</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>7</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>553</avg_time_on_page>
-		<bounce_rate>50%</bounce_rate>
+		<avg_time_on_page>369</avg_time_on_page>
+		<bounce_rate>71%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>entryPageTitle==Co%C3%BBt+de+la+vie+en+Inde+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
-		<label> La vie à Chennai en Inde - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>3</nb_visits>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>151</sum_time_spent>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>151</entry_sum_visit_length>
-		<entry_bounce_count>2</entry_bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>3</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>2</sum_daily_exit_nb_uniq_visitors>
+		<label> Top 10 des plus belles Plongées Sous Marine dans le Monde ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>7</nb_visits>
+		<nb_hits>8</nb_hits>
+		<sum_time_spent>53</sum_time_spent>
+		<entry_nb_visits>7</entry_nb_visits>
+		<entry_nb_actions>8</entry_nb_actions>
+		<entry_sum_visit_length>53</entry_sum_visit_length>
+		<entry_bounce_count>6</entry_bounce_count>
+		<exit_nb_visits>7</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>7</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>7</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>50</avg_time_on_page>
+		<avg_time_on_page>7</avg_time_on_page>
+		<bounce_rate>86%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>entryPageTitle==Top+10+des+plus+belles+Plong%C3%A9es+Sous+Marine+dans+le+Monde+%21+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
+		<label> La vie à Chennai en Inde - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>6</nb_visits>
+		<nb_hits>8</nb_hits>
+		<sum_time_spent>788</sum_time_spent>
+		<entry_nb_visits>6</entry_nb_visits>
+		<entry_nb_actions>22</entry_nb_actions>
+		<entry_sum_visit_length>2229</entry_sum_visit_length>
+		<entry_bounce_count>4</entry_bounce_count>
+		<exit_nb_visits>4</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>6</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>4</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>99</avg_time_on_page>
 		<bounce_rate>67%</bounce_rate>
 		<exit_rate>67%</exit_rate>
 		<segment>entryPageTitle==La+vie+%C3%A0+Chennai+en+Inde+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
+		<label> Itinéraire d'un voyage en Indonésie - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>5</nb_visits>
+		<nb_hits>8</nb_hits>
+		<sum_time_spent>1757</sum_time_spent>
+		<exit_nb_visits>6</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>5</sum_daily_exit_nb_uniq_visitors>
+		<entry_nb_visits>5</entry_nb_visits>
+		<entry_nb_actions>8</entry_nb_actions>
+		<entry_sum_visit_length>1769</entry_sum_visit_length>
+		<entry_bounce_count>3</entry_bounce_count>
+		<sum_daily_entry_nb_uniq_visitors>4</sum_daily_entry_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>220</avg_time_on_page>
+		<bounce_rate>60%</bounce_rate>
+		<exit_rate>120%</exit_rate>
+		<segment>entryPageTitle==Itin%C3%A9raire+d%27un+voyage+en+Indon%C3%A9sie+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
+		<label> Search</label>
+		<nb_visits>3</nb_visits>
+		<nb_hits>9</nb_hits>
+		<sum_time_spent>6</sum_time_spent>
+		<entry_nb_visits>7</entry_nb_visits>
+		<entry_nb_actions>21</entry_nb_actions>
+		<entry_sum_visit_length>357</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>8</sum_daily_entry_nb_uniq_visitors>
+		<exit_nb_visits>2</exit_nb_visits>
+		<sum_daily_exit_nb_uniq_visitors>2</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>1</avg_time_on_page>
+		<bounce_rate>14%</bounce_rate>
+		<exit_rate>67%</exit_rate>
+		<segment>entryPageTitle==Search</segment>
 	</row>
 	<row>
 		<label> Château de Chambord, Visite &amp; Photos - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -362,25 +400,6 @@
 		<segment>entryPageTitle==Ch%C3%A2teau+de+Chambord%2C+Visite+%26+Photos+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
-		<label> Itinéraire d'un voyage en Indonésie - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>2</nb_visits>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>463</sum_time_spent>
-		<exit_nb_visits>3</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>3</sum_daily_exit_nb_uniq_visitors>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>475</entry_sum_visit_length>
-		<entry_bounce_count>1</entry_bounce_count>
-		<sum_daily_entry_nb_uniq_visitors>2</sum_daily_entry_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>116</avg_time_on_page>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>150%</exit_rate>
-		<segment>entryPageTitle==Itin%C3%A9raire+d%27un+voyage+en+Indon%C3%A9sie+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
-	</row>
-	<row>
 		<label> Photo Filles en Bikini - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
 		<nb_visits>2</nb_visits>
 		<nb_hits>2</nb_hits>
@@ -398,6 +417,25 @@
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>entryPageTitle==Photo+Filles+en+Bikini+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
+		<label> Que faire à Bali? - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>2</nb_visits>
+		<nb_hits>4</nb_hits>
+		<sum_time_spent>11</sum_time_spent>
+		<exit_nb_visits>3</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>3</sum_daily_exit_nb_uniq_visitors>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>2</entry_bounce_count>
+		<sum_daily_entry_nb_uniq_visitors>2</sum_daily_entry_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>3</avg_time_on_page>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>150%</exit_rate>
+		<segment>entryPageTitle==Que+faire+%C3%A0+Bali%3F+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
 		<label> Visite de Madurai - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -495,6 +533,44 @@
 		<segment>entryPageTitle==Couleurs+et+jonglerie+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
+		<label> Darjeeling - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>entryPageTitle==Darjeeling+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
+		<label> Echasses à ressort sur les champs élysés - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>entryPageTitle==Echasses+%C3%A0+ressort+sur+les+champs+%C3%A9lys%C3%A9s+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
 		<label> Edinburgh Archives - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
 		<nb_visits>1</nb_visits>
 		<nb_hits>1</nb_hits>
@@ -533,18 +609,18 @@
 	<row>
 		<label> La plage à Chennai - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
 		<nb_visits>1</nb_visits>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<nb_hits>3</nb_hits>
+		<sum_time_spent>164</sum_time_spent>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
 		<sum_daily_exit_nb_uniq_visitors>2</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>0</avg_time_on_page>
+		<avg_time_on_page>55</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>200%</exit_rate>
 		<segment>entryPageTitle==La+plage+%C3%A0+Chennai+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
@@ -569,6 +645,25 @@
 		<segment>entryPageTitle==Le+Th%C3%A9isme+Philosophique+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
+		<label> Liste pour un sac de voyage backpack - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>entryPageTitle==Liste+pour+un+sac+de+voyage+backpack+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
 		<label> Londres Archives - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
 		<nb_visits>1</nb_visits>
 		<nb_hits>1</nb_hits>
@@ -586,6 +681,44 @@
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>entryPageTitle==Londres+Archives+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
+		<label> Page Name not defined</label>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<sum_daily_nb_uniq_visitors>93</sum_daily_nb_uniq_visitors>
+		<entry_nb_visits>11</entry_nb_visits>
+		<entry_nb_actions>14</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<exit_nb_visits>11</exit_nb_visits>
+		<sum_daily_entry_nb_uniq_visitors>11</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>11</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>9%</bounce_rate>
+		<exit_rate>1,100%</exit_rate>
+		<segment>entryPageTitle==Page+Name+not+defined</segment>
+	</row>
+	<row>
+		<label> Photos de ma plus belle plongée sous marine - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>entryPageTitle==Photos+de+ma+plus+belle+plong%C3%A9e+sous+marine+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
 		<label> Plongée sur une épave - 3 des meilleurs bateaux à visiter sous l'eau ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -624,6 +757,25 @@
 		<segment>entryPageTitle==Premier+jour+de+folie+%C3%A0+Munnar+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
+		<label> Télécommunications en Inde - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>entryPageTitle==T%C3%A9l%C3%A9communications+en+Inde+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
 		<label> Vidéo préparation des momos - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
 		<nb_visits>1</nb_visits>
 		<nb_hits>1</nb_hits>
@@ -658,43 +810,5 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
 		<segment>entryPageTitle==Visites+des+caves+de+vouvray+-+et+d%C3%A9gustation+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
-	</row>
-	<row>
-		<label> Page Name not defined</label>
-		<nb_visits>0</nb_visits>
-		<nb_hits>0</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<sum_daily_nb_uniq_visitors>67</sum_daily_nb_uniq_visitors>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>5</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>5</exit_nb_visits>
-		<sum_daily_entry_nb_uniq_visitors>5</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>5</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>0</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>entryPageTitle==Page+Name+not+defined</segment>
-	</row>
-	<row>
-		<label> Search</label>
-		<nb_visits>0</nb_visits>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>7</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>1</entry_bounce_count>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>4</sum_daily_entry_nb_uniq_visitors>
-		<exit_nb_visits>1</exit_nb_visits>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>0</avg_time_on_page>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>entryPageTitle==Search</segment>
 	</row>
 </result>

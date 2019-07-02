@@ -9,6 +9,7 @@
 		<nb_visits_converted>2</nb_visits_converted>
 		<nb_conversions>6</nb_conversions>
 		<revenue>54631</revenue>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>1</nb_conversions>
@@ -25,8 +26,12 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>17958</revenue>
+				<items>11</items>
+			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==oahuscubadiving.com</segment>
 		<subtable>
 			<row>
@@ -38,6 +43,7 @@
 				<nb_visits_converted>2</nb_visits_converted>
 				<nb_conversions>6</nb_conversions>
 				<revenue>54631</revenue>
+				<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>1</nb_conversions>
@@ -54,8 +60,12 @@
 						<revenue>0</revenue>
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>2</nb_conversions>
+						<revenue>17958</revenue>
+						<items>11</items>
+					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>

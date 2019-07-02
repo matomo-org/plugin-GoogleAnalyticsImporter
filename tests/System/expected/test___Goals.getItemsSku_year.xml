@@ -2,112 +2,112 @@
 <result>
 	<row>
 		<label>DAI2784</label>
-		<revenue>475996</revenue>
-		<quantity>254</quantity>
-		<orders>132</orders>
+		<revenue>648404</revenue>
+		<quantity>346</quantity>
+		<orders>176</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>132</nb_actions>
-		<avg_price>56.79</avg_price>
-		<avg_quantity>1.9</avg_quantity>
+		<nb_actions>176</nb_actions>
+		<avg_price>85.18</avg_price>
+		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI0285</label>
-		<revenue>469616</revenue>
-		<quantity>196</quantity>
-		<orders>108</orders>
+		<revenue>618168</revenue>
+		<quantity>258</quantity>
+		<orders>142</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>108</nb_actions>
-		<avg_price>88.74</avg_price>
+		<nb_actions>142</nb_actions>
+		<avg_price>101.24</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI7456</label>
-		<revenue>369812</revenue>
-		<quantity>236</quantity>
-		<orders>134</orders>
+		<revenue>520244</revenue>
+		<quantity>332</quantity>
+		<orders>176</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>134</nb_actions>
-		<avg_price>46.78</avg_price>
-		<avg_quantity>1.8</avg_quantity>
+		<nb_actions>176</nb_actions>
+		<avg_price>71.23</avg_price>
+		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI6503</label>
-		<revenue>350094</revenue>
-		<quantity>166</quantity>
-		<orders>98</orders>
+		<revenue>510378</revenue>
+		<quantity>242</quantity>
+		<orders>138</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>98</nb_actions>
-		<avg_price>86.08</avg_price>
-		<avg_quantity>1.7</avg_quantity>
+		<nb_actions>138</nb_actions>
+		<avg_price>122.26</avg_price>
+		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI0663</label>
-		<revenue>344320</revenue>
-		<quantity>256</quantity>
-		<orders>140</orders>
+		<revenue>454610</revenue>
+		<quantity>338</quantity>
+		<orders>184</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>140</nb_actions>
-		<avg_price>38.43</avg_price>
+		<nb_actions>184</nb_actions>
+		<avg_price>58.48</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI8832</label>
-		<revenue>248448</revenue>
-		<quantity>192</quantity>
-		<orders>108</orders>
+		<revenue>375260</revenue>
+		<quantity>290</quantity>
+		<orders>162</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>108</nb_actions>
+		<nb_actions>162</nb_actions>
 		<avg_price>47.93</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI6406</label>
-		<revenue>187530</revenue>
-		<quantity>190</quantity>
-		<orders>116</orders>
+		<revenue>272412</revenue>
+		<quantity>276</quantity>
+		<orders>160</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>116</nb_actions>
-		<avg_price>34.03</avg_price>
-		<avg_quantity>1.6</avg_quantity>
-		<conversion_rate>0%</conversion_rate>
-	</row>
-	<row>
-		<label>DAI7474</label>
-		<revenue>147204</revenue>
-		<quantity>188</quantity>
-		<orders>112</orders>
-		<nb_visits>0</nb_visits>
-		<nb_actions>112</nb_actions>
-		<avg_price>27.96</avg_price>
+		<nb_actions>160</nb_actions>
+		<avg_price>49.35</avg_price>
 		<avg_quantity>1.7</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
-		<label>DAI4293</label>
-		<revenue>87696</revenue>
-		<quantity>252</quantity>
-		<orders>138</orders>
+		<label>DAI7474</label>
+		<revenue>233334</revenue>
+		<quantity>298</quantity>
+		<orders>158</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>138</nb_actions>
-		<avg_price>10.09</avg_price>
+		<nb_actions>158</nb_actions>
+		<avg_price>39.65</avg_price>
+		<avg_quantity>1.9</avg_quantity>
+		<conversion_rate>0%</conversion_rate>
+	</row>
+	<row>
+		<label>DAI4293</label>
+		<revenue>115536</revenue>
+		<quantity>332</quantity>
+		<orders>182</orders>
+		<nb_visits>0</nb_visits>
+		<nb_actions>182</nb_actions>
+		<avg_price>15.3</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI0921</label>
-		<revenue>1280</revenue>
-		<quantity>128</quantity>
-		<orders>84</orders>
+		<revenue>2140</revenue>
+		<quantity>214</quantity>
+		<orders>130</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>84</nb_actions>
-		<avg_price>0.48</avg_price>
-		<avg_quantity>1.5</avg_quantity>
+		<nb_actions>130</nb_actions>
+		<avg_price>0.46</avg_price>
+		<avg_quantity>1.6</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 </result>

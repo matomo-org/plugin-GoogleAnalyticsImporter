@@ -26,6 +26,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>9</nb_conversions>
+				<revenue>60550</revenue>
+				<items>51</items>
+			</row>
 		</goals>
 		<logo>plugins/Morpheus/icons/dist/brand/Google.png</logo>
 		<segment>deviceBrand==Google</segment>
@@ -55,6 +60,11 @@
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>7</nb_conversions>
+				<revenue>59503</revenue>
+				<items>36</items>
 			</row>
 		</goals>
 		<logo>plugins/Morpheus/icons/dist/brand/Samsung.png</logo>
@@ -86,6 +96,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>8</nb_conversions>
+				<revenue>90697</revenue>
+				<items>75</items>
+			</row>
 		</goals>
 		<logo>plugins/Morpheus/icons/dist/brand/HTC.png</logo>
 		<segment>deviceBrand==HTC</segment>
@@ -116,6 +131,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>6</nb_conversions>
+				<revenue>50403</revenue>
+				<items>47</items>
+			</row>
 		</goals>
 		<logo>plugins/Morpheus/icons/dist/brand/Sony.png</logo>
 		<segment>deviceBrand==Sony</segment>
@@ -143,6 +163,26 @@
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
 		<revenue>0.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
 		<logo>plugins/Morpheus/icons/dist/brand/unk.png</logo>
 		<segment>deviceBrand==Infinix</segment>
 	</row>

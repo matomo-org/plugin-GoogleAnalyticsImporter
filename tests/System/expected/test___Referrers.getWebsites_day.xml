@@ -26,6 +26,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>17958</revenue>
+				<items>11</items>
+			</row>
 		</goals>
 		<segment>referrerName==oahuscubadiving.com</segment>
 		<subtable>
@@ -54,6 +59,11 @@
 						<nb_conversions>0</nb_conversions>
 						<revenue>0</revenue>
 						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>2</nb_conversions>
+						<revenue>17958</revenue>
+						<items>11</items>
 					</row>
 				</goals>
 			</row>

@@ -264,7 +264,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             }
 
             $actionRow->setMetadata('url', $actionName);
-            $this->pageUrlsByPagePath[$actionName] = $actionRow;
+            $this->pageUrlsByPagePath['http://' . $hostname . $actionName] = $actionRow;
         }
 
         Common::destroy($table);

@@ -6,27 +6,32 @@
 		<nb_actions>751</nb_actions>
 		<sum_visit_length>7992</sum_visit_length>
 		<bounce_count>52</bounce_count>
-		<nb_visits_converted>49</nb_visits_converted>
+		<nb_visits_converted>50</nb_visits_converted>
 		<nb_conversions>114</nb_conversions>
 		<revenue>639265</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>24</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>24</nb_visits_converted>
+				<nb_visits_converted>19</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>26</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>25</nb_visits_converted>
+				<nb_visits_converted>24</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>60</nb_conversions>
+				<revenue>622115</revenue>
+				<items>470</items>
+			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>101</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>165</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
 	</row>
 	<row>
@@ -42,20 +47,25 @@
 			<row idgoal='1'>
 				<nb_conversions>19</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>18</nb_visits_converted>
+				<nb_visits_converted>16</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>18</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>18</nb_visits_converted>
+				<nb_visits_converted>16</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>52</nb_conversions>
+				<revenue>565485</revenue>
+				<items>425</items>
+			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>89</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>128</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/os/WIN.png</logo>
 	</row>
 	<row>
@@ -83,6 +93,11 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>21</nb_conversions>
+				<revenue>193085</revenue>
+				<items>134</items>
+			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>44</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/os/LIN.png</logo>
@@ -97,6 +112,26 @@
 		<nb_conversions>3</nb_conversions>
 		<revenue>0</revenue>
 		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
 		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
 	</row>
 	<row>

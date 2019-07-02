@@ -2,16 +2,16 @@
 <result>
 	<row>
 		<label>reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</label>
-		<nb_visits>28</nb_visits>
-		<nb_actions>112</nb_actions>
-		<sum_visit_length>810</sum_visit_length>
-		<bounce_count>5</bounce_count>
+		<nb_visits>31</nb_visits>
+		<nb_actions>116</nb_actions>
+		<sum_visit_length>811</sum_visit_length>
+		<bounce_count>7</bounce_count>
 		<nb_visits_converted>6</nb_visits_converted>
-		<nb_conversions>15</nb_conversions>
+		<nb_conversions>16</nb_conversions>
 		<revenue>85910</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>4</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
@@ -25,25 +25,30 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>8</nb_conversions>
+				<revenue>85910</revenue>
+				<items>67</items>
+			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>21</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mrd88%2Fsnapped_this_pic_on_my_first_dive_post_cert%2F</segment>
 		<url>http://reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</url>
 	</row>
 	<row>
 		<label>reddit.com/r/scuba/comments/8mtp0i/five_rules_shearwater_broke_with_the_teric/</label>
-		<nb_visits>22</nb_visits>
-		<nb_actions>101</nb_actions>
-		<sum_visit_length>882</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>8</nb_visits_converted>
-		<nb_conversions>16</nb_conversions>
-		<revenue>88451</revenue>
+		<nb_visits>28</nb_visits>
+		<nb_actions>124</nb_actions>
+		<sum_visit_length>1195</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>11</nb_visits_converted>
+		<nb_conversions>22</nb_conversions>
+		<revenue>104215</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>4</nb_conversions>
+				<nb_conversions>7</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
+				<nb_visits_converted>7</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>4</nb_conversions>
@@ -55,30 +60,46 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>11</nb_conversions>
+				<revenue>104215</revenue>
+				<items>71</items>
+			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>22</sum_daily_nb_uniq_visitors>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mtp0i%2Ffive_rules_shearwater_broke_with_the_teric%2F</segment>
 		<url>http://reddit.com/r/scuba/comments/8mtp0i/five_rules_shearwater_broke_with_the_teric/</url>
 	</row>
 	<row>
 		<label>reddit.com/r/scuba/comments/8mpl4j/open_water_divers_being_born/</label>
-		<nb_visits>20</nb_visits>
-		<nb_actions>80</nb_actions>
-		<sum_visit_length>874</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>2</nb_visits_converted>
-		<nb_conversions>10</nb_conversions>
-		<revenue>60805</revenue>
-		<sum_daily_nb_uniq_visitors>14</sum_daily_nb_uniq_visitors>
+		<nb_visits>26</nb_visits>
+		<nb_actions>102</nb_actions>
+		<sum_visit_length>2174</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>7</nb_visits_converted>
+		<nb_conversions>17</nb_conversions>
+		<revenue>79402</revenue>
+		<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>4</nb_conversions>
+				<nb_conversions>6</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>4</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>8</nb_conversions>
+				<revenue>79402</revenue>
+				<items>58</items>
 			</row>
 		</goals>
 		<segment>referrerUrl==http%3A%2F%2Freddit.com%2Fr%2Fscuba%2Fcomments%2F8mpl4j%2Fopen_water_divers_being_born%2F</segment>
@@ -93,9 +114,42 @@
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
 		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
 		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
 		<segment>referrerUrl==http%3A%2F%2Fm.facebook.com%2F</segment>
 		<url>http://m.facebook.com/</url>
+	</row>
+	<row>
+		<label>l.facebook.com/</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+		<segment>referrerUrl==http%3A%2F%2Fl.facebook.com%2F</segment>
+		<url>http://l.facebook.com/</url>
 	</row>
 	<row>
 		<label>facebook.com/</label>
@@ -109,18 +163,5 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>referrerUrl==http%3A%2F%2Ffacebook.com%2F</segment>
 		<url>http://facebook.com/</url>
-	</row>
-	<row>
-		<label>l.facebook.com/</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>referrerUrl==http%3A%2F%2Fl.facebook.com%2F</segment>
-		<url>http://l.facebook.com/</url>
 	</row>
 </result>

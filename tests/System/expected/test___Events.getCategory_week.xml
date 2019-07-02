@@ -9,17 +9,8 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>22</nb_conversions>
 		<revenue>225147</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
+		<nb_events>70</nb_events>
+		<sum_event_value>17598</sum_event_value>
 		<sum_daily_nb_uniq_visitors>69</sum_daily_nb_uniq_visitors>
 		<avg_event_value>0</avg_event_value>
 		<segment>eventCategory==mauve</segment>
@@ -33,17 +24,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>5</nb_conversions>
 				<revenue>50654</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>17</nb_events>
+				<sum_event_value>4677</sum_event_value>
 				<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -56,17 +38,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>3</nb_conversions>
 				<revenue>31212</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>15</nb_events>
+				<sum_event_value>3901</sum_event_value>
 				<sum_daily_nb_uniq_visitors>15</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -79,17 +52,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>7</nb_conversions>
 				<revenue>78202</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>12</nb_events>
+				<sum_event_value>2216</sum_event_value>
 				<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -102,17 +66,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>3</nb_conversions>
 				<revenue>36870</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>12</nb_events>
+				<sum_event_value>3462</sum_event_value>
 				<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -125,18 +80,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
 				<revenue>19830</revenue>
+				<nb_events>9</nb_events>
+				<sum_event_value>2273</sum_event_value>
 				<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
@@ -148,18 +94,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
 				<revenue>8379</revenue>
+				<nb_events>5</nb_events>
+				<sum_event_value>1069</sum_event_value>
 				<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 		</subtable>
@@ -173,17 +110,8 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>33</nb_conversions>
 		<revenue>296051</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
+		<nb_events>70</nb_events>
+		<sum_event_value>18222</sum_event_value>
 		<sum_daily_nb_uniq_visitors>70</sum_daily_nb_uniq_visitors>
 		<avg_event_value>0</avg_event_value>
 		<segment>eventCategory==viridian</segment>
@@ -197,18 +125,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>7</nb_conversions>
 				<revenue>48425</revenue>
+				<nb_events>16</nb_events>
+				<sum_event_value>5301</sum_event_value>
 				<sum_daily_nb_uniq_visitors>16</sum_daily_nb_uniq_visitors>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
@@ -220,17 +139,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>6</nb_conversions>
 				<revenue>58898</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>15</nb_events>
+				<sum_event_value>4059</sum_event_value>
 				<sum_daily_nb_uniq_visitors>15</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -243,17 +153,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>5</nb_conversions>
 				<revenue>48805</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>14</nb_events>
+				<sum_event_value>3178</sum_event_value>
 				<sum_daily_nb_uniq_visitors>14</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -266,17 +167,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>5</nb_conversions>
 				<revenue>49444</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>12</nb_events>
+				<sum_event_value>2980</sum_event_value>
 				<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -289,18 +181,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>8</nb_conversions>
 				<revenue>79122</revenue>
+				<nb_events>9</nb_events>
+				<sum_event_value>1314</sum_event_value>
 				<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
@@ -312,18 +195,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
 				<revenue>11357</revenue>
+				<nb_events>4</nb_events>
+				<sum_event_value>1390</sum_event_value>
 				<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 		</subtable>
@@ -337,17 +211,8 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>28</nb_conversions>
 		<revenue>298605</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
+		<nb_events>64</nb_events>
+		<sum_event_value>16611</sum_event_value>
 		<sum_daily_nb_uniq_visitors>62</sum_daily_nb_uniq_visitors>
 		<avg_event_value>0</avg_event_value>
 		<segment>eventCategory==scarlet</segment>
@@ -361,17 +226,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>6</nb_conversions>
 				<revenue>76541</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>15</nb_events>
+				<sum_event_value>4130</sum_event_value>
 				<sum_daily_nb_uniq_visitors>14</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -384,17 +240,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
 				<revenue>17682</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>13</nb_events>
+				<sum_event_value>3247</sum_event_value>
 				<sum_daily_nb_uniq_visitors>13</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -407,17 +254,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>4</nb_conversions>
 				<revenue>25126</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>11</nb_events>
+				<sum_event_value>3148</sum_event_value>
 				<sum_daily_nb_uniq_visitors>10</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -430,18 +268,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>4</nb_conversions>
 				<revenue>58666</revenue>
+				<nb_events>10</nb_events>
+				<sum_event_value>2637</sum_event_value>
 				<sum_daily_nb_uniq_visitors>10</sum_daily_nb_uniq_visitors>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
@@ -453,17 +282,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>7</nb_conversions>
 				<revenue>63811</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>8</nb_events>
+				<sum_event_value>1445</sum_event_value>
 				<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -476,17 +296,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>5</nb_conversions>
 				<revenue>56779</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>7</nb_events>
+				<sum_event_value>2004</sum_event_value>
 				<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -501,17 +312,8 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>30</nb_conversions>
 		<revenue>302600</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-			</row>
-		</goals>
+		<nb_events>62</nb_events>
+		<sum_event_value>14810</sum_event_value>
 		<sum_daily_nb_uniq_visitors>61</sum_daily_nb_uniq_visitors>
 		<avg_event_value>0</avg_event_value>
 		<segment>eventCategory==keylime</segment>
@@ -525,17 +327,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>9</nb_conversions>
 				<revenue>94508</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>12</nb_events>
+				<sum_event_value>3157</sum_event_value>
 				<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -548,18 +341,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>4</nb_conversions>
 				<revenue>40872</revenue>
+				<nb_events>12</nb_events>
+				<sum_event_value>2638</sum_event_value>
 				<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
 				<avg_event_value>0</avg_event_value>
 			</row>
 			<row>
@@ -571,17 +355,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>6</nb_conversions>
 				<revenue>71302</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>11</nb_events>
+				<sum_event_value>1813</sum_event_value>
 				<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -594,17 +369,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>4</nb_conversions>
 				<revenue>39297</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>11</nb_events>
+				<sum_event_value>2642</sum_event_value>
 				<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -617,17 +383,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>5</nb_conversions>
 				<revenue>42853</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>10</nb_events>
+				<sum_event_value>3243</sum_event_value>
 				<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
@@ -640,17 +397,8 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>2</nb_conversions>
 				<revenue>13768</revenue>
-				<goals>
-					<row idgoal='1'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<nb_visits_converted>0</nb_visits_converted>
-					</row>
-					<row idgoal='2'>
-						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-					</row>
-				</goals>
+				<nb_events>6</nb_events>
+				<sum_event_value>1317</sum_event_value>
 				<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>

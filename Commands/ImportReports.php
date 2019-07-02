@@ -57,7 +57,11 @@ class ImportReports extends ConsoleCommand
         $viewId = $this->getViewId($input, $output, $service);
         $dates = $this->getDatesToImport($input);
         $property = $input->getOption('property');
+
         $account = $input->getOption('account');
+        if (empty($account)) {
+            $account = $this->guessAccountFromProperty($property);
+        }
 
         /** @var ImportConfiguration $importerConfiguration */
         $importerConfiguration = StaticContainer::get(ImportConfiguration::class);
@@ -165,5 +169,14 @@ class ImportReports extends ConsoleCommand
         }
 
         $importerConfiguration->setNumCustomVariables($cvarCount);
+    }
+
+    private function guessAccountFromProperty($property)
+    {
+        if (!preg_match('/UA-(\d+)-\d/', $property, $matches)) {
+            throw new \Exception("Cannot deduce account ID from property ID '$property'. Please specify it manually using the --account option.");
+        }
+
+        return $matches[1];
     }
 }

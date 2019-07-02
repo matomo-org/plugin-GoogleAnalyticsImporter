@@ -2,44 +2,157 @@
 <result>
 	<row>
 		<label>(not set)</label>
-		<nb_visits>393</nb_visits>
-		<nb_actions>1575</nb_actions>
-		<sum_visit_length>10630</sum_visit_length>
-		<bounce_count>72</bounce_count>
-		<nb_visits_converted>106</nb_visits_converted>
-		<nb_conversions>246</nb_conversions>
-		<revenue>1420691</revenue>
+		<nb_visits>628</nb_visits>
+		<nb_actions>2345</nb_actions>
+		<sum_visit_length>20851</sum_visit_length>
+		<bounce_count>118</bounce_count>
+		<nb_visits_converted>203</nb_visits_converted>
+		<nb_conversions>422</nb_conversions>
+		<revenue>1954936</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>56</nb_conversions>
+				<nb_conversions>106</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>55</nb_visits_converted>
+				<nb_visits_converted>104</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>50</nb_conversions>
+				<nb_conversions>94</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>50</nb_visits_converted>
+				<nb_visits_converted>93</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
+				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>219</nb_conversions>
+				<revenue>1954936</revenue>
+				<items>1463</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>105</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>169</sum_daily_nb_uniq_visitors>
 		<segment>resolution==%28not+set%29</segment>
 	</row>
 	<row>
 		<label>360x640</label>
-		<nb_visits>9</nb_visits>
-		<nb_actions>12</nb_actions>
+		<nb_visits>11</nb_visits>
+		<nb_actions>14</nb_actions>
 		<sum_visit_length>1831</sum_visit_length>
-		<bounce_count>6</bounce_count>
+		<bounce_count>8</bounce_count>
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
 		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
 		<segment>resolution==360x640</segment>
+	</row>
+	<row>
+		<label>1366x768</label>
+		<nb_visits>7</nb_visits>
+		<nb_actions>8</nb_actions>
+		<sum_visit_length>1193</sum_visit_length>
+		<bounce_count>6</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+		<segment>resolution==1366x768</segment>
+	</row>
+	<row>
+		<label>1536x864</label>
+		<nb_visits>6</nb_visits>
+		<nb_actions>8</nb_actions>
+		<sum_visit_length>55</sum_visit_length>
+		<bounce_count>5</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
+		<segment>resolution==1536x864</segment>
+	</row>
+	<row>
+		<label>1920x1080</label>
+		<nb_visits>6</nb_visits>
+		<nb_actions>7</nb_actions>
+		<sum_visit_length>151</sum_visit_length>
+		<bounce_count>5</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
+		<segment>resolution==1920x1080</segment>
+	</row>
+	<row>
+		<label>360x720</label>
+		<nb_visits>5</nb_visits>
+		<nb_actions>6</nb_actions>
+		<sum_visit_length>1294</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<segment>resolution==360x720</segment>
 	</row>
 	<row>
 		<label>360x740</label>
@@ -54,27 +167,35 @@
 		<segment>resolution==360x740</segment>
 	</row>
 	<row>
-		<label>1920x1080</label>
+		<label>375x667</label>
 		<nb_visits>5</nb_visits>
 		<nb_actions>6</nb_actions>
-		<sum_visit_length>151</sum_visit_length>
-		<bounce_count>4</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-		<segment>resolution==1920x1080</segment>
-	</row>
-	<row>
-		<label>375x667</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>5</nb_actions>
 		<sum_visit_length>1591</sum_visit_length>
-		<bounce_count>3</bounce_count>
+		<bounce_count>4</bounce_count>
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
 		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
 		<segment>resolution==375x667</segment>
 	</row>
 	<row>
@@ -86,32 +207,104 @@
 		<nb_visits_converted>2</nb_visits_converted>
 		<nb_conversions>2</nb_conversions>
 		<revenue>0.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<segment>resolution==375x812</segment>
 	</row>
 	<row>
-		<label>1536x864</label>
+		<label>1024x768</label>
 		<nb_visits>4</nb_visits>
-		<nb_actions>6</nb_actions>
-		<sum_visit_length>55</sum_visit_length>
-		<bounce_count>3</bounce_count>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>0.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<segment>resolution==1024x768</segment>
+	</row>
+	<row>
+		<label>768x1024</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>20</nb_actions>
+		<sum_visit_length>2230</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0</revenue>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<segment>resolution==768x1024</segment>
+	</row>
+	<row>
+		<label>1440x900</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>261</sum_visit_length>
+		<bounce_count>2</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-		<segment>resolution==1536x864</segment>
-	</row>
-	<row>
-		<label>1366x768</label>
-		<nb_visits>3</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>1193</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0.0</revenue>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<segment>resolution==1366x768</segment>
+		<segment>resolution==1440x900</segment>
 	</row>
 	<row>
 		<label>320x568</label>
@@ -126,7 +319,7 @@
 		<segment>resolution==320x568</segment>
 	</row>
 	<row>
-		<label>360x720</label>
+		<label>360x780</label>
 		<nb_visits>2</nb_visits>
 		<nb_actions>2</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -135,7 +328,7 @@
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<segment>resolution==360x720</segment>
+		<segment>resolution==360x780</segment>
 	</row>
 	<row>
 		<label>412x846</label>
@@ -150,28 +343,16 @@
 		<segment>resolution==412x846</segment>
 	</row>
 	<row>
-		<label>768x1024</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>152</sum_visit_length>
+		<label>360x750</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
 		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<segment>resolution==768x1024</segment>
-	</row>
-	<row>
-		<label>1440x900</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>261</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<segment>resolution==1440x900</segment>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>resolution==360x750</segment>
 	</row>
 	<row>
 		<label>360x760</label>
@@ -186,7 +367,7 @@
 		<segment>resolution==360x760</segment>
 	</row>
 	<row>
-		<label>360x780</label>
+		<label>412x823</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -195,7 +376,7 @@
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>resolution==360x780</segment>
+		<segment>resolution==412x823</segment>
 	</row>
 	<row>
 		<label>640x360</label>
@@ -222,6 +403,30 @@
 		<segment>resolution==1067x600</segment>
 	</row>
 	<row>
+		<label>1093x614</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>resolution==1093x614</segment>
+	</row>
+	<row>
+		<label>1188x668</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>resolution==1188x668</segment>
+	</row>
+	<row>
 		<label>1200x750</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -244,6 +449,18 @@
 		<revenue>0.0</revenue>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>resolution==1280x720</segment>
+	</row>
+	<row>
+		<label>1280x800</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0.0</revenue>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>resolution==1280x800</segment>
 	</row>
 	<row>
 		<label>1280x1024</label>

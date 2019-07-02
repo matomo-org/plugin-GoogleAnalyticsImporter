@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>Desktop</label>
+		<label>Unknown</label>
 		<nb_visits>233</nb_visits>
 		<nb_actions>880</nb_actions>
 		<sum_visit_length>6749</sum_visit_length>
@@ -24,6 +24,11 @@
 				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>77</nb_conversions>
+				<revenue>781426</revenue>
+				<items>559</items>
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>101</sum_daily_nb_uniq_visitors>
@@ -50,13 +55,19 @@
 				<nb_visits_converted>18</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>4</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>2</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>52</nb_conversions>
+				<revenue>534286</revenue>
+				<items>392</items>
+			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>98</sum_daily_nb_uniq_visitors>
-		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
+		<segment>deviceType==smartphone</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/smartphone.png</logo>
 	</row>
 	<row>
 		<label>Tablet</label>
@@ -83,9 +94,15 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>11</nb_conversions>
+				<revenue>104979</revenue>
+				<items>78</items>
+			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
-		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
+		<segment>deviceType==tablet</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/tablet.png</logo>
 	</row>
 	<row>
 		<label>Camera</label>
@@ -104,6 +121,12 @@
 		<nb_visits>0</nb_visits>
 		<segment>deviceType==console</segment>
 		<logo>plugins/Morpheus/icons/dist/devices/console.png</logo>
+	</row>
+	<row>
+		<label>Desktop</label>
+		<nb_visits>0</nb_visits>
+		<segment>deviceType==desktop</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/desktop.png</logo>
 	</row>
 	<row>
 		<label>Feature phone</label>

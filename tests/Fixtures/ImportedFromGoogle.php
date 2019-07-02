@@ -72,14 +72,13 @@ class ImportedFromGoogle extends Fixture
         $domain = Config::getHostname();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
         $property = $this->getEnvVar('GA_PROPERTY_ID');
-        $account = $this->getEnvVar('GA_ACCOUNT_ID');
 
         Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
         Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
 
         $command = "php " . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console ' . $domainParam
             . ' googleanalyticsimporter:import-reports -vvv --view=' . $this->viewId
-            . ' --dates=' . $this->importedDateRange . ' --property=' . $property . ' --account=' . $account;
+            . ' --dates=' . $this->importedDateRange . ' --property=' . $property;
 
         print "\nImporting from google...\n";
 
