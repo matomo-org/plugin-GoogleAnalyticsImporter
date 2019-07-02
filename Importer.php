@@ -186,6 +186,10 @@ class Importer
         /** @var ImportConfiguration $importConfiguration */
         $importConfiguration = StaticContainer::get(ImportConfiguration::class);
         $numCustomVarSlots = (int) $importConfiguration->getNumCustomVariables();
+        if ($numCustomVarSlots <= 0) {
+            $this->logger->info("Using existing custom variable slots.");
+            return;
+        }
 
         $this->logger->info("Setting maximum number of custom variable slots to $numCustomVarSlots...");
 

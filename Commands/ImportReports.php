@@ -44,7 +44,8 @@ class ImportReports extends ConsoleCommand
         $this->addOption('view', null, InputOption::VALUE_REQUIRED, 'The View ID to use. If not supplied, the default View for the property is used.');
         $this->addOption('dates', null, InputOption::VALUE_REQUIRED, 'The dates to import.');
         $this->addOption('idsite', null, InputOption::VALUE_REQUIRED, 'The site to import into.');
-        $this->addOption('cvar-count', null, InputOption::VALUE_REQUIRED, 'The number of custom variables to support.', Model::DEFAULT_CUSTOM_VAR_COUNT);
+        $this->addOption('cvar-count', null, InputOption::VALUE_REQUIRED, 'The number of custom variables to support (if not supplied defaults to however many are currently available). '
+            . 'NOTE: This option will attempt to set the number of custom variable slots which should be done with care on an existing system.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -164,10 +165,6 @@ class ImportReports extends ConsoleCommand
     private function setImportRunConfiguration(ImportConfiguration $importerConfiguration, InputInterface $input)
     {
         $cvarCount = (int) $input->getOption('cvar-count');
-        if ($cvarCount <= 0) {
-            throw new \InvalidArgumentException('Invalid option value for "cvar-count", must be positive integer.');
-        }
-
         $importerConfiguration->setNumCustomVariables($cvarCount);
     }
 
