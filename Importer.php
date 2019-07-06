@@ -112,7 +112,7 @@ class Importer
 
         $this->importGoals($idSite, $accountId, $propertyId, $viewId);
         $this->importCustomDimensions($idSite, $accountId, $propertyId);
-        $this->importCustomDimensionSlots();
+        $this->importCustomVariableSlots();
 
         return $idSite;
     }
@@ -181,7 +181,7 @@ class Importer
         }
     }
 
-    private function importCustomDimensionSlots()
+    private function importCustomVariableSlots()
     {
         /** @var ImportConfiguration $importConfiguration */
         $importConfiguration = StaticContainer::get(ImportConfiguration::class);

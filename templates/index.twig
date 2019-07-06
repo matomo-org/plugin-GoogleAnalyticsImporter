@@ -3,6 +3,10 @@
 {% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
 
 {% block content %}
+    <div piwik-notification notification-id="ga-importer-help" context="info" type="transient" noclear="1" notification-title="Setting Up">
+        The Google Analytics Importer requires you to setup OAuth Client configuration in the Google API Console before you can do anything else.
+            To see a step-by-step guide for doing this and setting up this plugin <a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noreferrer noopener">click here.</a>
+    </div>
     <div piwik-content-block
          content-title="{{ title|e('html_attr') }}"
     >
