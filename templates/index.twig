@@ -3,34 +3,34 @@
 {% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
 
 {% block content %}
-    <div piwik-notification notification-id="ga-importer-help" context="info" type="transient" noclear="1" notification-title="Setting Up">
-        The Google Analytics Importer requires you to setup OAuth Client configuration in the Google API Console before you can do anything else.
-            To see a step-by-step guide for doing this and setting up this plugin <a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noreferrer noopener">click here.</a>
+    <div piwik-notification notification-id="ga-importer-help" context="info" type="transient" noclear="1" notification-title="{{ 'GoogleAnalyticsImporter_SettingUp'|translate }}">
+        {{ 'GoogleAnalyticsImporter_ImporterHelp1'|translate }}
+        {{ 'GoogleAnalyticsImporter_ImporterHelp2'|translate('<a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noreferrer noopener">', '</a>') }}
     </div>
     <div piwik-content-block
          content-title="{{ title|e('html_attr') }}"
     >
         {% if hasClientConfiguration %}
             {% if isConfigured %}
-            <p>The importer is configured and you can start importing data through the command line.</p>
+            <p>{{ 'GoogleAnalyticsImporter_ImporterIsConfigured' }}</p>
 
-            <a class="btn" href="{{ authUrl }}">Re-authorize</a>
+            <a class="btn" href="{{ authUrl }}">{{ 'GoogleAnalyticsImporter_ReAuthorize'|translate }}</a>
             {% else %}
-            <p>You've successfully uploaded your client configuration details! Now you just need to authorize Matomo to view your Google Analytics data. Click the button below:</p>
+            <p>{{ 'GoogleAnalyticsImporter_ClientConfigSuccessfullyUpdated'|translate }}</p>
 
-            <a class="btn" href="{{ authUrl }}">Authorize</a>
+            <a class="btn" href="{{ authUrl }}">{{ 'GoogleAnalyticsImporter_Authorize' }}</a>
             {% endif %}
         {% else %}
             <form action="{{ linkTo({'action': 'configureClient'}) }}" method="POST" enctype="multipart/form-data" >
-                <p>In order to import your data from Google Analytics, Matomo need access to this data.</p>
-                <p>The first step is to provide your OAuth Client configuration. Upload your client configuration or paste it into the field below.</p>
+                <p>{{ 'GoogleAnalyticsImporter_ConfigureClientDesc1'|translate }}</p>
+                <p>{{ 'GoogleAnalyticsImporter_ConfigureClientDesc2'|translate }}</p>
 
                 <div piwik-field uicontrol="file" name="clientfile"
-                     title="Configuration File">
+                     title="{{ 'GoogleAnalyticsImporter_ConfigurationFile'|translate }}">
                 </div>
 
                 <div piwik-field uicontrol="textarea" name="client"
-                     title="Configuration Text">
+                     title="{{ 'GoogleAnalyticsImporter_ConfigurationText'|translate }}">
                 </div>
 
                 <input type="hidden" name="config_nonce" value="{{ nonce }}" />
@@ -44,14 +44,14 @@
     {% if hasClientConfiguration %}
     <div
         piwik-content-block
-        content-title="Remove Client Configuration"
+        content-title="{{ 'GoogleAnalyticsImporter_RemoveClientConfiguration'|translate }}"
     >
         <form action="{{ linkTo({'action': 'deleteClientCredentials'}) }}" method="POST" enctype="multipart/form-data">
-            <p>If you'd like to remove the uploaded client configuration, click below:</p>
+            <p>{{ 'GoogleAnalyticsImporter_DeleteUploadedClientConfig'|translate }}:</p>
 
             <input type="hidden" name="config_nonce" value="{{ nonce }}" />
 
-            <button type="submit" class="btn">Remove</button>
+            <button type="submit" class="btn">{{ 'General_Remove'|translate }}</button>
         </form>
     </div>
     {% endif %}
