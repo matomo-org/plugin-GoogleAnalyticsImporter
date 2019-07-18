@@ -378,7 +378,7 @@ class GoogleAnalyticsQueryService
             $dimensions[] = $this->makeGaSegmentDimension();
         }
 
-        $metricNames = array_values($metricNames);print_r($metricNames);
+        $metricNames = array_values($metricNames);
         $metrics = array_map(function ($name) { return $this->makeGaMetric($name); }, $metricNames);
 
         $request = new \Google_Service_AnalyticsReporting_ReportRequest();
