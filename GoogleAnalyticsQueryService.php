@@ -17,6 +17,7 @@ use Piwik\Piwik;
 use Piwik\Site;
 use Piwik\Tracker\Action;
 use Piwik\Tracker\GoalManager;
+use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsQueryService
 {
@@ -52,12 +53,19 @@ class GoogleAnalyticsQueryService
      */
     private $onQueryMade;
 
-    public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite)
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
+
+    public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite,
+                                LoggerInterface $logger)
     {
         $this->gaService = $gaService;
         $this->viewId = $viewId;
         $this->goalsMapping = $goalsMapping;
         $this->idSite = $idSite;
+        $this->logger = $logger;
 
         $this->mapping = $this->getMetricIndicesToGaMetrics();
     }
@@ -408,12 +416,16 @@ class GoogleAnalyticsQueryService
             try {
                 return $this->gaService->reports->batchGet($body);
             } catch (\Exception $ex) {
-                if ($ex->getCode() != 403 && $ex->getCode() != 429) {
+                if ($ex->getCode() == 403 || $ex->getCode() == 429) {
+                    ++$attempts;
+                    sleep(1);
+                } else if ($ex->getCode() >= 500) {
+                    ++$attempts;
+                    $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting one minute before trying again...");
+                    sleep(60);
+                } else {
                     throw $ex;
                 }
-
-                ++$attempts;
-                sleep(1);
             }
         }
     }

@@ -3,6 +3,19 @@
     "AdminMenuTitle": "Google Analytics Import",
     "ConfigureTheImporter": "Configure the Importer",
     "InvalidClientJson": "Invalid JSON in credentials file, try re-downloading the file from the Google API Console.",
-    "MissingClientConfiguration": "Missing client configuration."
+    "MissingClientConfiguration": "Missing client configuration.",
+    "SettingUp": "Setting Up",
+    "ImporterHelp1": "The Google Analytics Importer requires you to setup OAuth Client configuration in the Google API Console before you can do anything else.",
+    "ImporterHelp2": "To see a step-by-step guide for doing this and setting up this plugin %1$sclick here.%2$s",
+    "ImporterIsConfigured": "The importer is configured and you can start importing data through the command line.",
+    "ReAuthorize": "Re-authorize",
+    "ClientConfigSuccessfullyUpdated": "You've successfully uploaded your client configuration details! Now you just need to authorize Matomo to view your Google Analytics data. Click the button below:",
+    "Authorize": "Authorize",
+    "ConfigureClientDesc1": "In order to import your data from Google Analytics, Matomo need access to this data.",
+    "ConfigureClientDesc2": "The first step is to provide your OAuth Client configuration. Upload your client configuration or paste it into the field below.",
+    "ConfigurationFile": "Configuration File",
+    "ConfigurationText": "Configuration Text",
+    "RemoveClientConfiguration": "Remove Client Configuration",
+    "DeleteUploadedClientConfig": "If you'd like to remove the uploaded client configuration, click below"
   }
 }

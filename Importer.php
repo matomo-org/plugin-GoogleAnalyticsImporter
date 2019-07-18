@@ -276,7 +276,7 @@ class Importer
             }
         }
 
-        $gaQuery = new GoogleAnalyticsQueryService($this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite);
+        $gaQuery = new GoogleAnalyticsQueryService($this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
         });
