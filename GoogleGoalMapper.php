@@ -167,7 +167,7 @@ class GoogleGoalMapper
     private function mapComparisonType($gaGoal, $comparisonType)
     {
         if (strtolower($comparisonType) == 'greater_than') {
-            return '>';
+            return 'greater_than';
         }
 
         throw new CannotImportGoalException($gaGoal, 'Unsupported comparison type \'' . $comparisonType . '\'');
