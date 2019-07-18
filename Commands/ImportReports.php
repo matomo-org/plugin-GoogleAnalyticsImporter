@@ -77,6 +77,9 @@ class ImportReports extends ConsoleCommand
             && !empty($account)
         ) {
             $idSite = $importer->makeSite($account, $property, $viewId);
+            $output->writeln("Created new site with ID = $idSite.");
+        } else {
+            $output->writeln("Importing into existing site $idSite.");
         }
 
         $output->writeln("Importing reports for date range {$dates[0]} - {$dates[1]} from GA view $viewId.");

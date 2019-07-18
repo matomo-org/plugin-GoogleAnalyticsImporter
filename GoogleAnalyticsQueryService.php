@@ -414,7 +414,17 @@ class GoogleAnalyticsQueryService
         $attempts = 0;
         while ($attempts < self::MAX_ATTEMPTS) {
             try {
-                return $this->gaService->reports->batchGet($body);
+                $result = $this->gaService->reports->batchGet($body);
+                if ($result === null) {
+                    ++$attempts;
+                    sleep(1);
+
+                    $this->logger->info("Google Analytics API returned null for some reason, trying again...");
+
+                    continue;
+                }
+
+                return $result;
             } catch (\Exception $ex) {
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
                     ++$attempts;

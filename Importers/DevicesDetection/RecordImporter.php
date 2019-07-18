@@ -46,6 +46,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
      */
     private $cache;
 
+    // TODO: new mappings needed: mobiwire
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
@@ -245,6 +246,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result = $this->buildValueMapping(DeviceParserAbstract::$deviceBrands);
             $result['oukitel'] = $result['ouki'];
             $result['blackberry'] = $result['rim'];
+            $result['tecno'] = $result['tecno mobile'];
             $result['opera'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
@@ -261,6 +263,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result = $this->buildValueMapping($operatingSystems);
             $result['linux'] = $result['gnu/linux'];
             $result['macintosh'] = $result['mac'];
+            $result['blackberry'] = $result['blackberry os'];
             $this->cache->save($cacheKey, $result);
         }
         return $result;
@@ -278,6 +281,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['safari (in-app)'] = $result['mobile safari'];
             $result['samsung internet'] = $result['samsung browser'];
             $result['android webview'] = $result['android browser'];
+            $result['blackberry'] = $result['blackberry browser'];
+            $result['android runtime'] = $result['android browser'];
+            $result['amazon silk'] = $result['mobile silk'];
             $result['mozilla compatible agent'] = 'xx'; // TODO: mostly bots, we could ignore these...
             $result['\'mozilla'] = 'xx';
             $this->cache->save($cacheKey, $result);
