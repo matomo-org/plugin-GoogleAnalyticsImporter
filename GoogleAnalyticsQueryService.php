@@ -21,7 +21,7 @@ use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsQueryService
 {
-    const MAX_ATTEMPTS = 100;
+    const MAX_ATTEMPTS = 500;
 
     /**
      * @var \Google_Service_Analytics
@@ -438,6 +438,8 @@ class GoogleAnalyticsQueryService
                 }
             }
         }
+
+        throw new \Exception("Failed to reach GA after " . self::MAX_ATTEMPTS . " attempts. Restart the import later.");
     }
 
     private function makeGaSegment($segment)
