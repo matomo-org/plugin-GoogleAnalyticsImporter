@@ -35,7 +35,7 @@
 		<description>(imported from Google Analytics, original id = 3)</description>
 		<match_attribute>visit_duration</match_attribute>
 		<pattern>900</pattern>
-		<pattern_type>&gt;</pattern_type>
+		<pattern_type>greater_than</pattern_type>
 		<case_sensitive>0</case_sensitive>
 		<allow_multiple>0</allow_multiple>
 		<revenue>0</revenue>

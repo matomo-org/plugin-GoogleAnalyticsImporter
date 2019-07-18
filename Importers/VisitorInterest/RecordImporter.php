@@ -67,12 +67,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         Common::destroy($record);
     }
 
-    private function insertRecord($recordName, DataTable $record)
-    {
-        $blob = $record->getSerialized();
-        $this->insertBlobRecord($recordName, $blob);
-    }
-
     private function getVisitByNumberLabel($value)
     {
         return $this->getGapLabel(Archiver::$visitNumberGap, $value);

@@ -280,9 +280,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function insertDataTable($actionType, $recordName)
     {
         ArchivingHelper::deleteInvalidSummedColumnsFromDataTable($this->dataTables[$actionType]);
-        $blob = $this->dataTables[$actionType]->getSerialized(ArchivingHelper::$maximumRowsInDataTableLevelZero, ArchivingHelper::$maximumRowsInSubDataTable,
-            ArchivingHelper::$columnToSortByBeforeTruncation);
-        $this->insertBlobRecord($recordName, $blob);
-        unset($blob);
+        $this->insertRecord($recordName, $this->dataTables[$actionType], ArchivingHelper::$maximumRowsInDataTableLevelZero,
+            ArchivingHelper::$maximumRowsInSubDataTable, ArchivingHelper::$columnToSortByBeforeTruncation);
     }
 }

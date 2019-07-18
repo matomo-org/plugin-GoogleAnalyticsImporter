@@ -70,8 +70,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->querySiteSearchCategories($day, $record);
         $this->queryEcommerce($day, $record);
 
-        $blob = $record->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, Metrics::INDEX_NB_VISITS);
-        $this->insertBlobRecord(Archiver::CUSTOM_VARIABLE_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::CUSTOM_VARIABLE_RECORD_NAME, $record, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable,
+            Metrics::INDEX_NB_VISITS);
         Common::destroy($record);
 
         unset($this->metadataFlat);

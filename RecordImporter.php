@@ -9,16 +9,20 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
+use Piwik\Common;
 use Piwik\Config as PiwikConfig;
 use Piwik\DataAccess\ArchiveWriter;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Plugins\DevicesDetection\Archiver;
 use Piwik\Tracker\Action;
 use Psr\Log\LoggerInterface;
 
 abstract class RecordImporter
 {
+    const IS_IMPORTED_FROM_GOOGLE_METADATA_NAME = 'is_imported_from_google';
+
     /**
      * @var GoogleAnalyticsQueryService
      */
@@ -148,6 +152,15 @@ abstract class RecordImporter
     protected function getIdSite()
     {
         return $this->idSite;
+    }
+
+    protected function insertRecord($recordName, DataTable $record, $maximumRowsInDataTable = null,
+                                    $maximumRowsInSubDataTable = null, $columnToSortByBeforeTruncation = null)
+    {
+        $record->setMetadata(self::IS_IMPORTED_FROM_GOOGLE_METADATA_NAME, 1);
+
+        $blob = $record->getSerialized($maximumRowsInDataTable, $maximumRowsInSubDataTable, $columnToSortByBeforeTruncation);
+        $this->insertBlobRecord($recordName, $blob);
     }
 
     protected function insertBlobRecord($name, $values)

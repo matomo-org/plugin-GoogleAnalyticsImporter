@@ -51,10 +51,4 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertRecord($recordName, $record);
         Common::destroy($record);
     }
-
-    private function insertRecord($recordName, DataTable $record)
-    {
-        $blob = $record->getSerialized();
-        $this->insertBlobRecord($recordName, $blob);
-    }
 }

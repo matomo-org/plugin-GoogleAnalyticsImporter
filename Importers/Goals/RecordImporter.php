@@ -74,7 +74,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->queryItemReports($day);
 
         foreach ($this->itemRecords as $recordName => &$record) {
-            $this->insertBlobRecord($recordName, $record->getSerialized());
+            $this->insertRecord($recordName, $record);
             Common::destroy($record);
         }
 
@@ -113,7 +113,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $this->addRowToTable($record, $row, $label);
         }
 
-        $this->insertBlobRecord($recordName, $record->getSerialized());
+        $this->insertRecord($recordName, $record);
         Common::destroy($record);
     }
 

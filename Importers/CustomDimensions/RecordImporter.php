@@ -75,15 +75,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function insertCustomDimensionRecord(DataTable $record, $dimension)
     {
-        $blob = $record->getSerialized(
-            $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable,
-            $columnToSort = Metrics::INDEX_NB_VISITS
-        );
-
         $recordName = Archiver::buildRecordNameForCustomDimensionId($dimension['idcustomdimension']);
-
-        $this->insertBlobRecord($recordName, $blob);
-
-        unset($blob);
+        $this->insertRecord($recordName, $record, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable,
+            $columnToSort = Metrics::INDEX_NB_VISITS);
     }
 }

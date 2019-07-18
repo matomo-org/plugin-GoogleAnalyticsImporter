@@ -65,40 +65,35 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $keywordByCampaign = $this->getKeywordByCampaign($day);
         $distinctCampaigns = $keywordByCampaign->getRowsCount();
 
-        $blob = $keywordByCampaign->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
-        $this->insertBlobRecord(Archiver::CAMPAIGNS_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::CAMPAIGNS_RECORD_NAME, $keywordByCampaign, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable,
+            $this->columnToSortByBeforeTruncation);
         Common::destroy($keywordByCampaign);
 
         list($keywordBySearchEngine, $searchEngineByKeyword) = $this->getKeywordsAndSearchEngineRecords($day);
 
         $distinctKeywords = $searchEngineByKeyword->getRowsCount();
 
-        $blob = $keywordBySearchEngine->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
-        $this->insertBlobRecord(Archiver::KEYWORDS_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::KEYWORDS_RECORD_NAME, $keywordBySearchEngine, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($keywordBySearchEngine);
 
         $distinctSearchEngines = $searchEngineByKeyword->getRowsCount();
 
-        $blob = $searchEngineByKeyword->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
-        $this->insertBlobRecord(Archiver::SEARCH_ENGINES_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::SEARCH_ENGINES_RECORD_NAME, $searchEngineByKeyword, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($searchEngineByKeyword);
 
         list($urlByWebsite, $urlBySocialNetwork) = $this->getUrlByWebsite($day);
 
         $distinctWebsites = $urlByWebsite->getRowsCount();
 
-        $blob = $urlByWebsite->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
-        $this->insertBlobRecord(Archiver::WEBSITES_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::WEBSITES_RECORD_NAME, $urlByWebsite, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($urlByWebsite);
 
         $distinctSocialNetworks = $urlBySocialNetwork->getRowsCount();
 
-        $blob = $urlBySocialNetwork->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
-        $this->insertBlobRecord(Archiver::SOCIAL_NETWORKS_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::SOCIAL_NETWORKS_RECORD_NAME, $urlBySocialNetwork, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($urlBySocialNetwork);
 
-        $blob = $this->referrerTypeRecord->getSerialized($this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
-        $this->insertBlobRecord(Archiver::REFERRER_TYPE_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::REFERRER_TYPE_RECORD_NAME, $this->referrerTypeRecord, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($this->referrerTypeRecord);
         $this->referrerTypeRecord = null;
 

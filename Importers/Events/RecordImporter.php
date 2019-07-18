@@ -50,10 +50,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->queryEvents($day);
 
         foreach ($this->records as $recordName => $record) {
-            $blob = $record->getSerialized($this->maximumRowsInDataTable, $this->maximumRowsInSubDataTable, Metrics::INDEX_NB_VISITS);
-            $this->insertBlobRecord($recordName, $blob);
-
-            unset($blob);
+            $this->insertRecord($recordName, $record, $this->maximumRowsInDataTable, $this->maximumRowsInSubDataTable, Metrics::INDEX_NB_VISITS);
             Common::destroy($record);
         }
 

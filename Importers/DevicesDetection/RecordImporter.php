@@ -106,12 +106,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         Common::destroy($table);
 
-        $blob = $operatingSystems->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
-        $this->insertBlobRecord(Archiver::OS_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::OS_RECORD_NAME, $operatingSystems, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($operatingSystems);
 
-        $blob = $operatingSystemVersions->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
-        $this->insertBlobRecord(Archiver::OS_VERSION_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::OS_VERSION_RECORD_NAME, $operatingSystemVersions, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($operatingSystemVersions);
     }
 
@@ -137,12 +135,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         Common::destroy($table);
 
-        $blob = $browsers->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
-        $this->insertBlobRecord(Archiver::BROWSER_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::BROWSER_RECORD_NAME, $browsers, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($browsers);
 
-        $blob = $browserVersions->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
-        $this->insertBlobRecord(Archiver::BROWSER_VERSION_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::BROWSER_VERSION_RECORD_NAME, $browserVersions, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($browserVersions);
     }
 
@@ -164,8 +160,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         Common::destroy($table);
 
-        $blob = $record->getSerialized($this->getStandardMaximumRows(), $this->getStandardMaximumRows());
-        $this->insertBlobRecord($recordName, $blob);
+        $this->insertRecord($recordName, $record, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($record);
     }
 
@@ -249,6 +244,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         if (empty($result)) {
             $result = $this->buildValueMapping(DeviceParserAbstract::$deviceBrands);
             $result['oukitel'] = $result['ouki'];
+            $result['blackberry'] = $result['rim'];
+            $result['opera'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;
@@ -282,6 +279,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['samsung internet'] = $result['samsung browser'];
             $result['android webview'] = $result['android browser'];
             $result['mozilla compatible agent'] = 'xx'; // TODO: mostly bots, we could ignore these...
+            $result['\'mozilla'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;

@@ -54,8 +54,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\Importers\De
         }
         Common::destroy($table);
 
-        $blob = $record->getSerialized($this->getStandardMaximumRows(), null, Metrics::INDEX_NB_VISITS);
-        $this->insertBlobRecord(Archiver::CONFIGURATION_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::CONFIGURATION_RECORD_NAME, $record, $this->getStandardMaximumRows(), null, Metrics::INDEX_NB_VISITS);
         unset($blob);
         Common::destroy($record);
     }
@@ -75,8 +74,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\Importers\De
         }
         Common::destroy($table);
 
-        $blob = $record->getSerialized($this->getStandardMaximumRows(), null, Metrics::INDEX_NB_VISITS);
-        $this->insertBlobRecord(Archiver::RESOLUTION_RECORD_NAME, $blob);
+        $this->insertRecord(Archiver::RESOLUTION_RECORD_NAME, $record, $this->getStandardMaximumRows(), null, Metrics::INDEX_NB_VISITS);
         unset($blob);
         Common::destroy($record);
     }
