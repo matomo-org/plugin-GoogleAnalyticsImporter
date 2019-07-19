@@ -12,7 +12,7 @@
     >
         {% if hasClientConfiguration %}
             {% if isConfigured %}
-            <p>{{ 'GoogleAnalyticsImporter_ImporterIsConfigured' }}</p>
+            <p>{{ 'GoogleAnalyticsImporter_ImporterIsConfigured'|translate }}</p>
 
             <a class="btn" href="{{ authUrl }}">{{ 'GoogleAnalyticsImporter_ReAuthorize'|translate }}</a>
             {% else %}

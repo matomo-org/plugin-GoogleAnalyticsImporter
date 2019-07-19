@@ -124,6 +124,8 @@ class GoogleGoalMapper
     {
         $result = $this->mapBasicGoalProperties($gaGoal);
         $result['match_attribute'] = 'manually';
+        $result['pattern'] = '';
+        $result['pattern_type'] = '';
         return $result;
     }
 

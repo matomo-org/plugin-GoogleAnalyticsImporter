@@ -11,7 +11,7 @@ return [
         $googleClient->addScope(\Google_Service_AnalyticsReporting::ANALYTICS_READONLY);
         $googleClient->setAccessType('offline');
         $googleClient->setApprovalPrompt('force');
-        $redirectUrl = Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode&idSite=';
+        $redirectUrl = Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode';
         $googleClient->setRedirectUri($redirectUrl);
         return $googleClient;
     },
