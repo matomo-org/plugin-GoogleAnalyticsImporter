@@ -43,6 +43,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $customDimensions = API::getInstance()->getConfiguredCustomDimensions($this->getIdSite());
         foreach ($customDimensions as $dimension) {
             $gaId = $idMapper->getGoogleAnalyticsId('customdimension', $dimension['idcustomdimension']);
+            if ($gaId === null) {
+                throw new \Exception("Cannot find Google Analytics entity ID for custom dimension (ID = {$dimension['idcustomdimension']})");
+            }
 
             $record = $this->queryCustomDimension($gaId, $day);
             $this->insertCustomDimensionRecord($record, $dimension);

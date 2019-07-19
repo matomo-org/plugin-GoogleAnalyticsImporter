@@ -16,8 +16,8 @@ return [
         return $googleClient;
     },
 
-    \Piwik\Plugins\GoogleAnalyticsImporter\Importer::class =>
-        \DI\object()->constructorParameter('client', DI\get('GoogleAnalyticsImporter.googleClient')),
+    Google_Service_Analytics::class => \DI\object()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
+    Google_Service_AnalyticsReporting::class => \DI\object()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
 
     'GoogleAnalyticsImporter.recordImporters' => [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Referrers\RecordImporter::class,

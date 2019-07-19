@@ -21,6 +21,7 @@ use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
+use Piwik\Plugins\Goals\API;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
@@ -76,16 +77,23 @@ class Importer
      */
     private $queryCount;
 
-    public function __construct(ReportsProvider $reportsProvider, \Google_Client $client, LoggerInterface $logger, GoogleGoalMapper $goalMapper,
-                                GoogleCustomDimensionMapper $customDimensionMapper, IdMapper $idMapper)
+    /**
+     * @var ImportStatus
+     */
+    private $importStatus;
+
+    public function __construct(ReportsProvider $reportsProvider, \Google_Service_Analytics $gaService, \Google_Service_AnalyticsReporting $gaReportingService,
+                                LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
+                                IdMapper $idMapper, ImportStatus $importStatus)
     {
         $this->reportsProvider = $reportsProvider;
-        $this->gaService = new \Google_Service_Analytics($client);
-        $this->gaServiceReporting = new \Google_Service_AnalyticsReporting($client);
+        $this->gaService = $gaService;
+        $this->gaServiceReporting = $gaReportingService;
         $this->logger = $logger;
         $this->goalMapper = $goalMapper;
         $this->customDimensionMapper = $customDimensionMapper;
         $this->idMapper = $idMapper;
+        $this->importStatus = $importStatus;
     }
 
     public function makeSite($accountId, $propertyId, $viewId)
@@ -110,19 +118,31 @@ class Importer
             $startDate = Date::factory($webproperty->getCreated())->toString()
         );
 
+        return $idSite;
+    }
+
+    public function importEntities($idSite, $accountId, $propertyId, $viewId)
+    {
         $this->importGoals($idSite, $accountId, $propertyId, $viewId);
         $this->importCustomDimensions($idSite, $accountId, $propertyId);
         $this->importCustomVariableSlots();
-
-        return $idSite;
     }
 
     private function importGoals($idSite, $accountId, $propertyId, $viewId)
     {
+        $existingGoals = API::getInstance()->getGoals($idSite);
+
         $goals = $this->gaService->management_goals->listManagementGoals($accountId, $propertyId, $viewId);
 
         /** @var Google_Service_Analytics_Goal $gaGoal */
         foreach ($goals->getItems() as $gaGoal) {
+            if ($this->goalExists($existingGoals, $gaGoal)) {
+                $this->logger->info("Goal '{gaGoalName}' already imported.", [
+                    'gaGoalName' => $gaGoal->getName(),
+                ]);
+                continue;
+            }
+
             try {
                 $goal = $this->goalMapper->map($gaGoal);
             } catch (CannotImportGoalException $ex) {
@@ -145,6 +165,8 @@ class Importer
                 'useEventValueAsRevenue' => $goal['use_event_value_as_revenue'],
             ], $default = []);
 
+            $this->idMapper->mapEntityId('goal', $gaGoal->getId(), $idGoal);
+
             if (!empty($goal['funnel'])) {
                 StaticContainer::get(\Piwik\Plugins\Funnels\Model\FunnelsModel::class)->clearGoalsCache();
                 \Piwik\Plugins\Funnels\API::getInstance()->setGoalFunnel($idSite, $idGoal, true, $goal['funnel']);
@@ -154,12 +176,20 @@ class Importer
 
     private function importCustomDimensions($idSite, $accountId, $propertyId)
     {
+        $existingCustomDimensions = \Piwik\Plugins\CustomDimensions\API::getInstance()->getConfiguredCustomDimensions($idSite);
         $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
 
         /** @var \Google_Service_Analytics_CustomDimension $gaCustomDimension */
         foreach ($customDimensions->getItems() as $gaCustomDimension) {
             if (!preg_match('/ga:dimension([0-9]+)/', $gaCustomDimension->getId(), $matches)) {
                 $this->logger->warning("Could not parse custom dimension ID from GA: {$gaCustomDimension->getId()}");
+                continue;
+            }
+
+            if ($this->customDimensionExists($existingCustomDimensions, $gaCustomDimension)) {
+                $this->logger->info("Custom Dimension '{gaCustomDimension}' already imported.", [
+                    'gaCustomDimension' => $gaCustomDimension->getName(),
+                ]);
                 continue;
             }
 
@@ -292,14 +322,22 @@ class Importer
     {
         $mapping = [];
 
-        $goals = GoalsAPI::getInstance()->getGoals($idSite); // should not use request hooks, only interested in what's in the DB
+        $goals = GoalsAPI::getInstance()->getGoals($idSite); // do not use request hooks, only interested in what's in the DB
         foreach ($goals as $idGoal => $goal) {
-            // TODO: should we store the GA goal ID somewhere else? not exactly sure where we'd put it, but we need it to be available in case of re-trying an import
-            $gaGoalId = $this->goalMapper->getGoalIdFromDescription($goal);
+            $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal']);
+            if ($gaGoalId === null) {
+                $this->throwNowGoalIdFoundException($goal);
+            }
+
             $mapping[$idGoal] = $gaGoalId;
         }
 
         return $mapping;
+    }
+
+    private function throwNowGoalIdFoundException($goal)
+    {
+        throw new \Exception("No GA goal ID found in goal description for '{$goal['name']}' [idgoal = {$goal['idgoal']}]");
     }
 
     public function getQueryCount()
@@ -311,5 +349,35 @@ class Importer
     {
         $hadTrafficKey = 'SitesManagerHadTrafficInPast_' . (int) $idSite;
         Option::set($hadTrafficKey, 1);
+    }
+
+    private function goalExists(array $existingGoals, Google_Service_Analytics_Goal $gaGoal)
+    {
+        foreach ($existingGoals as $goal) {
+            $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal']);
+            if ($gaGoalId === null) {
+                continue;
+            }
+
+            if ($gaGoalId == $gaGoal->getId()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private function customDimensionExists(array $existingCustomDimensions, \Google_Service_Analytics_CustomDimension $gaCustomDimension)
+    {
+        foreach ($existingCustomDimensions as $customDimension) {
+            $customDimensionId = $this->idMapper->getGoogleAnalyticsId('customdimension', $customDimension['idcustomdimension']);
+            if ($customDimensionId === null) {
+                continue;
+            }
+
+            if ('ga:dimension' . $customDimensionId == $gaCustomDimension->getId()) {
+                return true;
+            }
+        }
+        return false;
     }
 }

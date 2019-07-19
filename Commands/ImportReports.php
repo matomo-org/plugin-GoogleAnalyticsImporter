@@ -82,6 +82,8 @@ class ImportReports extends ConsoleCommand
             $output->writeln("Importing into existing site $idSite.");
         }
 
+        $importer->importEntities($idSite, $account, $property, $viewId);
+
         $output->writeln("Importing reports for date range {$dates[0]} - {$dates[1]} from GA view $viewId.");
 
         $timer = new Timer();

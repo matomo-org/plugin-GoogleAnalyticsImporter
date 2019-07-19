@@ -44,7 +44,6 @@ class GoogleGoalMapper
             throw new CannotImportGoalException($gaGoal, 'unsupported goal type');
         }
 
-
         return $result;
     }
 
@@ -55,8 +54,10 @@ class GoogleGoalMapper
             throw new CannotImportGoalException($gaGoal, 'uses multiple event conditions');
         }
 
+        $conditions = $eventDetails->getEventConditions();
+
         /** @var \Google_Service_Analytics_GoalEventDetailsEventConditions $condition */
-        $condition = reset($eventDetails->getEventConditions());
+        $condition = reset($conditions);
 
         switch (strtolower($condition->getType())) {
             case 'category':
@@ -124,8 +125,8 @@ class GoogleGoalMapper
     {
         $result = $this->mapBasicGoalProperties($gaGoal);
         $result['match_attribute'] = 'manually';
-        $result['pattern'] = '';
-        $result['pattern_type'] = '';
+        $result['pattern'] = 'manually';
+        $result['pattern_type'] = 'contains';
         return $result;
     }
 
@@ -199,12 +200,12 @@ class GoogleGoalMapper
     public function getGoalIdFromDescription($goal)
     {
         if (!preg_match('/id = ([^)]+)\)/', $goal['description'], $matches)) {
-            $this->throwNowGoalIdFoundException($goal);
+            return null;
         }
 
         $matches[1] = trim($matches[1]);
         if (empty($matches[1])) {
-            $this->throwNowGoalIdFoundException($goal);
+            return null;
         }
 
         $this->logger->debug('Found goal "{goalName}" to be mapped to GA goal with ID = {gaGoalId}.', [
@@ -213,10 +214,5 @@ class GoogleGoalMapper
         ]);
 
         return $matches[1];
-    }
-
-    private function throwNowGoalIdFoundException($goal)
-    {
-        throw new \Exception("No GA goal ID found in goal description for '{$goal['name']}' [idgoal = {$goal['idgoal']}]");
     }
 }

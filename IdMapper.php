@@ -26,7 +26,7 @@ class IdMapper
         $optionName = $this->getOptionName($type, $entityId);
         $result = Option::get($optionName);
         if ($result === false) {
-            throw new \Exception("Cannot find Google Analytics entity ID for $type (ID = $entityId)");
+            return null;
         }
         return $result;
     }
