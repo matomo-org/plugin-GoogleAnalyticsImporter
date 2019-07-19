@@ -118,14 +118,22 @@ class Importer
             $startDate = Date::factory($webproperty->getCreated())->toString()
         );
 
+        $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite);
+
         return $idSite;
     }
 
     public function importEntities($idSite, $accountId, $propertyId, $viewId)
     {
-        $this->importGoals($idSite, $accountId, $propertyId, $viewId);
-        $this->importCustomDimensions($idSite, $accountId, $propertyId);
-        $this->importCustomVariableSlots();
+        try {
+            $this->importGoals($idSite, $accountId, $propertyId, $viewId);
+            $this->importCustomDimensions($idSite, $accountId, $propertyId);
+            $this->importCustomVariableSlots();
+        } catch (\Exception $ex) {
+            $this->importStatus->erroredImport($idSite, $ex->getMessage());
+
+            throw $ex;
+        }
     }
 
     private function importGoals($idSite, $accountId, $propertyId, $viewId)
@@ -234,39 +242,49 @@ class Importer
 
     public function import($idSite, $viewId, Date $start, Date $end)
     {
-        $this->queryCount = 0;
+        try {
+            $this->queryCount = 0;
 
-        if ($start->getTimestamp() >= $end->getTimestamp()) {
-            throw new \InvalidArgumentException("Invalid date range, start date is later than end date: {$start},{$end}");
-        }
-
-        $recordImporters = $this->getRecordImporters($idSite, $viewId);
-
-        $endPlusOne = $end->addDay(1);
-
-        $site = new Site($idSite);
-        for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
-            $archiveWriter = $this->makeArchiveWriter($site, $date);
-            $archiveWriter->initNewArchive();
-
-            $this->logger->info("Importing data for GA View {viewId} for date {date}...", [
-                'viewId' => $viewId,
-                'date' => $date->toString(),
-            ]);
-
-            foreach ($recordImporters as $plugin => $recordImporter) {
-                $this->logger->debug("Importing data for the {plugin} plugin.", [
-                    'plugin' => $plugin,
-                ]);
-
-                $recordImporter->setArchiveWriter($archiveWriter);
-                $recordImporter->importRecords($date);
+            if ($start->getTimestamp() >= $end->getTimestamp()) {
+                throw new \InvalidArgumentException("Invalid date range, start date is later than end date: {$start},{$end}");
             }
 
-            $archiveWriter->finalizeArchive();
-        }
+            $recordImporters = $this->getRecordImporters($idSite, $viewId);
 
-        $this->removeNoDataMessage($idSite);
+            $endPlusOne = $end->addDay(1);
+
+            $site = new Site($idSite);
+            for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
+                $archiveWriter = $this->makeArchiveWriter($site, $date);
+                $archiveWriter->initNewArchive();
+
+                $this->logger->info("Importing data for GA View {viewId} for date {date}...", [
+                    'viewId' => $viewId,
+                    'date' => $date->toString(),
+                ]);
+
+                foreach ($recordImporters as $plugin => $recordImporter) {
+                    $this->logger->debug("Importing data for the {plugin} plugin.", [
+                        'plugin' => $plugin,
+                    ]);
+
+                    $recordImporter->setArchiveWriter($archiveWriter);
+                    $recordImporter->importRecords($date);
+                }
+
+                $archiveWriter->finalizeArchive();
+
+                $this->importStatus->dayImportFinished($idSite, $date);
+            }
+
+            $this->removeNoDataMessage($idSite);
+
+            $this->importStatus->finishedImport($idSite);
+        } catch (\Exception $ex) {
+            $this->importStatus->erroredImport($idSite, $ex->getMessage());
+
+            throw $ex;
+        }
     }
 
     private function makeArchiveWriter(Site $site, Date $date)

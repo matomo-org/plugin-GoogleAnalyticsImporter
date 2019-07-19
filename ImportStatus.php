@@ -12,6 +12,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 use Piwik\Option;
 use Piwik\Date;
 
+// TODO: must also store error status
 class ImportStatus
 {
     const OPTION_NAME_PREFIX = 'GoogleAnalyticsImporter.importStatus_';
@@ -19,6 +20,7 @@ class ImportStatus
     const STATUS_STARTED = 'started';
     const STATUS_ONGOING = 'ongoing';
     const STATUS_FINISHED = 'finished';
+    const STATUS_ERRORED = 'errored';
 
     public function startingImport($propertyId, $accountId, $viewId, $idSite)
     {
@@ -32,6 +34,7 @@ class ImportStatus
             ],
             'last_date_imported' => null,
             'import_start_time' => Date::getNowTimestamp(),
+            'import_end_time' => null,
         ];
 
         $this->saveStatus($status);
@@ -40,7 +43,14 @@ class ImportStatus
     public function dayImportFinished($idSite, Date $date)
     {
         $status = $this->getImportStatus($idSite);
-        $status['last_date_imported'] = $date->toString();
+        $status['status'] = self::STATUS_ONGOING;
+
+        if (empty($status['last_date_imported'])
+            || !Date::factory($status['last_date_imported'])->isLater($date)
+        ) {
+            $status['last_date_imported'] = $date->toString();
+        }
+
         $this->saveStatus($status);
     }
 
@@ -48,7 +58,7 @@ class ImportStatus
     {
         $optionName = $this->getOptionName($idSite);
         $data = Option::get($optionName);
-        $data = json_decode($data);
+        $data = json_decode($data, true);
         return $data;
     }
 
@@ -56,6 +66,15 @@ class ImportStatus
     {
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_FINISHED;
+        $status['import_end_time'] = Date::getNowTimestamp();
+        $this->saveStatus($status);
+    }
+
+    public function erroredImport($idSite, $errorMessage)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['status'] = self::STATUS_ERRORED;
+        $status['error'] = $errorMessage;
         $this->saveStatus($status);
     }
 
