@@ -426,6 +426,10 @@ class GoogleAnalyticsQueryService
 
                 return $result;
             } catch (\Exception $ex) {
+                $this->logger->debug("Google Analytics returned an error: {message}", [
+                    'message' => $ex->getMessage(),
+                ]);
+
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
                     ++$attempts;
                     sleep(1);
