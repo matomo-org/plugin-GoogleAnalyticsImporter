@@ -270,6 +270,17 @@ class Importer
 
                     $recordImporter->setArchiveWriter($archiveWriter);
                     $recordImporter->importRecords($date);
+
+                    if ($plugin === 'VisitsSummary') {
+                        /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter $visitsSummaryRecordImporter */
+                        $visitsSummaryRecordImporter = $recordImporter;
+
+                        $sessions = $visitsSummaryRecordImporter->getSessions();
+                        if ($sessions <= 0) {
+                            $this->logger->info("Found 0 sessions for {$date}, skipping rest of plugins for this day.");
+                            break;
+                        }
+                    }
                 }
 
                 $archiveWriter->finalizeArchive();

@@ -20,8 +20,9 @@ return [
     Google_Service_AnalyticsReporting::class => \DI\object()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
 
     'GoogleAnalyticsImporter.recordImporters' => [
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter::class, // must be first
+
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Referrers\RecordImporter::class,
-        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Actions\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\DevicesDetection\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\CustomVariables\RecordImporter::class,
