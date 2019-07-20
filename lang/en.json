@@ -16,6 +16,7 @@
     "ConfigurationFile": "Configuration File",
     "ConfigurationText": "Configuration Text",
     "RemoveClientConfiguration": "Remove Client Configuration",
-    "DeleteUploadedClientConfig": "If you'd like to remove the uploaded client configuration, click below"
+    "DeleteUploadedClientConfig": "If you'd like to remove the uploaded client configuration, click below",
+    "ImportJobs": "Import Jobs"
   }
 }

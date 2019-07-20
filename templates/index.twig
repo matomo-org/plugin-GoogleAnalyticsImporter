@@ -55,4 +55,56 @@
         </form>
     </div>
     {% endif %}
+
+    {% if hasClientConfiguration and isConfigured %}
+        {# TODO: translate (including importstatus) #}
+    <div
+        piwik-content-block
+        content-title="{{ 'GoogleAnalyticsImporter_ImportJobs'|translate }}"
+    >
+        {% if statuses is empty %}
+        <p>There are no import jobs to display.</p>
+        {% else %}
+        <table
+            class="entityTable importStatusesTable"
+            ng-controller="ImportStatusController as importStatus"
+        >
+            <thead>
+                <tr>
+                    <th>Matomo Site</th>
+                    <th>Google Analytics Info</th>
+                    <th>Status</th>
+                    <th>Latest Day Imported</th>
+                    <th>Time Started</th>
+                    <th>Time Finished</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for status in statuses %}
+                {% set isDone = status.status != 'finished' and status.status != 'errored' %}
+                <tr data-idsite="{{ status.idSite|e('html_attr') }}">
+                    <td class="sitename">{{ status.site.getName() }}</td>
+                    <td class="ga-info">{{ status.gaInfoPretty|e('html')|nl2br|raw }}</td>
+                    <td class="status">{{ status.status }}</td>
+                    <td class="last-date-imported">{{ status.last_date_imported|default('-') }}</td>
+                    <td class="import-start-time">{{ status.import_start_time }}</td>
+                    <td class="import-end-time">{{ status.import_end_time|default('-') }}</td>
+                    <td class="actions">
+                        <a ng-click="importStatus.deleteImportStatus({{ status.idSite|json_encode|raw|e('html_attr') }}, {{ isDone|json_encode|raw|e('html_attr') }})"
+                           class="table-action icon-delete"
+                           {% if not isDone %}
+                           title="{{ 'General_Cancel'|translate }}"
+                           {% else %}
+                           title="{{ 'General_Remove'|translate }}"
+                           {% endif %}
+                        ></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+    {% endif %}
 {% endblock %}

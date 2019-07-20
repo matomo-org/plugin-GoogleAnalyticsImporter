@@ -11,6 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Option;
 use Piwik\Date;
+use Piwik\Site;
 
 // TODO: must also store error status
 class ImportStatus
@@ -78,6 +79,26 @@ class ImportStatus
         $this->saveStatus($status);
     }
 
+    public function getAllImportStatuses() // TODO: test
+    {
+        $optionValues = Option::getLike(self::OPTION_NAME_PREFIX . '%');
+
+        $result = [];
+        foreach ($optionValues as $optionValue) {
+            $status = json_decode($optionValue, true);
+            $status = $this->enrichStatus($status);
+            $result[] = $status;
+        }
+        return $result;
+    }
+
+    // TODO: test
+    public function deleteStatus($idSite)
+    {
+        $optionName = $this->getOptionName($idSite);
+        Option::delete($optionName);
+    }
+
     private function saveStatus($status)
     {
         $optionName = $this->getOptionName($status['idSite']);
@@ -87,5 +108,25 @@ class ImportStatus
     private function getOptionName($idSite)
     {
         return self::OPTION_NAME_PREFIX . $idSite;
+    }
+
+    private function enrichStatus($status)
+    {
+        if (isset($status['idSite'])) {
+            $status['site'] = new Site($status['idSite']);
+        }
+
+        if (isset($status['import_start_time'])) {
+            $status['import_start_time'] = Date::factory($status['import_start_time'])->getDatetime();
+        }
+
+        if (isset($status['import_end_time'])) {
+            $status['import_end_time'] = Date::factory($status['import_end_time'])->getDatetime();
+        }
+
+        $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
+            . "\nView: " . $status['ga']['view'];
+
+        return $status;
     }
 }

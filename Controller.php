@@ -58,11 +58,15 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig');
         }
 
+        $importStatus = StaticContainer::get(ImportStatus::class);
+        $statuses = $importStatus->getAllImportStatuses();
+
         return $this->renderTemplate('index', [
             'isConfigured' => $authorization->hasAccessToken(),
             'authUrl' => $authUrl,
             'hasClientConfiguration' => $hasClientConfiguration,
             'nonce' => $nonce,
+            'statuses' => $statuses,
         ]);
     }
 
@@ -157,5 +161,16 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'action' => 'index',
             'error' => $errorMessage,
         ]));
+    }
+
+    public function deleteImportStatus()
+    {
+        Piwik::checkUserHasSuperUserAccess();
+
+        $idSite = Common::getRequestVar('idSite', null, 'int');
+
+        /** @var ImportStatus $importStatus */
+        $importStatus = StaticContainer::get(ImportStatus::class);
+        $importStatus->deleteStatus($idSite);
     }
 }

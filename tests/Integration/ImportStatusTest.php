@@ -97,6 +97,10 @@ class ImportStatusTest extends IntegrationTestCase
             'import_start_time' => Date::$now,
             'import_end_time' => Date::$now,
         ], $status);
+
+        $this->instance->deleteStatus($idSite);
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEmpty($status);
     }
 
     public function test_error_workflow()
