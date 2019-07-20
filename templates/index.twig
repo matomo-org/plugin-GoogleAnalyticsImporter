@@ -90,7 +90,15 @@
                         ID: {{ status.idSite }}
                     </td>
                     <td class="ga-info">{{ status.gaInfoPretty|e('html')|nl2br|raw }}</td>
-                    <td class="status">{{ status.status }}</td>
+                    <td class="status">
+                        {{ status.status }}
+                        {% if status.status == 'rate_limited' %}
+                            <span
+                                class="icon icon-help"
+                                title="Google Analytics by default limits the number of requests you can make to the API for a specific project to 50,000 a day. It looks like this import job has exceeded that limit, so the import cannot continue until tomorrow."
+                            ></span>
+                        {% endif %}
+                    </td>
                     <td class="last-date-imported">{{ status.last_date_imported|default('-') }}</td>
                     <td class="import-start-time">{{ status.import_start_time }}</td>
                     <td class="import-end-time">{{ status.import_end_time|default('-') }}</td>

@@ -291,6 +291,9 @@ class Importer
             $this->removeNoDataMessage($idSite);
 
             $this->importStatus->finishedImport($idSite);
+        } catch (DailyRateLimitReached $ex) {
+            $this->importStatus->rateLimitReached($idSite);
+            throw $ex;
         } catch (\Exception $ex) {
             $this->importStatus->erroredImport($idSite, $ex->getMessage());
 

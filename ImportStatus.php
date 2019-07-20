@@ -13,7 +13,6 @@ use Piwik\Option;
 use Piwik\Date;
 use Piwik\Site;
 
-// TODO: must also store error status
 class ImportStatus
 {
     const OPTION_NAME_PREFIX = 'GoogleAnalyticsImporter.importStatus_';
@@ -22,6 +21,7 @@ class ImportStatus
     const STATUS_ONGOING = 'ongoing';
     const STATUS_FINISHED = 'finished';
     const STATUS_ERRORED = 'errored';
+    const STATUS_RATE_LIMITED = 'rate_limited';
 
     public function startingImport($propertyId, $accountId, $viewId, $idSite)
     {
@@ -76,6 +76,13 @@ class ImportStatus
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_ERRORED;
         $status['error'] = $errorMessage;
+        $this->saveStatus($status);
+    }
+
+    public function rateLimitReached($idSite)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['status'] = self::STATUS_RATE_LIMITED;
         $this->saveStatus($status);
     }
 

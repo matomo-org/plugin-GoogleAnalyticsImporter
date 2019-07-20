@@ -143,4 +143,44 @@ class ImportStatusTest extends IntegrationTestCase
             'error' => 'test error message',
         ], $status);
     }
+
+    public function test_rateLimited_workflow()
+    {
+        Date::$now = Date::factory('2015-03-04 00:00:00')->getTimestamp();
+
+        $idSite = 5;
+
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEmpty($status);
+
+        $this->instance->startingImport('property', 'account', 'view', $idSite);
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals([
+            'status' => ImportStatus::STATUS_STARTED,
+            'idSite' => $idSite,
+            'ga' => [
+                'property' => 'property',
+                'account' => 'account',
+                'view' => 'view',
+            ],
+            'last_date_imported' => null,
+            'import_start_time' => Date::$now,
+            'import_end_time' => null,
+        ], $status);
+
+        $this->instance->rateLimitReached($idSite);
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals([
+            'status' => ImportStatus::STATUS_RATE_LIMITED,
+            'idSite' => $idSite,
+            'ga' => [
+                'property' => 'property',
+                'account' => 'account',
+                'view' => 'view',
+            ],
+            'last_date_imported' => null,
+            'import_start_time' => Date::$now,
+            'import_end_time' => null,
+        ], $status);
+    }
 }

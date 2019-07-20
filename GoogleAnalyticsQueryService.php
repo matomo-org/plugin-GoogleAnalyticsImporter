@@ -431,6 +431,10 @@ class GoogleAnalyticsQueryService
                 ]);
 
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
+                    if (strpos($ex->getMessage(), 'daily') === false) {
+                        throw new DailyRateLimitReached();
+                    }
+
                     ++$attempts;
                     sleep(1);
                 } else if ($ex->getCode() >= 500) {
