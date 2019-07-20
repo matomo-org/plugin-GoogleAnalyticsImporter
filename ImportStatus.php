@@ -92,7 +92,6 @@ class ImportStatus
         return $result;
     }
 
-    // TODO: test
     public function deleteStatus($idSite)
     {
         $optionName = $this->getOptionName($idSite);

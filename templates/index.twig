@@ -84,7 +84,11 @@
                 {% for status in statuses %}
                 {% set isDone = status.status != 'finished' and status.status != 'errored' %}
                 <tr data-idsite="{{ status.idSite|e('html_attr') }}">
-                    <td class="sitename">{{ status.site.getName() }}</td>
+                    <td class="sitename">
+                        {{ status.site.getName() }}
+                        <br/>
+                        ID: {{ status.idSite }}
+                    </td>
                     <td class="ga-info">{{ status.gaInfoPretty|e('html')|nl2br|raw }}</td>
                     <td class="status">{{ status.status }}</td>
                     <td class="last-date-imported">{{ status.last_date_imported|default('-') }}</td>

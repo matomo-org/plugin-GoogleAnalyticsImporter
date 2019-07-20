@@ -8,21 +8,15 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 
-use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
-use Piwik\Piwik;
 use Piwik\Plugin\ConsoleCommand;
-use Piwik\Plugins\CustomVariables\Model;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
-use Piwik\Plugins\GoogleAnalyticsImporter\Google\DimensionMapper;
-use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
-use Piwik\SettingsPiwik;
+use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Site;
 use Piwik\Timer;
-use Piwik\Url;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -31,7 +25,6 @@ require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autol
 
 // TODO: make sure same version of google api client is used in this & SearchEngineKeywordsPerformance
 // (may have to add test in target plugin)
-// TODO: support importing multiple views at once?
 // TODO: support importing segments
 class ImportReports extends ConsoleCommand
 {
@@ -43,7 +36,7 @@ class ImportReports extends ConsoleCommand
         $this->addOption('account', null, InputOption::VALUE_REQUIRED, 'The account ID to get views from.');
         $this->addOption('view', null, InputOption::VALUE_REQUIRED, 'The View ID to use. If not supplied, the default View for the property is used.');
         $this->addOption('dates', null, InputOption::VALUE_REQUIRED, 'The dates to import.');
-        $this->addOption('idsite', null, InputOption::VALUE_REQUIRED, 'The site to import into.');
+        $this->addOption('idsite', null, InputOption::VALUE_REQUIRED, 'The site to import into. This will attempt to continue an existing import.');
         $this->addOption('cvar-count', null, InputOption::VALUE_REQUIRED, 'The number of custom variables to support (if not supplied defaults to however many are currently available). '
             . 'NOTE: This option will attempt to set the number of custom variable slots which should be done with care on an existing system.');
     }
@@ -55,13 +48,15 @@ class ImportReports extends ConsoleCommand
 
         $service = new \Google_Service_Analytics($googleClient);
 
-        $viewId = $this->getViewId($input, $output, $service);
-        $dates = $this->getDatesToImport($input);
-        $property = $input->getOption('property');
+        $idSite = $this->getIdSite($input);
+        if (empty($idSite)) {
+            $viewId = $this->getViewId($input, $output, $service);
+            $property = $input->getOption('property');
 
-        $account = $input->getOption('account');
-        if (empty($account)) {
-            $account = $this->guessAccountFromProperty($property);
+            $account = $input->getOption('account');
+            if (empty($account)) {
+                $account = $this->guessAccountFromProperty($property);
+            }
         }
 
         /** @var ImportConfiguration $importerConfiguration */
@@ -71,7 +66,9 @@ class ImportReports extends ConsoleCommand
         /** @var Importer $importer */
         $importer = StaticContainer::get(Importer::class);
 
-        $idSite = $this->getIdSite($input);
+        /** @var ImportStatus $importStatus */
+        $importStatus = StaticContainer::get(ImportStatus::class);
+
         if (empty($idSite)
             && !empty($property)
             && !empty($account)
@@ -79,7 +76,32 @@ class ImportReports extends ConsoleCommand
             $idSite = $importer->makeSite($account, $property, $viewId);
             $output->writeln("Created new site with ID = $idSite.");
         } else {
-            $output->writeln("Importing into existing site $idSite.");
+            $status = $importStatus->getImportStatus($idSite);
+            if (empty($status)) {
+                throw new \Exception("There is no ongoing import for site with ID = {$idSite}. Please start a new import.");
+            }
+
+            if ($status['status'] == ImportStatus::STATUS_FINISHED) {
+                throw new \Exception("The import for site with ID = {$idSite} has finished. Please start a new import.");
+            }
+
+            if (!empty($status['last_date_imported'])) {
+                $dates = [Date::factory($status['last_date_imported'])->addDay(1), Date::factory('today')];
+            }
+
+            if ($status['status'] == ImportStatus::STATUS_ERRORED) {
+                $output->writeln("Import for site with ID = $idSite has errored, will attempt to resume.");
+            } else {
+                $output->writeln("Resuming import into existing site $idSite.");
+            }
+
+            $account = $status['ga']['account'];
+            $property = $status['ga']['property'];
+            $viewId = $status['ga']['view'];
+        }
+
+        if (empty($dates)) {
+            $dates = $this->getDatesToImport($input, $output, $service, $account, $property);
         }
 
         $importer->importEntities($idSite, $account, $property, $viewId);
@@ -120,9 +142,15 @@ class ImportReports extends ConsoleCommand
         return $profileId;
     }
 
-    private function getDatesToImport(InputInterface $input)
+    private function getDatesToImport(InputInterface $input, OutputInterface $output, \Google_Service_Analytics $service, $account, $property)
     {
         $dates = $input->getOption('dates');
+        if (empty($dates)) {
+            $webProperty = $service->management_webproperties->get($account, $property);
+            $dates = Date::factory($webProperty->getCreated())->toString() . ',' . 'today';
+            $output->writeln("No dates specified with --dates, importing data from when the GA site was created to today: $dates");
+        }
+
         $dates = explode(',', $dates);
 
         if (count($dates) != 2) {
