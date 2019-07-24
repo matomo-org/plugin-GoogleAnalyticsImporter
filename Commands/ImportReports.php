@@ -31,7 +31,6 @@ require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autol
 class ImportReports extends ConsoleCommand
 {
     const IMPORT_LOCK_NAME = 'GoogleAnalyticsImport_importLock';
-    const LOCK_TTL = 86400; // seconds in a day
 
     protected function configure()
     {
@@ -107,8 +106,12 @@ class ImportReports extends ConsoleCommand
             $viewId = $status['ga']['view'];
         }
 
-        $lock = $this->makeLock($idSite);
-        $lock->acquireLock($idSite, self::LOCK_TTL);
+        $lock = $this->makeLock();
+        $success = $lock->acquireLock($idSite, Importer::LOCK_TTL);
+        if (empty($success)) {
+            throw new \Exception("An import is currently in progress. (If the other import has failed, you should be able to try again in about 5 minutes.)");
+        }
+
         try {
             if (empty($dates)) {
                 $dates = $this->getDatesToImport($input, $output, $service, $account, $property);
@@ -120,7 +123,7 @@ class ImportReports extends ConsoleCommand
 
             $timer = new Timer();
 
-            $importer->import($idSite, $viewId, $dates[0], $dates[1]);
+            $importer->import($idSite, $viewId, $dates[0], $dates[1], $lock);
 
             $queryCount = $importer->getQueryCount();
             $output->writeln("Done in $timer. [$queryCount API requests made to GA]");
@@ -223,8 +226,8 @@ class ImportReports extends ConsoleCommand
         return $matches[1];
     }
 
-    private function makeLock($idSite)
+    private function makeLock()
     {
-        return new Lock(new MySqlLockBackend(), self::IMPORT_LOCK_NAME . $idSite);
+        return new Lock(new MySqlLockBackend(), self::IMPORT_LOCK_NAME);
     }
 }

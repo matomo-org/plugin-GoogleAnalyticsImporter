@@ -12,6 +12,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 use Google_Service_Analytics_Goal;
 use Piwik\API\Request;
 use Piwik\ArchiveProcessor\Parameters;
+use Piwik\Concurrency\Lock;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\ArchiveWriter;
@@ -22,6 +23,7 @@ use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
@@ -32,6 +34,8 @@ use Psr\Log\LoggerInterface;
 
 class Importer
 {
+    const LOCK_TTL = 300; // lock will expire 5 minutes after inactivity
+
     /**
      * @var ReportsProvider
      */
@@ -240,7 +244,7 @@ class Importer
         passthru($command);
     }
 
-    public function import($idSite, $viewId, Date $start, Date $end)
+    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock)
     {
         try {
             $this->queryCount = 0;
@@ -281,6 +285,8 @@ class Importer
                             break;
                         }
                     }
+
+                    $lock->expireLock(self::LOCK_TTL);
                 }
 
                 $archiveWriter->finalizeArchive();
