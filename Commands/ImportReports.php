@@ -8,6 +8,8 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 
+use Piwik\Concurrency\Lock;
+use Piwik\Concurrency\LockBackend\MySqlLockBackend;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Plugin\ConsoleCommand;
@@ -28,6 +30,9 @@ require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autol
 // TODO: support importing segments
 class ImportReports extends ConsoleCommand
 {
+    const IMPORT_LOCK_NAME = 'GoogleAnalyticsImport_importLock';
+    const LOCK_TTL = 86400; // seconds in a day
+
     protected function configure()
     {
         $this->setName('googleanalyticsimporter:import-reports');
@@ -69,6 +74,8 @@ class ImportReports extends ConsoleCommand
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
 
+        $lock = null;
+
         if (empty($idSite)
             && !empty($property)
             && !empty($account)
@@ -100,20 +107,26 @@ class ImportReports extends ConsoleCommand
             $viewId = $status['ga']['view'];
         }
 
-        if (empty($dates)) {
-            $dates = $this->getDatesToImport($input, $output, $service, $account, $property);
+        $lock = $this->makeLock($idSite);
+        $lock->acquireLock($idSite, self::LOCK_TTL);
+        try {
+            if (empty($dates)) {
+                $dates = $this->getDatesToImport($input, $output, $service, $account, $property);
+            }
+
+            $importer->importEntities($idSite, $account, $property, $viewId);
+
+            $output->writeln("Importing reports for date range {$dates[0]} - {$dates[1]} from GA view $viewId.");
+
+            $timer = new Timer();
+
+            $importer->import($idSite, $viewId, $dates[0], $dates[1]);
+
+            $queryCount = $importer->getQueryCount();
+            $output->writeln("Done in $timer. [$queryCount API requests made to GA]");
+        } finally {
+            $lock->unlock();
         }
-
-        $importer->importEntities($idSite, $account, $property, $viewId);
-
-        $output->writeln("Importing reports for date range {$dates[0]} - {$dates[1]} from GA view $viewId.");
-
-        $timer = new Timer();
-
-        $importer->import($idSite, $viewId, $dates[0], $dates[1]);
-
-        $queryCount = $importer->getQueryCount();
-        $output->writeln("Done in $timer. [$queryCount API requests made to GA]");
     }
 
     private function getViewId(InputInterface $input, OutputInterface $output, \Google_Service_Analytics $service)
@@ -208,5 +221,10 @@ class ImportReports extends ConsoleCommand
         }
 
         return $matches[1];
+    }
+
+    private function makeLock($idSite)
+    {
+        return new Lock(new MySqlLockBackend(), self::IMPORT_LOCK_NAME . $idSite);
     }
 }

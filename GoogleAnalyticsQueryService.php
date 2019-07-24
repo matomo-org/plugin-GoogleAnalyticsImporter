@@ -14,6 +14,7 @@ use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Piwik;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
 use Piwik\Site;
 use Piwik\Tracker\Action;
 use Piwik\Tracker\GoalManager;
@@ -431,7 +432,7 @@ class GoogleAnalyticsQueryService
                 ]);
 
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
-                    if (strpos($ex->getMessage(), 'daily') === false) {
+                    if (strpos($ex->getMessage(), 'daily') !== false) {
                         throw new DailyRateLimitReached();
                     }
 
