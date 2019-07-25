@@ -4,7 +4,7 @@
     "version": "0.1.0",
     "theme": false,
     "require": {
-        "piwik": ">=3.12.0-b1,<4.0.0-b1"
+        "piwik": ">=3.11.0-b1,<4.0.0-b1"
     },
     "authors": [
         {
