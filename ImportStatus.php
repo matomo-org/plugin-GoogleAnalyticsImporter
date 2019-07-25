@@ -44,10 +44,6 @@ class ImportStatus
     public function dayImportFinished($idSite, Date $date)
     {
         $status = $this->getImportStatus($idSite);
-        if (empty($status)) {
-            throw new \Exception("Import was cancelled.");
-        }
-
         $status['status'] = self::STATUS_ONGOING;
 
         if (empty($status['last_date_imported'])
@@ -62,7 +58,11 @@ class ImportStatus
     public function getImportStatus($idSite)
     {
         $optionName = $this->getOptionName($idSite);
+        Option::clearCachedOption($optionName);
         $data = Option::get($optionName);
+        if (empty($data)) {
+            throw new \Exception("Import was cancelled.");
+        }
         $data = json_decode($data, true);
         return $data;
     }
