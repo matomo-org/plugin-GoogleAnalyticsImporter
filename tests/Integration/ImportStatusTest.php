@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
 
 use Piwik\Date;
+use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
@@ -32,7 +33,7 @@ class ImportStatusTest extends IntegrationTestCase
 
         $idSite = 5;
 
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEmpty($status);
 
         $this->instance->startingImport('property', 'account', 'view', $idSite);
@@ -51,7 +52,7 @@ class ImportStatusTest extends IntegrationTestCase
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEquals([
             'status' => ImportStatus::STATUS_ONGOING,
             'idSite' => $idSite,
@@ -68,7 +69,7 @@ class ImportStatusTest extends IntegrationTestCase
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-03')); // test it won't set to 03
 
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEquals([
             'status' => ImportStatus::STATUS_ONGOING,
             'idSite' => $idSite,
@@ -84,7 +85,7 @@ class ImportStatusTest extends IntegrationTestCase
 
         $this->instance->finishedImport($idSite);
 
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEquals([
             'status' => ImportStatus::STATUS_FINISHED,
             'idSite' => $idSite,
@@ -99,7 +100,7 @@ class ImportStatusTest extends IntegrationTestCase
         ], $status);
 
         $this->instance->deleteStatus($idSite);
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEmpty($status);
     }
 
@@ -109,11 +110,11 @@ class ImportStatusTest extends IntegrationTestCase
 
         $idSite = 5;
 
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEmpty($status);
 
         $this->instance->startingImport('property', 'account', 'view', $idSite);
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEquals([
             'status' => ImportStatus::STATUS_STARTED,
             'idSite' => $idSite,
@@ -128,7 +129,7 @@ class ImportStatusTest extends IntegrationTestCase
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEquals([
             'status' => ImportStatus::STATUS_ERRORED,
             'idSite' => $idSite,
@@ -150,7 +151,7 @@ class ImportStatusTest extends IntegrationTestCase
 
         $idSite = 5;
 
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEmpty($status);
 
         $this->instance->startingImport('property', 'account', 'view', $idSite);
@@ -169,7 +170,7 @@ class ImportStatusTest extends IntegrationTestCase
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
-        $status = $this->instance->getImportStatus($idSite);
+        $status = $this->getImportStatus($idSite);
         $this->assertEquals([
             'status' => ImportStatus::STATUS_RATE_LIMITED,
             'idSite' => $idSite,
@@ -182,5 +183,17 @@ class ImportStatusTest extends IntegrationTestCase
             'import_start_time' => Date::$now,
             'import_end_time' => null,
         ], $status);
+    }
+
+    private function getImportStatus($idSite)
+    {
+        $optionName = ImportStatus::OPTION_NAME_PREFIX . $idSite;
+        Option::clearCachedOption($optionName);
+        $data = Option::get($optionName);
+        if (empty($data)) {
+            return null;
+        }
+        $data = json_decode($data, true);
+        return $data;
     }
 }

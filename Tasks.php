@@ -58,6 +58,7 @@ class Tasks extends \Piwik\Plugin\Tasks
     {
         $hostname = Config::getHostname();
 
+        // TODO: when deleting an import status, maybe delete the log as well.
         // TODO: only do this if tmp/logs exists, otherwise it may fail
         $importLogFile = PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
 
