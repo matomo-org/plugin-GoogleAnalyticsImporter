@@ -58,7 +58,8 @@ class Tasks extends \Piwik\Plugin\Tasks
     {
         $hostname = Config::getHostname();
 
-        $importLogFile = 'tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
+        // TODO: only do this if tmp/logs exists, otherwise it may fail
+        $importLogFile = PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
 
         $command = "nohup php " . PIWIK_INCLUDE_PATH . '/console ';
         if (!empty($hostname)) {
