@@ -44,6 +44,10 @@ class ImportStatus
     public function dayImportFinished($idSite, Date $date)
     {
         $status = $this->getImportStatus($idSite);
+        if (empty($status)) {
+            throw new \Exception("Import was cancelled.");
+        }
+
         $status['status'] = self::STATUS_ONGOING;
 
         if (empty($status['last_date_imported'])

@@ -58,11 +58,13 @@ class Tasks extends \Piwik\Plugin\Tasks
     {
         $hostname = Config::getHostname();
 
+        $importLogFile = 'tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
+
         $command = "nohup php " . PIWIK_INCLUDE_PATH . '/console ';
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
-        $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$idSite . ' > /dev/null 2>&1 &';
+        $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$idSite . ' > ' . $importLogFile . ' 2>&1 &';
 
         $logger = StaticContainer::get(LoggerInterface::class);
         $logger->debug("Import command: {command}", ['command' => $command]);
