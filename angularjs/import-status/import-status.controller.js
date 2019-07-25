@@ -17,7 +17,7 @@
         vm.deleteImportStatus = deleteImportStatus;
 
         function deleteImportStatus(idSite, isDone) {
-            // TODO: if isDone, confirm via modal
+            // TODO: if isDone, confirm via modal since it will cancel a job
             return piwikApi.post({
                 module: 'GoogleAnalyticsImporter',
                 action: 'deleteImportStatus',

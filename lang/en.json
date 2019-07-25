@@ -17,6 +17,15 @@
     "ConfigurationText": "Configuration Text",
     "RemoveClientConfiguration": "Remove Client Configuration",
     "DeleteUploadedClientConfig": "If you'd like to remove the uploaded client configuration, click below",
-    "ImportJobs": "Import Jobs"
+    "ImportJobs": "Import Jobs",
+    "ScheduleAnImport": "Schedule An Import",
+    "StartDate": "Start Date",
+    "CreationDate": "Web Property Creation Date",
+    "StartDateHelp": "The date to start importing from. By default this is the day you created your GA web property.",
+    "ViewId": "Google Analytics View ID",
+    "PropertyId": "Google Analytics Property ID",
+    "ViewIdHelp": "The ID of the view to import. It will be seven digits, for example, 3450293.",
+    "PropertyIdHelp": "The ID of the property to import. It will have the following format: UA-XXXXX-X, where the X's are digits.",
+    "Start": "Start"
   }
 }

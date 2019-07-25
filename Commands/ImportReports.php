@@ -59,7 +59,7 @@ class ImportReports extends ConsoleCommand
 
             $account = $input->getOption('account');
             if (empty($account)) {
-                $account = $this->guessAccountFromProperty($property);
+                $account = self::guessAccountFromProperty($property);
             }
         }
 
@@ -217,7 +217,7 @@ class ImportReports extends ConsoleCommand
         $importerConfiguration->setNumCustomVariables($cvarCount);
     }
 
-    private function guessAccountFromProperty($property)
+    public static function guessAccountFromProperty($property)
     {
         if (!preg_match('/UA-(\d+)-\d/', $property, $matches)) {
             throw new \Exception("Cannot deduce account ID from property ID '$property'. Please specify it manually using the --account option.");

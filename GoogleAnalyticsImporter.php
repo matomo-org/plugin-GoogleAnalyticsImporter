@@ -21,6 +21,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function getJsFiles(&$jsFiles)
     {
         $jsFiles[] = "plugins/GoogleAnalyticsImporter/angularjs/import-status/import-status.controller.js";
+        $jsFiles[] = "plugins/GoogleAnalyticsImporter/angularjs/import-scheduler/import-scheduler.controller.js";
     }
 
     public function getStylesheetFiles(&$stylesheets)

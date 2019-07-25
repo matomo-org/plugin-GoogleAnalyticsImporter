@@ -58,6 +58,45 @@
 
     {% if hasClientConfiguration and isConfigured %}
         {# TODO: translate (including importstatus) #}
+
+    <div
+        piwik-content-block
+        content-title="{{ 'GoogleAnalyticsImporter_ScheduleAnImport'|translate }}"
+    >
+        <div
+            ng-controller="ImportSchedulerController as importScheduler"
+        >
+            <p>Schedule a new import below. It will run every day until the daily request limit for the property is reached (this usually happens after importing 4 months of data).</p>
+            <p>Once the current day's reports are imported, the import will stop running.</p>
+
+            <div piwik-field uicontrol="text" name="startDate"
+                 ng-model="importScheduler.startDate"
+                 title="{{ 'GoogleAnalyticsImporter_StartDate'|translate }}"
+                 placeholder="{{ 'GoogleAnalyticsImporter_CreationDate'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_StartDateHelp'|translate }}"
+            >
+            </div>
+
+            <div piwik-field uicontrol="text" name="propertyId"
+                 ng-model="importScheduler.propertyId"
+                 title="{{ 'GoogleAnalyticsImporter_PropertyId'|translate }}"
+                 placeholder="eg. UA-XXXXX-X"
+                 inline-help="{{ 'GoogleAnalyticsImporter_PropertyIdHelp'|translate }}"
+            >
+            </div>
+
+            <div piwik-field uicontrol="text" name="viewId"
+                 ng-model="importScheduler.viewId"
+                 title="{{ 'GoogleAnalyticsImporter_ViewId'|translate }}"
+                 placeholder="eg. 1234567"
+                 inline-help="{{ 'GoogleAnalyticsImporter_ViewIdHelp'|translate }}"
+            >
+            </div>
+
+            <button type="submit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
+        </div>
+    </div>
+
     <div
         piwik-content-block
         content-title="{{ 'GoogleAnalyticsImporter_ImportJobs'|translate }}"

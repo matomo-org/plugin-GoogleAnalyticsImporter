@@ -11,11 +11,13 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
+use Piwik\DataTable\Renderer\Json;
 use Piwik\Date;
 use Piwik\Nonce;
 use Piwik\Notification;
 use Piwik\Option;
 use Piwik\Piwik;
+use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\SearchEngineKeywordsPerformance\Exceptions\MissingClientConfigException;
 use Piwik\Plugins\SearchEngineKeywordsPerformance\Exceptions\MissingOAuthConfigException;
@@ -172,5 +174,49 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
         $importStatus->deleteStatus($idSite);
+
+        Json::sendHeaderJSON();
+        echo json_encode([ 'status' => 'ok' ]);
+    }
+
+    // TODO: errors aren't displayed properly
+    public function startImport()
+    {
+        Piwik::checkUserHasSuperUserAccess();
+        $this->checkTokenInUrl();
+
+        $startDate = trim(Common::getRequestVar('startDate', ''));
+        if (!empty($startDate)) {
+            $startDate = Date::factory($startDate);
+        }
+
+        // set credentials in google client
+        $googleAuth = StaticContainer::get(Authorization::class);
+        $googleAuth->getConfiguredClient();
+
+        /** @var Importer $importer */
+        $importer = StaticContainer::get(Importer::class);
+
+        $propertyId = Common::getRequestVar('propertyId');
+        $viewId = Common::getRequestVar('viewId');
+        $account = ImportReports::guessAccountFromProperty($propertyId);
+
+        $idSite = $importer->makeSite($account, $propertyId, $viewId);
+
+        if (empty($idSite)) {
+            throw new \Exception("Unable to import site entity."); // sanity check
+        }
+
+        // TODO: this will be confusing in the UI, should add an entry for start date instead of this
+        if (!empty($startDate)) {
+            /** @var ImportStatus $importStatus */
+            $importStatus = StaticContainer::get(ImportStatus::class);
+
+            // we set the last imported date to one day before the start date
+            $importStatus->dayImportFinished($idSite, $startDate->subDay(1));
+        }
+
+        Json::sendHeaderJSON();
+        echo json_encode([ 'status' => 'ok' ]);
     }
 }
