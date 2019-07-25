@@ -66,7 +66,7 @@
         <div
             ng-controller="ImportSchedulerController as importScheduler"
         >
-            <p>Schedule a new import below. It will run every day until the daily request limit for the property is reached (this usually happens after importing 4 months of data).</p>
+            <p>Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).</p>
             <p>Once the current day's reports are imported, the import will stop running.</p>
 
             <div piwik-field uicontrol="text" name="startDate"
