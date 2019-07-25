@@ -48,19 +48,25 @@ class Tasks extends \Piwik\Plugin\Tasks
                 ]);
             }
 
-            $hostname = Config::getHostname();
-
-            $command = "nohup php " . PIWIK_INCLUDE_PATH . '/console ';
-            if (!empty($hostname)) {
-                $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
-            }
-            $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$status['idSite'] . ' > /dev/null 2>&1 &';
-
-            $logger->debug("Import command: {command}", ['command' => $command]);
-
-            exec($command);
+            self::startImport($status['idSite']);
         }
 
         $logger->info('Done scheduling imports.');
+    }
+
+    public static function startImport($idSite)
+    {
+        $hostname = Config::getHostname();
+
+        $command = "nohup php " . PIWIK_INCLUDE_PATH . '/console ';
+        if (!empty($hostname)) {
+            $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
+        }
+        $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$idSite . ' > /dev/null 2>&1 &';
+
+        $logger = StaticContainer::get(LoggerInterface::class);
+        $logger->debug("Import command: {command}", ['command' => $command]);
+
+        exec($command);
     }
 }

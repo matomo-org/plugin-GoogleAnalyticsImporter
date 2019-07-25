@@ -5,7 +5,7 @@
 {% block content %}
     <div piwik-notification notification-id="ga-importer-help" context="info" type="transient" noclear="1" notification-title="{{ 'GoogleAnalyticsImporter_SettingUp'|translate }}">
         {{ 'GoogleAnalyticsImporter_ImporterHelp1'|translate }}
-        {{ 'GoogleAnalyticsImporter_ImporterHelp2'|translate('<a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noreferrer noopener">', '</a>') }}
+        {{ 'GoogleAnalyticsImporter_ImporterHelp2'|translate('<a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noreferrer noopener">', '</a>')|raw }}
     </div>
     <div piwik-content-block
          content-title="{{ title|e('html_attr') }}"

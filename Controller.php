@@ -216,6 +216,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $importStatus->dayImportFinished($idSite, $startDate->subDay(1));
         }
 
+        // start import now since the scheduled task may not run until tomorrow
+        Tasks::startImport($idSite);
+
         Json::sendHeaderJSON();
         echo json_encode([ 'status' => 'ok' ]);
     }
