@@ -247,6 +247,7 @@ class Importer
     public function import($idSite, $viewId, Date $start, Date $end, Lock $lock)
     {
         try {
+            $noDataMessageRemoved = false;
             $this->queryCount = 0;
 
             if ($start->getTimestamp() >= $end->getTimestamp()) {
@@ -287,14 +288,18 @@ class Importer
                     }
 
                     $lock->expireLock(self::LOCK_TTL);
+
+                    // if we recorded some data, some time, remove the no data message
+                    if (!$noDataMessageRemoved) {
+                        $this->removeNoDataMessage($idSite);
+                        $noDataMessageRemoved = true;
+                    }
                 }
 
                 $archiveWriter->finalizeArchive();
 
                 $this->importStatus->dayImportFinished($idSite, $date);
             }
-
-            $this->removeNoDataMessage($idSite);
 
             $this->importStatus->finishedImport($idSite);
         } catch (DailyRateLimitReached $ex) {
