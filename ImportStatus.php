@@ -13,6 +13,7 @@ use Piwik\Option;
 use Piwik\Date;
 use Piwik\Site;
 
+// TODO: maybe make an import status entity class
 class ImportStatus
 {
     const OPTION_NAME_PREFIX = 'GoogleAnalyticsImporter.importStatus_';
