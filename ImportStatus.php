@@ -26,6 +26,7 @@ class ImportStatus
 
     public function startingImport($propertyId, $accountId, $viewId, $idSite)
     {
+        $now = Date::getNowTimestamp();
         $status = [
             'status' => self::STATUS_STARTED,
             'idSite' => $idSite,
@@ -35,8 +36,10 @@ class ImportStatus
                 'view' => $viewId,
             ],
             'last_date_imported' => null,
-            'import_start_time' => Date::getNowTimestamp(),
+            'import_start_time' => $now,
             'import_end_time' => null,
+            'last_job_start_time' => $now,
+            'last_day_archived' => null,
         ];
 
         $this->saveStatus($status);
@@ -53,6 +56,21 @@ class ImportStatus
             $status['last_date_imported'] = $date->toString();
         }
 
+        $this->saveStatus($status);
+    }
+
+    public function resumeImport($idSite)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['status'] = self::STATUS_ONGOING;
+        $status['last_job_start_time'] = Date::getNowTimestamp();
+        $this->saveStatus($status);
+    }
+
+    public function importArchiveFinished($idSite, Date $date)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['last_day_archived'] = $date->toString();
         $this->saveStatus($status);
     }
 
@@ -91,7 +109,7 @@ class ImportStatus
         $this->saveStatus($status);
     }
 
-    public function getAllImportStatuses() // TODO: test
+    public function getAllImportStatuses()
     {
         $optionValues = Option::getLike(self::OPTION_NAME_PREFIX . '%');
 
@@ -133,6 +151,10 @@ class ImportStatus
 
         if (isset($status['import_end_time'])) {
             $status['import_end_time'] = Date::factory($status['import_end_time'])->getDatetime();
+        }
+
+        if (isset($status['last_job_start_time'])) {
+            $status['last_job_start_time'] = Date::factory($status['last_job_start_time'])->getDatetime();
         }
 
         $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']

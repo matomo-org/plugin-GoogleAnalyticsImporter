@@ -113,6 +113,8 @@ class ImportReports extends ConsoleCommand
         }
 
         try {
+            $importStatus->resumeImport($idSite);
+
             if (empty($dates)) {
                 $dates = $this->getDatesToImport($input, $output, $service, $account, $property);
             }

@@ -113,7 +113,7 @@
                     <th>Matomo Site</th>
                     <th>Google Analytics Info</th>
                     <th>Status</th>
-                    <th>Latest Day Imported</th>
+                    <th>Latest Day Processed</th>
                     <th>Time Started</th>
                     <th>Time Finished</th>
                     <th>Actions</th>
@@ -128,7 +128,7 @@
                         <br/>
                         ID: {{ status.idSite }}
                     </td>
-                    <td class="ga-info">{{ status.gaInfoPretty|e('html')|nl2br|raw }}</td>
+                    <td class="ga-info">{{ status.gaInfoPretty|default|e('html')|nl2br|raw }}</td>
                     <td class="status">
                         {{ status.status }}
                         {% if status.status == 'rate_limited' %}
@@ -138,8 +138,14 @@
                             ></span>
                         {% endif %}
                     </td>
-                    <td class="last-date-imported">{{ status.last_date_imported|default('-') }}</td>
-                    <td class="import-start-time">{{ status.import_start_time }}</td>
+                    <td class="last-date-imported">
+                        Last Day Imported: {{ status.last_date_imported|default('-') }}<br/>
+                        Last Day Archived: {{ status.last_day_archived|default('-') }}
+                    </td>
+                    <td class="import-start-time">
+                        Import Start Time: {{ status.import_start_time|default('-') }}<br/>
+                        Last Resume Time: {{ status.last_job_start_time|default('-') }}
+                    </td>
                     <td class="import-end-time">{{ status.import_end_time|default('-') }}</td>
                     <td class="actions">
                         <a ng-click="importStatus.deleteImportStatus({{ status.idSite|json_encode|raw|e('html_attr') }}, {{ isDone|json_encode|raw|e('html_attr') }})"
