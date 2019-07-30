@@ -93,6 +93,11 @@ class GoogleAnalyticsQueryService
 
         $metricNames = array_unique($metricNames);
 
+        $defaultRow = new Row();
+        foreach ($metricNames as $name) {
+            $defaultRow->setColumn($name, 0);
+        }
+
         foreach (array_chunk($metricNames, 9) as $chunk) {
             $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
 
@@ -103,7 +108,7 @@ class GoogleAnalyticsQueryService
 
             usleep(100 * 1000);
 
-            $this->mergeResult($result, $chunkResponse, $dimensions, $chunk);
+            $this->mergeResult($result, $chunkResponse, $dimensions, $chunk, $defaultRow);
         }
 
         $this->convertGaColumnsToMetricIndexes($result, $metrics, $mappings);
@@ -173,19 +178,20 @@ class GoogleAnalyticsQueryService
         return $mappedMetrics;
     }
 
-    private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaDimensions, $metricsQueried)
+    private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaDimensions, $metricsQueried, Row $defaultRow)
     {
         /** @var \Google_Service_AnalyticsReporting_Report $gaReport */
         foreach ($response->getReports() as $gaReport) {
             /** @var \Google_Service_AnalyticsReporting_ReportRow $gaRow */
             foreach ($gaReport->getData()->getRows() as $gaRow) {
-                $tableRow = new DataTable\Row();
+                $tableRow = clone $defaultRow;
 
                 // convert GA row which is just array of values w/ integer indexes to matomo row
                 // mapping GA metric names => values
                 $gaRowMetrics = $gaRow->getMetrics()[0]->getValues();
-                $gaRowMetrics = array_combine($metricsQueried, $gaRowMetrics);
-                $tableRow->setColumns($gaRowMetrics);
+                foreach ($metricsQueried as $index => $metricName) {
+                    $tableRow->setColumn($metricName, $gaRowMetrics[$index]);
+                }
 
                 // gather all dimensions to create the label column (we need to be able to find existing rows from dimensions
                 // so we combine these dimensions into a single label)
