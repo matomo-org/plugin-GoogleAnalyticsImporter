@@ -164,6 +164,10 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         $logger->debug("Archive command for imported site: {command}", ['command' => $command]);
 
-        exec($command);
+        if ($wait) {
+            passthru($command);
+        } else {
+            exec($command);
+        }
     }
 }
