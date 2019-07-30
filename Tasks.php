@@ -158,7 +158,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         }
         $command .= 'core:archive --force-idsites=' . $idSite . ' --force-periods=week,month,year --force-date-last-n=' . $lastN;
 
-        if ($wait) {
+        if (!$wait) {
             $command .= ' > ' . $archiveLogFile . ' 2>&1 &';
         }
 
