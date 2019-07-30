@@ -81,7 +81,9 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         // TODO: when deleting an import status, maybe delete the log as well.
         $importLogFile = PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
-        if (!is_writable($importLogFile)) {
+        if (!is_writable($importLogFile)
+            && !is_writable(dirname($importLogFile))
+        ) {
             $importLogFile = '/dev/null';
         }
 
@@ -145,7 +147,9 @@ class Tasks extends \Piwik\Plugin\Tasks
         $hostname = Config::getHostname();
 
         $archiveLogFile = PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.' . $idSite . '.' . $hostname . '.log';
-        if (!is_writable($archiveLogFile)) {
+        if (!is_writable($archiveLogFile)
+            && !is_writable(dirname($archiveLogFile))
+        ) {
             $archiveLogFile = '/dev/null';
         }
 
