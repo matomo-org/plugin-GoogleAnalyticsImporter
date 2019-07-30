@@ -276,6 +276,12 @@ class Importer
                     $recordImporter->setArchiveWriter($archiveWriter);
                     $recordImporter->importRecords($date);
 
+                    // since we recorded some data, at some time, remove the no data message
+                    if (!$noDataMessageRemoved) {
+                        $this->removeNoDataMessage($idSite);
+                        $noDataMessageRemoved = true;
+                    }
+
                     if ($plugin === 'VisitsSummary') {
                         /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter $visitsSummaryRecordImporter */
                         $visitsSummaryRecordImporter = $recordImporter;
@@ -288,12 +294,6 @@ class Importer
                     }
 
                     $lock->expireLock(self::LOCK_TTL);
-
-                    // if we recorded some data, some time, remove the no data message
-                    if (!$noDataMessageRemoved) {
-                        $this->removeNoDataMessage($idSite);
-                        $noDataMessageRemoved = true;
-                    }
                 }
 
                 $archiveWriter->finalizeArchive();
