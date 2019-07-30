@@ -163,5 +163,12 @@
         </table>
         {% endif %}
     </div>
+
+    <div class="ui-confirm" id="confirmCancelJob">
+        <h2>Are you sure you want to cancel this ongoing job?</h2>
+        <input role="yes" type="button" value="{{ 'General_Yes'|translate }}"/>
+        <input role="no" type="button" value="{{ 'General_No'|translate }}"/>
+    </div>
+
     {% endif %}
 {% endblock %}
