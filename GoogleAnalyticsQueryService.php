@@ -24,6 +24,11 @@ class GoogleAnalyticsQueryService
 {
     const MAX_ATTEMPTS = 500;
 
+    private static $problematicMetrics = [
+        'ga:users',
+        'ga:hits',
+    ];
+
     /**
      * @var \Google_Service_Analytics
      */
@@ -98,8 +103,25 @@ class GoogleAnalyticsQueryService
             $defaultRow->setColumn($name, 0);
         }
 
+
         foreach (array_chunk($metricNames, 9) as $chunk) {
             $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
+
+            // some metric/date combinations seem to cause GA to return absolutely nothing (no rows + NULL row count).
+            // in this case we remove the problematic metrics and try again.
+            if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
+                $chunk = array_diff($chunk, self::$problematicMetrics);
+                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
+
+                // if the response is still problematic, warn the user
+                if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
+                    $this->logger->warning("Google Analytics API returned an invalid response (row count is NULL) for {day} when requesting {metricNames}. This shpould be reported at {url}.", [
+                        'day' => $date,
+                        'metricNames' => implode(', ', $chunk),
+                        'url' => 'https://github.com/matomo-org/plugin-GoogleAnalyticsImporter/issues',
+                    ]);
+                }
+            }
 
             if ($this->onQueryMade) {
                 $callable = $this->onQueryMade;
@@ -422,7 +444,7 @@ class GoogleAnalyticsQueryService
         while ($attempts < self::MAX_ATTEMPTS) {
             try {
                 $result = $this->gaService->reports->batchGet($body);
-                if ($result === null) {
+                if (empty($result)) {
                     ++$attempts;
                     sleep(1);
 
