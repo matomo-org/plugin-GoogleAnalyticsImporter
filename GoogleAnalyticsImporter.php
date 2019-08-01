@@ -11,6 +11,8 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Option;
+use Piwik\Piwik;
+use Piwik\Plugin\ViewDataTable;
 use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
@@ -23,6 +25,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'AssetManager.getJavaScriptFiles'        => 'getJsFiles',
             'AssetManager.getStylesheetFiles'        => 'getStylesheetFiles',
             'CronArchive.archiveSingleSite.finish' => 'archivingFinishedForSite',
+            'ViewDataTable.configure' => 'configureImportedReportView',
         ];
     }
 
@@ -35,6 +38,21 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function getStylesheetFiles(&$stylesheets)
     {
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/stylesheets/styles.less";
+    }
+
+    public function configureImportedReportView(ViewDataTable $view)
+    {
+        $table = $view->getDataTable();
+        if (empty($table)) {
+            return;
+        }
+
+        $isImportedFromGoogle = $table->getMetadata(RecordImporter::IS_IMPORTED_FROM_GOOGLE_METADATA_NAME);
+        if (!$isImportedFromGoogle) {
+            return;
+        }
+
+        $view->config->show_footer_message .= '<p>' . Piwik::translate('GoogleAnalyticsImporter_ThisReportWasImportedFromGoogle') . '</p>';
     }
 
     public function archivingFinishedForSite($idSite, $completed)
