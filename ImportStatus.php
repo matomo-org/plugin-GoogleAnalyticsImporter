@@ -177,6 +177,28 @@ class ImportStatus
 
         if (isset($status['import_range_end'])) {
             $status['import_range_end'] = Date::factory($status['import_range_end'])->toString();
+
+            if (!empty($status['last_date_imported'])) {
+                $lastDateImported = Date::factory($status['last_date_imported']);
+                $importEndDate = Date::factory($status['import_range_end']);
+
+                $importStartTime = Date::factory($status['import_start_time']);
+
+                if (isset($status['import_range_start'])) {
+                    $importRangeStart = Date::factory($status['import_range_start']);
+                } else {
+                    $importRangeStart = Date::factory(Site::getCreationDateFor($status['idSite']));
+                }
+
+                $daysRunning = floor((Date::today()->getTimestamp() - $importStartTime->getTimestamp()) / 86400);
+                $totalDaysLeft = floor(($importEndDate->getTimestamp() - $lastDateImported->getTimestamp()) / 86400);
+                $totalDaysImported = floor(($lastDateImported->getTimestamp() - $importRangeStart->getTimestamp()) / 86400);
+
+                $rateOfImport = $totalDaysImported / $daysRunning;
+                $totalTimeLeftInDays = ceil($totalDaysLeft / $rateOfImport);
+
+                $status['estimated_days_left_to_finish'] = $totalTimeLeftInDays;
+            }
         }
 
         $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']

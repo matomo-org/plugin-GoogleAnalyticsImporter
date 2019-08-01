@@ -155,7 +155,15 @@
                         Import Start Time: {{ status.import_start_time|default('-') }}<br/>
                         Last Resume Time: {{ status.last_job_start_time|default('-') }}
                     </td>
-                    <td class="import-end-time">{{ status.import_end_time|default('-') }}</td>
+                    <td class="import-end-time">
+                        {% if status.status == 'finished' %}
+                            {{ status.import_end_time|default('-') }}
+                        {% else if status.estimated_days_left_to_finish|default is not empty %}
+                            Estimated finish in {{ status.estimated_days_left_to_finish }} days.
+                        {% else %}
+                            This job will run until manually cancelled.
+                        {% endif %}
+                    </td>
                     <td class="actions">
                         <a ng-click="importStatus.deleteImportStatus({{ status.idSite|json_encode|raw|e('html_attr') }}, {{ isDone|json_encode|raw|e('html_attr') }})"
                            class="table-action {% if isDone %}icon-delete{% else %}icon-close{% endif %}"
