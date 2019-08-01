@@ -185,14 +185,14 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         Piwik::checkUserHasSuperUserAccess();
         $this->checkTokenInUrl();
 
-        $startDate = trim(Common::getRequestVar('startDate', ''));
+        $startDate = trim(Common::getRequestVar('startDate', '')) . ' 00:00:00';
         if (!empty($startDate)) {
-            $startDate = Date::factory($startDate . ' 00:00:00');
+            $startDate = Date::factory($startDate);
         }
 
-        $endDate = trim(Common::getRequestVar('endDate', ''));
+        $endDate = trim(Common::getRequestVar('endDate', '')) . ' 00:00:00';
         if (!empty($endDate)) {
-            $endDate = Date::factory($endDate . ' 00:00:00');
+            $endDate = Date::factory($endDate);
         }
 
         // set credentials in google client
