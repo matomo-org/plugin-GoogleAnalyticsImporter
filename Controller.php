@@ -187,12 +187,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $startDate = trim(Common::getRequestVar('startDate', ''));
         if (!empty($startDate)) {
-            $startDate = Date::factory($startDate);
+            $startDate = Date::factory($startDate . ' 00:00:00');
         }
 
         $endDate = trim(Common::getRequestVar('endDate', ''));
         if (!empty($endDate)) {
-            $endDate = Date::factory($endDate);
+            $endDate = Date::factory($endDate . ' 00:00:00');
         }
 
         // set credentials in google client
