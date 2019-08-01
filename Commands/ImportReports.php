@@ -17,6 +17,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
+use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
 use Piwik\Site;
 use Piwik\Timer;
 use Symfony\Component\Console\Input\InputInterface;
@@ -143,6 +144,11 @@ class ImportReports extends ConsoleCommand
             $output->writeln("Done in $timer. [$queryCount API requests made to GA]");
         } finally {
             $lock->unlock();
+
+            // doing it in the finally since we can get rate limited, which will result in an exception thrown
+            $output->write("Running archiving for newly imported data...");
+            $status = $importStatus->getImportStatus($idSite);
+            Tasks::startArchive($status, $wait = true);
         }
     }
 
