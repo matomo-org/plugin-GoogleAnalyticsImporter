@@ -250,15 +250,15 @@ class Importer
             $noDataMessageRemoved = false;
             $this->queryCount = 0;
 
-            if ($start->getTimestamp() >= $end->getTimestamp()) {
+            $endPlusOne = $end->addDay(1);
+
+            if ($start->getTimestamp() >= $endPlusOne->getTimestamp()) {
                 throw new \InvalidArgumentException("Invalid date range, start date is later than end date: {$start},{$end}");
             }
 
             $status = $this->importStatus->getImportStatus($idSite);
 
             $recordImporters = $this->getRecordImporters($idSite, $viewId);
-
-            $endPlusOne = $end->addDay(1);
 
             $site = new Site($idSite);
             for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {

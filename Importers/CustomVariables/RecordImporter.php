@@ -100,7 +100,14 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     {
         foreach ($table->getRows() as $row) {
             $key = $row->getMetadata($keyField);
+            if (empty($key)) {
+                $key = '(not set)';
+            }
+
             $value = $this->cleanValue($row->getMetadata($valueField));
+            if (empty($value)) {
+                $value = '(not set)';
+            }
 
             $this->addMetadata($keyField, $key, $scope, $row);
 
@@ -116,6 +123,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         foreach ($table->getRows() as $row) {
             $searchCategory = $row->getMetadata('ga:searchCategory');
+            if (empty($searchCategory)) {
+                $searchCategory = '(not set)'; // TODO: translate?
+            }
+
             $topLevelRow = $this->addRowToTable($record, $row, ActionSiteSearch::CVAR_KEY_SEARCH_CATEGORY);
             $this->addRowToSubtable($topLevelRow, $row, $searchCategory);
         }
@@ -142,6 +153,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             foreach ($table->getRows() as $row) {
                 $cvarValue = $row->getMetadata($gaDimension);
+                if (empty($cvarValue)) {
+                    $cvarValue = '(not set)'; // TODO: translate?
+                }
+
                 $topLevelRow = $this->addRowToTable($record, $row, $cvarName);
                 $this->addRowToSubtable($topLevelRow, $row, $cvarValue);
             }

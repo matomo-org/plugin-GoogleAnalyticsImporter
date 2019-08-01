@@ -105,21 +105,19 @@ class GoogleAnalyticsQueryService
 
 
         foreach (array_chunk($metricNames, 9) as $chunk) {
-            $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
+            $chunkResponse = $this->gaBatchGet($date, array_values($chunk), array_merge(['dimensions' => $dimensions], $options));
 
             // some metric/date combinations seem to cause GA to return absolutely nothing (no rows + NULL row count).
             // in this case we remove the problematic metrics and try again.
             if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
                 $chunk = array_diff($chunk, self::$problematicMetrics);
-                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
+                if (empty($chunk)) {
+                    continue;
+                }
 
-                // if the response is still problematic, warn the user
+                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
                 if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
-                    $this->logger->warning("Google Analytics API returned an invalid response (row count is NULL) for {day} when requesting {metricNames}. This shpould be reported at {url}.", [
-                        'day' => $date,
-                        'metricNames' => implode(', ', $chunk),
-                        'url' => 'https://github.com/matomo-org/plugin-GoogleAnalyticsImporter/issues',
-                    ]);
+                    continue;
                 }
             }
 
@@ -211,7 +209,7 @@ class GoogleAnalyticsQueryService
                 // convert GA row which is just array of values w/ integer indexes to matomo row
                 // mapping GA metric names => values
                 $gaRowMetrics = $gaRow->getMetrics()[0]->getValues();
-                foreach ($metricsQueried as $index => $metricName) {
+                foreach (array_values($metricsQueried) as $index => $metricName) {
                     $tableRow->setColumn($metricName, $gaRowMetrics[$index]);
                 }
 

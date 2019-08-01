@@ -159,11 +159,16 @@ class Tasks extends \Piwik\Plugin\Tasks
         $lastN = ceil((Date::today()->getTimestamp() - $lastDayArchived->getTimestamp()) / self::SECONDS_IN_YEAR);
         $lastN = max($lastN, 2);
 
-        $command = self::DATE_FINISHED_ENV_VAR . '=' . $lastDateImported->toString() . " nohup php " . PIWIK_INCLUDE_PATH . '/console ';
+        $pathToConsole = '/console';
+        if (defined('PIWIK_TEST_MODE')) {
+            $pathToConsole = '/tests/PHPUnit/proxy/console';
+        }
+
+        $command = self::DATE_FINISHED_ENV_VAR . '=' . $lastDateImported->toString() . " nohup php " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
-        $command .= 'core:archive --force-idsites=' . $idSite . ' --force-periods=week,month,year --force-date-last-n=' . $lastN;
+        $command .= 'core:archive --disable-scheduled-tasks --force-idsites=' . $idSite . ' --force-periods=week,month,year --force-date-last-n=' . $lastN;
 
         if (!$wait) {
             $command .= ' > ' . $archiveLogFile . ' 2>&1 &';
