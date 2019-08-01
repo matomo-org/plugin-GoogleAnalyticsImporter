@@ -22,6 +22,9 @@ class Tasks extends \Piwik\Plugin\Tasks
     public function schedule()
     {
         $this->daily('resumeScheduledImports');
+
+        // we also run the archive command immediately after an import. the task is a safety net in case
+        // that doesn't work for some reason.
         $this->daily('archiveImportedReports');
     }
 
