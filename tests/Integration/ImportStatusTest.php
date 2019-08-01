@@ -49,6 +49,10 @@ class ImportStatusTest extends IntegrationTestCase
             'last_date_imported' => null,
             'import_start_time' => Date::$now,
             'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
@@ -64,6 +68,10 @@ class ImportStatusTest extends IntegrationTestCase
             'last_date_imported' => '2015-03-02',
             'import_start_time' => Date::$now,
             'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
@@ -81,6 +89,10 @@ class ImportStatusTest extends IntegrationTestCase
             'last_date_imported' => '2015-03-04',
             'import_start_time' => Date::$now,
             'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ], $status);
 
         $this->instance->finishedImport($idSite);
@@ -97,6 +109,10 @@ class ImportStatusTest extends IntegrationTestCase
             'last_date_imported' => '2015-03-04',
             'import_start_time' => Date::$now,
             'import_end_time' => Date::$now,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ], $status);
 
         $this->instance->deleteStatus($idSite);
@@ -126,6 +142,10 @@ class ImportStatusTest extends IntegrationTestCase
             'last_date_imported' => null,
             'import_start_time' => Date::$now,
             'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
@@ -142,6 +162,10 @@ class ImportStatusTest extends IntegrationTestCase
             'import_start_time' => Date::$now,
             'import_end_time' => null,
             'error' => 'test error message',
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ], $status);
     }
 
@@ -167,6 +191,10 @@ class ImportStatusTest extends IntegrationTestCase
             'last_date_imported' => null,
             'import_start_time' => Date::$now,
             'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
@@ -182,6 +210,10 @@ class ImportStatusTest extends IntegrationTestCase
             'last_date_imported' => null,
             'import_start_time' => Date::$now,
             'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ], $status);
     }
 

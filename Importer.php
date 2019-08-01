@@ -156,7 +156,7 @@ class Importer
             }
 
             try {
-                $goal = $this->goalMapper->map($gaGoal);
+                $goal = $this->goalMapper->map($gaGoal, $idSite);
             } catch (CannotImportGoalException $ex) {
                 $this->logger->warning($ex->getMessage());
                 $this->logger->warning('Importing this goal as a manually triggered goal. Metrics for this goal will be available, but tracking will not work for this goal in Matomo.');

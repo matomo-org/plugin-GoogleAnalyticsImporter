@@ -10,6 +10,8 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 
 use Piwik\Container\StaticContainer;
+use Piwik\Plugins\SitesManager\API;
+use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
 class GoogleGoalMapper
@@ -30,14 +32,16 @@ class GoogleGoalMapper
      * @param \Google_Service_Analytics_Goal $gaGoal
      * @throws CannotImportGoalException
      */
-    public function map(\Google_Service_Analytics_Goal $gaGoal)
+    public function map(\Google_Service_Analytics_Goal $gaGoal, $idSite)
     {
+        $urls = API::getInstance()->getSiteUrlsFromId($idSite);
+
         $result = $this->mapBasicGoalProperties($gaGoal);
 
         if ($gaGoal->getEventDetails()) {
             $this->mapEventGoal($result, $gaGoal);
         } else if ($gaGoal->getUrlDestinationDetails()) {
-            $this->mapUrlDestinationGoal($result, $gaGoal);
+            $this->mapUrlDestinationGoal($result, $gaGoal, $urls);
         } else if ($gaGoal->getVisitTimeOnSiteDetails()) {
             $this->mapVisitDurationGoal($result, $gaGoal);
         } else {
@@ -88,13 +92,13 @@ class GoogleGoalMapper
         }
     }
 
-    private function mapUrlDestinationGoal(array &$result, \Google_Service_Analytics_Goal $gaGoal)
+    private function mapUrlDestinationGoal(array &$result, \Google_Service_Analytics_Goal $gaGoal, $siteUrls)
     {
         $urlMatchDetails = $gaGoal->getUrlDestinationDetails();
 
         $result['match_attribute'] = 'url';
 
-        list($patternType, $pattern) = $this->mapMatchType($gaGoal, $urlMatchDetails->getMatchType(), $urlMatchDetails->getUrl());
+        list($patternType, $pattern) = $this->mapMatchType($gaGoal, $urlMatchDetails->getMatchType(), $urlMatchDetails->getUrl(), $siteUrls);
         $result['pattern_type'] = $patternType;
         $result['pattern'] = $pattern;
 
@@ -152,7 +156,7 @@ class GoogleGoalMapper
         return $result;
     }
 
-    private function mapMatchType($gaGoal, $matchType, $patternValue)
+    private function mapMatchType($gaGoal, $matchType, $patternValue, $siteUrls = [])
     {
         switch (strtolower($matchType)) {
             case 'regexp':
@@ -161,6 +165,13 @@ class GoogleGoalMapper
             case 'begins_with':
                 return ['regex', '^' . preg_quote($patternValue)];
             case 'exact':
+                if (!$this->urlHasSiteUrlPrefix($patternValue, $siteUrls)) {
+                    $baseUrl = $siteUrls[0];
+                    if (substr($baseUrl, -1, 1) != '/' && substr($patternValue, 0, 1) != '/') {
+                        $baseUrl .= '/';
+                    }
+                    $patternValue = $baseUrl . $patternValue;
+                }
                 return ['exact', $patternValue];
             default:
                 throw new CannotImportGoalException($gaGoal, "unknown goal match type, '$matchType'");
@@ -214,5 +225,15 @@ class GoogleGoalMapper
         ]);
 
         return $matches[1];
+    }
+
+    private function urlHasSiteUrlPrefix($patternValue, $siteUrls)
+    {
+        foreach ($siteUrls as $siteUrl) {
+            if (strpos($patternValue, $siteUrl) === 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }
