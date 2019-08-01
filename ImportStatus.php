@@ -40,6 +40,8 @@ class ImportStatus
             'import_end_time' => null,
             'last_job_start_time' => $now,
             'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
         ];
 
         $this->saveStatus($status);
@@ -56,6 +58,18 @@ class ImportStatus
             $status['last_date_imported'] = $date->toString();
         }
 
+        $this->saveStatus($status);
+    }
+
+    public function setImportDateRange($idSite, Date $startDate = null, Date $endDate = null)
+    {
+        $status = $this->getImportStatus($idSite);
+        if (!empty($startDate)) {
+            $status['import_range_start'] = $startDate->toString();
+        }
+        if (!empty($endDate)) {
+            $status['import_range_end'] = $endDate->toString();
+        }
         $this->saveStatus($status);
     }
 
@@ -155,6 +169,14 @@ class ImportStatus
 
         if (isset($status['last_job_start_time'])) {
             $status['last_job_start_time'] = Date::factory($status['last_job_start_time'])->getDatetime();
+        }
+
+        if (isset($status['import_range_start'])) {
+            $status['import_range_start'] = Date::factory($status['import_range_start'])->toString();
+        }
+
+        if (isset($status['import_range_end'])) {
+            $status['import_range_end'] = Date::factory($status['import_range_end'])->toString();
         }
 
         $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']

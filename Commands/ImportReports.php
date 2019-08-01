@@ -91,10 +91,6 @@ class ImportReports extends ConsoleCommand
                 throw new \Exception("The import for site with ID = {$idSite} has finished. Please start a new import.");
             }
 
-            if (!empty($status['last_date_imported'])) {
-                $dates = [Date::factory($status['last_date_imported'])->addDay(1), Date::factory('today')];
-            }
-
             if ($status['status'] == ImportStatus::STATUS_ERRORED) {
                 $output->writeln("Import for site with ID = $idSite has errored, will attempt to resume.");
             } else {
@@ -115,8 +111,24 @@ class ImportReports extends ConsoleCommand
         try {
             $importStatus->resumeImport($idSite);
 
+            $dates = $this->getDatesToImport($input);
             if (empty($dates)) {
-                $dates = $this->getDatesToImport($input, $output, $service, $account, $property);
+                if (!empty($status['last_date_imported'])) {
+                    $startDate = Date::factory($status['last_date_imported'])->addDay(1);
+                } else if (!empty($status['import_range_start'])) {
+                    $startDate = Date::factory($status['import_range_start']);
+                } else {
+                    $startDate = Date::factory(Site::getCreationDateFor($idSite));
+                    $output->writeln("No dates specified with --dates, importing data from when the GA site was created to today: {$startDate}");
+                }
+
+                if (!empty($status['import_range_end'])) {
+                    $endDate = Date::factory($status['import_range_end']);
+                } else {
+                    $endDate = Date::factory('today');
+                }
+
+                $dates = [$startDate, $endDate];
             }
 
             $importer->importEntities($idSite, $account, $property, $viewId);
@@ -160,13 +172,11 @@ class ImportReports extends ConsoleCommand
         return $profileId;
     }
 
-    private function getDatesToImport(InputInterface $input, OutputInterface $output, \Google_Service_Analytics $service, $account, $property)
+    private function getDatesToImport(InputInterface $input)
     {
         $dates = $input->getOption('dates');
         if (empty($dates)) {
-            $webProperty = $service->management_webproperties->get($account, $property);
-            $dates = Date::factory($webProperty->getCreated())->toString() . ',' . 'today';
-            $output->writeln("No dates specified with --dates, importing data from when the GA site was created to today: $dates");
+            return null;
         }
 
         $dates = explode(',', $dates);

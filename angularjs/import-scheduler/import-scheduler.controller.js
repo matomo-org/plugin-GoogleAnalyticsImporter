@@ -39,6 +39,7 @@
                 module: 'GoogleAnalyticsImporter',
                 action: 'startImport',
                 startDate: vm.startDate,
+                endDate: vm.endDate,
                 propertyId: vm.propertyId,
                 viewId: vm.viewId,
                 token_auth: piwik.token_auth

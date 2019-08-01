@@ -254,6 +254,8 @@ class Importer
                 throw new \InvalidArgumentException("Invalid date range, start date is later than end date: {$start},{$end}");
             }
 
+            $status = $this->importStatus->getImportStatus($idSite);
+
             $recordImporters = $this->getRecordImporters($idSite, $viewId);
 
             $endPlusOne = $end->addDay(1);
@@ -301,7 +303,11 @@ class Importer
                 $this->importStatus->dayImportFinished($idSite, $date);
             }
 
-            $this->importStatus->finishedImport($idSite);
+            if (!empty($status['import_range_end'])
+                && $end->toString() == $status['import_range_end']
+            ) {
+                $this->importStatus->finishedImport($idSite);
+            }
         } catch (DailyRateLimitReached $ex) {
             $this->importStatus->rateLimitReached($idSite);
             throw $ex;

@@ -190,6 +190,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $startDate = Date::factory($startDate);
         }
 
+        $endDate = trim(Common::getRequestVar('endDate', ''));
+        if (!empty($endDate)) {
+            $endDate = Date::factory($endDate);
+        }
+
         // set credentials in google client
         $googleAuth = StaticContainer::get(Authorization::class);
         $googleAuth->getConfiguredClient();
@@ -207,13 +212,14 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             throw new \Exception("Unable to import site entity."); // sanity check
         }
 
-        // TODO: this will be confusing in the UI, should add an entry for start date instead of this
-        if (!empty($startDate)) {
+        if (!empty($startDate)
+            || !empty($endDate)
+        ) {
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
 
             // we set the last imported date to one day before the start date
-            $importStatus->dayImportFinished($idSite, $startDate->subDay(1));
+            $importStatus->setImportDateRange($idSite, $startDate, $endDate);
         }
 
         // start import now since the scheduled task may not run until tomorrow

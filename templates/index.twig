@@ -67,13 +67,21 @@
             ng-controller="ImportSchedulerController as importScheduler"
         >
             <p>Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).</p>
-            <p>Once the current day's reports are imported, the import will stop running.</p>
+            <p>If no end date is supplied, the import will continue until you manually cancel it below.</p>
 
             <div piwik-field uicontrol="text" name="startDate"
                  ng-model="importScheduler.startDate"
                  title="{{ 'GoogleAnalyticsImporter_StartDate'|translate }}"
                  placeholder="{{ 'GoogleAnalyticsImporter_CreationDate'|translate }}"
                  inline-help="{{ 'GoogleAnalyticsImporter_StartDateHelp'|translate }}"
+            >
+            </div>
+
+            <div piwik-field uicontrol="text" name="endDate"
+                 ng-model="importScheduler.endDate"
+                 title="{{ 'GoogleAnalyticsImporter_EndDate'|translate }}"
+                 placeholder="{{ 'GoogleAnalyticsImporter_None'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_EndDateHelp'|translate }}"
             >
             </div>
 
@@ -121,7 +129,7 @@
             </thead>
             <tbody>
                 {% for status in statuses %}
-                {% set isDone = status.status != 'finished' and status.status != 'errored' %}
+                {% set isDone = status.status == 'finished' %}
                 <tr data-idsite="{{ status.idSite|e('html_attr') }}">
                     <td class="sitename">
                         {{ status.site.getName() }}
@@ -140,7 +148,8 @@
                     </td>
                     <td class="last-date-imported">
                         Last Day Imported: {{ status.last_date_imported|default('-') }}<br/>
-                        Last Day Archived: {{ status.last_day_archived|default('-') }}
+                        Last Day Archived: {{ status.last_day_archived|default('-') }}<br/>
+                        Import End Date: {{ status.import_range_end|default('-') }}
                     </td>
                     <td class="import-start-time">
                         Import Start Time: {{ status.import_start_time|default('-') }}<br/>
@@ -149,7 +158,7 @@
                     <td class="import-end-time">{{ status.import_end_time|default('-') }}</td>
                     <td class="actions">
                         <a ng-click="importStatus.deleteImportStatus({{ status.idSite|json_encode|raw|e('html_attr') }}, {{ isDone|json_encode|raw|e('html_attr') }})"
-                           class="table-action icon-delete"
+                           class="table-action {% if isDone %}icon-delete{% else %}icon-close{% endif %}"
                            {% if not isDone %}
                            title="{{ 'General_Cancel'|translate }}"
                            {% else %}
