@@ -180,6 +180,7 @@ class ImportStatus
             $status['import_range_end'] = Date::factory($status['import_range_end'])->toString();
 
             if (!empty($status['last_date_imported'])) {
+                // TODO: unit test this, math doesn't seem right:
                 $lastDateImported = Date::factory($status['last_date_imported']);
                 $importEndDate = Date::factory($status['import_range_end']);
 
@@ -198,7 +199,7 @@ class ImportStatus
                 $rateOfImport = $totalDaysImported / $daysRunning;
                 $totalTimeLeftInDays = ceil($totalDaysLeft / $rateOfImport);
 
-                $status['estimated_days_left_to_finish'] = $totalTimeLeftInDays;
+                $status['estimated_days_left_to_finish'] = max(0, $totalTimeLeftInDays);
             } else {
                 $status['estimated_days_left_to_finish'] = Piwik::translate('General_Unknown');
             }
