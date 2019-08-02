@@ -43,9 +43,8 @@
                 endDate: vm.endDate,
                 propertyId: vm.propertyId,
                 viewId: vm.viewId,
-                token_auth: piwik.token_auth,
                 nonce: vm.nonce
-            })['finally'](function () {
+            }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });
         }

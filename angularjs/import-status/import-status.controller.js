@@ -10,7 +10,7 @@
 
     ImportStatusController.$inject = [
         'piwikApi',
-        'piwik',
+        'piwik'
     ];
 
     function ImportStatusController(piwikApi, piwik) {
@@ -30,9 +30,8 @@
                 module: 'GoogleAnalyticsImporter',
                 action: 'deleteImportStatus',
                 idSite: idSite,
-                token_auth: piwik.token_auth,
                 nonce: vm.nonce
-            })['finally'](function () {
+            }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });
         }
