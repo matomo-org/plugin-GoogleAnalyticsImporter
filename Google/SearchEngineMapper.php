@@ -28,10 +28,8 @@ class SearchEngineMapper
         $this->logger = $logger;
 
         $searchEngines = SearchEngine::getInstance();
-        foreach ($searchEngines->getDefinitions() as $name => $definition) {
-            $definition['name'] = $name;
-
-            $lowerName = strtolower($name);
+        foreach ($searchEngines->getDefinitions() as $definition) {
+            $lowerName = strtolower($definition['name']);
             $this->sourcesToSearchEngines[$lowerName] = $definition;
 
             $simpleName = preg_replace('/[^a-zA-Z0-9]/', '', $lowerName);

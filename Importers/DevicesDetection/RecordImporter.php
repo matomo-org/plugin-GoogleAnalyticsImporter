@@ -247,6 +247,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['oukitel'] = $result['ouki'];
             $result['blackberry'] = $result['rim'];
             $result['tecno'] = $result['tecno mobile'];
+            $result['sonyericsson'] = $result['sony ericsson'];
             $result['opera'] = 'xx';
             $result['mobiwire'] = 'xx';
             $result['creative'] = 'xx';
@@ -266,8 +267,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['linux'] = $result['gnu/linux'];
             $result['macintosh'] = $result['mac'];
             $result['blackberry'] = $result['blackberry os'];
-            $result['sonyericsson'] = $result['sony ericsson'];
             $result['symbianos'] = $result['symbian os'];
+            $result['playstation 3'] = $result['playstation'];
+            $result['playstation 4'] = $result['playstation'];
 
             $result['nokia'] = $result['unknown'];
             $result['samsung'] = $result['unknown'];
