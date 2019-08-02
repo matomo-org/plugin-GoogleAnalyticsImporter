@@ -11,6 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Option;
 use Piwik\Date;
+use Piwik\Piwik;
 use Piwik\Site;
 
 // TODO: maybe make an import status entity class
@@ -198,6 +199,8 @@ class ImportStatus
                 $totalTimeLeftInDays = ceil($totalDaysLeft / $rateOfImport);
 
                 $status['estimated_days_left_to_finish'] = $totalTimeLeftInDays;
+            } else {
+                $status['estimated_days_left_to_finish'] = Piwik::translate('General_Unknown');
             }
         }
 
