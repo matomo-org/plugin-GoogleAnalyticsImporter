@@ -161,7 +161,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         }
 
         $lastN = ceil((Date::today()->getTimestamp() - $lastDayArchived->getTimestamp()) / self::SECONDS_IN_YEAR);
-        $lastN = max($lastN, 2);
+        $lastN = max($lastN + 1, 2);
 
         $pathToConsole = '/console';
         if (defined('PIWIK_TEST_MODE')) {
