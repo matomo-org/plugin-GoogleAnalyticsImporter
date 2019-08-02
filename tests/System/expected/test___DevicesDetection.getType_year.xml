@@ -25,6 +25,16 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
 				<nb_conversions>121</nb_conversions>
 				<revenue>1064094</revenue>
@@ -40,7 +50,7 @@
 		<nb_actions>911</nb_actions>
 		<sum_visit_length>18447</sum_visit_length>
 		<bounce_count>80</bounce_count>
-		<nb_visits_converted>73</nb_visits_converted>
+		<nb_visits_converted>72</nb_visits_converted>
 		<nb_conversions>152</nb_conversions>
 		<revenue>723856</revenue>
 		<goals>
@@ -59,6 +69,16 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>3</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
 				<nb_conversions>78</nb_conversions>
 				<revenue>723856</revenue>
@@ -75,7 +95,7 @@
 		<nb_actions>240</nb_actions>
 		<sum_visit_length>3020</sum_visit_length>
 		<bounce_count>14</bounce_count>
-		<nb_visits_converted>26</nb_visits_converted>
+		<nb_visits_converted>24</nb_visits_converted>
 		<nb_conversions>46</nb_conversions>
 		<revenue>166986</revenue>
 		<goals>
@@ -91,6 +111,16 @@
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>

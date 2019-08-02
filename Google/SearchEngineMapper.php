@@ -16,12 +16,7 @@ use Psr\Log\LoggerInterface;
 
 class SearchEngineMapper
 {
-    private static $sourcesToSearchEngines = [
-        'google' => 'Google',
-        'bing' => 'Bing',
-        'yahoo' => 'Yahoo!',
-        'ask' => 'Ask',
-    ];
+    private $sourcesToSearchEngines = [];
 
     /**
      * @var LoggerInterface
@@ -31,16 +26,34 @@ class SearchEngineMapper
     public function __construct(LoggerInterface $logger)
     {
         $this->logger = $logger;
+
+        $searchEngines = SearchEngine::getInstance();
+        foreach ($searchEngines->getDefinitions() as $name => $definition) {
+            $definition['name'] = $name;
+
+            $lowerName = strtolower($name);
+            $this->sourcesToSearchEngines[$lowerName] = $definition;
+
+            $simpleName = preg_replace('/[^a-zA-Z0-9]/', '', $lowerName);
+            $this->sourcesToSearchEngines[$simpleName] = $definition;
+        }
+        $this->sourcesToSearchEngines['search-results'] = $this->sourcesToSearchEngines['ask'];
     }
 
     public function mapSourceToSearchEngine($source)
     {
-        if (empty(self::$sourcesToSearchEngines[$source])) {
-            $this->logger->warning("Unknown search engine source received from Google Analytics: $source");
-            return $source;
+        $lowerSource = strtolower($source);
+        if (isset($this->sourcesToSearchEngines[$lowerSource])) {
+            return $this->sourcesToSearchEngines[$lowerSource]['name'];
         }
 
-        return self::$sourcesToSearchEngines[$source];
+        $simpleName = preg_replace('/[^a-zA-Z0-9]/', '', $lowerSource);
+        if (isset($this->sourcesToSearchEngines[$simpleName])) {
+            return $this->sourcesToSearchEngines[$simpleName]['name'];
+        }
+
+        $this->logger->warning("Unknown search engine source received from Google Analytics: $source");
+        return $source;
     }
 
     public function mapReferralMediumToSearchEngine($medium)

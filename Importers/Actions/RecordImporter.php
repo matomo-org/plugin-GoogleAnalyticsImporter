@@ -247,8 +247,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         foreach ($table->getRows() as $row) {
             $hostname = $row->getMetadata('ga:hostname');
             $actionName = $row->getMetadata('ga:pagePath');
+            $wholeUrl = 'http://' . $hostname . $actionName;
 
-            $parsedUrl = parse_url('http://' . $hostname . $actionName);
+            $parsedUrl = parse_url($wholeUrl);
             $isSiteSearch = ActionSiteSearch::detectSiteSearchFromUrl($siteDetails, $parsedUrl);
             if ($isSiteSearch) {
                 continue;
@@ -263,8 +264,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 $actionRow->setColumn($name, $value);
             }
 
-            $actionRow->setMetadata('url', $actionName);
-            $this->pageUrlsByPagePath['http://' . $hostname . $actionName] = $actionRow;
+            $actionRow->setMetadata('url', $wholeUrl);
+            $this->pageUrlsByPagePath[$wholeUrl] = $actionRow;
         }
 
         Common::destroy($table);

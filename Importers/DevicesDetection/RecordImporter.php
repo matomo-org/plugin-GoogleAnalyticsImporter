@@ -248,6 +248,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['blackberry'] = $result['rim'];
             $result['tecno'] = $result['tecno mobile'];
             $result['opera'] = 'xx';
+            $result['mobiwire'] = 'xx';
+            $result['creative'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;
@@ -264,6 +266,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['linux'] = $result['gnu/linux'];
             $result['macintosh'] = $result['mac'];
             $result['blackberry'] = $result['blackberry os'];
+            $result['sonyericsson'] = $result['sony ericsson'];
+            $result['symbianos'] = $result['symbian os'];
+
+            $result['nokia'] = $result['unknown'];
+            $result['samsung'] = $result['unknown'];
             $this->cache->save($cacheKey, $result);
         }
         return $result;
@@ -284,6 +291,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['blackberry'] = $result['blackberry browser'];
             $result['android runtime'] = $result['android browser'];
             $result['amazon silk'] = $result['mobile silk'];
+            $result['playstation 3'] = $result['netfront'];
+            $result['playstation 4'] = $result['netfront'];
+            $result['blackberry9300'] = $result['blackberry browser'];
+            $result['ie with chrome frame'] = $result['internet explorer'];
+            $result['terra'] = 'xx'; // TODO: not detected by devices detection
             $result['mozilla compatible agent'] = 'xx'; // TODO: mostly bots, we could ignore these...
             $result['\'mozilla'] = 'xx';
             $this->cache->save($cacheKey, $result);

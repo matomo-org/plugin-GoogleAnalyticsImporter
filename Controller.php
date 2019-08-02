@@ -63,12 +63,17 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $importStatus = StaticContainer::get(ImportStatus::class);
         $statuses = $importStatus->getAllImportStatuses();
 
+        $stopImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.stopImportNonce');
+        $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce');
+
         return $this->renderTemplate('index', [
             'isConfigured' => $authorization->hasAccessToken(),
             'authUrl' => $authUrl,
             'hasClientConfiguration' => $hasClientConfiguration,
             'nonce' => $nonce,
             'statuses' => $statuses,
+            'stopImportNonce' => $stopImportNonce,
+            'startImportNonce' => $startImportNonce,
         ]);
     }
 
@@ -168,6 +173,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     public function deleteImportStatus()
     {
         Piwik::checkUserHasSuperUserAccess();
+        $this->checkTokenInUrl();
+
+        Nonce::checkNonce('GoogleAnalyticsImporter.stopImportNonce', Common::getRequestVar('nonce'));
 
         $idSite = Common::getRequestVar('idSite', null, 'int');
 
@@ -185,14 +193,16 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         Piwik::checkUserHasSuperUserAccess();
         $this->checkTokenInUrl();
 
-        $startDate = trim(Common::getRequestVar('startDate', '')) . ' 00:00:00';
+        Nonce::checkNonce('GoogleAnalyticsImporter.startImportNonce', Common::getRequestVar('nonce'));
+
+        $startDate = trim(Common::getRequestVar('startDate', ''));
         if (!empty($startDate)) {
-            $startDate = Date::factory($startDate);
+            $startDate = Date::factory($startDate . ' 00:00:00');
         }
 
-        $endDate = trim(Common::getRequestVar('endDate', '')) . ' 00:00:00';
+        $endDate = trim(Common::getRequestVar('endDate', ''));
         if (!empty($endDate)) {
-            $endDate = Date::factory($endDate);
+            $endDate = Date::factory($endDate . ' 00:00:00');
         }
 
         // set credentials in google client
@@ -207,23 +217,28 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $account = ImportReports::guessAccountFromProperty($propertyId);
 
         $idSite = $importer->makeSite($account, $propertyId, $viewId);
+        try {
 
-        if (empty($idSite)) {
-            throw new \Exception("Unable to import site entity."); // sanity check
+            if (empty($idSite)) {
+                throw new \Exception("Unable to import site entity."); // sanity check
+            }
+
+            if (!empty($startDate)
+                || !empty($endDate)
+            ) {
+                /** @var ImportStatus $importStatus */
+                $importStatus = StaticContainer::get(ImportStatus::class);
+
+                // we set the last imported date to one day before the start date
+                $importStatus->setImportDateRange($idSite, $startDate ?: null, $endDate ?: null);
+            }
+
+            // start import now since the scheduled task may not run until tomorrow
+            Tasks::startImport($idSite);
+        } catch (\Exception $ex) {
+            $importStatus->erroredImport($idSite, $ex->getMessage());
+            StaticContainer::get(LoggerInterface::class)->error('Failed to start initial import job: {ex}', ['ex' => $ex]);
         }
-
-        if (!empty($startDate)
-            || !empty($endDate)
-        ) {
-            /** @var ImportStatus $importStatus */
-            $importStatus = StaticContainer::get(ImportStatus::class);
-
-            // we set the last imported date to one day before the start date
-            $importStatus->setImportDateRange($idSite, $startDate, $endDate);
-        }
-
-        // start import now since the scheduled task may not run until tomorrow
-        Tasks::startImport($idSite);
 
         Json::sendHeaderJSON();
         echo json_encode([ 'status' => 'ok' ]);

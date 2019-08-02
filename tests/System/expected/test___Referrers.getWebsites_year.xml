@@ -9,7 +9,6 @@
 		<nb_visits_converted>3</nb_visits_converted>
 		<nb_conversions>10</nb_conversions>
 		<revenue>68559</revenue>
-		<sum_daily_nb_uniq_visitors>13</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>3</nb_conversions>
@@ -26,12 +25,23 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>4</nb_conversions>
-				<revenue>31886</revenue>
-				<items>25</items>
+				<nb_conversions>6</nb_conversions>
+				<revenue>68559</revenue>
+				<items>49</items>
 			</row>
 		</goals>
+		<sum_daily_nb_uniq_visitors>13</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==oahuscubadiving.com</segment>
 		<subtable>
 			<row>
@@ -43,7 +53,6 @@
 				<nb_visits_converted>3</nb_visits_converted>
 				<nb_conversions>10</nb_conversions>
 				<revenue>68559</revenue>
-				<sum_daily_nb_uniq_visitors>13</sum_daily_nb_uniq_visitors>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>3</nb_conversions>
@@ -60,12 +69,23 @@
 						<revenue>0</revenue>
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
+					<row idgoal='4'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='5'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
 					<row idgoal='ecommerceOrder'>
-						<nb_conversions>4</nb_conversions>
-						<revenue>31886</revenue>
-						<items>25</items>
+						<nb_conversions>6</nb_conversions>
+						<revenue>68559</revenue>
+						<items>49</items>
 					</row>
 				</goals>
+				<sum_daily_nb_uniq_visitors>13</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>
@@ -78,6 +98,38 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0.0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==qwant.com</segment>
 		<subtable>
@@ -90,6 +142,38 @@
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0.0</revenue>
+				<goals>
+					<row idgoal='1'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='2'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='3'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='4'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='5'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<items>0</items>
+					</row>
+				</goals>
 				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>

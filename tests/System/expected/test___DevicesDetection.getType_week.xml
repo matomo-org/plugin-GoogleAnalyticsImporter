@@ -6,7 +6,7 @@
 		<nb_actions>880</nb_actions>
 		<sum_visit_length>6749</sum_visit_length>
 		<bounce_count>50</bounce_count>
-		<nb_visits_converted>56</nb_visits_converted>
+		<nb_visits_converted>57</nb_visits_converted>
 		<nb_conversions>134</nb_conversions>
 		<revenue>781426</revenue>
 		<goals>
@@ -25,6 +25,16 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
 				<nb_conversions>77</nb_conversions>
 				<revenue>781426</revenue>
@@ -40,7 +50,7 @@
 		<nb_actions>626</nb_actions>
 		<sum_visit_length>12375</sum_visit_length>
 		<bounce_count>54</bounce_count>
-		<nb_visits_converted>39</nb_visits_converted>
+		<nb_visits_converted>38</nb_visits_converted>
 		<nb_conversions>92</nb_conversions>
 		<revenue>534286</revenue>
 		<goals>
@@ -59,6 +69,16 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>2</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
 				<nb_conversions>52</nb_conversions>
 				<revenue>534286</revenue>
@@ -75,7 +95,7 @@
 		<nb_actions>143</nb_actions>
 		<sum_visit_length>700</sum_visit_length>
 		<bounce_count>7</bounce_count>
-		<nb_visits_converted>14</nb_visits_converted>
+		<nb_visits_converted>12</nb_visits_converted>
 		<nb_conversions>25</nb_conversions>
 		<revenue>104979</revenue>
 		<goals>
@@ -90,6 +110,16 @@
 				<nb_visits_converted>6</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>

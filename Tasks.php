@@ -144,7 +144,11 @@ class Tasks extends \Piwik\Plugin\Tasks
         $idSite = (int) $status['idSite'];
 
         if (empty($lastDayArchived)) {
-            $lastDayArchived = Date::factory(Site::getCreationDateFor($idSite));
+            if (!empty($status['import_range_start'])) {
+                $lastDayArchived = Date::factory($status['import_range_start']);
+            } else {
+                $lastDayArchived = Date::factory(Site::getCreationDateFor($idSite));
+            }
         }
 
         $hostname = Config::getHostname();

@@ -6,7 +6,7 @@
 		<nb_actions>1116</nb_actions>
 		<sum_visit_length>14306</sum_visit_length>
 		<bounce_count>84</bounce_count>
-		<nb_visits_converted>94</nb_visits_converted>
+		<nb_visits_converted>93</nb_visits_converted>
 		<nb_conversions>194</nb_conversions>
 		<revenue>890842</revenue>
 		<goals>
@@ -25,9 +25,19 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>3</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>95</nb_conversions>
-				<revenue>873692</revenue>
+				<nb_conversions>98</nb_conversions>
+				<revenue>890842</revenue>
 				<items>673</items>
 			</row>
 		</goals>
@@ -40,7 +50,7 @@
 		<nb_actions>970</nb_actions>
 		<sum_visit_length>9731</sum_visit_length>
 		<bounce_count>70</bounce_count>
-		<nb_visits_converted>78</nb_visits_converted>
+		<nb_visits_converted>77</nb_visits_converted>
 		<nb_conversions>167</nb_conversions>
 		<revenue>782791</revenue>
 		<goals>
@@ -59,10 +69,20 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>2</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>82</nb_conversions>
-				<revenue>757961</revenue>
-				<items>589</items>
+				<nb_conversions>87</nb_conversions>
+				<revenue>782791</revenue>
+				<items>591</items>
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>201</sum_daily_nb_uniq_visitors>
@@ -74,7 +94,7 @@
 		<nb_actions>334</nb_actions>
 		<sum_visit_length>2068</sum_visit_length>
 		<bounce_count>13</bounce_count>
-		<nb_visits_converted>31</nb_visits_converted>
+		<nb_visits_converted>30</nb_visits_converted>
 		<nb_conversions>66</nb_conversions>
 		<revenue>281303</revenue>
 		<goals>
@@ -89,6 +109,16 @@
 				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
@@ -111,7 +141,6 @@
 		<nb_visits_converted>3</nb_visits_converted>
 		<nb_conversions>4</nb_conversions>
 		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>14</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -128,10 +157,23 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>3</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
 				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
 			</row>
 		</goals>
+		<sum_daily_nb_uniq_visitors>14</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
 	</row>
 	<row>
@@ -143,6 +185,38 @@
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
 		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/os/MAC.png</logo>
 	</row>

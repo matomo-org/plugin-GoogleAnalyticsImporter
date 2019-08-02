@@ -6,10 +6,9 @@
 		<nb_actions>39</nb_actions>
 		<sum_visit_length>5564</sum_visit_length>
 		<bounce_count>19</bounce_count>
-		<nb_visits_converted>3</nb_visits_converted>
+		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>3</nb_conversions>
 		<revenue>0</revenue>
-		<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -26,10 +25,23 @@
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
 			<row idgoal='ecommerceOrder'>
 				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
 			</row>
 		</goals>
+		<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
 		<segment>referrerType==search;referrerKeyword==%28not+provided%29</segment>
 		<subtable>
 			<row>
@@ -38,10 +50,9 @@
 				<nb_actions>39</nb_actions>
 				<sum_visit_length>5564</sum_visit_length>
 				<bounce_count>19</bounce_count>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>1</nb_visits_converted>
 				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
-				<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -58,10 +69,23 @@
 						<revenue>0</revenue>
 						<nb_visits_converted>1</nb_visits_converted>
 					</row>
+					<row idgoal='4'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal='5'>
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
 					<row idgoal='ecommerceOrder'>
 						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<items>0</items>
 					</row>
 				</goals>
+				<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>

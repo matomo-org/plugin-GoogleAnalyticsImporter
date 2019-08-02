@@ -10,16 +10,18 @@
 
     ImportStatusController.$inject = [
         'piwikApi',
+        'piwik',
     ];
 
-    function ImportStatusController(piwikApi) {
+    function ImportStatusController(piwikApi, piwik) {
         var vm = this;
+        vm.nonce = null;
         vm.deleteImportStatus = deleteImportStatus;
 
-        function deleteImportStatus(idSite, isDone) {
-            if (isDone) {
+        function deleteImportStatus(idSite, isDoneOrForce) {
+            if (!isDoneOrForce) {
                 piwikHelper.modalConfirm('#confirmCancelJob', { yes: function () {
-                    vm.deleteImportStatus(idSite);
+                    vm.deleteImportStatus(idSite, true);
                 }});
                 return;
             }
@@ -28,6 +30,8 @@
                 module: 'GoogleAnalyticsImporter',
                 action: 'deleteImportStatus',
                 idSite: idSite,
+                token_auth: piwik.token_auth,
+                nonce: vm.nonce
             })['finally'](function () {
                 window.location.reload();
             });

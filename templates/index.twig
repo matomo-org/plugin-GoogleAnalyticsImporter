@@ -65,6 +65,7 @@
     >
         <div
             ng-controller="ImportSchedulerController as importScheduler"
+            ng-init="importScheduler.nonce = {{ startImportNonce|json_encode|e('html_attr') }}"
         >
             <p>Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).</p>
             <p>If no end date is supplied, the import will continue until you manually cancel it below.</p>
@@ -115,6 +116,7 @@
         <table
             class="entityTable importStatusesTable"
             ng-controller="ImportStatusController as importStatus"
+            ng-init="importStatus.nonce = {{ stopImportNonce|json_encode|e('html_attr') }}"
         >
             <thead>
                 <tr>
@@ -158,7 +160,7 @@
                     <td class="import-end-time">
                         {% if status.status == 'finished' %}
                             {{ status.import_end_time|default('-') }}
-                        {% else if status.estimated_days_left_to_finish|default is not empty %}
+                        {% elseif status.estimated_days_left_to_finish|default is not empty %}
                             Estimated finish in {{ status.estimated_days_left_to_finish }} days.
                         {% else %}
                             This job will run until manually cancelled.

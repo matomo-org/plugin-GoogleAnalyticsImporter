@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Container\StaticContainer;
+use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Option;
 use Piwik\Piwik;
@@ -25,7 +26,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'AssetManager.getJavaScriptFiles'        => 'getJsFiles',
             'AssetManager.getStylesheetFiles'        => 'getStylesheetFiles',
             'CronArchive.archiveSingleSite.finish' => 'archivingFinishedForSite',
-            'ViewDataTable.configure' => 'configureImportedReportView',
+            'Visualization.beforeRender' => 'configureImportedReportView',
         ];
     }
 
@@ -43,7 +44,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function configureImportedReportView(ViewDataTable $view)
     {
         $table = $view->getDataTable();
-        if (empty($table)) {
+        if (empty($table)
+            || !($table instanceof DataTable)
+        ) {
             return;
         }
 

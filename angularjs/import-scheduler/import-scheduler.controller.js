@@ -16,6 +16,7 @@
 
     function ImportSchedulerController(piwikApi, piwikPeriods, piwik) {
         var vm = this;
+        vm.nonce = null;
         vm.isStartingImport = false;
         vm.startImport = startImport;
 
@@ -42,7 +43,8 @@
                 endDate: vm.endDate,
                 propertyId: vm.propertyId,
                 viewId: vm.viewId,
-                token_auth: piwik.token_auth
+                token_auth: piwik.token_auth,
+                nonce: vm.nonce
             })['finally'](function () {
                 window.location.reload();
             });
