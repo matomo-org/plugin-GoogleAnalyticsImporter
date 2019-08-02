@@ -146,6 +146,8 @@
                                 class="icon icon-help"
                                 title="Google Analytics by default limits the number of requests you can make to the API for a specific project to 50,000 a day. It looks like this import job has exceeded that limit, so the import cannot continue until tomorrow."
                             ></span>
+                        {% elseif status.status == 'errored' %}
+                            Error message: {{ status.error|default('no message') }}
                         {% endif %}
                     </td>
                     <td class="last-date-imported">
