@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
+use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\Date;
@@ -56,11 +57,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
         $translation = Piwik::translate('GoogleAnalyticsImporter_NotSetInGA');
         $returnedValue->filter(function (DataTable $table) use ($translation) {
-            $isImportedFromGoogle = $table->getMetadata(RecordImporter::IS_IMPORTED_FROM_GOOGLE_METADATA_NAME);
-            if (!$isImportedFromGoogle) {
-                return;
-            }
-
             $row = $table->getRowFromLabel(RecordImporter::NOT_SET_IN_GA_LABEL);
             if (empty($row)) {
                 return;

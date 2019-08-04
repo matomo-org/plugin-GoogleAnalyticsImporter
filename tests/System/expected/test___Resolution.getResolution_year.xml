@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>(not set)</label>
+		<label>Not set in Google Analytics</label>
 		<nb_visits>628</nb_visits>
 		<nb_actions>2345</nb_actions>
 		<sum_visit_length>20851</sum_visit_length>
@@ -42,7 +42,7 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>169</sum_daily_nb_uniq_visitors>
-		<segment>resolution==%28not+set%29</segment>
+		<segment>resolution==__not_set_in_google_analytics__</segment>
 	</row>
 	<row>
 		<label>360x640</label>
