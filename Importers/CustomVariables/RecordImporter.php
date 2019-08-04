@@ -101,12 +101,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         foreach ($table->getRows() as $row) {
             $key = $row->getMetadata($keyField);
             if (empty($key)) {
-                $key = '(not set)';
+                $key = self::NOT_SET_IN_GA_LABEL;
             }
 
             $value = $this->cleanValue($row->getMetadata($valueField));
             if (empty($value)) {
-                $value = '(not set)';
+                $value = self::NOT_SET_IN_GA_LABEL;
             }
 
             $this->addMetadata($keyField, $key, $scope, $row);
@@ -124,7 +124,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         foreach ($table->getRows() as $row) {
             $searchCategory = $row->getMetadata('ga:searchCategory');
             if (empty($searchCategory)) {
-                $searchCategory = '(not set)'; // TODO: translate?
+                $searchCategory = self::NOT_SET_IN_GA_LABEL;
             }
 
             $topLevelRow = $this->addRowToTable($record, $row, ActionSiteSearch::CVAR_KEY_SEARCH_CATEGORY);

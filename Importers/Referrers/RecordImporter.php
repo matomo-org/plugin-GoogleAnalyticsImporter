@@ -150,7 +150,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             // URLs don't have protocols in GA
             $referrerUrl = 'http://' . $referrerUrl;
 
-            // invalid rows for direct entries and search engines (TODO: check for more possibilities?)
+            // invalid rows for direct entries and search engines
             if ($referrerUrl == '(direct)') {
                 $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_DIRECT_ENTRY);
                 continue;

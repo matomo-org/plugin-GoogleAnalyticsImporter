@@ -12,6 +12,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 use Piwik\Date;
 use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
+use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
 class ImportStatusTest extends IntegrationTestCase
@@ -24,6 +25,8 @@ class ImportStatusTest extends IntegrationTestCase
     public function setUp()
     {
         parent::setUp();
+
+        Fixture::createWebsite('2012-01-02 00:00:00');
         $this->instance = new ImportStatus();
     }
 
@@ -215,6 +218,55 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
         ], $status);
+    }
+
+    /**
+     * @dataProvider getTestDataForGetEstimatedDaysLeftToFinish
+     */
+    public function test_getEstimatedDaysLeftToFinish($status, $expectedDaysToFinish)
+    {
+        Date::$now = strtotime('2019-03-31');
+
+        $actual = ImportStatus::getEstimatedDaysLeftToFinish($status);
+        $this->assertEquals($expectedDaysToFinish, $actual);
+    }
+
+    public function getTestDataForGetEstimatedDaysLeftToFinish()
+    {
+        return [
+            [
+                [
+                    'last_date_imported' => null,
+                    'import_range_start' => '2013-02-03',
+                    'import_range_end' => '2013-03-05',
+                    'import_start_time' => '2019-03-28',
+                    'idSite' => 1,
+                ],
+                'general_Unknown',
+            ],
+
+            [
+                [
+                    'last_date_imported' => '2013-02-03',
+                    'import_range_start' => '2013-02-03',
+                    'import_range_end' => '2013-03-05',
+                    'import_start_time' => '2019-03-28',
+                    'idSite' => 1,
+                ],
+                'general_Unknown',
+            ],
+
+            [
+                [
+                    'last_date_imported' => '2013-02-15',
+                    'import_range_start' => '2013-02-03',
+                    'import_range_end' => '2013-03-05',
+                    'import_start_time' => '2019-03-28',
+                    'idSite' => 1,
+                ],
+                5,
+            ],
+        ];
     }
 
     private function getImportStatus($idSite)
