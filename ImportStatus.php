@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 
+use Piwik\Config;
 use Piwik\Option;
 use Piwik\Date;
 use Piwik\Piwik;
@@ -141,6 +142,14 @@ class ImportStatus
     {
         $optionName = $this->getOptionName($idSite);
         Option::delete($optionName);
+
+        $hostname = Config::getHostname();
+
+        $importLogFile = Tasks::getImportLogFile($idSite, $hostname);
+        @unlink($importLogFile);
+
+        $archiveLogFile = Tasks::getImportLogFile($idSite, $hostname);
+        @unlink($archiveLogFile);
     }
 
     private function saveStatus($status)

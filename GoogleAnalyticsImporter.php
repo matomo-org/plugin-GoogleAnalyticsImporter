@@ -93,7 +93,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
         try {
             $importStatus->getImportStatus($idSite);
-        } catch (\Exception $ex) { // TODO: use specific exception
+        } catch (\Exception $ex) {
             return;
         }
 

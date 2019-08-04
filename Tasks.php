@@ -82,8 +82,7 @@ class Tasks extends \Piwik\Plugin\Tasks
     {
         $hostname = Config::getHostname();
 
-        // TODO: when deleting an import status, maybe delete the log as well.
-        $importLogFile = PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
+        $importLogFile = self::getImportLogFile($idSite, $hostname);
         if (!is_writable($importLogFile)
             && !is_writable(dirname($importLogFile))
         ) {
@@ -153,7 +152,7 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         $hostname = Config::getHostname();
 
-        $archiveLogFile = PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.' . $idSite . '.' . $hostname . '.log';
+        $archiveLogFile = self::getArchiveLogFile($idSite, $hostname);
         if (!is_writable($archiveLogFile)
             && !is_writable(dirname($archiveLogFile))
         ) {
@@ -185,5 +184,15 @@ class Tasks extends \Piwik\Plugin\Tasks
         } else {
             exec($command);
         }
+    }
+
+    public static function getArchiveLogFile($idSite, $hostname)
+    {
+        return PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.' . $idSite . '.' . $hostname . '.log';
+    }
+
+    public static function getImportLogFile($idSite, $hostname)
+    {
+        return PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
     }
 }
