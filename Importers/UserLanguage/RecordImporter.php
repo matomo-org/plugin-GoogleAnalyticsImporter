@@ -35,7 +35,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
             if (empty($label)) {
-                $label = 'xx';
+                $label = self::NOT_SET_IN_GA_LABEL;
             }
 
             $langCode = Common::extractLanguageCodeFromBrowserLanguage($label);

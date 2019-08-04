@@ -30,6 +30,7 @@
     "None": "None",
     "EndDate": "End Date",
     "EndDateHelp": "The date to end importing at. By default, it will run every day until you decide to cancel it.",
-    "ThisReportWasImportedFromGoogle": "This report was imported from Google Analytics. Some data may be missing or be reported as Unknown/not set due to incompatibilities between Matomo and Google Analytics."
+    "ThisReportWasImportedFromGoogle": "This report was imported from Google Analytics. Some data may be missing or be reported as Unknown/not set due to incompatibilities between Matomo and Google Analytics.",
+    "NotSetInGA": "Not set in Google Analytics"
   }
 }

@@ -31,6 +31,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $table = $gaQuery->query($day, [$dimension], $this->getConversionAwareVisitMetrics());
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
+            if (empty($label)) {
+                $label = self::NOT_SET_IN_GA_LABEL;
+            }
             $this->addRowToTable($record, $row, $label);
         }
 

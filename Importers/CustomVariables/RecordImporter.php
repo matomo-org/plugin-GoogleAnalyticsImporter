@@ -154,7 +154,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             foreach ($table->getRows() as $row) {
                 $cvarValue = $row->getMetadata($gaDimension);
                 if (empty($cvarValue)) {
-                    $cvarValue = '(not set)'; // TODO: translate?
+                    $cvarValue = parent::NOT_SET_IN_GA_LABEL;
                 }
 
                 $topLevelRow = $this->addRowToTable($record, $row, $cvarName);

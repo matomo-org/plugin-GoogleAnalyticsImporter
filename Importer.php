@@ -105,8 +105,6 @@ class Importer
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
-        // TODO: mapping site settings?
-        // TODO: detecting excluded ips/user agents might be impossible
         $idSite = SitesManagerAPI::getInstance()->addSite(
             $siteName = $webproperty->getName(),
             $urls = [$webproperty->getWebsiteUrl()],
@@ -115,7 +113,7 @@ class Importer
             $searchKeywordParams = $view->siteSearchQueryParameters,
             $searchCategoryParams = $view->siteSearchCategoryParameters,
             $excludedIps = null,
-            $excludedParams = $view->excludeQueryParameters, // TODO: correct?
+            $excludedParams = $view->excludeQueryParameters,
             $timezone = $view->timezone,
             $currency = $view->currency,
             $group = null,

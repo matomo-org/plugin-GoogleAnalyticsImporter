@@ -102,6 +102,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
+            if (empty($label)) {
+                $label = self::NOT_SET_IN_GA_LABEL;
+            }
 
             // we don't use INDEX_GOAL_REVENUE in our query since there's no way to tell if it is for the ecommerce goal or not at the time of query.
             // instead we compute it manually here.
@@ -131,6 +134,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             foreach ($table->getRows() as $row) {
                 $label = $row->getMetadata($dimensionName);
+                if (empty($label)) {
+                    $label = self::NOT_SET_IN_GA_LABEL;
+                }
                 $this->addRowToTable($this->itemRecords[$recordName], $row, $label);
             }
 

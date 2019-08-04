@@ -64,7 +64,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
             if (empty($label)) {
-                $label = '(not set)'; // TODO: need to be able to translate values like this somehow
+                $label = parent::NOT_SET_IN_GA_LABEL;
             }
 
             $row->deleteMetadata();

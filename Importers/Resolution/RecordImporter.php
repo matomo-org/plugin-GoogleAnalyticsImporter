@@ -68,7 +68,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\Importers\De
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata('ga:screenResolution');
             if (empty($label)) {
-                $label = '(not set)';
+                $label = self::NOT_SET_IN_GA_LABEL;
             }
             $this->addRowToTable($record, $row, $label);
         }

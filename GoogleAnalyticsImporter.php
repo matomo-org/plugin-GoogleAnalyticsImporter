@@ -28,6 +28,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'CronArchive.archiveSingleSite.finish' => 'archivingFinishedForSite',
             'Visualization.beforeRender' => 'configureImportedReportView',
             'Translate.getClientSideTranslationKeys' => 'getClientSideTranslationKeys',
+            'API.Request.dispatch.end' => 'translateNotSetLabels',
         ];
     }
 
@@ -45,6 +46,28 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function getClientSideTranslationKeys(&$translationKeys)
     {
         $translationKeys[] = 'GoogleAnalyticsImporter_InvalidDateFormat';
+    }
+
+    public function translateNotSetLabels(&$returnedValue, $params)
+    {
+        if (!($returnedValue instanceof DataTable\DataTableInterface)) {
+            return;
+        }
+
+        $translation = Piwik::translate('GoogleAnalyticsImporter_NotSetInGA');
+        $returnedValue->filter(function (DataTable $table) use ($translation) {
+            $isImportedFromGoogle = $table->getMetadata(RecordImporter::IS_IMPORTED_FROM_GOOGLE_METADATA_NAME);
+            if (!$isImportedFromGoogle) {
+                return;
+            }
+
+            $row = $table->getRowFromLabel(RecordImporter::NOT_SET_IN_GA_LABEL);
+            if (empty($row)) {
+                return;
+            }
+
+            $row->setColumn('label', $translation);
+        });
     }
 
     public function configureImportedReportView(ViewDataTable $view)

@@ -211,7 +211,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             }
 
             if (empty($keyword)) {
-                $keyword = '(not provided)';
+                $keyword = self::NOT_SET_IN_GA_LABEL;
             }
 
             // add to keyword by search engine record

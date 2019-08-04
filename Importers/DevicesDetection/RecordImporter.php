@@ -151,9 +151,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $record = new DataTable();
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
-            $label = $mapper($label);
             if (empty($label)) {
-                $label = 'xx';
+                $label = parent::NOT_SET_IN_GA_LABEL;
+            } else {
+                $label = $mapper($label);
+                if (empty($label)) {
+                    $label = 'xx';
+                }
             }
 
             $this->addRowToTable($record, $row, $label);

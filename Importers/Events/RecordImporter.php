@@ -69,8 +69,19 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         foreach ($table->getRows() as $row) {
             $eventCategory = $row->getMetadata('ga:eventCategory');
+            if (empty($eventCategory)) {
+                $eventCategory = parent::NOT_SET_IN_GA_LABEL;
+            }
+
             $eventAction = $row->getMetadata('ga:eventAction');
+            if (empty($eventAction)) {
+                $eventAction = parent::NOT_SET_IN_GA_LABEL;
+            }
+
             $eventLabel = $row->getMetadata('ga:eventLabel');
+            if (empty($eventLabel)) {
+                $eventLabel = parent::NOT_SET_IN_GA_LABEL;
+            }
 
             $row->deleteMetadata();
 
