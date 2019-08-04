@@ -27,6 +27,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'AssetManager.getStylesheetFiles'        => 'getStylesheetFiles',
             'CronArchive.archiveSingleSite.finish' => 'archivingFinishedForSite',
             'Visualization.beforeRender' => 'configureImportedReportView',
+            'Translate.getClientSideTranslationKeys' => 'getClientSideTranslationKeys',
         ];
     }
 
@@ -39,6 +40,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function getStylesheetFiles(&$stylesheets)
     {
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/stylesheets/styles.less";
+    }
+
+    public function getClientSideTranslationKeys(&$translationKeys)
+    {
+        $translationKeys[] = 'GoogleAnalyticsImporter_InvalidDateFormat';
     }
 
     public function configureImportedReportView(ViewDataTable $view)

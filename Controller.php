@@ -175,72 +175,92 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         Piwik::checkUserHasSuperUserAccess();
         $this->checkTokenInUrl();
 
-        Nonce::checkNonce('GoogleAnalyticsImporter.stopImportNonce', Common::getRequestVar('nonce'));
-
-        $idSite = Common::getRequestVar('idSite', null, 'int');
-
-        /** @var ImportStatus $importStatus */
-        $importStatus = StaticContainer::get(ImportStatus::class);
-        $importStatus->deleteStatus($idSite);
-
         Json::sendHeaderJSON();
-        echo json_encode([ 'status' => 'ok' ]);
+
+        try {
+            Nonce::checkNonce('GoogleAnalyticsImporter.stopImportNonce', Common::getRequestVar('nonce'));
+
+            $idSite = Common::getRequestVar('idSite', null, 'int');
+
+            /** @var ImportStatus $importStatus */
+            $importStatus = StaticContainer::get(ImportStatus::class);
+            $importStatus->deleteStatus($idSite);
+
+            echo json_encode(['result' => 'ok']);
+        } catch (\Exception $ex) {
+            $notification = new Notification($ex->getMessage());
+            $notification->type = Notification::TYPE_TRANSIENT;
+            $notification->context = Notification::CONTEXT_ERROR;
+            $notification->title = Piwik::translate('General_Error');
+            $notification->hasNoClear();
+            Notification\Manager::notify('GoogleAnalyticsImporter_deleteImportStatus_failure', $notification);
+        }
     }
 
-    // TODO: errors aren't displayed properly
     public function startImport()
     {
         Piwik::checkUserHasSuperUserAccess();
         $this->checkTokenInUrl();
 
-        Nonce::checkNonce('GoogleAnalyticsImporter.startImportNonce', Common::getRequestVar('nonce'));
-
-        $startDate = trim(Common::getRequestVar('startDate', ''));
-        if (!empty($startDate)) {
-            $startDate = Date::factory($startDate . ' 00:00:00');
-        }
-
-        $endDate = trim(Common::getRequestVar('endDate', ''));
-        if (!empty($endDate)) {
-            $endDate = Date::factory($endDate . ' 00:00:00');
-        }
-
-        // set credentials in google client
-        $googleAuth = StaticContainer::get(Authorization::class);
-        $googleAuth->getConfiguredClient();
-
-        /** @var Importer $importer */
-        $importer = StaticContainer::get(Importer::class);
-
-        $propertyId = Common::getRequestVar('propertyId');
-        $viewId = Common::getRequestVar('viewId');
-        $account = ImportReports::guessAccountFromProperty($propertyId);
-
-        $idSite = $importer->makeSite($account, $propertyId, $viewId);
-        try {
-
-            if (empty($idSite)) {
-                throw new \Exception("Unable to import site entity."); // sanity check
-            }
-
-            if (!empty($startDate)
-                || !empty($endDate)
-            ) {
-                /** @var ImportStatus $importStatus */
-                $importStatus = StaticContainer::get(ImportStatus::class);
-
-                // we set the last imported date to one day before the start date
-                $importStatus->setImportDateRange($idSite, $startDate ?: null, $endDate ?: null);
-            }
-
-            // start import now since the scheduled task may not run until tomorrow
-            Tasks::startImport($idSite);
-        } catch (\Exception $ex) {
-            $importStatus->erroredImport($idSite, $ex->getMessage());
-            StaticContainer::get(LoggerInterface::class)->error('Failed to start initial import job: {ex}', ['ex' => $ex]);
-        }
-
         Json::sendHeaderJSON();
-        echo json_encode([ 'status' => 'ok' ]);
+
+        try {
+            Nonce::checkNonce('GoogleAnalyticsImporter.startImportNonce', Common::getRequestVar('nonce'));
+
+            $startDate = trim(Common::getRequestVar('startDate', ''));
+            if (!empty($startDate)) {
+                $startDate = Date::factory($startDate . ' 00:00:00');
+            }
+
+            $endDate = trim(Common::getRequestVar('endDate', ''));
+            if (!empty($endDate)) {
+                $endDate = Date::factory($endDate . ' 00:00:00');
+            }
+
+            // set credentials in google client
+            $googleAuth = StaticContainer::get(Authorization::class);
+            $googleAuth->getConfiguredClient();
+
+            /** @var Importer $importer */
+            $importer = StaticContainer::get(Importer::class);
+
+            $propertyId = Common::getRequestVar('propertyId');
+            $viewId = Common::getRequestVar('viewId');
+            $account = ImportReports::guessAccountFromProperty($propertyId);
+
+            $idSite = $importer->makeSite($account, $propertyId, $viewId);
+            try {
+
+                if (empty($idSite)) {
+                    throw new \Exception("Unable to import site entity."); // sanity check
+                }
+
+                if (!empty($startDate)
+                    || !empty($endDate)
+                ) {
+                    /** @var ImportStatus $importStatus */
+                    $importStatus = StaticContainer::get(ImportStatus::class);
+
+                    // we set the last imported date to one day before the start date
+                    $importStatus->setImportDateRange($idSite, $startDate ?: null, $endDate ?: null);
+                }
+
+                // start import now since the scheduled task may not run until tomorrow
+                Tasks::startImport($idSite);
+            } catch (\Exception $ex) {
+                $importStatus->erroredImport($idSite, $ex->getMessage());
+
+                throw $ex;
+            }
+
+            echo json_encode([ 'result' => 'ok' ]);
+        } catch (\Exception $ex) {
+            $notification = new Notification($ex->getMessage());
+            $notification->type = Notification::TYPE_TRANSIENT;
+            $notification->context = Notification::CONTEXT_ERROR;
+            $notification->title = Piwik::translate('General_Error');
+            $notification->hasNoClear();
+            Notification\Manager::notify('GoogleAnalyticsImporter_startImport_failure', $notification);
+        }
     }
 }

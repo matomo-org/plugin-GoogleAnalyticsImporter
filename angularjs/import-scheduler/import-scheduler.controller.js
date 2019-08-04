@@ -27,8 +27,7 @@
                 } catch (e) {
                     var UI = require('piwik/UI');
                     var notification = new UI.Notification();
-                    // TODO: translate
-                    notification.show('Invalid start date, must be in the format YYYY-MM-DD.', {context: 'error'});
+                    notification.show(_pk_translate('GoogleAnalyticsImporter_InvalidDateFormat', 'YYYY-MM-DD'), {context: 'error'});
                     return;
                 }
             }
