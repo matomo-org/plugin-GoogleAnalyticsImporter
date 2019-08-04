@@ -35,7 +35,12 @@ class SearchEngineMapper
             $simpleName = preg_replace('/[^a-zA-Z0-9]/', '', $lowerName);
             $this->sourcesToSearchEngines[$simpleName] = $definition;
         }
+        $this->sourcesToSearchEngines['conduit'] = $this->sourcesToSearchEngines['ask'];
         $this->sourcesToSearchEngines['search-results'] = $this->sourcesToSearchEngines['ask'];
+        $this->sourcesToSearchEngines['images.google'] = $this->sourcesToSearchEngines['google images'];
+        $this->sourcesToSearchEngines['incredimail'] = $this->sourcesToSearchEngines['google'];
+        $this->sourcesToSearchEngines['alice'] = $this->sourcesToSearchEngines['yandex'];
+        $this->sourcesToSearchEngines['avg'] = ['name' => 'xx']; // TODO: not detected by matomo
     }
 
     public function mapSourceToSearchEngine($source)
@@ -50,7 +55,7 @@ class SearchEngineMapper
             return $this->sourcesToSearchEngines[$simpleName]['name'];
         }
 
-        $this->logger->warning("Unknown search engine source received from Google Analytics: $source");
+        $this->logger->warning("Encountered unknown search engine source from Google Analytics: $source");
         return $source;
     }
 

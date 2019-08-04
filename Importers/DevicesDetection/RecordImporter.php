@@ -218,7 +218,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     {
         $map = [];
         foreach ($deviceParserValues as $short => $long) {
-            $map[strtolower($long)] = $short;
+            $lower = trim(strtolower($long));
+            $map[$lower] = $short;
+
+            $stripped = preg_replace('/[^a-zA-Z0-9]/', '', $lower);
+            $map[$stripped] = $short;
+
         }
         return $map;
     }
@@ -228,6 +233,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $cleanValue = trim(strtolower($value));
         if (isset($valueMapping[$cleanValue])) {
             return $valueMapping[$cleanValue];
+        }
+
+        $extraCleanValue = preg_replace('/[^a-zA-Z0-9]/', '', $cleanValue);
+        if (isset($valueMapping[$extraCleanValue])) {
+            return $valueMapping[$extraCleanValue];
         }
 
         if (!empty($value)) {
@@ -271,8 +281,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['playstation 3'] = $result['playstation'];
             $result['playstation 4'] = $result['playstation'];
 
-            $result['nokia'] = $result['unknown'];
-            $result['samsung'] = $result['unknown'];
+            $result['nokia'] = 'xx';
+            $result['samsung'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;
@@ -300,6 +310,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['terra'] = 'xx'; // TODO: not detected by devices detection
             $result['mozilla compatible agent'] = 'xx'; // TODO: mostly bots, we could ignore these...
             $result['\'mozilla'] = 'xx';
+            $result['mozilla'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;
