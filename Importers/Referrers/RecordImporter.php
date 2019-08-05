@@ -93,6 +93,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertRecord(Archiver::SOCIAL_NETWORKS_RECORD_NAME, $urlBySocialNetwork, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($urlBySocialNetwork);
 
+        $this->queryNumberOfDirectEntries($day);
+
         $this->insertRecord(Archiver::REFERRER_TYPE_RECORD_NAME, $this->referrerTypeRecord, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($this->referrerTypeRecord);
         $this->referrerTypeRecord = null;
@@ -150,12 +152,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             // URLs don't have protocols in GA
             $referrerUrl = 'http://' . $referrerUrl;
 
-            // invalid rows for direct entries and search engines
-            if ($referrerUrl == '(direct)') {
-                $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_DIRECT_ENTRY);
-                continue;
-            }
-
             // skip if this isn't a URL
             if (strrpos($referrerUrl, '/') !== strlen($referrerUrl) - 1) {
                 $this->getLogger()->debug("Non referrer URL encountered: $referrerUrl");
@@ -204,10 +200,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 $searchEngineName = $this->searchEngineMapper->mapReferralMediumToSearchEngine($medium);
             } else if ($medium == 'organic') { // not a search engine referrer
                 $searchEngineName = $this->searchEngineMapper->mapSourceToSearchEngine($source);
+            } else {
+                continue;
             }
 
-            if (!isset($searchEngineName)) {
-                continue;
+            if (empty($searchEngineName)) {
+                $searchEngineName = '-';
             }
 
             if (empty($keyword)) {
@@ -228,5 +226,21 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         Common::destroy($table);
 
         return [$keywordBySearchEngine, $searchEngineByKeyword];
+    }
+
+    private function queryNumberOfDirectEntries(Date $day)
+    {
+        $gaQuery = $this->getGaQuery();
+        $table = $gaQuery->query($day, $dimensions = ['ga:source'], $this->getConversionAwareVisitMetrics());
+
+        foreach ($table->getRows() as $row) {
+            $source = $row->getMetadata('ga:source');
+
+            // invalid rows for direct entries and search engines
+            if ($source == '(direct)') {
+                $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_DIRECT_ENTRY);
+                return;
+            }
+        }
     }
 }

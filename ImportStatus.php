@@ -19,6 +19,7 @@ use Piwik\Site;
 class ImportStatus
 {
     const OPTION_NAME_PREFIX = 'GoogleAnalyticsImporter.importStatus_';
+    const IMPORTED_DATE_RANGE_PREFIX = 'GoogleAnalyticsImporter.importedDateRange_';
 
     const STATUS_STARTED = 'started';
     const STATUS_ONGOING = 'ongoing';
@@ -49,6 +50,18 @@ class ImportStatus
         $this->saveStatus($status);
     }
 
+    public function getImportedDateRange($idSite)
+    {
+        $optionName = self::IMPORTED_DATE_RANGE_PREFIX . $idSite;
+        $existingValue = Option::get($optionName);
+
+        $dates = ['', ''];
+        if (!empty($existingValue)) {
+            $dates = explode(',', $existingValue);
+        }
+        return $dates;
+    }
+
     public function dayImportFinished($idSite, Date $date)
     {
         $status = $this->getImportStatus($idSite);
@@ -58,6 +71,8 @@ class ImportStatus
             || !Date::factory($status['last_date_imported'])->isLater($date)
         ) {
             $status['last_date_imported'] = $date->toString();
+
+            $this->setImportedDateRange($idSite, $startDate = null, $date);
         }
 
         $this->saveStatus($status);
@@ -73,6 +88,8 @@ class ImportStatus
             $status['import_range_end'] = $endDate->toString();
         }
         $this->saveStatus($status);
+
+        $this->setImportedDateRange($idSite, $startDate, null);
     }
 
     public function resumeImport($idSite)
@@ -230,5 +247,23 @@ class ImportStatus
         } else {
             return lcfirst(Piwik::translate('General_Unknown'));
         }
+    }
+
+    private function setImportedDateRange($idSite, Date $startDate = null, Date $endDate = null) // TODO: unit test
+    {
+        $optionName = self::IMPORTED_DATE_RANGE_PREFIX . $idSite;
+        $dates = $this->getImportedDateRange($idSite);
+
+        if (!empty($startDate)) {
+            $dates[0] = $startDate->toString();
+        }
+
+        if (!empty($endDate)) {
+            $dates[1] = $endDate->toString();
+        }
+
+        $value = implode(',', $dates);
+
+        Option::set($optionName, $value);
     }
 }

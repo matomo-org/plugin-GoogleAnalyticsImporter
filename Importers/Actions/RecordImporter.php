@@ -140,9 +140,26 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             ],
         ]);
 
+        // hostname dimension is not supported for this date
+        if ($table->getRowsCount() == 0) {
+            $table = $gaQuery->query($day, $dimensions = ['ga:landingPagePath'], $entryPageMetrics, [
+                'orderBys' => [
+                    ['field' => 'ga:sessions', 'order' => 'descending'],
+                    ['field' => 'ga:landingPagePath', 'order' => 'ascending']
+                ],
+            ]);
+        }
+
+        $mainUrlWithoutSlash = Site::getMainUrlFor($this->getIdSite());
+        $mainUrlWithoutSlash = rtrim($mainUrlWithoutSlash, '/');
+
         foreach ($table->getRows() as $row) {
             $hostname = $row->getMetadata('ga:hostname');
-            $actionName = 'http://' . $hostname . $row->getMetadata('ga:landingPagePath');
+            if (!empty($hostname)) {
+                $actionName = 'http://' . $hostname . $row->getMetadata('ga:landingPagePath');
+            } else {
+                $actionName = $mainUrlWithoutSlash . $row->getMetadata('ga:landingPagePath');
+            }
 
             $row->deleteColumn('label');
 
@@ -177,9 +194,26 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             ],
         ]);
 
+        // hostname dimension is not supported for this date
+        if ($table->getRowsCount() == 0) {
+            $table = $gaQuery->query($day, $dimensions = ['ga:exitPagePath'], $exitPageMetrics, [
+                'orderBys' => [
+                    ['field' => 'ga:sessions', 'order' => 'descending'],
+                    ['field' => 'ga:exitPagePath', 'order' => 'ascending']
+                ],
+            ]);
+        }
+
+        $mainUrlWithoutSlash = Site::getMainUrlFor($this->getIdSite());
+        $mainUrlWithoutSlash = rtrim($mainUrlWithoutSlash, '/');
+
         foreach ($table->getRows() as $row) {
             $hostname = $row->getMetadata('ga:hostname');
-            $actionName = 'http://' . $hostname . $row->getMetadata('ga:exitPagePath');
+            if (!empty($hostname)) {
+                $actionName = 'http://' . $hostname . $row->getMetadata('ga:exitPagePath');
+            } else {
+                $actionName = $mainUrlWithoutSlash . $row->getMetadata('ga:exitPagePath');
+            }
 
             $row->deleteColumn('label');
 
@@ -209,6 +243,29 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             ],
         ]);
 
+        // hostname dimension is not supported for this date
+        if ($table->getRowsCount() == 0) {
+            $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle', 'ga:pagePath'], $this->getPageMetrics(), [
+                'orderBys' => [
+                    ['field' => 'ga:pageviews', 'order' => 'descending'],
+                    ['field' => 'ga:pageTitle', 'order' => 'ascending']
+                ],
+            ]);
+
+            // pageTitle + pagePath combination is not supported for this date
+            if ($table->getRowsCount() == 0) {
+                $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle'], $this->getPageMetrics(), [
+                    'orderBys' => [
+                        ['field' => 'ga:pageviews', 'order' => 'descending'],
+                        ['field' => 'ga:pageTitle', 'order' => 'ascending']
+                    ],
+                ]);
+            }
+        }
+
+        $mainUrlWithoutSlash = Site::getMainUrlFor($this->getIdSite());
+        $mainUrlWithoutSlash = rtrim($mainUrlWithoutSlash, '/');
+
         foreach ($table->getRows() as $row) {
             $actionName = $row->getMetadata('ga:pageTitle');
             $actionRow = ArchivingHelper::getActionRow($actionName, Action::TYPE_PAGE_TITLE, $urlPrefix = '', $this->dataTables);
@@ -220,9 +277,16 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 $actionRow->setColumn($name, $value);
             }
 
-            $hostname = $row->getMetadata('ga:hostname');
-            $url = 'http://' . $hostname . $row->getMetadata('ga:pagePath');
-            $this->pageTitlesByPagePath[$url] = $actionRow;
+            $pagePath = $row->getMetadata('ga:pagePath');
+            if (!empty($pagePath)) {
+                $hostname = $row->getMetadata('ga:hostname');
+                if (!empty($hostname)) {
+                    $url = 'http://' . $hostname . $pagePath;
+                } else {
+                    $url = $mainUrlWithoutSlash . $row->getMetadata('ga:pagePath');
+                }
+                $this->pageTitlesByPagePath[$url] = $actionRow;
+            }
         }
 
         Common::destroy($table);
@@ -238,16 +302,34 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             ],
         ]);
 
+        // hostname dimension is not supported for this date
+        if ($table->getRowsCount() == 0) {
+            $table = $gaQuery->query($day, $dimensions = ['ga:pagePath'], $this->getPageMetrics(), [
+                'orderBys' => [
+                    ['field' => 'ga:pageviews', 'order' => 'descending'],
+                    ['field' => 'ga:pagePath', 'order' => 'ascending']
+                ],
+            ]);
+        }
+
         $siteDetails = Request::processRequest('SitesManager.getSiteFromId', [
             'idSite' => $this->getIdSite(),
         ], $defaultRequest = []);
         $siteDetails['sitesearch_keyword_parameters'] = explode(',', $siteDetails['sitesearch_keyword_parameters']);
         $siteDetails['sitesearch_category_parameters'] = explode(',', $siteDetails['sitesearch_category_parameters']);
 
+        $mainUrlWithoutSlash = Site::getMainUrlFor($this->getIdSite());
+        $mainUrlWithoutSlash = rtrim($mainUrlWithoutSlash, '/');
+
         foreach ($table->getRows() as $row) {
-            $hostname = $row->getMetadata('ga:hostname');
             $actionName = $row->getMetadata('ga:pagePath');
-            $wholeUrl = 'http://' . $hostname . $actionName;
+
+            $hostname = $row->getMetadata('ga:hostname');
+            if (!empty($hostname)) {
+                $wholeUrl = 'http://' . $hostname . $actionName;
+            } else {
+                $wholeUrl = $mainUrlWithoutSlash . $actionName;
+            }
 
             $parsedUrl = parse_url($wholeUrl);
             $isSiteSearch = ActionSiteSearch::detectSiteSearchFromUrl($siteDetails, $parsedUrl);

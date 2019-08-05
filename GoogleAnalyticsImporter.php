@@ -13,6 +13,7 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Option;
+use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
 use Psr\Log\LoggerInterface;
@@ -75,12 +76,41 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             return;
         }
 
-        $isImportedFromGoogle = $table->getMetadata(RecordImporter::IS_IMPORTED_FROM_GOOGLE_METADATA_NAME);
-        if (!$isImportedFromGoogle) {
+        $period = Common::getRequestVar('period', false);
+        $date = Common::getRequestVar('date', false);
+        if (empty($period) || empty($date)) {
             return;
         }
 
-        $view->config->show_footer_message .= '<p>' . Piwik::translate('GoogleAnalyticsImporter_ThisReportWasImportedFromGoogle') . '</p>';
+        $module = Common::getRequestVar('module');
+        if ($module == 'Live') {
+            if ($table->getRowsCount() > 0
+                || !$this->isInImportedDateRange($period, $date)
+            ) {
+                return;
+            }
+
+            $view->config->show_footer_message .= '<p>' . Piwik::translate('GoogleAnalyticsImporter_LiveDataUnavailableForImported') . '</p>';
+            return;
+        }
+
+        if ($period === 'day') {
+            // for day periods we can tell if the report is in GA through metadata
+            $isImportedFromGoogle = $table->getMetadata(RecordImporter::IS_IMPORTED_FROM_GOOGLE_METADATA_NAME);
+            if (!$isImportedFromGoogle) {
+                return;
+            }
+
+            $view->config->show_footer_message .= '<p>' . Piwik::translate('GoogleAnalyticsImporter_ThisReportWasImportedFromGoogle') . '</p>';
+        } else {
+            // for non-day periods, we can't tell if the report is all GA data or mixed, so we guess based on
+            // whether the data is in the imported date range
+            if (!$this->isInImportedDateRange($period, $date)) {
+                return;
+            }
+
+            $view->config->show_footer_message .= '<p>' . Piwik::translate('GoogleAnalyticsImporter_ThisReportWasImportedFromGoogleMultiPeriod') . '</p>';
+        }
     }
 
     public function archivingFinishedForSite($idSite, $completed)
@@ -113,5 +143,28 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
 
         $importStatus->importArchiveFinished($idSite, $dateFinished);
+    }
+
+    private function isInImportedDateRange($period, $date)
+    {
+        $idSite = Common::getRequestVar('idSite', false);
+        if (empty($idSite)) {
+            return false;
+        }
+
+        $importStatus = StaticContainer::get(ImportStatus::class);
+        $importedDateRange = $importStatus->getImportedDateRange($idSite);
+
+        $startDate = Date::factory($importedDateRange[0]);
+        $endDate = Date::factory($importedDateRange[1]);
+
+        $periodObj = Factory::build($period, $date);
+        if ($startDate->isLater($periodObj->getDateEnd())
+            || $endDate->isEarlier($periodObj->getDateStart())
+        ) {
+            return false;
+        }
+
+        return true;
     }
 }
