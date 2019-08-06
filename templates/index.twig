@@ -134,7 +134,7 @@
                 {% set isDone = status.status == 'finished' %}
                 <tr data-idsite="{{ status.idSite|e('html_attr') }}">
                     <td class="sitename">
-                        {{ status.site.getName() }}
+                        <a href="{{ linkTo({ 'idSite': status.idSite, 'module': 'CoreHome', 'action': 'index' }) }}" target="_blank">{{ status.site.getName() }}</a>
                         <br/>
                         Site ID: {{ status.idSite }}
                     </td>

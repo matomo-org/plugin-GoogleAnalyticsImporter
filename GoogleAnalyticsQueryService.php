@@ -80,7 +80,7 @@ class GoogleAnalyticsQueryService
     {
         $mappings = $this->mapping;
         if (!empty($options['mappings'])) {
-            $mappings = array_merge($mappings, $options['mappings']);
+            $mappings = $options['mappings'] + $mappings;
         }
 
         $gaMetrics = $this->getMappedMetricsToQuery($metrics, $mappings);
@@ -391,7 +391,7 @@ class GoogleAnalyticsQueryService
         ];
     }
 
-    private function getEcommerceGoalSpecificMetrics()
+    public function getEcommerceGoalSpecificMetrics()
     {
         return [
             Metrics::INDEX_GOAL_NB_CONVERSIONS => 'ga:transactions',

@@ -205,7 +205,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             }
 
             if (empty($searchEngineName)) {
-                $searchEngineName = '-';
+                $searchEngineName = 'Unknown';
             }
 
             if (empty($keyword)) {

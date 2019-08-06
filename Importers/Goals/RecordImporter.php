@@ -14,7 +14,9 @@ use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Plugins\Goals\Archiver;
+use Piwik\Plugins\SEO\Metric\Metric;
 use Piwik\Site;
+use Piwik\Tracker\GoalManager;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
@@ -83,35 +85,30 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function queryVisitsUntilTransaction(Date $day)
     {
-        $this->queryConversionsDimension($day, 'ga:sessionsToTransaction', Archiver::VISITS_UNTIL_RECORD_NAME);
+        $this->queryXUntilConversionsDimension($day, 'ga:sessionsToTransaction', Archiver::getRecordName(Archiver::VISITS_UNTIL_RECORD_NAME, GoalManager::IDGOAL_ORDER), Archiver::$visitCountRanges);
     }
 
     private function queryDaysUntilTransaction(Date $day)
     {
-        $this->queryConversionsDimension($day, 'ga:daysToTransaction', Archiver::DAYS_UNTIL_CONV_RECORD_NAME);
+        $this->queryXUntilConversionsDimension($day, 'ga:daysToTransaction', Archiver::getRecordName(Archiver::DAYS_UNTIL_CONV_RECORD_NAME, GoalManager::IDGOAL_ORDER), Archiver::$daysToConvRanges);
     }
 
-    private function queryConversionsDimension(Date $day, $dimension, $recordName)
+    private function queryXUntilConversionsDimension(Date $day, $dimension, $recordName, $gap)
     {
-        $record = new DataTable();
+        $record = $this->createTableFromGap($gap);
 
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, [$dimension], $this->getConversionOnlyMetrics(), [
-            'mappings' => $gaQuery->getEcommerceMetricIndicesToGaMetrics(),
+        $table = $gaQuery->query($day, [$dimension], [Metrics::INDEX_NB_CONVERSIONS], [
+            'mappings' => [Metrics::INDEX_NB_CONVERSIONS => 'ga:transactions'],
         ]);
 
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
-            if (empty($label)) {
+            if ($label === false) {
                 $label = self::NOT_SET_IN_GA_LABEL;
+            } else {
+                $label = $this->getGapLabel($gap, $label);
             }
-
-            // we don't use INDEX_GOAL_REVENUE in our query since there's no way to tell if it is for the ecommerce goal or not at the time of query.
-            // instead we compute it manually here.
-            $totalRevenue = $row->getColumn(Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SHIPPING)
-                + $row->getColumn(Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SUBTOTAL)
-                + $row->getColumn(Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_TAX);
-            $row->setColumn(Metrics::INDEX_GOAL_REVENUE, $totalRevenue);
 
             $this->addRowToTable($record, $row, $label);
         }

@@ -1,6 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
+		<label>Not set in Google Analytics</label>
+		<nb_visits>385</nb_visits>
+		<nb_actions>1551</nb_actions>
+		<sum_visit_length>12491</sum_visit_length>
+		<bounce_count>75</bounce_count>
+		<nb_visits_converted>99</nb_visits_converted>
+		<nb_conversions>243</nb_conversions>
+		<revenue>1415905</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>55</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>48</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>48</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>43</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>139</nb_conversions>
+				<revenue>1415905</revenue>
+				<items>1029</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>249</sum_daily_nb_uniq_visitors>
+		<referer_type>2</referer_type>
+	</row>
+	<row>
 		<label>reddit</label>
 		<nb_visits>70</nb_visits>
 		<nb_actions>293</nb_actions>

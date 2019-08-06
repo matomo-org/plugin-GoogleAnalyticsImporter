@@ -207,4 +207,39 @@ abstract class RecordImporter
         }
         return $this->addRowToTable($subtable, $rowToAdd, $newLabel);
     }
+
+    protected function createTableFromGap($gap)
+    {
+        $record = new DataTable();
+        foreach ($gap as $bounds) {
+            $row = new DataTable\Row();
+            if (count($bounds) === 1) {
+                $row->setColumn('label', ($bounds[0] + 1) . urlencode('+'));
+            } else {
+                $row->setColumn('label', $bounds[0]. ' - ' . $bounds[1]);
+            }
+            $record->addRow($row);
+        }
+        return $record;
+    }
+
+    protected function getGapLabel(array $gap, $value)
+    {
+        $range = null;
+
+        foreach ($gap as $bounds) {
+            $upperBound = end($bounds);
+            if ($value <= $upperBound) {
+                $range = reset($bounds) . ' - ' . $upperBound;
+                break;
+            }
+        }
+
+        if (empty($range)) {
+            $lowerBound = reset($bounds);
+            $range = ($lowerBound + 1) . urlencode('+');
+        }
+
+        return $range;
+    }
 }

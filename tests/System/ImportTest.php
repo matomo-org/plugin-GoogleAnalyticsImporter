@@ -110,6 +110,14 @@ class ImportTest extends SystemTestCase
                 'date' => self::$fixture->dateTime,
                 'periods' => ['day', 'week', 'month', 'year'],
             ]],
+
+            [['Goals.getDaysToConversion', 'Goals.getVisitsUntilConversion'], [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['day', 'week', 'month', 'year'],
+                'idGoal' => 'ecommerceOrder',
+                'testSuffix' => '_ecommerceOrder',
+            ]],
         ];
     }
 
