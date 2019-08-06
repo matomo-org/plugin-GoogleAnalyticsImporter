@@ -16,6 +16,7 @@ use Piwik\Option;
 use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
+use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
@@ -31,7 +32,18 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'Visualization.beforeRender' => 'configureImportedReportView',
             'Translate.getClientSideTranslationKeys' => 'getClientSideTranslationKeys',
             'API.Request.dispatch.end' => 'translateNotSetLabels',
+            'SitesManager.deleteSite.end'            => 'onSiteDeleted',
         ];
+    }
+
+    public function onSiteDeleted($idSite)
+    {
+        $importStatus = StaticContainer::get(ImportStatus::class);
+        try {
+            $importStatus->deleteStatus($idSite);
+        } catch (\Exception $ex) {
+            // ignore
+        }
     }
 
     public function getJsFiles(&$jsFiles)
@@ -153,10 +165,20 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
 
         $importStatus = StaticContainer::get(ImportStatus::class);
+        try {
+            $status = $importStatus->getImportStatus($idSite);
+        } catch (\Exception $ex) {
+            return false;
+        }
+
+        if (empty($status)) {
+            return false;
+        }
+
         $importedDateRange = $importStatus->getImportedDateRange($idSite);
 
-        $startDate = Date::factory($importedDateRange[0]);
-        $endDate = Date::factory($importedDateRange[1]);
+        $startDate = Date::factory($importedDateRange[0] ?: Site::getCreationDateFor($idSite));
+        $endDate = Date::factory($importedDateRange[1] ?: $status['last_date_imported'] ?: $startDate);
 
         $periodObj = Factory::build($period, $date);
         if ($startDate->isLater($periodObj->getDateEnd())

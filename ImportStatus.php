@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 
 use Piwik\Config;
+use Piwik\Exception\UnexpectedWebsiteFoundException;
 use Piwik\Option;
 use Piwik\Date;
 use Piwik\Piwik;
@@ -183,7 +184,11 @@ class ImportStatus
     private function enrichStatus($status)
     {
         if (isset($status['idSite'])) {
-            $status['site'] = new Site($status['idSite']);
+            try {
+                $status['site'] = new Site($status['idSite']);
+            } catch (UnexpectedWebsiteFoundException $ex) {
+                $status['site'] = null;
+            }
         }
 
         if (isset($status['import_start_time'])) {
