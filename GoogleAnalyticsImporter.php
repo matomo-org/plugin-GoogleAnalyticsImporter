@@ -76,6 +76,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             }
 
             $row->setColumn('label', $translation);
+
+            $subtable = $row->getSubtable();
+            if ($subtable) {
+                $this->translateNotSetLabels($subtable, []);
+            }
         });
     }
 
