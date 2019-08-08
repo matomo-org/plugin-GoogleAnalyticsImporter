@@ -16,12 +16,21 @@ use Piwik\Option;
 use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
+use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
 {
     const OPTION_ARCHIVING_FINISHED_FOR_SITE_PREFIX = 'GoogleAnalyticsImporter.archivingFinished.';
+
+    private static $keywordMethods = [
+        'Referrers.getKeywords',
+        'Referrers.getKeywordsForPageUrl',
+        'Referrers.getKeywordsForPageTitle',
+        'Referrers.getKeywordsFromSearchEngineId',
+        'Referrers.getKeywordsFromCampaignId',
+    ];
 
     public function getListHooksRegistered()
     {
@@ -69,6 +78,12 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
 
         $translation = Piwik::translate('GoogleAnalyticsImporter_NotSetInGA');
+
+        $method = Common::getRequestVar('method');
+        if (in_array($method, self::$keywordMethods)) {
+            $translation = API::getKeywordNotDefinedString();
+        }
+
         $returnedValue->filter(function (DataTable $table) use ($translation) {
             $row = $table->getRowFromLabel(RecordImporter::NOT_SET_IN_GA_LABEL);
             if (empty($row)) {
