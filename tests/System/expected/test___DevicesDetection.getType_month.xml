@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>Unknown</label>
+		<label>Desktop</label>
 		<nb_visits>233</nb_visits>
 		<nb_actions>880</nb_actions>
 		<sum_visit_length>6749</sum_visit_length>
@@ -42,7 +42,8 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>101</sum_daily_nb_uniq_visitors>
-		<logo>plugins/Morpheus/icons/dist/devices/unknown.png</logo>
+		<segment>deviceType==desktop</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/desktop.png</logo>
 	</row>
 	<row>
 		<label>Smartphone</label>
@@ -151,12 +152,6 @@
 		<nb_visits>0</nb_visits>
 		<segment>deviceType==console</segment>
 		<logo>plugins/Morpheus/icons/dist/devices/console.png</logo>
-	</row>
-	<row>
-		<label>Desktop</label>
-		<nb_visits>0</nb_visits>
-		<segment>deviceType==desktop</segment>
-		<logo>plugins/Morpheus/icons/dist/devices/desktop.png</logo>
 	</row>
 	<row>
 		<label>Feature phone</label>
