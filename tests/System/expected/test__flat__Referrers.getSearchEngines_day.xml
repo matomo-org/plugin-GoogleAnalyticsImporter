@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>Google - (not provided)</label>
+		<nb_uniq_visitors>11</nb_uniq_visitors>
+		<nb_visits>11</nb_visits>
+		<nb_actions>16</nb_actions>
+		<sum_visit_length>3027</sum_visit_length>
+		<bounce_count>7</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>2</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<url>http://google.com/search?q=%28not+provided%29</url>
+		<logo>plugins/Morpheus/icons/dist/searchEngines/google.com.png</logo>
+		<Referrers_SearchEngine>Google</Referrers_SearchEngine>
+		<Referrers_Keyword>(not provided)</Referrers_Keyword>
+	</row>
+</result>

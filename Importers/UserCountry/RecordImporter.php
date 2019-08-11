@@ -51,6 +51,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, ['ga:countryIsoCode', 'ga:regionIsoCode', 'ga:city', 'ga:latitude', 'ga:longitude'],
             $this->getConversionAwareVisitMetrics());
+
         foreach ($table->getRows() as $row) {
             $country = strtolower($row->getMetadata('ga:countryIsoCode'));
             $region = $row->getMetadata('ga:regionIsoCode');

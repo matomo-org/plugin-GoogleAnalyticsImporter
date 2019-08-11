@@ -78,23 +78,25 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
 
         $translation = Piwik::translate('GoogleAnalyticsImporter_NotSetInGA');
+        $labelToLookFor = RecordImporter::NOT_SET_IN_GA_LABEL;
 
         $method = Common::getRequestVar('method');
         if (in_array($method, self::$keywordMethods)) {
             $translation = API::getKeywordNotDefinedString();
+            $labelToLookFor = '(not provided)';
         }
 
-        $returnedValue->filter(function (DataTable $table) use ($translation) {
-            $row = $table->getRowFromLabel(RecordImporter::NOT_SET_IN_GA_LABEL);
-            if (empty($row)) {
-                return;
+        $returnedValue->filter(function (DataTable $table) use ($translation, $labelToLookFor) {
+            $row = $table->getRowFromLabel($labelToLookFor);
+            if (!empty($row)) {
+                $row->setColumn('label', $translation);
             }
 
-            $row->setColumn('label', $translation);
-
-            $subtable = $row->getSubtable();
-            if ($subtable) {
-                $this->translateNotSetLabels($subtable, []);
+            foreach ($table->getRows() as $childRow) {
+                $subtable = $childRow->getSubtable();
+                if ($subtable) {
+                    $this->translateNotSetLabels($subtable, []);
+                }
             }
         });
     }

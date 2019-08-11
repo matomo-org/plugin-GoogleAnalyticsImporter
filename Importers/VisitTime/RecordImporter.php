@@ -20,7 +20,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     public function importRecords(Date $day)
     {
-        $this->queryDimension($day, 'ga:hour', Archiver::LOCAL_TIME_RECORD_NAME);
+        $this->queryDimension($day, 'ga:hour', Archiver::SERVER_TIME_RECORD_NAME);
     }
 
     private function queryDimension(Date $day, $dimension, $recordName)

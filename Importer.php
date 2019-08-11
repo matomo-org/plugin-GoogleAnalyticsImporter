@@ -140,6 +140,11 @@ class Importer
 
     private function importGoals($idSite, $accountId, $propertyId, $viewId)
     {
+        if ($this->isPluginUnavailable('Goals')) {
+            $this->logger->warning("Goals plugin is not activated or present, skipping goal import.");
+            return;
+        }
+
         $existingGoals = API::getInstance()->getGoals($idSite);
 
         $goals = $this->gaService->management_goals->listManagementGoals($accountId, $propertyId, $viewId);
@@ -186,6 +191,11 @@ class Importer
 
     private function importCustomDimensions($idSite, $accountId, $propertyId)
     {
+        if ($this->isPluginUnavailable('CustomDimensions')) {
+            $this->logger->warning("The CustomDimensions plugin is not activated or present, skipping goal import.");
+            return;
+        }
+
         $existingCustomDimensions = \Piwik\Plugins\CustomDimensions\API::getInstance()->getConfiguredCustomDimensions($idSite);
         $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
 
@@ -228,6 +238,11 @@ class Importer
         $numCustomVarSlots = (int) $importConfiguration->getNumCustomVariables();
         if ($numCustomVarSlots <= 0) {
             $this->logger->info("Using existing custom variable slots.");
+            return;
+        }
+
+        if ($this->isPluginUnavailable('CustomVariables')) {
+            $this->logger->warning("The CustomVariables plugin is not activated or present, skipping custom variable slot setting.");
             return;
         }
 
@@ -334,8 +349,6 @@ class Importer
     private function getRecordImporters($idSite, $viewId)
     {
         if (empty($this->recordImporters)) {
-            $activatedPlugins = Manager::getInstance()->getActivatedPlugins();
-
             $recordImporters = StaticContainer::get('GoogleAnalyticsImporter.recordImporters');
 
             $this->recordImporters = [];
@@ -345,7 +358,7 @@ class Importer
                 }
 
                 $pluginName = $recordImporterClass::PLUGIN_NAME;
-                if (!in_array($pluginName, $activatedPlugins)) {
+                if ($this->isPluginUnavailable($pluginName)) {
                     continue;
                 }
 
@@ -426,5 +439,12 @@ class Importer
             }
         }
         return false;
+    }
+
+    private function isPluginUnavailable($pluginName)
+    {
+        return !Manager::getInstance()->isPluginActivated($pluginName)
+            || !Manager::getInstance()->isPluginLoaded($pluginName)
+            || !Manager::getInstance()->isPluginInFilesystem($pluginName);
     }
 }

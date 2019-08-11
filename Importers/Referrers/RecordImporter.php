@@ -198,6 +198,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             if ($medium == 'referral') {
                 $searchEngineName = $this->searchEngineMapper->mapReferralMediumToSearchEngine($medium);
+                if (empty($searchEngineName)) {
+                    continue;
+                }
             } else if ($medium == 'organic') { // not a search engine referrer
                 $searchEngineName = $this->searchEngineMapper->mapSourceToSearchEngine($source);
             } else {

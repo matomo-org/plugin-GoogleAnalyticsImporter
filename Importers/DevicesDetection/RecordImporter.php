@@ -153,8 +153,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             if (empty($label)) {
                 $label = parent::NOT_SET_IN_GA_LABEL;
             } else {
+                $originalLabel = $label;
                 $label = $mapper($label);
-                if (empty($label)) {
+                if ($originalLabel === false || $originalLabel === null || $originalLabel === '') {
                     $label = 'xx';
                 }
             }
@@ -178,7 +179,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             case 'mobile':
                 return DeviceParser::DEVICE_TYPE_SMARTPHONE;
             default:
-                $this->getLogger()->warning("Unknown device category found in google analytics: $category");
+                $this->getLogger()->warning("Encountered unknown device category in google analytics: $category");
                 return 'xx';
         }
     }
@@ -310,6 +311,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['playstation 4'] = $result['netfront'];
             $result['blackberry9300'] = $result['blackberry browser'];
             $result['ie with chrome frame'] = $result['internet explorer'];
+            $result['nintendo browser'] = $result['netfront'];
+            $result['nintendo wiiu'] = $result['netfront'];
+            $result['nintendo wii'] = $result['netfront'];
             $result['terra'] = 'xx'; // TODO: not detected by devices detection
             $result['mozilla compatible agent'] = 'xx'; // TODO: mostly bots, we could ignore these...
             $result['\'mozilla'] = 'xx';

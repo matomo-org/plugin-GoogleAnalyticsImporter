@@ -118,6 +118,17 @@ class ImportTest extends SystemTestCase
                 'idGoal' => 'ecommerceOrder',
                 'testSuffix' => '_ecommerceOrder',
             ]],
+
+            // flattened
+            [['Referrers.getSearchEngines'], [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['day'],
+                'testSuffix' => '_flat',
+                'otherRequestParameters' => [
+                    'flat' => '1',
+                ],
+            ]],
         ];
     }
 
