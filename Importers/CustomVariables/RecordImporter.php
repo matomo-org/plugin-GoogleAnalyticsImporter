@@ -119,7 +119,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function querySiteSearchCategories(Date $day, DataTable $record)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:searchCategory'], array_merge($this->getConversionAwareVisitMetrics(), $this->getActionMetrics()));
+        $table = $gaQuery->query($day, $dimensions = ['ga:searchCategory'], array_merge($this->getConversionAwareVisitMetrics(), $this->getActionMetrics()), [
+            'mappings' => [
+                Metrics::INDEX_NB_VISITS => 'ga:searchUniques',
+                Metrics::INDEX_NB_ACTIONS => 'ga:searchResultViews',
+            ],
+        ]);
 
         foreach ($table->getRows() as $row) {
             $searchCategory = $row->getMetadata('ga:searchCategory');

@@ -104,6 +104,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 ['field' => 'ga:sessions', 'order' => 'descending'],
                 ['field' => 'ga:searchKeyword', 'order' => 'ascending']
             ],
+            'mappings' => [
+                Metrics::INDEX_NB_VISITS => 'ga:searchUniques',
+                Metrics::INDEX_PAGE_NB_HITS => 'ga:searchResultViews',
+            ],
         ]);
 
         foreach ($table->getRows() as $row) {
@@ -268,14 +272,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         foreach ($table->getRows() as $row) {
             $actionName = $row->getMetadata('ga:pageTitle');
-            $actionRow = ArchivingHelper::getActionRow($actionName, Action::TYPE_PAGE_TITLE, $urlPrefix = '', $this->dataTables);
+            $actionRow = ArchivingHelper::getActionRow($actionName, Action::TYPE_PAGE_TITLE, $urlPrefix = null, $this->dataTables);
 
             $row->deleteColumn('label');
-
-            $columns = $row->getColumns();
-            foreach ($columns as $name => $value) {
-                $actionRow->setColumn($name, $value);
-            }
+            $actionRow->sumRow($row, $copyMetadata = false);
 
             $pagePath = $row->getMetadata('ga:pagePath');
             if (!empty($pagePath)) {
@@ -322,7 +322,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $mainUrlWithoutSlash = rtrim($mainUrlWithoutSlash, '/');
 
         foreach ($table->getRows() as $row) {
-            $actionName = $row->getMetadata('ga:pagePath');
+            $actionName = $row->getMetadata('ga:pagePath') ?: '/';
 
             // sometimes the metrics returned can be 0, no need to add the row in that case
             if (empty($row->getColumn(Metrics::INDEX_PAGE_NB_HITS))) {
@@ -342,7 +342,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 continue;
             }
 
-            $actionRow = ArchivingHelper::getActionRow($actionName, Action::TYPE_PAGE_URL, '', $this->dataTables);
+            $actionRow = ArchivingHelper::getActionRow('dummyhost.com' . $actionName, Action::TYPE_PAGE_URL, '', $this->dataTables);
 
             $row->deleteColumn('label');
 

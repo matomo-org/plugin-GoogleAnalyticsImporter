@@ -37,7 +37,13 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         "Actions.getDownload",
         "Actions.getOutlinks",
         "Actions.getOutlink",
-        "Actions.getVisitInformationPerLocalTime",
+        "Actions.getPageUrlsFollowingSiteSearch",
+        "Actions.getPageTitlesFollowingSiteSearch",
+        "Actions.getSiteSearchNoResultKeywords",
+        "VisitTime.getVisitInformationPerLocalTime",
+        "DevicesDetection.getBrowserEngines",
+        "DevicePlugins.getPlugin",
+        "UserId.getUsers",
     ];
 
     public function getListHooksRegistered()
