@@ -757,7 +757,7 @@
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
+		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -801,7 +801,7 @@
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
+				<revenue>0</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
@@ -846,7 +846,7 @@
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
-		<revenue>0.0</revenue>
+		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>0</nb_conversions>
@@ -890,7 +890,7 @@
 				<bounce_count>0</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
-				<revenue>0.0</revenue>
+				<revenue>0</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>0</nb_conversions>
