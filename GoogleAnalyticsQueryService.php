@@ -103,9 +103,24 @@ class GoogleAnalyticsQueryService
             $defaultRow->setColumn($name, 0);
         }
 
+        // detect the metric used to order result sets. we need to send this metric with each request.
+        $orderByMetric = null;
+        if (!empty($options['orderBys'])) {
+            $orderByMetric = $options['orderBys'][0]['field'];
+        } else {
+            if (in_array('ga:hits', $metricNames)) {
+                $orderByMetric = 'ga:hits';
+            } else if (in_array('ga:sessions', $metricNames)) {
+                $orderByMetric = 'ga:sessions';
+            } else if (in_array('ga:goalCompletionsAll', $metricNames)) {
+                $orderByMetric = 'ga:goalCompletionsAll';
+            } else {
+                throw new \Exception("Not sure what metric to use to order results.");
+            }
+        }
 
         foreach (array_chunk($metricNames, 9) as $chunk) {
-            $chunkResponse = $this->gaBatchGet($date, array_values($chunk), array_merge(['dimensions' => $dimensions], $options));
+            $chunkResponse = $this->gaBatchGet($date, array_values($chunk), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
 
             // some metric/date combinations seem to cause GA to return absolutely nothing (no rows + NULL row count).
             // in this case we remove the problematic metrics and try again.
@@ -115,7 +130,10 @@ class GoogleAnalyticsQueryService
                     continue;
                 }
 
-                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options));
+                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
+
+                // the second request can still fail, in which case repeated requests tend to still fail. so we ignore this data. seems to only
+                // happen for old data anyway.
                 if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
                     continue;
                 }
@@ -325,7 +343,7 @@ class GoogleAnalyticsQueryService
             // ecommerce item metrics (requires correct dimensions)
             Metrics::INDEX_ECOMMERCE_ITEM_REVENUE => 'ga:itemRevenue',
             Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY => 'ga:itemQuantity',
-            Metrics::INDEX_ECOMMERCE_ITEM_PRICE => 'ga:revenuePerItem', // TODO: not sure how accurate this is
+            Metrics::INDEX_ECOMMERCE_ITEM_PRICE => 'ga:revenuePerItem',
             Metrics::INDEX_ECOMMERCE_ORDERS => 'ga:uniquePurchases',
         ];
     }
@@ -400,7 +418,7 @@ class GoogleAnalyticsQueryService
         ];
     }
 
-    private function gaBatchGet($date, $metricNames, $options)
+    private function gaBatchGet($date, $metricNames, $options, $orderByMetric)
     {
         $dimensions = [];
         foreach ($options['dimensions'] as $gaDimension) {
@@ -414,6 +432,11 @@ class GoogleAnalyticsQueryService
         }
 
         $metricNames = array_values($metricNames);
+
+        if (!in_array($orderByMetric, $metricNames)) {
+            $metricNames[] = $orderByMetric;
+        }
+
         $metrics = array_map(function ($name) { return $this->makeGaMetric($name); }, $metricNames);
 
         $request = new \Google_Service_AnalyticsReporting_ReportRequest();
@@ -425,7 +448,7 @@ class GoogleAnalyticsQueryService
 
         if (!isset($options['orderBys'])) {
             $options['orderBys'][] = [
-                'field' => 'ga:sessions',
+                'field' => $orderByMetric,
                 'order' => 'descending',
             ];
         }

@@ -33,7 +33,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function queryNumericRecords(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = [], $metrics = [Metrics::INDEX_GOALS]);
+        $table = $gaQuery->query($day, $dimensions = [], $metrics = [Metrics::INDEX_NB_VISITS, Metrics::INDEX_GOALS]);
 
         $numericRecords = [];
 
@@ -100,6 +100,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, [$dimension], [Metrics::INDEX_NB_CONVERSIONS], [
             'mappings' => [Metrics::INDEX_NB_CONVERSIONS => 'ga:transactions'],
+            'orderBys' => [
+                [
+                    'field' => 'ga:transactions',
+                    'order' => 'desc',
+                ],
+            ],
         ]);
 
         foreach ($table->getRows() as $row) {

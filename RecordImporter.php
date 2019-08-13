@@ -148,18 +148,6 @@ abstract class RecordImporter
         ];
     }
 
-    protected function getConversionOnlyMetrics()
-    {
-        return [
-            Metrics::INDEX_GOAL_NB_CONVERSIONS,
-            Metrics::INDEX_GOAL_NB_VISITS_CONVERTED,
-            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SUBTOTAL,
-            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_TAX,
-            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SHIPPING,
-            Metrics::INDEX_GOAL_ECOMMERCE_ITEMS,
-        ];
-    }
-
     protected function getIdSite()
     {
         return $this->idSite;
