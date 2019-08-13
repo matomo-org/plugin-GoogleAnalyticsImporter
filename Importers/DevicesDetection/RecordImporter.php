@@ -12,6 +12,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\DevicesDetection;
 use DeviceDetector\Parser\Client\Browser;
 use DeviceDetector\Parser\Device\DeviceParserAbstract;
 use DeviceDetector\Parser\OperatingSystem;
+use DeviceDetector\Yaml\Spyc;
 use Piwik\Cache\Transient;
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
@@ -42,6 +43,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private $browserMap;
 
     /**
+     * @var array
+     */
+    private $browserEngineMap;
+
+    /**
      * @var Transient
      */
     private $cache;
@@ -55,6 +61,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->deviceBrandMap = $this->getDeviceBrandMap();
         $this->operatingSystemMap = $this->getOperatingSystemMap();
         $this->browserMap = $this->getBrowserMap();
+        $this->browserEngineMap = $this->getBrowserEngineMap();
     }
 
     public function importRecords(Date $day)
@@ -120,10 +127,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $browsers = new DataTable();
         $browserVersions = new DataTable();
+        $browserEngines = new DataTable();
 
         foreach ($table->getRows() as $row) {
             $browser = $this->mapBrowser($row->getMetadata('ga:browser'));
             $browserVersion = $this->mapBrowserVersion($row->getMetadata('ga:browserVersion'));
+            $browserEngine = $this->mapBrowserEngine($row->getMetadata('ga:browser'));
 
             if (empty($browser)) {
                 $browser = 'xx';
@@ -131,9 +140,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             $this->addRowToTable($browsers, $row, $browser);
             $this->addRowToTable($browserVersions, $row, $browser . ';' . $browserVersion);
+            $this->addRowToTable($browserEngines, $row, $browserEngine);
         }
 
         Common::destroy($table);
+
+        $this->insertRecord(Archiver::BROWSER_ENGINE_RECORD_NAME, $browserEngines, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
+        Common::destroy($browserEngines);
 
         $this->insertRecord(Archiver::BROWSER_RECORD_NAME, $browsers, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($browsers);
@@ -208,6 +221,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         return $this->getValueFromValueMapping($this->browserMap, $browser, 'browser');
     }
 
+    private function mapBrowserEngine($browser)
+    {
+        return $this->getValueFromValueMapping($this->browserEngineMap, $browser, null);
+    }
+
     protected function mapOsVersion($osVersion)
     {
         return $osVersion;
@@ -227,12 +245,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             $stripped = preg_replace('/[^a-zA-Z0-9]/', '', $lower);
             $map[$stripped] = $short;
-
         }
         return $map;
     }
 
-    private function getValueFromValueMapping(array $valueMapping, $value, $valueType)
+    private function getValueFromValueMapping(array $valueMapping, $value, $valueType = null)
     {
         $cleanValue = trim(strtolower($value));
         if (isset($valueMapping[$cleanValue])) {
@@ -244,7 +261,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             return $valueMapping[$extraCleanValue];
         }
 
-        if (!empty($value)) {
+        if (!empty($value)
+            && $valueType !== null
+        ) {
             $this->getLogger()->warning("Encountered unknown $valueType: $value. A new mapping should be added.");
         }
 
@@ -296,9 +315,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     {
         $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.browserMap';
 
-        $availableBrowsers = Browser::getAvailableBrowsers();
         $result = $this->cache->fetch($cacheKey);
         if (empty($result)) {
+            $availableBrowsers = Browser::getAvailableBrowsers();
+
             $result = $this->buildValueMapping($availableBrowsers);
             $result['edge'] = $result['microsoft edge'];
             $result['safari (in-app)'] = $result['mobile safari'];
@@ -319,6 +339,36 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['\'mozilla'] = 'xx';
             $result['mozilla'] = 'xx';
             $this->cache->save($cacheKey, $result);
+        }
+        return $result;
+    }
+
+    private function getBrowserEngineMap()
+    {
+        $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.browserEngineMap';
+
+        $result = $this->cache->fetch($cacheKey);
+        if (empty($result)) {
+            $regexesFile = PIWIK_INCLUDE_PATH . DIRECTORY_SEPARATOR . 'vendor/regexes/client/browsers.yml';
+
+            $spyc = new Spyc();
+            $regexes = $spyc->parseFile($regexesFile);
+
+            $result = [];
+            foreach ($regexes as $regexInfo) {
+                if (empty($regexInfo['engine']['default'])) {
+                    continue;
+                }
+
+                $long = $regexInfo['name'];
+                $engine = $regexInfo['engine']['default'];
+
+                $lower = trim(strtolower($long));
+                $map[$lower] = $engine;
+
+                $stripped = preg_replace('/[^a-zA-Z0-9]/', '', $lower);
+                $result[$stripped] = $engine;
+            }
         }
         return $result;
     }

@@ -2,66 +2,66 @@
 <result>
 	<row>
 		<label>Helmet</label>
-		<revenue>866548</revenue>
-		<quantity>704</quantity>
-		<orders>412</orders>
+		<revenue>433274</revenue>
+		<quantity>352</quantity>
+		<orders>206</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>412</nb_actions>
+		<nb_actions>206</nb_actions>
 		<avg_price>11.91</avg_price>
 		<avg_quantity>1.7</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Bows</label>
-		<revenue>663526</revenue>
-		<quantity>444</quantity>
-		<orders>248</orders>
+		<revenue>331763</revenue>
+		<quantity>222</quantity>
+		<orders>124</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>248</nb_actions>
+		<nb_actions>124</nb_actions>
 		<avg_price>24.35</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Staff</label>
-		<revenue>369812</revenue>
-		<quantity>236</quantity>
-		<orders>134</orders>
+		<revenue>184906</revenue>
+		<quantity>118</quantity>
+		<orders>67</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>134</nb_actions>
+		<nb_actions>67</nb_actions>
 		<avg_price>46.78</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Axes</label>
-		<revenue>350094</revenue>
-		<quantity>166</quantity>
-		<orders>98</orders>
+		<revenue>175047</revenue>
+		<quantity>83</quantity>
+		<orders>49</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>98</nb_actions>
+		<nb_actions>49</nb_actions>
 		<avg_price>86.08</avg_price>
 		<avg_quantity>1.7</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Shields</label>
-		<revenue>344320</revenue>
-		<quantity>256</quantity>
-		<orders>140</orders>
+		<revenue>172160</revenue>
+		<quantity>128</quantity>
+		<orders>70</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>140</nb_actions>
+		<nb_actions>70</nb_actions>
 		<avg_price>38.43</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Armor</label>
-		<revenue>87696</revenue>
-		<quantity>252</quantity>
-		<orders>138</orders>
+		<revenue>43848</revenue>
+		<quantity>126</quantity>
+		<orders>69</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>138</nb_actions>
+		<nb_actions>69</nb_actions>
 		<avg_price>10.09</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>

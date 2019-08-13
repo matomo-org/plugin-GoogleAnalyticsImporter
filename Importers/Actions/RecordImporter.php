@@ -29,6 +29,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private $pageTitlesByPagePath;
     private $pageUrlsByPagePath;
+    private $siteSearchUrls;
 
     public function importRecords(Date $day)
     {
@@ -42,6 +43,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $this->pageTitlesByPagePath = [];
         $this->pageUrlsByPagePath = [];
+        $this->siteSearchUrls = [];
 
         // query for records
         $this->getPageTitlesRecord($day);
@@ -63,6 +65,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         unset($this->pageTitlesByPagePath);
         unset($this->pageUrlsByPagePath);
+        unset($this->siteSearchUrls);
 
         foreach ($this->dataTables as &$table) {
             Common::destroy($table);
@@ -271,13 +274,17 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $mainUrlWithoutSlash = rtrim($mainUrlWithoutSlash, '/');
 
         foreach ($table->getRows() as $row) {
+            $pagePath = $row->getMetadata('ga:pagePath');
+            if (!empty($pagePath) && !empty($this->siteSearchUrls[$pagePath])) { // skip site search pages
+                continue;
+            }
+
             $actionName = $row->getMetadata('ga:pageTitle');
             $actionRow = ArchivingHelper::getActionRow($actionName, Action::TYPE_PAGE_TITLE, $urlPrefix = null, $this->dataTables);
 
             $row->deleteColumn('label');
             $actionRow->sumRow($row, $copyMetadata = false);
 
-            $pagePath = $row->getMetadata('ga:pagePath');
             if (!empty($pagePath)) {
                 $hostname = $row->getMetadata('ga:hostname');
                 if (!empty($hostname)) {
@@ -336,9 +343,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 $wholeUrl = $mainUrlWithoutSlash . $actionName;
             }
 
+            // google removes the search keyword from the URL, but just in case, try to detect it and exclude it from the appropriate reports
             $parsedUrl = parse_url($wholeUrl);
             $isSiteSearch = ActionSiteSearch::detectSiteSearchFromUrl($siteDetails, $parsedUrl);
             if ($isSiteSearch) {
+                $this->siteSearchUrls[$actionName] = true;
                 continue;
             }
 

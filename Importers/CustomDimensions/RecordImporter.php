@@ -17,6 +17,7 @@ use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Plugins\CustomDimensions\API;
 use Piwik\Plugins\CustomDimensions\Archiver;
+use Piwik\Plugins\CustomDimensions\CustomDimensions;
 use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\IdMapper;
 use Psr\Log\LoggerInterface;
@@ -47,20 +48,28 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 throw new \Exception("Cannot find Google Analytics entity ID for custom dimension (ID = {$dimension['idcustomdimension']})");
             }
 
-            $record = $this->queryCustomDimension($gaId, $day);
+            $record = $this->queryCustomDimension($gaId, $day, $dimension);
             $this->insertCustomDimensionRecord($record, $dimension);
             Common::destroy($table);
         }
     }
 
-    private function queryCustomDimension($gaId, Date $day)
+    private function queryCustomDimension($gaId, Date $day, $dimensionObj)
     {
         $gaQuery = $this->getGaQuery();
         $dimension = 'ga:dimension' . $gaId;
 
         $record = new DataTable();
 
-        $table = $gaQuery->query($day, $dimensions = [$dimension], $this->getVisitMetrics());
+        if ($dimensionObj['scope'] === CustomDimensions::SCOPE_VISIT) {
+            $metricsToQuery = $this->getConversionAwareVisitMetrics();
+        } else if ($dimensionObj['scope'] === CustomDimensions::SCOPE_ACTION) {
+            $metricsToQuery = $this->getPageMetrics();
+        } else {
+            return $record;
+        }
+
+        $table = $gaQuery->query($day, $dimensions = [$dimension], $metricsToQuery);
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
             if (empty($label)) {

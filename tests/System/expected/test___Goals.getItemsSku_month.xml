@@ -2,110 +2,110 @@
 <result>
 	<row>
 		<label>DAI2784</label>
-		<revenue>475996</revenue>
-		<quantity>254</quantity>
-		<orders>132</orders>
+		<revenue>237998</revenue>
+		<quantity>127</quantity>
+		<orders>66</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>132</nb_actions>
+		<nb_actions>66</nb_actions>
 		<avg_price>56.79</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI0285</label>
-		<revenue>469616</revenue>
-		<quantity>196</quantity>
-		<orders>108</orders>
+		<revenue>234808</revenue>
+		<quantity>98</quantity>
+		<orders>54</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>108</nb_actions>
+		<nb_actions>54</nb_actions>
 		<avg_price>88.74</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI7456</label>
-		<revenue>369812</revenue>
-		<quantity>236</quantity>
-		<orders>134</orders>
+		<revenue>184906</revenue>
+		<quantity>118</quantity>
+		<orders>67</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>134</nb_actions>
+		<nb_actions>67</nb_actions>
 		<avg_price>46.78</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI6503</label>
-		<revenue>350094</revenue>
-		<quantity>166</quantity>
-		<orders>98</orders>
+		<revenue>175047</revenue>
+		<quantity>83</quantity>
+		<orders>49</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>98</nb_actions>
+		<nb_actions>49</nb_actions>
 		<avg_price>86.08</avg_price>
 		<avg_quantity>1.7</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI0663</label>
-		<revenue>344320</revenue>
-		<quantity>256</quantity>
-		<orders>140</orders>
+		<revenue>172160</revenue>
+		<quantity>128</quantity>
+		<orders>70</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>140</nb_actions>
+		<nb_actions>70</nb_actions>
 		<avg_price>38.43</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI8832</label>
-		<revenue>248448</revenue>
-		<quantity>192</quantity>
-		<orders>108</orders>
+		<revenue>124224</revenue>
+		<quantity>96</quantity>
+		<orders>54</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>108</nb_actions>
+		<nb_actions>54</nb_actions>
 		<avg_price>47.93</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI6406</label>
-		<revenue>187530</revenue>
-		<quantity>190</quantity>
-		<orders>116</orders>
+		<revenue>93765</revenue>
+		<quantity>95</quantity>
+		<orders>58</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>116</nb_actions>
+		<nb_actions>58</nb_actions>
 		<avg_price>34.03</avg_price>
 		<avg_quantity>1.6</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI7474</label>
-		<revenue>147204</revenue>
-		<quantity>188</quantity>
-		<orders>112</orders>
+		<revenue>73602</revenue>
+		<quantity>94</quantity>
+		<orders>56</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>112</nb_actions>
+		<nb_actions>56</nb_actions>
 		<avg_price>27.96</avg_price>
 		<avg_quantity>1.7</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI4293</label>
-		<revenue>87696</revenue>
-		<quantity>252</quantity>
-		<orders>138</orders>
+		<revenue>43848</revenue>
+		<quantity>126</quantity>
+		<orders>69</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>138</nb_actions>
+		<nb_actions>69</nb_actions>
 		<avg_price>10.09</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>DAI0921</label>
-		<revenue>1280</revenue>
-		<quantity>128</quantity>
-		<orders>84</orders>
+		<revenue>640</revenue>
+		<quantity>64</quantity>
+		<orders>42</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>84</nb_actions>
+		<nb_actions>42</nb_actions>
 		<avg_price>0.48</avg_price>
 		<avg_quantity>1.5</avg_quantity>
 		<conversion_rate>0%</conversion_rate>

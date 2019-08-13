@@ -142,19 +142,27 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $social = Social::getInstance();
 
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:fullReferrer'], $this->getConversionAwareVisitMetrics());
+        $table = $gaQuery->query($day, $dimensions = ['ga:fullReferrer', 'ga:medium'], $this->getConversionAwareVisitMetrics());
 
         $urlByWebsite = new DataTable();
         $urlBySocialNetwork = new DataTable();
         foreach ($table->getRows() as $row) {
             $referrerUrl = $row->getMetadata('ga:fullReferrer');
+            if ($referrerUrl == '(direct)') {
+                continue;
+            }
+
+            $medium = $row->getMetadata('ga:medium');
+            if ($medium != 'referral') {
+                continue;
+            }
 
             // URLs don't have protocols in GA
             $referrerUrl = 'http://' . $referrerUrl;
 
             // skip if this isn't a URL
-            if (strrpos($referrerUrl, '/') !== strlen($referrerUrl) - 1) {
-                $this->getLogger()->debug("Non referrer URL encountered: $referrerUrl");
+            if (!filter_var($referrerUrl, FILTER_VALIDATE_URL)) {
+                $this->getLogger()->warning("Non referrer URL encountered: $referrerUrl");
                 continue;
             }
 

@@ -68,7 +68,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
 
         $this->querySiteSearchCategories($day, $record);
-        $this->queryEcommerce($day, $record);
 
         $this->insertRecord(Archiver::CUSTOM_VARIABLE_RECORD_NAME, $record, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable,
             Metrics::INDEX_NB_VISITS);
@@ -137,37 +136,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
 
         Common::destroy($table);
-    }
-
-    private function queryEcommerce(Date $day, DataTable $record)
-    {
-        if (!Site::isEcommerceEnabledFor($this->getIdSite())) {
-            $this->getLogger()->info('Site is not marked as ecommerce in GA, skipping import of ecommerce category reports.');
-            return;
-        }
-
-        $mappings = [
-            'ga:productSku' => '_pks',
-            'ga:productName' => '_pkn',
-            'ga:productCategory' => '_pkc',
-        ];
-
-        $gaQuery = $this->getGaQuery();
-        foreach ($mappings as $gaDimension => $cvarName) {
-            $table = $gaQuery->query($day, $dimensions = [$gaDimension], $this->getEcommerceMetrics());
-
-            foreach ($table->getRows() as $row) {
-                $cvarValue = $row->getMetadata($gaDimension);
-                if (empty($cvarValue)) {
-                    $cvarValue = parent::NOT_SET_IN_GA_LABEL;
-                }
-
-                $topLevelRow = $this->addRowToTable($record, $row, $cvarName);
-                $this->addRowToSubtable($topLevelRow, $row, $cvarValue);
-            }
-
-            Common::destroy($table);
-        }
     }
 
     private function cleanValue($value)

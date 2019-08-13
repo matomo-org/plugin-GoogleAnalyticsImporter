@@ -44,6 +44,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         "DevicesDetection.getBrowserEngines",
         "DevicePlugins.getPlugin",
         "UserId.getUsers",
+        "Contents.getContentNames",
+        "Contents.getContentPieces",
+        "VisitorInterest.getNumberOfVisitsPerPage",
     ];
 
     public function getListHooksRegistered()

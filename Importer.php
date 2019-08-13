@@ -288,7 +288,17 @@ class Importer
                         'plugin' => $plugin,
                     ]);
 
-                    $recordImporter->setArchiveWriter($archiveWriter);
+                    // TODO: if two record importers use the same segment, this will likely break (since one archive will have metrics for one plugin, another archive for another plugin, so queries won't get the full data)
+                    $archiveWriterSegment = $recordImporter->getArchiveWriterSegment();
+
+                    $recordImporterArchiveWriter = $archiveWriter;
+                    if (!empty($archiveWriterSegment)) {
+                        $archiveWriterPlugin = $recordImporter->getArchiveWriterPluginName() ?: $plugin;
+                        $recordImporterArchiveWriter = $this->makeArchiveWriter($site, $date, $archiveWriterSegment, $archiveWriterPlugin);
+                        $recordImporterArchiveWriter->initNewArchive();
+                    }
+
+                    $recordImporter->setArchiveWriter($recordImporterArchiveWriter);
                     $recordImporter->importRecords($date);
 
                     // since we recorded some data, at some time, remove the no data message
@@ -309,6 +319,10 @@ class Importer
                     }
 
                     $lock->expireLock(self::LOCK_TTL);
+
+                    if (!empty($archiveWriterSegment)) {
+                        $recordImporterArchiveWriter->finalizeArchive();
+                    }
                 }
 
                 $archiveWriter->finalizeArchive();
@@ -331,12 +345,15 @@ class Importer
         }
     }
 
-    private function makeArchiveWriter(Site $site, Date $date)
+    private function makeArchiveWriter(Site $site, Date $date, $segment = '', $plugin = null)
     {
         $period = Factory::build('day', $date);
-        $segment = new Segment('', [$site->getId()]);
+        $segment = new Segment($segment, [$site->getId()]);
 
         $params = new Parameters($site, $period, $segment);
+        if (!empty($plugin)) {
+            $params->setRequestedPlugin($plugin);
+        }
         return new ArchiveWriter($params, $isTemp = false);
     }
 

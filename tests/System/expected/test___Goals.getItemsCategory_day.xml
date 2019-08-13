@@ -2,66 +2,66 @@
 <result>
 	<row>
 		<label>Helmet</label>
-		<revenue>348394</revenue>
-		<quantity>290</quantity>
-		<orders>144</orders>
+		<revenue>174197.0</revenue>
+		<quantity>145</quantity>
+		<orders>72</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>144</nb_actions>
+		<nb_actions>72</nb_actions>
 		<avg_price>16.69</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Bows</label>
-		<revenue>253916</revenue>
-		<quantity>162</quantity>
-		<orders>82</orders>
+		<revenue>126958.0</revenue>
+		<quantity>81</quantity>
+		<orders>41</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>82</nb_actions>
+		<nb_actions>41</nb_actions>
 		<avg_price>38.23</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Staff</label>
-		<revenue>159834</revenue>
-		<quantity>102</quantity>
-		<orders>48</orders>
+		<revenue>79917.0</revenue>
+		<quantity>51</quantity>
+		<orders>24</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>48</nb_actions>
+		<nb_actions>24</nb_actions>
 		<avg_price>65.29</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Shields</label>
-		<revenue>158710</revenue>
-		<quantity>118</quantity>
-		<orders>58</orders>
+		<revenue>79355.0</revenue>
+		<quantity>59</quantity>
+		<orders>29</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>58</nb_actions>
+		<nb_actions>29</nb_actions>
 		<avg_price>46.38</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Axes</label>
-		<revenue>134976</revenue>
-		<quantity>64</quantity>
-		<orders>34</orders>
+		<revenue>67488.0</revenue>
+		<quantity>32</quantity>
+		<orders>17</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>34</nb_actions>
+		<nb_actions>17</nb_actions>
 		<avg_price>124.06</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Armor</label>
-		<revenue>38976</revenue>
-		<quantity>112</quantity>
-		<orders>54</orders>
+		<revenue>19488.0</revenue>
+		<quantity>56</quantity>
+		<orders>27</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>54</nb_actions>
+		<nb_actions>27</nb_actions>
 		<avg_price>12.89</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>

@@ -2,110 +2,110 @@
 <result>
 	<row>
 		<label>The Fowl Wind</label>
-		<revenue>648404</revenue>
-		<quantity>346</quantity>
-		<orders>176</orders>
+		<revenue>324202</revenue>
+		<quantity>173</quantity>
+		<orders>88</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>176</nb_actions>
+		<nb_actions>88</nb_actions>
 		<avg_price>85.18</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Mask of the Grand Duchess</label>
-		<revenue>618168</revenue>
-		<quantity>258</quantity>
-		<orders>142</orders>
+		<revenue>309084</revenue>
+		<quantity>129</quantity>
+		<orders>71</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>142</nb_actions>
+		<nb_actions>71</nb_actions>
 		<avg_price>101.24</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Earnest Reprisal</label>
-		<revenue>520244</revenue>
-		<quantity>332</quantity>
-		<orders>176</orders>
+		<revenue>260122</revenue>
+		<quantity>166</quantity>
+		<orders>88</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>176</nb_actions>
+		<nb_actions>88</nb_actions>
 		<avg_price>71.23</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Misfortune's Bite</label>
-		<revenue>510378</revenue>
-		<quantity>242</quantity>
-		<orders>138</orders>
+		<revenue>255189</revenue>
+		<quantity>121</quantity>
+		<orders>69</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>138</nb_actions>
+		<nb_actions>69</nb_actions>
 		<avg_price>122.26</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Path to Glory</label>
-		<revenue>454610</revenue>
-		<quantity>338</quantity>
-		<orders>184</orders>
+		<revenue>227305</revenue>
+		<quantity>169</quantity>
+		<orders>92</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>184</nb_actions>
+		<nb_actions>92</nb_actions>
 		<avg_price>58.48</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Curse of Morrac</label>
-		<revenue>375260</revenue>
-		<quantity>290</quantity>
-		<orders>162</orders>
+		<revenue>187630</revenue>
+		<quantity>145</quantity>
+		<orders>81</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>162</nb_actions>
+		<nb_actions>81</nb_actions>
 		<avg_price>47.93</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>The Last Word</label>
-		<revenue>272412</revenue>
-		<quantity>276</quantity>
-		<orders>160</orders>
+		<revenue>136206</revenue>
+		<quantity>138</quantity>
+		<orders>80</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>160</nb_actions>
+		<nb_actions>80</nb_actions>
 		<avg_price>49.35</avg_price>
 		<avg_quantity>1.7</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Helm of Drasca</label>
-		<revenue>233334</revenue>
-		<quantity>298</quantity>
-		<orders>158</orders>
+		<revenue>116667</revenue>
+		<quantity>149</quantity>
+		<orders>79</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>158</nb_actions>
+		<nb_actions>79</nb_actions>
 		<avg_price>39.65</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Masterwork Prowler Armor</label>
-		<revenue>115536</revenue>
-		<quantity>332</quantity>
-		<orders>182</orders>
+		<revenue>57768</revenue>
+		<quantity>166</quantity>
+		<orders>91</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>182</nb_actions>
+		<nb_actions>91</nb_actions>
 		<avg_price>15.3</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Keen Wyvern Vitaar</label>
-		<revenue>2140</revenue>
-		<quantity>214</quantity>
-		<orders>130</orders>
+		<revenue>1070</revenue>
+		<quantity>107</quantity>
+		<orders>65</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>130</nb_actions>
+		<nb_actions>65</nb_actions>
 		<avg_price>0.46</avg_price>
 		<avg_quantity>1.6</avg_quantity>
 		<conversion_rate>0%</conversion_rate>

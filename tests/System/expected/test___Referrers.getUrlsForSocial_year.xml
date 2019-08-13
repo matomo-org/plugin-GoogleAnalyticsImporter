@@ -1,6 +1,96 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
+		<label>facebook.com/Divezone.net</label>
+		<nb_visits>71</nb_visits>
+		<nb_actions>256</nb_actions>
+		<sum_visit_length>2430</sum_visit_length>
+		<bounce_count>11</bounce_count>
+		<nb_visits_converted>21</nb_visits_converted>
+		<nb_conversions>46</nb_conversions>
+		<revenue>219053</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>11</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>9</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>11</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>11</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>24</nb_conversions>
+				<revenue>219053</revenue>
+				<items>161</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>42</sum_daily_nb_uniq_visitors>
+		<segment>referrerUrl==http%3A%2F%2Ffacebook.com%2FDivezone.net</segment>
+		<url>http://facebook.com/Divezone.net</url>
+	</row>
+	<row>
+		<label>twitter.com/Divezone</label>
+		<nb_visits>64</nb_visits>
+		<nb_actions>277</nb_actions>
+		<sum_visit_length>2225</sum_visit_length>
+		<bounce_count>13</bounce_count>
+		<nb_visits_converted>15</nb_visits_converted>
+		<nb_conversions>47</nb_conversions>
+		<revenue>291779</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>11</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>9</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>5</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>4</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>31</nb_conversions>
+				<revenue>291779</revenue>
+				<items>203</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>38</sum_daily_nb_uniq_visitors>
+		<segment>referrerUrl==http%3A%2F%2Ftwitter.com%2FDivezone</segment>
+		<url>http://twitter.com/Divezone</url>
+	</row>
+	<row>
 		<label>reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</label>
 		<nb_visits>31</nb_visits>
 		<nb_actions>116</nb_actions>

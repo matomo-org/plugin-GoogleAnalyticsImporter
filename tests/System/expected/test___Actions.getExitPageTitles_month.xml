@@ -77,6 +77,44 @@
 		<segment>exitPageTitle==Crestwood</segment>
 	</row>
 	<row>
+		<label> Top 10 des plus belles Plongées Sous Marine dans le Monde ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>27</nb_visits>
+		<nb_hits>32</nb_hits>
+		<sum_time_spent>3597</sum_time_spent>
+		<entry_nb_visits>5</entry_nb_visits>
+		<entry_nb_actions>6</entry_nb_actions>
+		<entry_sum_visit_length>53</entry_sum_visit_length>
+		<entry_bounce_count>4</entry_bounce_count>
+		<exit_nb_visits>5</exit_nb_visits>
+		<sum_daily_nb_uniq_visitors>26</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>5</sum_daily_entry_nb_uniq_visitors>
+		<sum_daily_exit_nb_uniq_visitors>5</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>112</avg_time_on_page>
+		<bounce_rate>80%</bounce_rate>
+		<exit_rate>19%</exit_rate>
+		<segment>exitPageTitle==Top+10+des+plus+belles+Plong%C3%A9es+Sous+Marine+dans+le+Monde+%21+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
+		<label> Search</label>
+		<nb_visits>22</nb_visits>
+		<nb_hits>113</nb_hits>
+		<sum_time_spent>46</sum_time_spent>
+		<entry_nb_visits>3</entry_nb_visits>
+		<entry_nb_actions>7</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<sum_daily_nb_uniq_visitors>112</sum_daily_nb_uniq_visitors>
+		<sum_daily_entry_nb_uniq_visitors>4</sum_daily_entry_nb_uniq_visitors>
+		<exit_nb_visits>1</exit_nb_visits>
+		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>33%</bounce_rate>
+		<exit_rate>5%</exit_rate>
+		<segment>exitPageTitle==Search</segment>
+	</row>
+	<row>
 		<label> Solas</label>
 		<nb_visits>21</nb_visits>
 		<nb_hits>25</nb_hits>
@@ -284,25 +322,6 @@
 		<bounce_rate>7%</bounce_rate>
 		<exit_rate>136%</exit_rate>
 		<segment>exitPageTitle==Caer+Bronach</segment>
-	</row>
-	<row>
-		<label> Top 10 des plus belles Plongées Sous Marine dans le Monde ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>5</nb_visits>
-		<nb_hits>6</nb_hits>
-		<sum_time_spent>53</sum_time_spent>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>6</entry_nb_actions>
-		<entry_sum_visit_length>53</entry_sum_visit_length>
-		<entry_bounce_count>4</entry_bounce_count>
-		<exit_nb_visits>5</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>5</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>5</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>9</avg_time_on_page>
-		<bounce_rate>80%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>exitPageTitle==Top+10+des+plus+belles+Plong%C3%A9es+Sous+Marine+dans+le+Monde+%21+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
 		<label> Coût de la vie en Inde - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -635,24 +654,5 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
 		<segment>exitPageTitle==Que+faire+%C3%A0+Bali%3F+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
-	</row>
-	<row>
-		<label> Search</label>
-		<nb_visits>0</nb_visits>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>7</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>1</entry_bounce_count>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>4</sum_daily_entry_nb_uniq_visitors>
-		<exit_nb_visits>1</exit_nb_visits>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>0</avg_time_on_page>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Search</segment>
 	</row>
 </result>
