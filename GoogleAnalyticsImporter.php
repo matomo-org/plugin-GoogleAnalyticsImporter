@@ -47,6 +47,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         "Contents.getContentNames",
         "Contents.getContentPieces",
         "VisitorInterest.getNumberOfVisitsPerPage",
+        "Provider.getProvider",
     ];
 
     public function getListHooksRegistered()
@@ -159,6 +160,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                 return;
             }
 
+            $this->addNewlineIfNeededToFooter($view);
             $view->config->show_footer_message .= '<br/>' . Piwik::translate('GoogleAnalyticsImporter_LiveDataUnavailableForImported');
             return;
         }
@@ -172,6 +174,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                 return;
             }
 
+            $this->addNewlineIfNeededToFooter($view);
             $view->config->show_footer_message .= '<br/>' . Piwik::translate('GoogleAnalyticsImporter_UnsupportedReportInImportRange');
             return;
         }
@@ -184,6 +187,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                 return;
             }
 
+            $this->addNewlineIfNeededToFooter($view);
             $view->config->show_footer_message .= '<br/>' . Piwik::translate('GoogleAnalyticsImporter_ThisReportWasImportedFromGoogle');
         } else {
             // for non-day periods, we can't tell if the report is all GA data or mixed, so we guess based on
@@ -192,10 +196,17 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                 return;
             }
 
+            $this->addNewlineIfNeededToFooter($view);
             $view->config->show_footer_message .= '<br/>' . Piwik::translate('GoogleAnalyticsImporter_ThisReportWasImportedFromGoogleMultiPeriod');
         }
     }
 
+    private function addNewlineIfNeededToFooter(ViewDataTable $view)
+    {
+        if (!empty($view->config->show_footer_message)) {
+            $view->config->show_footer_message .= '<br/>';
+        }
+    }
     public function archivingFinishedForSite($idSite, $completed)
     {
         /** @var LoggerInterface $logger */
