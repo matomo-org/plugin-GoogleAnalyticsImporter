@@ -131,11 +131,15 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         foreach ($table->getRows() as $row) {
             $browser = $this->mapBrowser($row->getMetadata('ga:browser'));
-            $browserVersion = $this->mapBrowserVersion($row->getMetadata('ga:browserVersion'));
-            $browserEngine = $this->mapBrowserEngine($row->getMetadata('ga:browser'));
-
             if (empty($browser)) {
                 $browser = 'xx';
+            }
+
+            $browserVersion = $this->mapBrowserVersion($row->getMetadata('ga:browserVersion'));
+
+            $browserEngine = $this->mapBrowserEngine($row->getMetadata('ga:browser'));
+            if (empty($browserEngine)) {
+                $browserEngine = 'xx';
             }
 
             $this->addRowToTable($browsers, $row, $browser);
