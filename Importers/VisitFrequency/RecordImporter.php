@@ -8,40 +8,27 @@
  */
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency;
 
+use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\VisitFrequency\API;
+use Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter as VisitsSummaryAPI;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
     const PLUGIN_NAME = 'VisitFrequency';
 
-    public function getArchiveWriterSegment()
-    {
-        return API::RETURNING_VISITOR_SEGMENT;
-    }
-
-    public function getArchiveWriterPluginName()
-    {
-        return 'VisitsSummary';
-    }
-
     public function importRecords(Date $day)
     {
-        $gaQuery = $this->getGaQuery();
-        $result = $gaQuery->query($day, [], $this->getVisitMetrics(), [
-            'segment' => [
-                'segmentId' => 'gaid::-3',
-            ],
-        ]);
+        $segmentToApply = [
+            'segmentId' => 'gaid::-3',
+        ];
 
-        $row = $result->getFirstRow();
-        if (empty($row)) {
-            $columns = [Metrics::INDEX_NB_VISITS => 0];
-        } else {
-            $columns = $row->getColumns();
-        }
+        $visitsSummaryRecordImporter = new VisitsSummaryAPI($this->getGaQuery(), $this->getIdSite(), $this->getLogger(), $segmentToApply);
 
-        $this->insertNumericRecords($columns);
+        $importer = StaticContainer::get(Importer::class);
+        $importer->importDay(new \Piwik\Site($this->getIdSite()), $day, ['VisitsSummary' => $visitsSummaryRecordImporter],
+            API::RETURNING_VISITOR_SEGMENT, 'VisitsSummary');
     }
 }

@@ -12,6 +12,8 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary;
 
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
@@ -22,10 +24,27 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
      */
     private $numericRecords;
 
+    /**
+     * @var string
+     */
+    private $segmentToApply;
+
+    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger, $segmentToApply = null)
+    {
+        parent::__construct($gaQuery, $idSite, $logger);
+        $this->segmentToApply = $segmentToApply;
+    }
+
     public function importRecords(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $result = $gaQuery->query($day, [], $this->getVisitMetrics());
+
+        $options = [];
+        if (!empty($this->segmentToApply)) {
+            $options['segment'] = $this->segmentToApply;
+        }
+
+        $result = $gaQuery->query($day, [], $this->getVisitMetrics(), $options);
 
         $row = $result->getFirstRow();
         if (empty($row)) {

@@ -4,12 +4,12 @@
 	<nb_visits_converted>77</nb_visits_converted>
 	<revenue>547403</revenue>
 	<conversion_rate>39.29%</conversion_rate>
-	<nb_conversions_new_visit>0</nb_conversions_new_visit>
-	<nb_visits_converted_new_visit>0</nb_visits_converted_new_visit>
-	<revenue_new_visit>0</revenue_new_visit>
+	<nb_conversions_new_visit>143</nb_conversions_new_visit>
+	<nb_visits_converted_new_visit>77</nb_visits_converted_new_visit>
+	<revenue_new_visit>547403</revenue_new_visit>
 	<conversion_rate_new_visit>0%</conversion_rate_new_visit>
-	<nb_conversions_returning_visit>0</nb_conversions_returning_visit>
-	<nb_visits_converted_returning_visit>67</nb_visits_converted_returning_visit>
-	<revenue_returning_visit>0</revenue_returning_visit>
-	<conversion_rate_returning_visit>45.58%</conversion_rate_returning_visit>
+	<nb_conversions_returning_visit>143</nb_conversions_returning_visit>
+	<nb_visits_converted_returning_visit>77</nb_visits_converted_returning_visit>
+	<revenue_returning_visit>547403</revenue_returning_visit>
+	<conversion_rate_returning_visit>52.38%</conversion_rate_returning_visit>
 </result>

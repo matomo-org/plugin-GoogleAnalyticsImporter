@@ -78,7 +78,7 @@ class ImportedFromGoogle extends Fixture
 
         $command = "php " . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console ' . $domainParam
             . ' googleanalyticsimporter:import-reports --view=' . $this->viewId
-            . ' --dates=' . $this->importedDateRange . ' -vvv --property=' . $property;
+            . ' --dates=' . $this->importedDateRange . ' --property=' . $property;
 
         print "\nImporting from google...\n";
 

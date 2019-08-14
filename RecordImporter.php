@@ -65,16 +65,6 @@ abstract class RecordImporter
         $this->archiveWriter = $archiveWriter;
     }
 
-    public function getArchiveWriterSegment()
-    {
-        return null;
-    }
-
-    public function getArchiveWriterPluginName()
-    {
-        return null;
-    }
-
     /**
      * @return int
      */

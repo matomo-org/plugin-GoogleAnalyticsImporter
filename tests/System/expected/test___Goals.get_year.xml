@@ -8,8 +8,8 @@
 	<nb_visits_converted_new_visit>0</nb_visits_converted_new_visit>
 	<revenue_new_visit>0</revenue_new_visit>
 	<conversion_rate_new_visit>0%</conversion_rate_new_visit>
-	<nb_conversions_returning_visit>0</nb_conversions_returning_visit>
-	<nb_visits_converted_returning_visit>185</nb_visits_converted_returning_visit>
-	<revenue_returning_visit>0</revenue_returning_visit>
-	<conversion_rate_returning_visit>33.76%</conversion_rate_returning_visit>
+	<nb_conversions_returning_visit>430</nb_conversions_returning_visit>
+	<nb_visits_converted_returning_visit>210</nb_visits_converted_returning_visit>
+	<revenue_returning_visit>1954936</revenue_returning_visit>
+	<conversion_rate_returning_visit>38.32%</conversion_rate_returning_visit>
 </result>

@@ -86,6 +86,16 @@ class Importer
      */
     private $importStatus;
 
+    /**
+     * @var Lock
+     */
+    private $currentLock = null;
+
+    /**
+     * @var string
+     */
+    private $noDataMessageRemoved = false;
+
     public function __construct(ReportsProvider $reportsProvider, \Google_Service_Analytics $gaService, \Google_Service_AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
                                 IdMapper $idMapper, ImportStatus $importStatus)
@@ -257,10 +267,11 @@ class Importer
         passthru($command);
     }
 
-    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock)
+    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '')
     {
         try {
-            $noDataMessageRemoved = false;
+            $this->currentLock = $lock;
+            $this->noDataMessageRemoved = false;
             $this->queryCount = 0;
 
             $endPlusOne = $end->addDay(1);
@@ -275,57 +286,12 @@ class Importer
 
             $site = new Site($idSite);
             for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
-                $archiveWriter = $this->makeArchiveWriter($site, $date);
-                $archiveWriter->initNewArchive();
-
                 $this->logger->info("Importing data for GA View {viewId} for date {date}...", [
                     'viewId' => $viewId,
                     'date' => $date->toString(),
                 ]);
 
-                foreach ($recordImporters as $plugin => $recordImporter) {
-                    $this->logger->debug("Importing data for the {plugin} plugin.", [
-                        'plugin' => $plugin,
-                    ]);
-
-                    // TODO: if two record importers use the same segment, this will likely break (since one archive will have metrics for one plugin, another archive for another plugin, so queries won't get the full data)
-                    $archiveWriterSegment = $recordImporter->getArchiveWriterSegment();
-
-                    $recordImporterArchiveWriter = $archiveWriter;
-                    if (!empty($archiveWriterSegment)) {
-                        $archiveWriterPlugin = $recordImporter->getArchiveWriterPluginName() ?: $plugin;
-                        $recordImporterArchiveWriter = $this->makeArchiveWriter($site, $date, $archiveWriterSegment, $archiveWriterPlugin);
-                        $recordImporterArchiveWriter->initNewArchive();
-                    }
-
-                    $recordImporter->setArchiveWriter($recordImporterArchiveWriter);
-                    $recordImporter->importRecords($date);
-
-                    // since we recorded some data, at some time, remove the no data message
-                    if (!$noDataMessageRemoved) {
-                        $this->removeNoDataMessage($idSite);
-                        $noDataMessageRemoved = true;
-                    }
-
-                    if ($plugin === 'VisitsSummary') {
-                        /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter $visitsSummaryRecordImporter */
-                        $visitsSummaryRecordImporter = $recordImporter;
-
-                        $sessions = $visitsSummaryRecordImporter->getSessions();
-                        if ($sessions <= 0) {
-                            $this->logger->info("Found 0 sessions for {$date}, skipping rest of plugins for this day.");
-                            break;
-                        }
-                    }
-
-                    $lock->expireLock(self::LOCK_TTL);
-
-                    if (!empty($archiveWriterSegment)) {
-                        $recordImporterArchiveWriter->finalizeArchive();
-                    }
-                }
-
-                $archiveWriter->finalizeArchive();
+                $this->importDay($site, $date, $recordImporters, $segment);
 
                 $this->importStatus->dayImportFinished($idSite, $date);
             }
@@ -343,6 +309,50 @@ class Importer
 
             throw $ex;
         }
+    }
+
+    /**
+     * For use in RecordImporters that need to archive data for segments.
+     * @var RecordImporter[] $recordImporters
+     */
+    public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
+    {
+        $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
+        $archiveWriter->initNewArchive();
+
+
+        foreach ($recordImporters as $plugin => $recordImporter) {
+            $this->logger->debug("Importing data for the {plugin} plugin.", [
+                'plugin' => $plugin,
+            ]);
+
+            // TODO: change visitor frequency importer
+            // TODO: if two record importers use the same segment, this will likely break (since one archive will have metrics for one plugin, another archive for another plugin, so queries won't get the full data)
+
+            $recordImporter->setArchiveWriter($archiveWriter);
+            $recordImporter->importRecords($date);
+
+            // since we recorded some data, at some time, remove the no data message
+            if (!$this->noDataMessageRemoved) {
+                $this->removeNoDataMessage($site->getId());
+                $this->noDataMessageRemoved = true;
+            }
+
+            if ($plugin === 'VisitsSummary') {
+                /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter $visitsSummaryRecordImporter */
+                $visitsSummaryRecordImporter = $recordImporter;
+
+                $sessions = $visitsSummaryRecordImporter->getSessions();
+                if ($sessions <= 0) {
+                    $this->logger->info("Found 0 sessions for {$date}, skipping rest of plugins for this day.");
+                    break;
+                }
+            }
+
+            $this->currentLock->expireLock(self::LOCK_TTL);
+        }
+
+        $archiveWriter->finalizeArchive();
     }
 
     private function makeArchiveWriter(Site $site, Date $date, $segment = '', $plugin = null)

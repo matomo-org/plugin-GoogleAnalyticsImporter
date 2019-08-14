@@ -10,19 +10,32 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\Goals;
 
 use Piwik\Common;
+use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Plugins\Goals\Archiver;
-use Piwik\Plugins\SEO\Metric\Metric;
+use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
+use Piwik\Plugins\Goals\API as GoalsAPI;
+use Piwik\Plugins\VisitFrequency\API as VisitFrequencyAPI;
 use Piwik\Site;
 use Piwik\Tracker\GoalManager;
+use Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
     const PLUGIN_NAME = 'Goals';
 
     private $itemRecords;
+
+    private $segmentToApply;
+
+    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger, $segmentToApply = null)
+    {
+        parent::__construct($gaQuery, $idSite, $logger);
+        $this->segmentToApply = $segmentToApply;
+    }
 
     public function importRecords(Date $day)
     {
@@ -32,8 +45,46 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function queryNumericRecords(Date $day)
     {
+        if ($this->segmentToApply !== null) { // if computing for new visit/returning visitor segment
+            $this->queryNumericRecordsWithSegmentSet($day, $this->segmentToApply);
+            return;
+        }
+
+        // if this is the main record importer instance, archive once for root segment
+        $this->queryNumericRecordsWithSegmentSet($day, null);
+
+        // then import for dependent segments
+        $segments = [
+            GoalsAPI::NEW_VISIT_SEGMENT => [
+                'segmentId' => 'gaid::-2',
+            ],
+            VisitFrequencyAPI::RETURNING_VISITOR_SEGMENT => [
+                'segmentId' => 'gaid::-3',
+            ],
+        ];
+
+        $site = new Site($this->getIdSite());
+
+        $importer = StaticContainer::get(Importer::class);
+        foreach ($segments as $segment => $gaSegment) {
+            $childRecordImporter = new RecordImporter($this->getGaQuery(), $this->getIdSite(), $this->getLogger(), $gaSegment);
+            $importer->importDay($site, $day, ['Goals' => $childRecordImporter], $segment, 'Goals');
+        }
+    }
+
+    private function queryNumericRecordsWithSegmentSet(Date $day, $segmentToApply)
+    {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = [], $metrics = [Metrics::INDEX_NB_VISITS, Metrics::INDEX_GOALS]);
+
+        $options = [];
+        if (!empty($segmentToApply)) {
+            $options['segment'] = $segmentToApply;
+        }
+
+        $table = $gaQuery->query($day, $dimensions = [], $metrics = [Metrics::INDEX_NB_VISITS, Metrics::INDEX_GOALS], $options);
+        if ($table->getRowsCount() == 0) {
+            return;
+        }
 
         $numericRecords = [];
 
