@@ -41,6 +41,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
      */
     private $referrerTypeRecord;
 
+    private $campaignKeywords;
+
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
@@ -60,6 +62,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     public function importRecords(Date $day)
     {
+        $this->campaignKeywords = [];
+
         $this->referrerTypeRecord = new DataTable();
 
         $keywordByCampaign = $this->getKeywordByCampaign($day);
@@ -100,6 +104,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->referrerTypeRecord = null;
 
         unset($blob);
+        unset($this->campaignKeywords);
 
         // numeric records
         $numericRecords = array(
@@ -127,6 +132,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             }
 
             $keyword = $row->getMetadata('ga:keyword');
+
+            $this->campaignKeywords[$keyword] = true;
 
             $topLevelRow = $this->addRowToTable($keywordByCampaign, $row, $campaign);
             $this->addRowToSubtable($topLevelRow, $row, $keyword);
@@ -197,12 +204,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $searchEngineByKeyword = new DataTable();
 
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:source', 'ga:medium', 'ga:keyword'], $this->getConversionAwareVisitMetrics());
+        $table = $gaQuery->query($day, $dimensions = ['ga:source', 'ga:medium', 'ga:keyword', 'ga:campaign'], $this->getConversionAwareVisitMetrics());
 
         foreach ($table->getRows() as $row) {
             $source = $row->getMetadata('ga:source');
             $medium = $row->getMetadata('ga:medium');
             $keyword = $row->getMetadata('ga:keyword');
+            $campaign = $row->getMetadata('ga:campaign');
 
             if ($medium == 'referral') {
                 $searchEngineName = $this->searchEngineMapper->mapReferralMediumToSearchEngine($medium);
@@ -212,6 +220,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             } else if ($medium == 'organic') { // not a search engine referrer
                 $searchEngineName = $this->searchEngineMapper->mapSourceToSearchEngine($source);
             } else {
+                continue;
+            }
+
+            if (!empty($campaign)) {
                 continue;
             }
 

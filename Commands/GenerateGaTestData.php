@@ -84,12 +84,20 @@ class GenerateGaTestData extends ConsoleCommand
         '',
 
         // 6 search engine
-        'http://google.com/search',
-        'http://google.com/search',
-        'http://google.com/search',
-        'http://google.com/search',
-        'http://google.com/search',
-        'http://google.com/search',
+        'https://www.google.com/search?q=here+is+a+test+search',
+        'https://www.google.com/search?q=some+search',
+        'https://www.google.com/search?q=relevant+keywords',
+        'https://www.google.com/search?q=irrelevant+keywords',
+        'https://www.google.com/search?q=irreverant+search',
+        'https://www.google.com/search?q=immaculate+search',
+
+        // params added if this is rolled
+        'CAMPAIGN',
+        'CAMPAIGN',
+        'CAMPAIGN',
+        'CAMPAIGN',
+        'CAMPAIGN',
+        'CAMPAIGN',
     ];
     
     private $userTypes = [
@@ -480,6 +488,54 @@ class GenerateGaTestData extends ConsoleCommand
         $this->sendPageview($accountId);
     }
 
+    private $campaignNames = [
+        'campaign 1',
+        'campaign 2',
+        'campaign 3',
+        'campaign 4',
+        'campaign 5',
+    ];
+
+    private $campaignSources = [
+        'campaign source 1',
+        'campaign source 2',
+        'campaign source 3',
+        'campaign source 4',
+        'campaign source 5',
+    ];
+
+    private $campaignKeywords = [
+        'campaign keyword 1',
+        'campaign keyword 2',
+        'campaign keyword 3',
+        'campaign keyword 4',
+        'campaign keyword 5',
+    ];
+
+    private $campaignMediums = [
+        'campaign medium 1',
+        'campaign medium 2',
+        'campaign medium 3',
+        'campaign medium 4',
+        'campaign medium 5',
+    ];
+
+    private $campaignContents = [
+        'campaign content 1',
+        'campaign content 2',
+        'campaign content 3',
+        'campaign content 4',
+        'campaign content 5',
+    ];
+
+    private $campaignIds = [
+        'campaign id 1',
+        'campaign id 2',
+        'campaign id 3',
+        'campaign id 4',
+        'campaign id 5',
+    ];
+
     private function sendPageview($accountId)
     {
         $page = $this->getRandomElement($this->pages);
@@ -490,7 +546,15 @@ class GenerateGaTestData extends ConsoleCommand
 
         if ($newVisit) {
             $referrer = $this->getRandomElement($this->referrers);
-            if ($referrer) {
+            if ($referrer == 'CAMPAIGN') {
+                // cn, cs, cm, ck, cc, ci
+                $params['cn'] = $this->getRandomElement($this->campaignNames);
+                $params['cs'] = $this->getRandomElement($this->campaignSources);
+                $params['cm'] = $this->getRandomElement($this->campaignMediums);
+                $params['ck'] = $this->getRandomElement($this->campaignKeywords);
+                $params['cc'] = $this->getRandomElement($this->campaignContents);
+                $params['ci'] = $this->getRandomElement($this->campaignIds);
+            } else if ($referrer) {
                 $params['dr'] = $referrer;
             }
             $params['sc'] = 'start';
@@ -503,6 +567,7 @@ class GenerateGaTestData extends ConsoleCommand
         $params['cd5'] = $this->getRandomElement($this->happinessLevels);
         $params['cd6'] = $this->getRandomEventValue();
         $params['cd7'] = $this->getRandomElement($this->alignments);
+        $params['pdt'] = $this->getRandomPageDownloadTime();
 
         $this->send($params);
     }
@@ -651,5 +716,10 @@ class GenerateGaTestData extends ConsoleCommand
             $httpPassword = null,
             $requestBody
         );
+    }
+
+    private function getRandomPageDownloadTime()
+    {
+        return random_int(0, 5 * 1000);
     }
 }
