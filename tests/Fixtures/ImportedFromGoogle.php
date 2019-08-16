@@ -23,13 +23,17 @@ class ImportedFromGoogle extends Fixture
     public $dateTime = '2019-06-30 00:00:00';
     public $importedDateRange = '2019-06-27,2019-07-02';
 
+    public $campaignIdSite = 2;
+    public $campaignDataDateTime = '2019-08-14';
+    public $campaignDataDateRange = '2019-08-14,2019-08-14';
+
     public $accessToken;
     public $viewId;
     public $clientConfig;
 
     public function __construct()
     {
-        $this->extraPluginsToLoad = ['Funnels'];
+        $this->extraPluginsToLoad = ['Funnels', 'MarketingCampaignsReporting'];
     }
 
     public function setUp()
@@ -38,7 +42,8 @@ class ImportedFromGoogle extends Fixture
 
         $this->getGoogleAnalyticsParams();
 
-        $this->runGoogleImporter();
+        $this->runGoogleImporter($this->importedDateRange);
+        $this->runGoogleImporter($this->campaignDataDateRange);
     }
 
     private function getGoogleAnalyticsParams()
@@ -67,7 +72,7 @@ class ImportedFromGoogle extends Fixture
         return $value;
     }
 
-    private function runGoogleImporter()
+    private function runGoogleImporter($dates)
     {
         $domain = Config::getHostname();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
@@ -78,7 +83,7 @@ class ImportedFromGoogle extends Fixture
 
         $command = "php " . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console ' . $domainParam
             . ' googleanalyticsimporter:import-reports --view=' . $this->viewId
-            . ' --dates=' . $this->importedDateRange . ' --property=' . $property;
+            . ' --dates=' . $dates . ' --property=' . $property;
 
         print "\nImporting from google...\n";
 

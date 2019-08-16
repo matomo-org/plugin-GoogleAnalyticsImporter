@@ -106,9 +106,9 @@ abstract class RecordImporter
 
     protected function getActionMetrics()
     {
+        // NOTE: Metrics::INDEX_NB_VISITS, Metrics::INDEX_NB_UNIQ_VISITORS are not included here, though they are queried
+        // at the same time in matomo, since Google Analytics can sometimes return less visits than it should when combined with NB_HITS.
         return [
-            Metrics::INDEX_NB_VISITS,
-            Metrics::INDEX_NB_UNIQ_VISITORS,
             Metrics::INDEX_PAGE_NB_HITS,
         ];
     }

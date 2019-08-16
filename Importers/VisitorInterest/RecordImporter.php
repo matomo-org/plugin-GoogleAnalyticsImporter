@@ -25,6 +25,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     {
         $this->secondsGap = Archiver::getSecondsGap();
 
+        $this->queryDimension($day, 'ga:pageDepth', Archiver::$pageGap, Archiver::PAGES_VIEWED_RECORD_NAME,
+            function ($value) { return $this->getPagesViewedLabel($value); });
         $this->queryDimension($day, 'ga:sessionCount', Archiver::$visitNumberGap, Archiver::VISITS_COUNT_RECORD_NAME,
             function ($value) { return $this->getVisitByNumberLabel($value); });
         $this->queryDimension($day, 'ga:daysSinceLastSession', Archiver::$daysSinceLastVisitGap, Archiver::DAYS_SINCE_LAST_RECORD_NAME,
@@ -65,6 +67,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertRecord(Archiver::TIME_SPENT_RECORD_NAME, $record);
 
         Common::destroy($record);
+    }
+
+    private function getPagesViewedLabel($value)
+    {
+        return $this->getGapLabel(Archiver::$pageGap, $value);
     }
 
     private function getVisitByNumberLabel($value)

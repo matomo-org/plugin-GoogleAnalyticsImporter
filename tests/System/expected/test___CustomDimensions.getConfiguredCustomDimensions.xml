@@ -34,6 +34,17 @@
 		<case_sensitive>1</case_sensitive>
 	</row>
 	<row>
+		<idcustomdimension>6</idcustomdimension>
+		<idsite>1</idsite>
+		<name>recommendedLevel</name>
+		<index>4</index>
+		<scope>action</scope>
+		<active>1</active>
+		<extractions>
+		</extractions>
+		<case_sensitive>1</case_sensitive>
+	</row>
+	<row>
 		<idcustomdimension>4</idcustomdimension>
 		<idsite>1</idsite>
 		<name>userType</name>
@@ -50,17 +61,6 @@
 		<name>happinessLevel</name>
 		<index>2</index>
 		<scope>visit</scope>
-		<active>1</active>
-		<extractions>
-		</extractions>
-		<case_sensitive>1</case_sensitive>
-	</row>
-	<row>
-		<idcustomdimension>6</idcustomdimension>
-		<idsite>1</idsite>
-		<name>recommendedLevel</name>
-		<index>4</index>
-		<scope>action</scope>
 		<active>1</active>
 		<extractions>
 		</extractions>

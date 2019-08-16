@@ -101,6 +101,10 @@ class ImportTest extends SystemTestCase
         $config = require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
         foreach ($recordImporterClasses as $class) {
+            if ($class::PLUGIN_NAME == 'MarketingCampaignsReporting') {
+                continue;
+            }
+
             $apiToTest[] = $class::PLUGIN_NAME;
         }
 
@@ -129,6 +133,12 @@ class ImportTest extends SystemTestCase
                     'flat' => '1',
                 ],
             ]],
+
+            ['MarketingCampaignsReporting', [
+                'idSite' => self::$fixture->campaignIdSite,
+                'date' => self::$fixture->campaignDataDateTime,
+                'periods' => ['day', 'week', 'month', 'year'],
+            ]]
         ];
     }
 

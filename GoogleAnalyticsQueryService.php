@@ -108,14 +108,17 @@ class GoogleAnalyticsQueryService
         if (!empty($options['orderBys'])) {
             $orderByMetric = $options['orderBys'][0]['field'];
         } else {
-            if (in_array('ga:hits', $metricNames)) {
-                $orderByMetric = 'ga:hits';
+            // TODO: can probably clean this up
+            if (in_array('ga:uniquePageviews', $metricNames)) {
+                $orderByMetric = 'ga:uniquePageviews';
+            } else if (in_array('ga:pageviews', $metricNames)) {
+                $orderByMetric = 'ga:pageviews';
             } else if (in_array('ga:sessions', $metricNames)) {
                 $orderByMetric = 'ga:sessions';
             } else if (in_array('ga:goalCompletionsAll', $metricNames)) {
                 $orderByMetric = 'ga:goalCompletionsAll';
             } else {
-                throw new \Exception("Not sure what metric to use to order results.");
+                throw new \Exception("Not sure what metric to use to order results, got: " . implode(', ', $metricNames));
             }
         }
 
@@ -320,11 +323,11 @@ class GoogleAnalyticsQueryService
 
             // actions (requires correct dimension)
             Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 'ga:users',
-            Metrics::INDEX_PAGE_EXIT_NB_VISITS => 'ga:sessions',
+            Metrics::INDEX_PAGE_EXIT_NB_VISITS => 'ga:exits',
 
             // actions (requires correct dimension)
             Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 'ga:users',
-            Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 'ga:sessions',
+            Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 'ga:entrances',
             Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 'ga:hits',
             Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => [
                 'metric' => 'ga:sessionDuration',

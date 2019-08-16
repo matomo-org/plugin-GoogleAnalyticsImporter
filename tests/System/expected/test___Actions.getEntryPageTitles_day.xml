@@ -1,80 +1,80 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
+		<label> Search</label>
+		<nb_visits>52</nb_visits>
+		<nb_uniq_visitors>28</nb_uniq_visitors>
+		<nb_hits>53</nb_hits>
+		<sum_time_spent>46</sum_time_spent>
+		<entry_nb_uniq_visitors>28</entry_nb_uniq_visitors>
+		<entry_nb_visits>13</entry_nb_visits>
+		<entry_nb_actions>53</entry_nb_actions>
+		<entry_sum_visit_length>5</entry_sum_visit_length>
+		<entry_bounce_count>7</entry_bounce_count>
+		<exit_nb_uniq_visitors>28</exit_nb_uniq_visitors>
+		<exit_nb_visits>7</exit_nb_visits>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>1</avg_time_on_page>
+		<bounce_rate>54%</bounce_rate>
+		<exit_rate>13%</exit_rate>
+		<segment>entryPageTitle==Search</segment>
+	</row>
+	<row>
 		<label> BLOG!!</label>
-		<nb_visits>39</nb_visits>
+		<nb_visits>47</nb_visits>
 		<nb_uniq_visitors>29</nb_uniq_visitors>
 		<nb_hits>52</nb_hits>
 		<sum_time_spent>1086</sum_time_spent>
-		<entry_nb_uniq_visitors>27</entry_nb_uniq_visitors>
+		<entry_nb_uniq_visitors>29</entry_nb_uniq_visitors>
 		<entry_nb_visits>39</entry_nb_visits>
-		<entry_nb_actions>170</entry_nb_actions>
+		<entry_nb_actions>52</entry_nb_actions>
 		<entry_sum_visit_length>1815</entry_sum_visit_length>
 		<entry_bounce_count>10</entry_bounce_count>
-		<exit_nb_uniq_visitors>27</exit_nb_uniq_visitors>
-		<exit_nb_visits>43</exit_nb_visits>
+		<exit_nb_uniq_visitors>29</exit_nb_uniq_visitors>
+		<exit_nb_visits>44</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>21</avg_time_on_page>
 		<bounce_rate>26%</bounce_rate>
-		<exit_rate>110%</exit_rate>
+		<exit_rate>94%</exit_rate>
 		<segment>entryPageTitle==BLOG%21%21</segment>
 	</row>
 	<row>
 		<label> ABOUT!!</label>
-		<nb_visits>37</nb_visits>
+		<nb_visits>40</nb_visits>
 		<nb_uniq_visitors>25</nb_uniq_visitors>
 		<nb_hits>41</nb_hits>
 		<sum_time_spent>1231</sum_time_spent>
-		<entry_nb_uniq_visitors>24</entry_nb_uniq_visitors>
+		<entry_nb_uniq_visitors>25</entry_nb_uniq_visitors>
 		<entry_nb_visits>37</entry_nb_visits>
-		<entry_nb_actions>138</entry_nb_actions>
+		<entry_nb_actions>41</entry_nb_actions>
 		<entry_sum_visit_length>1203</entry_sum_visit_length>
 		<entry_bounce_count>11</entry_bounce_count>
-		<exit_nb_uniq_visitors>24</exit_nb_uniq_visitors>
+		<exit_nb_uniq_visitors>25</exit_nb_uniq_visitors>
 		<exit_nb_visits>37</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>30</avg_time_on_page>
 		<bounce_rate>30%</bounce_rate>
-		<exit_rate>100%</exit_rate>
+		<exit_rate>93%</exit_rate>
 		<segment>entryPageTitle==ABOUT%21%21</segment>
 	</row>
 	<row>
 		<label> inde par region et ville</label>
-		<nb_visits>31</nb_visits>
+		<nb_visits>36</nb_visits>
 		<nb_uniq_visitors>22</nb_uniq_visitors>
 		<nb_hits>40</nb_hits>
 		<sum_time_spent>1814</sum_time_spent>
-		<entry_nb_uniq_visitors>20</entry_nb_uniq_visitors>
+		<entry_nb_uniq_visitors>22</entry_nb_uniq_visitors>
 		<entry_nb_visits>31</entry_nb_visits>
-		<entry_nb_actions>110</entry_nb_actions>
+		<entry_nb_actions>40</entry_nb_actions>
 		<entry_sum_visit_length>1467</entry_sum_visit_length>
 		<entry_bounce_count>6</entry_bounce_count>
-		<exit_nb_uniq_visitors>17</exit_nb_uniq_visitors>
+		<exit_nb_uniq_visitors>22</exit_nb_uniq_visitors>
 		<exit_nb_visits>28</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>45</avg_time_on_page>
 		<bounce_rate>19%</bounce_rate>
-		<exit_rate>90%</exit_rate>
+		<exit_rate>78%</exit_rate>
 		<segment>entryPageTitle==inde+par+region+et+ville</segment>
-	</row>
-	<row>
-		<label> Search</label>
-		<nb_visits>12</nb_visits>
-		<nb_uniq_visitors>52</nb_uniq_visitors>
-		<nb_hits>53</nb_hits>
-		<sum_time_spent>46</sum_time_spent>
-		<entry_nb_uniq_visitors>2</entry_nb_uniq_visitors>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>1</entry_bounce_count>
-		<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>1</avg_time_on_page>
-		<bounce_rate>100%</bounce_rate>
-		<exit_rate>8%</exit_rate>
-		<segment>entryPageTitle==Search</segment>
 	</row>
 	<row>
 		<label> Crestwood</label>
@@ -84,10 +84,10 @@
 		<sum_time_spent>958</sum_time_spent>
 		<entry_nb_uniq_visitors>10</entry_nb_uniq_visitors>
 		<entry_nb_visits>10</entry_nb_visits>
-		<entry_nb_actions>41</entry_nb_actions>
+		<entry_nb_actions>10</entry_nb_actions>
 		<entry_sum_visit_length>1129</entry_sum_visit_length>
 		<entry_bounce_count>3</entry_bounce_count>
-		<exit_nb_uniq_visitors>6</exit_nb_uniq_visitors>
+		<exit_nb_uniq_visitors>10</exit_nb_uniq_visitors>
 		<exit_nb_visits>6</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>96</avg_time_on_page>
@@ -97,13 +97,13 @@
 	</row>
 	<row>
 		<label> Solas</label>
-		<nb_visits>9</nb_visits>
+		<nb_visits>10</nb_visits>
 		<nb_uniq_visitors>9</nb_uniq_visitors>
 		<nb_hits>11</nb_hits>
 		<sum_time_spent>699</sum_time_spent>
 		<entry_nb_uniq_visitors>9</entry_nb_uniq_visitors>
 		<entry_nb_visits>9</entry_nb_visits>
-		<entry_nb_actions>27</entry_nb_actions>
+		<entry_nb_actions>11</entry_nb_actions>
 		<entry_sum_visit_length>471</entry_sum_visit_length>
 		<entry_bounce_count>2</entry_bounce_count>
 		<exit_nb_uniq_visitors>9</exit_nb_uniq_visitors>
@@ -111,18 +111,37 @@
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>64</avg_time_on_page>
 		<bounce_rate>22%</bounce_rate>
-		<exit_rate>111%</exit_rate>
+		<exit_rate>100%</exit_rate>
 		<segment>entryPageTitle==Solas</segment>
 	</row>
 	<row>
+		<label> Seleny</label>
+		<nb_visits>8</nb_visits>
+		<nb_uniq_visitors>7</nb_uniq_visitors>
+		<nb_hits>8</nb_hits>
+		<sum_time_spent>78</sum_time_spent>
+		<entry_nb_uniq_visitors>7</entry_nb_uniq_visitors>
+		<entry_nb_visits>3</entry_nb_visits>
+		<entry_nb_actions>8</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<entry_bounce_count>2</entry_bounce_count>
+		<exit_nb_uniq_visitors>7</exit_nb_uniq_visitors>
+		<exit_nb_visits>6</exit_nb_visits>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>10</avg_time_on_page>
+		<bounce_rate>67%</bounce_rate>
+		<exit_rate>75%</exit_rate>
+		<segment>entryPageTitle==Seleny</segment>
+	</row>
+	<row>
 		<label> Caer Bronach</label>
-		<nb_visits>5</nb_visits>
+		<nb_visits>6</nb_visits>
 		<nb_uniq_visitors>6</nb_uniq_visitors>
 		<nb_hits>6</nb_hits>
 		<sum_time_spent>6</sum_time_spent>
-		<entry_nb_uniq_visitors>5</entry_nb_uniq_visitors>
+		<entry_nb_uniq_visitors>6</entry_nb_uniq_visitors>
 		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>18</entry_nb_actions>
+		<entry_nb_actions>6</entry_nb_actions>
 		<entry_sum_visit_length>6</entry_sum_visit_length>
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_uniq_visitors>6</exit_nb_uniq_visitors>
@@ -130,37 +149,18 @@
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>20%</bounce_rate>
-		<exit_rate>120%</exit_rate>
+		<exit_rate>100%</exit_rate>
 		<segment>entryPageTitle==Caer+Bronach</segment>
 	</row>
 	<row>
-		<label> The Arbor Wilds</label>
-		<nb_visits>5</nb_visits>
-		<nb_uniq_visitors>6</nb_uniq_visitors>
-		<nb_hits>6</nb_hits>
-		<sum_time_spent>858</sum_time_spent>
-		<entry_nb_uniq_visitors>5</entry_nb_uniq_visitors>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>24</entry_nb_actions>
-		<entry_sum_visit_length>477</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_uniq_visitors>5</exit_nb_uniq_visitors>
-		<exit_nb_visits>5</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>143</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==The+Arbor+Wilds</segment>
-	</row>
-	<row>
 		<label> Markhem</label>
-		<nb_visits>4</nb_visits>
+		<nb_visits>6</nb_visits>
 		<nb_uniq_visitors>5</nb_uniq_visitors>
 		<nb_hits>6</nb_hits>
 		<sum_time_spent>187</sum_time_spent>
-		<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
+		<entry_nb_uniq_visitors>5</entry_nb_uniq_visitors>
 		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>23</entry_nb_actions>
+		<entry_nb_actions>6</entry_nb_actions>
 		<entry_sum_visit_length>187</entry_sum_visit_length>
 		<entry_bounce_count>0</entry_bounce_count>
 		<exit_nb_uniq_visitors>5</exit_nb_uniq_visitors>
@@ -168,103 +168,122 @@
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>31</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>150%</exit_rate>
+		<exit_rate>100%</exit_rate>
 		<segment>entryPageTitle==Markhem</segment>
 	</row>
 	<row>
 		<label> Redcliffe</label>
-		<nb_visits>4</nb_visits>
+		<nb_visits>6</nb_visits>
 		<nb_uniq_visitors>6</nb_uniq_visitors>
 		<nb_hits>6</nb_hits>
 		<sum_time_spent>398</sum_time_spent>
-		<entry_nb_uniq_visitors>4</entry_nb_uniq_visitors>
+		<entry_nb_uniq_visitors>6</entry_nb_uniq_visitors>
 		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>13</entry_nb_actions>
+		<entry_nb_actions>6</entry_nb_actions>
 		<entry_sum_visit_length>233</entry_sum_visit_length>
 		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
+		<exit_nb_uniq_visitors>6</exit_nb_uniq_visitors>
 		<exit_nb_visits>3</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>66</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>75%</exit_rate>
+		<exit_rate>50%</exit_rate>
 		<segment>entryPageTitle==Redcliffe</segment>
 	</row>
 	<row>
-		<label> Trevis</label>
-		<nb_visits>4</nb_visits>
-		<nb_uniq_visitors>6</nb_uniq_visitors>
-		<nb_hits>6</nb_hits>
-		<sum_time_spent>50</sum_time_spent>
-		<entry_nb_uniq_visitors>4</entry_nb_uniq_visitors>
-		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>11</entry_nb_actions>
-		<entry_sum_visit_length>3</entry_sum_visit_length>
-		<entry_bounce_count>2</entry_bounce_count>
-		<exit_nb_uniq_visitors>5</exit_nb_uniq_visitors>
-		<exit_nb_visits>5</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>8</avg_time_on_page>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>125%</exit_rate>
-		<segment>entryPageTitle==Trevis</segment>
-	</row>
-	<row>
-		<label> Western Approach</label>
-		<nb_visits>4</nb_visits>
-		<nb_uniq_visitors>5</nb_uniq_visitors>
-		<nb_hits>5</nb_hits>
-		<sum_time_spent>75</sum_time_spent>
-		<entry_nb_uniq_visitors>4</entry_nb_uniq_visitors>
-		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>11</entry_nb_actions>
-		<entry_sum_visit_length>34</entry_sum_visit_length>
-		<entry_bounce_count>2</entry_bounce_count>
-		<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
-		<exit_nb_visits>3</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>15</avg_time_on_page>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>75%</exit_rate>
-		<segment>entryPageTitle==Western+Approach</segment>
-	</row>
-	<row>
 		<label> Sahrnia</label>
-		<nb_visits>3</nb_visits>
+		<nb_visits>6</nb_visits>
 		<nb_uniq_visitors>5</nb_uniq_visitors>
 		<nb_hits>6</nb_hits>
 		<sum_time_spent>106</sum_time_spent>
-		<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
+		<entry_nb_uniq_visitors>5</entry_nb_uniq_visitors>
 		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>14</entry_nb_actions>
+		<entry_nb_actions>6</entry_nb_actions>
 		<entry_sum_visit_length>572</entry_sum_visit_length>
 		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_uniq_visitors>4</exit_nb_uniq_visitors>
+		<exit_nb_uniq_visitors>5</exit_nb_uniq_visitors>
 		<exit_nb_visits>5</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>18</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>167%</exit_rate>
+		<exit_rate>83%</exit_rate>
 		<segment>entryPageTitle==Sahrnia</segment>
 	</row>
 	<row>
-		<label> Seleny</label>
-		<nb_visits>3</nb_visits>
-		<nb_uniq_visitors>7</nb_uniq_visitors>
-		<nb_hits>8</nb_hits>
-		<sum_time_spent>78</sum_time_spent>
-		<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<label> The Arbor Wilds</label>
+		<nb_visits>6</nb_visits>
+		<nb_uniq_visitors>6</nb_uniq_visitors>
+		<nb_hits>6</nb_hits>
+		<sum_time_spent>858</sum_time_spent>
+		<entry_nb_uniq_visitors>6</entry_nb_uniq_visitors>
+		<entry_nb_visits>5</entry_nb_visits>
+		<entry_nb_actions>6</entry_nb_actions>
+		<entry_sum_visit_length>477</entry_sum_visit_length>
+		<entry_bounce_count>0</entry_bounce_count>
+		<exit_nb_uniq_visitors>6</exit_nb_uniq_visitors>
+		<exit_nb_visits>5</exit_nb_visits>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>143</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>83%</exit_rate>
+		<segment>entryPageTitle==The+Arbor+Wilds</segment>
+	</row>
+	<row>
+		<label> Trevis</label>
+		<nb_visits>6</nb_visits>
+		<nb_uniq_visitors>6</nb_uniq_visitors>
+		<nb_hits>6</nb_hits>
+		<sum_time_spent>50</sum_time_spent>
+		<entry_nb_uniq_visitors>6</entry_nb_uniq_visitors>
+		<entry_nb_visits>4</entry_nb_visits>
+		<entry_nb_actions>6</entry_nb_actions>
+		<entry_sum_visit_length>3</entry_sum_visit_length>
+		<entry_bounce_count>2</entry_bounce_count>
+		<exit_nb_uniq_visitors>6</exit_nb_uniq_visitors>
+		<exit_nb_visits>5</exit_nb_visits>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>8</avg_time_on_page>
+		<bounce_rate>50%</bounce_rate>
+		<exit_rate>83%</exit_rate>
+		<segment>entryPageTitle==Trevis</segment>
+	</row>
+	<row>
+		<label> Western Approach</label>
+		<nb_visits>5</nb_visits>
+		<nb_uniq_visitors>5</nb_uniq_visitors>
+		<nb_hits>5</nb_hits>
+		<sum_time_spent>75</sum_time_spent>
+		<entry_nb_uniq_visitors>5</entry_nb_uniq_visitors>
+		<entry_nb_visits>4</entry_nb_visits>
+		<entry_nb_actions>5</entry_nb_actions>
+		<entry_sum_visit_length>34</entry_sum_visit_length>
 		<entry_bounce_count>2</entry_bounce_count>
 		<exit_nb_uniq_visitors>5</exit_nb_uniq_visitors>
-		<exit_nb_visits>6</exit_nb_visits>
+		<exit_nb_visits>3</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>10</avg_time_on_page>
-		<bounce_rate>67%</bounce_rate>
-		<exit_rate>200%</exit_rate>
-		<segment>entryPageTitle==Seleny</segment>
+		<avg_time_on_page>15</avg_time_on_page>
+		<bounce_rate>50%</bounce_rate>
+		<exit_rate>60%</exit_rate>
+		<segment>entryPageTitle==Western+Approach</segment>
+	</row>
+	<row>
+		<label> Winter Palace</label>
+		<nb_visits>4</nb_visits>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_hits>4</nb_hits>
+		<sum_time_spent>15</sum_time_spent>
+		<entry_nb_uniq_visitors>4</entry_nb_uniq_visitors>
+		<entry_nb_visits>3</entry_nb_visits>
+		<entry_nb_actions>4</entry_nb_actions>
+		<entry_sum_visit_length>3</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<exit_nb_uniq_visitors>4</exit_nb_uniq_visitors>
+		<exit_nb_visits>3</exit_nb_visits>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>4</avg_time_on_page>
+		<bounce_rate>33%</bounce_rate>
+		<exit_rate>75%</exit_rate>
+		<segment>entryPageTitle==Winter+Palace</segment>
 	</row>
 	<row>
 		<label> Top 10 des plus belles Plongées Sous Marine dans le Monde ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -284,25 +303,6 @@
 		<bounce_rate>67%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>entryPageTitle==Top+10+des+plus+belles+Plong%C3%A9es+Sous+Marine+dans+le+Monde+%21+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
-	</row>
-	<row>
-		<label> Winter Palace</label>
-		<nb_visits>3</nb_visits>
-		<nb_uniq_visitors>4</nb_uniq_visitors>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>15</sum_time_spent>
-		<entry_nb_uniq_visitors>3</entry_nb_uniq_visitors>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>7</entry_nb_actions>
-		<entry_sum_visit_length>3</entry_sum_visit_length>
-		<entry_bounce_count>1</entry_bounce_count>
-		<exit_nb_uniq_visitors>3</exit_nb_uniq_visitors>
-		<exit_nb_visits>3</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>4</avg_time_on_page>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Winter+Palace</segment>
 	</row>
 	<row>
 		<label> Coût de la vie en Inde - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -331,7 +331,7 @@
 		<sum_time_spent>3</sum_time_spent>
 		<entry_nb_uniq_visitors>2</entry_nb_uniq_visitors>
 		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>9</entry_nb_actions>
+		<entry_nb_actions>2</entry_nb_actions>
 		<entry_sum_visit_length>3</entry_sum_visit_length>
 		<entry_bounce_count>0</entry_bounce_count>
 		<exit_nb_uniq_visitors>2</exit_nb_uniq_visitors>
@@ -400,6 +400,25 @@
 		<segment>entryPageTitle==Cirque+du+soleil+%3A+magnifique+%21+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
 	</row>
 	<row>
+		<label> Claire l'australienne - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>16</sum_time_spent>
+		<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>0</entry_bounce_count>
+		<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
+		<exit_nb_visits>1</exit_nb_visits>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>8</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>entryPageTitle==Claire+l%27australienne+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+	</row>
+	<row>
 		<label> Couleurs et jonglerie - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
 		<nb_visits>1</nb_visits>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
@@ -426,9 +445,11 @@
 		<sum_time_spent>39</sum_time_spent>
 		<entry_nb_uniq_visitors>1</entry_nb_uniq_visitors>
 		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
+		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>55</entry_sum_visit_length>
 		<entry_bounce_count>0</entry_bounce_count>
+		<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
+		<exit_nb_visits>0</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>39</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>

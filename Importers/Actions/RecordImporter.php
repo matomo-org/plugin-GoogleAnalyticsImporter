@@ -11,10 +11,9 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\Actions;
 use Piwik\API\Request;
 use Piwik\Common;
 use Piwik\DataTable;
+use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Metrics;
-use Piwik\Metrics as PiwikMetrics;
-use Piwik\Period\Day;
 use Piwik\Plugins\Actions\Actions\ActionSiteSearch;
 use Piwik\Plugins\Actions\Archiver;
 use Piwik\Plugins\Actions\ArchivingHelper;
@@ -25,9 +24,19 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 {
     const PLUGIN_NAME = 'Actions';
 
+    /**
+     * @var DataTable[]
+     */
     private $dataTables;
 
-    private $pageTitlesByPagePath;
+    /**
+     * @var Row
+     */
+    private $pageTitleRowsByPageTitle;
+
+    /**
+     * @var Row[]
+     */
     private $pageUrlsByPagePath;
     private $siteSearchUrls;
 
@@ -41,13 +50,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             Action::TYPE_SITE_SEARCH => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableSiteSearch),
         ];
 
-        $this->pageTitlesByPagePath = [];
+        $this->pageTitleRowsByPageTitle = [];
         $this->pageUrlsByPagePath = [];
         $this->siteSearchUrls = [];
 
         // query for records
-        $this->getPageTitlesRecord($day);
         $this->getPageUrlsRecord($day);
+        $this->getPageTitlesRecord($day);
         $this->queryEntryPages($day);
         $this->queryExitPages($day);
         $this->getSiteSearchs($day);
@@ -63,7 +72,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertPageUrlNumericRecords($this->dataTables[Action::TYPE_PAGE_URL]);
         $this->insertSiteSearchNumericRecords($this->dataTables[Action::TYPE_SITE_SEARCH]);
 
-        unset($this->pageTitlesByPagePath);
+        unset($this->pageTitleRowsByPageTitle);
         unset($this->pageUrlsByPagePath);
         unset($this->siteSearchUrls);
 
@@ -94,7 +103,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function insertSiteSearchNumericRecords(DataTable $siteSearch)
     {
         $this->insertNumericRecords([
-            Archiver::METRIC_SEARCHES_RECORD_NAME => array_sum($siteSearch->getColumn(PiwikMetrics::INDEX_PAGE_NB_HITS)),
+            Archiver::METRIC_SEARCHES_RECORD_NAME => array_sum($siteSearch->getColumn(Metrics::INDEX_PAGE_NB_HITS)),
             Archiver::METRIC_KEYWORDS_RECORD_NAME => $siteSearch->getRowsCount(),
         ]);
     }
@@ -102,9 +111,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getSiteSearchs(Date $day)
     {
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:searchKeyword'], $this->getPageMetrics(), [
+
+        $metrics = array_merge([Metrics::INDEX_NB_VISITS, Metrics::INDEX_NB_UNIQ_VISITORS], $this->getPageMetrics());
+
+        $table = $gaQuery->query($day, $dimensions = ['ga:searchKeyword'], $metrics, [
             'orderBys' => [
-                ['field' => 'ga:sessions', 'order' => 'descending'],
+                ['field' => 'ga:searchUniques', 'order' => 'descending'],
                 ['field' => 'ga:searchKeyword', 'order' => 'ascending']
             ],
             'mappings' => [
@@ -142,7 +154,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:hostname', 'ga:landingPagePath'], $entryPageMetrics, [
             'orderBys' => [
-                ['field' => 'ga:sessions', 'order' => 'descending'],
+                ['field' => 'ga:entrances', 'order' => 'descending'],
                 ['field' => 'ga:landingPagePath', 'order' => 'ascending']
             ],
         ]);
@@ -151,7 +163,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         if ($table->getRowsCount() == 0) {
             $table = $gaQuery->query($day, $dimensions = ['ga:landingPagePath'], $entryPageMetrics, [
                 'orderBys' => [
-                    ['field' => 'ga:sessions', 'order' => 'descending'],
+                    ['field' => 'ga:entrances', 'order' => 'descending'],
                     ['field' => 'ga:landingPagePath', 'order' => 'ascending']
                 ],
             ]);
@@ -171,14 +183,38 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $row->deleteColumn('label');
 
             if (isset($this->pageUrlsByPagePath[$actionName])) {
-                foreach ($row->getColumns() as $name => $value) {
-                    $this->pageUrlsByPagePath[$actionName]->setColumn($name, $value);
+                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)) {
+                    throw new \Exception("Unexpected error: encountered URL twice in result set: $actionName");
+                }
+
+                foreach ($entryPageMetrics as $name) {
+                    $this->pageUrlsByPagePath[$actionName]->setColumn($name, $row->getColumn($name));
                 }
             }
+        }
 
-            if (isset($this->pageTitlesByPagePath[$actionName])) {
-                foreach ($row->getColumns() as $name => $value) {
-                    $this->pageTitlesByPagePath[$actionName]->setColumn($name, $value);
+        Common::destroy($table);
+
+        // query page titles
+        $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle'], $entryPageMetrics, [
+            'orderBys' => [
+                ['field' => 'ga:entrances', 'order' => 'descending'],
+                ['field' => 'ga:pageTitle', 'order' => 'ascending']
+            ],
+        ]);
+
+        foreach ($table->getRows() as $row) {
+            $pageTitle = $row->getMetadata('ga:pageTitle');
+            $row->deleteColumn('label');
+
+            if (isset($this->pageTitleRowsByPageTitle[$pageTitle])) {
+                $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
+                if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS)) {
+                    throw new \Exception("Unexpected error: encountered page title twice in result set: $actionName");
+                }
+
+                foreach ($entryPageMetrics as $name) {
+                    $existingRow->setColumn($name, $row->getColumn($name));
                 }
             }
         }
@@ -196,7 +232,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:hostname', 'ga:exitPagePath'], $exitPageMetrics, [
             'orderBys' => [
-                ['field' => 'ga:sessions', 'order' => 'descending'],
+                ['field' => 'ga:exits', 'order' => 'descending'],
                 ['field' => 'ga:exitPagePath', 'order' => 'ascending']
             ],
         ]);
@@ -205,7 +241,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         if ($table->getRowsCount() == 0) {
             $table = $gaQuery->query($day, $dimensions = ['ga:exitPagePath'], $exitPageMetrics, [
                 'orderBys' => [
-                    ['field' => 'ga:sessions', 'order' => 'descending'],
+                    ['field' => 'ga:exits', 'order' => 'descending'],
                     ['field' => 'ga:exitPagePath', 'order' => 'ascending']
                 ],
             ]);
@@ -225,15 +261,41 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $row->deleteColumn('label');
 
             if (isset($this->pageUrlsByPagePath[$actionName])) {
-                foreach ($row->getColumns() as $name => $value) {
-                    $this->pageUrlsByPagePath[$actionName]->setColumn($name, $value);
+                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)) {
+                    throw new \Exception("Unexpected error: encountered URL twice in result set: $actionName");
+                }
+
+                foreach ($exitPageMetrics as $name) {
+                    $this->pageUrlsByPagePath[$actionName]->setColumn($name, $row->getColumn($name));
                 }
             }
+        }
 
-            if (isset($this->pageTitlesByPagePath[$actionName])) {
-                foreach ($row->getColumns() as $name => $value) {
-                    $this->pageTitlesByPagePath[$actionName]->setColumn($name, $value);
-                }
+        Common::destroy($table);
+
+        // query page titles
+        $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle'], $exitPageMetrics, [
+            'orderBys' => [
+                ['field' => 'ga:exits', 'order' => 'descending'],
+                ['field' => 'ga:pageTitle', 'order' => 'ascending']
+            ],
+        ]);
+
+        foreach ($table->getRows() as $row) {
+            $pageTitle = $row->getMetadata('ga:pageTitle');
+            $row->deleteColumn('label');
+
+            if (empty($this->pageTitleRowsByPageTitle[$pageTitle])) {
+                continue;
+            }
+
+            $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
+            if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS)) {
+                throw new \Exception("Unexpected error: encountered page title twice in result set: $actionName");
+            }
+
+            foreach ($exitPageMetrics as $name) {
+                $existingRow->setColumn($name, $row->getColumn($name));
             }
         }
 
@@ -245,8 +307,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle', 'ga:hostname', 'ga:pagePath'], $this->getPageMetrics(), [
             'orderBys' => [
-                ['field' => 'ga:pageviews', 'order' => 'descending'],
-                ['field' => 'ga:pageTitle', 'order' => 'ascending']
+                ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
+                ['field' => 'ga:pageTitle', 'order' => 'ascending'],
             ],
         ]);
 
@@ -254,8 +316,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         if ($table->getRowsCount() == 0) {
             $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle', 'ga:pagePath'], $this->getPageMetrics(), [
                 'orderBys' => [
-                    ['field' => 'ga:pageviews', 'order' => 'descending'],
-                    ['field' => 'ga:pageTitle', 'order' => 'ascending']
+                    ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
+                    ['field' => 'ga:pageTitle', 'order' => 'ascending'],
                 ],
             ]);
 
@@ -263,15 +325,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             if ($table->getRowsCount() == 0) {
                 $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle'], $this->getPageMetrics(), [
                     'orderBys' => [
-                        ['field' => 'ga:pageviews', 'order' => 'descending'],
-                        ['field' => 'ga:pageTitle', 'order' => 'ascending']
+                        ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
+                        ['field' => 'ga:pageTitle', 'order' => 'ascending'],
                     ],
                 ]);
             }
         }
-
-        $mainUrlWithoutSlash = Site::getMainUrlFor($this->getIdSite());
-        $mainUrlWithoutSlash = rtrim($mainUrlWithoutSlash, '/');
 
         foreach ($table->getRows() as $row) {
             $pagePath = $row->getMetadata('ga:pagePath');
@@ -285,14 +344,34 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $row->deleteColumn('label');
             $actionRow->sumRow($row, $copyMetadata = false);
 
-            if (!empty($pagePath)) {
-                $hostname = $row->getMetadata('ga:hostname');
-                if (!empty($hostname)) {
-                    $url = 'http://' . $hostname . $pagePath;
-                } else {
-                    $url = $mainUrlWithoutSlash . $row->getMetadata('ga:pagePath');
+            $this->pageTitleRowsByPageTitle[$actionName] = $actionRow;
+        }
+
+        Common::destroy($table);
+
+        // query for visits/unique visitors (GA seems to provide inaccurate metrics sometimes if we combine this w/ the above metrics)
+        $metrics = [Metrics::INDEX_NB_VISITS, Metrics::INDEX_NB_UNIQ_VISITORS];
+        $table = $gaQuery->query($day, $dimensions = ['ga:pageTitle'], $metrics, [
+            'orderBys' => [
+                ['field' => 'ga:sessions', 'order' => 'descending'],
+                ['field' => 'ga:pageTitle', 'order' => 'ascending'],
+            ],
+            'mappings' => [
+                Metrics::INDEX_NB_VISITS => 'ga:uniquePageviews',
+            ],
+        ]);
+
+        foreach ($table->getRows() as $row) {
+            $row->deleteColumn('label');
+
+            $pageTitle = $row->getMetadata('ga:pageTitle');
+
+            if (!empty($this->pageTitleRowsByPageTitle[$pageTitle])) {
+                $recordRow = $this->pageTitleRowsByPageTitle[$pageTitle];
+
+                foreach ($metrics as $index) {
+                    $recordRow->setColumn($index, $row->getColumn($index));
                 }
-                $this->pageTitlesByPagePath[$url] = $actionRow;
             }
         }
 
@@ -304,7 +383,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:hostname', 'ga:pagePath'], $this->getPageMetrics(), [
             'orderBys' => [
-                ['field' => 'ga:pageviews', 'order' => 'descending'],
+                ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
                 ['field' => 'ga:pagePath', 'order' => 'ascending']
             ],
         ]);
@@ -313,7 +392,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         if ($table->getRowsCount() == 0) {
             $table = $gaQuery->query($day, $dimensions = ['ga:pagePath'], $this->getPageMetrics(), [
                 'orderBys' => [
-                    ['field' => 'ga:pageviews', 'order' => 'descending'],
+                    ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
                     ['field' => 'ga:pagePath', 'order' => 'ascending']
                 ],
             ]);
@@ -362,6 +441,39 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             $actionRow->setMetadata('url', $wholeUrl);
             $this->pageUrlsByPagePath[$wholeUrl] = $actionRow;
+        }
+
+        Common::destroy($table);
+
+        // query for visits/unique visitors (GA seems to provide inaccurate metrics sometimes if we combine this w/ the above metrics)
+        $metrics = [Metrics::INDEX_NB_VISITS, Metrics::INDEX_NB_UNIQ_VISITORS];
+        $table = $gaQuery->query($day, $dimensions = ['ga:hostname', 'ga:pagePath'], $metrics, [
+            'orderBys' => [
+                ['field' => 'ga:sessions', 'order' => 'descending'],
+                ['field' => 'ga:pageTitle', 'order' => 'ascending'],
+            ],
+            'mappings' => [
+                Metrics::INDEX_NB_VISITS => 'ga:uniquePageviews',
+            ],
+        ]);
+
+        foreach ($table->getRows() as $row) {
+            $row->deleteColumn('label');
+
+            $actionName = $row->getMetadata('ga:pagePath');
+            $hostname = $row->getMetadata('ga:hostname');
+            if (!empty($hostname)) {
+                $wholeUrl = 'http://' . $hostname . $actionName;
+            } else {
+                $wholeUrl = $mainUrlWithoutSlash . $actionName;
+            }
+
+            if (!empty($this->pageUrlsByPagePath[$wholeUrl])) {
+                $recordRow = $this->pageUrlsByPagePath[$wholeUrl];
+                foreach ($metrics as $index) {
+                    $recordRow->setColumn($index, $row->getColumn($index));
+                }
+            }
         }
 
         Common::destroy($table);
