@@ -168,7 +168,7 @@
                         {% if status.status == 'finished' %}
                             {{ status.import_end_time|default('-') }}
                         {% elseif status.estimated_days_left_to_finish|default is not empty %}
-                            {% if status.estimated_days_left_to_finish == 0 %}
+                            {% if status.estimated_days_left_to_finish matches '/^\\d+$/' and status.estimated_days_left_to_finish == 0 %}
                             This job should finish today.
                             {% else %}
                             Estimated finish in {{ status.estimated_days_left_to_finish }} days.
