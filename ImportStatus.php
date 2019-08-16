@@ -242,7 +242,7 @@ class ImportStatus
             $totalDaysImported = floor(($lastDateImported->getTimestamp() - $importRangeStart->getTimestamp()) / 86400);
 
             $rateOfImport = $totalDaysImported / $daysRunning;
-            if ($rateOfImport == 0) {
+            if ($rateOfImport <= 0) {
                 return lcfirst(Piwik::translate('General_Unknown'));
             }
 
