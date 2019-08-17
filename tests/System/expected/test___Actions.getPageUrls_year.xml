@@ -6,8 +6,8 @@
 		<nb_hits>857</nb_hits>
 		<sum_time_spent>29793</sum_time_spent>
 		<entry_nb_visits>578</entry_nb_visits>
-		<entry_nb_actions>2009</entry_nb_actions>
-		<entry_sum_visit_length>28635</entry_sum_visit_length>
+		<entry_nb_actions>2020</entry_nb_actions>
+		<entry_sum_visit_length>28893</entry_sum_visit_length>
 		<entry_bounce_count>150</entry_bounce_count>
 		<exit_nb_visits>586</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
@@ -62,8 +62,8 @@
 								<avg_time_on_page>15</avg_time_on_page>
 								<bounce_rate>17%</bounce_rate>
 								<exit_rate>84%</exit_rate>
-								<url>http://matthieu.net/blog/orlais/emprise-du-lion/sahrnia</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Femprise-du-lion%2Fsahrnia</segment>
+								<url>http://matthieu.net/blog/blog/orlais/emprise-du-lion/sahrnia</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Forlais%2Femprise-du-lion%2Fsahrnia</segment>
 							</row>
 						</subtable>
 					</row>
@@ -83,8 +83,8 @@
 						<avg_time_on_page>55</avg_time_on_page>
 						<bounce_rate>18%</bounce_rate>
 						<exit_rate>83%</exit_rate>
-						<url>http://matthieu.net/blog/orlais/the-western-approach</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fthe-western-approach</segment>
+						<url>http://matthieu.net/blog/blog/orlais/the-western-approach</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Forlais%2Fthe-western-approach</segment>
 					</row>
 					<row>
 						<label>halamshiral</label>
@@ -117,8 +117,8 @@
 								<avg_time_on_page>6</avg_time_on_page>
 								<bounce_rate>14%</bounce_rate>
 								<exit_rate>82%</exit_rate>
-								<url>http://matthieu.net/blog/orlais/halamshiral/winter-palace</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fhalamshiral%2Fwinter-palace</segment>
+								<url>http://matthieu.net/blog/blog/orlais/halamshiral/winter-palace</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Forlais%2Fhalamshiral%2Fwinter-palace</segment>
 							</row>
 						</subtable>
 					</row>
@@ -138,8 +138,8 @@
 						<avg_time_on_page>36</avg_time_on_page>
 						<bounce_rate>5%</bounce_rate>
 						<exit_rate>88%</exit_rate>
-						<url>http://matthieu.net/blog/orlais/the-arbor-wilds</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fthe-arbor-wilds</segment>
+						<url>http://matthieu.net/blog/blog/orlais/the-arbor-wilds</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Forlais%2Fthe-arbor-wilds</segment>
 					</row>
 				</subtable>
 			</row>
@@ -174,8 +174,8 @@
 						<avg_time_on_page>29</avg_time_on_page>
 						<bounce_rate>20%</bounce_rate>
 						<exit_rate>89%</exit_rate>
-						<url>http://matthieu.net/blog/about/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fabout%2F</segment>
+						<url>http://matthieu.net/blog/blog/about/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fabout%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -210,8 +210,8 @@
 						<avg_time_on_page>26</avg_time_on_page>
 						<bounce_rate>24%</bounce_rate>
 						<exit_rate>83%</exit_rate>
-						<url>http://matthieu.net/blog/ferelden/crestwood</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fcrestwood</segment>
+						<url>http://matthieu.net/blog/blog/ferelden/crestwood</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fferelden%2Fcrestwood</segment>
 					</row>
 					<row>
 						<label>the-hinterlands</label>
@@ -244,8 +244,8 @@
 								<avg_time_on_page>30</avg_time_on_page>
 								<bounce_rate>4%</bounce_rate>
 								<exit_rate>74%</exit_rate>
-								<url>http://matthieu.net/blog/ferelden/the-hinterlands/redcliffe</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fthe-hinterlands%2Fredcliffe</segment>
+								<url>http://matthieu.net/blog/blog/ferelden/the-hinterlands/redcliffe</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fferelden%2Fthe-hinterlands%2Fredcliffe</segment>
 							</row>
 						</subtable>
 					</row>
@@ -280,8 +280,8 @@
 								<avg_time_on_page>33</avg_time_on_page>
 								<bounce_rate>9%</bounce_rate>
 								<exit_rate>97%</exit_rate>
-								<url>http://matthieu.net/blog/ferelden/crestwood/caer-bronach</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fcrestwood%2Fcaer-bronach</segment>
+								<url>http://matthieu.net/blog/blog/ferelden/crestwood/caer-bronach</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fferelden%2Fcrestwood%2Fcaer-bronach</segment>
 							</row>
 						</subtable>
 					</row>
@@ -318,8 +318,8 @@
 						<avg_time_on_page>42</avg_time_on_page>
 						<bounce_rate>17%</bounce_rate>
 						<exit_rate>82%</exit_rate>
-						<url>http://matthieu.net/blog/inde-par-region-et-ville/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Finde-par-region-et-ville%2F</segment>
+						<url>http://matthieu.net/blog/blog/inde-par-region-et-ville/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Finde-par-region-et-ville%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -354,8 +354,8 @@
 						<avg_time_on_page>43</avg_time_on_page>
 						<bounce_rate>14%</bounce_rate>
 						<exit_rate>85%</exit_rate>
-						<url>http://matthieu.net/blog/tevinter/solas</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftevinter%2Fsolas</segment>
+						<url>http://matthieu.net/blog/blog/tevinter/solas</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ftevinter%2Fsolas</segment>
 					</row>
 				</subtable>
 			</row>
@@ -390,8 +390,8 @@
 						<avg_time_on_page>8</avg_time_on_page>
 						<bounce_rate>24%</bounce_rate>
 						<exit_rate>86%</exit_rate>
-						<url>http://matthieu.net/blog/nevarra/trevis</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fnevarra%2Ftrevis</segment>
+						<url>http://matthieu.net/blog/blog/nevarra/trevis</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fnevarra%2Ftrevis</segment>
 					</row>
 				</subtable>
 			</row>
@@ -426,8 +426,8 @@
 						<avg_time_on_page>14</avg_time_on_page>
 						<bounce_rate>30%</bounce_rate>
 						<exit_rate>80%</exit_rate>
-						<url>http://matthieu.net/blog/antiva/seleny</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fantiva%2Fseleny</segment>
+						<url>http://matthieu.net/blog/blog/antiva/seleny</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fantiva%2Fseleny</segment>
 					</row>
 				</subtable>
 			</row>
@@ -462,8 +462,8 @@
 						<avg_time_on_page>109</avg_time_on_page>
 						<bounce_rate>82%</bounce_rate>
 						<exit_rate>96%</exit_rate>
-						<url>http://matthieu.net/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F</segment>
+						<url>http://matthieu.net/blog/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F</segment>
 					</row>
 					<row>
 						<label>/?fbclid=IwAR0RO_3iatvwyAr9o9_9wUBdjw9myzIrD6XzQ91CufvaWiX9x8sH9kH04Sw</label>
@@ -481,8 +481,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/?fbclid=IwAR0RO_3iatvwyAr9o9_9wUBdjw9myzIrD6XzQ91CufvaWiX9x8sH9kH04Sw</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F%3Ffbclid%3DIwAR0RO_3iatvwyAr9o9_9wUBdjw9myzIrD6XzQ91CufvaWiX9x8sH9kH04Sw</segment>
+						<url>http://matthieu.net/blog/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/?fbclid=IwAR0RO_3iatvwyAr9o9_9wUBdjw9myzIrD6XzQ91CufvaWiX9x8sH9kH04Sw</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F%3Ffbclid%3DIwAR0RO_3iatvwyAr9o9_9wUBdjw9myzIrD6XzQ91CufvaWiX9x8sH9kH04Sw</segment>
 					</row>
 					<row>
 						<label>/?fbclid=IwAR0J5xb_JYmvJ7ctNwWJ-ak4c6DnVAms6alYDeTAMrIDhovrbcCdN6VPUdM</label>
@@ -500,8 +500,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/?fbclid=IwAR0J5xb_JYmvJ7ctNwWJ-ak4c6DnVAms6alYDeTAMrIDhovrbcCdN6VPUdM</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F%3Ffbclid%3DIwAR0J5xb_JYmvJ7ctNwWJ-ak4c6DnVAms6alYDeTAMrIDhovrbcCdN6VPUdM</segment>
+						<url>http://matthieu.net/blog/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/?fbclid=IwAR0J5xb_JYmvJ7ctNwWJ-ak4c6DnVAms6alYDeTAMrIDhovrbcCdN6VPUdM</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F%3Ffbclid%3DIwAR0J5xb_JYmvJ7ctNwWJ-ak4c6DnVAms6alYDeTAMrIDhovrbcCdN6VPUdM</segment>
 					</row>
 					<row>
 						<label>/?fbclid=IwAR3quxP0Ad-1QH6uJ881PLLx9CmPAhMzxLPGHiX-b1uc_XcilMiI5vQQnUY</label>
@@ -519,8 +519,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/?fbclid=IwAR3quxP0Ad-1QH6uJ881PLLx9CmPAhMzxLPGHiX-b1uc_XcilMiI5vQQnUY</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F%3Ffbclid%3DIwAR3quxP0Ad-1QH6uJ881PLLx9CmPAhMzxLPGHiX-b1uc_XcilMiI5vQQnUY</segment>
+						<url>http://matthieu.net/blog/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/?fbclid=IwAR3quxP0Ad-1QH6uJ881PLLx9CmPAhMzxLPGHiX-b1uc_XcilMiI5vQQnUY</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F%3Ffbclid%3DIwAR3quxP0Ad-1QH6uJ881PLLx9CmPAhMzxLPGHiX-b1uc_XcilMiI5vQQnUY</segment>
 					</row>
 				</subtable>
 			</row>
@@ -555,8 +555,8 @@
 						<avg_time_on_page>9</avg_time_on_page>
 						<bounce_rate>19%</bounce_rate>
 						<exit_rate>73%</exit_rate>
-						<url>http://matthieu.net/blog/anderfels/laysh</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fanderfels%2Flaysh</segment>
+						<url>http://matthieu.net/blog/blog/anderfels/laysh</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fanderfels%2Flaysh</segment>
 					</row>
 				</subtable>
 			</row>
@@ -591,8 +591,8 @@
 						<avg_time_on_page>18</avg_time_on_page>
 						<bounce_rate>11%</bounce_rate>
 						<exit_rate>85%</exit_rate>
-						<url>http://matthieu.net/blog/free-marches/markhem</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ffree-marches%2Fmarkhem</segment>
+						<url>http://matthieu.net/blog/blog/free-marches/markhem</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ffree-marches%2Fmarkhem</segment>
 					</row>
 				</subtable>
 			</row>
@@ -627,8 +627,8 @@
 						<avg_time_on_page>369</avg_time_on_page>
 						<bounce_rate>71%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/cout-de-la-vie-en-inde/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcout-de-la-vie-en-inde%2F</segment>
+						<url>http://matthieu.net/blog/blog/cout-de-la-vie-en-inde/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fcout-de-la-vie-en-inde%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -648,8 +648,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>67%</bounce_rate>
 				<exit_rate>33%</exit_rate>
-				<url>http://matthieu.net/blog/search?search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fsearch_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>avis-de-mickael-sur-la-vie-a-chennai-en-inde</label>
@@ -682,8 +682,8 @@
 						<avg_time_on_page>99</avg_time_on_page>
 						<bounce_rate>67%</bounce_rate>
 						<exit_rate>67%</exit_rate>
-						<url>http://matthieu.net/blog/avis-de-mickael-sur-la-vie-a-chennai-en-inde/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Favis-de-mickael-sur-la-vie-a-chennai-en-inde%2F</segment>
+						<url>http://matthieu.net/blog/blog/avis-de-mickael-sur-la-vie-a-chennai-en-inde/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Favis-de-mickael-sur-la-vie-a-chennai-en-inde%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -718,8 +718,8 @@
 						<avg_time_on_page>220</avg_time_on_page>
 						<bounce_rate>60%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/itineraire-dun-voyage-en-indonesie/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fitineraire-dun-voyage-en-indonesie%2F</segment>
+						<url>http://matthieu.net/blog/blog/itineraire-dun-voyage-en-indonesie/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fitineraire-dun-voyage-en-indonesie%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -737,8 +737,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?search_category=inquisitor's+path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?search_category=inquisitor's+path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fsearch_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?search_category=lost temple of dirthamen</label>
@@ -749,8 +749,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?search_category=lost+temple+of+dirthamen</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dlost+temple+of+dirthamen</segment>
+				<url>http://matthieu.net/blog/blog/search?search_category=lost+temple+of+dirthamen</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fsearch_category%3Dlost+temple+of+dirthamen</segment>
 			</row>
 			<row>
 				<label>/search?search_category=winter palace</label>
@@ -766,8 +766,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?search_category=winter+palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?search_category=winter+palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fsearch_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>que-faire-a-bali</label>
@@ -800,8 +800,8 @@
 						<avg_time_on_page>3</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>75%</exit_rate>
-						<url>http://matthieu.net/blog/que-faire-a-bali/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fque-faire-a-bali%2F</segment>
+						<url>http://matthieu.net/blog/blog/que-faire-a-bali/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fque-faire-a-bali%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -814,8 +814,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=memories of the grey&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dmemories+of+the+grey%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=memories of the grey&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dmemories+of+the+grey%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?search_category=skyhold</label>
@@ -826,8 +826,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fsearch_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>chateau-de-chambord-photos-de-ce-beau-chateau</label>
@@ -860,8 +860,8 @@
 						<avg_time_on_page>7</avg_time_on_page>
 						<bounce_rate>50%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/chateau-de-chambord-photos-de-ce-beau-chateau/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fchateau-de-chambord-photos-de-ce-beau-chateau%2F</segment>
+						<url>http://matthieu.net/blog/blog/chateau-de-chambord-photos-de-ce-beau-chateau/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fchateau-de-chambord-photos-de-ce-beau-chateau%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -896,8 +896,8 @@
 						<avg_time_on_page>55</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>67%</exit_rate>
-						<url>http://matthieu.net/blog/la-plage-a-chennai/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fla-plage-a-chennai%2F</segment>
+						<url>http://matthieu.net/blog/blog/la-plage-a-chennai/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fla-plage-a-chennai%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -910,8 +910,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=in your heart shall burn&amp;search_category=inner circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Din+your+heart+shall+burn%26search_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?q=in your heart shall burn&amp;search_category=inner circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Din+your+heart+shall+burn%26search_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?q=know thy enemy&amp;search_category=haven</label>
@@ -922,8 +922,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=know thy enemy&amp;search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?q=know thy enemy&amp;search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>/search?q=letter from a lover&amp;search_category=haven</label>
@@ -939,8 +939,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=letter+from+a+lover&amp;search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?q=letter+from+a+lover&amp;search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>/search?q=measuring the veil&amp;search_category=specializations</label>
@@ -951,8 +951,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=measuring+the+veil&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=measuring+the+veil&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=subjected to his will&amp;search_category=haven</label>
@@ -968,8 +968,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=subjected+to+his+will&amp;search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?q=subjected+to+his+will&amp;search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>/search?q=subjected to his will&amp;search_category=inquisitor's path</label>
@@ -987,8 +987,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>100%</bounce_rate>
 				<exit_rate>50%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=subjected+to+his+will&amp;search_category=inquisitor's+path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=subjected+to+his+will&amp;search_category=inquisitor's+path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=subjected to his will&amp;search_category=winter palace</label>
@@ -999,8 +999,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=subjected to his will&amp;search_category=winter palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=subjected to his will&amp;search_category=winter palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=the magister's birthright&amp;search_category=inquisitor's path</label>
@@ -1011,8 +1011,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=the+magister's+birthright&amp;search_category=inquisitor's+path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+magister%27s+birthright%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=the+magister's+birthright&amp;search_category=inquisitor's+path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dthe+magister%27s+birthright%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=the magister's birthright&amp;search_category=specializations</label>
@@ -1020,8 +1020,8 @@
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
 				<entry_nb_visits>2</entry_nb_visits>
-				<entry_nb_actions>3</entry_nb_actions>
-				<entry_sum_visit_length>0</entry_sum_visit_length>
+				<entry_nb_actions>14</entry_nb_actions>
+				<entry_sum_visit_length>258</entry_sum_visit_length>
 				<entry_bounce_count>1</entry_bounce_count>
 				<exit_nb_visits>1</exit_nb_visits>
 				<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
@@ -1030,8 +1030,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>50%</bounce_rate>
 				<exit_rate>50%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=the+magister's+birthright&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+magister%27s+birthright%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=the+magister's+birthright&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dthe+magister%27s+birthright%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=the spirit calmed&amp;search_category=inner circle</label>
@@ -1042,8 +1042,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=the spirit calmed&amp;search_category=inner circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+spirit+calmed%26search_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?q=the spirit calmed&amp;search_category=inner circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dthe+spirit+calmed%26search_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?q=under her skin&amp;search_category=inner circle</label>
@@ -1054,8 +1054,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=under+her+skin&amp;search_category=inner+circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dunder+her+skin%26search_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?q=under+her+skin&amp;search_category=inner+circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dunder+her+skin%26search_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?q=under her skin&amp;search_category=skyhold</label>
@@ -1071,8 +1071,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=under her skin&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dunder+her+skin%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=under her skin&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dunder+her+skin%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=where the drufallo roam&amp;search_category=inquisitor's path</label>
@@ -1088,8 +1088,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=where the drufallo roam&amp;search_category=inquisitor's path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dwhere+the+drufallo+roam%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=where the drufallo roam&amp;search_category=inquisitor's path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dwhere+the+drufallo+roam%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?search_category=inner circle</label>
@@ -1100,8 +1100,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?search_category=inner+circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?search_category=inner+circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fsearch_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?search_category=specializations</label>
@@ -1119,8 +1119,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>100%</bounce_rate>
 				<exit_rate>50%</exit_rate>
-				<url>http://matthieu.net/blog/search?search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fsearch_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>category</label>
@@ -1165,8 +1165,8 @@
 								<avg_time_on_page>39</avg_time_on_page>
 								<bounce_rate>0%</bounce_rate>
 								<exit_rate>0%</exit_rate>
-								<url>http://matthieu.net/blog/category/edinburgh/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcategory%2Fedinburgh%2F</segment>
+								<url>http://matthieu.net/blog/blog/category/edinburgh/</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fcategory%2Fedinburgh%2F</segment>
 							</row>
 						</subtable>
 					</row>
@@ -1201,8 +1201,8 @@
 								<avg_time_on_page>0</avg_time_on_page>
 								<bounce_rate>100%</bounce_rate>
 								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/category/londres/</url>
-								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcategory%2Flondres%2F</segment>
+								<url>http://matthieu.net/blog/blog/category/londres/</url>
+								<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fcategory%2Flondres%2F</segment>
 							</row>
 						</subtable>
 					</row>
@@ -1239,8 +1239,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/liste-pour-un-sac-de-voyage-backpack/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fliste-pour-un-sac-de-voyage-backpack%2F</segment>
+						<url>http://matthieu.net/blog/blog/liste-pour-un-sac-de-voyage-backpack/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fliste-pour-un-sac-de-voyage-backpack%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1275,8 +1275,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/photo-filles-en-bikini/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fphoto-filles-en-bikini%2F</segment>
+						<url>http://matthieu.net/blog/blog/photo-filles-en-bikini/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fphoto-filles-en-bikini%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1311,8 +1311,8 @@
 						<avg_time_on_page>398</avg_time_on_page>
 						<bounce_rate>50%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/visite-de-madurai/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fvisite-de-madurai%2F</segment>
+						<url>http://matthieu.net/blog/blog/visite-de-madurai/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fvisite-de-madurai%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1325,8 +1325,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=a+fallen+sister&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Da+fallen+sister%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=a+fallen+sister&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Da+fallen+sister%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=a fallen sister&amp;search_category=skyhold</label>
@@ -1337,8 +1337,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=a fallen sister&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Da+fallen+sister%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=a fallen sister&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Da+fallen+sister%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=a fallen sister&amp;search_category=winter palace</label>
@@ -1349,8 +1349,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=a fallen sister&amp;search_category=winter palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Da+fallen+sister%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=a fallen sister&amp;search_category=winter palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Da+fallen+sister%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=agrarian apostate&amp;search_category=inquisitor's path</label>
@@ -1361,8 +1361,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=agrarian apostate&amp;search_category=inquisitor's path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dagrarian+apostate%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=agrarian apostate&amp;search_category=inquisitor's path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dagrarian+apostate%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=agrarian apostate&amp;search_category=specializations</label>
@@ -1373,8 +1373,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=agrarian apostate&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dagrarian+apostate%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=agrarian apostate&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dagrarian+apostate%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=demands of the qun&amp;search_category=specializations</label>
@@ -1385,8 +1385,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=demands+of+the+qun&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=demands+of+the+qun&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=demands of the qun&amp;search_category=winter palace</label>
@@ -1397,8 +1397,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=demands+of+the+qun&amp;search_category=winter+palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=demands+of+the+qun&amp;search_category=winter+palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=demands of the qun&amp;search_category=haven</label>
@@ -1409,8 +1409,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=demands of the qun&amp;search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?q=demands of the qun&amp;search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>/search?q=demands of the qun&amp;search_category=winter palace</label>
@@ -1421,8 +1421,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=demands of the qun&amp;search_category=winter palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=demands of the qun&amp;search_category=winter palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=high stakes&amp;search_category=inner circle</label>
@@ -1433,8 +1433,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=high+stakes&amp;search_category=inner+circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?q=high+stakes&amp;search_category=inner+circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?q=high stakes&amp;search_category=skyhold</label>
@@ -1445,8 +1445,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=high+stakes&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=high+stakes&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=high stakes&amp;search_category=inquisitor's path</label>
@@ -1457,8 +1457,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=high stakes&amp;search_category=inquisitor's path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=high stakes&amp;search_category=inquisitor's path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=in your heart shall burn&amp;search_category=inquisitor's path</label>
@@ -1469,8 +1469,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=in+your+heart+shall+burn&amp;search_category=inquisitor's+path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Din+your+heart+shall+burn%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=in+your+heart+shall+burn&amp;search_category=inquisitor's+path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Din+your+heart+shall+burn%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=know thy enemy&amp;search_category=inner circle</label>
@@ -1481,8 +1481,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=know+thy+enemy&amp;search_category=inner+circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?q=know+thy+enemy&amp;search_category=inner+circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?q=know thy enemy&amp;search_category=skyhold</label>
@@ -1493,8 +1493,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=know+thy+enemy&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=know+thy+enemy&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=know thy enemy&amp;search_category=lost temple of dirthamen</label>
@@ -1505,8 +1505,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=know thy enemy&amp;search_category=lost temple of dirthamen</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dlost+temple+of+dirthamen</segment>
+				<url>http://matthieu.net/blog/blog/search?q=know thy enemy&amp;search_category=lost temple of dirthamen</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dlost+temple+of+dirthamen</segment>
 			</row>
 			<row>
 				<label>/search?q=know thy enemy&amp;search_category=specializations</label>
@@ -1517,8 +1517,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=know thy enemy&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=know thy enemy&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dknow+thy+enemy%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=letter from a lover&amp;search_category=inner circle</label>
@@ -1529,8 +1529,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=letter+from+a+lover&amp;search_category=inner+circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?q=letter+from+a+lover&amp;search_category=inner+circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?q=letter from a lover&amp;search_category=haven</label>
@@ -1541,8 +1541,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=letter from a lover&amp;search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?q=letter from a lover&amp;search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>/search?q=letter from a lover&amp;search_category=hissing wastes</label>
@@ -1553,8 +1553,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=letter from a lover&amp;search_category=hissing wastes</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dhissing+wastes</segment>
+				<url>http://matthieu.net/blog/blog/search?q=letter from a lover&amp;search_category=hissing wastes</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dhissing+wastes</segment>
 			</row>
 			<row>
 				<label>/search?q=letter from a lover&amp;search_category=specializations</label>
@@ -1565,8 +1565,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=letter from a lover&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=letter from a lover&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dletter+from+a+lover%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=measuring the veil&amp;search_category=hissing wastes</label>
@@ -1577,8 +1577,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=measuring+the+veil&amp;search_category=hissing+wastes</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dhissing+wastes</segment>
+				<url>http://matthieu.net/blog/blog/search?q=measuring+the+veil&amp;search_category=hissing+wastes</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dhissing+wastes</segment>
 			</row>
 			<row>
 				<label>/search?q=measuring the veil&amp;search_category=hissing wastes</label>
@@ -1589,8 +1589,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=measuring the veil&amp;search_category=hissing wastes</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dhissing+wastes</segment>
+				<url>http://matthieu.net/blog/blog/search?q=measuring the veil&amp;search_category=hissing wastes</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dhissing+wastes</segment>
 			</row>
 			<row>
 				<label>/search?q=no word back&amp;search_category=haven</label>
@@ -1601,8 +1601,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=no+word+back&amp;search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dno+word+back%26search_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?q=no+word+back&amp;search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dno+word+back%26search_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>/search?q=no word back&amp;search_category=skyhold</label>
@@ -1613,8 +1613,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=no word back&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dno+word+back%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=no word back&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dno+word+back%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=one less venatori&amp;search_category=hissing wastes</label>
@@ -1625,8 +1625,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=one+less+venatori&amp;search_category=hissing+wastes</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dhissing+wastes</segment>
+				<url>http://matthieu.net/blog/blog/search?q=one+less+venatori&amp;search_category=hissing+wastes</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dhissing+wastes</segment>
 			</row>
 			<row>
 				<label>/search?q=one less venatori&amp;search_category=inner circle</label>
@@ -1637,8 +1637,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=one+less+venatori&amp;search_category=inner+circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?q=one+less+venatori&amp;search_category=inner+circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?q=one less venatori&amp;search_category=haven</label>
@@ -1649,8 +1649,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=one less venatori&amp;search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?q=one less venatori&amp;search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>/search?q=one less venatori&amp;search_category=inquisitor's path</label>
@@ -1661,8 +1661,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=one less venatori&amp;search_category=inquisitor's path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=one less venatori&amp;search_category=inquisitor's path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=one less venatori&amp;search_category=winter palace</label>
@@ -1673,8 +1673,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=one less venatori&amp;search_category=winter palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=one less venatori&amp;search_category=winter palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Done+less+venatori%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=promise of destruction&amp;search_category=lost temple of dirthamen</label>
@@ -1685,8 +1685,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=promise+of+destruction&amp;search_category=lost+temple+of+dirthamen</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dpromise+of+destruction%26search_category%3Dlost+temple+of+dirthamen</segment>
+				<url>http://matthieu.net/blog/blog/search?q=promise+of+destruction&amp;search_category=lost+temple+of+dirthamen</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dpromise+of+destruction%26search_category%3Dlost+temple+of+dirthamen</segment>
 			</row>
 			<row>
 				<label>/search?q=promise of destruction&amp;search_category=inquisitor's path</label>
@@ -1697,8 +1697,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=promise of destruction&amp;search_category=inquisitor's path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dpromise+of+destruction%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=promise of destruction&amp;search_category=inquisitor's path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dpromise+of+destruction%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=rift at caer bronach&amp;search_category=lost temple of dirthamen</label>
@@ -1709,8 +1709,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=rift+at+caer+bronach&amp;search_category=lost+temple+of+dirthamen</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dlost+temple+of+dirthamen</segment>
+				<url>http://matthieu.net/blog/blog/search?q=rift+at+caer+bronach&amp;search_category=lost+temple+of+dirthamen</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dlost+temple+of+dirthamen</segment>
 			</row>
 			<row>
 				<label>/search?q=rift at caer bronach&amp;search_category=winter palace</label>
@@ -1721,8 +1721,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=rift+at+caer+bronach&amp;search_category=winter+palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=rift+at+caer+bronach&amp;search_category=winter+palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=rift at caer bronach&amp;search_category=haven</label>
@@ -1733,8 +1733,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=rift at caer bronach&amp;search_category=haven</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dhaven</segment>
+				<url>http://matthieu.net/blog/blog/search?q=rift at caer bronach&amp;search_category=haven</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dhaven</segment>
 			</row>
 			<row>
 				<label>/search?q=rift at caer bronach&amp;search_category=winter palace</label>
@@ -1745,8 +1745,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=rift at caer bronach&amp;search_category=winter palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=rift at caer bronach&amp;search_category=winter palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=rifts in the springs&amp;search_category=skyhold</label>
@@ -1757,8 +1757,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=rifts+in+the+springs&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drifts+in+the+springs%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=rifts+in+the+springs&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Drifts+in+the+springs%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=rifts in the springs&amp;search_category=winter palace</label>
@@ -1769,8 +1769,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=rifts+in+the+springs&amp;search_category=winter+palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drifts+in+the+springs%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=rifts+in+the+springs&amp;search_category=winter+palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Drifts+in+the+springs%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=seeing red&amp;search_category=inquisitor's path</label>
@@ -1781,8 +1781,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=seeing+red&amp;search_category=inquisitor's+path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dseeing+red%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=seeing+red&amp;search_category=inquisitor's+path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dseeing+red%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=seeing red&amp;search_category=inner circle</label>
@@ -1793,8 +1793,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=seeing red&amp;search_category=inner circle</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dseeing+red%26search_category%3Dinner+circle</segment>
+				<url>http://matthieu.net/blog/blog/search?q=seeing red&amp;search_category=inner circle</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dseeing+red%26search_category%3Dinner+circle</segment>
 			</row>
 			<row>
 				<label>/search?q=seeing red&amp;search_category=inquisitor's path</label>
@@ -1805,8 +1805,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=seeing red&amp;search_category=inquisitor's path</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dseeing+red%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=seeing red&amp;search_category=inquisitor's path</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dseeing+red%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=shallow breaths&amp;search_category=hissing wastes</label>
@@ -1817,8 +1817,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=shallow+breaths&amp;search_category=hissing+wastes</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dhissing+wastes</segment>
+				<url>http://matthieu.net/blog/blog/search?q=shallow+breaths&amp;search_category=hissing+wastes</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dhissing+wastes</segment>
 			</row>
 			<row>
 				<label>/search?q=shallow breaths&amp;search_category=skyhold</label>
@@ -1829,8 +1829,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=shallow+breaths&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=shallow+breaths&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=shallow breaths&amp;search_category=specializations</label>
@@ -1841,8 +1841,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=shallow+breaths&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=shallow+breaths&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=shallow breaths&amp;search_category=specializations</label>
@@ -1853,8 +1853,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=shallow breaths&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=shallow breaths&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=silence on the plains&amp;search_category=skyhold</label>
@@ -1865,8 +1865,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=silence on the plains&amp;search_category=skyhold</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsilence+on+the+plains%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=silence on the plains&amp;search_category=skyhold</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dsilence+on+the+plains%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=silence on the plains&amp;search_category=specializations</label>
@@ -1877,8 +1877,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=silence on the plains&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsilence+on+the+plains%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=silence on the plains&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dsilence+on+the+plains%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=sketch of the enavuris river&amp;search_category=specializations</label>
@@ -1889,8 +1889,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=sketch of the enavuris river&amp;search_category=specializations</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsketch+of+the+enavuris+river%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=sketch of the enavuris river&amp;search_category=specializations</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dsketch+of+the+enavuris+river%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>/search?q=sketch of the enavuris river&amp;search_category=winter palace</label>
@@ -1901,8 +1901,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>0%</bounce_rate>
 				<exit_rate>0%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=sketch of the enavuris river&amp;search_category=winter palace</url>
-				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsketch+of+the+enavuris+river%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=sketch of the enavuris river&amp;search_category=winter palace</url>
+				<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dsketch+of+the+enavuris+river%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>la-vue-de-ma-chambre-pendant-la-mousson</label>
@@ -1923,8 +1923,8 @@
 						<avg_time_on_page>25</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/la-vue-de-ma-chambre-pendant-la-mousson/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fla-vue-de-ma-chambre-pendant-la-mousson%2F</segment>
+						<url>http://matthieu.net/blog/blog/la-vue-de-ma-chambre-pendant-la-mousson/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fla-vue-de-ma-chambre-pendant-la-mousson%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1947,8 +1947,8 @@
 						<avg_time_on_page>69</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/le-ventilateur/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fle-ventilateur%2F</segment>
+						<url>http://matthieu.net/blog/blog/le-ventilateur/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fle-ventilateur%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1971,8 +1971,8 @@
 						<avg_time_on_page>38</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/ma-chambre-pendant-la-mousson/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fma-chambre-pendant-la-mousson%2F</segment>
+						<url>http://matthieu.net/blog/blog/ma-chambre-pendant-la-mousson/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fma-chambre-pendant-la-mousson%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1995,8 +1995,8 @@
 						<avg_time_on_page>352</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/plongee-a-grand-spectacle-dans-les-iles-komodo/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fplongee-a-grand-spectacle-dans-les-iles-komodo%2F</segment>
+						<url>http://matthieu.net/blog/blog/plongee-a-grand-spectacle-dans-les-iles-komodo/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fplongee-a-grand-spectacle-dans-les-iles-komodo%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -2019,8 +2019,8 @@
 						<avg_time_on_page>144</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/prix-de-lessence/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fprix-de-lessence%2F</segment>
+						<url>http://matthieu.net/blog/blog/prix-de-lessence/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fprix-de-lessence%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -2043,8 +2043,8 @@
 						<avg_time_on_page>89</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/record-du-monde-sur-la-moto/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Frecord-du-monde-sur-la-moto%2F</segment>
+						<url>http://matthieu.net/blog/blog/record-du-monde-sur-la-moto/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Frecord-du-monde-sur-la-moto%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -2067,8 +2067,8 @@
 						<avg_time_on_page>77</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/restaurant-vegetarien-samedi-soir/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Frestaurant-vegetarien-samedi-soir%2F</segment>
+						<url>http://matthieu.net/blog/blog/restaurant-vegetarien-samedi-soir/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Frestaurant-vegetarien-samedi-soir%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -2091,8 +2091,8 @@
 						<avg_time_on_page>290</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/securite-routiere/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsecurite-routiere%2F</segment>
+						<url>http://matthieu.net/blog/blog/securite-routiere/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsecurite-routiere%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -2115,8 +2115,8 @@
 						<avg_time_on_page>132</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>0%</exit_rate>
-						<url>http://matthieu.net/blog/top-photos-de-bonne-nourriture/</url>
-						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftop-photos-de-bonne-nourriture%2F</segment>
+						<url>http://matthieu.net/blog/blog/top-photos-de-bonne-nourriture/</url>
+						<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ftop-photos-de-bonne-nourriture%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -2156,8 +2156,8 @@
 		<avg_time_on_page>25</avg_time_on_page>
 		<bounce_rate>27%</bounce_rate>
 		<exit_rate>90%</exit_rate>
-		<url>http://matthieu.net/</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2F</segment>
+		<url>http://matthieu.net/blog/</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2F</segment>
 	</row>
 	<row>
 		<label>/search?search_category=specializations</label>
@@ -2174,8 +2174,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?search_category=specializations</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fsearch_category%3Dspecializations</segment>
+		<url>http://matthieu.net/blog/search?search_category=specializations</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dspecializations</segment>
 	</row>
 	<row>
 		<label>/search?search_category=winter palace</label>
@@ -2194,8 +2194,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>17%</exit_rate>
-		<url>http://matthieu.net/search?search_category=winter+palace</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fsearch_category%3Dwinter+palace</segment>
+		<url>http://matthieu.net/blog/search?search_category=winter+palace</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dwinter+palace</segment>
 	</row>
 	<row>
 		<label>/search?search_category=inner circle</label>
@@ -2212,8 +2212,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?search_category=inner+circle</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fsearch_category%3Dinner+circle</segment>
+		<url>http://matthieu.net/blog/search?search_category=inner+circle</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dinner+circle</segment>
 	</row>
 	<row>
 		<label>/search?search_category=haven</label>
@@ -2230,8 +2230,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?search_category=haven</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fsearch_category%3Dhaven</segment>
+		<url>http://matthieu.net/blog/search?search_category=haven</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dhaven</segment>
 	</row>
 	<row>
 		<label>/search?search_category=inquisitor's path</label>
@@ -2248,8 +2248,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?search_category=inquisitor's+path</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fsearch_category%3Dinquisitor%27s+path</segment>
+		<url>http://matthieu.net/blog/search?search_category=inquisitor's+path</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dinquisitor%27s+path</segment>
 	</row>
 	<row>
 		<label>/search?q=demands of the qun&amp;search_category=hissing wastes</label>
@@ -2261,8 +2261,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=demands+of+the+qun&amp;search_category=hissing+wastes</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dhissing+wastes</segment>
+		<url>http://matthieu.net/blog/search?q=demands+of+the+qun&amp;search_category=hissing+wastes</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dhissing+wastes</segment>
 	</row>
 	<row>
 		<label>/search?q=demands of the qun&amp;search_category=skyhold</label>
@@ -2274,8 +2274,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=demands+of+the+qun&amp;search_category=skyhold</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dskyhold</segment>
+		<url>http://matthieu.net/blog/search?q=demands+of+the+qun&amp;search_category=skyhold</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Ddemands+of+the+qun%26search_category%3Dskyhold</segment>
 	</row>
 	<row>
 		<label>/search?q=high stakes&amp;search_category=winter palace</label>
@@ -2292,8 +2292,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=high+stakes&amp;search_category=winter+palace</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dwinter+palace</segment>
+		<url>http://matthieu.net/blog/search?q=high+stakes&amp;search_category=winter+palace</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dhigh+stakes%26search_category%3Dwinter+palace</segment>
 	</row>
 	<row>
 		<label>/search?q=measuring the veil&amp;search_category=haven</label>
@@ -2305,8 +2305,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=measuring+the+veil&amp;search_category=haven</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dhaven</segment>
+		<url>http://matthieu.net/blog/search?q=measuring+the+veil&amp;search_category=haven</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dhaven</segment>
 	</row>
 	<row>
 		<label>/search?q=memories of the grey&amp;search_category=haven</label>
@@ -2318,8 +2318,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=memories+of+the+grey&amp;search_category=haven</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Dmemories+of+the+grey%26search_category%3Dhaven</segment>
+		<url>http://matthieu.net/blog/search?q=memories+of+the+grey&amp;search_category=haven</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dmemories+of+the+grey%26search_category%3Dhaven</segment>
 	</row>
 	<row>
 		<label>/search?q=promise of destruction&amp;search_category=lost temple of dirthamen</label>
@@ -2331,8 +2331,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=promise+of+destruction&amp;search_category=lost+temple+of+dirthamen</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Dpromise+of+destruction%26search_category%3Dlost+temple+of+dirthamen</segment>
+		<url>http://matthieu.net/blog/search?q=promise+of+destruction&amp;search_category=lost+temple+of+dirthamen</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dpromise+of+destruction%26search_category%3Dlost+temple+of+dirthamen</segment>
 	</row>
 	<row>
 		<label>/search?q=rift at caer bronach&amp;search_category=hissing wastes</label>
@@ -2344,8 +2344,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=rift+at+caer+bronach&amp;search_category=hissing+wastes</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dhissing+wastes</segment>
+		<url>http://matthieu.net/blog/search?q=rift+at+caer+bronach&amp;search_category=hissing+wastes</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drift+at+caer+bronach%26search_category%3Dhissing+wastes</segment>
 	</row>
 	<row>
 		<label>/search?q=rifts in the springs&amp;search_category=inner circle</label>
@@ -2364,8 +2364,8 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<url>http://matthieu.net/search?q=rifts+in+the+springs&amp;search_category=inner+circle</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Drifts+in+the+springs%26search_category%3Dinner+circle</segment>
+		<url>http://matthieu.net/blog/search?q=rifts+in+the+springs&amp;search_category=inner+circle</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drifts+in+the+springs%26search_category%3Dinner+circle</segment>
 	</row>
 	<row>
 		<label>/search?q=subjected to his will&amp;search_category=winter palace</label>
@@ -2377,8 +2377,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=subjected+to+his+will&amp;search_category=winter+palace</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dwinter+palace</segment>
+		<url>http://matthieu.net/blog/search?q=subjected+to+his+will&amp;search_category=winter+palace</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dwinter+palace</segment>
 	</row>
 	<row>
 		<label>/search?q=the spirit calmed&amp;search_category=lost temple of dirthamen</label>
@@ -2390,8 +2390,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=the+spirit+calmed&amp;search_category=lost+temple+of+dirthamen</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Dthe+spirit+calmed%26search_category%3Dlost+temple+of+dirthamen</segment>
+		<url>http://matthieu.net/blog/search?q=the+spirit+calmed&amp;search_category=lost+temple+of+dirthamen</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+spirit+calmed%26search_category%3Dlost+temple+of+dirthamen</segment>
 	</row>
 	<row>
 		<label>/search?q=the wrath of heaven&amp;search_category=skyhold</label>
@@ -2403,8 +2403,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=the+wrath+of+heaven&amp;search_category=skyhold</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Dthe+wrath+of+heaven%26search_category%3Dskyhold</segment>
+		<url>http://matthieu.net/blog/search?q=the+wrath+of+heaven&amp;search_category=skyhold</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+wrath+of+heaven%26search_category%3Dskyhold</segment>
 	</row>
 	<row>
 		<label>/search?q=wyrm hole&amp;search_category=skyhold</label>
@@ -2416,8 +2416,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?q=wyrm+hole&amp;search_category=skyhold</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fq%3Dwyrm+hole%26search_category%3Dskyhold</segment>
+		<url>http://matthieu.net/blog/search?q=wyrm+hole&amp;search_category=skyhold</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dwyrm+hole%26search_category%3Dskyhold</segment>
 	</row>
 	<row>
 		<label>/search?search_category=hissing wastes</label>
@@ -2425,8 +2425,8 @@
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>1</sum_time_spent>
 		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_nb_actions>3</entry_nb_actions>
+		<entry_sum_visit_length>124</entry_sum_visit_length>
 		<entry_bounce_count>0</entry_bounce_count>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
@@ -2434,8 +2434,8 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<url>http://matthieu.net/search?search_category=hissing+wastes</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fsearch_category%3Dhissing+wastes</segment>
+		<url>http://matthieu.net/blog/search?search_category=hissing+wastes</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dhissing+wastes</segment>
 	</row>
 	<row>
 		<label>/search?search_category=lost temple of dirthamen</label>
@@ -2454,7 +2454,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<url>http://matthieu.net/search?search_category=lost+temple+of+dirthamen</url>
-		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fsearch%3Fsearch_category%3Dlost+temple+of+dirthamen</segment>
+		<url>http://matthieu.net/blog/search?search_category=lost+temple+of+dirthamen</url>
+		<segment>pageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fsearch_category%3Dlost+temple+of+dirthamen</segment>
 	</row>
 </result>

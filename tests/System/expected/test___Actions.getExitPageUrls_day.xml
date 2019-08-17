@@ -6,8 +6,8 @@
 		<nb_hits>231</nb_hits>
 		<sum_time_spent>9579</sum_time_spent>
 		<entry_nb_visits>152</entry_nb_visits>
-		<entry_nb_actions>490</entry_nb_actions>
-		<entry_sum_visit_length>8849</entry_sum_visit_length>
+		<entry_nb_actions>501</entry_nb_actions>
+		<entry_sum_visit_length>9107</entry_sum_visit_length>
 		<entry_bounce_count>47</entry_bounce_count>
 		<exit_nb_visits>147</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
@@ -47,8 +47,8 @@
 						<avg_time_on_page>30</avg_time_on_page>
 						<bounce_rate>30%</bounce_rate>
 						<exit_rate>93%</exit_rate>
-						<url>http://matthieu.net/blog/about/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fabout%2F</segment>
+						<url>http://matthieu.net/blog/blog/about/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fabout%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -83,8 +83,8 @@
 						<avg_time_on_page>45</avg_time_on_page>
 						<bounce_rate>19%</bounce_rate>
 						<exit_rate>78%</exit_rate>
-						<url>http://matthieu.net/blog/inde-par-region-et-ville/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Finde-par-region-et-ville%2F</segment>
+						<url>http://matthieu.net/blog/blog/inde-par-region-et-ville/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Finde-par-region-et-ville%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -119,8 +119,8 @@
 						<avg_time_on_page>96</avg_time_on_page>
 						<bounce_rate>30%</bounce_rate>
 						<exit_rate>60%</exit_rate>
-						<url>http://matthieu.net/blog/ferelden/crestwood</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fcrestwood</segment>
+						<url>http://matthieu.net/blog/blog/ferelden/crestwood</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fferelden%2Fcrestwood</segment>
 					</row>
 					<row>
 						<label>crestwood</label>
@@ -153,8 +153,8 @@
 								<avg_time_on_page>1</avg_time_on_page>
 								<bounce_rate>20%</bounce_rate>
 								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/ferelden/crestwood/caer-bronach</url>
-								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fcrestwood%2Fcaer-bronach</segment>
+								<url>http://matthieu.net/blog/blog/ferelden/crestwood/caer-bronach</url>
+								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fferelden%2Fcrestwood%2Fcaer-bronach</segment>
 							</row>
 						</subtable>
 					</row>
@@ -189,8 +189,8 @@
 								<avg_time_on_page>66</avg_time_on_page>
 								<bounce_rate>0%</bounce_rate>
 								<exit_rate>50%</exit_rate>
-								<url>http://matthieu.net/blog/ferelden/the-hinterlands/redcliffe</url>
-								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fferelden%2Fthe-hinterlands%2Fredcliffe</segment>
+								<url>http://matthieu.net/blog/blog/ferelden/the-hinterlands/redcliffe</url>
+								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fferelden%2Fthe-hinterlands%2Fredcliffe</segment>
 							</row>
 						</subtable>
 					</row>
@@ -227,8 +227,8 @@
 						<avg_time_on_page>143</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>83%</exit_rate>
-						<url>http://matthieu.net/blog/orlais/the-arbor-wilds</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fthe-arbor-wilds</segment>
+						<url>http://matthieu.net/blog/blog/orlais/the-arbor-wilds</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Forlais%2Fthe-arbor-wilds</segment>
 					</row>
 					<row>
 						<label>emprise-du-lion</label>
@@ -261,8 +261,8 @@
 								<avg_time_on_page>18</avg_time_on_page>
 								<bounce_rate>0%</bounce_rate>
 								<exit_rate>83%</exit_rate>
-								<url>http://matthieu.net/blog/orlais/emprise-du-lion/sahrnia</url>
-								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Femprise-du-lion%2Fsahrnia</segment>
+								<url>http://matthieu.net/blog/blog/orlais/emprise-du-lion/sahrnia</url>
+								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Forlais%2Femprise-du-lion%2Fsahrnia</segment>
 							</row>
 						</subtable>
 					</row>
@@ -282,8 +282,8 @@
 						<avg_time_on_page>15</avg_time_on_page>
 						<bounce_rate>50%</bounce_rate>
 						<exit_rate>60%</exit_rate>
-						<url>http://matthieu.net/blog/orlais/the-western-approach</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fthe-western-approach</segment>
+						<url>http://matthieu.net/blog/blog/orlais/the-western-approach</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Forlais%2Fthe-western-approach</segment>
 					</row>
 					<row>
 						<label>halamshiral</label>
@@ -316,8 +316,8 @@
 								<avg_time_on_page>4</avg_time_on_page>
 								<bounce_rate>33%</bounce_rate>
 								<exit_rate>75%</exit_rate>
-								<url>http://matthieu.net/blog/orlais/halamshiral/winter-palace</url>
-								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Forlais%2Fhalamshiral%2Fwinter-palace</segment>
+								<url>http://matthieu.net/blog/blog/orlais/halamshiral/winter-palace</url>
+								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Forlais%2Fhalamshiral%2Fwinter-palace</segment>
 							</row>
 						</subtable>
 					</row>
@@ -354,8 +354,8 @@
 						<avg_time_on_page>64</avg_time_on_page>
 						<bounce_rate>22%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/tevinter/solas</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftevinter%2Fsolas</segment>
+						<url>http://matthieu.net/blog/blog/tevinter/solas</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ftevinter%2Fsolas</segment>
 					</row>
 				</subtable>
 			</row>
@@ -390,8 +390,8 @@
 						<avg_time_on_page>10</avg_time_on_page>
 						<bounce_rate>67%</bounce_rate>
 						<exit_rate>75%</exit_rate>
-						<url>http://matthieu.net/blog/antiva/seleny</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fantiva%2Fseleny</segment>
+						<url>http://matthieu.net/blog/blog/antiva/seleny</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fantiva%2Fseleny</segment>
 					</row>
 				</subtable>
 			</row>
@@ -426,8 +426,8 @@
 						<avg_time_on_page>31</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/free-marches/markhem</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ffree-marches%2Fmarkhem</segment>
+						<url>http://matthieu.net/blog/blog/free-marches/markhem</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ffree-marches%2Fmarkhem</segment>
 					</row>
 				</subtable>
 			</row>
@@ -462,8 +462,8 @@
 						<avg_time_on_page>8</avg_time_on_page>
 						<bounce_rate>50%</bounce_rate>
 						<exit_rate>83%</exit_rate>
-						<url>http://matthieu.net/blog/nevarra/trevis</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fnevarra%2Ftrevis</segment>
+						<url>http://matthieu.net/blog/blog/nevarra/trevis</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fnevarra%2Ftrevis</segment>
 					</row>
 				</subtable>
 			</row>
@@ -498,8 +498,8 @@
 						<avg_time_on_page>13</avg_time_on_page>
 						<bounce_rate>67%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F</segment>
+						<url>http://matthieu.net/blog/blog/top-10-des-plus-belles-plongees-sous-marine-dans-le-monde/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Ftop-10-des-plus-belles-plongees-sous-marine-dans-le-monde%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -519,8 +519,8 @@
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>100%</bounce_rate>
 				<exit_rate>50%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=subjected+to+his+will&amp;search_category=inquisitor's+path</url>
-				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=subjected+to+his+will&amp;search_category=inquisitor's+path</url>
+				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dsubjected+to+his+will%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=the magister's birthright&amp;search_category=specializations</label>
@@ -530,16 +530,16 @@
 				<sum_time_spent>1</sum_time_spent>
 				<entry_nb_uniq_visitors>2</entry_nb_uniq_visitors>
 				<entry_nb_visits>2</entry_nb_visits>
-				<entry_nb_actions>3</entry_nb_actions>
-				<entry_sum_visit_length>0</entry_sum_visit_length>
+				<entry_nb_actions>14</entry_nb_actions>
+				<entry_sum_visit_length>258</entry_sum_visit_length>
 				<entry_bounce_count>1</entry_bounce_count>
 				<exit_nb_uniq_visitors>1</exit_nb_uniq_visitors>
 				<exit_nb_visits>1</exit_nb_visits>
 				<avg_time_on_page>1</avg_time_on_page>
 				<bounce_rate>50%</bounce_rate>
 				<exit_rate>50%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=the+magister's+birthright&amp;search_category=specializations</url>
-				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dthe+magister%27s+birthright%26search_category%3Dspecializations</segment>
+				<url>http://matthieu.net/blog/blog/search?q=the+magister's+birthright&amp;search_category=specializations</url>
+				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dthe+magister%27s+birthright%26search_category%3Dspecializations</segment>
 			</row>
 			<row>
 				<label>anderfels</label>
@@ -572,8 +572,8 @@
 						<avg_time_on_page>2</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/anderfels/laysh</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fanderfels%2Flaysh</segment>
+						<url>http://matthieu.net/blog/blog/anderfels/laysh</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fanderfels%2Flaysh</segment>
 					</row>
 				</subtable>
 			</row>
@@ -623,8 +623,8 @@
 								<avg_time_on_page>0</avg_time_on_page>
 								<bounce_rate>100%</bounce_rate>
 								<exit_rate>100%</exit_rate>
-								<url>http://matthieu.net/blog/category/londres/</url>
-								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcategory%2Flondres%2F</segment>
+								<url>http://matthieu.net/blog/blog/category/londres/</url>
+								<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fcategory%2Flondres%2F</segment>
 							</row>
 						</subtable>
 					</row>
@@ -661,8 +661,8 @@
 						<avg_time_on_page>575</avg_time_on_page>
 						<bounce_rate>50%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/cout-de-la-vie-en-inde/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcout-de-la-vie-en-inde%2F</segment>
+						<url>http://matthieu.net/blog/blog/cout-de-la-vie-en-inde/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fcout-de-la-vie-en-inde%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -682,8 +682,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>100%</bounce_rate>
 				<exit_rate>100%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=a+fallen+sister&amp;search_category=winter+palace</url>
-				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Da+fallen+sister%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=a+fallen+sister&amp;search_category=winter+palace</url>
+				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Da+fallen+sister%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>/search?q=measuring the veil&amp;search_category=skyhold</label>
@@ -701,8 +701,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>100%</bounce_rate>
 				<exit_rate>100%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=measuring+the+veil&amp;search_category=skyhold</url>
-				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=measuring+the+veil&amp;search_category=skyhold</url>
+				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dmeasuring+the+veil%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=no word back&amp;search_category=skyhold</label>
@@ -720,8 +720,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>100%</bounce_rate>
 				<exit_rate>100%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=no+word+back&amp;search_category=skyhold</url>
-				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dno+word+back%26search_category%3Dskyhold</segment>
+				<url>http://matthieu.net/blog/blog/search?q=no+word+back&amp;search_category=skyhold</url>
+				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dno+word+back%26search_category%3Dskyhold</segment>
 			</row>
 			<row>
 				<label>/search?q=rifts in the springs&amp;search_category=inquisitor's path</label>
@@ -739,8 +739,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>100%</bounce_rate>
 				<exit_rate>100%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=rifts+in+the+springs&amp;search_category=inquisitor's+path</url>
-				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Drifts+in+the+springs%26search_category%3Dinquisitor%27s+path</segment>
+				<url>http://matthieu.net/blog/blog/search?q=rifts+in+the+springs&amp;search_category=inquisitor's+path</url>
+				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Drifts+in+the+springs%26search_category%3Dinquisitor%27s+path</segment>
 			</row>
 			<row>
 				<label>/search?q=shallow breaths&amp;search_category=winter palace</label>
@@ -758,8 +758,8 @@
 				<avg_time_on_page>0</avg_time_on_page>
 				<bounce_rate>100%</bounce_rate>
 				<exit_rate>100%</exit_rate>
-				<url>http://matthieu.net/blog/search?q=shallow+breaths&amp;search_category=winter+palace</url>
-				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dwinter+palace</segment>
+				<url>http://matthieu.net/blog/blog/search?q=shallow+breaths&amp;search_category=winter+palace</url>
+				<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fsearch%3Fq%3Dshallow+breaths%26search_category%3Dwinter+palace</segment>
 			</row>
 			<row>
 				<label>accouplement-de-singes</label>
@@ -792,8 +792,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/accouplement-de-singes/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Faccouplement-de-singes%2F</segment>
+						<url>http://matthieu.net/blog/blog/accouplement-de-singes/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Faccouplement-de-singes%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -828,8 +828,8 @@
 						<avg_time_on_page>14</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/chateau-de-chambord-photos-de-ce-beau-chateau/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fchateau-de-chambord-photos-de-ce-beau-chateau%2F</segment>
+						<url>http://matthieu.net/blog/blog/chateau-de-chambord-photos-de-ce-beau-chateau/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fchateau-de-chambord-photos-de-ce-beau-chateau%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -864,8 +864,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/cirque-du-soleil-magnifique/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcirque-du-soleil-magnifique%2F</segment>
+						<url>http://matthieu.net/blog/blog/cirque-du-soleil-magnifique/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fcirque-du-soleil-magnifique%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -891,8 +891,8 @@
 						<avg_time_on_page>8</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/claire-laustralienne/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fclaire-laustralienne%2F</segment>
+						<url>http://matthieu.net/blog/blog/claire-laustralienne/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fclaire-laustralienne%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -927,8 +927,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/couleurs-et-jonglerie/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fcouleurs-et-jonglerie%2F</segment>
+						<url>http://matthieu.net/blog/blog/couleurs-et-jonglerie/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fcouleurs-et-jonglerie%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -963,8 +963,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/itineraire-dun-voyage-en-indonesie/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fitineraire-dun-voyage-en-indonesie%2F</segment>
+						<url>http://matthieu.net/blog/blog/itineraire-dun-voyage-en-indonesie/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fitineraire-dun-voyage-en-indonesie%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -999,8 +999,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/premier-jour-de-folie-a-munnar/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fpremier-jour-de-folie-a-munnar%2F</segment>
+						<url>http://matthieu.net/blog/blog/premier-jour-de-folie-a-munnar/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fpremier-jour-de-folie-a-munnar%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1035,8 +1035,8 @@
 						<avg_time_on_page>0</avg_time_on_page>
 						<bounce_rate>100%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/video-preparation-des-momos/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fvideo-preparation-des-momos%2F</segment>
+						<url>http://matthieu.net/blog/blog/video-preparation-des-momos/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fvideo-preparation-des-momos%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1071,8 +1071,8 @@
 						<avg_time_on_page>597</avg_time_on_page>
 						<bounce_rate>0%</bounce_rate>
 						<exit_rate>100%</exit_rate>
-						<url>http://matthieu.net/blog/visite-de-madurai/</url>
-						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fvisite-de-madurai%2F</segment>
+						<url>http://matthieu.net/blog/blog/visite-de-madurai/</url>
+						<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2Fblog%2Fvisite-de-madurai%2F</segment>
 					</row>
 				</subtable>
 			</row>
@@ -1095,7 +1095,7 @@
 		<avg_time_on_page>21</avg_time_on_page>
 		<bounce_rate>26%</bounce_rate>
 		<exit_rate>94%</exit_rate>
-		<url>http://matthieu.net/</url>
-		<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2F</segment>
+		<url>http://matthieu.net/blog/</url>
+		<segment>exitPageUrl==http%3A%2F%2Fmatthieu.net%2Fblog%2F</segment>
 	</row>
 </result>
