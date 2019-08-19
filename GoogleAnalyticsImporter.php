@@ -153,7 +153,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $module = Common::getRequestVar('module');
         $action = Common::getRequestVar('action');
 
-        if ($module == 'Live') {
+        if ($module == 'Live'
+            || ($module == 'Ecommerce' && $action == 'getEcommerceLog')
+        ) {
             if ($table->getRowsCount() > 0
                 || !$this->isInImportedDateRange($period, $date)
             ) {

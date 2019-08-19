@@ -82,6 +82,37 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         Common::destroy($table);
 
+        // if scope is action, we also need to query exit page metrics
+        if ($dimensionObj['scope'] === CustomDimensions::SCOPE_ACTION) {
+            // not querying for unique visitors since we can't sum those in case of exit page path being different,
+            // but dimension value being the same
+            $exitPageMetrics = [
+                Metrics::INDEX_PAGE_EXIT_NB_VISITS,
+            ];
+
+            $table = $gaQuery->query($day, $dimensions = [$dimension], $exitPageMetrics, [
+                'orderBys' => [
+                    ['field' => 'ga:exits', 'order' => 'descending'],
+                    ['field' => $dimension, 'order' => 'ascending'],
+                ],
+            ]);
+
+            foreach ($table->getRows() as $row) {
+                $label = $row->getMetadata($dimension);
+                if (empty($label)) {
+                    $label = parent::NOT_SET_IN_GA_LABEL;
+                }
+
+                $row->deleteMetadata();
+                $tableRow = $record->getRowFromLabel($label);
+                if (!empty($tableRow)) {
+                    $tableRow->sumRow($row);
+                }
+            }
+
+            Common::destroy($table);
+        }
+
         return $record;
     }
 

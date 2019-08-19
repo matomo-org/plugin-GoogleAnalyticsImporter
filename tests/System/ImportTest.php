@@ -123,6 +123,26 @@ class ImportTest extends SystemTestCase
                 'testSuffix' => '_ecommerceOrder',
             ]],
 
+            // custom dimensions
+            ['CustomDimensions.getCustomDimension', [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['day', 'week', 'month', 'year'],
+                'testSuffix' => '_action',
+                'otherRequestParameters' => [
+                    'idDimension' => '6', // action scope
+                ],
+            ]],
+            ['CustomDimensions.getCustomDimension', [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['day', 'week', 'month', 'year'],
+                'testSuffix' => '_visit',
+                'otherRequestParameters' => [
+                    'idDimension' => '4', // action scope
+                ],
+            ]],
+
             // flattened
             [['Referrers.getSearchEngines'], [
                 'idSite' => self::$fixture->idSite,
@@ -138,7 +158,7 @@ class ImportTest extends SystemTestCase
                 'idSite' => self::$fixture->campaignIdSite,
                 'date' => self::$fixture->campaignDataDateTime,
                 'periods' => ['day', 'week', 'month', 'year'],
-            ]]
+            ]],
         ];
     }
 
