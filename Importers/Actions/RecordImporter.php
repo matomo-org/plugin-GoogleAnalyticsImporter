@@ -394,7 +394,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $metrics = [Metrics::INDEX_NB_VISITS, Metrics::INDEX_NB_UNIQ_VISITORS];
         $table = $gaQuery->query($day, $dimensions = ['ga:pagePath'], $metrics, [
             'orderBys' => [
-                ['field' => 'ga:sessions', 'order' => 'descending'],
+                ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
                 ['field' => 'ga:pageTitle', 'order' => 'ascending'],
             ],
             'mappings' => [

@@ -82,12 +82,41 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         Common::destroy($table);
 
-        // if scope is action, we also need to query exit page metrics
+        // if scope is action, we also need to query exit page metrics and visit metrics (done separately
+        // see RecordImporter::getPageMetrics for more info)
         if ($dimensionObj['scope'] === CustomDimensions::SCOPE_ACTION) {
+            $table = $gaQuery->query($day, $dimensions = [$dimension], [Metrics::INDEX_NB_VISITS, Metrics::INDEX_BOUNCE_COUNT], [
+                'orderBys' => [
+                    ['field' => 'ga:sessions', 'order' => 'descending'],
+                    ['field' => $dimension, 'order' => 'ascending'],
+                ],
+                'mappings' => [
+                    Metrics::INDEX_NB_VISITS => 'ga:uniquePageviews',
+                ],
+            ]);
+
+            foreach ($table->getRows() as $row) { // TODO: lots of code redundancy here, can create a helper
+                $label = $row->getMetadata($dimension);
+                if (empty($label)) {
+                    $label = parent::NOT_SET_IN_GA_LABEL;
+                }
+
+                $row->deleteMetadata();
+                $tableRow = $record->getRowFromLabel($label);
+                if (!empty($tableRow)) {
+                    $tableRow->sumRow($row);
+                }
+            }
+
+            Common::destroy($table);
+
             // not querying for unique visitors since we can't sum those in case of exit page path being different,
             // but dimension value being the same
             $exitPageMetrics = [
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS,
+                Metrics::INDEX_PAGE_ENTRY_NB_VISITS,
+                Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS,
+                Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH,
             ];
 
             $table = $gaQuery->query($day, $dimensions = [$dimension], $exitPageMetrics, [
