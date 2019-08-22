@@ -9,21 +9,18 @@
     "authors": [
         {
             "name": "Matomo",
-            "email": "",
-            "homepage": ""
+            "email": "hello@matomo.org",
+            "homepage": "https://matomo.org"
         }
     ],
     "support": {
-        "email": "",
-        "issues": "",
-        "forum": "",
-        "irc": "",
-        "wiki": "",
-        "source": "",
-        "docs": "",
-        "rss": ""
+        "email": "hello@matomo.org",
+        "issues": "https://github.com/matomo-org/plugin-GoogleAnalyticsImporter/issues",
+        "forum": "https://forum.matomo.org",
+        "source": "https://github.com/matomo-org/plugin-GoogleAnalyticsImporter",
+        "wiki": "https://github.com/matomo-org/plugin-GoogleAnalyticsImporter/wiki"
     },
-    "homepage": "",
+    "homepage": "https://matomo.org",
     "license": "GPL v3+",
-    "keywords": []
+    "keywords": ["google", "analytics", "import"]
 }
