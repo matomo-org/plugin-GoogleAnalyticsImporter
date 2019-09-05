@@ -194,7 +194,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             if (isset($this->pageTitleRowsByPageTitle[$pageTitle])) {
                 $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
-                if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS)) {
+                if ($existingRow->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_VISITS)) {
                     throw new \Exception("Unexpected error: encountered page title twice in result set: $actionName");
                 }
 
@@ -260,7 +260,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             }
 
             $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
-            if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS)) {
+            if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)) {
                 throw new \Exception("Unexpected error: encountered page title twice in result set: $actionName");
             }
 
