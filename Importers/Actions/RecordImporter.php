@@ -168,7 +168,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $row->deleteColumn('label');
 
             if (isset($this->pageUrlsByPagePath[$actionName])) {
-                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)) {
+                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_VISITS)) {
                     throw new \Exception("Unexpected error: encountered URL twice in result set: $actionName");
                 }
 
