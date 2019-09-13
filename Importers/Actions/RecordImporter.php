@@ -132,10 +132,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             $row->deleteColumn('label');
 
-            $columns = $row->getColumns();
-            foreach ($columns as $name => $value) {
-                $actionRow->setColumn($name, $value);
-            }
+            $actionRow->sumRow($row, $copyMetadata = false);
         }
 
         Common::destroy($table);
@@ -164,17 +161,16 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         foreach ($table->getRows() as $row) {
             $actionName = $mainUrlWithoutSlash . $row->getMetadata('ga:landingPagePath');
-
             $row->deleteColumn('label');
 
             if (isset($this->pageUrlsByPagePath[$actionName])) {
-                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_VISITS)) {
-                    throw new \Exception("Unexpected error: encountered URL twice in result set: $actionName");
+                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_VISITS)
+                    && $this->pageUrlsByPagePath[$actionName]->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
+                ) {
+                    throw new \Exception("Unexpected error: encountered URL twice in result set: '$actionName'");
                 }
 
-                foreach ($entryPageMetrics as $name) {
-                    $this->pageUrlsByPagePath[$actionName]->setColumn($name, $row->getColumn($name));
-                }
+                $this->pageUrlsByPagePath[$actionName]->sumRow($row, $copyMetadata = false);
             }
         }
 
@@ -194,13 +190,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             if (isset($this->pageTitleRowsByPageTitle[$pageTitle])) {
                 $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
-                if ($existingRow->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_VISITS)) {
-                    throw new \Exception("Unexpected error: encountered page title twice in result set: $actionName");
+                if ($existingRow->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_VISITS)
+                    && $existingRow->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
+                ) {
+                    throw new \Exception("Unexpected error: encountered page title twice in result set: '$actionName'");
                 }
 
-                foreach ($entryPageMetrics as $name) {
-                    $existingRow->setColumn($name, $row->getColumn($name));
-                }
+                $existingRow->sumRow($row, $copyMetadata = false);
             }
         }
 
@@ -231,13 +227,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $row->deleteColumn('label');
 
             if (isset($this->pageUrlsByPagePath[$actionName])) {
-                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)) {
-                    throw new \Exception("Unexpected error: encountered URL twice in result set: $actionName");
+                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)
+                    && $this->pageUrlsByPagePath[$actionName]->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
+                ) {
+                    throw new \Exception("Unexpected error: encountered URL twice in result set: '$actionName'");
                 }
 
-                foreach ($exitPageMetrics as $name) {
-                    $this->pageUrlsByPagePath[$actionName]->setColumn($name, $row->getColumn($name));
-                }
+                $this->pageUrlsByPagePath[$actionName]->sumRow($row, $copyMetadata = false);
             }
         }
 
@@ -260,13 +256,13 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             }
 
             $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
-            if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)) {
-                throw new \Exception("Unexpected error: encountered page title twice in result set: $actionName");
+            if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)
+                && $existingRow->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
+            ) {
+                throw new \Exception("Unexpected error: encountered page title twice in result set: '$actionName'");
             }
 
-            foreach ($exitPageMetrics as $name) {
-                $existingRow->setColumn($name, $row->getColumn($name));
-            }
+            $existingRow->sumRow($row, $copyMetadata = false);
         }
 
         Common::destroy($table);
@@ -328,10 +324,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             if (!empty($this->pageTitleRowsByPageTitle[$pageTitle])) {
                 $recordRow = $this->pageTitleRowsByPageTitle[$pageTitle];
-
-                foreach ($metrics as $index) {
-                    $recordRow->setColumn($index, $row->getColumn($index));
-                }
+                $recordRow->sumRow($row, $copyMetadata = false);
             }
         }
 
@@ -379,12 +372,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             $row->deleteColumn('label');
 
-            $columns = $row->getColumns();
-            foreach ($columns as $name => $value) {
-                $actionRow->setColumn($name, $value);
+            $actionRow->sumRow($row, $copyMetadata = false);
+            if ($actionRow->getColumn('label') != DataTable::LABEL_SUMMARY_ROW) {
+                $actionRow->setMetadata('url', $wholeUrl);
             }
 
-            $actionRow->setMetadata('url', $wholeUrl);
             $this->pageUrlsByPagePath[$wholeUrl] = $actionRow;
         }
 
@@ -410,9 +402,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
             if (!empty($this->pageUrlsByPagePath[$wholeUrl])) {
                 $recordRow = $this->pageUrlsByPagePath[$wholeUrl];
-                foreach ($metrics as $index) {
-                    $recordRow->setColumn($index, $row->getColumn($index));
-                }
+                $recordRow->sumRow($row, $copyMetadata = false);
             }
         }
 
