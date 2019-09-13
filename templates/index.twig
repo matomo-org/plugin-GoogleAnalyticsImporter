@@ -18,7 +18,7 @@
             {% else %}
             <p>{{ 'GoogleAnalyticsImporter_ClientConfigSuccessfullyUpdated'|translate }}</p>
 
-            <a class="btn" href="{{ authUrl }}">{{ 'GoogleAnalyticsImporter_Authorize' }}</a>
+            <a class="btn" href="{{ authUrl }}">{{ 'GoogleAnalyticsImporter_Authorize'|translate }}</a>
             {% endif %}
         {% else %}
             <form action="{{ linkTo({'action': 'configureClient'}) }}" method="POST" enctype="multipart/form-data">
