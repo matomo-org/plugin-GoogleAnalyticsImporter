@@ -306,7 +306,7 @@ class Importer
             throw $ex;
         } catch (\Exception $ex) {
             $dateStr = isset($date) ? $date->toString() : '(unknown)';
-            $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage() . "\n" . $ex->getTraceAsString());
+            $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
 
             throw $ex;
         }
