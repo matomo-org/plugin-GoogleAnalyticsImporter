@@ -504,7 +504,7 @@
 				</subtable>
 			</row>
 			<row>
-				<label>/search?q=letter+from+a+lover&amp;search_category=haven</label>
+				<label>/search?q=letter from a lover&amp;search_category=haven</label>
 				<nb_visits>2</nb_visits>
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_hits>2</nb_hits>
@@ -521,7 +521,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dletter%252Bfrom%252Ba%252Blover%2526search_category%253Dhaven</segment>
 			</row>
 			<row>
-				<label>/search?q=subjected+to+his+will&amp;search_category=haven</label>
+				<label>/search?q=subjected to his will&amp;search_category=haven</label>
 				<nb_visits>2</nb_visits>
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_hits>2</nb_hits>
@@ -538,7 +538,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dsubjected%252Bto%252Bhis%252Bwill%2526search_category%253Dhaven</segment>
 			</row>
 			<row>
-				<label>/search?q=subjected+to+his+will&amp;search_category=inquisitor's+path</label>
+				<label>/search?q=subjected to his will&amp;search_category=inquisitor's path</label>
 				<nb_visits>2</nb_visits>
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_hits>2</nb_hits>
@@ -557,7 +557,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dsubjected%252Bto%252Bhis%252Bwill%2526search_category%253Dinquisitor%2527s%252Bpath</segment>
 			</row>
 			<row>
-				<label>/search?q=the+magister's+birthright&amp;search_category=specializations</label>
+				<label>/search?q=the magister's birthright&amp;search_category=specializations</label>
 				<nb_visits>2</nb_visits>
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_hits>2</nb_hits>
@@ -734,7 +734,7 @@
 				</subtable>
 			</row>
 			<row>
-				<label>/search?q=a+fallen+sister&amp;search_category=winter+palace</label>
+				<label>/search?q=a fallen sister&amp;search_category=winter palace</label>
 				<nb_visits>1</nb_visits>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_hits>1</nb_hits>
@@ -753,7 +753,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Da%252Bfallen%252Bsister%2526search_category%253Dwinter%252Bpalace</segment>
 			</row>
 			<row>
-				<label>/search?q=measuring+the+veil&amp;search_category=skyhold</label>
+				<label>/search?q=measuring the veil&amp;search_category=skyhold</label>
 				<nb_visits>1</nb_visits>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_hits>1</nb_hits>
@@ -772,7 +772,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dmeasuring%252Bthe%252Bveil%2526search_category%253Dskyhold</segment>
 			</row>
 			<row>
-				<label>/search?q=memories+of+the+grey&amp;search_category=hissing+wastes</label>
+				<label>/search?q=memories of the grey&amp;search_category=hissing wastes</label>
 				<nb_visits>1</nb_visits>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_hits>1</nb_hits>
@@ -789,7 +789,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dmemories%252Bof%252Bthe%252Bgrey%2526search_category%253Dhissing%252Bwastes</segment>
 			</row>
 			<row>
-				<label>/search?q=memories+of+the+grey&amp;search_category=skyhold</label>
+				<label>/search?q=memories of the grey&amp;search_category=skyhold</label>
 				<nb_visits>1</nb_visits>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_hits>1</nb_hits>
@@ -806,7 +806,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dmemories%252Bof%252Bthe%252Bgrey%2526search_category%253Dskyhold</segment>
 			</row>
 			<row>
-				<label>/search?q=no+word+back&amp;search_category=skyhold</label>
+				<label>/search?q=no word back&amp;search_category=skyhold</label>
 				<nb_visits>1</nb_visits>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_hits>1</nb_hits>
@@ -825,7 +825,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dno%252Bword%252Bback%2526search_category%253Dskyhold</segment>
 			</row>
 			<row>
-				<label>/search?q=rifts+in+the+springs&amp;search_category=inquisitor's+path</label>
+				<label>/search?q=rifts in the springs&amp;search_category=inquisitor's path</label>
 				<nb_visits>1</nb_visits>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_hits>1</nb_hits>
@@ -844,7 +844,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Drifts%252Bin%252Bthe%252Bsprings%2526search_category%253Dinquisitor%2527s%252Bpath</segment>
 			</row>
 			<row>
-				<label>/search?q=shallow+breaths&amp;search_category=winter+palace</label>
+				<label>/search?q=shallow breaths&amp;search_category=winter palace</label>
 				<nb_visits>1</nb_visits>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_hits>1</nb_hits>
@@ -863,7 +863,7 @@
 				<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dshallow%252Bbreaths%2526search_category%253Dwinter%252Bpalace</segment>
 			</row>
 			<row>
-				<label>/search?q=silence+on+the+plains&amp;search_category=winter+palace</label>
+				<label>/search?q=silence on the plains&amp;search_category=winter palace</label>
 				<nb_visits>1</nb_visits>
 				<nb_uniq_visitors>1</nb_uniq_visitors>
 				<nb_hits>1</nb_hits>

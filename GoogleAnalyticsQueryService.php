@@ -22,7 +22,8 @@ use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsQueryService
 {
-    const MAX_ATTEMPTS = 500;
+    const MAX_ATTEMPTS = 30;
+    const MAX_BACKOFF_TIME = 60;
 
     private static $problematicMetrics = [
         'ga:users',
@@ -63,6 +64,11 @@ class GoogleAnalyticsQueryService
      * @var LoggerInterface
      */
     private $logger;
+
+    /**
+     * @var int
+     */
+    private $currentBackoffTime = 1;
 
     public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite,
                                 LoggerInterface $logger)
@@ -464,6 +470,8 @@ class GoogleAnalyticsQueryService
         $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
         $body->setReportRequests([$request]);
 
+        $this->currentBackoffTime = 1;
+
         $attempts = 0;
         while ($attempts < self::MAX_ATTEMPTS) {
             try {
@@ -489,7 +497,11 @@ class GoogleAnalyticsQueryService
                     }
 
                     ++$attempts;
-                    sleep(1);
+
+                    $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
+                    sleep($this->currentBackoffTime);
+
+                    $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
                 } else if ($ex->getCode() >= 500) {
                     ++$attempts;
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting one minute before trying again...");

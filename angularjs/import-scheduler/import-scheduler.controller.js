@@ -42,7 +42,8 @@
                 endDate: vm.endDate,
                 propertyId: vm.propertyId,
                 viewId: vm.viewId,
-                nonce: vm.nonce
+                nonce: vm.nonce,
+                accountId: vm.accountId
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });

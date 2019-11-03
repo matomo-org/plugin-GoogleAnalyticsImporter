@@ -724,7 +724,7 @@
 				</subtable>
 			</row>
 			<row>
-				<label>/search?search_category=inquisitor's+path</label>
+				<label>/search?search_category=inquisitor's path</label>
 				<nb_visits>4</nb_visits>
 				<nb_hits>4</nb_hits>
 				<sum_time_spent>4</sum_time_spent>
@@ -741,7 +741,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fsearch_category%253Dinquisitor%2527s%252Bpath</segment>
 			</row>
 			<row>
-				<label>/search?search_category=lost+temple+of+dirthamen</label>
+				<label>/search?search_category=lost temple of dirthamen</label>
 				<nb_visits>4</nb_visits>
 				<nb_hits>4</nb_hits>
 				<sum_time_spent>4</sum_time_spent>
@@ -753,7 +753,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fsearch_category%253Dlost%252Btemple%252Bof%252Bdirthamen</segment>
 			</row>
 			<row>
-				<label>/search?search_category=winter+palace</label>
+				<label>/search?search_category=winter palace</label>
 				<nb_visits>4</nb_visits>
 				<nb_hits>4</nb_hits>
 				<sum_time_spent>4</sum_time_spent>
@@ -926,7 +926,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dknow%2Bthy%2Benemy%2526search_category%253Dhaven</segment>
 			</row>
 			<row>
-				<label>/search?q=letter+from+a+lover&amp;search_category=haven</label>
+				<label>/search?q=letter from a lover&amp;search_category=haven</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>2</sum_time_spent>
@@ -943,7 +943,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dletter%252Bfrom%252Ba%252Blover%2526search_category%253Dhaven</segment>
 			</row>
 			<row>
-				<label>/search?q=measuring+the+veil&amp;search_category=specializations</label>
+				<label>/search?q=measuring the veil&amp;search_category=specializations</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>2</sum_time_spent>
@@ -955,7 +955,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dmeasuring%252Bthe%252Bveil%2526search_category%253Dspecializations</segment>
 			</row>
 			<row>
-				<label>/search?q=subjected+to+his+will&amp;search_category=haven</label>
+				<label>/search?q=subjected to his will&amp;search_category=haven</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>2</sum_time_spent>
@@ -972,7 +972,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dsubjected%252Bto%252Bhis%252Bwill%2526search_category%253Dhaven</segment>
 			</row>
 			<row>
-				<label>/search?q=subjected+to+his+will&amp;search_category=inquisitor's+path</label>
+				<label>/search?q=subjected to his will&amp;search_category=inquisitor's path</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1003,7 +1003,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dsubjected%2Bto%2Bhis%2Bwill%2526search_category%253Dwinter%2Bpalace</segment>
 			</row>
 			<row>
-				<label>/search?q=the+magister's+birthright&amp;search_category=inquisitor's+path</label>
+				<label>/search?q=the magister's birthright&amp;search_category=inquisitor's path</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>2</sum_time_spent>
@@ -1015,7 +1015,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dthe%252Bmagister%2527s%252Bbirthright%2526search_category%253Dinquisitor%2527s%252Bpath</segment>
 			</row>
 			<row>
-				<label>/search?q=the+magister's+birthright&amp;search_category=specializations</label>
+				<label>/search?q=the magister's birthright&amp;search_category=specializations</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1046,7 +1046,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dthe%2Bspirit%2Bcalmed%2526search_category%253Dinner%2Bcircle</segment>
 			</row>
 			<row>
-				<label>/search?q=under+her+skin&amp;search_category=inner+circle</label>
+				<label>/search?q=under her skin&amp;search_category=inner circle</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>2</sum_time_spent>
@@ -1092,7 +1092,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dwhere%2Bthe%2Bdrufallo%2Broam%2526search_category%253Dinquisitor%2527s%2Bpath</segment>
 			</row>
 			<row>
-				<label>/search?search_category=inner+circle</label>
+				<label>/search?search_category=inner circle</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>2</sum_time_spent>
@@ -1317,7 +1317,7 @@
 				</subtable>
 			</row>
 			<row>
-				<label>/search?q=a+fallen+sister&amp;search_category=skyhold</label>
+				<label>/search?q=a fallen sister&amp;search_category=skyhold</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1377,7 +1377,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dagrarian%2Bapostate%2526search_category%253Dspecializations</segment>
 			</row>
 			<row>
-				<label>/search?q=demands+of+the+qun&amp;search_category=specializations</label>
+				<label>/search?q=demands of the qun&amp;search_category=specializations</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1389,7 +1389,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Ddemands%252Bof%252Bthe%252Bqun%2526search_category%253Dspecializations</segment>
 			</row>
 			<row>
-				<label>/search?q=demands+of+the+qun&amp;search_category=winter+palace</label>
+				<label>/search?q=demands of the qun&amp;search_category=winter palace</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1425,7 +1425,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Ddemands%2Bof%2Bthe%2Bqun%2526search_category%253Dwinter%2Bpalace</segment>
 			</row>
 			<row>
-				<label>/search?q=high+stakes&amp;search_category=inner+circle</label>
+				<label>/search?q=high stakes&amp;search_category=inner circle</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1437,7 +1437,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dhigh%252Bstakes%2526search_category%253Dinner%252Bcircle</segment>
 			</row>
 			<row>
-				<label>/search?q=high+stakes&amp;search_category=skyhold</label>
+				<label>/search?q=high stakes&amp;search_category=skyhold</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1461,7 +1461,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dhigh%2Bstakes%2526search_category%253Dinquisitor%2527s%2Bpath</segment>
 			</row>
 			<row>
-				<label>/search?q=in+your+heart+shall+burn&amp;search_category=inquisitor's+path</label>
+				<label>/search?q=in your heart shall burn&amp;search_category=inquisitor's path</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1473,7 +1473,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Din%252Byour%252Bheart%252Bshall%252Bburn%2526search_category%253Dinquisitor%2527s%252Bpath</segment>
 			</row>
 			<row>
-				<label>/search?q=know+thy+enemy&amp;search_category=inner+circle</label>
+				<label>/search?q=know thy enemy&amp;search_category=inner circle</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1485,7 +1485,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dknow%252Bthy%252Benemy%2526search_category%253Dinner%252Bcircle</segment>
 			</row>
 			<row>
-				<label>/search?q=know+thy+enemy&amp;search_category=skyhold</label>
+				<label>/search?q=know thy enemy&amp;search_category=skyhold</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1521,7 +1521,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dknow%2Bthy%2Benemy%2526search_category%253Dspecializations</segment>
 			</row>
 			<row>
-				<label>/search?q=letter+from+a+lover&amp;search_category=inner+circle</label>
+				<label>/search?q=letter from a lover&amp;search_category=inner circle</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1569,7 +1569,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dletter%2Bfrom%2Ba%2Blover%2526search_category%253Dspecializations</segment>
 			</row>
 			<row>
-				<label>/search?q=measuring+the+veil&amp;search_category=hissing+wastes</label>
+				<label>/search?q=measuring the veil&amp;search_category=hissing wastes</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1593,7 +1593,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dmeasuring%2Bthe%2Bveil%2526search_category%253Dhissing%2Bwastes</segment>
 			</row>
 			<row>
-				<label>/search?q=no+word+back&amp;search_category=haven</label>
+				<label>/search?q=no word back&amp;search_category=haven</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1617,7 +1617,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dno%2Bword%2Bback%2526search_category%253Dskyhold</segment>
 			</row>
 			<row>
-				<label>/search?q=one+less+venatori&amp;search_category=hissing+wastes</label>
+				<label>/search?q=one less venatori&amp;search_category=hissing wastes</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>2</sum_time_spent>
@@ -1629,7 +1629,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Done%252Bless%252Bvenatori%2526search_category%253Dhissing%252Bwastes</segment>
 			</row>
 			<row>
-				<label>/search?q=one+less+venatori&amp;search_category=inner+circle</label>
+				<label>/search?q=one less venatori&amp;search_category=inner circle</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1677,7 +1677,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Done%2Bless%2Bvenatori%2526search_category%253Dwinter%2Bpalace</segment>
 			</row>
 			<row>
-				<label>/search?q=promise+of+destruction&amp;search_category=lost+temple+of+dirthamen</label>
+				<label>/search?q=promise of destruction&amp;search_category=lost temple of dirthamen</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1701,7 +1701,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dpromise%2Bof%2Bdestruction%2526search_category%253Dinquisitor%2527s%2Bpath</segment>
 			</row>
 			<row>
-				<label>/search?q=rift+at+caer+bronach&amp;search_category=lost+temple+of+dirthamen</label>
+				<label>/search?q=rift at caer bronach&amp;search_category=lost temple of dirthamen</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1713,7 +1713,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Drift%252Bat%252Bcaer%252Bbronach%2526search_category%253Dlost%252Btemple%252Bof%252Bdirthamen</segment>
 			</row>
 			<row>
-				<label>/search?q=rift+at+caer+bronach&amp;search_category=winter+palace</label>
+				<label>/search?q=rift at caer bronach&amp;search_category=winter palace</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1749,7 +1749,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Drift%2Bat%2Bcaer%2Bbronach%2526search_category%253Dwinter%2Bpalace</segment>
 			</row>
 			<row>
-				<label>/search?q=rifts+in+the+springs&amp;search_category=skyhold</label>
+				<label>/search?q=rifts in the springs&amp;search_category=skyhold</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1761,7 +1761,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Drifts%252Bin%252Bthe%252Bsprings%2526search_category%253Dskyhold</segment>
 			</row>
 			<row>
-				<label>/search?q=rifts+in+the+springs&amp;search_category=winter+palace</label>
+				<label>/search?q=rifts in the springs&amp;search_category=winter palace</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1773,7 +1773,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Drifts%252Bin%252Bthe%252Bsprings%2526search_category%253Dwinter%252Bpalace</segment>
 			</row>
 			<row>
-				<label>/search?q=seeing+red&amp;search_category=inquisitor's+path</label>
+				<label>/search?q=seeing red&amp;search_category=inquisitor's path</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1809,7 +1809,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dseeing%2Bred%2526search_category%253Dinquisitor%2527s%2Bpath</segment>
 			</row>
 			<row>
-				<label>/search?q=shallow+breaths&amp;search_category=hissing+wastes</label>
+				<label>/search?q=shallow breaths&amp;search_category=hissing wastes</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1821,7 +1821,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dshallow%252Bbreaths%2526search_category%253Dhissing%252Bwastes</segment>
 			</row>
 			<row>
-				<label>/search?q=shallow+breaths&amp;search_category=skyhold</label>
+				<label>/search?q=shallow breaths&amp;search_category=skyhold</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1833,7 +1833,7 @@
 				<segment>pageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dshallow%252Bbreaths%2526search_category%253Dskyhold</segment>
 			</row>
 			<row>
-				<label>/search?q=shallow+breaths&amp;search_category=specializations</label>
+				<label>/search?q=shallow breaths&amp;search_category=specializations</label>
 				<nb_visits>1</nb_visits>
 				<nb_hits>1</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -2136,7 +2136,6 @@
 				<avg_time_on_page>8</avg_time_on_page>
 				<bounce_rate>52%</bounce_rate>
 				<exit_rate>38%</exit_rate>
-				<segment>pageUrl=^http%253A%252F%252Fmatthieu.net%252Fblog%252F-1</segment>
 			</row>
 		</subtable>
 	</row>

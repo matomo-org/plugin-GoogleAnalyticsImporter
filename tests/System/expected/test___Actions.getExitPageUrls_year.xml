@@ -832,7 +832,7 @@
 				</subtable>
 			</row>
 			<row>
-				<label>/search?q=subjected+to+his+will&amp;search_category=inquisitor's+path</label>
+				<label>/search?q=subjected to his will&amp;search_category=inquisitor's path</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -851,7 +851,7 @@
 				<segment>exitPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fblog%252Fsearch%253Fq%253Dsubjected%252Bto%252Bhis%252Bwill%2526search_category%253Dinquisitor%2527s%252Bpath</segment>
 			</row>
 			<row>
-				<label>/search?q=the+magister's+birthright&amp;search_category=specializations</label>
+				<label>/search?q=the magister's birthright&amp;search_category=specializations</label>
 				<nb_visits>2</nb_visits>
 				<nb_hits>2</nb_hits>
 				<sum_time_spent>1</sum_time_spent>
@@ -1065,7 +1065,6 @@
 				<avg_time_on_page>8</avg_time_on_page>
 				<bounce_rate>52%</bounce_rate>
 				<exit_rate>38%</exit_rate>
-				<segment>pageUrl=^http%253A%252F%252Fmatthieu.net%252Fblog%252F-1</segment>
 			</row>
 		</subtable>
 	</row>

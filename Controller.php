@@ -226,7 +226,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             $propertyId = Common::getRequestVar('propertyId');
             $viewId = Common::getRequestVar('viewId');
-            $account = ImportReports::guessAccountFromProperty($propertyId);
+            $accountId = Common::getRequestVar('accountId', false);
+            $account = $accountId ?: ImportReports::guessAccountFromProperty($propertyId);
 
             $idSite = $importer->makeSite($account, $propertyId, $viewId);
             try {
