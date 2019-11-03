@@ -36,7 +36,7 @@
 		<avg_time_on_page>21</avg_time_on_page>
 		<bounce_rate>26%</bounce_rate>
 		<exit_rate>94%</exit_rate>
-		<segment>entryPageTitle==BLOG%21%21</segment>
+		<segment>entryPageTitle==BLOG%2521%2521</segment>
 	</row>
 	<row>
 		<label> ABOUT!!</label>
@@ -55,7 +55,7 @@
 		<avg_time_on_page>30</avg_time_on_page>
 		<bounce_rate>30%</bounce_rate>
 		<exit_rate>93%</exit_rate>
-		<segment>entryPageTitle==ABOUT%21%21</segment>
+		<segment>entryPageTitle==ABOUT%2521%2521</segment>
 	</row>
 	<row>
 		<label> inde par region et ville</label>
@@ -74,7 +74,7 @@
 		<avg_time_on_page>45</avg_time_on_page>
 		<bounce_rate>19%</bounce_rate>
 		<exit_rate>78%</exit_rate>
-		<segment>entryPageTitle==inde+par+region+et+ville</segment>
+		<segment>entryPageTitle==inde%2Bpar%2Bregion%2Bet%2Bville</segment>
 	</row>
 	<row>
 		<label> Crestwood</label>
@@ -150,7 +150,7 @@
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>20%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Caer+Bronach</segment>
+		<segment>entryPageTitle==Caer%2BBronach</segment>
 	</row>
 	<row>
 		<label> Markhem</label>
@@ -226,7 +226,7 @@
 		<avg_time_on_page>143</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>83%</exit_rate>
-		<segment>entryPageTitle==The+Arbor+Wilds</segment>
+		<segment>entryPageTitle==The%2BArbor%2BWilds</segment>
 	</row>
 	<row>
 		<label> Trevis</label>
@@ -264,7 +264,7 @@
 		<avg_time_on_page>15</avg_time_on_page>
 		<bounce_rate>50%</bounce_rate>
 		<exit_rate>60%</exit_rate>
-		<segment>entryPageTitle==Western+Approach</segment>
+		<segment>entryPageTitle==Western%2BApproach</segment>
 	</row>
 	<row>
 		<label> Winter Palace</label>
@@ -283,7 +283,7 @@
 		<avg_time_on_page>4</avg_time_on_page>
 		<bounce_rate>33%</bounce_rate>
 		<exit_rate>75%</exit_rate>
-		<segment>entryPageTitle==Winter+Palace</segment>
+		<segment>entryPageTitle==Winter%2BPalace</segment>
 	</row>
 	<row>
 		<label> Top 10 des plus belles Plongées Sous Marine dans le Monde ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -302,7 +302,7 @@
 		<avg_time_on_page>13</avg_time_on_page>
 		<bounce_rate>67%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Top+10+des+plus+belles+Plong%C3%A9es+Sous+Marine+dans+le+Monde+%21+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Top%2B10%2Bdes%2Bplus%2Bbelles%2BPlong%25C3%25A9es%2BSous%2BMarine%2Bdans%2Ble%2BMonde%2B%2521%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Coût de la vie en Inde - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -321,7 +321,7 @@
 		<avg_time_on_page>575</avg_time_on_page>
 		<bounce_rate>50%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Co%C3%BBt+de+la+vie+en+Inde+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Co%25C3%25BBt%2Bde%2Bla%2Bvie%2Ben%2BInde%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Laysh</label>
@@ -359,7 +359,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Accouplement+de+singes+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Accouplement%2Bde%2Bsinges%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Château de Chambord, Visite &amp; Photos - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -378,7 +378,7 @@
 		<avg_time_on_page>14</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Ch%C3%A2teau+de+Chambord%2C+Visite+%26+Photos+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Ch%25C3%25A2teau%2Bde%2BChambord%252C%2BVisite%2B%2526%2BPhotos%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Cirque du soleil : magnifique ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -397,7 +397,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Cirque+du+soleil+%3A+magnifique+%21+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Cirque%2Bdu%2Bsoleil%2B%253A%2Bmagnifique%2B%2521%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Claire l'australienne - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -416,7 +416,7 @@
 		<avg_time_on_page>8</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Claire+l%27australienne+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Claire%2Bl%2527australienne%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Couleurs et jonglerie - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -435,7 +435,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Couleurs+et+jonglerie+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Couleurs%2Bet%2Bjonglerie%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Edinburgh Archives - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -454,7 +454,7 @@
 		<avg_time_on_page>39</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<segment>entryPageTitle==Edinburgh+Archives+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Edinburgh%2BArchives%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Itinéraire d'un voyage en Indonésie - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -473,7 +473,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Itin%C3%A9raire+d%27un+voyage+en+Indon%C3%A9sie+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Itin%25C3%25A9raire%2Bd%2527un%2Bvoyage%2Ben%2BIndon%25C3%25A9sie%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Londres Archives - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -492,7 +492,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Londres+Archives+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Londres%2BArchives%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Premier jour de folie à Munnar - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -511,7 +511,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Premier+jour+de+folie+%C3%A0+Munnar+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Premier%2Bjour%2Bde%2Bfolie%2B%25C3%25A0%2BMunnar%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Vidéo préparation des momos - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -530,7 +530,7 @@
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Vid%C3%A9o+pr%C3%A9paration+des+momos+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Vid%25C3%25A9o%2Bpr%25C3%25A9paration%2Bdes%2Bmomos%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Visite de Madurai - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -549,6 +549,6 @@
 		<avg_time_on_page>597</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>entryPageTitle==Visite+de+Madurai+-+Blog+%26+photos+Matthieu+Blog+%26+photos+Matthieu</segment>
+		<segment>entryPageTitle==Visite%2Bde%2BMadurai%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 </result>
