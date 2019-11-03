@@ -1,5 +1,11 @@
 ## Changelog
 
+# 1.0.3
+
+* Allow account ID to be specified explicitly since it can differ from the number in the UA-... property ID.
+* Print debug message when account ID is deduced from property ID in CLI command.
+* Use exponentially increasing wait time between rate limited requests when querying GA API.
+
 # 1.0.2
 
 * Add import date to error message when import fails.
