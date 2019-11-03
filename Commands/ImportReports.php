@@ -53,6 +53,8 @@ class ImportReports extends ConsoleCommand
 
         $service = new \Google_Service_Analytics($googleClient);
 
+        $isAccountDeduced = false;
+
         $idSite = $this->getIdSite($input);
         if (empty($idSite)) {
             $viewId = $this->getViewId($input, $output, $service);
@@ -60,7 +62,10 @@ class ImportReports extends ConsoleCommand
 
             $account = $input->getOption('account');
             if (empty($account)) {
+                $isAccountDeduced = true;
+
                 $account = self::guessAccountFromProperty($property);
+                $output->writeln("<comment>No account ID specified, assuming it is '$account'.</comment>");
             }
         }
 
@@ -80,7 +85,14 @@ class ImportReports extends ConsoleCommand
             && !empty($property)
             && !empty($account)
         ) {
-            $idSite = $importer->makeSite($account, $property, $viewId);
+            try {
+                $idSite = $importer->makeSite($account, $property, $viewId);
+            } catch (\Google_Exception $ex) {
+                if ($isAccountDeduced) {
+                    $output->writeln("<comment>NOTE: We tried to deduce your GA account ID from the property ID above, it's possible your account ID differs. If this is the case specify it manually using --account=... and try again.</comment>");
+                }
+                throw $ex;
+            }
             $output->writeln("Created new site with ID = $idSite.");
         } else {
             $status = $importStatus->getImportStatus($idSite);
