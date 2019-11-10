@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
+use Piwik\CliMulti\CliPhp;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
@@ -89,7 +90,10 @@ class Tasks extends \Piwik\Plugin\Tasks
             $importLogFile = '/dev/null';
         }
 
-        $command = "nohup php " . PIWIK_INCLUDE_PATH . '/console ';
+        $cliPhp = new CliPhp();
+        $phpBinary = $cliPhp->findPhpBinary();
+
+        $command = "nohup $phpBinary " . PIWIK_INCLUDE_PATH . '/console ';
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
