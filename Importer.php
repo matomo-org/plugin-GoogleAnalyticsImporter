@@ -202,7 +202,7 @@ class Importer
     private function importCustomDimensions($idSite, $accountId, $propertyId)
     {
         if ($this->isPluginUnavailable('CustomDimensions')) {
-            $this->logger->warning("The CustomDimensions plugin is not activated or present, skipping goal import.");
+            $this->logger->warning("The CustomDimensions plugin is not activated or present, skipping custom dimension import.");
             return;
         }
 
