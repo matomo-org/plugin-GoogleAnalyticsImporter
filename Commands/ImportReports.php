@@ -44,6 +44,7 @@ class ImportReports extends ConsoleCommand
         $this->addOption('idsite', null, InputOption::VALUE_REQUIRED, 'The site to import into. This will attempt to continue an existing import.');
         $this->addOption('cvar-count', null, InputOption::VALUE_REQUIRED, 'The number of custom variables to support (if not supplied defaults to however many are currently available). '
             . 'NOTE: This option will attempt to set the number of custom variable slots which should be done with care on an existing system.');
+        $this->addOption('skip-archiving', null, InputOption::VALUE_NONE, 'Skips launching archiving at the end of an import. Use this only if executing PHP from the command line results in an error on your system.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -54,6 +55,8 @@ class ImportReports extends ConsoleCommand
         $service = new \Google_Service_Analytics($googleClient);
 
         $isAccountDeduced = false;
+
+        $skipArchiving = $input->getOption('skip-archiving');
 
         $idSite = $this->getIdSite($input);
         if (empty($idSite)) {
@@ -158,9 +161,11 @@ class ImportReports extends ConsoleCommand
             $lock->unlock();
 
             // doing it in the finally since we can get rate limited, which will result in an exception thrown
-            $output->write("Running archiving for newly imported data...");
-            $status = $importStatus->getImportStatus($idSite);
-            Tasks::startArchive($status, $wait = true);
+            if (!$skipArchiving) {
+                $output->write("Running archiving for newly imported data...");
+                $status = $importStatus->getImportStatus($idSite);
+                Tasks::startArchive($status, $wait = true);
+            }
         }
     }
 
