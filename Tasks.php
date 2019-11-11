@@ -91,7 +91,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         }
 
         $cliPhp = new CliPhp();
-        $phpBinary = $cliPhp->findPhpBinary();
+        $phpBinary = $cliPhp->findPhpBinary() ?: 'php';
 
         $command = "nohup $phpBinary " . PIWIK_INCLUDE_PATH . '/console ';
         if (!empty($hostname)) {
@@ -171,7 +171,10 @@ class Tasks extends \Piwik\Plugin\Tasks
             $pathToConsole = '/tests/PHPUnit/proxy/console';
         }
 
-        $command = self::DATE_FINISHED_ENV_VAR . '=' . $lastDateImported->toString() . " nohup php " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
+        $cliPhp = new CliPhp();
+        $phpBinary = $cliPhp->findPhpBinary() ?: 'php';
+
+        $command = self::DATE_FINISHED_ENV_VAR . '=' . $lastDateImported->toString() . " nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
