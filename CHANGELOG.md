@@ -1,5 +1,11 @@
 ## Changelog
 
+# 1.0.4
+
+* Add --skip-archiving option to allow avoiding launching of archiving command when importing.
+* Default empty keyword value when importing campaign keyword report.
+* Use CliPhp to determine php binary and default to just php if not found.
+
 # 1.0.3
 
 * Allow account ID to be specified explicitly since it can differ from the number in the UA-... property ID.
