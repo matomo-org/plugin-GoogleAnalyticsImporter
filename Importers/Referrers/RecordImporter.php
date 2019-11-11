@@ -132,6 +132,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             }
 
             $keyword = $row->getMetadata('ga:keyword');
+            if (empty($keyword)) {
+                $keyword = self::NOT_SET_IN_GA_LABEL;
+            }
 
             $this->campaignKeywords[$keyword] = true;
 
