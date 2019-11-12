@@ -602,6 +602,6 @@ class GoogleAnalyticsQueryService
      */
     private function issuePointlessMysqlQuery()
     {
-        Db::fetchOne("SELECT COUNT(*) FROM " . Common::prefixTable('option'));
+        Db::fetchOne("SELECT COUNT(*) FROM `" . Common::prefixTable('option') . "`");
     }
 }
