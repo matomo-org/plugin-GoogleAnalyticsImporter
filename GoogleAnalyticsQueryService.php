@@ -9,9 +9,11 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
+use Piwik\Common;
 use Piwik\DataTable;
 use Piwik\DataTable\Row;
 use Piwik\Date;
+use Piwik\Db;
 use Piwik\Metrics;
 use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
@@ -475,6 +477,8 @@ class GoogleAnalyticsQueryService
         $attempts = 0;
         while ($attempts < self::MAX_ATTEMPTS) {
             try {
+                $this->issuePointlessMysqlQuery();
+
                 $result = $this->gaService->reports->batchGet($body);
                 if (empty($result)) {
                     ++$attempts;
@@ -591,5 +595,13 @@ class GoogleAnalyticsQueryService
     private static function calculateConvertedVisits(Row $row, $gaName)
     {
         return floor(self::getQuotientFromPercentage($row->getColumn($gaName)) * $row->getColumn('ga:sessions'));
+    }
+
+    /**
+     * Used to keep the mysql connection alive in case GA API makes us wait for too long.
+     */
+    private function issuePointlessMysqlQuery()
+    {
+        Db::fetchOne("SELECT COUNT(*) FROM " . Common::prefixTable('option'));
     }
 }
