@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.0.5
+
+* Display query count even on rate limit in command output.
+* Issue pointless mysql query to keep connection alive on systems that have a small wait_timeout.
+
 # 1.0.4
 
 * Add --skip-archiving option to allow avoiding launching of archiving command when importing.
