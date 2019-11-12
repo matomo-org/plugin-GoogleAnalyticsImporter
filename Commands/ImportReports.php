@@ -124,6 +124,8 @@ class ImportReports extends ConsoleCommand
             throw new \Exception("An import is currently in progress. (If the other import has failed, you should be able to try again in about 5 minutes.)");
         }
 
+        $timer = new Timer();
+
         try {
             $importStatus->resumeImport($idSite);
 
@@ -151,12 +153,7 @@ class ImportReports extends ConsoleCommand
 
             $output->writeln("Importing reports for date range {$dates[0]} - {$dates[1]} from GA view $viewId.");
 
-            $timer = new Timer();
-
             $importer->import($idSite, $viewId, $dates[0], $dates[1], $lock);
-
-            $queryCount = $importer->getQueryCount();
-            $output->writeln("Done in $timer. [$queryCount API requests made to GA]");
         } finally {
             $lock->unlock();
 
@@ -167,6 +164,9 @@ class ImportReports extends ConsoleCommand
                 Tasks::startArchive($status, $wait = true);
             }
         }
+
+        $queryCount = $importer->getQueryCount();
+        $output->writeln("Done in $timer. [$queryCount API requests made to GA]");
     }
 
     private function getViewId(InputInterface $input, OutputInterface $output, \Google_Service_Analytics $service)
