@@ -5,6 +5,8 @@ use Piwik\Url;
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
 return [
+    'GoogleAnalyticsImporter.pingMysqlEverySecs' => null,
+
     'GoogleAnalyticsImporter.googleClient' => function () {
         $googleClient = new \Google_Client();
         $googleClient->addScope(\Google_Service_Analytics::ANALYTICS_READONLY);
