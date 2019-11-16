@@ -10,6 +10,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Common;
+use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\DataTable\Row;
 use Piwik\Date;
@@ -26,6 +27,7 @@ class GoogleAnalyticsQueryService
 {
     const MAX_ATTEMPTS = 30;
     const MAX_BACKOFF_TIME = 60;
+    const PING_MYSQL_EVERY = 25;
 
     private static $problematicMetrics = [
         'ga:users',
@@ -72,6 +74,8 @@ class GoogleAnalyticsQueryService
      */
     private $currentBackoffTime = 1;
 
+    private $pingMysqlEverySecs;
+
     public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite,
                                 LoggerInterface $logger)
     {
@@ -80,6 +84,7 @@ class GoogleAnalyticsQueryService
         $this->goalsMapping = $goalsMapping;
         $this->idSite = $idSite;
         $this->logger = $logger;
+        $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
 
         $this->mapping = $this->getMetricIndicesToGaMetrics();
     }
@@ -503,13 +508,13 @@ class GoogleAnalyticsQueryService
                     ++$attempts;
 
                     $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
-                    sleep($this->currentBackoffTime);
+                    $this->sleep($this->currentBackoffTime);
 
                     $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
                 } else if ($ex->getCode() >= 500) {
                     ++$attempts;
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting one minute before trying again...");
-                    sleep(60);
+                    $this->sleep(60);
                 } else {
                     throw $ex;
                 }
@@ -603,5 +608,18 @@ class GoogleAnalyticsQueryService
     private function issuePointlessMysqlQuery()
     {
         Db::fetchOne("SELECT COUNT(*) FROM `" . Common::prefixTable('option') . "`");
+    }
+
+    private function sleep($time)
+    {
+        $amountSlept = 0;
+        while ($amountSlept < $time) {
+            $timeToSleep = min($this->pingMysqlEverySecs, $time - $amountSlept);
+
+            sleep($timeToSleep);
+            $amountSlept += $timeToSleep;
+
+            $this->issuePointlessMysqlQuery();
+        }
     }
 }

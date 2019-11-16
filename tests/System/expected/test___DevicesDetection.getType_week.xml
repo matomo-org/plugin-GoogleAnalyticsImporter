@@ -178,6 +178,12 @@
 		<logo>plugins/Morpheus/icons/dist/devices/smart_display.png</logo>
 	</row>
 	<row>
+		<label>Smart speaker</label>
+		<nb_visits>0</nb_visits>
+		<segment>deviceType==smart+speaker</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/smart_speaker.png</logo>
+	</row>
+	<row>
 		<label>Tv</label>
 		<nb_visits>0</nb_visits>
 		<segment>deviceType==tv</segment>
