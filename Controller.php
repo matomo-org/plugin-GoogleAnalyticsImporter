@@ -15,17 +15,9 @@ use Piwik\DataTable\Renderer\Json;
 use Piwik\Date;
 use Piwik\Nonce;
 use Piwik\Notification;
-use Piwik\Option;
 use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
-use Piwik\Plugins\SearchEngineKeywordsPerformance\Exceptions\MissingClientConfigException;
-use Piwik\Plugins\SearchEngineKeywordsPerformance\Exceptions\MissingOAuthConfigException;
-use Piwik\Plugins\SearchEngineKeywordsPerformance\Provider\Google as ProviderGoogle;
-use Piwik\Plugins\SearchEngineKeywordsPerformance\Provider\Bing as ProviderBing;
-use Piwik\Plugins\SearchEngineKeywordsPerformance\Provider\ProviderAbstract;
-use Piwik\Plugins\WebsiteMeasurable\Type as WebsiteMeasurableType;
-use Piwik\Site;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
 
@@ -51,7 +43,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $hasClientConfiguration = $authorization->hasClientConfiguration();
         if ($hasClientConfiguration) {
-            $googleClient = $authorization->getConfiguredClient();
+            try {
+                $googleClient = $authorization->getConfiguredClient();
+            } catch (\Exception $ex) {
+                $authorization->deleteClientConfiguration();
+
+                throw $ex;
+            }
 
             $authUrl = $googleClient->createAuthUrl();
 

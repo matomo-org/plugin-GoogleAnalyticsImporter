@@ -3,7 +3,7 @@
     "AdminMenuTitle": "Google Analytics Import",
     "ConfigureTheImporter": "Configure the Importer",
     "InvalidClientJson": "Invalid JSON in credentials file, try re-downloading the file from the Google API Console.",
-    "MissingClientConfiguration": "Missing client configuration.",
+    "MissingClientConfiguration": "Missing or invalid client configuration, please reupload.",
     "SettingUp": "Setting Up",
     "ImporterHelp1": "The Google Analytics Importer requires you to set up OAuth Client configuration in the Google API Console before you can do anything else.",
     "ImporterHelp2": "To see a step-by-step guide for doing this and setting up this plugin %1$sclick here.%2$s",
