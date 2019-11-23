@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.0.6
+
+* Better and configurable mysql ping for shared hosting.
+* If invalid or missing config is found delete existing client configuration.
+
 # 1.0.5
 
 * Display query count even on rate limit in command output.
