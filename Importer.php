@@ -27,6 +27,8 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
+use Piwik\Plugins\WebsiteMeasurable\Type;
+use Piwik\Plugins\WebsiteMeasurable\WebsiteMeasurable;
 use Piwik\Segment;
 use Piwik\Site;
 use Piwik\Tracker\GoalManager;
@@ -110,14 +112,14 @@ class Importer
         $this->importStatus = $importStatus;
     }
 
-    public function makeSite($accountId, $propertyId, $viewId)
+    public function makeSite($accountId, $propertyId, $viewId, $type = Type::ID)
     {
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
         $idSite = SitesManagerAPI::getInstance()->addSite(
             $siteName = $webproperty->getName(),
-            $urls = [$webproperty->getWebsiteUrl()],
+            $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
             $ecommerce = $view->eCommerceTracking ? 1 : 0,
             $siteSearch = !empty($view->siteSearchQueryParameters),
             $searchKeywordParams = $view->siteSearchQueryParameters,
@@ -127,7 +129,10 @@ class Importer
             $timezone = $view->timezone,
             $currency = $view->currency,
             $group = null,
-            $startDate = Date::factory($webproperty->getCreated())->toString()
+            $startDate = Date::factory($webproperty->getCreated())->toString(),
+            $excludedUserAgents = null,
+            $keepURLFragments = null,
+            $type
         );
 
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite);
