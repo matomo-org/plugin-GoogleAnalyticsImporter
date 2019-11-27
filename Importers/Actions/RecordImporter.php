@@ -17,6 +17,7 @@ use Piwik\Metrics;
 use Piwik\Plugins\Actions\Actions\ActionSiteSearch;
 use Piwik\Plugins\Actions\Archiver;
 use Piwik\Plugins\Actions\ArchivingHelper;
+use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
 use Piwik\Tracker\Action;
 
@@ -39,6 +40,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
      */
     private $pageUrlsByPagePath;
     private $siteSearchUrls;
+
+    public function supportsSite()
+    {
+        return Site::getTypeFor($this->getIdSite()) != Type::ID;
+    }
 
     public function importRecords(Date $day)
     {

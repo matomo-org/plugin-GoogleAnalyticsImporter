@@ -58,6 +58,11 @@ abstract class RecordImporter
         $this->logger = $logger;
     }
 
+    public function supportsSite()
+    {
+        return true;
+    }
+
     public abstract function importRecords(Date $day);
 
     public function setArchiveWriter(ArchiveWriter $archiveWriter)

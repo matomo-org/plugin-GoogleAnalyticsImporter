@@ -326,14 +326,14 @@ class Importer
         $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
         $archiveWriter->initNewArchive();
 
-
         foreach ($recordImporters as $plugin => $recordImporter) {
+            if (!$recordImporter->supportsSite()) {
+                continue;
+            }
+
             $this->logger->debug("Importing data for the {plugin} plugin.", [
                 'plugin' => $plugin,
             ]);
-
-            // TODO: change visitor frequency importer
-            // TODO: if two record importers use the same segment, this will likely break (since one archive will have metrics for one plugin, another archive for another plugin, so queries won't get the full data)
 
             $recordImporter->setArchiveWriter($archiveWriter);
             $recordImporter->importRecords($date);
