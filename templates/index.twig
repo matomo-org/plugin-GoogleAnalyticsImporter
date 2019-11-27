@@ -110,6 +110,13 @@
             >
             </div>
 
+            <div piwik-field uicontrol="checkbox" name="isMobileApp"
+                 ng-model="importScheduler.isMobileApp"
+                 title="{{ 'GoogleAnalyticsImporter_IsMobileApp'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_IsMobileAppHelp'|translate }}"
+             >
+            </div>
+
             <button type="submit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
         </div>
     </div>
