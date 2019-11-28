@@ -110,6 +110,14 @@
             >
             </div>
 
+            <div piwik-field uicontrol="text" name="timezone"
+                 ng-model="importScheduler.timezone"
+                 title="{{ 'GoogleAnalyticsImporter_Timezone'|translate }}"
+                 placeholder="{{ 'GoogleAnalyticsImporter_Optional'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_TimezoneHelp'|translate('<a href="https://www.php.net/manual/en/timezones.php" rel="noreferrer noopener">', '</a>') }}"
+            >
+            </div>
+
             <button type="submit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
         </div>
     </div>

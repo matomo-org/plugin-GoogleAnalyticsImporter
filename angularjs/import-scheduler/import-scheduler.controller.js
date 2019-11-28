@@ -43,7 +43,8 @@
                 propertyId: vm.propertyId,
                 viewId: vm.viewId,
                 nonce: vm.nonce,
-                accountId: vm.accountId
+                accountId: vm.accountId,
+                timezone: vm.timezone
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });

@@ -226,8 +226,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $viewId = Common::getRequestVar('viewId');
             $accountId = Common::getRequestVar('accountId', false);
             $account = $accountId ?: ImportReports::guessAccountFromProperty($propertyId);
+            $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
 
-            $idSite = $importer->makeSite($account, $propertyId, $viewId);
+            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone);
             try {
 
                 if (empty($idSite)) {
