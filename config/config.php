@@ -38,6 +38,5 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitorInterest\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitTime\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency\RecordImporter::class,
-        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\MobileAppMeasurable\RecordImporter::class,
     ],
 ];
