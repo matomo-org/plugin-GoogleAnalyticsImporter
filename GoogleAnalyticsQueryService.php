@@ -18,6 +18,7 @@ use Piwik\Db;
 use Piwik\Metrics;
 use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
+use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
 use Piwik\Tracker\Action;
 use Piwik\Tracker\GoalManager;
@@ -87,6 +88,8 @@ class GoogleAnalyticsQueryService
         $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
 
         $this->mapping = $this->getMetricIndicesToGaMetrics();
+
+        $this->isMobileApp = Site::getTypeFor($idSite) == Type::ID;
     }
 
     public function query(Date $day, array $dimensions, array $metrics, array $options = [])
@@ -116,16 +119,19 @@ class GoogleAnalyticsQueryService
             $defaultRow->setColumn($name, 0);
         }
 
-        // detect the metric used to order result sets. we need to send this metric with each request.
+        // detect the metric used to order result sets. we need to send this metric with each partial request to ensure correct order.
         $orderByMetric = null;
         if (!empty($options['orderBys'])) {
             $orderByMetric = $options['orderBys'][0]['field'];
         } else {
-            // TODO: can probably clean this up
             if (in_array('ga:uniquePageviews', $metricNames)) {
                 $orderByMetric = 'ga:uniquePageviews';
+            } else if (in_array('ga:uniqueScreenviews', $metricNames)) {
+                $orderByMetric = 'ga:uniqueScreenviews';
             } else if (in_array('ga:pageviews', $metricNames)) {
                 $orderByMetric = 'ga:pageviews';
+            } else if (in_array('ga:screenviews', $metricNames)) {
+                $orderByMetric = 'ga:screenviews';
             } else if (in_array('ga:sessions', $metricNames)) {
                 $orderByMetric = 'ga:sessions';
             } else if (in_array('ga:goalCompletionsAll', $metricNames)) {
@@ -283,11 +289,13 @@ class GoogleAnalyticsQueryService
         }
         $goalSpecificMetrics[] = 'ga:sessions'; // for nb_visits_converted
 
+        $hitsMetric = $this->isMobileApp ? 'ga:screenviews' : 'ga:hits';
+
         return [
             // visit metrics
             Metrics::INDEX_NB_UNIQ_VISITORS => 'ga:users',
             Metrics::INDEX_NB_VISITS => 'ga:sessions',
-            Metrics::INDEX_NB_ACTIONS => 'ga:hits',
+            Metrics::INDEX_NB_ACTIONS => $hitsMetric,
             Metrics::INDEX_SUM_VISIT_LENGTH => [
                 'metric' => 'ga:sessionDuration',
                 'calculate' => function (Row $row) {
@@ -322,7 +330,7 @@ class GoogleAnalyticsQueryService
             ],
 
             // actions
-            Metrics::INDEX_PAGE_NB_HITS => 'ga:pageviews',
+            Metrics::INDEX_PAGE_NB_HITS => $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:pageviews',
             Metrics::INDEX_PAGE_SUM_TIME_SPENT => [
                 'metric' => 'ga:timeOnPage',
                 'calculate' => function (Row $row) {
@@ -341,7 +349,7 @@ class GoogleAnalyticsQueryService
             // actions (requires correct dimension)
             Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 'ga:users',
             Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 'ga:entrances',
-            Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 'ga:hits',
+            Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => $hitsMetric,
             Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => [
                 'metric' => 'ga:sessionDuration',
                 'calculate' => function (Row $row) {
@@ -351,7 +359,7 @@ class GoogleAnalyticsQueryService
             Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 'ga:bounces',
 
             // actions (requires correct dimensions)
-            Metrics::INDEX_PAGE_IS_FOLLOWING_SITE_SEARCH_NB_HITS => 'ga:hits',
+            Metrics::INDEX_PAGE_IS_FOLLOWING_SITE_SEARCH_NB_HITS => $hitsMetric,
 
             Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 'ga:pageDownloadTime',
             Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 'ga:pageLoadSample',
