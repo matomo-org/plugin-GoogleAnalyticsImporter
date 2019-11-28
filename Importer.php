@@ -110,7 +110,7 @@ class Importer
         $this->importStatus = $importStatus;
     }
 
-    public function makeSite($accountId, $propertyId, $viewId)
+    public function makeSite($accountId, $propertyId, $viewId, $timezone = false)
     {
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
@@ -124,7 +124,7 @@ class Importer
             $searchCategoryParams = $view->siteSearchCategoryParameters,
             $excludedIps = null,
             $excludedParams = $view->excludeQueryParameters,
-            $timezone = $view->timezone,
+            $timezone = empty($timezone) ? $view->timezone : $timezone,
             $currency = $view->currency,
             $group = null,
             $startDate = Date::factory($webproperty->getCreated())->toString()
