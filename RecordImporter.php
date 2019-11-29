@@ -9,14 +9,10 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
-use Piwik\Common;
 use Piwik\Config as PiwikConfig;
-use Piwik\DataAccess\ArchiveWriter;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
-use Piwik\Plugins\DevicesDetection\Archiver;
-use Piwik\Tracker\Action;
 use Psr\Log\LoggerInterface;
 
 abstract class RecordImporter
@@ -35,9 +31,9 @@ abstract class RecordImporter
     private $idSite;
 
     /**
-     * @var ArchiveWriter
+     * @var RecordInserter
      */
-    private $archiveWriter;
+    private $recordInserter;
 
     /**
      * @var LoggerInterface
@@ -60,9 +56,9 @@ abstract class RecordImporter
 
     public abstract function importRecords(Date $day);
 
-    public function setArchiveWriter(ArchiveWriter $archiveWriter)
+    public function setRecordInserter(RecordInserter $recordInserter)
     {
-        $this->archiveWriter = $archiveWriter;
+        $this->recordInserter = $recordInserter;
     }
 
     /**
@@ -146,25 +142,17 @@ abstract class RecordImporter
     protected function insertRecord($recordName, DataTable $record, $maximumRowsInDataTable = null,
                                     $maximumRowsInSubDataTable = null, $columnToSortByBeforeTruncation = null)
     {
-        $record->setMetadata(self::IS_IMPORTED_FROM_GOOGLE_METADATA_NAME, 1);
-
-        $blob = $record->getSerialized($maximumRowsInDataTable, $maximumRowsInSubDataTable, $columnToSortByBeforeTruncation);
-        $this->insertBlobRecord($recordName, $blob);
+        $this->recordInserter->insertRecord($recordName, $record, $maximumRowsInDataTable, $maximumRowsInSubDataTable, $columnToSortByBeforeTruncation);
     }
 
     protected function insertBlobRecord($name, $values)
     {
-        $this->archiveWriter->insertBlobRecord($name, $values);
+        $this->recordInserter->insertBlobRecord($name, $values);
     }
 
     protected function insertNumericRecords(array $values)
     {
-        foreach ($values as $name => $value) {
-            if (is_numeric($name)) {
-                $name = Metrics::getReadableColumnName($name);
-            }
-            $this->archiveWriter->insertRecord($name, $value);
-        }
+        $this->recordInserter->insertNumericRecords($values);
     }
 
     protected function addRowToTable(DataTable $record, DataTable\Row $row, $newLabel)

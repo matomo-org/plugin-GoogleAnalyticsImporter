@@ -83,7 +83,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         Common::destroy($table);
 
         // if scope is action, we also need to query exit page metrics and visit metrics (done separately
-        // see RecordImporter::getPageMetrics for more info)
+        // see Importers::getPageMetrics for more info)
         if ($dimensionObj['scope'] === CustomDimensions::SCOPE_ACTION) {
             $table = $gaQuery->query($day, $dimensions = [$dimension], [Metrics::INDEX_NB_VISITS, Metrics::INDEX_BOUNCE_COUNT], [
                 'orderBys' => [

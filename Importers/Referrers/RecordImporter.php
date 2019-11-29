@@ -170,6 +170,12 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             // URLs don't have protocols in GA
             $referrerUrl = 'http://' . $referrerUrl;
 
+            // URLs can have extra information appended towards the end (like, ' iphone') in old data
+            $parts = explode(' ', $referrerUrl);
+            if (count($parts) == 2) {
+                $referrerUrl = $parts[0];
+            }
+
             // skip if this isn't a URL
             if (!filter_var($referrerUrl, FILTER_VALIDATE_URL)) {
                 $this->getLogger()->warning("Non referrer URL encountered: $referrerUrl");
