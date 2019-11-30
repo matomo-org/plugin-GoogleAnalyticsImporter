@@ -48,6 +48,7 @@ class ImportReports extends ConsoleCommand
             . 'NOTE: This option will attempt to set the number of custom variable slots which should be done with care on an existing system.');
         $this->addOption('skip-archiving', null, InputOption::VALUE_NONE, 'Skips launching archiving at the end of an import. Use this only if executing PHP from the command line results in an error on your system.');
         $this->addOption('mobile-app', null, InputOption::VALUE_NONE, 'If this option is used, the Matomo measurable that is created will be a mobile app. Requires the MobileAppMeasurable be activated.');
+        $this->addOption('timezone', null, InputOption::VALUE_REQUIRED, 'If your GA property\'s timezone is set to a value that is not a timezone recognized by PHP, you can specify a valid timezone manually with this option.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -60,6 +61,7 @@ class ImportReports extends ConsoleCommand
         $isAccountDeduced = false;
 
         $skipArchiving = $input->getOption('skip-archiving');
+        $timezone = $input->getOption('timezone');
 
         $isMobileApp = $input->getOption('mobile-app');
         if ($isMobileApp
@@ -101,7 +103,7 @@ class ImportReports extends ConsoleCommand
             && !empty($account)
         ) {
             try {
-                $idSite = $importer->makeSite($account, $property, $viewId, $type);
+                $idSite = $importer->makeSite($account, $property, $viewId, $timezone, $type);
             } catch (\Google_Exception $ex) {
                 if ($isAccountDeduced) {
                     $output->writeln("<comment>NOTE: We tried to deduce your GA account ID from the property ID above, it's possible your account ID differs. If this is the case specify it manually using --account=... and try again.</comment>");
