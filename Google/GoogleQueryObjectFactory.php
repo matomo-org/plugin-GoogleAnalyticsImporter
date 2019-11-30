@@ -14,6 +14,15 @@ use Psr\Log\LoggerInterface;
 
 class GoogleQueryObjectFactory
 {
+    private static $defaultMetricOrderByPriority = [
+        'ga:uniquePageviews',
+        'ga:uniqueScreenviews',
+        'ga:pageviews',
+        'ga:screenviews',
+        'ga:sessions',
+        'ga:goalCompletionsAll',
+    ];
+
     /**
      * @var LoggerInterface
      */
@@ -76,22 +85,13 @@ class GoogleQueryObjectFactory
             }
         }
 
-        // TODO: this code can be cleaned up
-        if (in_array('ga:uniquePageviews', $gaMetricsToQuery)) {
-            return 'ga:uniquePageviews';
-        } else if (in_array('ga:uniqueScreenviews', $gaMetricsToQuery)) {
-            return 'ga:uniqueScreenviews';
-        } else if (in_array('ga:pageviews', $gaMetricsToQuery)) {
-            return 'ga:pageviews';
-        } else if (in_array('ga:screenviews', $gaMetricsToQuery)) {
-            return 'ga:screenviews';
-        } else if (in_array('ga:sessions', $gaMetricsToQuery)) {
-            return 'ga:sessions';
-        } else if (in_array('ga:goalCompletionsAll', $gaMetricsToQuery)) {
-            return 'ga:goalCompletionsAll';
-        } else {
-            throw new \Exception("Not sure what metric to use to order results, got: " . implode(', ', $gaMetricsToQuery));
+        foreach (self::$defaultMetricOrderByPriority as $metricName) {
+            if (in_array($metricName, $gaMetricsToQuery)) {
+                return $metricName;
+            }
         }
+
+        throw new \Exception("Not sure what metric to use to order results, got: " . implode(', ', $gaMetricsToQuery));
     }
 
     private function makeGaSegment($segment)
