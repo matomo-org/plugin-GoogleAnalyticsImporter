@@ -13,6 +13,7 @@ use Piwik\Config as PiwikConfig;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Psr\Log\LoggerInterface;
 
 abstract class RecordImporter

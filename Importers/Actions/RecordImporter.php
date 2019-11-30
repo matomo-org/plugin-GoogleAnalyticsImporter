@@ -18,7 +18,7 @@ use Piwik\Metrics;
 use Piwik\Plugins\Actions\Actions\ActionSiteSearch;
 use Piwik\Plugins\Actions\Archiver;
 use Piwik\Plugins\Actions\ArchivingHelper;
-use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
 use Piwik\Tracker\Action;
@@ -169,7 +169,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $table = $gaQuery->query($day, $dimensions = ['ga:searchKeyword'], $metrics, [
             'orderBys' => [
                 ['field' => 'ga:searchUniques', 'order' => 'descending'],
-                ['field' => 'ga:searchKeyword', 'order' => 'ascending']
+                ['field' => 'ga:searchKeyword', 'order' => 'ascending'],
             ],
             'mappings' => [
                 Metrics::INDEX_NB_VISITS => 'ga:searchUniques',

@@ -6,10 +6,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\GoogleAnalyticsImporter;
+namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 
 use Piwik\Plugins\CustomDimensions\Dimension\Name;
+use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportCustomDimensionException;
 
 class GoogleCustomDimensionMapper
 {

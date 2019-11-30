@@ -7,7 +7,7 @@
  *
  */
 
-namespace Piwik\Plugins\GoogleAnalyticsImporter;
+namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
@@ -16,11 +16,7 @@ use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Db;
 use Piwik\Metrics;
-use Piwik\Piwik;
-use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
-use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
-use Piwik\Tracker\Action;
 use Piwik\Tracker\GoalManager;
 use Psr\Log\LoggerInterface;
 
@@ -77,14 +73,20 @@ class GoogleAnalyticsQueryService
 
     private $pingMysqlEverySecs;
 
+    /**
+     * @var GoogleQueryObjectFactory
+     */
+    private $googleQueryObjectFactory;
+
     public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite,
-                                LoggerInterface $logger)
+                                GoogleQueryObjectFactory $googleQueryObjectFactory, LoggerInterface $logger)
     {
         $this->gaService = $gaService;
         $this->viewId = $viewId;
         $this->goalsMapping = $goalsMapping;
         $this->idSite = $idSite;
         $this->logger = $logger;
+        $this->googleQueryObjectFactory = $googleQueryObjectFactory;
         $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
         $this->mapping = $this->getMetricIndicesToGaMetrics();
     }
@@ -96,52 +98,20 @@ class GoogleAnalyticsQueryService
             $mappings = $options['mappings'] + $mappings;
         }
 
-        $gaMetrics = $this->getMappedMetricsToQuery($metrics, $mappings);
-
-        $date = $day->toString();
-
         $result = new DataTable();
 
-        $metricNames = [];
-        foreach ($gaMetrics as $metricsList) {
-            foreach ($metricsList as $gaMetric) {
-                $metricNames[] = $gaMetric;
-            }
-        }
-
-        $metricNames = array_unique($metricNames);
+        $gaMetricsToQuery = $this->getMappedMetricsToQuery($metrics, $mappings);
 
         $defaultRow = new Row();
-        foreach ($metricNames as $name) {
+        foreach ($gaMetricsToQuery as $name) {
             $defaultRow->setColumn($name, 0);
         }
 
         // detect the metric used to order result sets. we need to send this metric with each partial request to ensure correct order.
-        $orderByMetric = null;
-        if (!empty($options['orderBys'])) {
-            $this->checkOrderBys($options['orderBys'], $metricNames, $dimensions);
+        $orderByMetric = $this->googleQueryObjectFactory->getOrderByMetric($gaMetricsToQuery, $options);
 
-            $orderByMetric = $options['orderBys'][0]['field'];
-        } else {
-            if (in_array('ga:uniquePageviews', $metricNames)) {
-                $orderByMetric = 'ga:uniquePageviews';
-            } else if (in_array('ga:uniqueScreenviews', $metricNames)) {
-                $orderByMetric = 'ga:uniqueScreenviews';
-            } else if (in_array('ga:pageviews', $metricNames)) {
-                $orderByMetric = 'ga:pageviews';
-            } else if (in_array('ga:screenviews', $metricNames)) {
-                $orderByMetric = 'ga:screenviews';
-            } else if (in_array('ga:sessions', $metricNames)) {
-                $orderByMetric = 'ga:sessions';
-            } else if (in_array('ga:goalCompletionsAll', $metricNames)) {
-                $orderByMetric = 'ga:goalCompletionsAll';
-            } else {
-                throw new \Exception("Not sure what metric to use to order results, got: " . implode(', ', $metricNames));
-            }
-        }
-
-        foreach (array_chunk($metricNames, 9) as $chunk) {
-            $chunkResponse = $this->gaBatchGet($date, array_values($chunk), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
+        foreach (array_chunk($gaMetricsToQuery, 9) as $chunk) {
+            $chunkResponse = $this->gaBatchGet($day, array_values($chunk), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
 
             // some metric/date combinations seem to cause GA to return absolutely nothing (no rows + NULL row count).
             // in this case we remove the problematic metrics and try again.
@@ -151,7 +121,7 @@ class GoogleAnalyticsQueryService
                     continue;
                 }
 
-                $chunkResponse = $this->gaBatchGet($date, $chunk, array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
+                $chunkResponse = $this->gaBatchGet($day, $chunk, array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
 
                 // the second request can still fail, in which case repeated requests tend to still fail. so we ignore this data. seems to only
                 // happen for old data anyway.
@@ -215,7 +185,7 @@ class GoogleAnalyticsQueryService
 
     private function getMappedMetricsToQuery($metrics, $mappings)
     {
-        $mappedMetrics = [];
+        $mappedMetricsInfo = [];
         foreach ($metrics as $index) {
             if (!isset($mappings[$index])) {
                 throw new \Exception("Don't know how to map metric index ${index} to GA metric.");
@@ -232,9 +202,17 @@ class GoogleAnalyticsQueryService
                 $metric = [$metric];
             }
 
-            $mappedMetrics[$index] = $metric;
+            $mappedMetricsInfo[$index] = $metric;
         }
-        return $mappedMetrics;
+
+        $gaMetricsToQuery = [];
+        foreach ($mappedMetricsInfo as $metricsList) {
+            foreach ($metricsList as $gaMetric) {
+                $gaMetricsToQuery[] = $gaMetric;
+            }
+        }
+        $gaMetricsToQuery = array_unique($gaMetricsToQuery);
+        return $gaMetricsToQuery;
     }
 
     private function mergeResult(DataTable $table, \Google_Service_AnalyticsReporting_GetReportsResponse $response, $gaDimensions, $metricsQueried, Row $defaultRow)
@@ -439,33 +417,11 @@ class GoogleAnalyticsQueryService
         ];
     }
 
-    private function gaBatchGet($date, $metricNames, $options, $orderByMetric)
+    private function gaBatchGet(Date $date, $metricNamesChunk, $options, $orderByMetric)
     {
-        $dimensions = [];
-        foreach ($options['dimensions'] as $gaDimension) {
-            $dimensions[] = $this->makeGaDimension($gaDimension);
+        if (!in_array($orderByMetric, $metricNamesChunk)) {
+            $metricNamesChunk[] = $orderByMetric; // make sure the order by metric is included in this query so we can sort
         }
-
-        $segments = [];
-        if (!empty($options['segment'])) {
-            $segments[] = $this->makeGaSegment($options['segment']);
-            $dimensions[] = $this->makeGaSegmentDimension();
-        }
-
-        $metricNames = array_values($metricNames);
-
-        if (!in_array($orderByMetric, $metricNames)) {
-            $metricNames[] = $orderByMetric;
-        }
-
-        $metrics = array_map(function ($name) { return $this->makeGaMetric($name); }, $metricNames);
-
-        $request = new \Google_Service_AnalyticsReporting_ReportRequest();
-        $request->setViewId($this->viewId);
-        $request->setDateRanges([$this->makeGaDateRange($date)]);
-        $request->setDimensions($dimensions);
-        $request->setSegments($segments);
-        $request->setMetrics($metrics);
 
         if (!isset($options['orderBys'])) {
             $options['orderBys'][] = [
@@ -474,13 +430,7 @@ class GoogleAnalyticsQueryService
             ];
         }
 
-        $request->setOrderBys($this->makeGaOrderBys($options['orderBys']));
-
-        $getReport = new \Google_Service_AnalyticsReporting_GetReportsRequest();
-        $getReport->setReportRequests([$request]);
-
-        $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
-        $body->setReportRequests([$request]);
+        $request = $this->googleQueryObjectFactory->make($this->viewId, $date, $metricNamesChunk, $options);
 
         $this->currentBackoffTime = 1;
 
@@ -489,7 +439,7 @@ class GoogleAnalyticsQueryService
             try {
                 $this->issuePointlessMysqlQuery();
 
-                $result = $this->gaService->reports->batchGet($body);
+                $result = $this->gaService->reports->batchGet($request);
                 if (empty($result)) {
                     ++$attempts;
                     sleep(1);
@@ -529,46 +479,6 @@ class GoogleAnalyticsQueryService
         throw new \Exception("Failed to reach GA after " . self::MAX_ATTEMPTS . " attempts. Restart the import later.");
     }
 
-    private function makeGaSegment($segment)
-    {
-        $segmentObj = new \Google_Service_AnalyticsReporting_Segment();
-        if (isset($segment['segmentId'])) {
-            $segmentObj->setSegmentId($segment['segmentId']);
-        } else {
-            $segmentObj->setDynamicSegment($segment['dynamicSegment']);
-        }
-        return $segmentObj;
-    }
-
-    private function makeGaDateRange($date)
-    {
-        $dateRange = new \Google_Service_AnalyticsReporting_DateRange();
-        $dateRange->setStartDate($date);
-        $dateRange->setEndDate($date);
-        return $dateRange;
-    }
-
-    private function makeGaSegmentDimension()
-    {
-        $segmentDimensions = new \Google_Service_AnalyticsReporting_Dimension();
-        $segmentDimensions->setName("ga:segment");
-        return $segmentDimensions;
-    }
-
-    private function makeGaDimension($gaDimension)
-    {
-        $result = new \Google_Service_AnalyticsReporting_Dimension();
-        $result->setName($gaDimension);
-        return $result;
-    }
-
-    private function makeGaMetric($gaMetric)
-    {
-        $metric = new \Google_Service_AnalyticsReporting_Metric();
-        $metric->setExpression($gaMetric);
-        return $metric;
-    }
-
     private static function getQuotientFromPercentage($percentage)
     {
         if ($percentage === false) {
@@ -580,26 +490,6 @@ class GoogleAnalyticsQueryService
         $quotient = (float) $quotient;
         $quotient = $quotient / 100;
         return $quotient;
-    }
-
-    private function makeGaOrderBys($orderBys)
-    {
-        $gaOrderBys = [];
-        foreach ($orderBys as $orderByInfo) {
-            $orderBy = new \Google_Service_AnalyticsReporting_OrderBy();
-            $orderBy->setFieldName($orderByInfo['field']);
-            $orderBy->setOrderType('VALUE');
-
-            $order = strtoupper($orderByInfo['order']);
-            if ($order == 'DESC') {
-                $order = 'DESCENDING';
-            } else if ($order == 'ASC') {
-                $order = 'ASCENDING';
-            }
-            $orderBy->setSortOrder($order);
-            $gaOrderBys[] = $orderBy;
-        }
-        return $gaOrderBys;
     }
 
     /**
@@ -633,22 +523,6 @@ class GoogleAnalyticsQueryService
             $amountSlept += $timeToSleep;
 
             $this->issuePointlessMysqlQuery();
-        }
-    }
-
-    private function checkOrderBys($orderBys, array $metricsQueried, array $dimensions)
-    {
-        foreach ($orderBys as $entry) {
-            $field = $entry['field'];
-            if (!in_array($field, $metricsQueried)
-                && !in_array($field, $dimensions)
-            ) {
-                $this->logger->error("Unexpected error: trying to order by {field}, but field is not in list of metrics/dimensions being queried: {metrics}/{dims}", [
-                    'field' => $field,
-                    'metrics' => implode(', ', $metricsQueried),
-                    'dims' => implode(', ', $dimensions),
-                ]);
-            }
         }
     }
 }

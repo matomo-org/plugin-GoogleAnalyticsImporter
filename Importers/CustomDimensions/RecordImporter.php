@@ -18,7 +18,7 @@ use Piwik\Metrics;
 use Piwik\Plugins\CustomDimensions\API;
 use Piwik\Plugins\CustomDimensions\Archiver;
 use Piwik\Plugins\CustomDimensions\CustomDimensions;
-use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\IdMapper;
 use Psr\Log\LoggerInterface;
 

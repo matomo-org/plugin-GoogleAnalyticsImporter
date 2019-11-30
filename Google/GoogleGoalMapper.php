@@ -6,10 +6,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\GoogleAnalyticsImporter;
+namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 
 use Piwik\Container\StaticContainer;
+use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportGoalException;
 use Piwik\Plugins\SitesManager\API;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;

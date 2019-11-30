@@ -16,7 +16,7 @@ use Piwik\DataTable;
 use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Metrics;
-use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\MarketingCampaignsReporting\Archiver;
 use Psr\Log\LoggerInterface;
 

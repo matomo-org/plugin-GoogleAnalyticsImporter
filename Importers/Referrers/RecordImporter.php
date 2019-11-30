@@ -18,7 +18,7 @@ use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\SearchEngineMapper;
-use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\Referrers\Archiver;
 use Piwik\Plugins\Referrers\Social;
 use Psr\Log\LoggerInterface;
