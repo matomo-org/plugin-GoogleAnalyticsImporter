@@ -75,11 +75,6 @@ class GoogleAnalyticsQueryService
      */
     private $currentBackoffTime = 1;
 
-    /**
-     * @var bool
-     */
-    private $isMobileApp;
-
     private $pingMysqlEverySecs;
 
     public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite,
@@ -91,7 +86,6 @@ class GoogleAnalyticsQueryService
         $this->idSite = $idSite;
         $this->logger = $logger;
         $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
-        $this->isMobileApp = Site::getTypeFor($idSite) == Type::ID; // TODO: leave this in actions record importer
         $this->mapping = $this->getMetricIndicesToGaMetrics();
     }
 
@@ -333,7 +327,7 @@ class GoogleAnalyticsQueryService
             ],
 
             // actions
-            Metrics::INDEX_PAGE_NB_HITS => $this->isMobileApp ? 'ga:screenviews' : 'ga:pageviews',
+            Metrics::INDEX_PAGE_NB_HITS => 'ga:pageviews',
             Metrics::INDEX_PAGE_SUM_TIME_SPENT => [
                 'metric' => 'ga:timeOnPage',
                 'calculate' => function (Row $row) {

@@ -62,6 +62,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private $pageTitleDimension;
     private $uniquePageviewsMetric;
+    private $hitsMetric;
 
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
@@ -71,6 +72,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $this->pageTitleDimension = $this->isMobileApp ? 'ga:screenName' : 'ga:pageTitle';
         $this->uniquePageviewsMetric = $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:uniquePageviews';
+        $this->hitsMetric = $this->isMobileApp ? 'ga:screenviews' : 'ga:pageviews';
     }
 
     public function importRecords(Date $day)
@@ -209,6 +211,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 'orderBys' => [
                     ['field' => 'ga:screenviews', 'order' => 'descending'],
                     ['field' => 'ga:screenName', 'order' => 'ascending'],
+                ],
+                'mappings' => [
+                    Metrics::INDEX_PAGE_NB_HITS => $this->hitsMetric,
                 ],
             ]);
         } else {
