@@ -108,7 +108,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $this->insertDataTable(Action::TYPE_PAGE_URL, Archiver::PAGE_URLS_RECORD_NAME);
             $this->insertDataTable(Action::TYPE_SITE_SEARCH, Archiver::SITE_SEARCH_RECORD_NAME);
 
-            $this->insertPageUrlNumericRecords($this->dataTables[Action::TYPE_PAGE_URL]);
+            $pageReportToUse = $this->isMobileApp ? $this->dataTables[Action::TYPE_PAGE_TITLE] : $this->dataTables[Action::TYPE_PAGE_URL];
+            $this->insertPageUrlNumericRecords($pageReportToUse);
+
             $this->insertSiteSearchNumericRecords($this->dataTables[Action::TYPE_SITE_SEARCH]);
 
             unset($this->pageTitleRowsByPageTitle);
@@ -371,6 +373,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function queryEntryPagesForUrls(Date $day)
     {
         if ($this->isMobileApp) {
+            $this->getLogger()->debug("Skipping import of entry page urls for mobile app property.");
             return;
         }
 
@@ -434,6 +437,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function queryExitPagesForUrls(Date $day)
     {
+        if ($this->isMobileApp) {
+            $this->getLogger()->debug("Skipping import of exit page urls for mobile app property.");
+            return;
+        }
+
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:exitPagePath'], $this->exitPageMetrics, [
             'orderBys' => [

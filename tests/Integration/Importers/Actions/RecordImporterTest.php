@@ -10,9 +10,23 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration\Importers\Acti
 
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\BaseRecordImporterTest;
+use Piwik\Plugins\MobileAppMeasurable\Type;
+use Piwik\Tests\Framework\Fixture;
 
 class RecordImporterTest extends BaseRecordImporterTest
 {
+    public function setUp()
+    {
+        parent::setUp();
+
+        Fixture::createWebsite('2012-02-02 03:04:04', 1, 'mobile app', false, 0, null, null, null, Type::ID);
+    }
+
+    public function getTestDir()
+    {
+        return __DIR__;
+    }
+
     public function test_basicImport()
     {
         $this->runImporterTest('basicImport', [
@@ -26,11 +40,6 @@ class RecordImporterTest extends BaseRecordImporterTest
             $this->makeMockExitPageTItlesResponse(),
             $this->makeMockSearchKeywordsResponse(),
         ]);
-    }
-
-    public function getTestDir()
-    {
-        return __DIR__;
     }
 
     private function makeMockPageUrlsResponse()
@@ -260,6 +269,119 @@ class RecordImporterTest extends BaseRecordImporterTest
                 'ga:searchKeyword' => 'serach 2',
                 Metrics::INDEX_NB_VISITS => 1,
                 Metrics::INDEX_NB_UNIQ_VISITORS => 1,
+            ],
+        ];
+    }
+
+    public function test_mobileApp()
+    {
+        $this->runImporterTest('mobileApp', [
+            $this->makeMockPageTitlesResponseForMobileApp(),
+            $this->makeMockPageTitlesVisitsResponseForMobileApp(),
+            $this->makeMockEntryPageTItlesResponseForMobileApp(),
+            $this->makeMockExitPageTItlesResponseForMobileApp(),
+        ], $idSite = 2);
+    }
+
+    private function makeMockPageTitlesResponseForMobileApp()
+    {
+        return [
+            [
+                'ga:screenName' => 'Homepage',
+                Metrics::INDEX_PAGE_NB_HITS => 19,
+                Metrics::INDEX_PAGE_SUM_TIME_SPENT => 2,
+                Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 5,
+                Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 7,
+            ],
+            [
+                'ga:screenName' => 'A Screen',
+                Metrics::INDEX_PAGE_NB_HITS => 18,
+                Metrics::INDEX_PAGE_SUM_TIME_SPENT => 1,
+                Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 2,
+                Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 4,
+            ],
+            [
+                'ga:screenName' => 'Another Screen > Sub Screen',
+                Metrics::INDEX_PAGE_NB_HITS => 2,
+                Metrics::INDEX_PAGE_SUM_TIME_SPENT => 2,
+                Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 3,
+                Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 3,
+            ],
+            [
+                'ga:screenName' => 'Third Screen',
+                Metrics::INDEX_PAGE_NB_HITS => 1,
+                Metrics::INDEX_PAGE_SUM_TIME_SPENT => 1,
+                Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 1,
+                Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 1,
+            ],
+        ];
+    }
+
+    private function makeMockPageTitlesVisitsResponseForMobileApp()
+    {
+        return [
+            [
+                'ga:screenName' => 'Homepage',
+                Metrics::INDEX_NB_VISITS => 16,
+                Metrics::INDEX_NB_UNIQ_VISITORS => 15,
+            ],
+            [
+                'ga:screenName' => 'A Screen',
+                Metrics::INDEX_NB_VISITS => 20,
+                Metrics::INDEX_NB_UNIQ_VISITORS => 10,
+            ],
+            [
+                'ga:screenName' => 'Another Screen > Sub Screen',
+                Metrics::INDEX_NB_VISITS => 3,
+                Metrics::INDEX_NB_UNIQ_VISITORS => 9,
+            ],
+            [
+                'ga:screenName' => 'Third Screen',
+                Metrics::INDEX_NB_VISITS => 14,
+                Metrics::INDEX_NB_UNIQ_VISITORS => 7,
+            ],
+        ];
+    }
+
+    private function makeMockEntryPageTItlesResponseForMobileApp()
+    {
+        return [
+            [
+                'ga:screenName' => 'Homepage',
+                Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 7,
+                Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 8,
+                Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 9,
+                Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 10,
+                Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 11,
+            ],
+            [
+                'ga:screenName' => 'Third Screen',
+                Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 2,
+                Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 3,
+                Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 4,
+                Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 5,
+                Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 6,
+            ],
+        ];
+    }
+
+    private function makeMockExitPageTItlesResponseForMobileApp()
+    {
+        return [
+            [
+                'ga:screenName' => 'Homepage',
+                Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 4,
+                Metrics::INDEX_PAGE_EXIT_NB_VISITS => 4,
+            ],
+            [
+                'ga:screenName' => 'Third Screen',
+                Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 2,
+                Metrics::INDEX_PAGE_EXIT_NB_VISITS => 2,
+            ],
+            [
+                'ga:screenName' => 'Another Screen > Sub Screen',
+                Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 1,
+                Metrics::INDEX_PAGE_EXIT_NB_VISITS => 1,
             ],
         ];
     }

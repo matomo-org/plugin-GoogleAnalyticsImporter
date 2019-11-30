@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<results>
+	<result record="Actions_actions">
+		<row>
+			<col name="label"> Homepage</col>
+			<col name="2">16</col>
+			<col name="1">15</col>
+			<col name="12">19</col>
+			<col name="13">2</col>
+			<col name="30">5</col>
+			<col name="31">7</col>
+			<col name="17">7</col>
+			<col name="19">8</col>
+			<col name="20">9</col>
+			<col name="21">10</col>
+			<col name="22">11</col>
+			<col name="14">4</col>
+			<col name="15">4</col>
+		</row>
+		<row>
+			<col name="label"> A Screen</col>
+			<col name="2">20</col>
+			<col name="1">10</col>
+			<col name="12">18</col>
+			<col name="13">1</col>
+			<col name="30">2</col>
+			<col name="31">4</col>
+		</row>
+		<row>
+			<col name="label"> Another Screen &gt; Sub Screen</col>
+			<col name="2">3</col>
+			<col name="1">9</col>
+			<col name="12">2</col>
+			<col name="13">2</col>
+			<col name="30">3</col>
+			<col name="31">3</col>
+			<col name="14">1</col>
+			<col name="15">1</col>
+		</row>
+		<row>
+			<col name="label"> Third Screen</col>
+			<col name="2">14</col>
+			<col name="1">7</col>
+			<col name="12">1</col>
+			<col name="13">1</col>
+			<col name="30">1</col>
+			<col name="31">1</col>
+			<col name="17">2</col>
+			<col name="19">3</col>
+			<col name="20">4</col>
+			<col name="21">5</col>
+			<col name="22">6</col>
+			<col name="14">2</col>
+			<col name="15">2</col>
+		</row>
+	</result>
+	<result record="Actions_actions_url" />
+	<result record="Actions_sitesearch" />
+	<result record="Actions_nb_pageviews">
+		<row>
+			<value>40</value>
+		</row>
+	</result>
+	<result record="Actions_nb_uniq_pageviews">
+		<row>
+			<value>53</value>
+		</row>
+	</result>
+	<result record="Actions_sum_time_generation">
+		<row>
+			<value>11</value>
+		</row>
+	</result>
+	<result record="Actions_nb_hits_with_time_generation">
+		<row>
+			<value>15</value>
+		</row>
+	</result>
+	<result record="Actions_nb_searches">
+		<row>
+			<value>0</value>
+		</row>
+	</result>
+	<result record="Actions_nb_keywords">
+		<row>
+			<value>0</value>
+		</row>
+	</result>
+</results>

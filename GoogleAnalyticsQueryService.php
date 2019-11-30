@@ -91,7 +91,7 @@ class GoogleAnalyticsQueryService
         $this->idSite = $idSite;
         $this->logger = $logger;
         $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
-        $this->isMobileApp = Site::getTypeFor($idSite) == Type::ID;
+        $this->isMobileApp = Site::getTypeFor($idSite) == Type::ID; // TODO: leave this in actions record importer
         $this->mapping = $this->getMetricIndicesToGaMetrics();
     }
 
