@@ -205,14 +205,14 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         if ($this->isMobileApp) {
             $table = $gaQuery->query($day, $dimensions = [$this->pageTitleDimension], $this->getPageMetrics(), [
                 'orderBys' => [
-                    ['field' => 'ga:uniqueScreenviews', 'order' => 'descending'],
+                    ['field' => 'ga:screenviews', 'order' => 'descending'],
                     ['field' => 'ga:screenName', 'order' => 'ascending'],
                 ],
             ]);
         } else {
             $table = $gaQuery->query($day, $dimensions = [$this->pageTitleDimension, 'ga:pagePath'], $this->getPageMetrics(), [
                 'orderBys' => [
-                    ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
+                    ['field' => 'ga:pageviews', 'order' => 'descending'],
                     ['field' => $this->pageTitleDimension, 'order' => 'ascending'],
                 ],
             ]);
@@ -221,7 +221,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             if ($table->getRowsCount() == 0) {
                 $table = $gaQuery->query($day, $dimensions = [$this->pageTitleDimension], $this->getPageMetrics(), [
                     'orderBys' => [
-                        ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
+                        ['field' => 'ga:pageviews', 'order' => 'descending'],
                         ['field' => $this->pageTitleDimension, 'order' => 'ascending'],
                     ],
                 ]);
@@ -249,7 +249,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $metrics = [Metrics::INDEX_NB_VISITS, Metrics::INDEX_NB_UNIQ_VISITORS];
         $table = $gaQuery->query($day, $dimensions = [$this->pageTitleDimension], $metrics, [
             'orderBys' => [
-                ['field' => 'ga:sessions', 'order' => 'descending'],
+                ['field' => $this->uniquePageviewsMetric, 'order' => 'descending'],
                 ['field' => $this->pageTitleDimension, 'order' => 'ascending'],
             ],
             'mappings' => [
@@ -281,7 +281,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:pagePath'], $this->getPageMetrics(), [
             'orderBys' => [
-                ['field' => 'ga:uniquePageviews', 'order' => 'descending'],
+                ['field' => 'ga:pageviews', 'order' => 'descending'],
                 ['field' => 'ga:pagePath', 'order' => 'ascending']
             ],
         ]);

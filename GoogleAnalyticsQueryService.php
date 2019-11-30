@@ -75,6 +75,11 @@ class GoogleAnalyticsQueryService
      */
     private $currentBackoffTime = 1;
 
+    /**
+     * @var bool
+     */
+    private $isMobileApp;
+
     private $pingMysqlEverySecs;
 
     public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite,
@@ -86,10 +91,8 @@ class GoogleAnalyticsQueryService
         $this->idSite = $idSite;
         $this->logger = $logger;
         $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
-
-        $this->mapping = $this->getMetricIndicesToGaMetrics();
-
         $this->isMobileApp = Site::getTypeFor($idSite) == Type::ID;
+        $this->mapping = $this->getMetricIndicesToGaMetrics();
     }
 
     public function query(Date $day, array $dimensions, array $metrics, array $options = [])
@@ -122,6 +125,8 @@ class GoogleAnalyticsQueryService
         // detect the metric used to order result sets. we need to send this metric with each partial request to ensure correct order.
         $orderByMetric = null;
         if (!empty($options['orderBys'])) {
+            $this->checkOrderBys($options['orderBys'], $metricNames, $dimensions);
+
             $orderByMetric = $options['orderBys'][0]['field'];
         } else {
             if (in_array('ga:uniquePageviews', $metricNames)) {
@@ -289,13 +294,11 @@ class GoogleAnalyticsQueryService
         }
         $goalSpecificMetrics[] = 'ga:sessions'; // for nb_visits_converted
 
-        $hitsMetric = $this->isMobileApp ? 'ga:screenviews' : 'ga:hits';
-
         return [
             // visit metrics
             Metrics::INDEX_NB_UNIQ_VISITORS => 'ga:users',
             Metrics::INDEX_NB_VISITS => 'ga:sessions',
-            Metrics::INDEX_NB_ACTIONS => $hitsMetric,
+            Metrics::INDEX_NB_ACTIONS => 'ga:hits',
             Metrics::INDEX_SUM_VISIT_LENGTH => [
                 'metric' => 'ga:sessionDuration',
                 'calculate' => function (Row $row) {
@@ -330,7 +333,7 @@ class GoogleAnalyticsQueryService
             ],
 
             // actions
-            Metrics::INDEX_PAGE_NB_HITS => $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:pageviews',
+            Metrics::INDEX_PAGE_NB_HITS => $this->isMobileApp ? 'ga:screenviews' : 'ga:pageviews',
             Metrics::INDEX_PAGE_SUM_TIME_SPENT => [
                 'metric' => 'ga:timeOnPage',
                 'calculate' => function (Row $row) {
@@ -349,7 +352,7 @@ class GoogleAnalyticsQueryService
             // actions (requires correct dimension)
             Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 'ga:users',
             Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 'ga:entrances',
-            Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => $hitsMetric,
+            Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 'ga:hits',
             Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => [
                 'metric' => 'ga:sessionDuration',
                 'calculate' => function (Row $row) {
@@ -359,7 +362,7 @@ class GoogleAnalyticsQueryService
             Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 'ga:bounces',
 
             // actions (requires correct dimensions)
-            Metrics::INDEX_PAGE_IS_FOLLOWING_SITE_SEARCH_NB_HITS => $hitsMetric,
+            Metrics::INDEX_PAGE_IS_FOLLOWING_SITE_SEARCH_NB_HITS => 'ga:hits',
 
             Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 'ga:pageDownloadTime',
             Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 'ga:pageLoadSample',
@@ -592,7 +595,15 @@ class GoogleAnalyticsQueryService
             $orderBy = new \Google_Service_AnalyticsReporting_OrderBy();
             $orderBy->setFieldName($orderByInfo['field']);
             $orderBy->setOrderType('VALUE');
-            $orderBy->setSortOrder(strtoupper($orderByInfo['order']));
+
+            $order = strtoupper($orderByInfo['order']);
+            if ($order == 'DESC') {
+                $order = 'DESCENDING';
+            } else if ($order == 'ASC') {
+                $order = 'ASCENDING';
+            }
+            $orderBy->setSortOrder($order);
+            $gaOrderBys[] = $orderBy;
         }
         return $gaOrderBys;
     }
@@ -628,6 +639,22 @@ class GoogleAnalyticsQueryService
             $amountSlept += $timeToSleep;
 
             $this->issuePointlessMysqlQuery();
+        }
+    }
+
+    private function checkOrderBys($orderBys, array $metricsQueried, array $dimensions)
+    {
+        foreach ($orderBys as $entry) {
+            $field = $entry['field'];
+            if (!in_array($field, $metricsQueried)
+                && !in_array($field, $dimensions)
+            ) {
+                $this->logger->error("Unexpected error: trying to order by {field}, but field is not in list of metrics/dimensions being queried: {metrics}/{dims}", [
+                    'field' => $field,
+                    'metrics' => implode(', ', $metricsQueried),
+                    'dims' => implode(', ', $dimensions),
+                ]);
+            }
         }
     }
 }
