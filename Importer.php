@@ -112,7 +112,7 @@ class Importer
         $this->importStatus = $importStatus;
     }
 
-    public function makeSite($accountId, $propertyId, $viewId, $type = Type::ID)
+    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID)
     {
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
@@ -126,7 +126,7 @@ class Importer
             $searchCategoryParams = $view->siteSearchCategoryParameters,
             $excludedIps = null,
             $excludedParams = $view->excludeQueryParameters,
-            $timezone = $view->timezone,
+            $timezone = empty($timezone) ? $view->timezone : $timezone,
             $currency = $view->currency,
             $group = null,
             $startDate = Date::factory($webproperty->getCreated())->toString(),
@@ -326,7 +326,9 @@ class Importer
         $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
         $archiveWriter->initNewArchive();
 
-        foreach ($recordImporters as $plugin => $recordImporter) {
+       $recordInserter = new RecordInserter($archiveWriter);
+
+       foreach ($recordImporters as $plugin => $recordImporter) {
             if (!$recordImporter->supportsSite()) {
                 continue;
             }
@@ -335,7 +337,8 @@ class Importer
                 'plugin' => $plugin,
             ]);
 
-            $recordImporter->setArchiveWriter($archiveWriter);
+            $recordImporter->setRecordInserter($recordInserter);
+
             $recordImporter->importRecords($date);
 
             // since we recorded some data, at some time, remove the no data message

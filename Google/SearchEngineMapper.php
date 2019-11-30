@@ -40,6 +40,9 @@ class SearchEngineMapper
         $this->sourcesToSearchEngines['images.google'] = $this->sourcesToSearchEngines['google images'];
         $this->sourcesToSearchEngines['incredimail'] = $this->sourcesToSearchEngines['google'];
         $this->sourcesToSearchEngines['alice'] = $this->sourcesToSearchEngines['yandex'];
+        $this->sourcesToSearchEngines['live'] = $this->sourcesToSearchEngines['bing'];
+        $this->sourcesToSearchEngines['msn'] = $this->sourcesToSearchEngines['bing'];
+        $this->sourcesToSearchEngines['search'] = $this->sourcesToSearchEngines['ask'];
         $this->sourcesToSearchEngines['avg'] = ['name' => 'xx']; // TODO: not detected by matomo
     }
 

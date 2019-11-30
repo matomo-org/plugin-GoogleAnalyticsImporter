@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\Actions;
 
 use Piwik\API\Request;
 use Piwik\Common;
+use Piwik\Config;
 use Piwik\DataTable;
 use Piwik\DataTable\Row;
 use Piwik\Date;
@@ -17,13 +18,16 @@ use Piwik\Metrics;
 use Piwik\Plugins\Actions\Actions\ActionSiteSearch;
 use Piwik\Plugins\Actions\Archiver;
 use Piwik\Plugins\Actions\ArchivingHelper;
+use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
 use Piwik\Tracker\Action;
+use Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
     const PLUGIN_NAME = 'Actions';
+    const LABEL_DEFAULT_NAME = '__mtm_ga_default_name_placeholder__';
 
     /**
      * @var DataTable[]
@@ -59,53 +63,68 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private $pageTitleDimension;
     private $uniquePageviewsMetric;
 
-    public function importRecords(Date $day)
+    public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
-        ArchivingHelper::reloadConfig();
-
-        $this->dataTables = [
-            Action::TYPE_PAGE_URL => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableLevelZero),
-            Action::TYPE_PAGE_TITLE => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableLevelZero),
-            Action::TYPE_SITE_SEARCH => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableSiteSearch),
-        ];
-
-        $this->pageTitleRowsByPageTitle = [];
-        $this->pageUrlsByPagePath = [];
-        $this->siteSearchUrls = [];
-
-        // query for records
-        $this->getPageUrlsRecord($day);
-        $this->getPageTitlesRecord($day);
-        $this->queryEntryPages($day);
-        $this->queryExitPages($day);
-        $this->getSiteSearchs($day);
-        $this->queryPagesFollowingSiteSearch($day);
-
-        ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_TITLE], $isUrl = false);
-        ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_URL], $isUrl = true, $folderPrefix = '');
-
-        $this->insertDataTable(Action::TYPE_PAGE_TITLE, Archiver::PAGE_TITLES_RECORD_NAME);
-        $this->insertDataTable(Action::TYPE_PAGE_URL, Archiver::PAGE_URLS_RECORD_NAME);
-        $this->insertDataTable(Action::TYPE_SITE_SEARCH, Archiver::SITE_SEARCH_RECORD_NAME);
-
-        $this->insertPageUrlNumericRecords($this->dataTables[Action::TYPE_PAGE_URL]);
-        $this->insertSiteSearchNumericRecords($this->dataTables[Action::TYPE_SITE_SEARCH]);
-
-        unset($this->pageTitleRowsByPageTitle);
-        unset($this->pageUrlsByPagePath);
-        unset($this->siteSearchUrls);
-
-        foreach ($this->dataTables as &$table) {
-            Common::destroy($table);
-        }
-
-        // TODO: bandwidth metrics
-        // TODO: downloads, outlinks (requires segment on event and event configuration)
+        parent::__construct($gaQuery, $idSite, $logger);
 
         $this->isMobileApp = Site::getTypeFor($this->getIdSite()) == Type::ID;
 
         $this->pageTitleDimension = $this->isMobileApp ? 'ga:screenName' : 'ga:pageTitle';
         $this->uniquePageviewsMetric = $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:uniquePageviews';
+    }
+
+    public function importRecords(Date $day)
+    {
+        $originalDefaultName = Config::getInstance()->General['action_default_name'];
+        Config::getInstance()->General['action_default_name'] = self::LABEL_DEFAULT_NAME;
+
+        try {
+            ArchivingHelper::reloadConfig();
+
+            $this->dataTables = [
+                Action::TYPE_PAGE_URL => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableLevelZero),
+                Action::TYPE_PAGE_TITLE => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableLevelZero),
+                Action::TYPE_SITE_SEARCH => $this->makeDataTable(ArchivingHelper::$maximumRowsInDataTableSiteSearch),
+            ];
+
+            $this->pageTitleRowsByPageTitle = [];
+            $this->pageUrlsByPagePath = [];
+            $this->siteSearchUrls = [];
+
+            // query for records
+            $this->getPageUrlsRecord($day);
+            $this->getPageTitlesRecord($day);
+            $this->queryEntryPages($day);
+            $this->queryExitPages($day);
+            $this->getSiteSearchs($day);
+            $this->queryPagesFollowingSiteSearch($day);
+
+            ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_TITLE], $isUrl = false);
+            ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_URL], $isUrl = true, $folderPrefix = '');
+
+            $this->replaceDefaultActionName($originalDefaultName);
+
+            $this->insertDataTable(Action::TYPE_PAGE_TITLE, Archiver::PAGE_TITLES_RECORD_NAME);
+            $this->insertDataTable(Action::TYPE_PAGE_URL, Archiver::PAGE_URLS_RECORD_NAME);
+            $this->insertDataTable(Action::TYPE_SITE_SEARCH, Archiver::SITE_SEARCH_RECORD_NAME);
+
+            $this->insertPageUrlNumericRecords($this->dataTables[Action::TYPE_PAGE_URL]);
+            $this->insertSiteSearchNumericRecords($this->dataTables[Action::TYPE_SITE_SEARCH]);
+
+            unset($this->pageTitleRowsByPageTitle);
+            unset($this->pageUrlsByPagePath);
+            unset($this->siteSearchUrls);
+
+            foreach ($this->dataTables as &$table) {
+                Common::destroy($table);
+            }
+        } finally {
+            Config::getInstance()->General['action_default_name'] = $originalDefaultName;
+            ArchivingHelper::reloadConfig();
+        }
+
+        // TODO: bandwidth metrics
+        // TODO: downloads, outlinks (requires segment on event and event configuration)
     }
 
     private function queryPagesFollowingSiteSearch(Date $day)
@@ -476,5 +495,27 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
 
         Common::destroy($table);
+    }
+
+    private function replaceDefaultActionName($originalDefaultName)
+    {
+        foreach ($this->dataTables as $type => $table) {
+            $this->replaceDefaultActionNameInTable($table, $originalDefaultName);
+        }
+    }
+
+    private function replaceDefaultActionNameInTable(DataTable $table, $originalDefaultName)
+    {
+        $row = $table->getRowFromLabel('/' . self::LABEL_DEFAULT_NAME);
+        if (!empty($row)) {
+            $row->setColumn('label', '/' . $originalDefaultName);
+        }
+
+        foreach ($table->getRows() as $row) {
+            $subtable = $row->getSubtable();
+            if ($subtable) {
+                $this->replaceDefaultActionNameInTable($subtable, $originalDefaultName);
+            }
+        }
     }
 }
