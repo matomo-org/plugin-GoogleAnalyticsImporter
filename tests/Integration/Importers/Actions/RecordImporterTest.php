@@ -171,7 +171,6 @@ class RecordImporterTest extends BaseRecordImporterTest
         return [
             [
                 'ga:landingPagePath' => '/index',
-                Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 7,
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 8,
                 Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 9,
                 Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 10,
@@ -179,7 +178,6 @@ class RecordImporterTest extends BaseRecordImporterTest
             ],
             [
                 'ga:landingPagePath' => '/',
-                Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 2,
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 3,
                 Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 4,
                 Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 5,
@@ -192,20 +190,28 @@ class RecordImporterTest extends BaseRecordImporterTest
     {
         return [
             [
+                'ga:landingPagePath' => '/index',
                 'ga:pageTitle' => 'Index page',
-                Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 7,
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 8,
                 Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 9,
                 Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 10,
                 Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 11,
             ],
             [
+                'ga:landingPagePath' => '/',
                 'ga:pageTitle' => 'Index real',
-                Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 2,
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 3,
                 Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 4,
                 Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 5,
                 Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 6,
+            ],
+            [
+                'ga:landingPagePath' => '/?abc=1',
+                'ga:pageTitle' => 'Index real',
+                Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 1,
+                Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 1,
+                Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 1,
+                Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 1,
             ],
         ];
     }
@@ -235,18 +241,23 @@ class RecordImporterTest extends BaseRecordImporterTest
     {
         return [
             [
+                'ga:landingPagePath' => '/',
                 'ga:pageTitle' => 'Index real',
-                Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 4,
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS => 4,
             ],
             [
                 'ga:pageTitle' => 'Index page',
-                Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 2,
+                'ga:landingPagePath' => '/index',
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS => 2,
             ],
             [
                 'ga:pageTitle' => 'A Folder > Page',
-                Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 1,
+                'ga:landingPagePath' => '/folder/page',
+                Metrics::INDEX_PAGE_EXIT_NB_VISITS => 1,
+            ],
+            [
+                'ga:pageTitle' => 'Index page',
+                'ga:landingPagePath' => '/index?a=1',
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS => 1,
             ],
         ];
