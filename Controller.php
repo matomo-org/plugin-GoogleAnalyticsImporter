@@ -18,6 +18,7 @@ use Piwik\Notification;
 use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
+use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
 
@@ -226,9 +227,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $viewId = Common::getRequestVar('viewId');
             $accountId = Common::getRequestVar('accountId', false);
             $account = $accountId ?: ImportReports::guessAccountFromProperty($propertyId);
+            $isMobileApp = Common::getRequestVar('isMobileApp', 0, 'int') == 1;
             $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
 
-            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone);
+            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID);
+
             try {
 
                 if (empty($idSite)) {

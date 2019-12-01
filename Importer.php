@@ -19,17 +19,20 @@ use Piwik\DataAccess\ArchiveWriter;
 use Piwik\Date;
 use Piwik\Option;
 use Piwik\Period\Factory;
-use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleCustomDimensionMapper;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGoalMapper;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
+use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Segment;
 use Piwik\Site;
-use Piwik\Tracker\GoalManager;
 use Psr\Log\LoggerInterface;
 
 class Importer
@@ -110,14 +113,14 @@ class Importer
         $this->importStatus = $importStatus;
     }
 
-    public function makeSite($accountId, $propertyId, $viewId, $timezone = false)
+    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID)
     {
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
         $idSite = SitesManagerAPI::getInstance()->addSite(
             $siteName = $webproperty->getName(),
-            $urls = [$webproperty->getWebsiteUrl()],
+            $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
             $ecommerce = $view->eCommerceTracking ? 1 : 0,
             $siteSearch = !empty($view->siteSearchQueryParameters),
             $searchKeywordParams = $view->siteSearchQueryParameters,
@@ -127,7 +130,10 @@ class Importer
             $timezone = empty($timezone) ? $view->timezone : $timezone,
             $currency = $view->currency,
             $group = null,
-            $startDate = Date::factory($webproperty->getCreated())->toString()
+            $startDate = Date::factory($webproperty->getCreated())->toString(),
+            $excludedUserAgents = null,
+            $keepURLFragments = null,
+            $type
         );
 
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite);
@@ -321,17 +327,19 @@ class Importer
         $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
         $archiveWriter->initNewArchive();
 
-        $recordInserter = new RecordInserter($archiveWriter);
+       $recordInserter = new RecordInserter($archiveWriter);
 
-        foreach ($recordImporters as $plugin => $recordImporter) {
+       foreach ($recordImporters as $plugin => $recordImporter) {
+            if (!$recordImporter->supportsSite()) {
+                continue;
+            }
+
             $this->logger->debug("Importing data for the {plugin} plugin.", [
                 'plugin' => $plugin,
             ]);
 
-            // TODO: change visitor frequency importer
-            // TODO: if two record importers use the same segment, this will likely break (since one archive will have metrics for one plugin, another archive for another plugin, so queries won't get the full data)
-
             $recordImporter->setRecordInserter($recordInserter);
+
             $recordImporter->importRecords($date);
 
             // since we recorded some data, at some time, remove the no data message
@@ -395,7 +403,8 @@ class Importer
             }
         }
 
-        $gaQuery = new GoogleAnalyticsQueryService($this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $this->logger);
+        $gaQuery = new GoogleAnalyticsQueryService(
+            $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
         });

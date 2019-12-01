@@ -6,10 +6,11 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-namespace Piwik\Plugins\GoogleAnalyticsImporter;
+namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 
 use Piwik\Container\StaticContainer;
+use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportGoalException;
 use Piwik\Plugins\SitesManager\API;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -34,7 +35,7 @@ class GoogleGoalMapper
      */
     public function map(\Google_Service_Analytics_Goal $gaGoal, $idSite)
     {
-        $urls = API::getInstance()->getSiteUrlsFromId($idSite);
+        $urls = array_filter(API::getInstance()->getSiteUrlsFromId($idSite));
 
         $result = $this->mapBasicGoalProperties($gaGoal);
 
@@ -166,7 +167,12 @@ class GoogleGoalMapper
                 return ['regex', '^' . preg_quote($patternValue)];
             case 'exact':
                 if (!$this->urlHasSiteUrlPrefix($patternValue, $siteUrls)) {
-                    $baseUrl = $siteUrls[0];
+                    if (empty($siteUrls)) {
+                        $this->logger->warning("This site has no URL and there is an 'exact match' goal without the URL protocol and domain. Defaulting to 'http://example.com/', but you may want to examine the goal after it is created.");
+                        $baseUrl = 'http://example.com/';
+                    } else {
+                        $baseUrl = $siteUrls[0];
+                    }
                     if (substr($baseUrl, -1, 1) != '/' && substr($patternValue, 0, 1) != '/') {
                         $baseUrl .= '/';
                     }

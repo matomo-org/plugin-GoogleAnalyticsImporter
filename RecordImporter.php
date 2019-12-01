@@ -13,6 +13,7 @@ use Piwik\Config as PiwikConfig;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Psr\Log\LoggerInterface;
 
 abstract class RecordImporter
@@ -52,6 +53,11 @@ abstract class RecordImporter
         $this->logger = $logger;
         $this->standardMaximumRows = PiwikConfig::getInstance()->General['datatable_archiving_maximum_rows_standard'];
         $this->logger = $logger;
+    }
+
+    public function supportsSite()
+    {
+        return true;
     }
 
     public abstract function importRecords(Date $day);

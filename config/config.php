@@ -25,7 +25,6 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter::class, // must be first
 
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\MarketingCampaignsReporting\RecordImporter::class,
-
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Referrers\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\Actions\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\DevicesDetection\RecordImporter::class,

@@ -110,6 +110,13 @@
             >
             </div>
 
+            <div piwik-field uicontrol="checkbox" name="isMobileApp"
+                 ng-model="importScheduler.isMobileApp"
+                 title="{{ 'GoogleAnalyticsImporter_IsMobileApp'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_IsMobileAppHelp'|translate }}"
+            >
+            </div>
+
             <div piwik-field uicontrol="text" name="timezone"
                  ng-model="importScheduler.timezone"
                  title="{{ 'GoogleAnalyticsImporter_Timezone'|translate }}"
@@ -151,7 +158,7 @@
                 <tr data-idsite="{{ status.idSite|e('html_attr') }}">
                     <td class="sitename">
                         {% if status.site is not empty %}
-                            <a href="{{ linkTo({ 'idSite': status.idSite, 'module': 'CoreHome', 'action': 'index' }) }}" target="_blank">{{ status.site.getName() }}</a>
+                            <a href="{{ linkTo({ 'idSite': status.idSite, 'module': 'CoreHome', 'action': 'index', 'period': period|default('day'), 'date': date|default('today') }) }}" target="_blank">{{ status.site.getName() }}</a>
                         {% else %}
                             SITE DELETED
                         {% endif %}

@@ -44,6 +44,7 @@
                 viewId: vm.viewId,
                 nonce: vm.nonce,
                 accountId: vm.accountId,
+                isMobileApp: vm.isMobileApp ? '1' : '0',
                 timezone: vm.timezone
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();

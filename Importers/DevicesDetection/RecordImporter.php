@@ -19,7 +19,7 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Plugins\DevicesDetection\Archiver;
-use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Psr\Log\LoggerInterface;
 use DeviceDetector\Parser\Device\DeviceParserAbstract AS DeviceParser;
 

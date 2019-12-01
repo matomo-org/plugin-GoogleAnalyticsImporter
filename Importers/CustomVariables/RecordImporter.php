@@ -20,7 +20,7 @@ use Piwik\Piwik;
 use Piwik\Plugins\Actions\Actions\ActionSiteSearch;
 use Piwik\Plugins\CustomVariables\Archiver;
 use Piwik\Plugins\CustomVariables\Model;
-use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;

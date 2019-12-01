@@ -13,11 +13,13 @@ use Piwik\Concurrency\LockBackend\MySqlLockBackend;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Plugin\ConsoleCommand;
+use Piwik\Plugin\Manager;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
+use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Site;
 use Piwik\Timer;
 use Symfony\Component\Console\Input\InputInterface;
@@ -40,11 +42,13 @@ class ImportReports extends ConsoleCommand
         $this->addOption('property', null, InputOption::VALUE_REQUIRED, 'The GA properties to import.');
         $this->addOption('account', null, InputOption::VALUE_REQUIRED, 'The account ID to get views from.');
         $this->addOption('view', null, InputOption::VALUE_REQUIRED, 'The View ID to use. If not supplied, the default View for the property is used.');
-        $this->addOption('dates', null, InputOption::VALUE_REQUIRED, 'The dates to import.');
+        $this->addOption('dates', null, InputOption::VALUE_REQUIRED, 'The dates to import, eg, 2015-03-04,2015-04-12.');
         $this->addOption('idsite', null, InputOption::VALUE_REQUIRED, 'The site to import into. This will attempt to continue an existing import.');
         $this->addOption('cvar-count', null, InputOption::VALUE_REQUIRED, 'The number of custom variables to support (if not supplied defaults to however many are currently available). '
             . 'NOTE: This option will attempt to set the number of custom variable slots which should be done with care on an existing system.');
         $this->addOption('skip-archiving', null, InputOption::VALUE_NONE, 'Skips launching archiving at the end of an import. Use this only if executing PHP from the command line results in an error on your system.');
+        $this->addOption('mobile-app', null, InputOption::VALUE_NONE, 'If this option is used, the Matomo measurable that is created will be a mobile app. Requires the MobileAppMeasurable be activated.');
+        $this->addOption('timezone', null, InputOption::VALUE_REQUIRED, 'If your GA property\'s timezone is set to a value that is not a timezone recognized by PHP, you can specify a valid timezone manually with this option.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -57,6 +61,16 @@ class ImportReports extends ConsoleCommand
         $isAccountDeduced = false;
 
         $skipArchiving = $input->getOption('skip-archiving');
+        $timezone = $input->getOption('timezone');
+
+        $isMobileApp = $input->getOption('mobile-app');
+        if ($isMobileApp
+            && !Manager::getInstance()->isPluginActivated('MobileAppMeasurable')
+        ) {
+            throw new \Exception('To create mobile app measurables, please enable the MobileAppMeasurable plugin.');
+        }
+
+        $type = $isMobileApp ? \Piwik\Plugins\MobileAppMeasurable\Type::ID : Type::ID;
 
         $idSite = $this->getIdSite($input);
         if (empty($idSite)) {
@@ -89,7 +103,7 @@ class ImportReports extends ConsoleCommand
             && !empty($account)
         ) {
             try {
-                $idSite = $importer->makeSite($account, $property, $viewId);
+                $idSite = $importer->makeSite($account, $property, $viewId, $timezone, $type);
             } catch (\Google_Exception $ex) {
                 if ($isAccountDeduced) {
                     $output->writeln("<comment>NOTE: We tried to deduce your GA account ID from the property ID above, it's possible your account ID differs. If this is the case specify it manually using --account=... and try again.</comment>");

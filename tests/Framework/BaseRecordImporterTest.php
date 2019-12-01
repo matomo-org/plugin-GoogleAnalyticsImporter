@@ -13,7 +13,8 @@ use Piwik\DataTable;
 use Piwik\DataTable\Map;
 use Piwik\DataTable\Renderer\Xml;
 use Piwik\Date;
-use Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsQueryService;
+use Piwik\Filesystem;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importers\Actions\RecordImporter;
 use Piwik\Plugins\GoogleAnalyticsImporter\RecordInserter;
 use Piwik\Tests\Framework\Fixture;
@@ -108,8 +109,15 @@ abstract class BaseRecordImporterTest extends IntegrationTestCase
         $testName = $this->getTestedPluginName() . '_' . $testName;
 
         $testFilesDirectory = $this->getTestDir() . '/..';
-        $expectedFilePath = $testFilesDirectory . '/expected/' . $testName . '.xml';
-        $processedFilePath = $testFilesDirectory . '/processed/' . $testName . '.xml';
+
+        $processedDir = $testFilesDirectory . '/processed/';
+        $expectedDir = $testFilesDirectory . '/expected/';
+
+        $expectedFilePath = $expectedDir . $testName . '.xml';
+        $processedFilePath = $processedDir . $testName . '.xml';
+
+        $this->ensureDirectory($processedDir);
+        $this->ensureDirectory($expectedDir);
 
         $renderer = new Xml();
         $renderer->setTable($this->capturedReports);
@@ -141,5 +149,12 @@ abstract class BaseRecordImporterTest extends IntegrationTestCase
             $result->addRow($clone);
         }
         return $result;
+    }
+
+    private function ensureDirectory($expectedDir)
+    {
+        if (!is_dir($expectedDir)) {
+            Filesystem::mkdir($expectedDir);
+        }
     }
 }
