@@ -19,7 +19,6 @@ use Piwik\DataAccess\ArchiveWriter;
 use Piwik\Date;
 use Piwik\Option;
 use Piwik\Period\Factory;
-use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
@@ -27,14 +26,13 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleCustomDimensionMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGoalMapper;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Plugins\WebsiteMeasurable\Type;
-use Piwik\Plugins\WebsiteMeasurable\WebsiteMeasurable;
 use Piwik\Segment;
 use Piwik\Site;
-use Piwik\Tracker\GoalManager;
 use Psr\Log\LoggerInterface;
 
 class Importer
@@ -405,7 +403,8 @@ class Importer
             }
         }
 
-        $gaQuery = new GoogleAnalyticsQueryService($this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $this->logger);
+        $gaQuery = new GoogleAnalyticsQueryService(
+            $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
         });

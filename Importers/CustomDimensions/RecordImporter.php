@@ -20,6 +20,8 @@ use Piwik\Plugins\CustomDimensions\Archiver;
 use Piwik\Plugins\CustomDimensions\CustomDimensions;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\IdMapper;
+use Piwik\Plugins\MobileAppMeasurable\Type;
+use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
@@ -29,12 +31,22 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private $maximumRowsInDataTableLevelZero;
     private $maximumRowsInSubDataTable;
 
+    private $isMobileApp;
+
+    private $uniquePageviewsMetric;
+    private $hitsMetric;
+
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
 
         $this->maximumRowsInDataTableLevelZero = Config::getInstance()->General['datatable_archiving_maximum_rows_custom_variables'];
         $this->maximumRowsInSubDataTable = Config::getInstance()->General['datatable_archiving_maximum_rows_subtable_custom_variables'];
+
+        $this->isMobileApp = Site::getTypeFor($this->getIdSite()) == Type::ID;
+
+        $this->uniquePageviewsMetric = $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:uniquePageviews';
+        $this->hitsMetric = $this->isMobileApp ? 'ga:screenviews' : 'ga:pageviews';
     }
 
     public function importRecords(Date $day)
@@ -61,15 +73,17 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $record = new DataTable();
 
+        $options = [];
         if ($dimensionObj['scope'] === CustomDimensions::SCOPE_VISIT) {
             $metricsToQuery = $this->getConversionAwareVisitMetrics();
         } else if ($dimensionObj['scope'] === CustomDimensions::SCOPE_ACTION) {
             $metricsToQuery = $this->getPageMetrics();
+            $options['mappings'] = [Metrics::INDEX_PAGE_NB_HITS => $this->hitsMetric];
         } else {
             return $record;
         }
 
-        $table = $gaQuery->query($day, $dimensions = [$dimension], $metricsToQuery);
+        $table = $gaQuery->query($day, $dimensions = [$dimension], $metricsToQuery, $options);
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
             if (empty($label)) {
@@ -87,11 +101,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         if ($dimensionObj['scope'] === CustomDimensions::SCOPE_ACTION) {
             $table = $gaQuery->query($day, $dimensions = [$dimension], [Metrics::INDEX_NB_VISITS, Metrics::INDEX_BOUNCE_COUNT], [
                 'orderBys' => [
-                    ['field' => 'ga:sessions', 'order' => 'descending'],
+                    ['field' => $this->uniquePageviewsMetric, 'order' => 'descending'],
                     ['field' => $dimension, 'order' => 'ascending'],
                 ],
                 'mappings' => [
-                    Metrics::INDEX_NB_VISITS => 'ga:uniquePageviews',
+                    Metrics::INDEX_NB_VISITS => $this->uniquePageviewsMetric,
                 ],
             ]);
 

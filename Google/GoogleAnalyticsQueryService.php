@@ -245,7 +245,7 @@ class GoogleAnalyticsQueryService
                     $tableRow->setColumn('label', $label);
                 }
 
-                $existingRow = empty($label) ? $table->getFirstRow() : $table->getRowFromLabel($label);
+                $existingRow = empty($gaDimensions) ? $table->getFirstRow() : $table->getRowFromLabel($label);
                 if (!empty($existingRow)) {
                     $existingRow->sumRow($tableRow);
                 } else {

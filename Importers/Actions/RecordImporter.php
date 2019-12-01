@@ -45,8 +45,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private $pageUrlsByPagePath;
     private $siteSearchUrls;
 
-    private $isMobileApp;
-
     private $entryPageMetrics = [
         Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS,
         Metrics::INDEX_PAGE_ENTRY_NB_VISITS,
@@ -60,6 +58,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         Metrics::INDEX_PAGE_EXIT_NB_VISITS,
     ];
 
+    private $isMobileApp;
     private $pageTitleDimension;
     private $uniquePageviewsMetric;
     private $hitsMetric;
@@ -252,8 +251,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         Common::destroy($table);
 
-        // query for visits/unique visitors (GA seems to provide inaccurate metrics sometimes if we combine this w/ the above metrics)
+        // query for visits/unique visitors w/o page path
         $metrics = [Metrics::INDEX_NB_VISITS, Metrics::INDEX_NB_UNIQ_VISITORS];
+
         $table = $gaQuery->query($day, $dimensions = [$this->pageTitleDimension], $metrics, [
             'orderBys' => [
                 ['field' => $this->uniquePageviewsMetric, 'order' => 'descending'],
@@ -386,7 +386,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $table = $gaQuery->query($day, $dimensions = ['ga:landingPagePath'], $this->entryPageMetrics, [
             'orderBys' => [
                 ['field' => 'ga:entrances', 'order' => 'descending'],
-                ['field' => 'ga:landingPagePath', 'order' => 'ascending']
+                ['field' => 'ga:landingPagePath', 'order' => 'ascending'],
             ],
         ]);
 
@@ -417,7 +417,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $table = $gaQuery->query($day, $dimensions = [$this->pageTitleDimension], $this->entryPageMetrics, [
             'orderBys' => [
                 ['field' => 'ga:entrances', 'order' => 'descending'],
-                ['field' => $this->pageTitleDimension, 'order' => 'ascending']
+                ['field' => $this->pageTitleDimension, 'order' => 'ascending'],
             ],
         ]);
 
