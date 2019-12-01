@@ -63,6 +63,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private $uniquePageviewsMetric;
     private $hitsMetric;
 
+    private $pageTitleEntryDimensions;
+    private $pageTitleExitDimensions;
+
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
@@ -72,6 +75,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->pageTitleDimension = $this->isMobileApp ? 'ga:screenName' : 'ga:pageTitle';
         $this->uniquePageviewsMetric = $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:uniquePageviews';
         $this->hitsMetric = $this->isMobileApp ? 'ga:screenviews' : 'ga:pageviews';
+
+        $this->pageTitleEntryDimensions = $this->isMobileApp ? ['ga:landingScreenName'] : ['ga:landingPagePath', 'ga:pageTitle'];
+        $this->pageTitleExitDimensions = $this->isMobileApp ? ['ga:exitScreenName'] : ['ga:exitPagePath', 'ga:pageTitle'];
     }
 
     public function importRecords(Date $day)
@@ -413,24 +419,34 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function queryEntryPagesForTitles(Date $day)
     {
+        $entryPageTitleMetrics = $this->entryPageMetrics;
+        if (!$this->isMobileApp) {
+            // remove unique visitors metrics when querying for entry pageTitles, since there is no landingPageTitle dimension.
+            // we have to use landingPagePath + pageTitle, but there can be more than one URL w/ the same page title, and
+            // we can't aggregate unique visitors.
+            $entryPageTitleMetrics = array_diff($entryPageTitleMetrics, [Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS]);
+        }
+
+        $pageTitleDimension = end($this->pageTitleEntryDimensions);
+
         $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = [$this->pageTitleDimension], $this->entryPageMetrics, [
+        $table = $gaQuery->query($day, $this->pageTitleEntryDimensions, $entryPageTitleMetrics, [
             'orderBys' => [
                 ['field' => 'ga:entrances', 'order' => 'descending'],
-                ['field' => $this->pageTitleDimension, 'order' => 'ascending'],
+                ['field' => $pageTitleDimension, 'order' => 'ascending'],
             ],
         ]);
 
         foreach ($table->getRows() as $row) {
-            $pageTitle = $row->getMetadata($this->pageTitleDimension);
+            $pageTitle = $row->getMetadata($pageTitleDimension);
             $row->deleteColumn('label');
 
             if (isset($this->pageTitleRowsByPageTitle[$pageTitle])) {
                 $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
-                if ($existingRow->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_VISITS)
+                if ($existingRow->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS)
                     && $existingRow->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
                 ) {
-                    throw new \Exception("Unexpected error: encountered page title twice in result set: '$pageTitle'");
+                    throw new \Exception("Unexpected error: encountered page title twice in result set (when including unique visitors): '$pageTitle'");
                 }
 
                 $existingRow->sumRow($row, $copyMetadata = false);
@@ -479,26 +495,35 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function queryExitPagesForTitles(Date $day)
     {
-        $gaQuery = $this->getGaQuery();
+        $exitPageTitleMetrics = $this->exitPageMetrics;
+        if (!$this->isMobileApp) {
+            // remove unique visitors metrics when querying for exit pageTitles, since there is no exitPageTitle dimension.
+            // we have to use exitPagePath + pageTitle, but there can be more than one URL w/ the same page title, and
+            // we can't aggregate unique visitors.
+            $exitPageTitleMetrics = array_diff($exitPageTitleMetrics, [Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS]);
+        }
+
+        $pageTitleDimension = end($this->pageTitleExitDimensions);
 
         // query page titles
-        $table = $gaQuery->query($day, $dimensions = [$this->pageTitleDimension], $this->exitPageMetrics, [
+        $gaQuery = $this->getGaQuery();
+        $table = $gaQuery->query($day, $this->pageTitleExitDimensions, $exitPageTitleMetrics, [
             'orderBys' => [
                 ['field' => 'ga:exits', 'order' => 'descending'],
-                ['field' => $this->pageTitleDimension, 'order' => 'ascending']
+                ['field' => $pageTitleDimension, 'order' => 'ascending']
             ],
         ]);
 
         foreach ($table->getRows() as $row) {
-            $pageTitle = $row->getMetadata($this->pageTitleDimension);
+            $pageTitle = $row->getMetadata($pageTitleDimension);
             $row->deleteColumn('label');
 
-            if (empty($this->pageTitleRowsByPageTitle[$pageTitle])) {
+            if (empty($this->pageTitleRowsByPageTitle[$pageTitle])) { // sanity check
                 continue;
             }
 
             $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
-            if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)
+            if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS)
                 && $existingRow->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
             ) {
                 throw new \Exception("Unexpected error: encountered page title twice in result set: '$pageTitle'");

@@ -9,12 +9,10 @@
 			<col name="13">2</col>
 			<col name="30">5</col>
 			<col name="31">7</col>
-			<col name="17">2</col>
-			<col name="19">3</col>
-			<col name="20">4</col>
-			<col name="21">5</col>
-			<col name="22">6</col>
-			<col name="14">4</col>
+			<col name="19">4</col>
+			<col name="20">5</col>
+			<col name="21">6</col>
+			<col name="22">7</col>
 			<col name="15">4</col>
 		</row>
 		<row>
@@ -34,13 +32,11 @@
 			<col name="13">2</col>
 			<col name="30">3</col>
 			<col name="31">3</col>
-			<col name="17">7</col>
 			<col name="19">8</col>
 			<col name="20">9</col>
 			<col name="21">10</col>
 			<col name="22">11</col>
-			<col name="14">2</col>
-			<col name="15">2</col>
+			<col name="15">3</col>
 		</row>
 		<row>
 			<col name="label"> A Folder &gt; Page</col>
@@ -50,7 +46,6 @@
 			<col name="13">1</col>
 			<col name="30">1</col>
 			<col name="31">1</col>
-			<col name="14">1</col>
 			<col name="15">1</col>
 		</row>
 	</result>
@@ -63,7 +58,6 @@
 			<col name="13">10</col>
 			<col name="30">3</col>
 			<col name="31">4</col>
-			<col name="17">2</col>
 			<col name="19">3</col>
 			<col name="20">4</col>
 			<col name="21">5</col>
@@ -78,7 +72,6 @@
 			<col name="13">10</col>
 			<col name="30">3</col>
 			<col name="31">4</col>
-			<col name="17">7</col>
 			<col name="19">8</col>
 			<col name="20">9</col>
 			<col name="21">10</col>
