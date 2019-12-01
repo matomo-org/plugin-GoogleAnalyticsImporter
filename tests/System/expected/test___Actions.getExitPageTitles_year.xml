@@ -9,10 +9,8 @@
 		<entry_nb_actions>173</entry_nb_actions>
 		<entry_sum_visit_length>1444</entry_sum_visit_length>
 		<entry_bounce_count>12</entry_bounce_count>
-		<exit_nb_visits>13</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>92</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>92</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>92</sum_daily_exit_nb_uniq_visitors>
+		<exit_nb_visits>13</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>26%</bounce_rate>
@@ -30,8 +28,6 @@
 		<entry_bounce_count>28</entry_bounce_count>
 		<exit_nb_visits>108</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>76</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>76</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>76</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>25</avg_time_on_page>
 		<bounce_rate>27%</bounce_rate>
@@ -49,8 +45,6 @@
 		<entry_bounce_count>17</entry_bounce_count>
 		<exit_nb_visits>94</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>66</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>66</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>66</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>30</avg_time_on_page>
 		<bounce_rate>18%</bounce_rate>
@@ -68,8 +62,6 @@
 		<entry_bounce_count>13</entry_bounce_count>
 		<exit_nb_visits>77</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>62</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>62</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>62</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>42</avg_time_on_page>
 		<bounce_rate>17%</bounce_rate>
@@ -87,8 +79,6 @@
 		<entry_bounce_count>8</entry_bounce_count>
 		<exit_nb_visits>35</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>37</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>37</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>26</avg_time_on_page>
 		<bounce_rate>24%</bounce_rate>
@@ -106,8 +96,6 @@
 		<entry_bounce_count>5</entry_bounce_count>
 		<exit_nb_visits>34</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>34</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>34</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>34</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>43</avg_time_on_page>
 		<bounce_rate>14%</bounce_rate>
@@ -125,8 +113,6 @@
 		<entry_bounce_count>7</entry_bounce_count>
 		<exit_nb_visits>32</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>31</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>31</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>31</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>8</avg_time_on_page>
 		<bounce_rate>24%</bounce_rate>
@@ -144,8 +130,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>26</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>28</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>28</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>30</avg_time_on_page>
 		<bounce_rate>4%</bounce_rate>
@@ -163,8 +147,6 @@
 		<entry_bounce_count>6</entry_bounce_count>
 		<exit_nb_visits>28</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>30</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>30</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>30</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>14</avg_time_on_page>
 		<bounce_rate>30%</bounce_rate>
@@ -182,8 +164,6 @@
 		<entry_bounce_count>28</entry_bounce_count>
 		<exit_nb_visits>32</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>32</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>32</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>32</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>95</avg_time_on_page>
 		<bounce_rate>85%</bounce_rate>
@@ -201,8 +181,6 @@
 		<entry_bounce_count>4</entry_bounce_count>
 		<exit_nb_visits>27</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>26</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>26</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>26</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>15</avg_time_on_page>
 		<bounce_rate>17%</bounce_rate>
@@ -220,8 +198,6 @@
 		<entry_bounce_count>2</entry_bounce_count>
 		<exit_nb_visits>30</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>25</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>25</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>25</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>33</avg_time_on_page>
 		<bounce_rate>9%</bounce_rate>
@@ -239,8 +215,6 @@
 		<entry_bounce_count>5</entry_bounce_count>
 		<exit_nb_visits>22</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>26</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>26</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>26</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>9</avg_time_on_page>
 		<bounce_rate>19%</bounce_rate>
@@ -258,8 +232,6 @@
 		<entry_bounce_count>4</entry_bounce_count>
 		<exit_nb_visits>25</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>26</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>26</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>26</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>55</avg_time_on_page>
 		<bounce_rate>18%</bounce_rate>
@@ -277,8 +249,6 @@
 		<entry_bounce_count>3</entry_bounce_count>
 		<exit_nb_visits>23</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>24</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>24</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>24</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>6</avg_time_on_page>
 		<bounce_rate>14%</bounce_rate>
@@ -296,8 +266,6 @@
 		<entry_bounce_count>2</entry_bounce_count>
 		<exit_nb_visits>22</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>23</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>23</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>18</avg_time_on_page>
 		<bounce_rate>11%</bounce_rate>
@@ -313,10 +281,8 @@
 		<entry_nb_actions>24</entry_nb_actions>
 		<entry_sum_visit_length>492</entry_sum_visit_length>
 		<entry_bounce_count>1</entry_bounce_count>
-		<exit_nb_visits>21</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>23</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>23</sum_daily_exit_nb_uniq_visitors>
+		<exit_nb_visits>21</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>36</avg_time_on_page>
 		<bounce_rate>5%</bounce_rate>
@@ -334,8 +300,6 @@
 		<entry_bounce_count>5</entry_bounce_count>
 		<exit_nb_visits>7</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>7</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>7</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>369</avg_time_on_page>
 		<bounce_rate>71%</bounce_rate>
@@ -353,8 +317,6 @@
 		<entry_bounce_count>3</entry_bounce_count>
 		<exit_nb_visits>6</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>5</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>5</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>220</avg_time_on_page>
 		<bounce_rate>60%</bounce_rate>
@@ -372,8 +334,6 @@
 		<entry_bounce_count>4</entry_bounce_count>
 		<exit_nb_visits>4</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>6</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>6</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>99</avg_time_on_page>
 		<bounce_rate>67%</bounce_rate>
@@ -391,8 +351,6 @@
 		<entry_bounce_count>2</entry_bounce_count>
 		<exit_nb_visits>3</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>4</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>4</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>3</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -410,8 +368,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>3</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>3</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>3</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>7</avg_time_on_page>
 		<bounce_rate>50%</bounce_rate>
@@ -429,8 +385,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>3</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>3</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>55</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -448,8 +402,6 @@
 		<entry_bounce_count>2</entry_bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>2</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>2</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -467,8 +419,6 @@
 		<entry_bounce_count>2</entry_bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>2</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>2</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -486,8 +436,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>2</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>2</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>398</avg_time_on_page>
 		<bounce_rate>50%</bounce_rate>
@@ -505,8 +453,6 @@
 		<entry_bounce_count>0</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>22</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
@@ -524,8 +470,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -543,8 +487,6 @@
 		<entry_bounce_count>0</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
@@ -562,8 +504,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -581,8 +521,6 @@
 		<entry_bounce_count>0</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>8</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
@@ -600,8 +538,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -619,8 +555,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -638,32 +572,11 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>exitPageTitle==Echasses%2B%25C3%25A0%2Bressort%2Bsur%2Bles%2Bchamps%2B%25C3%25A9lys%25C3%25A9s%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Edinburgh Archives - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>39</sum_time_spent>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>55</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>39</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Edinburgh%2BArchives%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Interdiction de s'embrasser en angleterre - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -676,32 +589,11 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>exitPageTitle==Interdiction%2Bde%2Bs%2527embrasser%2Ben%2Bangleterre%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> La vue de ma chambre pendant la mousson - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>49</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>25</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==La%2Bvue%2Bde%2Bma%2Bchambre%2Bpendant%2Bla%2Bmousson%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Le Théisme Philosophique - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -714,32 +606,11 @@
 		<entry_bounce_count>0</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>131</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>exitPageTitle==Le%2BTh%25C3%25A9isme%2BPhilosophique%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Le ventilateur - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>69</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>69</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Le%2Bventilateur%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Liste pour un sac de voyage backpack - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -752,8 +623,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -771,32 +640,11 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>exitPageTitle==Londres%2BArchives%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Ma chambre, pendant la mousson - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>75</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>38</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Ma%2Bchambre%252C%2Bpendant%2Bla%2Bmousson%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Page Name not defined</label>
@@ -809,8 +657,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>10</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>10</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>10</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -828,51 +674,11 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>exitPageTitle==Photos%2Bde%2Bma%2Bplus%2Bbelle%2Bplong%25C3%25A9e%2Bsous%2Bmarine%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Plongée sur une épave - 3 des meilleurs bateaux à visiter sous l'eau ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>59</sum_time_spent>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>59</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>59</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Plong%25C3%25A9e%2Bsur%2Bune%2B%25C3%25A9pave%2B-%2B3%2Bdes%2Bmeilleurs%2Bbateaux%2B%25C3%25A0%2Bvisiter%2Bsous%2Bl%2527eau%2B%2521%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Plongée à Grand Spectacle dans les Iles Komodo ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>352</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>352</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Plong%25C3%25A9e%2B%25C3%25A0%2BGrand%2BSpectacle%2Bdans%2Bles%2BIles%2BKomodo%2B%2521%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Premier jour de folie à Munnar - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -885,108 +691,11 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>exitPageTitle==Premier%2Bjour%2Bde%2Bfolie%2B%25C3%25A0%2BMunnar%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Prix de l'essence - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>144</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>144</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Prix%2Bde%2Bl%2527essence%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Record du monde sur la moto! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>89</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>89</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Record%2Bdu%2Bmonde%2Bsur%2Bla%2Bmoto%2521%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Restaurant végétarien samedi soir - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>77</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>77</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Restaurant%2Bv%25C3%25A9g%25C3%25A9tarien%2Bsamedi%2Bsoir%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Sécurité routière - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>290</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>290</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==S%25C3%25A9curit%25C3%25A9%2Brouti%25C3%25A8re%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> TOP Photos... de Bonne Nourriture ! - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>132</sum_time_spent>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>132</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==TOP%2BPhotos...%2Bde%2BBonne%2BNourriture%2B%2521%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 	<row>
 		<label> Télécommunications en Inde - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
@@ -999,8 +708,6 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
@@ -1018,31 +725,10 @@
 		<entry_bounce_count>1</entry_bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>exitPageTitle==Vid%25C3%25A9o%2Bpr%25C3%25A9paration%2Bdes%2Bmomos%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
-	</row>
-	<row>
-		<label> Visites des caves de vouvray - et dégustation - Blog &amp; photos Matthieu Blog &amp; photos Matthieu</label>
-		<nb_visits>1</nb_visits>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>14</sum_time_spent>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>14</entry_sum_visit_length>
-		<entry_bounce_count>0</entry_bounce_count>
-		<exit_nb_visits>0</exit_nb_visits>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
-		<sum_daily_exit_nb_uniq_visitors>1</sum_daily_exit_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_page>14</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>exitPageTitle==Visites%2Bdes%2Bcaves%2Bde%2Bvouvray%2B-%2Bet%2Bd%25C3%25A9gustation%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
 	</row>
 </result>

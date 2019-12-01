@@ -347,7 +347,7 @@ class RecordImporterTest extends BaseRecordImporterTest
     {
         return [
             [
-                'ga:screenName' => 'Homepage',
+                'ga:landingScreenName' => 'Homepage',
                 Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 7,
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 8,
                 Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 9,
@@ -355,7 +355,7 @@ class RecordImporterTest extends BaseRecordImporterTest
                 Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 11,
             ],
             [
-                'ga:screenName' => 'Third Screen',
+                'ga:landingScreenName' => 'Third Screen',
                 Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 2,
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 3,
                 Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 4,
@@ -369,17 +369,17 @@ class RecordImporterTest extends BaseRecordImporterTest
     {
         return [
             [
-                'ga:screenName' => 'Homepage',
+                'ga:exitScreenName' => 'Homepage',
                 Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 4,
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS => 4,
             ],
             [
-                'ga:screenName' => 'Third Screen',
+                'ga:exitScreenName' => 'Third Screen',
                 Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 2,
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS => 2,
             ],
             [
-                'ga:screenName' => 'Another Screen > Sub Screen',
+                'ga:exitScreenName' => 'Another Screen > Sub Screen',
                 Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 1,
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS => 1,
             ],
