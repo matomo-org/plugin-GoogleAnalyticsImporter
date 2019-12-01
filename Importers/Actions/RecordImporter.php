@@ -497,8 +497,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     {
         $exitPageTitleMetrics = $this->exitPageMetrics;
         if (!$this->isMobileApp) {
-            // remove unique visitors metrics when querying for entry pageTitles, since there is no landingPageTitle dimension.
-            // we have to use landingPagePath + pageTitle, but there can be more than one URL w/ the same page title, and
+            // remove unique visitors metrics when querying for exit pageTitles, since there is no exitPageTitle dimension.
+            // we have to use exitPagePath + pageTitle, but there can be more than one URL w/ the same page title, and
             // we can't aggregate unique visitors.
             $exitPageTitleMetrics = array_diff($exitPageTitleMetrics, [Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS]);
         }
