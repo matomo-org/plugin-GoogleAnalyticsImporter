@@ -229,11 +229,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $account = $accountId ?: ImportReports::guessAccountFromProperty($propertyId);
             $isMobileApp = Common::getRequestVar('isMobileApp', 0, 'int') == 1;
             $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
+            $extraCustomDimensions = Common::getRequestVar('extraCustomDimensions', [], $type = 'array');
 
-            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID);
+            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions);
 
             try {
-
                 if (empty($idSite)) {
                     throw new \Exception("Unable to import site entity."); // sanity check
                 }

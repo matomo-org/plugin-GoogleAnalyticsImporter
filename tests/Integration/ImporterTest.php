@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
 use Piwik\Container\StaticContainer;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
+use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
@@ -34,6 +35,12 @@ class ImporterTest extends IntegrationTestCase
     public function test_importEntities_importsCorrectly()
     {
         $idSite = Fixture::createWebsite('2012-03-04 00:00:00');
+
+        /** @var ImportStatus $importStatus */
+        $importStatus = StaticContainer::get(ImportStatus::class);
+        $importStatus->startingImport('propertyid', 'accountid', 'viewid', $idSite, [
+            ['gaDimension' => 'ga:userGender', 'dimensionType' => 'visit'],
+        ]);
 
         $this->setGaEntities();
 
@@ -229,6 +236,16 @@ class ImporterTest extends IntegrationTestCase
                 'index' => '1',
                 'scope' => 'visit',
                 'active' => false,
+                'extractions' => [],
+                'case_sensitive' => true,
+            ],
+            [
+                'idcustomdimension' => '3',
+                'idsite' => '1',
+                'name' => 'ga:userGender',
+                'index' => '2',
+                'scope' => 'visit',
+                'active' => true,
                 'extractions' => [],
                 'case_sensitive' => true,
             ],

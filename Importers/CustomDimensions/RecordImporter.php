@@ -20,6 +20,7 @@ use Piwik\Plugins\CustomDimensions\Archiver;
 use Piwik\Plugins\CustomDimensions\CustomDimensions;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\IdMapper;
+use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -36,6 +37,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private $uniquePageviewsMetric;
     private $hitsMetric;
 
+    private $entryPageDimension;
+    private $exitPageDimension;
+
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
@@ -47,29 +51,42 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $this->uniquePageviewsMetric = $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:uniquePageviews';
         $this->hitsMetric = $this->isMobileApp ? 'ga:screenviews' : 'ga:pageviews';
+
+        $this->entryPageDimension = $this->isMobileApp ? 'ga:landingScreenName' : 'ga:landingPagePath';
+        $this->exitPageDimension = $this->isMobileApp ? 'ga:exitScreenName' : 'ga:exitPagePath';
     }
 
     public function importRecords(Date $day)
     {
         $idMapper = StaticContainer::get(IdMapper::class);
 
+        $importStatusService = StaticContainer::get(ImportStatus::class);
+        $importStatus = $importStatusService->getImportStatus($this->getIdSite());
+
+        $extraCustomDimensions = !empty($importStatus['extra_custom_dimensions']) ? $importStatus['extra_custom_dimensions'] : [];
+        $extraCustomDimensions = array_column($extraCustomDimensions, 'dimensionType', 'gaDimension');
+
         $customDimensions = API::getInstance()->getConfiguredCustomDimensions($this->getIdSite());
         foreach ($customDimensions as $dimension) {
-            $gaId = $idMapper->getGoogleAnalyticsId('customdimension', $dimension['idcustomdimension']);
-            if ($gaId === null) {
-                throw new \Exception("Cannot find Google Analytics entity ID for custom dimension (ID = {$dimension['idcustomdimension']})");
-            }
+            $idCustomDimension = $dimension['idcustomdimension'];
+            $customDimensionName = $dimension['name'];
 
-            $record = $this->queryCustomDimension($gaId, $day, $dimension);
-            $this->insertCustomDimensionRecord($record, $dimension);
-            Common::destroy($table);
+            $gaId = $idMapper->getGoogleAnalyticsId('customdimension', $idCustomDimension, $dimension['idsite']);
+            if ($gaId !== null) {
+                $record = $this->queryCustomDimension($day, $dimension, 'ga:dimension' . $gaId);
+                $this->insertCustomDimensionRecord($record, $dimension);
+                Common::destroy($record);
+            } else if (isset($extraCustomDimensions[$customDimensionName])) {
+                $record = $this->queryCustomDimension($day, $dimension, $customDimensionName);
+                $this->insertCustomDimensionRecord($record, $dimension);
+                Common::destroy($record);
+            }
         }
     }
 
-    private function queryCustomDimension($gaId, Date $day, $dimensionObj)
+    private function queryCustomDimension(Date $day, $dimensionObj, $gaDimension)
     {
         $gaQuery = $this->getGaQuery();
-        $dimension = 'ga:dimension' . $gaId;
 
         $record = new DataTable();
 
@@ -83,9 +100,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             return $record;
         }
 
-        $table = $gaQuery->query($day, $dimensions = [$dimension], $metricsToQuery, $options);
+        $table = $gaQuery->query($day, $dimensions = [$gaDimension], $metricsToQuery, $options);
         foreach ($table->getRows() as $row) {
-            $label = $row->getMetadata($dimension);
+            $label = $row->getMetadata($gaDimension);
             if (empty($label)) {
                 $label = parent::NOT_SET_IN_GA_LABEL;
             }
@@ -99,10 +116,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         // if scope is action, we also need to query exit page metrics and visit metrics (done separately
         // see Importers::getPageMetrics for more info)
         if ($dimensionObj['scope'] === CustomDimensions::SCOPE_ACTION) {
-            $table = $gaQuery->query($day, $dimensions = [$dimension], [Metrics::INDEX_NB_VISITS, Metrics::INDEX_BOUNCE_COUNT], [
+            $table = $gaQuery->query($day, $dimensions = [$gaDimension], [Metrics::INDEX_NB_VISITS, Metrics::INDEX_BOUNCE_COUNT], [
                 'orderBys' => [
                     ['field' => $this->uniquePageviewsMetric, 'order' => 'descending'],
-                    ['field' => $dimension, 'order' => 'ascending'],
+                    ['field' => $gaDimension, 'order' => 'ascending'],
                 ],
                 'mappings' => [
                     Metrics::INDEX_NB_VISITS => $this->uniquePageviewsMetric,
@@ -110,7 +127,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             ]);
 
             foreach ($table->getRows() as $row) { // TODO: lots of code redundancy here, can create a helper
-                $label = $row->getMetadata($dimension);
+                $label = $row->getMetadata($gaDimension);
                 if (empty($label)) {
                     $label = parent::NOT_SET_IN_GA_LABEL;
                 }
@@ -128,20 +145,45 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             // but dimension value being the same
             $exitPageMetrics = [
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS,
+            ];
+
+            $table = $gaQuery->query($day, $dimensions = [$this->exitPageDimension, $gaDimension], $exitPageMetrics, [
+                'orderBys' => [
+                    ['field' => 'ga:exits', 'order' => 'descending'],
+                    ['field' => $gaDimension, 'order' => 'ascending'],
+                ],
+            ]);
+
+            foreach ($table->getRows() as $row) {
+                $label = $row->getMetadata($gaDimension);
+                if (empty($label)) {
+                    $label = parent::NOT_SET_IN_GA_LABEL;
+                }
+
+                $row->deleteMetadata();
+                $tableRow = $record->getRowFromLabel($label);
+                if (!empty($tableRow)) {
+                    $tableRow->sumRow($row);
+                }
+            }
+
+            Common::destroy($table);
+
+            $entryPageMetrics = [
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS,
                 Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS,
                 Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH,
             ];
 
-            $table = $gaQuery->query($day, $dimensions = [$dimension], $exitPageMetrics, [
+            $table = $gaQuery->query($day, $dimensions = [$this->entryPageDimension, $gaDimension], $entryPageMetrics, [
                 'orderBys' => [
-                    ['field' => 'ga:exits', 'order' => 'descending'],
-                    ['field' => $dimension, 'order' => 'ascending'],
+                    ['field' => 'ga:entrances', 'order' => 'descending'],
+                    ['field' => $gaDimension, 'order' => 'ascending'],
                 ],
             ]);
 
             foreach ($table->getRows() as $row) {
-                $label = $row->getMetadata($dimension);
+                $label = $row->getMetadata($gaDimension);
                 if (empty($label)) {
                     $label = parent::NOT_SET_IN_GA_LABEL;
                 }

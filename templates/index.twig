@@ -125,6 +125,14 @@
             >
             </div>
 
+            <div piwik-field uicontrol="multituple" name="extraCustomDimensions"
+                 ng-model="importScheduler.extraCustomDimensions"
+                 title="Extra Custom Dimension Mappings"
+                 inline-help="an explanation"
+                 ui-control-attributes='{"field1": {"key":"gaDimension","title":"GA Dimension","uiControl":"text","availableValues":null}, "field2": {"key":"dimensionType","title":"Dimension Type","uiControl":"select","availableValues":{"visit":"Visit","action":"Action"}}}'
+            >
+            </div>
+
             <button type="submit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
         </div>
     </div>

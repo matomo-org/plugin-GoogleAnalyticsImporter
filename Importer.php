@@ -8,7 +8,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
-
 use Google_Service_Analytics_Goal;
 use Piwik\API\Request;
 use Piwik\ArchiveProcessor\Parameters;
@@ -113,8 +112,10 @@ class Importer
         $this->importStatus = $importStatus;
     }
 
-    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID)
+    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [])
     {
+        $extraCustomDimensions = $this->checkExtraCustomDimensions($extraCustomDimensions);
+
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
@@ -136,7 +137,7 @@ class Importer
             $type
         );
 
-        $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite);
+        $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
 
         return $idSite;
     }
@@ -196,7 +197,7 @@ class Importer
                 'useEventValueAsRevenue' => $goal['use_event_value_as_revenue'],
             ], $default = []);
 
-            $this->idMapper->mapEntityId('goal', $gaGoal->getId(), $idGoal);
+            $this->idMapper->mapEntityId('goal', $gaGoal->getId(), $idGoal, $idSite);
 
             if (!empty($goal['funnel'])) {
                 StaticContainer::get(\Piwik\Plugins\Funnels\Model\FunnelsModel::class)->clearGoalsCache();
@@ -243,7 +244,29 @@ class Importer
                 $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
                 $customDimension['case_sensitive']);
 
-            $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension);
+            $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension, $idSite);
+        }
+
+        // TODO: translate and rename dimensionType to dimensionScope
+        // create extra custom dimensions
+        $importStatus = $this->importStatus->getImportStatus($idSite);
+        $extraCustomDimensions = !empty($importStatus['extra_custom_dimensions']) ? $importStatus['extra_custom_dimensions'] : [];
+        foreach ($extraCustomDimensions as $extraEntry) {
+            if ($this->extraCustomDimensionExists($existingCustomDimensions, $extraEntry['gaDimension'])) {
+                $this->logger->info("Extra custom dimension '{gaCustomDimension}' entity already imported.", [
+                    'gaCustomDimension' => $extraEntry['gaDimension'],
+                ]);
+                continue;
+            }
+
+            $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+                $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionType'], $active = true);
+
+            $this->logger->info("Created Matomo dimension for extra dimension {gaDim} as dimension{id} with scope '{scope}'.", [
+                'gaDim' => $extraEntry['gaDimension'],
+                'id' => $idDimension,
+                'scope' => $extraEntry['dimensionType'],
+            ]);
         }
     }
 
@@ -422,7 +445,7 @@ class Importer
 
         $goals = GoalsAPI::getInstance()->getGoals($idSite); // do not use request hooks, only interested in what's in the DB
         foreach ($goals as $idGoal => $goal) {
-            $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal']);
+            $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal'], $idSite);
             if ($gaGoalId === null) {
                 $this->throwNowGoalIdFoundException($goal);
             }
@@ -452,7 +475,7 @@ class Importer
     private function goalExists(array $existingGoals, Google_Service_Analytics_Goal $gaGoal)
     {
         foreach ($existingGoals as $goal) {
-            $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal']);
+            $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal'], $goal['idsite']);
             if ($gaGoalId === null) {
                 continue;
             }
@@ -467,7 +490,7 @@ class Importer
     private function customDimensionExists(array $existingCustomDimensions, \Google_Service_Analytics_CustomDimension $gaCustomDimension)
     {
         foreach ($existingCustomDimensions as $customDimension) {
-            $customDimensionId = $this->idMapper->getGoogleAnalyticsId('customdimension', $customDimension['idcustomdimension']);
+            $customDimensionId = $this->idMapper->getGoogleAnalyticsId('customdimension', $customDimension['idcustomdimension'], $customDimension['idsite']);
             if ($customDimensionId === null) {
                 continue;
             }
@@ -479,10 +502,55 @@ class Importer
         return false;
     }
 
+    private function extraCustomDimensionExists(array $existingCustomDimensions, $gaDimensionName)
+    {
+        foreach ($existingCustomDimensions as $customDimension) {
+            if ($customDimension['name'] == $gaDimensionName) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private function isPluginUnavailable($pluginName)
     {
         return !Manager::getInstance()->isPluginActivated($pluginName)
             || !Manager::getInstance()->isPluginLoaded($pluginName)
             || !Manager::getInstance()->isPluginInFilesystem($pluginName);
+    }
+
+    private function checkExtraCustomDimensions($extraCustomDimensions)
+    {
+        if (empty($extraCustomDimensions)) {
+            return [];
+        }
+
+        if (!is_array($extraCustomDimensions)) {
+            throw new \Exception("Invalid value supplied for 'extraCustomDimensions': expected array, got " . gettype($extraCustomDimensions));
+        }
+
+        $cleaned = [];
+        foreach ($extraCustomDimensions as $index => $field) {
+            if (empty($field['gaDimension'])) {
+                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index is missing the gaDimension property.");
+            }
+
+            if (empty($field['dimensionType'])) {
+                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index is missing the dimensionType property.");
+            }
+
+            $dimensionType = $field['dimensionType'];
+            if ($dimensionType !== 'action'
+                && $dimensionType !== 'visit'
+            ) {
+                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index has unknown dimensionType '$dimensionType'.");
+            }
+
+            $cleaned[] = [
+                'gaDimension' => $field['gaDimension'],
+                'dimensionType' => $field['dimensionType'],
+            ];
+        }
+        return $cleaned;
     }
 }

@@ -28,7 +28,7 @@ class ImportStatus
     const STATUS_ERRORED = 'errored';
     const STATUS_RATE_LIMITED = 'rate_limited';
 
-    public function startingImport($propertyId, $accountId, $viewId, $idSite)
+    public function startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions = [])
     {
         $now = Date::getNowTimestamp();
         $status = [
@@ -46,6 +46,7 @@ class ImportStatus
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => $extraCustomDimensions,
         ];
 
         $this->saveStatus($status);

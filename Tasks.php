@@ -202,4 +202,9 @@ class Tasks extends \Piwik\Plugin\Tasks
     {
         return PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
     }
+
+    private static function sanitizeArg($gaDimension)
+    {
+        return preg_replace('/[^a-zA-Z0-9:_-]]/', '', $gaDimension);
+    }
 }

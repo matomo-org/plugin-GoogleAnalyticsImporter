@@ -15,15 +15,15 @@ class IdMapper
 {
     const OPTION_PREFIX = 'GoogleAnalytics.idMapping.';
 
-    public function mapEntityId($type, $gaEntiyId, $entiyId)
+    public function mapEntityId($type, $gaEntiyId, $entiyId, $idSite)
     {
-        $optionName = $this->getOptionName($type, $entiyId);
+        $optionName = $this->getOptionName($type, $entiyId, $idSite);
         Option::set($optionName, $gaEntiyId);
     }
 
-    public function getGoogleAnalyticsId($type, $entityId)
+    public function getGoogleAnalyticsId($type, $entityId, $idSite)
     {
-        $optionName = $this->getOptionName($type, $entityId);
+        $optionName = $this->getOptionName($type, $entityId, $idSite);
         $result = Option::get($optionName);
         if ($result === false) {
             return null;
@@ -31,8 +31,8 @@ class IdMapper
         return $result;
     }
 
-    private function getOptionName($type, $entiyId)
+    private function getOptionName($type, $entityId, $idSite)
     {
-        return self::OPTION_PREFIX . $type . '.' . $entiyId;
+        return self::OPTION_PREFIX . $type . '.' . $entityId . '.' . $idSite;
     }
 }

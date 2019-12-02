@@ -66,4 +66,15 @@
 		</extractions>
 		<case_sensitive>1</case_sensitive>
 	</row>
+	<row>
+		<idcustomdimension>7</idcustomdimension>
+		<idsite>1</idsite>
+		<name>ga:networkLocation</name>
+		<index>3</index>
+		<scope>visit</scope>
+		<active>1</active>
+		<extractions>
+		</extractions>
+		<case_sensitive>1</case_sensitive>
+	</row>
 </result>

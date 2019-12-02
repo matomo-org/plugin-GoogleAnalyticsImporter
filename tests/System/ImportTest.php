@@ -139,7 +139,16 @@ class ImportTest extends SystemTestCase
                 'periods' => ['day', 'week', 'month', 'year'],
                 'testSuffix' => '_visit',
                 'otherRequestParameters' => [
-                    'idDimension' => '4', // action scope
+                    'idDimension' => '4', // visit scope
+                ],
+            ]],
+            ['CustomDimensions.getCustomDimension', [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['day', 'week', 'month', 'year'],
+                'testSuffix' => '_extraCustomDim',
+                'otherRequestParameters' => [
+                    'idDimension' => '7', // extra custom dimension
                 ],
             ]],
 
