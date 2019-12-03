@@ -116,6 +116,10 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function queryEcommerce(Date $day)
     {
+        if (!Site::isEcommerceEnabledFor($this->getIdSite())) {
+            return;
+        }
+
         $this->itemRecords = [
             Archiver::ITEMS_SKU_RECORD_NAME => new DataTable(),
             Archiver::ITEMS_NAME_RECORD_NAME => new DataTable(),
