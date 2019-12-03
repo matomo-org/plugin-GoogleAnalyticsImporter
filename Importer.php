@@ -247,7 +247,6 @@ class Importer
             $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension, $idSite);
         }
 
-        // TODO: translate and rename dimensionType to dimensionScope
         // create extra custom dimensions
         $importStatus = $this->importStatus->getImportStatus($idSite);
         $extraCustomDimensions = !empty($importStatus['extra_custom_dimensions']) ? $importStatus['extra_custom_dimensions'] : [];
@@ -260,12 +259,12 @@ class Importer
             }
 
             $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
-                $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionType'], $active = true);
+                $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = true);
 
             $this->logger->info("Created Matomo dimension for extra dimension {gaDim} as dimension{id} with scope '{scope}'.", [
                 'gaDim' => $extraEntry['gaDimension'],
                 'id' => $idDimension,
-                'scope' => $extraEntry['dimensionType'],
+                'scope' => $extraEntry['dimensionScope'],
             ]);
         }
     }
@@ -535,20 +534,20 @@ class Importer
                 throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index is missing the gaDimension property.");
             }
 
-            if (empty($field['dimensionType'])) {
-                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index is missing the dimensionType property.");
+            if (empty($field['dimensionScope'])) {
+                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index is missing the dimensionScope property.");
             }
 
-            $dimensionType = $field['dimensionType'];
-            if ($dimensionType !== 'action'
-                && $dimensionType !== 'visit'
+            $dimensionScope = $field['dimensionScope'];
+            if ($dimensionScope !== 'action'
+                && $dimensionScope !== 'visit'
             ) {
-                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index has unknown dimensionType '$dimensionType'.");
+                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index has unknown dimensionScope '$dimensionScope'.");
             }
 
             $cleaned[] = [
                 'gaDimension' => $field['gaDimension'],
-                'dimensionType' => $field['dimensionType'],
+                'dimensionScope' => $field['dimensionScope'],
             ];
         }
         return $cleaned;

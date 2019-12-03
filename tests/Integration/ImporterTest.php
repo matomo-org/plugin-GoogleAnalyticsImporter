@@ -39,7 +39,7 @@ class ImporterTest extends IntegrationTestCase
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
         $importStatus->startingImport('propertyid', 'accountid', 'viewid', $idSite, [
-            ['gaDimension' => 'ga:userGender', 'dimensionType' => 'visit'],
+            ['gaDimension' => 'ga:userGender', 'dimensionScope' => 'visit'],
         ]);
 
         $this->setGaEntities();

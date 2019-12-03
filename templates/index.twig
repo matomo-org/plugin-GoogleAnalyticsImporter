@@ -127,9 +127,9 @@
 
             <div piwik-field uicontrol="multituple" name="extraCustomDimensions"
                  ng-model="importScheduler.extraCustomDimensions"
-                 title="Extra Custom Dimension Mappings"
-                 inline-help="an explanation"
-                 ui-control-attributes='{"field1": {"key":"gaDimension","title":"GA Dimension","uiControl":"text","availableValues":null}, "field2": {"key":"dimensionType","title":"Dimension Type","uiControl":"select","availableValues":{"visit":"Visit","action":"Action"}}}'
+                 title="{{ 'GoogleAnalyticsImporter_ExtraCustomDimensions'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_ExtraCustomDimensionsHelp'|translate('<a href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/" rel="noreferrer noopener">', '</a>') }}"
+                 ui-control-attributes='{{ extraCustomDimensionsField|json_encode }}'
             >
             </div>
 

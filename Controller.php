@@ -73,6 +73,23 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'statuses' => $statuses,
             'stopImportNonce' => $stopImportNonce,
             'startImportNonce' => $startImportNonce,
+            'extraCustomDimensionsField' => [
+                'field1' => [
+                    'key' => 'gaDimension',
+                    'title' => Piwik::translate('GoogleAnalyticsImporter_GADimension'),
+                    'uiControl' => 'text',
+                    'availableValues' => null,
+                ],
+                'field2' => [
+                    'key' => 'dimensionScope',
+                    'title' => Piwik::translate('GoogleAnalyticsImporter_DimensionScope'),
+                    'uiControl' => 'select',
+                    'availableValues' => [
+                        'visit' => Piwik::translate('General_Visit'),
+                        'action' => Piwik::translate('General_Action'),
+                    ],
+                ],
+            ],
         ]);
     }
 

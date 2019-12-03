@@ -60,11 +60,11 @@ class RecordImporterTest extends BaseRecordImporterTest
         $importStatus = StaticContainer::get(ImportStatus::class);
         $importStatus->startingImport('someproperty', 'someaccount', 'someview', $idSite = 1);
         $importStatus->startingImport('someproperty', 'someaccount', 'someview', $idSite = 2, [
-            ['gaDimension' => 'ga:someDimension', 'dimensionType' => 'visit'],
-            ['gaDimension' => 'ga:someOtherDimension', 'dimensionType' => 'action'],
+            ['gaDimension' => 'ga:someDimension', 'dimensionScope' => 'visit'],
+            ['gaDimension' => 'ga:someOtherDimension', 'dimensionScope' => 'action'],
         ]);
         $importStatus->startingImport('someproperty', 'someaccount', 'someview', $idSite = 3, [
-            ['gaDimension' => 'ga:yetAnotherDim', 'dimensionType' => 'action'],
+            ['gaDimension' => 'ga:yetAnotherDim', 'dimensionScope' => 'action'],
         ]);
     }
 

@@ -64,7 +64,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $importStatus = $importStatusService->getImportStatus($this->getIdSite());
 
         $extraCustomDimensions = !empty($importStatus['extra_custom_dimensions']) ? $importStatus['extra_custom_dimensions'] : [];
-        $extraCustomDimensions = array_column($extraCustomDimensions, 'dimensionType', 'gaDimension');
+        $extraCustomDimensions = array_column($extraCustomDimensions, 'dimensionScope', 'gaDimension');
 
         $customDimensions = API::getInstance()->getConfiguredCustomDimensions($this->getIdSite());
         foreach ($customDimensions as $dimension) {

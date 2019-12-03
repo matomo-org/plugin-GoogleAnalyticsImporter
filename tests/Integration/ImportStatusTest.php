@@ -40,7 +40,7 @@ class ImportStatusTest extends IntegrationTestCase
         $this->assertEmpty($status);
 
         $this->instance->startingImport('property', 'account', 'view', $idSite, [
-            ['gaDimension' => 'ga:whatever', 'dimensionType' => 'visit'],
+            ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
         ]);
         $status = $this->instance->getImportStatus($idSite);
         $this->assertEquals([
@@ -59,7 +59,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => [
-                ['gaDimension' => 'ga:whatever', 'dimensionType' => 'visit'],
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
         ], $status);
 
@@ -81,7 +81,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => [
-                ['gaDimension' => 'ga:whatever', 'dimensionType' => 'visit'],
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
         ], $status);
 
@@ -105,7 +105,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => [
-                ['gaDimension' => 'ga:whatever', 'dimensionType' => 'visit'],
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
         ], $status);
 
@@ -128,7 +128,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => [
-                ['gaDimension' => 'ga:whatever', 'dimensionType' => 'visit'],
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
         ], $status);
 
