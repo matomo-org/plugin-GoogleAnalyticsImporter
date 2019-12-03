@@ -125,6 +125,14 @@
             >
             </div>
 
+            <div piwik-field uicontrol="multituple" name="extraCustomDimensions"
+                 ng-model="importScheduler.extraCustomDimensions"
+                 title="{{ 'GoogleAnalyticsImporter_ExtraCustomDimensions'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_ExtraCustomDimensionsHelp'|translate('<a href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/" rel="noreferrer noopener">', '</a>') }}"
+                 ui-control-attributes='{{ extraCustomDimensionsField|json_encode }}'
+            >
+            </div>
+
             <button type="submit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
         </div>
     </div>

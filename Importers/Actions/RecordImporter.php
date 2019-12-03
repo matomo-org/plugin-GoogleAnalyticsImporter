@@ -292,6 +292,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         }
 
         $gaQuery = $this->getGaQuery();
+
         $table = $gaQuery->query($day, $dimensions = ['ga:pagePath'], $this->getPageMetrics(), [
             'orderBys' => [
                 ['field' => 'ga:pageviews', 'order' => 'descending'],

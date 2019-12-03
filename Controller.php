@@ -73,6 +73,23 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'statuses' => $statuses,
             'stopImportNonce' => $stopImportNonce,
             'startImportNonce' => $startImportNonce,
+            'extraCustomDimensionsField' => [
+                'field1' => [
+                    'key' => 'gaDimension',
+                    'title' => Piwik::translate('GoogleAnalyticsImporter_GADimension'),
+                    'uiControl' => 'text',
+                    'availableValues' => null,
+                ],
+                'field2' => [
+                    'key' => 'dimensionScope',
+                    'title' => Piwik::translate('GoogleAnalyticsImporter_DimensionScope'),
+                    'uiControl' => 'select',
+                    'availableValues' => [
+                        'visit' => Piwik::translate('General_Visit'),
+                        'action' => Piwik::translate('General_Action'),
+                    ],
+                ],
+            ],
         ]);
     }
 
@@ -229,11 +246,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $account = $accountId ?: ImportReports::guessAccountFromProperty($propertyId);
             $isMobileApp = Common::getRequestVar('isMobileApp', 0, 'int') == 1;
             $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
+            $extraCustomDimensions = Common::getRequestVar('extraCustomDimensions', [], $type = 'array');
 
-            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID);
+            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions);
 
             try {
-
                 if (empty($idSite)) {
                     throw new \Exception("Unable to import site entity."); // sanity check
                 }

@@ -42,6 +42,10 @@
     "LiveDataUnavailableForImported": "The report data for this time period were imported from Google Analytics, but raw visits log data cannot be imported from Google Analytics, and so is not available for this period.",
     "UnsupportedReportInImportRange": "The report data for this time period were imported from Google Analytics, but this report does not exist in Google Analytics, so there is nothing to display here.",
     "NotSetInGA": "Not set in Google Analytics",
-    "LogDataRequiredForReport": "The report data for this time period were imported from Google Analytics, but this report requires raw visits log data, which cannot imported. So this report may not display data."
+    "LogDataRequiredForReport": "The report data for this time period were imported from Google Analytics, but this report requires raw visits log data, which cannot imported. So this report may not display data.",
+    "ExtraCustomDimensions": "Extra Custom Dimension Mappings",
+    "ExtraCustomDimensionsHelp": "Google Analytics provides some dimensions that are not natively supported in Matomo, like demographics. If you'd like to preserve this data in Matomo, you can import data for those dimensions into a custom dimension. To do so, type the GA dimension in the first field (see %1$sthis list%2$s to see the proper IDs for Google Analytics dimensions) and the type of dimension in the second field.",
+    "GADimension": "GA Dimension",
+    "DimensionScope": "Dimension Scope"
   }
 }

@@ -18,6 +18,7 @@
         var vm = this;
         vm.nonce = null;
         vm.isStartingImport = false;
+        vm.extraCustomDimensions = [];
         vm.startImport = startImport;
 
         function startImport() {
@@ -45,7 +46,8 @@
                 nonce: vm.nonce,
                 accountId: vm.accountId,
                 isMobileApp: vm.isMobileApp ? '1' : '0',
-                timezone: vm.timezone
+                timezone: vm.timezone,
+                extraCustomDimensions: vm.extraCustomDimensions
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });

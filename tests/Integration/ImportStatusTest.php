@@ -39,7 +39,9 @@ class ImportStatusTest extends IntegrationTestCase
         $status = $this->getImportStatus($idSite);
         $this->assertEmpty($status);
 
-        $this->instance->startingImport('property', 'account', 'view', $idSite);
+        $this->instance->startingImport('property', 'account', 'view', $idSite, [
+            ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
+        ]);
         $status = $this->instance->getImportStatus($idSite);
         $this->assertEquals([
             'status' => ImportStatus::STATUS_STARTED,
@@ -56,6 +58,9 @@ class ImportStatusTest extends IntegrationTestCase
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => [
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
+            ],
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
@@ -75,6 +80,9 @@ class ImportStatusTest extends IntegrationTestCase
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => [
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
+            ],
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
@@ -96,6 +104,9 @@ class ImportStatusTest extends IntegrationTestCase
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => [
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
+            ],
         ], $status);
 
         $this->instance->finishedImport($idSite);
@@ -116,6 +127,9 @@ class ImportStatusTest extends IntegrationTestCase
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => [
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
+            ],
         ], $status);
 
         $this->instance->deleteStatus($idSite);
@@ -149,6 +163,7 @@ class ImportStatusTest extends IntegrationTestCase
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => [],
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
@@ -169,6 +184,7 @@ class ImportStatusTest extends IntegrationTestCase
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => [],
         ], $status);
     }
 
@@ -198,6 +214,7 @@ class ImportStatusTest extends IntegrationTestCase
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => [],
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
@@ -217,6 +234,7 @@ class ImportStatusTest extends IntegrationTestCase
             'last_day_archived' => null,
             'import_range_start' => null,
             'import_range_end' => null,
+            'extra_custom_dimensions' => [],
         ], $status);
     }
 

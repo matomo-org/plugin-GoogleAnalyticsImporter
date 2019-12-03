@@ -36,14 +36,19 @@ abstract class BaseRecordImporterTest extends IntegrationTestCase
     }
 
     abstract function getTestDir();
+    abstract function getTestedPluginName();
 
     protected function runImporterTest($testName, $mockGaResponses, $idSite = 1)
     {
         $this->capturedReports = new Map();
         $this->capturedReports->setKeyName('record');
 
+        $recordImporterClass = 'Piwik\Plugins\GoogleAnalyticsImporter\Importers\\' . $this->getTestedPluginName() . '\RecordImporter';
+
         $mockGaQuery = $this->makeMockGaQuery($mockGaResponses);
-        $instance = new RecordImporter($mockGaQuery, $idSite, new NullLogger());
+
+        /** @var \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter $instance */
+        $instance = new $recordImporterClass($mockGaQuery, $idSite, new NullLogger());
         $instance->setRecordInserter($this->makeMockRecordInserter());
 
         $instance->importRecords(Date::factory('2013-02-03'));
@@ -128,11 +133,6 @@ abstract class BaseRecordImporterTest extends IntegrationTestCase
 
         $expectedContents = file_get_contents($expectedFilePath);
         $this->assertEquals($expectedContents, $result);
-    }
-
-    protected function getTestedPluginName()
-    {
-        return 'Actions';
     }
 
     private function copyDataTable(DataTable $record)

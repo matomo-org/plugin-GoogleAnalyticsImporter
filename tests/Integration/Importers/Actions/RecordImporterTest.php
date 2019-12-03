@@ -27,6 +27,11 @@ class RecordImporterTest extends BaseRecordImporterTest
         return __DIR__;
     }
 
+    public function getTestedPluginName()
+    {
+        return 'Actions';
+    }
+
     public function test_basicImport()
     {
         $this->runImporterTest('basicImport', [
