@@ -8,7 +8,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
-
 use Piwik\Date;
 use Psr\Log\LoggerInterface;
 
