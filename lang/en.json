@@ -49,6 +49,11 @@
     "DimensionScope": "Dimension Scope",
     "Troubleshooting": "Troubleshooting",
     "IsVerboseLoggingEnabled": "Enable Verbose Logging",
-    "IsVerboseLoggingEnabledHelp": "If your import is failing for some reason on a specific day you can enable verbose logging to get more information about the cause. Only enable it for the failing date since it will result in a large amount of log output. After the import finishes, find the log files in the %1$s folder with a name like %2$s. Send this log with any bug reports/support requests."
+    "IsVerboseLoggingEnabledHelp": "If your import is failing for some reason on a specific day you can enable verbose logging to get more information about the cause. Only enable it for the failing date since it will result in a large amount of log output. After the import finishes, find the log files in the %1$s folder with a name like %2$s. Send this log with any bug reports/support requests.",
+    "RequiredExecutablesCheck": "Required Executables",
+    "PhpExecutableMissing": "Matomo cannot find the PHP executable. The Google Analytics Importer invokes PHP from the command line to import data. This executable must be present and accessible from PHP in order for the importer to function.",
+    "NohupExecutableMissing": "Matomo cannot find the nohup executable. The Google Analytics Importer uses nohup to execute the import process so it will continue on its own after a web request finishes. This executable must be present and accessible from PHP in order for the importer to function.",
+    "RequiredFunctionsCheck": "Required PHP Functions",
+    "RequiredFunctionsMissing": "Matomo cannot find the %1$s PHP functions, your host has likely disabled them. The Google Analytics Importer uses these functions to import data in the background. Without them the importer cannot function."
   }
 }
