@@ -26,7 +26,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 
 // TODO: make sure same version of google api client is used in this & SearchEngineKeywordsPerformance
 // (may have to add test in target plugin)
