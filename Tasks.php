@@ -93,7 +93,12 @@ class Tasks extends \Piwik\Plugin\Tasks
         $cliPhp = new CliPhp();
         $phpBinary = $cliPhp->findPhpBinary() ?: 'php';
 
-        $command = "nohup $phpBinary " . PIWIK_INCLUDE_PATH . '/console ';
+        $pathToConsole = '/console';
+        if (defined('PIWIK_TEST_MODE')) {
+            $pathToConsole = '/tests/PHPUnit/proxy/console';
+        }
+
+        $command = "nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
