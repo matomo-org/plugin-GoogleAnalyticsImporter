@@ -19,6 +19,7 @@
         vm.nonce = null;
         vm.isStartingImport = false;
         vm.extraCustomDimensions = [];
+        vm.isVerboseLoggingEnabled = false;
         vm.startImport = startImport;
 
         function startImport() {
@@ -47,7 +48,8 @@
                 accountId: vm.accountId,
                 isMobileApp: vm.isMobileApp ? '1' : '0',
                 timezone: vm.timezone,
-                extraCustomDimensions: vm.extraCustomDimensions
+                extraCustomDimensions: vm.extraCustomDimensions,
+                isVerboseLoggingEnabled: vm.isVerboseLoggingEnabled ? '1' : '0'
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });

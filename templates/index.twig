@@ -133,6 +133,14 @@
             >
             </div>
 
+            <h3>{{ 'GoogleAnalyticsImporter_Troubleshooting'|translate }}</h3>
+
+            <div piwik-field uicontrol="checkbox" name="isVerboseLoggingEnabled"
+                 ng-model="importScheduler.isVerboseLoggingEnabled"
+                 title="{{ 'GoogleAnalyticsImporter_IsVerboseLoggingEnabled'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_IsVerboseLoggingEnabledHelp'|translate('/path/to/matomo/tmp/logs/', 'gaimportlog.$idSite.$matomoDomain.log') }}"
+            ></div>
+
             <button type="submit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
         </div>
     </div>

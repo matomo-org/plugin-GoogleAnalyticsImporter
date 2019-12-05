@@ -46,6 +46,9 @@
     "ExtraCustomDimensions": "Extra Custom Dimension Mappings",
     "ExtraCustomDimensionsHelp": "Google Analytics provides some dimensions that are not natively supported in Matomo, like demographics. If you'd like to preserve this data in Matomo, you can import data for those dimensions into a custom dimension. To do so, type the GA dimension in the first field (see %1$sthis list%2$s to see the proper IDs for Google Analytics dimensions) and the type of dimension in the second field.",
     "GADimension": "GA Dimension",
-    "DimensionScope": "Dimension Scope"
+    "DimensionScope": "Dimension Scope",
+    "Troubleshooting": "Troubleshooting",
+    "IsVerboseLoggingEnabled": "Enable Verbose Logging",
+    "IsVerboseLoggingEnabledHelp": "If your import is failing for some reason on a specific day you can enable verbose logging to get more information about the cause. Only enable it for the failing date since it will result in a large amount of log output. After the import finishes, find the log files in the %1$s folder with a name like %2$s. Send this log with any bug reports/support requests."
   }
 }

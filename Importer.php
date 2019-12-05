@@ -530,6 +530,12 @@ class Importer
 
         $cleaned = [];
         foreach ($extraCustomDimensions as $index => $field) {
+            if (empty($field['gaDimension'])
+                && empty($field['dimensionScope'])
+            ) {
+                continue;
+            }
+
             if (empty($field['gaDimension'])) {
                 throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index is missing the gaDimension property.");
             }
