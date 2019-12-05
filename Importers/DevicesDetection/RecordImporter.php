@@ -353,7 +353,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $result = $this->cache->fetch($cacheKey);
         if (empty($result)) {
-            $regexesFile = __DIR__ . '/../../../../vendor/regexes/client/browsers.yml';
+            $regexesFile = __DIR__ . '/../../../../vendor/piwik/device-detector/regexes/client/browsers.yml';
 
             $spyc = new Spyc();
             $regexes = $spyc->parseFile($regexesFile);
