@@ -59,7 +59,7 @@ class Tasks extends \Piwik\Plugin\Tasks
                 ]);
             }
 
-            self::startImport($status['idSite']);
+            self::startImport($status);
         }
 
         $logger->info('Done scheduling imports.');
@@ -79,8 +79,11 @@ class Tasks extends \Piwik\Plugin\Tasks
         $logger->info('Done running archive commands.');
     }
 
-    public static function startImport($idSite)
+    public static function startImport($status)
     {
+        $idSite = $status['idSite'];
+        $isVerboseLoggingEnabled = !empty($status['is_verbose_logging_enabled']);
+
         $hostname = Config::getHostname();
 
         $importLogFile = self::getImportLogFile($idSite, $hostname);
@@ -102,7 +105,13 @@ class Tasks extends \Piwik\Plugin\Tasks
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
-        $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$idSite . ' > ' . $importLogFile . ' 2>&1 &';
+        $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$idSite;
+        if ($isVerboseLoggingEnabled) {
+            $command .= ' -vvv > ';
+        } else {
+            $command .= ' >> ';
+        }
+        $command .= $importLogFile . ' 2>&1 &';
 
         $logger = StaticContainer::get(LoggerInterface::class);
         $logger->debug("Import command: {command}", ['command' => $command]);

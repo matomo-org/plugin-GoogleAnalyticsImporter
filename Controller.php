@@ -244,6 +244,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $isMobileApp = Common::getRequestVar('isMobileApp', 0, 'int') == 1;
             $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
             $extraCustomDimensions = Common::getRequestVar('extraCustomDimensions', [], $type = 'array');
+            $isVerboseLoggingEnabled = Common::getRequestVar('isVerboseLoggingEnabled', 0, $type = 'int') == 1;
 
             $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions);
 
@@ -262,8 +263,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                     $importStatus->setImportDateRange($idSite, $startDate ?: null, $endDate ?: null);
                 }
 
+                if ($isVerboseLoggingEnabled) {
+                    $importStatus->setIsVerboseLoggingEnabled($idSite, $isVerboseLoggingEnabled);
+                }
+
                 // start import now since the scheduled task may not run until tomorrow
-                Tasks::startImport($idSite);
+                Tasks::startImport($importStatus->getImportStatus($idSite));
             } catch (\Exception $ex) {
                 $importStatus->erroredImport($idSite, $ex->getMessage());
 

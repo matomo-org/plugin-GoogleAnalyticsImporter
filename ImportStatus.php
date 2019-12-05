@@ -94,6 +94,13 @@ class ImportStatus
         $this->setImportedDateRange($idSite, $startDate, null);
     }
 
+    public function setIsVerboseLoggingEnabled($idSite, $isVerboseLoggingEnabled)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['is_verbose_logging_enabled'] = $isVerboseLoggingEnabled;
+        $this->saveStatus($status);
+    }
+
     public function resumeImport($idSite)
     {
         $status = $this->getImportStatus($idSite);
@@ -272,4 +279,5 @@ class ImportStatus
 
         Option::set($optionName, $value);
     }
+
 }
