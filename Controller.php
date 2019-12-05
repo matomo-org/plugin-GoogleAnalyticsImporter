@@ -135,10 +135,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         }
 
         // reload index action to prove everything is configured
-        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
-            'action' => 'index',
-            'code' => '',
-        ]));
+        $this->redirectToIndex('GoogleAnalyticsImporter', 'index');
     }
 
     public function configureClient()
