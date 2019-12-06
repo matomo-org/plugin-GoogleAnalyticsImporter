@@ -1,5 +1,23 @@
 ## Changelog
 
+# 1.1.0
+
+Features:
+* Add new diagnostics to check for required functions and executables.
+* Add troubleshooting option to enable debug logging so users can provide useful info in a bug report.
+* Allow importing GA dimensions not natively supported in Matomo by creating new custom dimensions.
+* Support importing mobile app properties (including screen views metrics as pageviews and screen reports as page title reports).
+
+Bug fixes:
+* Remove extra params when redirecting from processAuthCode action.
+* Change include paths to better support wordpress installs.
+* Do not try to import ecommerce items report if property does not support ecommerce.
+* Ordering in GA API requests was not applied.
+* Entry/exit page titles should not import unique visitors since we can't get that information reliably.
+* URLs that end in the action default name cause a conflict w/ directory paths. This is not an issue anymore.
+* Better process strange referrer URLs from GA.
+* Allow specifying timezone manually in case GA timezone is not a valid PHP timezone.
+
 # 1.0.6
 
 * Better and configurable mysql ping for shared hosting.
