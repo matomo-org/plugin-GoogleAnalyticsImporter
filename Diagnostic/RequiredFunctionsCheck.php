@@ -33,7 +33,7 @@ class RequiredFunctionsCheck implements Diagnostic
     {
         $requiredFunctions = ['shell_exec', 'exec'];
 
-        $areFunctionsPresent = false;
+        $areFunctionsPresent = true;
         foreach ($requiredFunctions as $func) {
             if (!function_exists($func)) {
                 $areFunctionsPresent = false;
