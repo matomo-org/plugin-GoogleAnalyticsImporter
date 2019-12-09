@@ -31,6 +31,7 @@ use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Segment;
+use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
@@ -119,23 +120,28 @@ class Importer
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
-        $idSite = SitesManagerAPI::getInstance()->addSite(
-            $siteName = $webproperty->getName(),
-            $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
-            $ecommerce = $view->eCommerceTracking ? 1 : 0,
-            $siteSearch = !empty($view->siteSearchQueryParameters),
-            $searchKeywordParams = $view->siteSearchQueryParameters,
-            $searchCategoryParams = $view->siteSearchCategoryParameters,
-            $excludedIps = null,
-            $excludedParams = $view->excludeQueryParameters,
-            $timezone = empty($timezone) ? $view->timezone : $timezone,
-            $currency = $view->currency,
-            $group = null,
-            $startDate = Date::factory($webproperty->getCreated())->toString(),
-            $excludedUserAgents = null,
-            $keepURLFragments = null,
-            $type
-        );
+        if (!SettingsServer::isMatomoForWordPress()) {
+            $idSite = SitesManagerAPI::getInstance()->addSite(
+                $siteName = $webproperty->getName(),
+                $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
+                $ecommerce = $view->eCommerceTracking ? 1 : 0,
+                $siteSearch = !empty($view->siteSearchQueryParameters),
+                $searchKeywordParams = $view->siteSearchQueryParameters,
+                $searchCategoryParams = $view->siteSearchCategoryParameters,
+                $excludedIps = null,
+                $excludedParams = $view->excludeQueryParameters,
+                $timezone = empty($timezone) ? $view->timezone : $timezone,
+                $currency = $view->currency,
+                $group = null,
+                $startDate = Date::factory($webproperty->getCreated())->toString(),
+                $excludedUserAgents = null,
+                $keepURLFragments = null,
+                $type
+            );
+        } else { // matomo for wordpress
+            $site = new \WpMatomo\Site();
+            $idSite = $site->get_current_matomo_site_id();
+        }
 
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
 
