@@ -446,7 +446,8 @@ class Importer
         foreach ($goals as $idGoal => $goal) {
             $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal'], $idSite);
             if ($gaGoalId === null) {
-                $this->throwNowGoalIdFoundException($goal);
+                $this->logNoGoalIdFoundException($goal);
+                continue;
             }
 
             $mapping[$idGoal] = $gaGoalId;
@@ -455,9 +456,9 @@ class Importer
         return $mapping;
     }
 
-    private function throwNowGoalIdFoundException($goal)
+    private function logNoGoalIdFoundException($goal)
     {
-        throw new \Exception("No GA goal ID found in goal description for '{$goal['name']}' [idgoal = {$goal['idgoal']}]");
+        $this->logger->warning("No GA goal ID found mapped for '{$goal['name']}' [idgoal = {$goal['idgoal']}]");
     }
 
     public function getQueryCount()
