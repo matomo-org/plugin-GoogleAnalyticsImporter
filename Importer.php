@@ -11,11 +11,13 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 use Google_Service_Analytics_Goal;
 use Piwik\API\Request;
 use Piwik\ArchiveProcessor\Parameters;
+use Piwik\Common;
 use Piwik\Concurrency\Lock;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\ArchiveWriter;
 use Piwik\Date;
+use Piwik\Db;
 use Piwik\Option;
 use Piwik\Period\Factory;
 use Piwik\Plugin\Manager;
@@ -120,6 +122,7 @@ class Importer
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
+        $startDate = Date::factory($webproperty->getCreated())->toString();
         if (!SettingsServer::isMatomoForWordPress()) {
             $idSite = SitesManagerAPI::getInstance()->addSite(
                 $siteName = $webproperty->getName(),
@@ -133,7 +136,7 @@ class Importer
                 $timezone = empty($timezone) ? $view->timezone : $timezone,
                 $currency = $view->currency,
                 $group = null,
-                $startDate = Date::factory($webproperty->getCreated())->toString(),
+                $startDate,
                 $excludedUserAgents = null,
                 $keepURLFragments = null,
                 $type
@@ -141,6 +144,15 @@ class Importer
         } else { // matomo for wordpress
             $site = new \WpMatomo\Site();
             $idSite = $site->get_current_matomo_site_id();
+
+            $creationTime = Date::factory(Site::getCreationDateFor($idSite));
+            if ($creationTime->isLater(Date::factory($startDate))) {
+                // manually set the website creation date to a day earlier than the earliest day we import
+                Db::get()->update(Common::prefixTable("site"),
+                    ['ts_created' => $startDate],
+                    "idsite = $idSite"
+                );
+            }
         }
 
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
