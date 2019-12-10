@@ -11,11 +11,13 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 use Google_Service_Analytics_Goal;
 use Piwik\API\Request;
 use Piwik\ArchiveProcessor\Parameters;
+use Piwik\Common;
 use Piwik\Concurrency\Lock;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\ArchiveWriter;
 use Piwik\Date;
+use Piwik\Db;
 use Piwik\Option;
 use Piwik\Period\Factory;
 use Piwik\Plugin\Manager;
@@ -31,6 +33,7 @@ use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Segment;
+use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
@@ -119,23 +122,38 @@ class Importer
         $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
-        $idSite = SitesManagerAPI::getInstance()->addSite(
-            $siteName = $webproperty->getName(),
-            $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
-            $ecommerce = $view->eCommerceTracking ? 1 : 0,
-            $siteSearch = !empty($view->siteSearchQueryParameters),
-            $searchKeywordParams = $view->siteSearchQueryParameters,
-            $searchCategoryParams = $view->siteSearchCategoryParameters,
-            $excludedIps = null,
-            $excludedParams = $view->excludeQueryParameters,
-            $timezone = empty($timezone) ? $view->timezone : $timezone,
-            $currency = $view->currency,
-            $group = null,
-            $startDate = Date::factory($webproperty->getCreated())->toString(),
-            $excludedUserAgents = null,
-            $keepURLFragments = null,
-            $type
-        );
+        $startDate = Date::factory($webproperty->getCreated())->toString();
+        if (!SettingsServer::isMatomoForWordPress()) {
+            $idSite = SitesManagerAPI::getInstance()->addSite(
+                $siteName = $webproperty->getName(),
+                $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
+                $ecommerce = $view->eCommerceTracking ? 1 : 0,
+                $siteSearch = !empty($view->siteSearchQueryParameters),
+                $searchKeywordParams = $view->siteSearchQueryParameters,
+                $searchCategoryParams = $view->siteSearchCategoryParameters,
+                $excludedIps = null,
+                $excludedParams = $view->excludeQueryParameters,
+                $timezone = empty($timezone) ? $view->timezone : $timezone,
+                $currency = $view->currency,
+                $group = null,
+                $startDate,
+                $excludedUserAgents = null,
+                $keepURLFragments = null,
+                $type
+            );
+        } else { // matomo for wordpress
+            $site = new \WpMatomo\Site();
+            $idSite = $site->get_current_matomo_site_id();
+
+            $creationTime = Date::factory(Site::getCreationDateFor($idSite));
+            if ($creationTime->isLater(Date::factory($startDate))) {
+                // manually set the website creation date to a day earlier than the earliest day we import
+                Db::get()->update(Common::prefixTable("site"),
+                    ['ts_created' => $startDate],
+                    "idsite = $idSite"
+                );
+            }
+        }
 
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
 

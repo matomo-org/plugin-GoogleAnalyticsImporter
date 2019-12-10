@@ -209,12 +209,12 @@ class Tasks extends \Piwik\Plugin\Tasks
 
     public static function getArchiveLogFile($idSite, $hostname)
     {
-        return PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.' . $idSite . '.' . $hostname . '.log';
+        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.archive.' . $idSite . '.' . $hostname . '.log';
     }
 
     public static function getImportLogFile($idSite, $hostname)
     {
-        return PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
+        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
     }
 
     private static function sanitizeArg($gaDimension)

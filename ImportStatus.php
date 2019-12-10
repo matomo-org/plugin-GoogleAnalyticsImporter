@@ -30,6 +30,15 @@ class ImportStatus
 
     public function startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions = [])
     {
+        try {
+            $status = $this->getImportStatus($idSite);
+            if ($status['status'] != self::STATUS_FINISHED) {
+                throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_CancelExistingImportFirst', [$idSite]));
+            }
+        } catch (\Exception $ex) {
+            // ignore
+        }
+
         $now = Date::getNowTimestamp();
         $status = [
             'status' => self::STATUS_STARTED,

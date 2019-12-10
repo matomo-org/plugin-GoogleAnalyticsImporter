@@ -287,6 +287,29 @@ class ImportStatusTest extends IntegrationTestCase
         ];
     }
 
+    public function test_startingImport_doesNotAllowCreatingMultipleImportsWithTheSameSite()
+    {
+        $idSite = 1;
+        $this->instance->startingImport('testprop', 'testaccount', 'testview', $idSite);
+
+        try {
+            $this->instance->startingImport('testprop', 'testaccount', 'testview', $idSite);
+            $this->fail('Exception not thrown when trying to start duplicate import.');
+        } catch (\Exception $ex) {
+            // pass
+        }
+
+        $this->instance->finishedImport($idSite);
+
+        $status = $this->getImportStatus($idSite);
+        $this->assertEquals(ImportStatus::STATUS_FINISHED, $status['status']);
+
+        $this->instance->startingImport('testprop', 'testaccount', 'testview', $idSite);
+
+        $status = $this->getImportStatus($idSite);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+    }
+
     private function getImportStatus($idSite)
     {
         $optionName = ImportStatus::OPTION_NAME_PREFIX . $idSite;
