@@ -1,5 +1,11 @@
 ## Changelog
 
+# 1.1.1
+
+Bug fixes:
+* Compatibility with Matomo for wordpress.
+* Do not fail if an unmappable goal is found (in case user creates their own goal or edits a goal).
+
 # 1.1.0
 
 Features:
