@@ -31,9 +31,10 @@ class ImportStatus
     public function startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions = [])
     {
         try {
-            $this->getImportStatus($idSite);
-
-            throw new \Exception("An import already exists for site with ID = $idSite. Please cancel this first before starting a new one.");
+            $status = $this->getImportStatus($idSite);
+            if ($status['status'] != self::STATUS_FINISHED) {
+                throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_CancelExistingImportFirst', [$idSite]));
+            }
         } catch (\Exception $ex) {
             // ignore
         }
