@@ -1,5 +1,11 @@
 ## Changelog
 
+# 1.1.2
+
+Bug fixes:
+* Fix variable not defined error.
+* Make sure version is compatible w/ older versions of Matomo.
+
 # 1.1.1
 
 Bug fixes:
