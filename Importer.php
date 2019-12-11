@@ -123,7 +123,7 @@ class Importer
         $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
         $startDate = Date::factory($webproperty->getCreated())->toString();
-        if (!SettingsServer::isMatomoForWordPress()) {
+        if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
             $idSite = SitesManagerAPI::getInstance()->addSite(
                 $siteName = $webproperty->getName(),
                 $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
