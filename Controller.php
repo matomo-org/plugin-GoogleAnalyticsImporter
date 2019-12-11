@@ -253,12 +253,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                     throw new \Exception("Unable to import site entity."); // sanity check
                 }
 
+                /** @var ImportStatus $importStatus */
+                $importStatus = StaticContainer::get(ImportStatus::class);
+
                 if (!empty($startDate)
                     || !empty($endDate)
                 ) {
-                    /** @var ImportStatus $importStatus */
-                    $importStatus = StaticContainer::get(ImportStatus::class);
-
                     // we set the last imported date to one day before the start date
                     $importStatus->setImportDateRange($idSite, $startDate ?: null, $endDate ?: null);
                 }
