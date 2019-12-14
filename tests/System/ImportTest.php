@@ -168,6 +168,14 @@ class ImportTest extends SystemTestCase
                 'date' => self::$fixture->campaignDataDateTime,
                 'periods' => ['day', 'week', 'month', 'year'],
             ]],
+
+            // test aggregated w/ real visit
+            ['VisitsSummary.get', [
+                'idSite' => self::$fixture->idSite,
+                'date' => '2019-07-03',
+                'periods' => 'week',
+                'testSuffix' => '_aggregatedWithTrackedVisit',
+            ]],
         ];
     }
 

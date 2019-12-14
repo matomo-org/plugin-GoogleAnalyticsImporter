@@ -1936,6 +1936,17 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
+		<label>Windows / Firefox / 1024x768</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<max_actions>2</max_actions>
+		<sum_visit_length>122</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_users>0</sum_daily_nb_users>
+	</row>
+	<row>
 		<label>Windows / Firefox / 1366x768</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
