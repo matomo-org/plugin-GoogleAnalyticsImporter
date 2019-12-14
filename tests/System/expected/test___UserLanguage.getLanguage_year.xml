@@ -46,11 +46,11 @@
 	</row>
 	<row>
 		<label>French</label>
-		<nb_visits>71</nb_visits>
-		<nb_actions>105</nb_actions>
-		<sum_visit_length>12522</sum_visit_length>
+		<nb_visits>72</nb_visits>
+		<nb_actions>107</nb_actions>
+		<sum_visit_length>12644</sum_visit_length>
 		<bounce_count>54</bounce_count>
-		<nb_visits_converted>5</nb_visits_converted>
+		<nb_visits_converted>6</nb_visits_converted>
 		<nb_conversions>7</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
@@ -85,7 +85,9 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>69</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>70</sum_daily_nb_uniq_visitors>
+		<max_actions>2</max_actions>
+		<sum_daily_nb_users>0</sum_daily_nb_users>
 		<segment>languageCode==fr,languageCode=@fr-</segment>
 	</row>
 	<row>

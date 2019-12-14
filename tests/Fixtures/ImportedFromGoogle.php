@@ -10,10 +10,12 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
 use Interop\Container\ContainerInterface;
 use Piwik\Config;
+use Piwik\CronArchive;
 use Piwik\Db;
 use Piwik\Ini\IniReader;
 use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
+use Piwik\Plugins\VisitsSummary\API;
 use Piwik\Tests\Framework\Fixture;
 use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
 
@@ -44,6 +46,36 @@ class ImportedFromGoogle extends Fixture
 
         $this->runGoogleImporter($this->importedDateRange);
         $this->runGoogleImporter($this->campaignDataDateRange);
+
+        $this->aggregateForYear();
+
+        // track a visit on 2019-07-03 and make sure it appears correctly in reports
+        $this->trackVisitAfterImport();
+
+        $this->invalidateArchives();
+        $this->aggregateForYear();
+    }
+
+    private function invalidateArchives()
+    {
+        $cronArchive = new CronArchive();
+        $cronArchive->invalidateArchivedReportsForSitesThatNeedToBeArchivedAgain();
+    }
+
+    private function aggregateForYear()
+    {
+        API::getInstance()->get($this->idSite, 'year', '2019-06-27');
+    }
+
+    private function trackVisitAfterImport()
+    {
+        $t = Fixture::getTracker($this->idSite, '2019-07-03 05:23:45');
+        $t->setUrl('http://matthieu.net/normal/visit/');
+        $t->doTrackPageView('normal visit');
+
+        $t->setForceVisitDateTime('2019-07-03 05:25:45');
+        $t->setUrl('http://matthieu.net/blog/inde-par-region-et-ville/');
+        $t->doTrackPageView('inde par region et ville');
     }
 
     private function getGoogleAnalyticsParams()
