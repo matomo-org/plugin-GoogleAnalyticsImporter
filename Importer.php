@@ -40,6 +40,7 @@ use Psr\Log\LoggerInterface;
 class Importer
 {
     const LOCK_TTL = 300; // lock will expire 5 minutes after inactivity
+    const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
 
     /**
      * @var ReportsProvider
@@ -367,9 +368,9 @@ class Importer
         $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
         $archiveWriter->initNewArchive();
 
-       $recordInserter = new RecordInserter($archiveWriter);
+        $recordInserter = new RecordInserter($archiveWriter);
 
-       foreach ($recordImporters as $plugin => $recordImporter) {
+        foreach ($recordImporters as $plugin => $recordImporter) {
             if (!$recordImporter->supportsSite()) {
                 continue;
             }
@@ -402,6 +403,7 @@ class Importer
             $this->currentLock->expireLock(self::LOCK_TTL);
         }
 
+        $archiveWriter->insertRecord(self::IS_IMPORTED_FROM_GA_NUMERIC, 1);
         $archiveWriter->finalizeArchive();
     }
 
