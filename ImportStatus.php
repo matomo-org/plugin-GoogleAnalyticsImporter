@@ -87,7 +87,9 @@ class ImportStatus
             $this->setImportedDateRange($idSite, $startDate = null, $date);
         }
 
-        if (is_int($status['days_finished_since_rate_limit'])) {
+        if (isset($status['days_finished_since_rate_limit'])
+            && is_int($status['days_finished_since_rate_limit'])
+        ) {
             $status['days_finished_since_rate_limit'] += 1;
         }
 
