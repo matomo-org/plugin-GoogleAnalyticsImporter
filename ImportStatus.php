@@ -56,6 +56,7 @@ class ImportStatus
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => $extraCustomDimensions,
+            'days_finished_since_rate_limit' => 0,
         ];
 
         $this->saveStatus($status);
@@ -84,6 +85,12 @@ class ImportStatus
             $status['last_date_imported'] = $date->toString();
 
             $this->setImportedDateRange($idSite, $startDate = null, $date);
+        }
+
+        if (isset($status['days_finished_since_rate_limit'])
+            && is_int($status['days_finished_since_rate_limit'])
+        ) {
+            $status['days_finished_since_rate_limit'] += 1;
         }
 
         $this->saveStatus($status);
@@ -119,6 +126,7 @@ class ImportStatus
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_ONGOING;
         $status['last_job_start_time'] = Date::getNowTimestamp();
+        $status['days_finished_since_rate_limit'] = 0;
         $this->saveStatus($status);
     }
 

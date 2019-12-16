@@ -61,6 +61,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
+            'days_finished_since_rate_limit' => 0,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, null, null);
@@ -83,6 +84,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
+            'days_finished_since_rate_limit' => 0,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2012-03-04'), Date::factory('2012-03-05'));
@@ -105,6 +107,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
+            'days_finished_since_rate_limit' => 0,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2017-03-04'), null);
@@ -127,6 +130,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
+            'days_finished_since_rate_limit' => 0,
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
@@ -149,6 +153,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
+            'days_finished_since_rate_limit' => 1,
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
@@ -173,6 +178,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
+            'days_finished_since_rate_limit' => 3,
         ], $status);
 
         $this->instance->finishedImport($idSite);
@@ -196,6 +202,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
+            'days_finished_since_rate_limit' => 3,
         ], $status);
 
         $this->instance->deleteStatus($idSite);
@@ -230,6 +237,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => [],
+            'days_finished_since_rate_limit' => 0,
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
@@ -251,6 +259,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => [],
+            'days_finished_since_rate_limit' => 0,
         ], $status);
     }
 
@@ -281,6 +290,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => [],
+            'days_finished_since_rate_limit' => 0,
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
@@ -301,6 +311,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_start' => null,
             'import_range_end' => null,
             'extra_custom_dimensions' => [],
+            'days_finished_since_rate_limit' => 0,
         ], $status);
     }
 
