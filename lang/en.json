@@ -55,6 +55,11 @@
     "NohupExecutableMissing": "Matomo cannot find the nohup executable. The Google Analytics Importer uses nohup to execute the import process so it will continue on its own after a web request finishes. This executable must be present and accessible from PHP in order for the importer to function.",
     "RequiredFunctionsCheck": "Required PHP Functions",
     "RequiredFunctionsMissing": "Matomo cannot find the %1$s PHP functions, your host has likely disabled them. The Google Analytics Importer uses these functions to import data in the background. Without them the importer cannot function.",
-    "CancelExistingImportFirst": "An import already exists for site with ID = %1$s. Please cancel it first before starting a new one."
+    "CancelExistingImportFirst": "An import already exists for site with ID = %1$s. Please cancel it first before starting a new one.",
+    "EditEndDate": "Change Import End Date",
+    "EnterImportEndDate": "Enter the new end date",
+    "Change": "Change",
+    "CancelJobConfirm": "Are you sure you want to cancel this ongoing job?",
+    "LeaveEmptyToRemove": "Leave this empty to remove the end date and continue the import until manually cancelled."
   }
 }

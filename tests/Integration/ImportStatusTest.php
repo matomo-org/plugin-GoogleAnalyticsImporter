@@ -63,6 +63,72 @@ class ImportStatusTest extends IntegrationTestCase
             ],
         ], $status);
 
+        $this->instance->setImportDateRange($idSite, null, null);
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals([
+            'status' => ImportStatus::STATUS_STARTED,
+            'idSite' => $idSite,
+            'ga' => [
+                'property' => 'property',
+                'account' => 'account',
+                'view' => 'view',
+            ],
+            'last_date_imported' => null,
+            'import_start_time' => Date::$now,
+            'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
+            'extra_custom_dimensions' => [
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
+            ],
+        ], $status);
+
+        $this->instance->setImportDateRange($idSite, Date::factory('2012-03-04'), Date::factory('2012-03-05'));
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals([
+            'status' => ImportStatus::STATUS_STARTED,
+            'idSite' => $idSite,
+            'ga' => [
+                'property' => 'property',
+                'account' => 'account',
+                'view' => 'view',
+            ],
+            'last_date_imported' => null,
+            'import_start_time' => Date::$now,
+            'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => '2012-03-04',
+            'import_range_end' => '2012-03-05',
+            'extra_custom_dimensions' => [
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
+            ],
+        ], $status);
+
+        $this->instance->setImportDateRange($idSite, Date::factory('2017-03-04'), null);
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals([
+            'status' => ImportStatus::STATUS_STARTED,
+            'idSite' => $idSite,
+            'ga' => [
+                'property' => 'property',
+                'account' => 'account',
+                'view' => 'view',
+            ],
+            'last_date_imported' => null,
+            'import_start_time' => Date::$now,
+            'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => '2017-03-04',
+            'import_range_end' => '',
+            'extra_custom_dimensions' => [
+                ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
+            ],
+        ], $status);
+
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
         $status = $this->getImportStatus($idSite);
         $this->assertEquals([
@@ -78,8 +144,8 @@ class ImportStatusTest extends IntegrationTestCase
             'import_end_time' => null,
             'last_job_start_time' => Date::$now,
             'last_day_archived' => null,
-            'import_range_start' => null,
-            'import_range_end' => null,
+            'import_range_start' => '2017-03-04',
+            'import_range_end' => '',
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
@@ -102,8 +168,8 @@ class ImportStatusTest extends IntegrationTestCase
             'import_end_time' => null,
             'last_job_start_time' => Date::$now,
             'last_day_archived' => null,
-            'import_range_start' => null,
-            'import_range_end' => null,
+            'import_range_start' => '2017-03-04',
+            'import_range_end' => '',
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
@@ -125,8 +191,8 @@ class ImportStatusTest extends IntegrationTestCase
             'import_end_time' => Date::$now,
             'last_job_start_time' => Date::$now,
             'last_day_archived' => null,
-            'import_range_start' => null,
-            'import_range_end' => null,
+            'import_range_start' => '2017-03-04',
+            'import_range_end' => '',
             'extra_custom_dimensions' => [
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
@@ -284,6 +350,17 @@ class ImportStatusTest extends IntegrationTestCase
                 ],
                 5,
             ],
+
+            [
+                [
+                    'last_date_imported' => '2013-02-15',
+                    'import_range_start' => '2013-02-03',
+                    'import_range_end' => '',
+                    'import_start_time' => '2019-03-28',
+                    'idSite' => 1,
+                ],
+                'general_Unknown',
+            ],
         ];
     }
 
@@ -308,6 +385,16 @@ class ImportStatusTest extends IntegrationTestCase
 
         $status = $this->getImportStatus($idSite);
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+    }
+
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionMessage The start date cannot be past the end date.
+     */
+    public function test_setImportDateRange_throwsIfStartDateIsPastEndDate()
+    {
+        $this->instance->startingImport('p', 'a', 'v', 1);
+        $this->instance->setImportDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-01-01'));
     }
 
     private function getImportStatus($idSite)

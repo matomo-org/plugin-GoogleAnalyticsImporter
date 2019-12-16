@@ -17,6 +17,32 @@
         var vm = this;
         vm.nonce = null;
         vm.deleteImportStatus = deleteImportStatus;
+        vm.showEditImportEndDateModal = showEditImportEndDateModal;
+        vm.cancelEditImportEndDateModal = cancelEditImportEndDateModal;
+        vm.changeImportEndDateModal = changeImportEndDateModal;
+
+        var editImportEndDateIdSite = null;
+
+        function showEditImportEndDateModal(idSite) {
+            editImportEndDateIdSite = idSite;
+            $('#editImportEndDate').openModal({ dismissible: false });
+        }
+
+        function cancelEditImportEndDateModal() {
+            editImportEndDateIdSite = null;
+        }
+
+        function changeImportEndDateModal() {
+            return piwikApi.post({
+                module: 'GoogleAnalyticsImporter',
+                action: 'changeImportEndDate',
+                idSite: editImportEndDateIdSite,
+                nonce: vm.changeImportEndDateNonce,
+                endDate: vm.newImportEndDate
+            }, { token_auth: piwik.token_auth })['finally'](function () {
+                window.location.reload();
+            });
+        }
 
         function deleteImportStatus(idSite, isDoneOrForce) {
             if (!isDoneOrForce) {

@@ -152,92 +152,117 @@
         {% if statuses is empty %}
         <p>There are no import jobs to display.</p>
         {% else %}
-        <table
-            class="entityTable importStatusesTable"
-            ng-controller="ImportStatusController as importStatus"
-            ng-init="importStatus.nonce = {{ stopImportNonce|json_encode|e('html_attr') }}"
+        <div
+                ng-controller="ImportStatusController as importStatus"
+                ng-init="importStatus.nonce = {{ stopImportNonce|json_encode|e('html_attr') }}; importStatus.changeImportEndDateNonce = {{ changeImportEndDateNonce|json_encode|e('html_attr') }}"
         >
-            <thead>
-                <tr>
-                    <th>Matomo Site</th>
-                    <th>Google Analytics Info</th>
-                    <th>Status</th>
-                    <th>Latest Day Processed</th>
-                    <th>Time Started</th>
-                    <th>Time Finished</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for status in statuses %}
-                {% set isDone = status.status == 'finished' %}
-                <tr data-idsite="{{ status.idSite|e('html_attr') }}">
-                    <td class="sitename">
-                        {% if status.site is not empty %}
-                            <a href="{{ linkTo({ 'idSite': status.idSite, 'module': 'CoreHome', 'action': 'index', 'period': period|default('day'), 'date': date|default('today') }) }}" target="_blank">{{ status.site.getName() }}</a>
-                        {% else %}
-                            SITE DELETED
-                        {% endif %}
-                        <br/>
-                        Site ID: {{ status.idSite }}
-                    </td>
-                    <td class="ga-info">{{ status.gaInfoPretty|default|e('html')|nl2br|raw }}</td>
-                    <td class="status">
-                        {{ status.status }}
-                        {% if status.status == 'rate_limited' %}
-                            <span
-                                class="icon icon-help"
-                                title="Google Analytics by default limits the number of requests you can make to the API for a specific project to 50,000 a day. It looks like this import job has exceeded that limit, so the import cannot continue until tomorrow."
-                            ></span>
-                        {% elseif status.status == 'errored' %}
-                            <br/>
-                            Error message: {{ status.error|default('no message') }}
-                        {% endif %}
-                    </td>
-                    <td class="last-date-imported">
-                        Last Day Imported: {{ status.last_date_imported|default('-') }}<br/>
-                        Last Day Archived: {{ status.last_day_archived|default('-') }}<br/>
-                        Import End Date: {{ status.import_range_end|default('-') }}
-                    </td>
-                    <td class="import-start-time">
-                        Import Start Time: {{ status.import_start_time|default('-') }}<br/>
-                        Last Resume Time: {{ status.last_job_start_time|default('-') }}
-                    </td>
-                    <td class="import-end-time">
-                        {% if status.status == 'finished' %}
-                            {{ status.import_end_time|default('-') }}
-                        {% elseif status.estimated_days_left_to_finish|default is not empty %}
-                            {% if status.estimated_days_left_to_finish matches '/^\\d+$/' and status.estimated_days_left_to_finish == 0 %}
-                            This job should finish today.
+            {% set noneText %}{{ 'GoogleAnalyticsImporter_None'|translate }}{% endset %}
+            <table
+                class="entityTable importStatusesTable"
+            >
+                <thead>
+                    <tr>
+                        <th>Matomo Site</th>
+                        <th>Google Analytics Info</th>
+                        <th>Status</th>
+                        <th>Latest Day Processed</th>
+                        <th>Time Started</th>
+                        <th>Time Finished</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for status in statuses %}
+                    {% set isDone = status.status == 'finished' %}
+                    <tr data-idsite="{{ status.idSite|e('html_attr') }}">
+                        <td class="sitename">
+                            {% if status.site is not empty %}
+                                <a href="{{ linkTo({ 'idSite': status.idSite, 'module': 'CoreHome', 'action': 'index', 'period': period|default('day'), 'date': date|default('today') }) }}" target="_blank">{{ status.site.getName() }}</a>
                             {% else %}
-                            Estimated finish in {{ status.estimated_days_left_to_finish }} days.
+                                SITE DELETED
                             {% endif %}
-                        {% else %}
-                            This job will run until manually cancelled.
-                        {% endif %}
-                    </td>
-                    <td class="actions">
-                        <a ng-click="importStatus.deleteImportStatus({{ status.idSite|json_encode|raw|e('html_attr') }}, {{ isDone|json_encode|raw|e('html_attr') }})"
-                           class="table-action {% if isDone %}icon-delete{% else %}icon-close{% endif %}"
-                           {% if not isDone %}
-                           title="{{ 'General_Cancel'|translate }}"
-                           {% else %}
-                           title="{{ 'General_Remove'|translate }}"
-                           {% endif %}
-                        ></a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+                            <br/>
+                            Site ID: {{ status.idSite }}
+                        </td>
+                        <td class="ga-info">{{ status.gaInfoPretty|default|e('html')|nl2br|raw }}</td>
+                        <td class="status">
+                            {{ status.status }}
+                            {% if status.status == 'rate_limited' %}
+                                <span
+                                    class="icon icon-help"
+                                    title="Google Analytics by default limits the number of requests you can make to the API for a specific project to 50,000 a day. It looks like this import job has exceeded that limit, so the import cannot continue until tomorrow."
+                                ></span>
+                            {% elseif status.status == 'errored' %}
+                                <br/>
+                                Error message: {{ status.error|default('no message') }}
+                            {% endif %}
+                        </td>
+                        <td class="last-date-imported">
+                            Last Day Imported: {{ status.last_date_imported|default(noneText) }}<br/>
+                            Last Day Archived: {{ status.last_day_archived|default(noneText) }}<br/>
+                            Import End Date: {{ status.import_range_end|default(noneText) }} <br/>
+                            {% if status.status != 'rate_limited' %}{#finished#}
+                            <br/>
+                            <a class="edit-import-end-link" href="" ng-click="importStatus.showEditImportEndDateModal({{ status.idSite|json_encode }})">{{ 'GoogleAnalyticsImporter_EditEndDate'|translate }}</a>
+                            {% endif %}
+                        </td>
+                        <td class="import-start-time">
+                            Import Start Time: {{ status.import_start_time|default(noneText) }}<br/>
+                            Last Resume Time: {{ status.last_job_start_time|default(noneText) }}
+                        </td>
+                        <td class="import-end-time">
+                            {% if status.status == 'finished' %}
+                                {{ status.import_end_time|default('-') }}
+                            {% elseif status.estimated_days_left_to_finish|default is not empty %}
+                                {% if status.estimated_days_left_to_finish matches '/^\\d+$/' and status.estimated_days_left_to_finish == 0 %}
+                                This job should finish today.
+                                {% else %}
+                                Estimated finish in {{ status.estimated_days_left_to_finish }} days.
+                                {% endif %}
+                            {% else %}
+                                This job will run until manually cancelled.
+                            {% endif %}
+                        </td>
+                        <td class="actions">
+                            <a ng-click="importStatus.deleteImportStatus({{ status.idSite|json_encode|raw|e('html_attr') }}, {{ isDone|json_encode|raw|e('html_attr') }})"
+                               class="table-action {% if isDone %}icon-delete{% else %}icon-close{% endif %}"
+                               {% if not isDone %}
+                               title="{{ 'General_Cancel'|translate }}"
+                               {% else %}
+                               title="{{ 'General_Remove'|translate }}"
+                               {% endif %}
+                            ></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div class="modal" id="editImportEndDate">
+                <div class="modal-content">
+                    <h3>{{ 'GoogleAnalyticsImporter_EnterImportEndDate'|translate }}</h3>
+                    <p><em>{{ 'GoogleAnalyticsImporter_LeaveEmptyToRemove'|translate }}</em></p>
+                    <div
+                            piwik-field
+                            name="new-import-end-date"
+                            uicontrol="text"
+                            ng-model="importStatus.newImportEndDate"
+                    >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="modal-action modal-close btn" ng-click="importStatus.changeImportEndDateModal()">{{ 'GoogleAnalyticsImporter_Change'|translate }}</a>
+                    <a href="" class="modal-action modal-close modal-no" ng-click="importStatus.cancelEditImportEndDateModal()">{{ 'General_Cancel'|translate }}</a>
+                </div>
+            </div>
+        </div>
         {% endif %}
     </div>
 
     <div class="ui-confirm" id="confirmCancelJob">
-        <h2>Are you sure you want to cancel this ongoing job?</h2>
+        <h2>{{ 'GoogleAnalyticsImporter_CancelJobConfirm'|translate }}</h2>
         <input role="yes" type="button" value="{{ 'General_Yes'|translate }}"/>
         <input role="no" type="button" value="{{ 'General_No'|translate }}"/>
     </div>
-
     {% endif %}
 {% endblock %}

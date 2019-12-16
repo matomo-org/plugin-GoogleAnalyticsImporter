@@ -64,6 +64,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $stopImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.stopImportNonce');
         $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce');
+        $changeImportEndDateNonce = Nonce::getNonce('GoogleAnalyticsImporter.changeImportEndDateNonce');
 
         return $this->renderTemplate('index', [
             'isConfigured' => $authorization->hasAccessToken(),
@@ -73,6 +74,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'statuses' => $statuses,
             'stopImportNonce' => $stopImportNonce,
             'startImportNonce' => $startImportNonce,
+            'changeImportEndDateNonce' => $changeImportEndDateNonce,
             'extraCustomDimensionsField' => [
                 'field1' => [
                     'key' => 'gaDimension',
@@ -207,6 +209,37 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $notification->title = Piwik::translate('General_Error');
             $notification->hasNoClear();
             Notification\Manager::notify('GoogleAnalyticsImporter_deleteImportStatus_failure', $notification);
+        }
+    }
+
+    public function changeImportEndDate()
+    {
+        Piwik::checkUserHasSuperUserAccess();
+        $this->checkTokenInUrl();
+
+        Json::sendHeaderJSON();
+
+        try {
+            Nonce::checkNonce('GoogleAnalyticsImporter.changeImportEndDateNonce', Common::getRequestVar('nonce'));
+
+            $idSite = Common::getRequestVar('idSite', null, 'int');
+            $endDate = Common::getRequestVar('endDate', '', 'string');
+
+            /** @var ImportStatus $importStatus */
+            $importStatus = StaticContainer::get(ImportStatus::class);
+            $status = $importStatus->getImportStatus($idSite);
+            $importStatus->setImportDateRange($idSite,
+                empty($status['import_start_time']) ? null : Date::factory($status['import_start_time']),
+                empty($endDate) ? null : Date::factory($endDate));
+
+            echo json_encode(['result' => 'ok']);
+        } catch (\Exception $ex) {
+            $notification = new Notification($ex->getMessage());
+            $notification->type = Notification::TYPE_TRANSIENT;
+            $notification->context = Notification::CONTEXT_ERROR;
+            $notification->title = Piwik::translate('General_Error');
+            $notification->hasNoClear();
+            Notification\Manager::notify('GoogleAnalyticsImporter_changeImportEndDate_failure', $notification);
         }
     }
 
