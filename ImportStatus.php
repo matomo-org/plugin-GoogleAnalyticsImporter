@@ -92,12 +92,16 @@ class ImportStatus
     public function setImportDateRange($idSite, Date $startDate = null, Date $endDate = null)
     {
         $status = $this->getImportStatus($idSite);
-        if (!empty($startDate)) {
-            $status['import_range_start'] = $startDate->toString();
+        $status['import_range_start'] = $startDate ? $startDate->toString() : '';
+        $status['import_range_end'] = $endDate ? $endDate->toString() : '';
+
+        if (!empty($status['import_range_start'])
+            && !empty($status['import_range_end'])
+            && Date::factory($status['import_range_start'])->isLater(Date::factory($status['import_range_end']))
+        ) {
+            throw new \Exception("The start date cannot be past the end date.");
         }
-        if (!empty($endDate)) {
-            $status['import_range_end'] = $endDate->toString();
-        }
+
         $this->saveStatus($status);
 
         $this->setImportedDateRange($idSite, $startDate, null);
@@ -209,23 +213,23 @@ class ImportStatus
         }
 
         if (isset($status['import_start_time'])) {
-            $status['import_start_time'] = Date::factory($status['import_start_time'])->getDatetime();
+            $status['import_start_time'] = $this->getDatetime($status['import_start_time']);
         }
 
         if (isset($status['import_end_time'])) {
-            $status['import_end_time'] = Date::factory($status['import_end_time'])->getDatetime();
+            $status['import_end_time'] = $this->getDatetime($status['import_end_time']);
         }
 
         if (isset($status['last_job_start_time'])) {
-            $status['last_job_start_time'] = Date::factory($status['last_job_start_time'])->getDatetime();
+            $status['last_job_start_time'] = $this->getDatetime($status['last_job_start_time']);
         }
 
         if (isset($status['import_range_start'])) {
-            $status['import_range_start'] = Date::factory($status['import_range_start'])->toString();
+            $status['import_range_start'] = $this->getDateString($status['import_range_start']);
         }
 
         if (isset($status['import_range_end'])) {
-            $status['import_range_end'] = Date::factory($status['import_range_end'])->toString();
+            $status['import_range_end'] = $this->getDateString($status['import_range_end']);
 
             $status['estimated_days_left_to_finish'] = self::getEstimatedDaysLeftToFinish($status);
         }
@@ -238,35 +242,41 @@ class ImportStatus
 
     public static function getEstimatedDaysLeftToFinish($status)
     {
-        if (!empty($status['last_date_imported'])) {
-            $lastDateImported = Date::factory($status['last_date_imported']);
-            $importEndDate = Date::factory($status['import_range_end']);
+        try {
+            if (!empty($status['last_date_imported'])
+                && !empty($status['import_range_end'])
+            ) {
+                $lastDateImported = Date::factory($status['last_date_imported']);
+                $importEndDate = Date::factory($status['import_range_end']);
 
-            $importStartTime = Date::factory($status['import_start_time']);
+                $importStartTime = Date::factory($status['import_start_time']);
 
-            if (isset($status['import_range_start'])) {
-                $importRangeStart = Date::factory($status['import_range_start']);
+                if (isset($status['import_range_start'])) {
+                    $importRangeStart = Date::factory($status['import_range_start']);
+                } else {
+                    $importRangeStart = Date::factory(Site::getCreationDateFor($status['idSite']));
+                }
+
+                $daysRunning = floor((Date::now()->getTimestamp() - $importStartTime->getTimestamp()) / 86400);
+                if ($daysRunning == 0) {
+                    return null;
+                }
+
+                $totalDaysLeft = floor(($importEndDate->getTimestamp() - $lastDateImported->getTimestamp()) / 86400);
+                $totalDaysImported = floor(($lastDateImported->getTimestamp() - $importRangeStart->getTimestamp()) / 86400);
+
+                $rateOfImport = $totalDaysImported / $daysRunning;
+                if ($rateOfImport <= 0) {
+                    return lcfirst(Piwik::translate('General_Unknown'));
+                }
+
+                $totalTimeLeftInDays = ceil($totalDaysLeft / $rateOfImport);
+
+                return max(0, $totalTimeLeftInDays);
             } else {
-                $importRangeStart = Date::factory(Site::getCreationDateFor($status['idSite']));
-            }
-
-            $daysRunning = floor((Date::now()->getTimestamp() - $importStartTime->getTimestamp()) / 86400);
-            if ($daysRunning == 0) {
-                return null;
-            }
-
-            $totalDaysLeft = floor(($importEndDate->getTimestamp() - $lastDateImported->getTimestamp()) / 86400);
-            $totalDaysImported = floor(($lastDateImported->getTimestamp() - $importRangeStart->getTimestamp()) / 86400);
-
-            $rateOfImport = $totalDaysImported / $daysRunning;
-            if ($rateOfImport <= 0) {
                 return lcfirst(Piwik::translate('General_Unknown'));
             }
-
-            $totalTimeLeftInDays = ceil($totalDaysLeft / $rateOfImport);
-
-            return max(0, $totalTimeLeftInDays);
-        } else {
+        } catch (\Exception $ex) {
             return lcfirst(Piwik::translate('General_Unknown'));
         }
     }
@@ -289,4 +299,21 @@ class ImportStatus
         Option::set($optionName, $value);
     }
 
+    private function getDatetime($str)
+    {
+        try {
+            return Date::factory($str)->getDatetime();
+        } catch (\Exception $ex) {
+            return $str;
+        }
+    }
+
+    private function getDateString($str)
+    {
+        try {
+            return Date::factory($str)->toString();
+        } catch (\Exception $ex) {
+            return $str;
+        }
+    }
 }
