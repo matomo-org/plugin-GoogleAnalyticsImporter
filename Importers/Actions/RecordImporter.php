@@ -408,7 +408,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_VISITS)
                     && $this->pageUrlsByPagePath[$actionName]->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
                 ) {
-                    throw new \Exception("Unexpected error: encountered URL twice in result set: '$actionName'");
+                    $this->getLogger()->warning("Unexpected error: encountered URL twice in result set: '$actionName'");
+                    continue;
                 }
 
                 $this->pageUrlsByPagePath[$actionName]->sumRow($row, $copyMetadata = false);
@@ -447,7 +448,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 if ($existingRow->hasColumn(Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS)
                     && $existingRow->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
                 ) {
-                    throw new \Exception("Unexpected error: encountered page title twice in result set (when including unique visitors): '$pageTitle'");
+                    $this->getLogger()->warning("Unexpected error: encountered page title twice in result set (when including unique visitors): '$pageTitle'");
+                    continue;
                 }
 
                 $existingRow->sumRow($row, $copyMetadata = false);
@@ -484,7 +486,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS)
                     && $this->pageUrlsByPagePath[$actionName]->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
                 ) {
-                    throw new \Exception("Unexpected error: encountered URL twice in result set: '$actionName'");
+                    $this->getLogger()->warning("Unexpected error: encountered URL twice in result set: '$actionName'");
+                    continue;
                 }
 
                 $this->pageUrlsByPagePath[$actionName]->sumRow($row, $copyMetadata = false);
@@ -527,7 +530,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS)
                 && $existingRow->getColumn('label') != DataTable::LABEL_SUMMARY_ROW
             ) {
-                throw new \Exception("Unexpected error: encountered page title twice in result set: '$pageTitle'");
+                $this->getLogger()->warning("Unexpected error: encountered page title twice in result set: '$pageTitle'");
+                continue;
             }
 
             $existingRow->sumRow($row, $copyMetadata = false);
