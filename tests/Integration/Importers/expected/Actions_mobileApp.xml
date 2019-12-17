@@ -3,12 +3,12 @@
 	<result record="Actions_actions">
 		<row>
 			<col name="label"> Homepage</col>
-			<col name="2">16</col>
-			<col name="1">15</col>
-			<col name="12">19</col>
-			<col name="13">2</col>
-			<col name="30">5</col>
-			<col name="31">7</col>
+			<col name="2">32</col>
+			<col name="1">30</col>
+			<col name="12">38</col>
+			<col name="13">4</col>
+			<col name="30">10</col>
+			<col name="31">14</col>
 			<col name="17">7</col>
 			<col name="19">8</col>
 			<col name="20">9</col>
@@ -58,22 +58,22 @@
 	<result record="Actions_sitesearch" />
 	<result record="Actions_nb_pageviews">
 		<row>
-			<value>40</value>
+			<value>59</value>
 		</row>
 	</result>
 	<result record="Actions_nb_uniq_pageviews">
 		<row>
-			<value>53</value>
+			<value>69</value>
 		</row>
 	</result>
 	<result record="Actions_sum_time_generation">
 		<row>
-			<value>11</value>
+			<value>16</value>
 		</row>
 	</result>
 	<result record="Actions_nb_hits_with_time_generation">
 		<row>
-			<value>15</value>
+			<value>22</value>
 		</row>
 	</result>
 	<result record="Actions_nb_searches">
