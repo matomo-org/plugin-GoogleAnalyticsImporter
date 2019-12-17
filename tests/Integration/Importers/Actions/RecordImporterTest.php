@@ -203,6 +203,14 @@ class RecordImporterTest extends BaseRecordImporterTest
                 Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 11,
             ],
             [
+                'ga:landingPagePath' => '/index',
+                'ga:pageTitle' => 'Index page ',
+                Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 8,
+                Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 9,
+                Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 10,
+                Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 11,
+            ],
+            [
                 'ga:landingPagePath' => '/',
                 'ga:pageTitle' => 'Index real',
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 3,
@@ -310,6 +318,13 @@ class RecordImporterTest extends BaseRecordImporterTest
                 Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 7,
             ],
             [
+                'ga:screenName' => 'Homepage ',
+                Metrics::INDEX_PAGE_NB_HITS => 19,
+                Metrics::INDEX_PAGE_SUM_TIME_SPENT => 2,
+                Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 5,
+                Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 7,
+            ],
+            [
                 'ga:screenName' => 'A Screen',
                 Metrics::INDEX_PAGE_NB_HITS => 18,
                 Metrics::INDEX_PAGE_SUM_TIME_SPENT => 1,
@@ -342,6 +357,11 @@ class RecordImporterTest extends BaseRecordImporterTest
                 Metrics::INDEX_NB_UNIQ_VISITORS => 15,
             ],
             [
+                'ga:screenName' => 'Homepage ',
+                Metrics::INDEX_NB_VISITS => 16,
+                Metrics::INDEX_NB_UNIQ_VISITORS => 15,
+            ],
+            [
                 'ga:screenName' => 'A Screen',
                 Metrics::INDEX_NB_VISITS => 20,
                 Metrics::INDEX_NB_UNIQ_VISITORS => 10,
@@ -364,6 +384,14 @@ class RecordImporterTest extends BaseRecordImporterTest
         return [
             [
                 'ga:landingScreenName' => 'Homepage',
+                Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 7,
+                Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 8,
+                Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 9,
+                Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH => 10,
+                Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => 11,
+            ],
+            [
+                'ga:landingScreenName' => 'Homepage ',
                 Metrics::INDEX_PAGE_ENTRY_NB_UNIQ_VISITORS => 7,
                 Metrics::INDEX_PAGE_ENTRY_NB_VISITS => 8,
                 Metrics::INDEX_PAGE_ENTRY_NB_ACTIONS => 9,

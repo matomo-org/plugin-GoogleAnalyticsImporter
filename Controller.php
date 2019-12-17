@@ -353,7 +353,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
             $notification->hasNoClear();
-            Notification\Manager::notify('GoogleAnalyticsImporter_startImport_failure', $notification);
+            Notification\Manager::notify('GoogleAnalyticsImporter_resumeImport_failure', $notification);
         }
     }
 }
