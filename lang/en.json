@@ -64,7 +64,7 @@
     "RateLimitHelp": "Google Analytics by default limits the number of requests you can make to the API for a specific project to 50,000 a day. It looks like this import job has exceeded that limit, so the import cannot continue until tomorrow.",
     "SiteID": "Site ID",
     "SiteDeleted": "Site Deleted",
-    "FinishedImportingDaysWaiting": "Finished %1$s days, waiting until tomorrow to resume import.",
+    "FinishedImportingDaysWaiting": "Finished %1$s days since last resume, waiting until tomorrow to resume again.",
     "ErrorMessage": "Error message",
     "ErrorMessageBugReportRequest": "These errors are unexpected and will likely continue every time you run the import on this day. To resolve this issue, please %1$sask on the forums%2$s. If you can provide access to your GA account it will provide a quicker resolution.",
     "LastDayImported": "Last Day Imported",
@@ -75,7 +75,7 @@
     "LastResumeTime": "Last Resume Time",
     "ThisJobShouldFinishToday": "This job should finish today.",
     "EstimatedFinishIn": "Estimated finish in %1$s days.",
-    "JobWillRunUntilManuallyCancelled": "No end import date specified. This job will run until manually cancelled.",
+    "JobWillRunUntilManuallyCancelled": "No import end date specified. This job will run until manually cancelled.",
     "MatomoSite": "Matomo Site",
     "GoogleAnalyticsInfo": "Google Analytics Info",
     "Status": "Status",
@@ -85,6 +85,7 @@
     "Actions": "Actions",
     "ThereAreNoImportJobs": "There are no import jobs to display.",
     "ScheduleImportDesc1": "Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).",
-    "ScheduleImportDesc2": "If no end date is supplied, the import will continue until you manually cancel it below."
+    "ScheduleImportDesc2": "If no end date is supplied, the import will continue until you manually cancel it below.",
+    "ResumeDesc": "Resume. Note: if your import has errored, resuming it will most likely result in the same error. If it has been rate limited, resuming will most likely result in the same rate limiting error, but it will automatically restart the next day when the rate limit wears off."
   }
 }

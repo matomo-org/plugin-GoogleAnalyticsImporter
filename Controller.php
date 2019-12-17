@@ -19,6 +19,7 @@ use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\MobileAppMeasurable\Type;
+use Piwik\Site;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
 
@@ -65,6 +66,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $stopImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.stopImportNonce');
         $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce');
         $changeImportEndDateNonce = Nonce::getNonce('GoogleAnalyticsImporter.changeImportEndDateNonce');
+        $resumeImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.resumeImportNonce');
 
         return $this->renderTemplate('index', [
             'isConfigured' => $authorization->hasAccessToken(),
@@ -75,6 +77,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'stopImportNonce' => $stopImportNonce,
             'startImportNonce' => $startImportNonce,
             'changeImportEndDateNonce' => $changeImportEndDateNonce,
+            'resumeImportNonce' => $resumeImportNonce,
             'extraCustomDimensionsField' => [
                 'field1' => [
                     'key' => 'gaDimension',
@@ -307,6 +310,41 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
                 throw $ex;
             }
+
+            echo json_encode([ 'result' => 'ok' ]);
+        } catch (\Exception $ex) {
+            $notification = new Notification($ex->getMessage());
+            $notification->type = Notification::TYPE_TRANSIENT;
+            $notification->context = Notification::CONTEXT_ERROR;
+            $notification->title = Piwik::translate('General_Error');
+            $notification->hasNoClear();
+            Notification\Manager::notify('GoogleAnalyticsImporter_startImport_failure', $notification);
+        }
+    }
+
+    public function resumeImport()
+    {
+        Piwik::checkUserHasSuperUserAccess();
+        $this->checkTokenInUrl();
+
+        Json::sendHeaderJSON();
+
+        try {
+            Nonce::checkNonce('GoogleAnalyticsImporter.resumeImportNonce', Common::getRequestVar('nonce'));
+
+            $idSite = Common::getRequestVar('idSite', null, 'int');
+            new Site($idSite);
+
+            /** @var ImportStatus $importStatus */
+            $importStatus = StaticContainer::get(ImportStatus::class);
+            $status = $importStatus->getImportStatus($idSite);
+            if ($status['status'] == ImportStatus::STATUS_FINISHED
+                || $status['status'] == ImportStatus::STATUS_ONGOING
+            ) {
+                throw new \Exception("This import cannot be resumed since it is either finished or currently ongoing.");
+            }
+
+            Tasks::startImport($status);
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {
