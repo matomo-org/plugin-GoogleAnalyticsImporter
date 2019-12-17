@@ -232,11 +232,11 @@ class ImportStatus
             $status['last_job_start_time'] = $this->getDatetime($status['last_job_start_time']);
         }
 
-        if (isset($status['import_range_start'])) {
+        if (!empty($status['import_range_start'])) {
             $status['import_range_start'] = $this->getDateString($status['import_range_start']);
         }
 
-        if (isset($status['import_range_end'])) {
+        if (!empty($status['import_range_end'])) {
             $status['import_range_end'] = $this->getDateString($status['import_range_end']);
 
             $status['estimated_days_left_to_finish'] = self::getEstimatedDaysLeftToFinish($status);

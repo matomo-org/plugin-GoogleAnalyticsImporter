@@ -10,16 +10,34 @@
 
     ImportStatusController.$inject = [
         'piwikApi',
-        'piwik'
+        'piwik',
+        '$element'
     ];
 
-    function ImportStatusController(piwikApi, piwik) {
+    function ImportStatusController(piwikApi, piwik, $element) {
         var vm = this;
         vm.nonce = null;
         vm.deleteImportStatus = deleteImportStatus;
         vm.showEditImportEndDateModal = showEditImportEndDateModal;
         vm.cancelEditImportEndDateModal = cancelEditImportEndDateModal;
         vm.changeImportEndDateModal = changeImportEndDateModal;
+        vm.manuallyResume = manuallyResume;
+
+        $element.tooltip({
+            track: true,
+            content: function() {
+                var $this = $(this);
+                if ($this.attr('piwik-field') === '') {
+                    // do not show it for form fields
+                    return '';
+                }
+
+                var title = $(this).attr('title');
+                return piwikHelper.escape(title.replace(/\n/g, '<br />'));
+            },
+            show: {delay: 500, duration: 200},
+            hide: false
+        });
 
         var editImportEndDateIdSite = null;
 
@@ -39,6 +57,17 @@
                 idSite: editImportEndDateIdSite,
                 nonce: vm.changeImportEndDateNonce,
                 endDate: vm.newImportEndDate
+            }, { token_auth: piwik.token_auth })['finally'](function () {
+                window.location.reload();
+            });
+        }
+
+        function manuallyResume(idSite) {
+            return piwikApi.post({
+                module: 'GoogleAnalyticsImporter',
+                action: 'resumeImport',
+                idSite: idSite,
+                nonce: vm.resumeImportNonce
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });
