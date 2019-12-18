@@ -1,5 +1,17 @@
 ## Changelog
 
+# 1.1.3
+
+Features:
+* Resume button to make it clearer that on an errored import the import doesn't have to be cancelled and restarted.
+* Add feature to change import end date dynamically so users don't have to restart if they enter the wrong end date (or don't enter one).
+* Support new VisitFrequency metrics in core if available.
+
+Bug fixes:
+* Tweaks to messages for clarity.
+* Goals record importer was not applying new/returning segments.
+* GA does not trim page titles, so ignore on error and hope users report issues.
+
 # 1.1.2
 
 Bug fixes:

@@ -344,7 +344,8 @@ class Importer
             }
 
             if (!empty($status['import_range_end'])
-                && $end->toString() == $status['import_range_end']
+                && ($end->toString() == $status['import_range_end']
+                    || $end->isLater(Date::factory($status['import_range_end'])))
             ) {
                 $this->importStatus->finishedImport($idSite);
             }

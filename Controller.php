@@ -339,10 +339,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
             $status = $importStatus->getImportStatus($idSite);
-            if ($status['status'] == ImportStatus::STATUS_FINISHED
-                || $status['status'] == ImportStatus::STATUS_ONGOING
-            ) {
-                throw new \Exception("This import cannot be resumed since it is either finished or currently ongoing.");
+            if ($status['status'] == ImportStatus::STATUS_FINISHED) {
+                throw new \Exception("This import cannot be resumed since it is finished.");
             }
 
             $importStatus->resumeImport($idSite);
