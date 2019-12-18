@@ -66,7 +66,7 @@
     "SiteDeleted": "Site Deleted",
     "FinishedImportingDaysWaiting": "Finished %1$s days since last resume, waiting until tomorrow to resume again.",
     "ErrorMessage": "Error message",
-    "ErrorMessageBugReportRequest": "These errors are unexpected and will likely continue every time you run the import on this day. To resolve this issue, please %1$sask on the forums%2$s. If you can provide access to your GA account it will provide a quicker resolution.",
+    "ErrorMessageBugReportRequest": "These errors are unexpected and will likely continue every time you run the import on this day. To resolve this issue, please %1$sask on the forums%2$s. If you can provide access to your GA account to a member of Matomo's support team it will provide a quicker resolution.",
     "LastDayImported": "Last Day Imported",
     "LastDayArchived": "Last Day Archived",
     "ImportStartDate": "Import Start Date",
@@ -86,6 +86,6 @@
     "ThereAreNoImportJobs": "There are no import jobs to display.",
     "ScheduleImportDesc1": "Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).",
     "ScheduleImportDesc2": "If no end date is supplied, the import will continue until you manually cancel it below.",
-    "ResumeDesc": "Resume. Note: if your import has errored, resuming it will most likely result in the same error. If it has been rate limited, resuming will most likely result in the same rate limiting error, but it will automatically restart the next day when the rate limit wears off."
+    "ResumeDesc": "Resume. Note: if your import has errored, resuming it will most likely result in the same error unless you have updated the plugin with a fix. If it has been rate limited, resuming will most likely result in the same rate limiting error, but it will automatically restart the next day when the rate limit wears off."
   }
 }

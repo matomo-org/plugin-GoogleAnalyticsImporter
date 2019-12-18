@@ -351,7 +351,7 @@ class Importer
         } catch (DailyRateLimitReached $ex) {
             $this->importStatus->rateLimitReached($idSite);
             throw $ex;
-        } catch (\Exception $ex) {
+        } catch (\Throwable $ex) {
             $dateStr = isset($date) ? $date->toString() : '(unknown)';
             $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
 

@@ -216,15 +216,17 @@
                         </td>
                         <td class="import-end-time">
                             {% if status.status == 'finished' %}
-                                {{ status.import_end_time|default('-') }}
+                                {{ status.import_end_time|default(noneText) }}
                             {% elseif status.estimated_days_left_to_finish|default is not empty %}
                                 {% if status.estimated_days_left_to_finish matches '/^\\d+$/' and status.estimated_days_left_to_finish == 0 %}
                                 {{ 'GoogleAnalyticsImporter_ThisJobShouldFinishToday'|translate }}
                                 {% else %}
                                 {{ 'GoogleAnalyticsImporter_EstimatedFinishIn'|translate(status.estimated_days_left_to_finish) }}
                                 {% endif %}
-                            {% else %}
+                            {% elseif status.import_end_time|default is not empty %}
                                 {{ 'GoogleAnalyticsImporter_JobWillRunUntilManuallyCancelled'|translate }}
+                            {% else %}
+                                {{ 'General_Unknown'|translate }}
                             {% endif %}
                         </td>
                         <td class="actions">

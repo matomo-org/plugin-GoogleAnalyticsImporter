@@ -231,8 +231,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
             $status = $importStatus->getImportStatus($idSite);
+
             $importStatus->setImportDateRange($idSite,
-                empty($status['import_start_time']) ? null : Date::factory($status['import_start_time']),
+                empty($status['import_range_start']) ? null : Date::factory($status['import_range_start']),
                 empty($endDate) ? null : Date::factory($endDate));
 
             echo json_encode(['result' => 'ok']);
@@ -343,6 +344,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             ) {
                 throw new \Exception("This import cannot be resumed since it is either finished or currently ongoing.");
             }
+
+            $importStatus->resumeImport($idSite);
 
             Tasks::startImport($status);
 
