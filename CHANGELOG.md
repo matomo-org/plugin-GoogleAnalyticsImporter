@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.2.1
+
+Bug fixes:
+* Handle old statuses without new property.
+
 # 1.2.0
 
 Features:
