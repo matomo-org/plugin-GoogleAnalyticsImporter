@@ -225,7 +225,7 @@
                                 {% else %}
                                 {{ 'GoogleAnalyticsImporter_EstimatedFinishIn'|translate(status.estimated_days_left_to_finish) }}
                                 {% endif %}
-                            {% elseif status.import_end_time|default is not empty %}
+                            {% elseif status.import_range_end|default is empty %}
                                 {{ 'GoogleAnalyticsImporter_JobWillRunUntilManuallyCancelled'|translate }}
                             {% else %}
                                 {{ 'General_Unknown'|translate }}

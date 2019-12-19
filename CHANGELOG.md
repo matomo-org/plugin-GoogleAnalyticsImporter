@@ -1,5 +1,11 @@
 ## Changelog
 
+# 1.2.2
+
+Bug fixes:
+* Fixing typo.
+* Small style tweak.
+
 # 1.2.1
 
 Bug fixes:
