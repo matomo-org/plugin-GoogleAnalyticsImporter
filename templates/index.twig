@@ -192,7 +192,9 @@
                                     title="{{ 'GoogleAnalyticsImporter_RateLimitHelp'|translate }}"
                                 ></span>
                                 <br/>
+                                {% if status.days_finished_since_rate_limit|default is not empty %}
                                 {{ 'GoogleAnalyticsImporter_FinishedImportingDaysWaiting'|translate(status.days_finished_since_rate_limit) }}
+                                {% endif %}
                             {% elseif status.status == 'errored' %}
                                 <br/>
                                 {{ 'GoogleAnalyticsImporter_ErrorMessage'|translate }}: {{ status.error|default('no message') }}
