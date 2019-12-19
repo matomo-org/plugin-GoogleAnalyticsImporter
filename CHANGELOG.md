@@ -1,6 +1,6 @@
 ## Changelog
 
-# 1.1.3
+# 1.2.0
 
 Features:
 * Resume button to make it clearer that on an errored import the import doesn't have to be cancelled and restarted.
