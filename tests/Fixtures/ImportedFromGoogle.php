@@ -8,13 +8,13 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
-use Interop\Container\ContainerInterface;
 use Piwik\Config;
 use Piwik\CronArchive;
 use Piwik\Db;
 use Piwik\Ini\IniReader;
 use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
+use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\CapturingGoogleClient;
 use Piwik\Plugins\VisitsSummary\API;
 use Piwik\Tests\Framework\Fixture;
 use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
@@ -33,9 +33,12 @@ class ImportedFromGoogle extends Fixture
     public $viewId;
     public $clientConfig;
 
+    public $isCapturingResponses;
+
     public function __construct()
     {
         $this->extraPluginsToLoad = ['Funnels', 'MarketingCampaignsReporting'];
+        $this->isCapturingResponses = getenv('MATOMO_TEST_CAPTURE_GA_RESPONSES') == 1;
     }
 
     public function setUp()
@@ -133,12 +136,18 @@ class ImportedFromGoogle extends Fixture
 
     public function provideContainerConfig()
     {
-        return array(
+        $result = [
             'Psr\Log\LoggerInterface' => \DI\get('Monolog\Logger'),
             'log.handlers' => [
                 \DI\get(ConsoleHandler::class),
             ],
-        );
+        ];
+
+        if ($this->isCapturingResponses) {
+            $result['GoogleAnalyticsImporter.googleClientClass'] = CapturingGoogleClient::class;
+        }
+
+        return $result;
     }
 
     private function tryToUseNonTestEnvCredentials()

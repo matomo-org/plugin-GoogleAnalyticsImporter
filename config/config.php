@@ -7,8 +7,12 @@ require_once __DIR__ . '/../vendor/autoload.php';
 return [
     'GoogleAnalyticsImporter.pingMysqlEverySecs' => null,
 
-    'GoogleAnalyticsImporter.googleClient' => function () {
-        $googleClient = new \Google_Client();
+    'GoogleAnalyticsImporter.googleClientClass' => 'Google_Client',
+    'GoogleAnalyticsImporter.googleClient' => function (\Psr\Container\ContainerInterface $c) {
+        $klass = $c->get('GoogleAnalyticsImporter.googleClientClass');
+
+        /** @var \Google_Client $googleClient */
+        $googleClient = new $klass();
         $googleClient->addScope(\Google_Service_Analytics::ANALYTICS_READONLY);
         $googleClient->addScope(\Google_Service_AnalyticsReporting::ANALYTICS_READONLY);
         $googleClient->setAccessType('offline');

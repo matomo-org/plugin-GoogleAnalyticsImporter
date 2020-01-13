@@ -46,7 +46,7 @@
         piwik-content-block
         content-title="{{ 'GoogleAnalyticsImporter_RemoveClientConfiguration'|translate }}"
     >
-        <form action="{{ linkTo({'action': 'deleteClientCredentials'}) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ linkTo({'action': 'deleteClientCredentials'}) }}" method="POST" enctype="multipart/form-data" id="removeConfigForm">
             <p>{{ 'GoogleAnalyticsImporter_DeleteUploadedClientConfig'|translate }}:</p>
 
             <input type="hidden" name="config_nonce" value="{{ nonce }}" />
@@ -139,7 +139,7 @@
                  inline-help="{{ 'GoogleAnalyticsImporter_IsVerboseLoggingEnabledHelp'|translate('/path/to/matomo/tmp/logs/', 'gaimportlog.$idSite.$matomoDomain.log') }}"
             ></div>
 
-            <button type="submit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
+            <button type="submit" id="startImportSubmit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
         </div>
     </div>
 
