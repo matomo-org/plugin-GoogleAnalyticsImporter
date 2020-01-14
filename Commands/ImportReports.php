@@ -134,7 +134,7 @@ class ImportReports extends ConsoleCommand
             $viewId = $status['ga']['view'];
         }
 
-        $lock = $this->makeLock();
+        $lock = self::makeLock();
         $success = $lock->acquireLock($idSite, Importer::LOCK_TTL);
         if (empty($success)) {
             throw new \Exception("An import is currently in progress. (If the other import has failed, you should be able to try again in about 5 minutes.)");
@@ -277,7 +277,7 @@ class ImportReports extends ConsoleCommand
         return $matches[1];
     }
 
-    private function makeLock()
+    public static function makeLock()
     {
         return new Lock(new MySqlLockBackend(), self::IMPORT_LOCK_NAME);
     }
