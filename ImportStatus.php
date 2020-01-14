@@ -199,7 +199,11 @@ class ImportStatus
         @unlink($archiveLogFile);
     }
 
-    private function saveStatus($status)
+    /**
+     * public for tests
+     * @ignore
+     */
+    public function saveStatus($status)
     {
         $optionName = $this->getOptionName($status['idSite']);
         Option::set($optionName, json_encode($status));
@@ -242,8 +246,10 @@ class ImportStatus
             $status['estimated_days_left_to_finish'] = self::getEstimatedDaysLeftToFinish($status);
         }
 
-        $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
-            . "\nView: " . $status['ga']['view'];
+        if (!empty($status['ga'])) {
+            $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
+                . "\nView: " . $status['ga']['view'];
+        }
 
         return $status;
     }

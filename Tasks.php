@@ -12,6 +12,7 @@ use Piwik\CliMulti\CliPhp;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
+use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
@@ -22,7 +23,7 @@ class Tasks extends \Piwik\Plugin\Tasks
 
     public function schedule()
     {
-        $this->daily('resumeScheduledImports');
+        $this->hourly('resumeScheduledImports');
 
         // we also run the archive command immediately after an import. the task is a safety net in case
         // that doesn't work for some reason.
@@ -46,6 +47,10 @@ class Tasks extends \Piwik\Plugin\Tasks
             }
 
             if ($status['status'] == ImportStatus::STATUS_FINISHED) {
+                continue;
+            }
+
+            if (self::isImportRunning($status)) {
                 continue;
             }
 
@@ -116,7 +121,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         $logger = StaticContainer::get(LoggerInterface::class);
         $logger->debug("Import command: {command}", ['command' => $command]);
 
-        exec($command);
+        static::exec($shouldUsePassthru = false, $command);
     }
 
     public static function startArchive(array $status, $wait = false)
@@ -133,6 +138,11 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         if (empty($status['last_date_imported'])) {
             $logger->info("Import for site ID = {$status['idSite']} has not imported any data yet, skipping archive job.");
+            return;
+        }
+
+        if (self::isImportRunning($status)) {
+            $logger->info("Import is currently running for site ID = {$status['idSite']}, not starting archiving right now.");
             return;
         }
 
@@ -200,7 +210,12 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         $logger->debug("Archive command for imported site: {command}", ['command' => $command]);
 
-        if ($wait) {
+        static::exec($shouldUsePassthru = $wait, $command);
+    }
+
+    public static function exec($shouldUsePassthru, $command)
+    {
+        if ($shouldUsePassthru) {
             passthru($command);
         } else {
             exec($command);
@@ -220,5 +235,18 @@ class Tasks extends \Piwik\Plugin\Tasks
     private static function sanitizeArg($gaDimension)
     {
         return preg_replace('/[^a-zA-Z0-9:_-]]/', '', $gaDimension);
+    }
+
+    private static function isImportRunning($status)
+    {
+        $idSite = $status['idSite'];
+
+        $lock = ImportReports::makeLock();
+        if ($lock->acquireLock($idSite, $ttl = 3)) {
+            $lock->unlock();
+            return false;
+        } else {
+            return true;
+        }
     }
 }
