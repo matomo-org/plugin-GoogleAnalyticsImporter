@@ -8,7 +8,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
-
 use Piwik\Date;
 use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
