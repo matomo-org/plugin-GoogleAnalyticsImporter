@@ -114,7 +114,7 @@ class TasksTest extends IntegrationTestCase
         $this->assertEquals([], TasksWithMockExec::$commandsRun);
     }
 
-    public function test_archiveImportedReports_shouldRunTheCommandCorrectlyL()
+    public function test_archiveImportedReports_shouldRunTheCommandCorrectly()
     {
         Fixture::createWebsite('2012-01-15');
 
@@ -123,7 +123,7 @@ class TasksTest extends IntegrationTestCase
         $tasks = new TasksWithMockExec();
         $tasks->archiveImportedReports();
         $this->assertEquals([
-            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} core:archive --disable-scheduled-tasks --force-idsites=1 --force-periods=week,month,year --force-date-last-n=9 > " . PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.1.mamp.log 2>&1 &'],
+            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} core:archive --disable-scheduled-tasks --force-idsites=1 --force-periods=week,month,year --force-date-last-n=10 > " . PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.1.mamp.log 2>&1 &'],
         ], TasksWithMockExec::$commandsRun);
     }
 

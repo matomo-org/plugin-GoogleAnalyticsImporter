@@ -9,8 +9,11 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
 use Piwik\Date;
+use Piwik\Db;
 use Piwik\Option;
+use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
+use Piwik\Site;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
@@ -407,6 +410,232 @@ class ImportStatusTest extends IntegrationTestCase
         $this->instance->setImportDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-01-01'));
     }
 
+    public function test_getAllImportStatuses_returnsAllStatuses()
+    {
+        Fixture::createWebsite('2012-02-02');
+        Fixture::createWebsite('2012-02-02');
+
+        $this->instance->startingImport('property', 'account', 'view', 1);
+        $this->instance->startingImport('property2', 'account2', 'view2', 2);
+        $this->instance->startingImport('property3', 'account3', 'view3', 3);
+
+        $statuses = $this->instance->getAllImportStatuses();
+        $this->cleanStatuses($statuses);
+        $this->assertEquals([
+            [
+                'status' => 'started',
+                'idSite' => 1,
+                'ga' => [
+                    'property' => 'property',
+                    'account' => 'account',
+                    'view' => 'view',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(1),
+                'gaInfoPretty' => 'Property: property
+Account: account
+View: view',
+            ],
+            [
+                'status' => 'started',
+                'idSite' => 2,
+                'ga' => [
+                    'property' => 'property2',
+                    'account' => 'account2',
+                    'view' => 'view2',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(2),
+                'gaInfoPretty' => 'Property: property2
+Account: account2
+View: view2',
+            ],
+            [
+                'status' => 'started',
+                'idSite' => 3,
+                'ga' => [
+                    'property' => 'property3',
+                    'account' => 'account3',
+                    'view' => 'view3',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(3),
+                'gaInfoPretty' => 'Property: property3
+Account: account3
+View: view3',
+            ],
+        ], $statuses);
+    }
+
+    public function test_getAllImportStatuses_checksKilledStatusIfRequired()
+    {
+        Date::$now = Date::factory('2015-03-04 00:00:00')->getTimestamp();
+
+        Fixture::createWebsite('2012-02-02');
+        Fixture::createWebsite('2012-02-02');
+        Fixture::createWebsite('2012-02-02');
+        Fixture::createWebsite('2012-02-02');
+
+        $status = $this->instance->startingImport('property', 'account', 'view', 1);
+        $status['last_job_start_time'] = Date::factory(Date::$now - 500)->getDatetime();
+        $this->instance->saveStatus($status);
+
+        $status = $this->instance->startingImport('property2', 'account2', 'view2', 2);
+        $status['last_job_start_time'] = Date::factory(Date::$now - 500)->getDatetime();
+        $this->instance->saveStatus($status);
+
+        $status = $this->instance->startingImport('property3', 'account3', 'view3', 3);
+        $status['last_job_start_time'] = Date::factory(Date::$now - 500)->getDatetime();
+        $this->instance->saveStatus($status);
+
+        $status = $this->instance->startingImport('property4', 'account4', 'view4', 4);
+        $status['last_job_start_time'] = Date::factory(Date::$now - 500)->getDatetime();
+        $this->instance->saveStatus($status);
+
+
+        $status = $this->instance->startingImport('property5', 'account5', 'view5', 5);
+        $status['last_job_start_time'] = Date::factory(Date::$now - 5)->getDatetime();
+        $this->instance->saveStatus($status);
+
+        $lock = ImportReports::makeLock();
+        $lock->acquireLock(1);
+
+        $lock2 = ImportReports::makeLock();
+        $lock2->acquireLock(2);
+
+        $lock2 = ImportReports::makeLock();
+        $lock2->acquireLock(5);
+
+        $this->makeLocksExpired();
+
+        $lock2 = ImportReports::makeLock();
+        $lock2->acquireLock(3);
+
+        $statuses = $this->instance->getAllImportStatuses(true);
+        $this->cleanStatuses($statuses);
+
+        $this->assertEquals([
+            [
+                'status' => 'killed',
+                'idSite' => 1,
+                'ga' => [
+                    'property' => 'property',
+                    'account' => 'account',
+                    'view' => 'view',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(1),
+                'gaInfoPretty' => 'Property: property
+Account: account
+View: view',
+            ],
+            [
+                'status' => 'killed',
+                'idSite' => 2,
+                'ga' => [
+                    'property' => 'property2',
+                    'account' => 'account2',
+                    'view' => 'view2',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(2),
+                'gaInfoPretty' => 'Property: property2
+Account: account2
+View: view2',
+            ],
+            [
+                'status' => 'started',
+                'idSite' => 3,
+                'ga' => [
+                    'property' => 'property3',
+                    'account' => 'account3',
+                    'view' => 'view3',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(3),
+                'gaInfoPretty' => 'Property: property3
+Account: account3
+View: view3',
+            ],
+            [
+                'status' => 'killed',
+                'idSite' => 4,
+                'ga' => [
+                    'property' => 'property4',
+                    'account' => 'account4',
+                    'view' => 'view4',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(4),
+                'gaInfoPretty' => 'Property: property4
+Account: account4
+View: view4',
+            ],
+            [
+                'status' => 'started',
+                'idSite' => 5,
+                'ga' => [
+                    'property' => 'property5',
+                    'account' => 'account5',
+                    'view' => 'view5',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(5),
+                'gaInfoPretty' => 'Property: property5
+Account: account5
+View: view5',
+            ],
+        ], $statuses);
+    }
+
     private function getImportStatus($idSite)
     {
         $optionName = ImportStatus::OPTION_NAME_PREFIX . $idSite;
@@ -417,5 +646,18 @@ class ImportStatusTest extends IntegrationTestCase
         }
         $data = json_decode($data, true);
         return $data;
+    }
+
+    private function makeLocksExpired()
+    {
+        Db::query("UPDATE `locks` SET expiry_time = 5");
+    }
+
+    private function cleanStatuses(array &$statuses)
+    {
+        foreach ($statuses as &$status) {
+            unset($status['import_start_time']);
+            unset($status['last_job_start_time']);
+        }
     }
 }

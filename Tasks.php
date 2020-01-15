@@ -50,7 +50,7 @@ class Tasks extends \Piwik\Plugin\Tasks
                 continue;
             }
 
-            if (self::isImportRunning($status)) {
+            if (ImportStatus::isImportRunning($status)) {
                 continue;
             }
 
@@ -62,6 +62,8 @@ class Tasks extends \Piwik\Plugin\Tasks
                 $logger->info('Resuming import into site with ID = {idSite}.', [
                     'idSite' => $status['idSite'],
                 ]);
+
+                $importStatus->resumeImport($status['idSite']);
             }
 
             self::startImport($status);
@@ -141,7 +143,7 @@ class Tasks extends \Piwik\Plugin\Tasks
             return;
         }
 
-        if (self::isImportRunning($status)) {
+        if (ImportStatus::isImportRunning($status)) {
             $logger->info("Import is currently running for site ID = {$status['idSite']}, not starting archiving right now.");
             return;
         }
@@ -237,16 +239,4 @@ class Tasks extends \Piwik\Plugin\Tasks
         return preg_replace('/[^a-zA-Z0-9:_-]]/', '', $gaDimension);
     }
 
-    private static function isImportRunning($status)
-    {
-        $idSite = $status['idSite'];
-
-        $lock = ImportReports::makeLock();
-        if ($lock->acquireLock($idSite, $ttl = 3)) {
-            $lock->unlock();
-            return false;
-        } else {
-            return true;
-        }
-    }
 }

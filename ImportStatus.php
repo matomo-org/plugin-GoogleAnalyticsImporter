@@ -14,6 +14,7 @@ use Piwik\Exception\UnexpectedWebsiteFoundException;
 use Piwik\Option;
 use Piwik\Date;
 use Piwik\Piwik;
+use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Site;
 
 // TODO: maybe make an import status entity class
@@ -27,6 +28,20 @@ class ImportStatus
     const STATUS_FINISHED = 'finished';
     const STATUS_ERRORED = 'errored';
     const STATUS_RATE_LIMITED = 'rate_limited';
+    const STATUS_KILLED = 'killed';
+
+    public static function isImportRunning($status)
+    {
+        $idSite = $status['idSite'];
+
+        $lock = ImportReports::makeLock();
+        if ($lock->acquireLock($idSite, $ttl = 3)) {
+            $lock->unlock();
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public function startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions = [])
     {
@@ -60,6 +75,8 @@ class ImportStatus
         ];
 
         $this->saveStatus($status);
+
+        return $status;
     }
 
     public function getImportedDateRange($idSite)
@@ -172,14 +189,14 @@ class ImportStatus
         $this->saveStatus($status);
     }
 
-    public function getAllImportStatuses()
+    public function getAllImportStatuses($checkKilledStatus = false)
     {
         $optionValues = Option::getLike(self::OPTION_NAME_PREFIX . '%');
 
         $result = [];
         foreach ($optionValues as $optionValue) {
             $status = json_decode($optionValue, true);
-            $status = $this->enrichStatus($status);
+            $status = $this->enrichStatus($status, $checkKilledStatus);
             $result[] = $status;
         }
         return $result;
@@ -214,7 +231,7 @@ class ImportStatus
         return self::OPTION_NAME_PREFIX . $idSite;
     }
 
-    private function enrichStatus($status)
+    private function enrichStatus($status, $checkKilledStatus)
     {
         if (isset($status['idSite'])) {
             try {
@@ -249,6 +266,17 @@ class ImportStatus
         if (!empty($status['ga'])) {
             $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
                 . "\nView: " . $status['ga']['view'];
+        }
+
+        if ($checkKilledStatus
+            && ($status['status'] == self::STATUS_ONGOING
+                || $status['status'] == self::STATUS_STARTED)
+            && !self::isImportRunning($status)
+            // check last job start time is over 5 minutes ago
+            && (empty($status['last_job_start_time'])
+                || Date::factory($status['last_job_start_time'])->getTimestamp() < Date::now()->getTimestamp() - 300)
+        ) {
+            $status['status'] = self::STATUS_KILLED;
         }
 
         return $status;
