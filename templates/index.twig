@@ -200,6 +200,11 @@
                                 {{ 'GoogleAnalyticsImporter_ErrorMessage'|translate }}: {{ status.error|default('no message') }}
                                 <br/>
                                 {{ 'GoogleAnalyticsImporter_ErrorMessageBugReportRequest'|translate('<a href="http://forums.matomo.org/" rell="noreferrer noopener" target="_blank">', '</a>')|raw }}
+                            {% elseif status.status == 'killed' %}
+                                <span
+                                        class="icon icon-help"
+                                        title="{{ 'GoogleAnalyticsImporter_KilledStatusHelp'|translate }}"
+                                ></span>
                             {% endif %}
                         </td>
                         <td class="last-date-imported">

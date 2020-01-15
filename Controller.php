@@ -61,7 +61,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         }
 
         $importStatus = StaticContainer::get(ImportStatus::class);
-        $statuses = $importStatus->getAllImportStatuses();
+        $statuses = $importStatus->getAllImportStatuses($checkKilledStatus = true);
 
         $stopImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.stopImportNonce');
         $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce');
