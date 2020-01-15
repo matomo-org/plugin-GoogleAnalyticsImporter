@@ -86,6 +86,7 @@
     "ThereAreNoImportJobs": "There are no import jobs to display.",
     "ScheduleImportDesc1": "Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).",
     "ScheduleImportDesc2": "If no end date is supplied, the import will continue until you manually cancel it below.",
-    "ResumeDesc": "Resume. Note: if your import has errored, resuming it will most likely result in the same error unless you have updated the plugin with a fix. If it has been rate limited, resuming will most likely result in the same rate limiting error, but it will automatically restart the next day when the rate limit wears off."
+    "ResumeDesc": "Resume. Note: if your import has errored, resuming it will most likely result in the same error unless you have updated the plugin with a fix. If it has been rate limited, resuming will most likely result in the same rate limiting error, but it will automatically restart the next day when the rate limit wears off.",
+    "KilledStatusHelp": "It looks like the import job was terminated. If you didn't do this yourself, then it's probable your host does not like long running PHP processes. View the user guide for more information and possible workarounds."
   }
 }
