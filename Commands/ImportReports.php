@@ -166,7 +166,9 @@ class ImportReports extends ConsoleCommand
                 }
 
                 $dates = [$startDate, $endDate];
-            } elseif ($createdSiteInCommand) {
+            } elseif ($createdSiteInCommand
+                && !empty($dates)
+            ) {
                 $importStatus->setImportDateRange($idSite, $dates[0], $dates[1]);
             }
 
