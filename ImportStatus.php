@@ -72,6 +72,7 @@ class ImportStatus
             'import_range_end' => null,
             'extra_custom_dimensions' => $extraCustomDimensions,
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ];
 
         $this->saveStatus($status);
@@ -124,6 +125,10 @@ class ImportStatus
             && Date::factory($status['import_range_start'])->isLater(Date::factory($status['import_range_end']))
         ) {
             throw new \Exception("The start date cannot be past the end date.");
+        }
+
+        if ($status['status'] == self::STATUS_FINISHED) {
+            $status['status'] = self::STATUS_ONGOING;
         }
 
         $this->saveStatus($status);
@@ -357,5 +362,42 @@ class ImportStatus
         } catch (\Exception $ex) {
             return $str;
         }
+    }
+
+    public function reImportDateRange($idSite, Date $startDate, Date $endDate)
+    {
+        if ($endDate->isEarlier($startDate)) {
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_InvalidDateRange'));
+        }
+
+        $status = $this->getImportStatus($idSite);
+        $status['reimport_ranges'][] = [$startDate->toString(), $endDate->toString()];
+        $this->saveStatus($status);
+    }
+
+    public function removeReImportEntry($idSite, $datesToImport)
+    {
+        $status = $this->getImportStatus($idSite);
+        if (!isset($status['reimport_ranges'])) {
+            $status['reimport_ranges'] = [];
+            $this->saveStatus($status);
+            return;
+        }
+
+        if (empty($status['reimport_ranges'])) {
+            return;
+        }
+
+        $status['reimport_ranges'] = array_filter($status['reimport_ranges'], function ($s) use ($datesToImport) {
+            if (!is_array($s)
+                || count($s) != 2
+            ) {
+                return false;
+            }
+            return $s[0] != $datesToImport[0] && $s[1] != $datesToImport[1];
+        });
+        $status['reimport_ranges'] = array_values($status['reimport_ranges']);
+
+        $this->saveStatus($status);
     }
 }

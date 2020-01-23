@@ -43,6 +43,7 @@
 			</row>
 		</goals>
 		<segment>referrerType==website</segment>
+		<referrer_type>3</referrer_type>
 		<subtable>
 			<row>
 				<label>divebums.com</label>
@@ -347,6 +348,7 @@
 			</row>
 		</goals>
 		<segment>referrerType==social</segment>
+		<referrer_type>7</referrer_type>
 		<subtable>
 			<row>
 				<label>Facebook</label>
@@ -528,6 +530,7 @@
 			</row>
 		</goals>
 		<segment>referrerType==direct</segment>
+		<referrer_type>1</referrer_type>
 	</row>
 	<row>
 		<label>Search Engines</label>
@@ -572,6 +575,7 @@
 			</row>
 		</goals>
 		<segment>referrerType==search</segment>
+		<referrer_type>2</referrer_type>
 		<subtable>
 			<row>
 				<label>(not provided)</label>

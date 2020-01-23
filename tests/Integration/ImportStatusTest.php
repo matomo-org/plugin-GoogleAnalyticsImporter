@@ -64,6 +64,7 @@ class ImportStatusTest extends IntegrationTestCase
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, null, null);
@@ -87,6 +88,7 @@ class ImportStatusTest extends IntegrationTestCase
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2012-03-04'), Date::factory('2012-03-05'));
@@ -110,6 +112,7 @@ class ImportStatusTest extends IntegrationTestCase
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2017-03-04'), null);
@@ -133,6 +136,7 @@ class ImportStatusTest extends IntegrationTestCase
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
@@ -156,6 +160,7 @@ class ImportStatusTest extends IntegrationTestCase
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
             'days_finished_since_rate_limit' => 1,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
@@ -181,6 +186,7 @@ class ImportStatusTest extends IntegrationTestCase
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
             'days_finished_since_rate_limit' => 3,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->finishedImport($idSite);
@@ -205,6 +211,7 @@ class ImportStatusTest extends IntegrationTestCase
                 ['gaDimension' => 'ga:whatever', 'dimensionScope' => 'visit'],
             ],
             'days_finished_since_rate_limit' => 3,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->deleteStatus($idSite);
@@ -240,6 +247,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_end' => null,
             'extra_custom_dimensions' => [],
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
@@ -262,6 +270,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_end' => null,
             'extra_custom_dimensions' => [],
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ], $status);
     }
 
@@ -293,6 +302,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_end' => null,
             'extra_custom_dimensions' => [],
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
@@ -314,6 +324,7 @@ class ImportStatusTest extends IntegrationTestCase
             'import_range_end' => null,
             'extra_custom_dimensions' => [],
             'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
         ], $status);
     }
 
@@ -441,6 +452,7 @@ class ImportStatusTest extends IntegrationTestCase
                 'gaInfoPretty' => 'Property: property
 Account: account
 View: view',
+                'reimport_ranges' => [],
             ],
             [
                 'status' => 'started',
@@ -461,6 +473,7 @@ View: view',
                 'gaInfoPretty' => 'Property: property2
 Account: account2
 View: view2',
+                'reimport_ranges' => [],
             ],
             [
                 'status' => 'started',
@@ -481,6 +494,7 @@ View: view2',
                 'gaInfoPretty' => 'Property: property3
 Account: account3
 View: view3',
+                'reimport_ranges' => [],
             ],
         ], $statuses);
     }
@@ -552,6 +566,7 @@ View: view3',
                 'gaInfoPretty' => 'Property: property
 Account: account
 View: view',
+                'reimport_ranges' => [],
             ],
             [
                 'status' => 'killed',
@@ -572,6 +587,7 @@ View: view',
                 'gaInfoPretty' => 'Property: property2
 Account: account2
 View: view2',
+                'reimport_ranges' => [],
             ],
             [
                 'status' => 'started',
@@ -592,6 +608,7 @@ View: view2',
                 'gaInfoPretty' => 'Property: property3
 Account: account3
 View: view3',
+                'reimport_ranges' => [],
             ],
             [
                 'status' => 'killed',
@@ -612,6 +629,7 @@ View: view3',
                 'gaInfoPretty' => 'Property: property4
 Account: account4
 View: view4',
+                'reimport_ranges' => [],
             ],
             [
                 'status' => 'started',
@@ -632,8 +650,96 @@ View: view4',
                 'gaInfoPretty' => 'Property: property5
 Account: account5
 View: view5',
+                'reimport_ranges' => [],
             ],
         ], $statuses);
+    }
+
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionMessage GoogleAnalyticsImporter_InvalidDateRange
+     */
+    public function test_reImportDateRange_throwsIfRangeIsInvalid()
+    {
+        $this->instance->reImportDateRange($idSite = 1, Date::factory('2015-02-03'), Date::factory('2015-01-03'));
+    }
+
+    public function test_reImportDateRange_addsDateRangeToStatusList()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $status['reimport_ranges'] = [
+            ['2012-03-04', '2012-04-01'],
+            ['2015-01-04', '2015-02-01'],
+            ['2016-05-05', '2016-05-06'],
+        ];
+        $this->instance->saveStatus($status);
+        $this->instance->reImportDateRange($idSite = 1, Date::factory('2017-04-01'), Date::factory('2017-05-01'));
+        $this->instance->reImportDateRange($idSite = 1, Date::factory('2016-05-05'), Date::factory('2016-05-06'));
+        $status = $this->instance->getImportStatus($idSite = 1);
+        $this->assertEquals([
+            ['2012-03-04', '2012-04-01'],
+            ['2015-01-04', '2015-02-01'],
+            ['2016-05-05', '2016-05-06'],
+            ['2017-04-01', '2017-05-01'],
+            ['2016-05-05', '2016-05-06'],
+        ], $status['reimport_ranges']);
+    }
+
+    public function test_reImportDateRange_addsDateRangeToStatusList_ifReimportRangesIsMissng()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        unset($status['reimport_ranges']);
+        $this->instance->saveStatus($status);
+
+        $this->instance->reImportDateRange($idSite = 1, Date::factory('2017-04-01'), Date::factory('2017-05-01'));
+        $this->instance->reImportDateRange($idSite = 1, Date::factory('2016-05-05'), Date::factory('2016-05-06'));
+
+        $status = $this->instance->getImportStatus($idSite = 1);
+        $this->assertEquals([
+            ['2017-04-01', '2017-05-01'],
+            ['2016-05-05', '2016-05-06'],
+        ], $status['reimport_ranges']);
+    }
+
+    public function test_removeReImportEntry_doesNothingIfReImportListIsEmpty()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $status['reimport_ranges'] = [];
+        $this->instance->saveStatus($status);
+
+        $this->instance->removeReImportEntry($idSite = 1, ['2016-05-05', '2016-05-06']);
+
+        $status = $this->instance->getImportStatus($idSite = 1);
+        $this->assertEmpty($status['reimport_ranges']);
+
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        unset($status['reimport_ranges']);
+        $this->instance->saveStatus($status);
+
+        $this->instance->removeReImportEntry($idSite = 1, ['2016-05-05', '2016-05-06']);
+
+        $status = $this->instance->getImportStatus($idSite = 1);
+        $this->assertEmpty($status['reimport_ranges']);
+    }
+
+    public function test_removeReImportEntry_removesAllInstancesOfTheRequestedDateRange()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $status['reimport_ranges'] = [
+            ['2016-05-05', '2016-05-06'],
+            ['2012-03-04', '2012-04-01'],
+            ['2016-05-05', '2016-05-06'],
+            ['2015-01-04', '2015-02-01'],
+            ['2016-05-05', '2016-05-06'],
+        ];
+        $this->instance->saveStatus($status);
+
+        $this->instance->removeReImportEntry($idSite = 1, ['2016-05-05', '2016-05-06']);
+        $status = $this->instance->getImportStatus($idSite = 1);
+        $this->assertEquals([
+            ['2012-03-04', '2012-04-01'],
+            ['2015-01-04', '2015-02-01'],
+        ], $status['reimport_ranges']);
     }
 
     private function getImportStatus($idSite)

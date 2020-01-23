@@ -100,6 +100,7 @@ class ImportReports extends ConsoleCommand
 
         $lock = null;
 
+        $createdSiteInCommand = false;
         if (empty($idSite)
             && !empty($property)
             && !empty($account)
@@ -112,6 +113,8 @@ class ImportReports extends ConsoleCommand
                 }
                 throw $ex;
             }
+
+            $createdSiteInCommand = true;
             $output->writeln("Created new site with ID = $idSite.");
         } else {
             $status = $importStatus->getImportStatus($idSite);
@@ -163,13 +166,52 @@ class ImportReports extends ConsoleCommand
                 }
 
                 $dates = [$startDate, $endDate];
+            } elseif ($createdSiteInCommand) {
+                $importStatus->setImportDateRange($idSite, $dates[0], $dates[1]);
             }
 
             $importer->importEntities($idSite, $account, $property, $viewId);
 
-            $output->writeln("Importing reports for date range {$dates[0]} - {$dates[1]} from GA view $viewId.");
+            $dateRangesToReImport = empty($status['reimport_ranges']) ? [] : $status['reimport_ranges'];
+            $dateRangesToReImport = array_map(function ($d) {
+                return [Date::factory($d[0]), Date::factory($d[1])];
+            }, $dateRangesToReImport);
 
-            $importer->import($idSite, $viewId, $dates[0], $dates[1], $lock);
+            $dateRangesToImport = array_merge($dateRangesToReImport, [ [$dates[0], $dates[1]] ]);
+
+            $dateRangesText = array_map(function ($d) { return $d[0] . ',' . $d[1]; }, $dateRangesToImport);
+            $dateRangesText = implode(', ', $dateRangesText);
+
+            $output->writeln("Importing the following date ranges in order: " . $dateRangesText);
+
+            foreach (array_values($dateRangesToImport) as $index => $datesToImport) {
+
+                if (!is_array($datesToImport)
+                    || count($datesToImport) != 2
+                ) {
+                    $output->writeln("Found broken entry in date ranges to import (entry #$index) with improper type, skipping.");
+                    $importStatus->removeReImportEntry($idSite, $datesToImport);
+                    continue;
+                }
+
+                list($startDate, $endDate) = $datesToImport;
+                if (!$this->isValidDate($startDate)
+                    || !$this->isValidDate($endDate)
+                ) {
+                    $output->writeln("Found broken entry in date ranges to import (entry #$index) with invalid date strings, skipping.");
+                    $importStatus->removeReImportEntry($idSite, $datesToImport);
+                    continue;
+                }
+
+                $output->writeln("Importing reports for date range {$startDate} - {$endDate} from GA view $viewId.");
+
+                $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
+
+                $isReimportEntry = $index < count($dateRangesToImport) - 1;
+                if ($isReimportEntry) {
+                    $importStatus->removeReImportEntry($idSite, $datesToImport);
+                }
+            }
         } finally {
             $lock->unlock();
 
@@ -295,5 +337,15 @@ class ImportReports extends ConsoleCommand
             return ['gaDimension' => $parts[0], 'dimensionScope' => strtolower($parts[1])];
         }, $dimensions);
         return $dimensions;
+    }
+
+    private function isValidDate($date)
+    {
+        try {
+            Date::factory($date);
+            return true;
+        } catch (\Exception $ex) {
+            return false;
+        }
     }
 }
