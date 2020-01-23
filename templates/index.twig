@@ -216,10 +216,10 @@
                             {{ 'GoogleAnalyticsImporter_ImportEndDate'|translate }}: {{ status.import_range_end|default(noneText) }} <br/>
                             {% if status.status != 'finished' %}
                             <br/>
-                            <a class="edit-import-end-link" href="" ng-click="importStatus.showEditImportEndDateModal({{ status.idSite|json_encode }})">{{ 'GoogleAnalyticsImporter_EditEndDate'|translate }}</a>
+                            <a class="edit-import-end-link table-command-link" href="" ng-click="importStatus.showEditImportEndDateModal({{ status.idSite|json_encode }})">{{ 'GoogleAnalyticsImporter_EditEndDate'|translate }}</a>
                             {% endif %}
                             <br/>
-                            <a class="edit-import-end-link" href="" ng-click="importStatus.openScheduleReimportModal({{ status.idSite|json_encode|e('html_attr') }})">
+                            <a id="reimport-date-range" class="table-command-link" href="" ng-click="importStatus.openScheduleReimportModal({{ status.idSite|json_encode|e('html_attr') }})">
                                 {{ 'GoogleAnalyticsImporter_ReimportDate'|translate }}
                             </a>
                         </td>
@@ -296,7 +296,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="" class="modal-action modal-close btn" ng-click="importStatus.scheduleReimport()">{{ 'GoogleAnalyticsImporter_Schedule'|translate }}</a>
+                    <a id="scheduleReimportSubmit" href="" class="modal-action modal-close btn" ng-click="importStatus.scheduleReimport()">{{ 'GoogleAnalyticsImporter_Schedule'|translate }}</a>
                     <a href="" class="modal-action modal-close modal-no">{{ 'General_Cancel'|translate }}</a>
                 </div>
             </div>
