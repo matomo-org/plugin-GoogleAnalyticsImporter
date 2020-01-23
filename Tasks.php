@@ -189,8 +189,7 @@ class Tasks extends \Piwik\Plugin\Tasks
             $archiveLogFile = '/dev/null';
         }
 
-        $lastN = ceil((Date::today()->getTimestamp() - $lastDayArchived->getTimestamp()) / self::SECONDS_IN_YEAR);
-        $lastN = max($lastN + 1, 2);
+        $dateRange = $lastDayArchived->toString() . ',' . $lastDateImported->toString();
 
         $pathToConsole = '/console';
         if (defined('PIWIK_TEST_MODE')) {
@@ -204,7 +203,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
-        $command .= 'core:archive --disable-scheduled-tasks --force-idsites=' . $idSite . ' --force-periods=week,month,year --force-date-last-n=' . $lastN;
+        $command .= 'core:archive --disable-scheduled-tasks --force-idsites=' . $idSite . ' --force-periods=week,month,year --force-date-range=' . $dateRange;
 
         if (!$wait) {
             $command .= ' > ' . $archiveLogFile . ' 2>&1 &';

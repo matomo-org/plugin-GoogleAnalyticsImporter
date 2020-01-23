@@ -41,15 +41,4 @@ class MockApiResponses extends Fixture
             'GoogleAnalyticsImporter.googleClientClass' => MockResponseClient::class,
         ];
     }
-
-    private function makeRequestKey(Date $day, array $dimensions, array $metrics, array $options)
-    {
-        $value = implode('.', [
-            $day->toString(),
-            json_encode($dimensions),
-            json_encode($metrics),
-            json_encode($options),
-        ]);
-        return md5($value);
-    }
 }
