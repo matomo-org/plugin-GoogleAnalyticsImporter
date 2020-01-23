@@ -394,7 +394,7 @@ class ImportStatus
             ) {
                 return false;
             }
-            return $s[0] != $datesToImport[0] && $s[1] != $datesToImport[1];
+            return $s[0] != $datesToImport[0] || $s[1] != $datesToImport[1];
         });
         $status['reimport_ranges'] = array_values($status['reimport_ranges']);
 
