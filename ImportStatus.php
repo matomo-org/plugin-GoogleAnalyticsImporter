@@ -9,10 +9,13 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 
+use Piwik\Common;
 use Piwik\Config;
+use Piwik\Container\StaticContainer;
 use Piwik\Exception\UnexpectedWebsiteFoundException;
 use Piwik\Option;
 use Piwik\Date;
+use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Site;
@@ -132,8 +135,6 @@ class ImportStatus
         }
 
         $this->saveStatus($status);
-
-        $this->setImportedDateRange($idSite, $startDate, null);
     }
 
     public function setIsVerboseLoggingEnabled($idSite, $isVerboseLoggingEnabled)
@@ -328,16 +329,20 @@ class ImportStatus
         }
     }
 
-    private function setImportedDateRange($idSite, Date $startDate = null, Date $endDate = null) // TODO: unit test
+    public function setImportedDateRange($idSite, Date $startDate = null, Date $endDate = null)
     {
         $optionName = self::IMPORTED_DATE_RANGE_PREFIX . $idSite;
         $dates = $this->getImportedDateRange($idSite);
 
-        if (!empty($startDate)) {
+        if (!empty($startDate)
+            && (empty($dates[0]) || $startDate->isEarlier(Date::factory($dates[0])))
+        ) {
             $dates[0] = $startDate->toString();
         }
 
-        if (!empty($endDate)) {
+        if (!empty($endDate)
+            && (empty($dates[1]) || $endDate->isLater(Date::factory($dates[1])))
+        ) {
             $dates[1] = $endDate->toString();
         }
 
@@ -399,5 +404,53 @@ class ImportStatus
         $status['reimport_ranges'] = array_values($status['reimport_ranges']);
 
         $this->saveStatus($status);
+    }
+
+    public function isInImportedDateRange($period, $date, $idSite = null) // TODO: cache the result of this
+    {
+        $range = $this->getImportedSiteImportDateRange($idSite);
+        if (empty($range)) {
+            return false;
+        }
+
+        list($startDate, $endDate) = $range;
+
+        $periodObj = Factory::build($period, $date);
+        if ($startDate->isLater($periodObj->getDateEnd())
+            || $endDate->isEarlier($periodObj->getDateStart())
+        ) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private function getImportedSiteImportDateRange($idSite = null)
+    {
+        $idSite = $idSite ?: Common::getRequestVar('idSite', false);
+        if (empty($idSite)) {
+            return null;
+        }
+
+        try {
+            $status = $this->getImportStatus($idSite);
+        } catch (\Exception $ex) {
+            $status = [];
+        }
+
+        $lastDateImported = isset($status['last_date_imported']) ? $status['last_date_imported'] : null;
+
+        $importedDateRange = $this->getImportedDateRange($idSite);
+        if (empty($importedDateRange)
+            || empty($importedDateRange[0])
+            || empty($importedDateRange[1])
+        ) {
+            return null;
+        }
+
+        $startDate = Date::factory($importedDateRange[0] ?: Site::getCreationDateFor($idSite));
+        $endDate = Date::factory($importedDateRange[1] ?: $lastDateImported ?: $startDate);
+
+        return [$startDate, $endDate];
     }
 }

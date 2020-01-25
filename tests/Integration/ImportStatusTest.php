@@ -421,6 +421,56 @@ class ImportStatusTest extends IntegrationTestCase
         $this->instance->setImportDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-01-01'));
     }
 
+    public function test_setImportDateRange_doesNotSetDatesIfTheyAreWithinOverallRange()
+    {
+        $this->instance->startingImport('p', 'a', 'v', 1);
+        $this->instance->setImportDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-03-08'));
+
+        $dateRange = Option::get(ImportStatus::IMPORTED_DATE_RANGE_PREFIX . 1);
+        $this->assertEquals(false, $dateRange);
+
+        $this->instance->setImportedDateRange(1, Date::factory('2012-03-03'), Date::factory('2012-03-08'));
+        $dateRange = Option::get(ImportStatus::IMPORTED_DATE_RANGE_PREFIX . 1);
+        $this->assertEquals('2012-03-03,2012-03-08', $dateRange);
+
+        $this->instance->setImportedDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-03-07'));
+        $dateRange = Option::get(ImportStatus::IMPORTED_DATE_RANGE_PREFIX . 1);
+        $this->assertEquals('2012-03-03,2012-03-08', $dateRange);
+
+        $this->instance->setImportedDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-03-17'));
+        $dateRange = Option::get(ImportStatus::IMPORTED_DATE_RANGE_PREFIX . 1);
+        $this->assertEquals('2012-03-03,2012-03-17', $dateRange);
+    }
+
+    /**
+     * @dataProvider getTestDataForGetIsInImportedDateRange
+     */
+    public function test_isInImportedDateRange_returnsTrueIfRangeIsInSavedImportedDateRange($startDate, $endDate, $period, $date, $expected)
+    {
+        $this->instance->startingImport('p', 'a', 'v', 1);
+        if (!empty($startDate)) {
+            $this->instance->setImportedDateRange(1, Date::factory($startDate), Date::factory($endDate));
+        }
+
+        $actual = $this->instance->isInImportedDateRange($period, $date, 1);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function getTestDataForGetIsInImportedDateRange()
+    {
+        return [
+            [null, null, 'day', '2013-04-05', false],
+            ['2013-03-04', '2013-03-24', 'day', '2013-04-05', false],
+            ['2013-03-04', '2013-03-24', 'day', '2013-03-15', true],
+            ['2013-03-05', '2013-03-24', 'week', '2013-03-04', true],
+            ['2013-03-05', '2013-03-24', 'week', '2013-02-04', false],
+            ['2013-03-04', '2013-03-24', 'month', '2013-02-03', false],
+            ['2013-03-04', '2013-03-24', 'month', '2013-03-13', true],
+            ['2013-03-04', '2013-03-24', 'year', '2013-03-13', true],
+            ['2013-03-04', '2013-03-24', 'year', '2012-03-13', false],
+        ];
+    }
+
     public function test_getAllImportStatuses_returnsAllStatuses()
     {
         Fixture::createWebsite('2012-02-02');
