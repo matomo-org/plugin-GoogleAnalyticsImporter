@@ -8,11 +8,11 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 
-use Piwik\Application\Environment;
 use Piwik\Common;
-use Piwik\Container\StaticContainer;
 use Piwik\Option;
 use Psr\Http\Message\RequestInterface;
+
+require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
 class MockResponseClient extends \Google_Client
 {

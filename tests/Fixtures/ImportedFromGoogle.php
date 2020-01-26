@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
+use Piwik\Archive\ArchiveInvalidator;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\CronArchive;
@@ -22,6 +23,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\CapturingGoogleClient;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\MockResponseClient;
 use Piwik\Plugins\VisitsSummary\API;
+use Piwik\Plugins\VisitsSummary\VisitsSummary;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Timer;
 use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
@@ -72,6 +74,8 @@ class ImportedFromGoogle extends Fixture
         $this->invalidateArchives(); // trigger core:archive invalidation
         $this->aggregateForYear();
 
+        $this->invalidateAndRearchiveDay(); // make sure day archives won't be re-archived
+
         print "Done aggregating.\n";
     }
 
@@ -89,7 +93,7 @@ class ImportedFromGoogle extends Fixture
         $original = @$_GET['trigger'];
         $_GET['trigger'] = 'archivephp';
         try {
-            API::getInstance()->get($this->idSite, 'year', '2019-06-27')->getRows();
+            API::getInstance()->get($this->idSite, 'year', '2019-06-27');
         } finally {
             if (!empty($original)) {
                 $_GET['trigger'] = $original;
@@ -240,5 +244,27 @@ class ImportedFromGoogle extends Fixture
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
         $importStatus->setImportDateRange($idSite, null, Date::factory($endDate));
+    }
+
+    private function invalidateAndRearchiveDay()
+    {
+        ArchiveTableCreator::$tablesAlreadyInstalled = null;
+        DbHelper::getTablesInstalled(true);
+
+        /** @var ArchiveInvalidator $archiveInvalidator */
+        $archiveInvalidator = StaticContainer::get(ArchiveInvalidator::class);
+        $archiveInvalidator->markArchivesAsInvalidated([$this->idSite], [Date::factory('2019-06-28')], 'day');
+
+        $original = @$_GET['trigger'];
+        $_GET['trigger'] = 'archivephp';
+        try {
+            API::getInstance()->get($this->idSite, 'day', '2019-06-28');
+        } finally {
+            if (!empty($original)) {
+                $_GET['trigger'] = $original;
+            } else {
+                unset($_GET['trigger']);
+            }
+        }
     }
 }
