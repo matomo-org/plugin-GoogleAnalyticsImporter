@@ -158,8 +158,6 @@ class ImportedFromGoogle extends Fixture
                 . ' --dates=' . $dates . ' --property=' . $property . ' --extra-custom-dimension=ga:networkLocation,visit';
         }
 
-        $command .= ' -vvv'; // TODO: remove
-
         $timer = new Timer();
 
         print "\nImporting from google...\n";

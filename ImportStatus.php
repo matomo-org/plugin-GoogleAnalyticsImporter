@@ -338,6 +338,10 @@ class ImportStatus
             && (empty($dates[0]) || $startDate->isEarlier(Date::factory($dates[0])))
         ) {
             $dates[0] = $startDate->toString();
+        } else if (empty($dates[0])
+            && !empty($endDate)
+        ) {
+            $dates[0] = $endDate->toString();
         }
 
         if (!empty($endDate)

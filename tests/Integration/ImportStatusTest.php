@@ -421,7 +421,7 @@ class ImportStatusTest extends IntegrationTestCase
         $this->instance->setImportDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-01-01'));
     }
 
-    public function test_setImportDateRange_doesNotSetDatesIfTheyAreWithinOverallRange()
+    public function test_setImportedDateRange_doesNotSetDatesIfTheyAreWithinOverallRange()
     {
         $this->instance->startingImport('p', 'a', 'v', 1);
         $this->instance->setImportDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-03-08'));
@@ -440,6 +440,18 @@ class ImportStatusTest extends IntegrationTestCase
         $this->instance->setImportedDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-03-17'));
         $dateRange = Option::get(ImportStatus::IMPORTED_DATE_RANGE_PREFIX . 1);
         $this->assertEquals('2012-03-03,2012-03-17', $dateRange);
+    }
+
+    public function test_setImportedDateRange_setsStartDateToEndDateIfStartDateIsNotSuppliedButEndDateIs()
+    {
+        $this->instance->startingImport('p', 'a', 'v', 1);
+
+        $dateRange = Option::get(ImportStatus::IMPORTED_DATE_RANGE_PREFIX . 1);
+        $this->assertEquals(false, $dateRange);
+
+        $this->instance->setImportedDateRange(1, null, Date::factory('2012-03-08'));
+        $dateRange = Option::get(ImportStatus::IMPORTED_DATE_RANGE_PREFIX . 1);
+        $this->assertEquals('2012-03-08,2012-03-08', $dateRange);
     }
 
     /**

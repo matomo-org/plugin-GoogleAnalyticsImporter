@@ -63,7 +63,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'API.Request.dispatch.end' => 'translateNotSetLabels',
             'SitesManager.deleteSite.end'            => 'onSiteDeleted',
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
-            'Rules.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
+            'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
         ];
     }
 
