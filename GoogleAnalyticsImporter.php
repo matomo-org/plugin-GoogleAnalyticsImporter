@@ -105,7 +105,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
     public function addImportedDateRangesForSite(&$out)
     {
-        $range = self::getImportedSiteImportDateRange();
+        $importStatus = StaticContainer::get(ImportStatus::class);
+        $range = $importStatus->getImportedSiteImportDateRange();
         if (empty($range)) {
             return;
         }

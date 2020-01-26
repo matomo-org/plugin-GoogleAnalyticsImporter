@@ -429,7 +429,7 @@ class ImportStatus
         return true;
     }
 
-    private function getImportedSiteImportDateRange($idSite = null)
+    public function getImportedSiteImportDateRange($idSite = null)
     {
         $idSite = $idSite ?: Common::getRequestVar('idSite', false);
         if (empty($idSite)) {
