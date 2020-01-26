@@ -69,6 +69,10 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
     public function isRequestAuthorizedToArchive(&$isRequestAuthorizedToArchive, Parameters $params)
     {
+        if (!$isRequestAuthorizedToArchive) { // if already false, don't need to do anything
+            return;
+        }
+
         if ($params->getPeriod()->getLabel() != 'day') {
             return;
         }
