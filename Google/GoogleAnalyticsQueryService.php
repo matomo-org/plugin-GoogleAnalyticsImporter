@@ -184,7 +184,7 @@ class GoogleAnalyticsQueryService
             }
         }
 
-        throw new \Exception("Failed to reach GA after " . self::MAX_ATTEMPTS . " attempts. Restart the import later.");
+        throw new \Exception("Failed to reach GA after " . self::MAX_ATTEMPTS . " attempts. Will restart the import later.");
     }
 
     /**

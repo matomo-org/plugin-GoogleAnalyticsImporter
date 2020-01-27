@@ -176,6 +176,14 @@ class ImportTest extends SystemTestCase
                 'periods' => 'week',
                 'testSuffix' => '_aggregatedWithTrackedVisit',
             ]],
+
+            // range that should have been invalidated
+            ['VisitsSummary.get', [
+                'idSite' => self::$fixture->idSite,
+                'date' => '2019-06-27,2019-07-03',
+                'periods' => 'range',
+                'testSuffix' => '_rangePeriod',
+            ]],
         ];
     }
 

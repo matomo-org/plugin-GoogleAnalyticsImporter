@@ -66,6 +66,9 @@ class ImportedFromGoogle extends Fixture
 
         $this->aggregateForYear();
 
+        // archive day range so we can check that it gets invalidated properly
+        API::getInstance()->get($idSite = 1, 'range', '2019-06-27,2019-07-03');
+
         // track a visit on 2019-07-03 and make sure it appears correctly in reports
         $this->trackVisitAfterImport();
 
