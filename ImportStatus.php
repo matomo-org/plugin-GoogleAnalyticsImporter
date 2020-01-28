@@ -381,6 +381,11 @@ class ImportStatus
 
         $status = $this->getImportStatus($idSite);
         $status['reimport_ranges'][] = [$startDate->toString(), $endDate->toString()];
+
+        if ($status['status'] == self::STATUS_FINISHED) {
+            $status['status'] = self::STATUS_ONGOING;
+        }
+
         $this->saveStatus($status);
     }
 
