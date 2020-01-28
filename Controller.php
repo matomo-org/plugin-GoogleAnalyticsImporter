@@ -382,6 +382,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
             $importStatus->reImportDateRange($idSite, $startDate, $endDate);
+            $importStatus->resumeImport($idSite);
+
+            // start import now since the scheduled task may not run until tomorrow
+            Tasks::startImport($importStatus->getImportStatus($idSite));
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {

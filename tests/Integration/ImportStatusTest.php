@@ -806,6 +806,91 @@ View: view5',
         ], $status['reimport_ranges']);
     }
 
+    public function test_finishImportIfNothingLeft_finishesImportIfProperConditionsMet()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+
+        $status['import_range_end'] = '2012-03-04';
+        $status['last_date_imported'] = '2012-03-04';
+        $this->instance->saveStatus($status);
+        $this->instance->finishImportIfNothingLeft($idSite);
+
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals(ImportStatus::STATUS_FINISHED, $status['status']);
+    }
+
+    public function test_finishImportIfNothingLeft_finishesImportIfLastDateImportedIsPastEndDate()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+
+        $status['import_range_end'] = '2012-03-04';
+        $status['last_date_imported'] = '2012-03-06';
+        $status['reimport_ranges'] = [];
+        $this->instance->saveStatus($status);
+        $this->instance->finishImportIfNothingLeft($idSite);
+
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals(ImportStatus::STATUS_FINISHED, $status['status']);
+    }
+
+    public function test_finishImportIfNothingLeft_doesNothingIfImportRunsForever()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+
+        $status['last_date_imported'] = '2012-03-06';
+        $this->instance->saveStatus($status);
+        $this->instance->finishImportIfNothingLeft($idSite);
+
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+    }
+
+    public function test_finishImportIfNothingLeft_doesNothingIfNothingWasImported()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+
+        $status['import_range_end'] = '2012-03-04';
+        $this->instance->saveStatus($status);
+        $this->instance->finishImportIfNothingLeft($idSite);
+
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+    }
+
+    public function test_finishImportIfNothingLeft_doesNothingIfThereAreRangesToReimport()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+
+        $status['import_range_end'] = '2012-03-04';
+        $status['last_date_imported'] = '2012-03-04';
+        $status['reimport_ranges'] = [['2013-04-01', '2013-04-05']];
+        $this->instance->saveStatus($status);
+        $this->instance->finishImportIfNothingLeft($idSite);
+
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+    }
+
+    public function test_finishImportIfNothingLeft_doesNothingIfLastDateImportedIsBeforeEndDate()
+    {
+        $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+
+        $status['import_range_end'] = '2012-03-04';
+        $status['last_date_imported'] = '2012-03-02';
+        $status['reimport_ranges'] = [];
+        $this->instance->saveStatus($status);
+        $this->instance->finishImportIfNothingLeft($idSite);
+
+        $status = $this->instance->getImportStatus($idSite);
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+    }
+
     private function getImportStatus($idSite)
     {
         $optionName = ImportStatus::OPTION_NAME_PREFIX . $idSite;

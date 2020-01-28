@@ -381,6 +381,11 @@ class ImportStatus
 
         $status = $this->getImportStatus($idSite);
         $status['reimport_ranges'][] = [$startDate->toString(), $endDate->toString()];
+
+        if ($status['status'] == self::STATUS_FINISHED) {
+            $status['status'] = self::STATUS_ONGOING;
+        }
+
         $this->saveStatus($status);
     }
 
@@ -456,5 +461,18 @@ class ImportStatus
         $endDate = Date::factory($importedDateRange[1] ?: $lastDateImported ?: $startDate);
 
         return [$startDate, $endDate];
+    }
+
+    public function finishImportIfNothingLeft($idSite)
+    {
+        $status = $this->getImportStatus($idSite);
+        if (!empty($status['import_range_end'])
+            && !empty($status['last_date_imported'])
+            && ($status['last_date_imported'] == $status['import_range_end']
+                || Date::factory($status['last_date_imported'])->isLater(Date::factory($status['import_range_end'])))
+            && empty($status['reimport_ranges'])
+        ) {
+            $this->finishedImport($idSite);
+        }
     }
 }

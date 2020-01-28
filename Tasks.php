@@ -88,6 +88,10 @@ class Tasks extends \Piwik\Plugin\Tasks
 
     public static function startImport($status)
     {
+        if (ImportStatus::isImportRunning($status)) {
+            return;
+        }
+
         $idSite = $status['idSite'];
         $isVerboseLoggingEnabled = !empty($status['is_verbose_logging_enabled']);
 
