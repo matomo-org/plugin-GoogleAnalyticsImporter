@@ -44,7 +44,7 @@ describe("GoogleAnalyticsImporter", function () {
     });
 
     it('should show the error in the UI when an import fails', async function () {
-        await page.waitFor(30000);
+        await page.waitFor(60000);
 
         await page.reload();
         await page.waitFor('.pageWrap');
@@ -55,7 +55,20 @@ describe("GoogleAnalyticsImporter", function () {
         expect(await content.screenshot()).to.matchImage('errored_import');
     });
 
+    it('should manually resume an import when the resume button is clicked', async function () {
+        await page.click('td.actions > a.icon-play');
+        await page.waitForNetworkIdle();
+        await page.waitFor('.pageWrap');
+
+        await removeStartResumeFinishTime();
+
+        const content = await page.$('.pageWrap');
+        expect(await content.screenshot()).to.matchImage('resumed_import');
+    });
+
     it('should schedule a re-import when the modal is used', async function () {
+        await page.waitFor(90000);
+
         await page.click('#reimport-date-range');
 
         await page.waitFor('#openScheduleReimportModal', { visible: true });
@@ -72,19 +85,8 @@ describe("GoogleAnalyticsImporter", function () {
         expect(await content.screenshot()).to.matchImage('reimport_range');
     });
 
-    it('should manually resume an import when the resume button is clicked', async function () {
-        await page.click('td.actions > a.icon-play');
-        await page.waitForNetworkIdle();
-        await page.waitFor('.pageWrap');
-
-        await removeStartResumeFinishTime();
-
-        const content = await page.$('.pageWrap');
-        expect(await content.screenshot()).to.matchImage('resumed_import');
-    });
-
     it("should show that the import finished when the import finishes", async function () {
-        await page.waitFor(90000);
+        await page.waitFor(125000);
 
         await page.reload();
         await page.waitFor('.pageWrap');

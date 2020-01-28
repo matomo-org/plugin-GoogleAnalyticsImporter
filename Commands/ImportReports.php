@@ -179,7 +179,10 @@ class ImportReports extends ConsoleCommand
                 return [Date::factory($d[0]), Date::factory($d[1])];
             }, $dateRangesToReImport);
 
-            $dateRangesToImport = array_merge($dateRangesToReImport, [ [$dates[0], $dates[1]] ]);
+            $dateRangesToImport = $dateRangesToReImport;
+            if (!$dates[1]->isEarlier($dates[0])) { // the range can be invalid if a job is finished, since we'll be at the end date
+                $dateRangesToImport = array_merge($dateRangesToReImport, [[$dates[0], $dates[1]]]);
+            }
 
             $dateRangesText = array_map(function ($d) { return $d[0] . ',' . $d[1]; }, $dateRangesToImport);
             $dateRangesText = implode(', ', $dateRangesText);
@@ -209,12 +212,14 @@ class ImportReports extends ConsoleCommand
 
                 $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
 
-                $isReimportEntry = $index < count($dateRangesToImport) - 1;
+                $isReimportEntry = $index < count($dateRangesToReImport);
                 if ($isReimportEntry) {
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
                 }
             }
         } finally {
+            $importStatus->finishImportIfNothingLeft($idSite);
+
             $lock->unlock();
 
             // doing it in the finally since we can get rate limited, which will result in an exception thrown
