@@ -92,6 +92,7 @@
     "EnterImportDateRange": "Enter the start and end dates to re-import",
     "Schedule": "Schedule",
     "InvalidDateRange": "Invalid date range, the start date must be earlier than the end date.",
-    "ScheduledReImports": "Re-imports"
+    "ScheduledReImports": "Re-imports",
+    "StartFinishTimes": "Start/Finish Times"
   }
 }
