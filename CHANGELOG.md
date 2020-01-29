@@ -1,5 +1,11 @@
 ## Changelog
 
+# 1.3.1
+
+Changes:
+* Allow re-importing ranges to work when a job is finished or has no more to import.
+* Merge Time Started/Time Finished columns to provide more space in the UI.
+
 # 1.3.0
 
 Features:
