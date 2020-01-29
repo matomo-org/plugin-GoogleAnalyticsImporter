@@ -6,6 +6,9 @@ Changes:
 * Allow re-importing ranges to work when a job is finished or has no more to import.
 * Merge Time Started/Time Finished columns to provide more space in the UI.
 
+Bug fix:
+* Do not show resume button if status is 'started'.
+
 # 1.3.0
 
 Features:
