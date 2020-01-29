@@ -8,12 +8,14 @@
  */
 
 describe("GoogleAnalyticsImporter", function () {
+    this.timeout(0);
+
     this.fixture = 'Piwik\\Plugins\\GoogleAnalyticsImporter\\tests\\Fixtures\\MockApiResponses';
 
     var url = "?module=GoogleAnalyticsImporter&action=index&idSite=1&period=day&date=yesterday";
 
     async function removeStartResumeFinishTime() {
-        await page.evaluate(() => $('td.import-start-time,td.import-end-time').html(''));
+        await page.evaluate(() => $('td.import-start-finish-times').html(''));
     }
 
     it("should load the settings correctly", async function () {

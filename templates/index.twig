@@ -261,7 +261,7 @@
                                {% endif %}
                             ></a>
 
-                            {% if status.status != 'finished' and status.status != 'ongoing' %}
+                            {% if status.status != 'finished' and status.status != 'ongoing' and status.status != 'started' %}
                             <a ng-click="importStatus.manuallyResume({{ status.idSite|json_encode|e('html_attr') }})"
                                class="table-action icon-play"
                                title="{{ 'GoogleAnalyticsImporter_ResumeDesc'|translate }}"
