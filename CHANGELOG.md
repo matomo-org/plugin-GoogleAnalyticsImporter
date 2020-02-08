@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.3.2
+
+Bug fixes:
+* Fix bug in ongoing import that could result in incomplete metrics being imported. Bug is more visible since changes in 1.3.0.
+
 # 1.3.1
 
 Changes:
