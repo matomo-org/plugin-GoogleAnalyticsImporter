@@ -48,7 +48,7 @@ describe("GoogleAnalyticsImporter", function () {
     it('should show the error in the UI when an import fails', async function () {
         await page.waitFor(60000);
 
-        await page.reload();
+        await page.reload({ timeout: 0 });
         await page.waitFor('.pageWrap');
 
         await removeStartResumeFinishTime();
@@ -90,7 +90,7 @@ describe("GoogleAnalyticsImporter", function () {
     it("should show that the import finished when the import finishes", async function () {
         await page.waitFor(125000);
 
-        await page.reload();
+        await page.reload({ timeout: 0 });
         await page.waitFor('.pageWrap');
 
         await removeStartResumeFinishTime();
