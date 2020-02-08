@@ -162,7 +162,7 @@ class ImportReports extends ConsoleCommand
                 if (!empty($status['import_range_end'])) {
                     $endDate = Date::factory($status['import_range_end']);
                 } else {
-                    $endDate = Date::factory('today');
+                    $endDate = Date::factory('yesterday'); // we don't want to import today since it's not complete yet
                 }
 
                 $dates = [$startDate, $endDate];
