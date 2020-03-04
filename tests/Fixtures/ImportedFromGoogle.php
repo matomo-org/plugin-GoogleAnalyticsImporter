@@ -51,7 +51,7 @@ class ImportedFromGoogle extends Fixture
         $this->isCapturingResponses = getenv('MATOMO_TEST_CAPTURE_GA_RESPONSES') == 1;
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

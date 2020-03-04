@@ -8,7 +8,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
-
 use Piwik\CliMulti\CliPhp;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
@@ -41,7 +40,7 @@ class TasksTest extends IntegrationTestCase
      */
     private $tmpPath;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->tmpPath = StaticContainer::get('path.tmp');

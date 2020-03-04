@@ -14,14 +14,14 @@ use Psr\Log\NullLogger;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
-class GoogleQueryObjectFactoryTest extends \PHPUnit_Framework_TestCase
+class GoogleQueryObjectFactoryTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var GoogleQueryObjectFactory
      */
     private $instance;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

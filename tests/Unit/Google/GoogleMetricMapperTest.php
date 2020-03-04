@@ -12,7 +12,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Unit\Google;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleMetricMapper;
 
-class GoogleMetricMapperTest extends \PHPUnit_Framework_TestCase
+class GoogleMetricMapperTest extends \PHPUnit\Framework\TestCase
 {
     public function test_constructor_shouldInitializeAllCorrectMappings()
     {
