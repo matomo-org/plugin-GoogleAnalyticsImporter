@@ -20,6 +20,8 @@ describe("GoogleAnalyticsImporter", function () {
 
     it("should load the settings correctly", async function () {
         await page.goto(url);
+        await page.waitForNetworkIdle();
+        await page.waitFor(200);
 
         const content = await page.$('.pageWrap');
         expect(await content.screenshot()).to.matchImage('load');
