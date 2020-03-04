@@ -1,5 +1,28 @@
 ## Changelog
 
+# 1.3.2
+
+Bug fixes:
+* Fix bug in ongoing import that could result in incomplete metrics being imported. Bug is more visible since changes in 1.3.0.
+
+# 1.3.1
+
+Changes:
+* Allow re-importing ranges to work when a job is finished or has no more to import.
+* Merge Time Started/Time Finished columns to provide more space in the UI.
+
+Bug fix:
+* Do not show resume button if status is 'started'.
+
+# 1.3.0
+
+Features:
+* Improved support for shared hosting users with hosts that may kill long running processes. The import job is not attempted every hour
+  if a system kills a job, it will restart promptly.
+* Detect killed jobs and report to the user so they are not left in suspense.
+* Allow re-importing ranges in the past.
+* Add a protection for users of Matomo 3.13.2 that will disallow re-archiving of imported days (this can wipe the data that was imported).
+
 # 1.2.2
 
 Bug fixes:

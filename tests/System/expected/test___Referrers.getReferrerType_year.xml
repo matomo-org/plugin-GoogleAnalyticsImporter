@@ -43,6 +43,7 @@
 		</goals>
 		<sum_daily_nb_uniq_visitors>249</sum_daily_nb_uniq_visitors>
 		<segment>referrerType==website</segment>
+		<referrer_type>3</referrer_type>
 		<subtable>
 			<row>
 				<label>divebums.com</label>
@@ -433,6 +434,7 @@
 		</goals>
 		<sum_daily_nb_uniq_visitors>166</sum_daily_nb_uniq_visitors>
 		<segment>referrerType==social</segment>
+		<referrer_type>7</referrer_type>
 		<subtable>
 			<row>
 				<label>Facebook</label>
@@ -616,6 +618,7 @@
 		<max_actions>2</max_actions>
 		<sum_daily_nb_users>0</sum_daily_nb_users>
 		<segment>referrerType==direct</segment>
+		<referrer_type>1</referrer_type>
 	</row>
 	<row>
 		<label>Search Engines</label>
@@ -660,6 +663,7 @@
 		</goals>
 		<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
 		<segment>referrerType==search</segment>
+		<referrer_type>2</referrer_type>
 		<subtable>
 			<row>
 				<label>(not provided)</label>

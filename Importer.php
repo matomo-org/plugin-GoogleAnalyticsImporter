@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Google_Service_Analytics_Goal;
 use Piwik\API\Request;
+use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
 use Piwik\Common;
 use Piwik\Concurrency\Lock;
@@ -102,9 +103,14 @@ class Importer
      */
     private $noDataMessageRemoved = false;
 
+    /**
+     * @var ArchiveInvalidator
+     */
+    private $invalidator;
+
     public function __construct(ReportsProvider $reportsProvider, \Google_Service_Analytics $gaService, \Google_Service_AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
-                                IdMapper $idMapper, ImportStatus $importStatus)
+                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator)
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = $gaService;
@@ -114,6 +120,7 @@ class Importer
         $this->customDimensionMapper = $customDimensionMapper;
         $this->idMapper = $idMapper;
         $this->importStatus = $importStatus;
+        $this->invalidator = $invalidator;
     }
 
     public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [])
@@ -327,8 +334,6 @@ class Importer
                 throw new \InvalidArgumentException("Invalid date range, start date is later than end date: {$start},{$end}");
             }
 
-            $status = $this->importStatus->getImportStatus($idSite);
-
             $recordImporters = $this->getRecordImporters($idSite, $viewId);
 
             $site = new Site($idSite);
@@ -343,12 +348,7 @@ class Importer
                 $this->importStatus->dayImportFinished($idSite, $date);
             }
 
-            if (!empty($status['import_range_end'])
-                && ($end->toString() == $status['import_range_end']
-                    || $end->isLater(Date::factory($status['import_range_end'])))
-            ) {
-                $this->importStatus->finishedImport($idSite);
-            }
+            $this->importStatus->finishImportIfNothingLeft($idSite);
         } catch (DailyRateLimitReached $ex) {
             $this->importStatus->rateLimitReached($idSite);
             throw $ex;
@@ -406,6 +406,8 @@ class Importer
 
         $archiveWriter->insertRecord(self::IS_IMPORTED_FROM_GA_NUMERIC, 1);
         $archiveWriter->finalizeArchive();
+
+        $this->invalidator->markArchivesAsInvalidated([$site->getId()], [$date], 'week', new Segment($segment, [$site->getId()]));
     }
 
     private function makeArchiveWriter(Site $site, Date $date, $segment = '', $plugin = null)

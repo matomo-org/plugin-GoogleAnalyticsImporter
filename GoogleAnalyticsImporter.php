@@ -8,8 +8,10 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
+use Piwik\ArchiveProcessor\Parameters;
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
+use Piwik\DataAccess\RawLogDao;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Option;
@@ -61,12 +63,50 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'API.Request.dispatch.end' => 'translateNotSetLabels',
             'SitesManager.deleteSite.end'            => 'onSiteDeleted',
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
+            'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
         ];
+    }
+
+    public function isRequestAuthorizedToArchive(&$isRequestAuthorizedToArchive, Parameters $params)
+    {
+        if (!$isRequestAuthorizedToArchive) { // if already false, don't need to do anything
+            return;
+        }
+
+        if ($params->getPeriod()->getLabel() != 'day') {
+            return;
+        }
+
+        /** @var ImportStatus $importStatus */
+        $importStatus = StaticContainer::get(ImportStatus::class);
+
+        $importedDateRange = $importStatus->getImportedDateRange($params->getSite()->getId());
+        if (empty($importedDateRange)
+            || empty(array_filter($importedDateRange))
+        ) {
+            return;
+        }
+
+        $isDayWithinImportedDateRange = $importStatus->isInImportedDateRange(
+            $params->getPeriod()->getLabel(), $params->getPeriod()->getDateStart()->toString(), $params->getSite()->getId());
+        if (!$isDayWithinImportedDateRange) {
+            return;
+        }
+
+        $dao = new RawLogDao();
+        $hasVisits = $dao->hasSiteVisitsBetweenTimeframe(
+            $params->getPeriod()->getDateStart(), $params->getPeriod()->getDateEnd(), $params->getSite()->getId());
+        if ($hasVisits) {
+            return;
+        }
+
+        $isRequestAuthorizedToArchive = false;
     }
 
     public function addImportedDateRangesForSite(&$out)
     {
-        $range = $this->getImportedSiteImportDateRange();
+        $importStatus = StaticContainer::get(ImportStatus::class);
+        $range = $importStatus->getImportedSiteImportDateRange();
         if (empty($range)) {
             return;
         }
@@ -153,11 +193,12 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $module = Common::getRequestVar('module');
         $action = Common::getRequestVar('action');
 
+        $importStatus = StaticContainer::get(ImportStatus::class);
         if ($module == 'Live'
             || ($module == 'Ecommerce' && $action == 'getEcommerceLog')
         ) {
             if ($table->getRowsCount() > 0
-                || !$this->isInImportedDateRange($period, $date)
+                || !$importStatus->isInImportedDateRange($period, $date)
             ) {
                 return;
             }
@@ -171,7 +212,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $method = "$module.$action";
         if (in_array($method, self::$unsupportedDataTableReports)) {
             if ($table->getRowsCount() > 0
-                || !$this->isInImportedDateRange($period, $date)
+                || !$importStatus->isInImportedDateRange($period, $date)
             ) {
                 return;
             }
@@ -194,7 +235,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         } else {
             // for non-day periods, we can't tell if the report is all GA data or mixed, so we guess based on
             // whether the data is in the imported date range
-            if (!$this->isInImportedDateRange($period, $date)) {
+            if (!$importStatus->isInImportedDateRange($period, $date)) {
                 return;
             }
 
@@ -239,54 +280,5 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
 
         $importStatus->importArchiveFinished($idSite, $dateFinished);
-    }
-
-    private function isInImportedDateRange($period, $date) // TODO: cache the result of this
-    {
-        $range = $this->getImportedSiteImportDateRange();
-        if (empty($range)) {
-            return false;
-        }
-
-        list($startDate, $endDate) = $range;
-
-        $periodObj = Factory::build($period, $date);
-        if ($startDate->isLater($periodObj->getDateEnd())
-            || $endDate->isEarlier($periodObj->getDateStart())
-        ) {
-            return false;
-        }
-
-        return true;
-    }
-
-    private function getImportedSiteImportDateRange()
-    {
-        $idSite = Common::getRequestVar('idSite', false);
-        if (empty($idSite)) {
-            return null;
-        }
-
-        $importStatus = StaticContainer::get(ImportStatus::class);
-        try {
-            $status = $importStatus->getImportStatus($idSite);
-        } catch (\Exception $ex) {
-            $status = [];
-        }
-
-        $lastDateImported = isset($status['last_date_imported']) ? $status['last_date_imported'] : null;
-
-        $importedDateRange = $importStatus->getImportedDateRange($idSite);
-        if (empty($importedDateRange)
-            || empty($importedDateRange[0])
-            || empty($importedDateRange[1])
-        ) {
-            return null;
-        }
-
-        $startDate = Date::factory($importedDateRange[0] ?: Site::getCreationDateFor($idSite));
-        $endDate = Date::factory($importedDateRange[1] ?: $lastDateImported ?: $startDate);
-
-        return [$startDate, $endDate];
     }
 }

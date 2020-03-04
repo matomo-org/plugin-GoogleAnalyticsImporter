@@ -144,6 +144,7 @@
     </div>
 
     <div
+        id="importStatusContainer"
         piwik-content-block
         content-title="{{ 'GoogleAnalyticsImporter_ImportJobs'|translate }}"
     >
@@ -152,7 +153,7 @@
         {% else %}
         <div
                 ng-controller="ImportStatusController as importStatus"
-                ng-init="importStatus.nonce = {{ stopImportNonce|json_encode|e('html_attr') }}; importStatus.changeImportEndDateNonce = {{ changeImportEndDateNonce|json_encode|e('html_attr') }}; importStatus.resumeImportNonce = {{ resumeImportNonce|json_encode|e('html_attr') }}"
+                ng-init="importStatus.nonce = {{ stopImportNonce|json_encode|e('html_attr') }}; importStatus.changeImportEndDateNonce = {{ changeImportEndDateNonce|json_encode|e('html_attr') }}; importStatus.resumeImportNonce = {{ resumeImportNonce|json_encode|e('html_attr') }}; importStatus.scheduleReImportNonce = {{  scheduleReImportNonce|json_encode|e('html_attr') }}"
         >
             {% set noneText %}{{ 'GoogleAnalyticsImporter_None'|translate }}{% endset %}
             {% set websiteCreationTime %}{{ 'GoogleAnalyticsImporter_CreationDate'|translate }}{% endset %}
@@ -165,8 +166,8 @@
                         <th>{{ 'GoogleAnalyticsImporter_GoogleAnalyticsInfo'|translate }}</th>
                         <th>{{ 'GoogleAnalyticsImporter_Status'|translate }}</th>
                         <th>{{ 'GoogleAnalyticsImporter_LatestDayProcessed'|translate }}</th>
-                        <th>{{ 'GoogleAnalyticsImporter_TimeStarted'|translate }}</th>
-                        <th>{{ 'GoogleAnalyticsImporter_TimeFinished'|translate }}</th>
+                        <th>{{ 'GoogleAnalyticsImporter_ScheduledReImports'|translate }}</th>
+                        <th>{{ 'GoogleAnalyticsImporter_StartFinishTimes'|translate }}</th>
                         <th>{{ 'GoogleAnalyticsImporter_Actions'|translate }}</th>
                     </tr>
                 </thead>
@@ -214,16 +215,30 @@
                             {{ 'GoogleAnalyticsImporter_ImportEndDate'|translate }}: {{ status.import_range_end|default(noneText) }} <br/>
                             {% if status.status != 'finished' %}
                             <br/>
-                            <a class="edit-import-end-link" href="" ng-click="importStatus.showEditImportEndDateModal({{ status.idSite|json_encode }})">{{ 'GoogleAnalyticsImporter_EditEndDate'|translate }}</a>
+                            <a class="edit-import-end-link table-command-link" href="" ng-click="importStatus.showEditImportEndDateModal({{ status.idSite|json_encode }})">{{ 'GoogleAnalyticsImporter_EditEndDate'|translate }}</a>
+                            {% endif %}
+                            <br/>
+                            <a id="reimport-date-range" class="table-command-link" href="" ng-click="importStatus.openScheduleReimportModal({{ status.idSite|json_encode|e('html_attr') }})">
+                                {{ 'GoogleAnalyticsImporter_ReimportDate'|translate }}
+                            </a>
+                        </td>
+                        <td class="scheduled-reimports">
+                            {% if status.reimport_ranges|default is not empty %}
+                            <ul>
+                                {% for entry in status.reimport_ranges %}
+                                    <li>{{ entry[0] }},{{ entry[1] }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% else %}
+                                {{ 'GoogleAnalyticsImporter_None'|translate }}
                             {% endif %}
                         </td>
-                        <td class="import-start-time">
+                        <td class="import-start-finish-times">
                             {{ 'GoogleAnalyticsImporter_ImportStartTime'|translate }}: {{ status.import_start_time|default(noneText) }}<br/>
-                            {{ 'GoogleAnalyticsImporter_LastResumeTime'|translate }}: {{ status.last_job_start_time|default(noneText) }}
-                        </td>
-                        <td class="import-end-time">
+                            {{ 'GoogleAnalyticsImporter_LastResumeTime'|translate }}: {{ status.last_job_start_time|default(noneText) }}<br/>
+
                             {% if status.status == 'finished' %}
-                                {{ status.import_end_time|default(noneText) }}
+                                {{ 'GoogleAnalyticsImporter_TimeFinished'|translate }}: {{ status.import_end_time|default(noneText) }}
                             {% elseif status.estimated_days_left_to_finish|default is not empty %}
                                 {% if status.estimated_days_left_to_finish matches '/^\\d+$/' and status.estimated_days_left_to_finish == 0 %}
                                 {{ 'GoogleAnalyticsImporter_ThisJobShouldFinishToday'|translate }}
@@ -246,8 +261,8 @@
                                {% endif %}
                             ></a>
 
-                            {% if status.status != 'finished' and status.status != 'ongoing' %}
-                            <a ng-click="importStatus.manuallyResume({{ status.idSite|json_encode|raw|e('html_attr') }})"
+                            {% if status.status != 'finished' and status.status != 'ongoing' and status.status != 'started' %}
+                            <a ng-click="importStatus.manuallyResume({{ status.idSite|json_encode|e('html_attr') }})"
                                class="table-action icon-play"
                                title="{{ 'GoogleAnalyticsImporter_ResumeDesc'|translate }}"
                             ></a>
@@ -257,6 +272,32 @@
                     {% endfor %}
                 </tbody>
             </table>
+
+            <div class="modal" id="openScheduleReimportModal">
+                <div class="modal-content">
+                    <h3>{{ 'GoogleAnalyticsImporter_EnterImportDateRange'|translate }}</h3>
+                    <div
+                            piwik-field
+                            name="re-import-start-date"
+                            uicontrol="text"
+                            ng-model="importStatus.reimportStartDate"
+                            placeholder="{{ 'GoogleAnalyticsImporter_StartDate'|translate }} (YYYY-MM-DD)"
+                    >
+                    </div>
+                    <div
+                            piwik-field
+                            name="re-import-end-date"
+                            uicontrol="text"
+                            ng-model="importStatus.reimportEndDate"
+                            placeholder="{{ 'GoogleAnalyticsImporter_EndDate'|translate }} (YYYY-MM-DD)"
+                    >
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a id="scheduleReimportSubmit" href="" class="modal-action modal-close btn" ng-click="importStatus.scheduleReimport()">{{ 'GoogleAnalyticsImporter_Schedule'|translate }}</a>
+                    <a href="" class="modal-action modal-close modal-no">{{ 'General_Cancel'|translate }}</a>
+                </div>
+            </div>
 
             <div class="modal" id="editImportEndDate">
                 <div class="modal-content">

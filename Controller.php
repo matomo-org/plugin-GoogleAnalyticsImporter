@@ -67,6 +67,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce');
         $changeImportEndDateNonce = Nonce::getNonce('GoogleAnalyticsImporter.changeImportEndDateNonce');
         $resumeImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.resumeImportNonce');
+        $scheduleReImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.scheduleReImport');
 
         return $this->renderTemplate('index', [
             'isConfigured' => $authorization->hasAccessToken(),
@@ -78,6 +79,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'startImportNonce' => $startImportNonce,
             'changeImportEndDateNonce' => $changeImportEndDateNonce,
             'resumeImportNonce' => $resumeImportNonce,
+            'scheduleReImportNonce' => $scheduleReImportNonce,
             'extraCustomDimensionsField' => [
                 'field1' => [
                     'key' => 'gaDimension',
@@ -355,6 +357,44 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $notification->title = Piwik::translate('General_Error');
             $notification->hasNoClear();
             Notification\Manager::notify('GoogleAnalyticsImporter_resumeImport_failure', $notification);
+        }
+    }
+
+    public function scheduleReImport()
+    {
+        Piwik::checkUserHasSuperUserAccess();
+        $this->checkTokenInUrl();
+
+        Json::sendHeaderJSON();
+
+        try {
+            Nonce::checkNonce('GoogleAnalyticsImporter.scheduleReImport', Common::getRequestVar('nonce'));
+
+            $idSite = Common::getRequestVar('idSite', null, 'int');
+            new Site($idSite);
+
+            $startDate = Common::getRequestVar('startDate', null, 'string');
+            $startDate = Date::factory($startDate);
+
+            $endDate = Common::getRequestVar('endDate', null, 'string');
+            $endDate = Date::factory($endDate);
+
+            /** @var ImportStatus $importStatus */
+            $importStatus = StaticContainer::get(ImportStatus::class);
+            $importStatus->reImportDateRange($idSite, $startDate, $endDate);
+            $importStatus->resumeImport($idSite);
+
+            // start import now since the scheduled task may not run until tomorrow
+            Tasks::startImport($importStatus->getImportStatus($idSite));
+
+            echo json_encode([ 'result' => 'ok' ]);
+        } catch (\Exception $ex) {
+            $notification = new Notification($ex->getMessage());
+            $notification->type = Notification::TYPE_TRANSIENT;
+            $notification->context = Notification::CONTEXT_ERROR;
+            $notification->title = Piwik::translate('General_Error');
+            $notification->hasNoClear();
+            Notification\Manager::notify('GoogleAnalyticsImporter_rescheduleImport_failure', $notification);
         }
     }
 }

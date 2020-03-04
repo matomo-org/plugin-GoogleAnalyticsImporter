@@ -12,8 +12,11 @@ use Piwik\Common;
 use Piwik\Option;
 use Psr\Http\Message\RequestInterface;
 
+require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
+
 class MockResponseClient extends \Google_Client
 {
+    public static $isForSystemTest = false;
     private $mockResponses = [];
 
     public function __construct(array $config = array())
@@ -48,17 +51,21 @@ class MockResponseClient extends \Google_Client
             $request->getBody()->getContents(),
         ];
 
-        // for the test induce a failure on a specific day
-        if (!$this->hasErroredOnce()
-            && Common::isPhpCliMode()
-            && strpos($request->getBody()->getContents(), '2019-06-28') === false
-        ) {
-            sleep(5); // wait 5s to make sure UI test reloads w/ 'started' status
-            $this->setErroredOnce();
-            throw new \Exception("forced error for test");
+        // for the UI test induce a failure on a specific day
+        if (!self::$isForSystemTest) {
+            if (!$this->hasErroredOnce()
+                && Common::isPhpCliMode()
+                && strpos($request->getBody()->getContents(), '2019-06-28') === false
+            ) {
+                sleep(6); // wait 10s to make sure UI test reloads w/ 'ongoing' status
+                $this->setErroredOnce();
+                throw new \Exception("forced error for test");
+            }
         }
 
-        $key = md5(json_encode($requestParts));
+        $key = json_encode($requestParts);
+        $key = $this->replaceEnvVars($key);
+        $key = md5($key);
         if (empty($this->mockResponses[$key])) {
             throw new \Exception("Could not find mock response for request: " . json_encode($requestParts));
         }
@@ -74,5 +81,23 @@ class MockResponseClient extends \Google_Client
     private function setErroredOnce()
     {
         Option::set('MockResponseClient.hasErroredOnce', '1');
+    }
+
+    private function replaceEnvVars($key)
+    {
+        $propertyId = getenv('GA_PROPERTY_ID');
+        if (!empty($propertyId)) {
+            $key = str_replace($propertyId, 'UA-12345-6', $key);
+
+            preg_match('/UA-(.*?)-.*?/', $propertyId, $matches);
+            $key = str_replace($matches[1], '12345', $key);
+        }
+
+        $viewId = getenv('PIWIK_TEST_GA_VIEW_ID');
+        if (!empty($viewId)) {
+            $key = str_replace($viewId, '1234567', $key);
+        }
+
+        return $key;
     }
 }

@@ -22,6 +22,8 @@
         vm.cancelEditImportEndDateModal = cancelEditImportEndDateModal;
         vm.changeImportEndDateModal = changeImportEndDateModal;
         vm.manuallyResume = manuallyResume;
+        vm.openScheduleReimportModal = openScheduleReimportModal;
+        vm.scheduleReimport = scheduleReimport;
 
         $element.tooltip({
             track: true,
@@ -40,6 +42,7 @@
         });
 
         var editImportEndDateIdSite = null;
+        var reimportDateRangeIdSite = null;
 
         function showEditImportEndDateModal(idSite) {
             editImportEndDateIdSite = idSite;
@@ -86,6 +89,24 @@
                 action: 'deleteImportStatus',
                 idSite: idSite,
                 nonce: vm.nonce
+            }, { token_auth: piwik.token_auth })['finally'](function () {
+                window.location.reload();
+            });
+        }
+
+        function openScheduleReimportModal(idSite) {
+            reimportDateRangeIdSite = idSite;
+            $('#openScheduleReimportModal').openModal({ dismissible: false });
+        }
+
+        function scheduleReimport() {
+            return piwikApi.post({
+                module: 'GoogleAnalyticsImporter',
+                action: 'scheduleReImport',
+                idSite: reimportDateRangeIdSite,
+                startDate: vm.reimportStartDate,
+                endDate: vm.reimportEndDate,
+                nonce: vm.scheduleReImportNonce
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });

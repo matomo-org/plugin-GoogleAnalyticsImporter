@@ -87,6 +87,12 @@
     "ScheduleImportDesc1": "Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).",
     "ScheduleImportDesc2": "If no end date is supplied, the import will continue until you manually cancel it below.",
     "ResumeDesc": "Resume. Note: if your import has errored, resuming it will most likely result in the same error unless you have updated the plugin with a fix. If it has been rate limited, resuming will most likely result in the same rate limiting error, but it will automatically restart the next day when the rate limit wears off.",
-    "KilledStatusHelp": "It looks like the import job was terminated. If you didn't do this yourself, then your host probably does not like long running PHP processes. The import job will start again within the next hour so the import will still continue. If the import speed is still slow overall (check back in a day to see), then view the user guide for more information and workarounds."
+    "KilledStatusHelp": "It looks like the import job was terminated. If you didn't do this yourself, then your host probably does not like long running PHP processes. The import job will start again within the next hour so the import will still continue. If the import speed is still slow overall (check back in a day to see), then view the user guide for more information and workarounds.",
+    "ReimportDate": "Re-import date range",
+    "EnterImportDateRange": "Enter the start and end dates to re-import",
+    "Schedule": "Schedule",
+    "InvalidDateRange": "Invalid date range, the start date must be earlier than the end date.",
+    "ScheduledReImports": "Re-imports",
+    "StartFinishTimes": "Start/Finish Times"
   }
 }
