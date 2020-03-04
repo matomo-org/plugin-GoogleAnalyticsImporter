@@ -13,6 +13,10 @@ use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\BaseRecordImporterTest
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Tests\Framework\Fixture;
 
+/**
+ * @group Plugins
+ * @group GoogleAnalyticsImporter
+ */
 class RecordImporterTest extends BaseRecordImporterTest
 {
     public function setUp(): void

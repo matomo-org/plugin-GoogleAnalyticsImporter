@@ -16,6 +16,10 @@ use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
+/**
+ * @group Plugins
+ * @group GoogleAnalyticsImporter
+ */
 class ImporterTest extends IntegrationTestCase
 {
     public $mockData;

@@ -18,6 +18,10 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
+/**
+ * @group Plugins
+ * @group GoogleAnalyticsImporter
+ */
 class TasksWithMockExec extends Tasks
 {
     public static $commandsRun = [];

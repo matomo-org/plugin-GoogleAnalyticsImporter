@@ -14,6 +14,10 @@ use Piwik\Tests\Framework\TestCase\SystemTestCase;
 
 // TODO: in-table segments should be disabled for these imported reports (would need to mark records as imported and delete segment metadata in hooks)
 
+/**
+ * @group Plugins
+ * @group GoogleAnalyticsImporter
+ */
 class ImportTest extends SystemTestCase
 {
     private static $CONVERSION_AWARE_VISIT_METRICS = [

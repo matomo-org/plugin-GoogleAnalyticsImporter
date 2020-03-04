@@ -17,6 +17,10 @@ use Piwik\Site;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
+/**
+ * @group Plugins
+ * @group GoogleAnalyticsImporter
+ */
 class ImportStatusTest extends IntegrationTestCase
 {
     /**
