@@ -68,7 +68,12 @@ class GoogleAnalyticsQueryService
      */
     private $metricMapper;
 
-    public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite,
+    /**
+     * @var string
+     */
+    private $quotaUser;
+
+    public function __construct(\Google_Service_AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite, $quotaUser,
                                 GoogleQueryObjectFactory $googleQueryObjectFactory, LoggerInterface $logger)
     {
         $this->gaService = $gaService;
@@ -77,6 +82,7 @@ class GoogleAnalyticsQueryService
         $this->googleQueryObjectFactory = $googleQueryObjectFactory;
         $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
         $this->metricMapper = new GoogleMetricMapper(Site::isEcommerceEnabledFor($idSite), $goalsMapping);
+        $this->quotaUser = $quotaUser;
     }
 
     public function query(Date $day, array $dimensions, array $metrics, array $options = [])
@@ -147,7 +153,10 @@ class GoogleAnalyticsQueryService
             try {
                 $this->issuePointlessMysqlQuery();
 
-                $result = $this->gaService->reports->batchGet($request);
+                $result = $this->gaService->reports->batchGet($request, [
+                    'quotaUser' => $this->quotaUser,
+                ]);
+
                 if (empty($result)) {
                     ++$attempts;
                     sleep(1);

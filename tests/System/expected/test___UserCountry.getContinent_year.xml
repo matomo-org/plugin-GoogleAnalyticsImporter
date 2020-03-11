@@ -4,10 +4,10 @@
 		<label>Europe</label>
 		<nb_visits>275</nb_visits>
 		<nb_actions>876</nb_actions>
-		<sum_visit_length>18530</sum_visit_length>
+		<sum_visit_length>18529</sum_visit_length>
 		<bounce_count>88</bounce_count>
-		<nb_visits_converted>67</nb_visits_converted>
-		<nb_conversions>141</nb_conversions>
+		<nb_visits_converted>66</nb_visits_converted>
+		<nb_conversions>140</nb_conversions>
 		<revenue>671508</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -16,9 +16,9 @@
 				<nb_visits_converted>34</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>29</nb_conversions>
+				<nb_conversions>28</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>25</nb_visits_converted>
+				<nb_visits_converted>24</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>7</nb_conversions>

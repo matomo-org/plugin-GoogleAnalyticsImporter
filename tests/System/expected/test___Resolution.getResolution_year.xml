@@ -356,9 +356,9 @@
 		<label>1024x768</label>
 		<nb_visits>5</nb_visits>
 		<nb_actions>6</nb_actions>
-		<sum_visit_length>122</sum_visit_length>
+		<sum_visit_length>121</sum_visit_length>
 		<bounce_count>4</bounce_count>
-		<nb_visits_converted>3</nb_visits_converted>
+		<nb_visits_converted>2</nb_visits_converted>
 		<nb_conversions>2</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
