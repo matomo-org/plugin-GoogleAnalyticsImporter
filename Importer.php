@@ -34,6 +34,7 @@ use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Segment;
+use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -448,8 +449,10 @@ class Importer
             }
         }
 
+        $quotaUser = SettingsPiwik::getPiwikUrl();
+
         $gaQuery = new GoogleAnalyticsQueryService(
-            $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
+            $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
         });

@@ -4,10 +4,10 @@
 		<label>Desktop</label>
 		<nb_visits>372</nb_visits>
 		<nb_actions>1311</nb_actions>
-		<sum_visit_length>12072</sum_visit_length>
+		<sum_visit_length>12071</sum_visit_length>
 		<bounce_count>86</bounce_count>
-		<nb_visits_converted>112</nb_visits_converted>
-		<nb_conversions>234</nb_conversions>
+		<nb_visits_converted>111</nb_visits_converted>
+		<nb_conversions>233</nb_conversions>
 		<revenue>1064094</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -16,9 +16,9 @@
 				<nb_visits_converted>59</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>50</nb_conversions>
+				<nb_conversions>49</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>48</nb_visits_converted>
+				<nb_visits_converted>47</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>2</nb_conversions>
