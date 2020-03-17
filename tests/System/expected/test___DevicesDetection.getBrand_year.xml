@@ -319,10 +319,10 @@
 		<label>Unknown</label>
 		<nb_visits>3</nb_visits>
 		<nb_actions>4</nb_actions>
-		<sum_visit_length>122</sum_visit_length>
+		<sum_visit_length>121</sum_visit_length>
 		<bounce_count>2</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -331,9 +331,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>

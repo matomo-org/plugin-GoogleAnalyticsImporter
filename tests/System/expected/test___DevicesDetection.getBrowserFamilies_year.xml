@@ -136,9 +136,9 @@
 		<label>Firefox</label>
 		<nb_visits>95</nb_visits>
 		<nb_actions>342</nb_actions>
-		<sum_visit_length>2204</sum_visit_length>
+		<sum_visit_length>2203</sum_visit_length>
 		<bounce_count>17</bounce_count>
-		<nb_visits_converted>31</nb_visits_converted>
+		<nb_visits_converted>30</nb_visits_converted>
 		<nb_conversions>66</nb_conversions>
 		<revenue>281303</revenue>
 		<goals>
