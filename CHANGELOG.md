@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.3.3
+
+Changes:
+* Use quotaUser to support multi-instance setups.
+
 # 1.3.2
 
 Bug fixes:
