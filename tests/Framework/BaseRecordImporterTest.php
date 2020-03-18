@@ -28,7 +28,7 @@ abstract class BaseRecordImporterTest extends IntegrationTestCase
      */
     protected $capturedReports;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
