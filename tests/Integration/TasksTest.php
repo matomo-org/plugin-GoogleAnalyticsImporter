@@ -41,7 +41,7 @@ class TasksTest extends IntegrationTestCase
      */
     private $tmpPath;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->tmpPath = StaticContainer::get('path.tmp');

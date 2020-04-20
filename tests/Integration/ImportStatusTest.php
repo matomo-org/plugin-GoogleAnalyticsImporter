@@ -24,7 +24,7 @@ class ImportStatusTest extends IntegrationTestCase
      */
     private $instance;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

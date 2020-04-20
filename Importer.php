@@ -420,7 +420,7 @@ class Importer
         if (!empty($plugin)) {
             $params->setRequestedPlugin($plugin);
         }
-        return new ArchiveWriter($params, $isTemp = false);
+        return new ArchiveWriter($params);
     }
 
     /**

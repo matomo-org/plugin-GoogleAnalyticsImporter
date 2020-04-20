@@ -30,7 +30,7 @@ class RecordImporterTest extends BaseRecordImporterTest
         return 'CustomDimensions';
     }
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

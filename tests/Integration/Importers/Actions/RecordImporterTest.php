@@ -15,7 +15,7 @@ use Piwik\Tests\Framework\Fixture;
 
 class RecordImporterTest extends BaseRecordImporterTest
 {
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 

@@ -52,7 +52,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         "Provider.getProvider",
     ];
 
-    public function getListHooksRegistered()
+    public function registerEvents()
     {
         return [
             'AssetManager.getJavaScriptFiles'        => 'getJsFiles',
