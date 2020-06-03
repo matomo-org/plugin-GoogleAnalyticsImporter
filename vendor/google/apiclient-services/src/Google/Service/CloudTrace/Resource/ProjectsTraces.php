@@ -27,7 +27,8 @@ class Google_Service_CloudTrace_Resource_ProjectsTraces extends Google_Service_R
 {
   /**
    * Sends new spans to new or existing traces. You cannot update existing spans.
-   * (traces.batchWrite)
+   * In this case, writing traces is not considered an active developer method
+   * since traces are machine generated. (traces.batchWrite)
    *
    * @param string $name Required. The name of the project where the spans belong.
    * The format is `projects/[PROJECT_ID]`.

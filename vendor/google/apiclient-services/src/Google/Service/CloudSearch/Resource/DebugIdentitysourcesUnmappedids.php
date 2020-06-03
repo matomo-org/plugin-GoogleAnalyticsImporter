@@ -27,6 +27,8 @@ class Google_Service_CloudSearch_Resource_DebugIdentitysourcesUnmappedids extend
 {
   /**
    * Lists unmapped user identities for an identity source.
+   *
+   * **Note:** This API requires an admin account to execute.
    * (unmappedids.listDebugIdentitysourcesUnmappedids)
    *
    * @param string $parent The name of the identity source, in the following
@@ -34,9 +36,8 @@ class Google_Service_CloudSearch_Resource_DebugIdentitysourcesUnmappedids extend
    * @param array $optParams Optional parameters.
    *
    * @opt_param string resolutionStatusCode Limit users selection to this status.
-   * @opt_param bool debugOptions.enableDebugging If set, the request will enable
-   * debugging features of Cloud Search. Only turn on this field, if asked by
-   * Google to help with debugging.
+   * @opt_param bool debugOptions.enableDebugging If you are asked by Google to
+   * help with debugging, set this field. Otherwise, ignore this field.
    * @opt_param string pageToken The next_page_token value returned from a
    * previous List request, if any.
    * @opt_param int pageSize Maximum number of items to fetch in a request.

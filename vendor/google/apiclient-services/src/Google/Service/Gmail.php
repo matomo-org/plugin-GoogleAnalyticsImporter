@@ -33,6 +33,18 @@ class Google_Service_Gmail extends Google_Service
   /** Read, compose, send, and permanently delete all your email from Gmail. */
   const MAIL_GOOGLE_COM =
       "https://mail.google.com/";
+  /** Manage drafts and send emails when you interact with the add-on. */
+  const GMAIL_ADDONS_CURRENT_ACTION_COMPOSE =
+      "https://www.googleapis.com/auth/gmail.addons.current.action.compose";
+  /** View your email messages when you interact with the add-on. */
+  const GMAIL_ADDONS_CURRENT_MESSAGE_ACTION =
+      "https://www.googleapis.com/auth/gmail.addons.current.message.action";
+  /** View your email message metadata when the add-on is running. */
+  const GMAIL_ADDONS_CURRENT_MESSAGE_METADATA =
+      "https://www.googleapis.com/auth/gmail.addons.current.message.metadata";
+  /** View your email messages when the add-on is running. */
+  const GMAIL_ADDONS_CURRENT_MESSAGE_READONLY =
+      "https://www.googleapis.com/auth/gmail.addons.current.message.readonly";
   /** Manage drafts and send emails. */
   const GMAIL_COMPOSE =
       "https://www.googleapis.com/auth/gmail.compose";
@@ -78,12 +90,13 @@ class Google_Service_Gmail extends Google_Service
   /**
    * Constructs the internal representation of the Gmail service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://www.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://www.googleapis.com/';
     $this->servicePath = 'gmail/v1/users/';
     $this->batchPath = 'batch/gmail/v1';
     $this->version = 'v1';
@@ -620,6 +633,16 @@ class Google_Service_Gmail extends Google_Service
                   'required' => true,
                 ),
               ),
+            ),'getLanguage' => array(
+              'path' => '{userId}/settings/language',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
             ),'getPop' => array(
               'path' => '{userId}/settings/pop',
               'httpMethod' => 'GET',
@@ -652,6 +675,16 @@ class Google_Service_Gmail extends Google_Service
               ),
             ),'updateImap' => array(
               'path' => '{userId}/settings/imap',
+              'httpMethod' => 'PUT',
+              'parameters' => array(
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'updateLanguage' => array(
+              'path' => '{userId}/settings/language',
               'httpMethod' => 'PUT',
               'parameters' => array(
                 'userId' => array(

@@ -70,6 +70,8 @@ class Google_Service_Dfareporting_Creative extends Google_Collection
   public $mediaDescription;
   public $mediaDuration;
   public $name;
+  protected $obaIconType = 'Google_Service_Dfareporting_ObaIcon';
+  protected $obaIconDataType = '';
   public $overrideCss;
   protected $progressOffsetType = 'Google_Service_Dfareporting_VideoOffset';
   protected $progressOffsetDataType = '';
@@ -493,6 +495,20 @@ class Google_Service_Dfareporting_Creative extends Google_Collection
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param Google_Service_Dfareporting_ObaIcon
+   */
+  public function setObaIcon(Google_Service_Dfareporting_ObaIcon $obaIcon)
+  {
+    $this->obaIcon = $obaIcon;
+  }
+  /**
+   * @return Google_Service_Dfareporting_ObaIcon
+   */
+  public function getObaIcon()
+  {
+    return $this->obaIcon;
   }
   public function setOverrideCss($overrideCss)
   {

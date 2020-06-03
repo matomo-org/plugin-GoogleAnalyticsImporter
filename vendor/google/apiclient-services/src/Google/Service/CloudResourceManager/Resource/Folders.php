@@ -53,8 +53,9 @@ class Google_Service_CloudResourceManager_Resource_Folders extends Google_Servic
    * @param Google_Service_CloudResourceManager_Folder $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string parent The resource name of the new Folder's parent. Must
-   * be of the form `folders/{folder_id}` or `organizations/{org_id}`.
+   * @opt_param string parent Required. The resource name of the new Folder's
+   * parent. Must be of the form `folders/{folder_id}` or
+   * `organizations/{org_id}`.
    * @return Google_Service_CloudResourceManager_Operation
    */
   public function create(Google_Service_CloudResourceManager_Folder $postBody, $optParams = array())
@@ -71,8 +72,8 @@ class Google_Service_CloudResourceManager_Resource_Folders extends Google_Servic
    * caller must have `resourcemanager.folders.delete` permission on the
    * identified folder. (folders.delete)
    *
-   * @param string $name the resource name of the Folder to be deleted. Must be of
-   * the form `folders/{folder_id}`.
+   * @param string $name Required. the resource name of the Folder to be deleted.
+   * Must be of the form `folders/{folder_id}`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudResourceManager_Folder
    */
@@ -88,8 +89,8 @@ class Google_Service_CloudResourceManager_Resource_Folders extends Google_Servic
    * `folders/1234`). The caller must have `resourcemanager.folders.get`
    * permission on the identified folder. (folders.get)
    *
-   * @param string $name The resource name of the Folder to retrieve. Must be of
-   * the form `folders/{folder_id}`.
+   * @param string $name Required. The resource name of the Folder to retrieve.
+   * Must be of the form `folders/{folder_id}`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudResourceManager_Folder
    */
@@ -129,17 +130,18 @@ class Google_Service_CloudResourceManager_Resource_Folders extends Google_Servic
    *
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string parent The resource name of the Organization or Folder
-   * whose Folders are being listed. Must be of the form `folders/{folder_id}` or
-   * `organizations/{org_id}`. Access to this method is controlled by checking the
-   * `resourcemanager.folders.list` permission on the `parent`.
-   * @opt_param bool showDeleted Controls whether Folders in the DELETE_REQUESTED
-   * state should be returned. Defaults to false. This field is optional.
-   * @opt_param string pageToken A pagination token returned from a previous call
-   * to `ListFolders` that indicates where this listing should continue from. This
-   * field is optional.
-   * @opt_param int pageSize The maximum number of Folders to return in the
-   * response. This field is optional.
+   * @opt_param string pageToken Optional. A pagination token returned from a
+   * previous call to `ListFolders` that indicates where this listing should
+   * continue from.
+   * @opt_param int pageSize Optional. The maximum number of Folders to return in
+   * the response.
+   * @opt_param string parent Required. The resource name of the Organization or
+   * Folder whose Folders are being listed. Must be of the form
+   * `folders/{folder_id}` or `organizations/{org_id}`. Access to this method is
+   * controlled by checking the `resourcemanager.folders.list` permission on the
+   * `parent`.
+   * @opt_param bool showDeleted Optional. Controls whether Folders in the
+   * DELETE_REQUESTED state should be returned. Defaults to false.
    * @return Google_Service_CloudResourceManager_ListFoldersResponse
    */
   public function listFolders($optParams = array())
@@ -163,8 +165,8 @@ class Google_Service_CloudResourceManager_Resource_Folders extends Google_Servic
    * `resourcemanager.folders.move` permission on the folder's current and
    * proposed new parent. (folders.move)
    *
-   * @param string $name The resource name of the Folder to move. Must be of the
-   * form folders/{folder_id}
+   * @param string $name Required. The resource name of the Folder to move. Must
+   * be of the form folders/{folder_id}
    * @param Google_Service_CloudResourceManager_MoveFolderRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudResourceManager_Operation
@@ -196,8 +198,8 @@ class Google_Service_CloudResourceManager_Resource_Folders extends Google_Servic
    * @param Google_Service_CloudResourceManager_Folder $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask Fields to be updated. Only the `display_name`
-   * can be updated.
+   * @opt_param string updateMask Required. Fields to be updated. Only the
+   * `display_name` can be updated.
    * @return Google_Service_CloudResourceManager_Folder
    */
   public function patch($name, Google_Service_CloudResourceManager_Folder $postBody, $optParams = array())
@@ -272,8 +274,8 @@ class Google_Service_CloudResourceManager_Resource_Folders extends Google_Servic
    * `resourcemanager.folders.undelete` permission on the identified folder.
    * (folders.undelete)
    *
-   * @param string $name The resource name of the Folder to undelete. Must be of
-   * the form `folders/{folder_id}`.
+   * @param string $name Required. The resource name of the Folder to undelete.
+   * Must be of the form `folders/{folder_id}`.
    * @param Google_Service_CloudResourceManager_UndeleteFolderRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudResourceManager_Folder

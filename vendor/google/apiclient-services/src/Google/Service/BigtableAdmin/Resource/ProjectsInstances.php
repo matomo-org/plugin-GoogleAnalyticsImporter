@@ -28,8 +28,8 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstances extends Google_Ser
   /**
    * Create an instance within a project. (instances.create)
    *
-   * @param string $parent The unique name of the project in which to create the
-   * new instance. Values are of the form `projects/`.
+   * @param string $parent Required. The unique name of the project in which to
+   * create the new instance. Values are of the form `projects/{project}`.
    * @param Google_Service_BigtableAdmin_CreateInstanceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_BigtableAdmin_Operation
@@ -43,8 +43,8 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstances extends Google_Ser
   /**
    * Delete an instance from a project. (instances.delete)
    *
-   * @param string $name The unique name of the instance to be deleted. Values are
-   * of the form `projects//instances/`.
+   * @param string $name Required. The unique name of the instance to be deleted.
+   * Values are of the form `projects/{project}/instances/{instance}`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_BigtableAdmin_BigtableadminEmpty
    */
@@ -57,8 +57,8 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstances extends Google_Ser
   /**
    * Gets information about an instance. (instances.get)
    *
-   * @param string $name The unique name of the requested instance. Values are of
-   * the form `projects//instances/`.
+   * @param string $name Required. The unique name of the requested instance.
+   * Values are of the form `projects/{project}/instances/{instance}`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_BigtableAdmin_Instance
    */
@@ -90,8 +90,8 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstances extends Google_Ser
    * Lists information about instances in a project.
    * (instances.listProjectsInstances)
    *
-   * @param string $parent The unique name of the project for which a list of
-   * instances is requested. Values are of the form `projects/`.
+   * @param string $parent Required. The unique name of the project for which a
+   * list of instances is requested. Values are of the form `projects/{project}`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string pageToken DEPRECATED: This field is unused and ignored.
@@ -108,13 +108,13 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstances extends Google_Ser
    * fields of an Instance and is the preferred way to update an Instance.
    * (instances.partialUpdateInstance)
    *
-   * @param string $name (`OutputOnly`) The unique name of the instance. Values
-   * are of the form `projects//instances/a-z+[a-z0-9]`.
+   * @param string $name Required. (`OutputOnly`) The unique name of the instance.
+   * Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
    * @param Google_Service_BigtableAdmin_Instance $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask The subset of Instance fields which should be
-   * replaced. Must be explicitly set.
+   * @opt_param string updateMask Required. The subset of Instance fields which
+   * should be replaced. Must be explicitly set.
    * @return Google_Service_BigtableAdmin_Operation
    */
   public function partialUpdateInstance($name, Google_Service_BigtableAdmin_Instance $postBody, $optParams = array())
@@ -162,8 +162,8 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstances extends Google_Ser
    * name and type for an Instance. To update other Instance properties, such as
    * labels, use PartialUpdateInstance. (instances.update)
    *
-   * @param string $name (`OutputOnly`) The unique name of the instance. Values
-   * are of the form `projects//instances/a-z+[a-z0-9]`.
+   * @param string $name Required. (`OutputOnly`) The unique name of the instance.
+   * Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
    * @param Google_Service_BigtableAdmin_Instance $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_BigtableAdmin_Instance

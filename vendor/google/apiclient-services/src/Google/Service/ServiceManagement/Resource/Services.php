@@ -26,8 +26,15 @@
 class Google_Service_ServiceManagement_Resource_Services extends Google_Service_Resource
 {
   /**
-   * Creates a new managed service. Please note one producer project can own no
-   * more than 20 services.
+   * Creates a new managed service.
+   *
+   * A managed service is immutable, and is subject to mandatory 30-day data
+   * retention. You cannot move a service or recreate it within 30 days after
+   * deletion.
+   *
+   * One producer project can own no more than 500 services. For security and
+   * reliability purposes, a production service should be hosted in a dedicated
+   * producer project.
    *
    * Operation (services.create)
    *
@@ -49,9 +56,9 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
    *
    * Operation (services.delete)
    *
-   * @param string $serviceName The name of the service.  See the [overview
-   * ](/service-management/overview) for naming requirements.  For example:
-   * `example.googleapis.com`.
+   * @param string $serviceName Required. The name of the service.  See the
+   * [overview](/service-management/overview) for naming requirements.  For
+   * example: `example.googleapis.com`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceManagement_Operation
    */
@@ -68,8 +75,8 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
    *
    * Operation (services.disable)
    *
-   * @param string $serviceName Name of the service to disable. Specifying an
-   * unknown service name will cause the request to fail.
+   * @param string $serviceName Required. Name of the service to disable.
+   * Specifying an unknown service name will cause the request to fail.
    * @param Google_Service_ServiceManagement_DisableServiceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceManagement_Operation
@@ -87,8 +94,8 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
    *
    * Operation (services.enable)
    *
-   * @param string $serviceName Name of the service to enable. Specifying an
-   * unknown service name will cause the request to fail.
+   * @param string $serviceName Required. Name of the service to enable.
+   * Specifying an unknown service name will cause the request to fail.
    * @param Google_Service_ServiceManagement_EnableServiceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceManagement_Operation
@@ -125,8 +132,9 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
    * Gets a managed service. Authentication is required unless the service is
    * public. (services.get)
    *
-   * @param string $serviceName The name of the service.  See the `ServiceManager`
-   * overview for naming requirements.  For example: `example.googleapis.com`.
+   * @param string $serviceName Required. The name of the service.  See the
+   * `ServiceManager` overview for naming requirements.  For example:
+   * `example.googleapis.com`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceManagement_ManagedService
    */
@@ -140,12 +148,13 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
    * Gets a service configuration (version) for a managed service.
    * (services.getConfig)
    *
-   * @param string $serviceName The name of the service.  See the [overview
-   * ](/service-management/overview) for naming requirements.  For example:
-   * `example.googleapis.com`.
+   * @param string $serviceName Required. The name of the service.  See the
+   * [overview](/service-management/overview) for naming requirements.  For
+   * example: `example.googleapis.com`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string configId The id of the service configuration resource.
+   * @opt_param string configId Required. The id of the service configuration
+   * resource.
    *
    * This field must be specified for the server to return all fields, including
    * `SourceInfo`.
@@ -189,6 +198,10 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
    *
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string producerProjectId Include services produced by the
+   * specified project.
+   * @opt_param int pageSize The max number of items to include in the response
+   * list. Page size is 50 if not specified. Maximum value is 100.
    * @opt_param string consumerId Include services consumed by the specified
    * consumer.
    *
@@ -196,10 +209,6 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
    * project:
    * @opt_param string pageToken Token identifying which result to start with;
    * returned by a previous list call.
-   * @opt_param int pageSize The max number of items to include in the response
-   * list. Page size is 50 if not specified. Maximum value is 100.
-   * @opt_param string producerProjectId Include services produced by the
-   * specified project.
    * @return Google_Service_ServiceManagement_ListServicesResponse
    */
   public function listServices($optParams = array())
@@ -210,7 +219,10 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
   }
   /**
    * Sets the access control policy on the specified resource. Replaces any
-   * existing policy. (services.setIamPolicy)
+   * existing policy.
+   *
+   * Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+   * (services.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
    * specified. See the operation documentation for the appropriate value for this
@@ -228,7 +240,7 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
   /**
    * Returns permissions that a caller has on the specified resource. If the
    * resource does not exist, this will return an empty set of permissions, not a
-   * NOT_FOUND error.
+   * `NOT_FOUND` error.
    *
    * Note: This operation is designed to be used for building permission-aware UIs
    * and command-line tools, not for authorization checking. This operation may
@@ -254,9 +266,9 @@ class Google_Service_ServiceManagement_Resource_Services extends Google_Service_
    *
    * Operation (services.undelete)
    *
-   * @param string $serviceName The name of the service. See the [overview
-   * ](/service-management/overview) for naming requirements. For example:
-   * `example.googleapis.com`.
+   * @param string $serviceName Required. The name of the service. See the
+   * [overview](/service-management/overview) for naming requirements. For
+   * example: `example.googleapis.com`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ServiceManagement_Operation
    */

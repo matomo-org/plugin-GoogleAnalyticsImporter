@@ -31,6 +31,8 @@ class Google_Service_Sheets_Response extends Google_Model
   protected $addProtectedRangeDataType = '';
   protected $addSheetType = 'Google_Service_Sheets_AddSheetResponse';
   protected $addSheetDataType = '';
+  protected $addSlicerType = 'Google_Service_Sheets_AddSlicerResponse';
+  protected $addSlicerDataType = '';
   protected $createDeveloperMetadataType = 'Google_Service_Sheets_CreateDeveloperMetadataResponse';
   protected $createDeveloperMetadataDataType = '';
   protected $deleteConditionalFormatRuleType = 'Google_Service_Sheets_DeleteConditionalFormatRuleResponse';
@@ -39,12 +41,16 @@ class Google_Service_Sheets_Response extends Google_Model
   protected $deleteDeveloperMetadataDataType = '';
   protected $deleteDimensionGroupType = 'Google_Service_Sheets_DeleteDimensionGroupResponse';
   protected $deleteDimensionGroupDataType = '';
+  protected $deleteDuplicatesType = 'Google_Service_Sheets_DeleteDuplicatesResponse';
+  protected $deleteDuplicatesDataType = '';
   protected $duplicateFilterViewType = 'Google_Service_Sheets_DuplicateFilterViewResponse';
   protected $duplicateFilterViewDataType = '';
   protected $duplicateSheetType = 'Google_Service_Sheets_DuplicateSheetResponse';
   protected $duplicateSheetDataType = '';
   protected $findReplaceType = 'Google_Service_Sheets_FindReplaceResponse';
   protected $findReplaceDataType = '';
+  protected $trimWhitespaceType = 'Google_Service_Sheets_TrimWhitespaceResponse';
+  protected $trimWhitespaceDataType = '';
   protected $updateConditionalFormatRuleType = 'Google_Service_Sheets_UpdateConditionalFormatRuleResponse';
   protected $updateConditionalFormatRuleDataType = '';
   protected $updateDeveloperMetadataType = 'Google_Service_Sheets_UpdateDeveloperMetadataResponse';
@@ -151,6 +157,20 @@ class Google_Service_Sheets_Response extends Google_Model
     return $this->addSheet;
   }
   /**
+   * @param Google_Service_Sheets_AddSlicerResponse
+   */
+  public function setAddSlicer(Google_Service_Sheets_AddSlicerResponse $addSlicer)
+  {
+    $this->addSlicer = $addSlicer;
+  }
+  /**
+   * @return Google_Service_Sheets_AddSlicerResponse
+   */
+  public function getAddSlicer()
+  {
+    return $this->addSlicer;
+  }
+  /**
    * @param Google_Service_Sheets_CreateDeveloperMetadataResponse
    */
   public function setCreateDeveloperMetadata(Google_Service_Sheets_CreateDeveloperMetadataResponse $createDeveloperMetadata)
@@ -207,6 +227,20 @@ class Google_Service_Sheets_Response extends Google_Model
     return $this->deleteDimensionGroup;
   }
   /**
+   * @param Google_Service_Sheets_DeleteDuplicatesResponse
+   */
+  public function setDeleteDuplicates(Google_Service_Sheets_DeleteDuplicatesResponse $deleteDuplicates)
+  {
+    $this->deleteDuplicates = $deleteDuplicates;
+  }
+  /**
+   * @return Google_Service_Sheets_DeleteDuplicatesResponse
+   */
+  public function getDeleteDuplicates()
+  {
+    return $this->deleteDuplicates;
+  }
+  /**
    * @param Google_Service_Sheets_DuplicateFilterViewResponse
    */
   public function setDuplicateFilterView(Google_Service_Sheets_DuplicateFilterViewResponse $duplicateFilterView)
@@ -247,6 +281,20 @@ class Google_Service_Sheets_Response extends Google_Model
   public function getFindReplace()
   {
     return $this->findReplace;
+  }
+  /**
+   * @param Google_Service_Sheets_TrimWhitespaceResponse
+   */
+  public function setTrimWhitespace(Google_Service_Sheets_TrimWhitespaceResponse $trimWhitespace)
+  {
+    $this->trimWhitespace = $trimWhitespace;
+  }
+  /**
+   * @return Google_Service_Sheets_TrimWhitespaceResponse
+   */
+  public function getTrimWhitespace()
+  {
+    return $this->trimWhitespace;
   }
   /**
    * @param Google_Service_Sheets_UpdateConditionalFormatRuleResponse

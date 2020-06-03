@@ -24,6 +24,8 @@ class Google_Service_SQLAdmin_User extends Google_Model
   public $name;
   public $password;
   public $project;
+  protected $sqlserverUserDetailsType = 'Google_Service_SQLAdmin_SqlServerUserDetails';
+  protected $sqlserverUserDetailsDataType = '';
 
   public function setEtag($etag)
   {
@@ -80,5 +82,19 @@ class Google_Service_SQLAdmin_User extends Google_Model
   public function getProject()
   {
     return $this->project;
+  }
+  /**
+   * @param Google_Service_SQLAdmin_SqlServerUserDetails
+   */
+  public function setSqlserverUserDetails(Google_Service_SQLAdmin_SqlServerUserDetails $sqlserverUserDetails)
+  {
+    $this->sqlserverUserDetails = $sqlserverUserDetails;
+  }
+  /**
+   * @return Google_Service_SQLAdmin_SqlServerUserDetails
+   */
+  public function getSqlserverUserDetails()
+  {
+    return $this->sqlserverUserDetails;
   }
 }

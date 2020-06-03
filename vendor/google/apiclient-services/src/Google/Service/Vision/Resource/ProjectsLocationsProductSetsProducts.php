@@ -34,7 +34,8 @@ class Google_Service_Vision_Resource_ProjectsLocationsProductSetsProducts extend
    * * Returns INVALID_ARGUMENT if page_size is greater than 100 or less than 1.
    * (products.listProjectsLocationsProductSetsProducts)
    *
-   * @param string $name The ProductSet resource for which to retrieve Products.
+   * @param string $name Required. The ProductSet resource for which to retrieve
+   * Products.
    *
    * Format is: `projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID`
    * @param array $optParams Optional parameters.

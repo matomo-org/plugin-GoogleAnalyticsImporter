@@ -18,12 +18,28 @@
 class Google_Service_Vision_GoogleCloudVisionV1p4beta1AnnotateFileResponse extends Google_Collection
 {
   protected $collection_key = 'responses';
+  protected $errorType = 'Google_Service_Vision_Status';
+  protected $errorDataType = '';
   protected $inputConfigType = 'Google_Service_Vision_GoogleCloudVisionV1p4beta1InputConfig';
   protected $inputConfigDataType = '';
   protected $responsesType = 'Google_Service_Vision_GoogleCloudVisionV1p4beta1AnnotateImageResponse';
   protected $responsesDataType = 'array';
   public $totalPages;
 
+  /**
+   * @param Google_Service_Vision_Status
+   */
+  public function setError(Google_Service_Vision_Status $error)
+  {
+    $this->error = $error;
+  }
+  /**
+   * @return Google_Service_Vision_Status
+   */
+  public function getError()
+  {
+    return $this->error;
+  }
   /**
    * @param Google_Service_Vision_GoogleCloudVisionV1p4beta1InputConfig
    */

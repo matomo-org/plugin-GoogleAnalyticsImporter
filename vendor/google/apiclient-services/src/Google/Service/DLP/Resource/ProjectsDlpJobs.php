@@ -32,7 +32,8 @@ class Google_Service_DLP_Resource_ProjectsDlpJobs extends Google_Service_Resourc
    * https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
    * (dlpJobs.cancel)
    *
-   * @param string $name The name of the DlpJob resource to be cancelled.
+   * @param string $name Required. The name of the DlpJob resource to be
+   * cancelled.
    * @param Google_Service_DLP_GooglePrivacyDlpV2CancelDlpJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GoogleProtobufEmpty
@@ -53,8 +54,8 @@ class Google_Service_DLP_Resource_ProjectsDlpJobs extends Google_Service_Resourc
    * be all types, but may change over time as detectors are updated.
    * (dlpJobs.create)
    *
-   * @param string $parent The parent resource name, for example projects/my-
-   * project-id.
+   * @param string $parent Required. The parent resource name, for example
+   * projects/my-project-id.
    * @param Google_Service_DLP_GooglePrivacyDlpV2CreateDlpJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2DlpJob
@@ -72,7 +73,7 @@ class Google_Service_DLP_Resource_ProjectsDlpJobs extends Google_Service_Resourc
    * https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
    * (dlpJobs.delete)
    *
-   * @param string $name The name of the DlpJob resource to be deleted.
+   * @param string $name Required. The name of the DlpJob resource to be deleted.
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GoogleProtobufEmpty
    */
@@ -88,7 +89,7 @@ class Google_Service_DLP_Resource_ProjectsDlpJobs extends Google_Service_Resourc
    * https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
    * (dlpJobs.get)
    *
-   * @param string $name The name of the DlpJob resource.
+   * @param string $name Required. The name of the DlpJob resource.
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2DlpJob
    */
@@ -104,37 +105,15 @@ class Google_Service_DLP_Resource_ProjectsDlpJobs extends Google_Service_Resourc
    * https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.
    * (dlpJobs.listProjectsDlpJobs)
    *
-   * @param string $parent The parent resource name, for example projects/my-
-   * project-id.
+   * @param string $parent Required. The parent resource name, for example
+   * projects/my-project-id.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string filter Optional. Allows filtering.
-   *
-   * Supported syntax:
-   *
-   * * Filter expressions are made up of one or more restrictions. * Restrictions
-   * can be combined by `AND` or `OR` logical operators. A sequence of
-   * restrictions implicitly uses `AND`. * A restriction has the form of `  `. *
-   * Supported fields/values for inspect jobs:     - `state` -
-   * PENDING|RUNNING|CANCELED|FINISHED|FAILED     - `inspected_storage` -
-   * DATASTORE|CLOUD_STORAGE|BIGQUERY     - `trigger_name` - The resource name of
-   * the trigger that created job. * Supported fields for risk analysis jobs:
-   * - `state` - RUNNING|CANCELED|FINISHED|FAILED * The operator must be `=` or
-   * `!=`.
-   *
-   * Examples:
-   *
-   * * inspected_storage = cloud_storage AND state = done * inspected_storage =
-   * cloud_storage OR inspected_storage = bigquery * inspected_storage =
-   * cloud_storage AND (state = done OR state = canceled)
-   *
-   * The length of this field should be no more than 500 characters.
    * @opt_param string pageToken The standard list page token.
    * @opt_param int pageSize The standard list page size.
-   * @opt_param string orderBy Optional comma separated list of fields to order
-   * by, followed by `asc` or `desc` postfix. This list is case-insensitive,
-   * default sorting order is ascending, redundant space characters are
-   * insignificant.
+   * @opt_param string orderBy Comma separated list of fields to order by,
+   * followed by `asc` or `desc` postfix. This list is case-insensitive, default
+   * sorting order is ascending, redundant space characters are insignificant.
    *
    * Example: `name asc, end_time asc, create_time desc`
    *
@@ -144,6 +123,32 @@ class Google_Service_DLP_Resource_ProjectsDlpJobs extends Google_Service_Resourc
    * corresponds to time the job ended. - `name`: corresponds to job's name. -
    * `state`: corresponds to `state`
    * @opt_param string type The type of job. Defaults to `DlpJobType.INSPECT`
+   * @opt_param string locationId Deprecated. This field has no effect.
+   * @opt_param string filter Allows filtering.
+   *
+   * Supported syntax:
+   *
+   * * Filter expressions are made up of one or more restrictions. * Restrictions
+   * can be combined by `AND` or `OR` logical operators. A sequence of
+   * restrictions implicitly uses `AND`. * A restriction has the form of `{field}
+   * {operator} {value}`. * Supported fields/values for inspect jobs:     -
+   * `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED     - `inspected_storage`
+   * - DATASTORE|CLOUD_STORAGE|BIGQUERY     - `trigger_name` - The resource name
+   * of the trigger that created job.     - 'end_time` - Corresponds to time the
+   * job finished.     - 'start_time` - Corresponds to time the job finished. *
+   * Supported fields for risk analysis jobs:     - `state` -
+   * RUNNING|CANCELED|FINISHED|FAILED     - 'end_time` - Corresponds to time the
+   * job finished.     - 'start_time` - Corresponds to time the job finished. *
+   * The operator must be `=` or `!=`.
+   *
+   * Examples:
+   *
+   * * inspected_storage = cloud_storage AND state = done * inspected_storage =
+   * cloud_storage OR inspected_storage = bigquery * inspected_storage =
+   * cloud_storage AND (state = done OR state = canceled) * end_time >
+   * \"2017-12-12T00:00:00+00:00\"
+   *
+   * The length of this field should be no more than 500 characters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2ListDlpJobsResponse
    */
   public function listProjectsDlpJobs($parent, $optParams = array())

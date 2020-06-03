@@ -38,6 +38,8 @@ class Google_Service_ContainerAnalysis_Occurrence extends Google_Model
   protected $resourceDataType = '';
   public $resourceUrl;
   public $updateTime;
+  protected $upgradeType = 'Google_Service_ContainerAnalysis_UpgradeOccurrence';
+  protected $upgradeDataType = '';
   protected $vulnerabilityDetailsType = 'Google_Service_ContainerAnalysis_VulnerabilityDetails';
   protected $vulnerabilityDetailsDataType = '';
 
@@ -194,6 +196,20 @@ class Google_Service_ContainerAnalysis_Occurrence extends Google_Model
   public function getUpdateTime()
   {
     return $this->updateTime;
+  }
+  /**
+   * @param Google_Service_ContainerAnalysis_UpgradeOccurrence
+   */
+  public function setUpgrade(Google_Service_ContainerAnalysis_UpgradeOccurrence $upgrade)
+  {
+    $this->upgrade = $upgrade;
+  }
+  /**
+   * @return Google_Service_ContainerAnalysis_UpgradeOccurrence
+   */
+  public function getUpgrade()
+  {
+    return $this->upgrade;
   }
   /**
    * @param Google_Service_ContainerAnalysis_VulnerabilityDetails

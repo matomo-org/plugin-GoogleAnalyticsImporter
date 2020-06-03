@@ -19,7 +19,6 @@ class Google_Service_Storage_Expr extends Google_Model
 {
   public $description;
   public $expression;
-  public $kind;
   public $location;
   public $title;
 
@@ -38,14 +37,6 @@ class Google_Service_Storage_Expr extends Google_Model
   public function getExpression()
   {
     return $this->expression;
-  }
-  public function setKind($kind)
-  {
-    $this->kind = $kind;
-  }
-  public function getKind()
-  {
-    return $this->kind;
   }
   public function setLocation($location)
   {

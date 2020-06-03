@@ -27,20 +27,11 @@ class Google_Service_Iam_Resource_IamPolicies extends Google_Service_Resource
 {
   /**
    * Lints a Cloud IAM policy object or its sub fields. Currently supports
-   * google.iam.v1.Policy, google.iam.v1.Binding and
    * google.iam.v1.Binding.condition.
    *
-   * Each lint operation consists of multiple lint validation units. Validation
-   * units have the following properties:
-   *
-   * - Each unit inspects the input object in regard to a particular   linting
-   * aspect and issues a google.iam.admin.v1.LintResult   disclosing the result. -
-   * Domain of discourse of each unit can be either   google.iam.v1.Policy,
-   * google.iam.v1.Binding, or   google.iam.v1.Binding.condition depending on the
-   * purpose of the   validation. - A unit may require additional data (like the
-   * list of all possible   enumerable values of a particular attribute used in
-   * the policy instance)   which shall be provided by the caller. Refer to the
-   * comments of   google.iam.admin.v1.LintPolicyRequest.context for more details.
+   * Each lint operation consists of multiple lint validation units. Each unit
+   * inspects the input object in regard to a particular linting aspect and issues
+   * a google.iam.admin.v1.LintResult disclosing the result.
    *
    * The set of applicable validation units is determined by the Cloud IAM server
    * and is not configurable.

@@ -28,13 +28,14 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstancesClusters extends Go
   /**
    * Creates a cluster within an instance. (clusters.create)
    *
-   * @param string $parent The unique name of the instance in which to create the
-   * new cluster. Values are of the form `projects//instances/`.
+   * @param string $parent Required. The unique name of the instance in which to
+   * create the new cluster. Values are of the form
+   * `projects/{project}/instances/{instance}`.
    * @param Google_Service_BigtableAdmin_Cluster $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string clusterId The ID to be used when referring to the new
-   * cluster within its instance, e.g., just `mycluster` rather than
+   * @opt_param string clusterId Required. The ID to be used when referring to the
+   * new cluster within its instance, e.g., just `mycluster` rather than
    * `projects/myproject/instances/myinstance/clusters/mycluster`.
    * @return Google_Service_BigtableAdmin_Operation
    */
@@ -47,8 +48,9 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstancesClusters extends Go
   /**
    * Deletes a cluster from an instance. (clusters.delete)
    *
-   * @param string $name The unique name of the cluster to be deleted. Values are
-   * of the form `projects//instances//clusters/`.
+   * @param string $name Required. The unique name of the cluster to be deleted.
+   * Values are of the form
+   * `projects/{project}/instances/{instance}/clusters/{cluster}`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_BigtableAdmin_BigtableadminEmpty
    */
@@ -61,8 +63,9 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstancesClusters extends Go
   /**
    * Gets information about a cluster. (clusters.get)
    *
-   * @param string $name The unique name of the requested cluster. Values are of
-   * the form `projects//instances//clusters/`.
+   * @param string $name Required. The unique name of the requested cluster.
+   * Values are of the form
+   * `projects/{project}/instances/{instance}/clusters/{cluster}`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_BigtableAdmin_Cluster
    */
@@ -76,9 +79,10 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstancesClusters extends Go
    * Lists information about clusters in an instance.
    * (clusters.listProjectsInstancesClusters)
    *
-   * @param string $parent The unique name of the instance for which a list of
-   * clusters is requested. Values are of the form `projects//instances/`. Use ` =
-   * '-'` to list Clusters for all Instances in a project, e.g.,
+   * @param string $parent Required. The unique name of the instance for which a
+   * list of clusters is requested. Values are of the form
+   * `projects/{project}/instances/{instance}`. Use `{instance} = '-'` to list
+   * Clusters for all Instances in a project, e.g.,
    * `projects/myproject/instances/-`.
    * @param array $optParams Optional parameters.
    *
@@ -94,8 +98,9 @@ class Google_Service_BigtableAdmin_Resource_ProjectsInstancesClusters extends Go
   /**
    * Updates a cluster within an instance. (clusters.update)
    *
-   * @param string $name (`OutputOnly`) The unique name of the cluster. Values are
-   * of the form `projects//instances//clusters/a-z*`.
+   * @param string $name Required. (`OutputOnly`) The unique name of the cluster.
+   * Values are of the form
+   * `projects/{project}/instances/{instance}/clusters/a-z*`.
    * @param Google_Service_BigtableAdmin_Cluster $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_BigtableAdmin_Operation

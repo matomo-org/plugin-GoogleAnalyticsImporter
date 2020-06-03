@@ -34,6 +34,7 @@ class Google_Service_CloudTalentSolution_JobQuery extends Google_Collection
   protected $publishTimeRangeType = 'Google_Service_CloudTalentSolution_TimestampRange';
   protected $publishTimeRangeDataType = '';
   public $query;
+  public $queryLanguageCode;
 
   /**
    * @param Google_Service_CloudTalentSolution_CommuteFilter
@@ -154,5 +155,13 @@ class Google_Service_CloudTalentSolution_JobQuery extends Google_Collection
   public function getQuery()
   {
     return $this->query;
+  }
+  public function setQueryLanguageCode($queryLanguageCode)
+  {
+    $this->queryLanguageCode = $queryLanguageCode;
+  }
+  public function getQueryLanguageCode()
+  {
+    return $this->queryLanguageCode;
   }
 }

@@ -26,12 +26,16 @@ class Google_Service_Dataproc_OrderedJob extends Google_Collection
   protected $pigJobType = 'Google_Service_Dataproc_PigJob';
   protected $pigJobDataType = '';
   public $prerequisiteStepIds;
+  protected $prestoJobType = 'Google_Service_Dataproc_PrestoJob';
+  protected $prestoJobDataType = '';
   protected $pysparkJobType = 'Google_Service_Dataproc_PySparkJob';
   protected $pysparkJobDataType = '';
   protected $schedulingType = 'Google_Service_Dataproc_JobScheduling';
   protected $schedulingDataType = '';
   protected $sparkJobType = 'Google_Service_Dataproc_SparkJob';
   protected $sparkJobDataType = '';
+  protected $sparkRJobType = 'Google_Service_Dataproc_SparkRJob';
+  protected $sparkRJobDataType = '';
   protected $sparkSqlJobType = 'Google_Service_Dataproc_SparkSqlJob';
   protected $sparkSqlJobDataType = '';
   public $stepId;
@@ -95,6 +99,20 @@ class Google_Service_Dataproc_OrderedJob extends Google_Collection
     return $this->prerequisiteStepIds;
   }
   /**
+   * @param Google_Service_Dataproc_PrestoJob
+   */
+  public function setPrestoJob(Google_Service_Dataproc_PrestoJob $prestoJob)
+  {
+    $this->prestoJob = $prestoJob;
+  }
+  /**
+   * @return Google_Service_Dataproc_PrestoJob
+   */
+  public function getPrestoJob()
+  {
+    return $this->prestoJob;
+  }
+  /**
    * @param Google_Service_Dataproc_PySparkJob
    */
   public function setPysparkJob(Google_Service_Dataproc_PySparkJob $pysparkJob)
@@ -135,6 +153,20 @@ class Google_Service_Dataproc_OrderedJob extends Google_Collection
   public function getSparkJob()
   {
     return $this->sparkJob;
+  }
+  /**
+   * @param Google_Service_Dataproc_SparkRJob
+   */
+  public function setSparkRJob(Google_Service_Dataproc_SparkRJob $sparkRJob)
+  {
+    $this->sparkRJob = $sparkRJob;
+  }
+  /**
+   * @return Google_Service_Dataproc_SparkRJob
+   */
+  public function getSparkRJob()
+  {
+    return $this->sparkRJob;
   }
   /**
    * @param Google_Service_Dataproc_SparkSqlJob

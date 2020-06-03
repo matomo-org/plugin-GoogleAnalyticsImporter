@@ -17,11 +17,12 @@
 
 class Google_Service_AccessContextManager_ServicePerimeterConfig extends Google_Collection
 {
-  protected $collection_key = 'unrestrictedServices';
+  protected $collection_key = 'restrictedServices';
   public $accessLevels;
   public $resources;
   public $restrictedServices;
-  public $unrestrictedServices;
+  protected $vpcAccessibleServicesType = 'Google_Service_AccessContextManager_VpcAccessibleServices';
+  protected $vpcAccessibleServicesDataType = '';
 
   public function setAccessLevels($accessLevels)
   {
@@ -47,12 +48,18 @@ class Google_Service_AccessContextManager_ServicePerimeterConfig extends Google_
   {
     return $this->restrictedServices;
   }
-  public function setUnrestrictedServices($unrestrictedServices)
+  /**
+   * @param Google_Service_AccessContextManager_VpcAccessibleServices
+   */
+  public function setVpcAccessibleServices(Google_Service_AccessContextManager_VpcAccessibleServices $vpcAccessibleServices)
   {
-    $this->unrestrictedServices = $unrestrictedServices;
+    $this->vpcAccessibleServices = $vpcAccessibleServices;
   }
-  public function getUnrestrictedServices()
+  /**
+   * @return Google_Service_AccessContextManager_VpcAccessibleServices
+   */
+  public function getVpcAccessibleServices()
   {
-    return $this->unrestrictedServices;
+    return $this->vpcAccessibleServices;
   }
 }

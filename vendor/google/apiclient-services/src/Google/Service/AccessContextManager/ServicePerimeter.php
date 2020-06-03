@@ -17,23 +17,16 @@
 
 class Google_Service_AccessContextManager_ServicePerimeter extends Google_Model
 {
-  public $createTime;
   public $description;
   public $name;
   public $perimeterType;
+  protected $specType = 'Google_Service_AccessContextManager_ServicePerimeterConfig';
+  protected $specDataType = '';
   protected $statusType = 'Google_Service_AccessContextManager_ServicePerimeterConfig';
   protected $statusDataType = '';
   public $title;
-  public $updateTime;
+  public $useExplicitDryRunSpec;
 
-  public function setCreateTime($createTime)
-  {
-    $this->createTime = $createTime;
-  }
-  public function getCreateTime()
-  {
-    return $this->createTime;
-  }
   public function setDescription($description)
   {
     $this->description = $description;
@@ -61,6 +54,20 @@ class Google_Service_AccessContextManager_ServicePerimeter extends Google_Model
   /**
    * @param Google_Service_AccessContextManager_ServicePerimeterConfig
    */
+  public function setSpec(Google_Service_AccessContextManager_ServicePerimeterConfig $spec)
+  {
+    $this->spec = $spec;
+  }
+  /**
+   * @return Google_Service_AccessContextManager_ServicePerimeterConfig
+   */
+  public function getSpec()
+  {
+    return $this->spec;
+  }
+  /**
+   * @param Google_Service_AccessContextManager_ServicePerimeterConfig
+   */
   public function setStatus(Google_Service_AccessContextManager_ServicePerimeterConfig $status)
   {
     $this->status = $status;
@@ -80,12 +87,12 @@ class Google_Service_AccessContextManager_ServicePerimeter extends Google_Model
   {
     return $this->title;
   }
-  public function setUpdateTime($updateTime)
+  public function setUseExplicitDryRunSpec($useExplicitDryRunSpec)
   {
-    $this->updateTime = $updateTime;
+    $this->useExplicitDryRunSpec = $useExplicitDryRunSpec;
   }
-  public function getUpdateTime()
+  public function getUseExplicitDryRunSpec()
   {
-    return $this->updateTime;
+    return $this->useExplicitDryRunSpec;
   }
 }

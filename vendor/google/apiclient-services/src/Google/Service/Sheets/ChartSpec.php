@@ -20,6 +20,8 @@ class Google_Service_Sheets_ChartSpec extends Google_Model
   public $altText;
   protected $backgroundColorType = 'Google_Service_Sheets_Color';
   protected $backgroundColorDataType = '';
+  protected $backgroundColorStyleType = 'Google_Service_Sheets_ColorStyle';
+  protected $backgroundColorStyleDataType = '';
   protected $basicChartType = 'Google_Service_Sheets_BasicChartSpec';
   protected $basicChartDataType = '';
   protected $bubbleChartType = 'Google_Service_Sheets_BubbleChartSpec';
@@ -35,6 +37,8 @@ class Google_Service_Sheets_ChartSpec extends Google_Model
   protected $orgChartDataType = '';
   protected $pieChartType = 'Google_Service_Sheets_PieChartSpec';
   protected $pieChartDataType = '';
+  protected $scorecardChartType = 'Google_Service_Sheets_ScorecardChartSpec';
+  protected $scorecardChartDataType = '';
   public $subtitle;
   protected $subtitleTextFormatType = 'Google_Service_Sheets_TextFormat';
   protected $subtitleTextFormatDataType = '';
@@ -71,6 +75,20 @@ class Google_Service_Sheets_ChartSpec extends Google_Model
   public function getBackgroundColor()
   {
     return $this->backgroundColor;
+  }
+  /**
+   * @param Google_Service_Sheets_ColorStyle
+   */
+  public function setBackgroundColorStyle(Google_Service_Sheets_ColorStyle $backgroundColorStyle)
+  {
+    $this->backgroundColorStyle = $backgroundColorStyle;
+  }
+  /**
+   * @return Google_Service_Sheets_ColorStyle
+   */
+  public function getBackgroundColorStyle()
+  {
+    return $this->backgroundColorStyle;
   }
   /**
    * @param Google_Service_Sheets_BasicChartSpec
@@ -179,6 +197,20 @@ class Google_Service_Sheets_ChartSpec extends Google_Model
   public function getPieChart()
   {
     return $this->pieChart;
+  }
+  /**
+   * @param Google_Service_Sheets_ScorecardChartSpec
+   */
+  public function setScorecardChart(Google_Service_Sheets_ScorecardChartSpec $scorecardChart)
+  {
+    $this->scorecardChart = $scorecardChart;
+  }
+  /**
+   * @return Google_Service_Sheets_ScorecardChartSpec
+   */
+  public function getScorecardChart()
+  {
+    return $this->scorecardChart;
   }
   public function setSubtitle($subtitle)
   {

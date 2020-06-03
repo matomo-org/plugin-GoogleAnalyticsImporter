@@ -19,6 +19,7 @@ class Google_Service_DLP_GooglePrivacyDlpV2CreateStoredInfoTypeRequest extends G
 {
   protected $configType = 'Google_Service_DLP_GooglePrivacyDlpV2StoredInfoTypeConfig';
   protected $configDataType = '';
+  public $locationId;
   public $storedInfoTypeId;
 
   /**
@@ -34,6 +35,14 @@ class Google_Service_DLP_GooglePrivacyDlpV2CreateStoredInfoTypeRequest extends G
   public function getConfig()
   {
     return $this->config;
+  }
+  public function setLocationId($locationId)
+  {
+    $this->locationId = $locationId;
+  }
+  public function getLocationId()
+  {
+    return $this->locationId;
   }
   public function setStoredInfoTypeId($storedInfoTypeId)
   {

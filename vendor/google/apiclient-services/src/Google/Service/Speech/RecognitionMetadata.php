@@ -21,7 +21,6 @@ class Google_Service_Speech_RecognitionMetadata extends Google_Model
   public $industryNaicsCodeOfAudio;
   public $interactionType;
   public $microphoneDistance;
-  public $obfuscatedId;
   public $originalMediaType;
   public $originalMimeType;
   public $recordingDeviceName;
@@ -58,14 +57,6 @@ class Google_Service_Speech_RecognitionMetadata extends Google_Model
   public function getMicrophoneDistance()
   {
     return $this->microphoneDistance;
-  }
-  public function setObfuscatedId($obfuscatedId)
-  {
-    $this->obfuscatedId = $obfuscatedId;
-  }
-  public function getObfuscatedId()
-  {
-    return $this->obfuscatedId;
   }
   public function setOriginalMediaType($originalMediaType)
   {

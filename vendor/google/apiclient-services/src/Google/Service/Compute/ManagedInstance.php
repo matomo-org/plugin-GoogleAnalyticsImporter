@@ -15,11 +15,14 @@
  * the License.
  */
 
-class Google_Service_Compute_ManagedInstance extends Google_Model
+class Google_Service_Compute_ManagedInstance extends Google_Collection
 {
+  protected $collection_key = 'instanceHealth';
   public $currentAction;
   public $id;
   public $instance;
+  protected $instanceHealthType = 'Google_Service_Compute_ManagedInstanceInstanceHealth';
+  protected $instanceHealthDataType = 'array';
   public $instanceStatus;
   protected $lastAttemptType = 'Google_Service_Compute_ManagedInstanceLastAttempt';
   protected $lastAttemptDataType = '';
@@ -49,6 +52,20 @@ class Google_Service_Compute_ManagedInstance extends Google_Model
   public function getInstance()
   {
     return $this->instance;
+  }
+  /**
+   * @param Google_Service_Compute_ManagedInstanceInstanceHealth
+   */
+  public function setInstanceHealth($instanceHealth)
+  {
+    $this->instanceHealth = $instanceHealth;
+  }
+  /**
+   * @return Google_Service_Compute_ManagedInstanceInstanceHealth
+   */
+  public function getInstanceHealth()
+  {
+    return $this->instanceHealth;
   }
   public function setInstanceStatus($instanceStatus)
   {

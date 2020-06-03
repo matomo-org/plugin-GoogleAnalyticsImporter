@@ -31,6 +31,8 @@ class Google_Service_FirebaseHosting_Version extends Google_Model
   protected $finalizeUserDataType = '';
   public $labels;
   public $name;
+  protected $previewType = 'Google_Service_FirebaseHosting_PreviewConfig';
+  protected $previewDataType = '';
   public $status;
   public $versionBytes;
 
@@ -137,6 +139,20 @@ class Google_Service_FirebaseHosting_Version extends Google_Model
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param Google_Service_FirebaseHosting_PreviewConfig
+   */
+  public function setPreview(Google_Service_FirebaseHosting_PreviewConfig $preview)
+  {
+    $this->preview = $preview;
+  }
+  /**
+   * @return Google_Service_FirebaseHosting_PreviewConfig
+   */
+  public function getPreview()
+  {
+    return $this->preview;
   }
   public function setStatus($status)
   {

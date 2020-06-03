@@ -17,7 +17,6 @@
 
 class Google_Service_Iam_LintResult extends Google_Model
 {
-  public $bindingOrdinal;
   public $debugMessage;
   public $fieldName;
   public $level;
@@ -25,14 +24,6 @@ class Google_Service_Iam_LintResult extends Google_Model
   public $severity;
   public $validationUnitName;
 
-  public function setBindingOrdinal($bindingOrdinal)
-  {
-    $this->bindingOrdinal = $bindingOrdinal;
-  }
-  public function getBindingOrdinal()
-  {
-    return $this->bindingOrdinal;
-  }
   public function setDebugMessage($debugMessage)
   {
     $this->debugMessage = $debugMessage;

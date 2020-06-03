@@ -17,6 +17,7 @@
 
 class Google_Service_Iam_ServiceAccount extends Google_Model
 {
+  public $description;
   public $disabled;
   public $displayName;
   public $email;
@@ -26,6 +27,14 @@ class Google_Service_Iam_ServiceAccount extends Google_Model
   public $projectId;
   public $uniqueId;
 
+  public function setDescription($description)
+  {
+    $this->description = $description;
+  }
+  public function getDescription()
+  {
+    return $this->description;
+  }
   public function setDisabled($disabled)
   {
     $this->disabled = $disabled;

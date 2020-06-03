@@ -21,6 +21,7 @@ class Google_Service_ContainerAnalysis_Discovered extends Google_Model
   protected $analysisStatusErrorType = 'Google_Service_ContainerAnalysis_Status';
   protected $analysisStatusErrorDataType = '';
   public $continuousAnalysis;
+  public $cpe;
   protected $operationType = 'Google_Service_ContainerAnalysis_Operation';
   protected $operationDataType = '';
 
@@ -53,6 +54,14 @@ class Google_Service_ContainerAnalysis_Discovered extends Google_Model
   public function getContinuousAnalysis()
   {
     return $this->continuousAnalysis;
+  }
+  public function setCpe($cpe)
+  {
+    $this->cpe = $cpe;
+  }
+  public function getCpe()
+  {
+    return $this->cpe;
   }
   /**
    * @param Google_Service_ContainerAnalysis_Operation

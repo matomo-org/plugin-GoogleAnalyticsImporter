@@ -27,10 +27,10 @@ class Google_Service_FirebaseHosting_Resource_SitesReleases extends Google_Servi
 {
   /**
    * Creates a new release which makes the content of the specified version
-   * actively display on the site. (releases.create)
+   * actively display on the appropriate URL(s). (releases.create)
    *
-   * @param string $parent The site that the release belongs to, in the format:
-   * sites/site-name
+   * @param string $parent Required. The site that the release belongs to, in the
+   * format: sites/site-name
    * @param Google_Service_FirebaseHosting_Release $postBody
    * @param array $optParams Optional parameters.
    *

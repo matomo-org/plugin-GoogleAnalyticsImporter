@@ -28,8 +28,8 @@ class Google_Service_CloudIot_Resource_ProjectsLocationsRegistries extends Googl
   /**
    * Associates the device with the gateway. (registries.bindDeviceToGateway)
    *
-   * @param string $parent The name of the registry. For example, `projects
-   * /example-project/locations/us-central1/registries/my-registry`.
+   * @param string $parent Required. The name of the registry. For example,
+   * `projects/example-project/locations/us-central1/registries/my-registry`.
    * @param Google_Service_CloudIot_BindDeviceToGatewayRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudIot_BindDeviceToGatewayResponse
@@ -43,9 +43,9 @@ class Google_Service_CloudIot_Resource_ProjectsLocationsRegistries extends Googl
   /**
    * Creates a device registry that contains devices. (registries.create)
    *
-   * @param string $parent The project and cloud region where this device registry
-   * must be created. For example, `projects/example-project/locations/us-
-   * central1`.
+   * @param string $parent Required. The project and cloud region where this
+   * device registry must be created. For example, `projects/example-
+   * project/locations/us-central1`.
    * @param Google_Service_CloudIot_DeviceRegistry $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudIot_DeviceRegistry
@@ -59,8 +59,8 @@ class Google_Service_CloudIot_Resource_ProjectsLocationsRegistries extends Googl
   /**
    * Deletes a device registry configuration. (registries.delete)
    *
-   * @param string $name The name of the device registry. For example, `projects
-   * /example-project/locations/us-central1/registries/my-registry`.
+   * @param string $name Required. The name of the device registry. For example,
+   * `projects/example-project/locations/us-central1/registries/my-registry`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudIot_CloudiotEmpty
    */
@@ -73,8 +73,8 @@ class Google_Service_CloudIot_Resource_ProjectsLocationsRegistries extends Googl
   /**
    * Gets a device registry configuration. (registries.get)
    *
-   * @param string $name The name of the device registry. For example, `projects
-   * /example-project/locations/us-central1/registries/my-registry`.
+   * @param string $name Required. The name of the device registry. For example,
+   * `projects/example-project/locations/us-central1/registries/my-registry`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudIot_DeviceRegistry
    */
@@ -104,8 +104,8 @@ class Google_Service_CloudIot_Resource_ProjectsLocationsRegistries extends Googl
   /**
    * Lists device registries. (registries.listProjectsLocationsRegistries)
    *
-   * @param string $parent The project and cloud region path. For example,
-   * `projects/example-project/locations/us-central1`.
+   * @param string $parent Required. The project and cloud region path. For
+   * example, `projects/example-project/locations/us-central1`.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string pageToken The value returned by the last
@@ -132,9 +132,9 @@ class Google_Service_CloudIot_Resource_ProjectsLocationsRegistries extends Googl
    * @param Google_Service_CloudIot_DeviceRegistry $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask Only updates the `device_registry` fields
-   * indicated by this mask. The field mask must not be empty, and it must not
-   * contain fields that are immutable or only set by the server. Mutable top-
+   * @opt_param string updateMask Required. Only updates the `device_registry`
+   * fields indicated by this mask. The field mask must not be empty, and it must
+   * not contain fields that are immutable or only set by the server. Mutable top-
    * level fields: `event_notification_config`, `http_config`, `mqtt_config`, and
    * `state_notification_config`.
    * @return Google_Service_CloudIot_DeviceRegistry
@@ -184,8 +184,8 @@ class Google_Service_CloudIot_Resource_ProjectsLocationsRegistries extends Googl
    * Deletes the association between the device and the gateway.
    * (registries.unbindDeviceFromGateway)
    *
-   * @param string $parent The name of the registry. For example, `projects
-   * /example-project/locations/us-central1/registries/my-registry`.
+   * @param string $parent Required. The name of the registry. For example,
+   * `projects/example-project/locations/us-central1/registries/my-registry`.
    * @param Google_Service_CloudIot_UnbindDeviceFromGatewayRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudIot_UnbindDeviceFromGatewayResponse

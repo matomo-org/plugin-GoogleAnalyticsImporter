@@ -30,6 +30,7 @@ class Google_Service_AndroidEnterprise_Product extends Google_Collection
   public $description;
   public $detailsUrl;
   public $distributionChannel;
+  public $features;
   public $iconUrl;
   public $kind;
   public $lastUpdatedTimestampMillis;
@@ -138,6 +139,14 @@ class Google_Service_AndroidEnterprise_Product extends Google_Collection
   public function getDistributionChannel()
   {
     return $this->distributionChannel;
+  }
+  public function setFeatures($features)
+  {
+    $this->features = $features;
+  }
+  public function getFeatures()
+  {
+    return $this->features;
   }
   public function setIconUrl($iconUrl)
   {

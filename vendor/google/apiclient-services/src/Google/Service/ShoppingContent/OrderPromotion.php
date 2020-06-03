@@ -22,11 +22,13 @@ class Google_Service_ShoppingContent_OrderPromotion extends Google_Collection
   protected $applicableItemsDataType = 'array';
   protected $appliedItemsType = 'Google_Service_ShoppingContent_OrderPromotionItem';
   protected $appliedItemsDataType = 'array';
+  public $endTime;
   public $funder;
   public $merchantPromotionId;
   protected $priceValueType = 'Google_Service_ShoppingContent_Price';
   protected $priceValueDataType = '';
   public $shortTitle;
+  public $startTime;
   public $subtype;
   protected $taxValueType = 'Google_Service_ShoppingContent_Price';
   protected $taxValueDataType = '';
@@ -60,6 +62,14 @@ class Google_Service_ShoppingContent_OrderPromotion extends Google_Collection
   public function getAppliedItems()
   {
     return $this->appliedItems;
+  }
+  public function setEndTime($endTime)
+  {
+    $this->endTime = $endTime;
+  }
+  public function getEndTime()
+  {
+    return $this->endTime;
   }
   public function setFunder($funder)
   {
@@ -98,6 +108,14 @@ class Google_Service_ShoppingContent_OrderPromotion extends Google_Collection
   public function getShortTitle()
   {
     return $this->shortTitle;
+  }
+  public function setStartTime($startTime)
+  {
+    $this->startTime = $startTime;
+  }
+  public function getStartTime()
+  {
+    return $this->startTime;
   }
   public function setSubtype($subtype)
   {

@@ -20,6 +20,7 @@ class Google_Service_ServiceControl_AuthenticationInfo extends Google_Collection
   protected $collection_key = 'serviceAccountDelegationInfo';
   public $authoritySelector;
   public $principalEmail;
+  public $principalSubject;
   protected $serviceAccountDelegationInfoType = 'Google_Service_ServiceControl_ServiceAccountDelegationInfo';
   protected $serviceAccountDelegationInfoDataType = 'array';
   public $serviceAccountKeyName;
@@ -40,6 +41,14 @@ class Google_Service_ServiceControl_AuthenticationInfo extends Google_Collection
   public function getPrincipalEmail()
   {
     return $this->principalEmail;
+  }
+  public function setPrincipalSubject($principalSubject)
+  {
+    $this->principalSubject = $principalSubject;
+  }
+  public function getPrincipalSubject()
+  {
+    return $this->principalSubject;
   }
   /**
    * @param Google_Service_ServiceControl_ServiceAccountDelegationInfo

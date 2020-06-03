@@ -25,6 +25,8 @@ class Google_Service_Bigquery_TableFieldSchema extends Google_Collection
   protected $fieldsDataType = 'array';
   public $mode;
   public $name;
+  protected $policyTagsType = 'Google_Service_Bigquery_TableFieldSchemaPolicyTags';
+  protected $policyTagsDataType = '';
   public $type;
 
   /**
@@ -78,6 +80,20 @@ class Google_Service_Bigquery_TableFieldSchema extends Google_Collection
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param Google_Service_Bigquery_TableFieldSchemaPolicyTags
+   */
+  public function setPolicyTags(Google_Service_Bigquery_TableFieldSchemaPolicyTags $policyTags)
+  {
+    $this->policyTags = $policyTags;
+  }
+  /**
+   * @return Google_Service_Bigquery_TableFieldSchemaPolicyTags
+   */
+  public function getPolicyTags()
+  {
+    return $this->policyTags;
   }
   public function setType($type)
   {

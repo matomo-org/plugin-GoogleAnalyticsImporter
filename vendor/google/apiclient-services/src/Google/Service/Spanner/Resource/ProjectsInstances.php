@@ -96,6 +96,10 @@ class Google_Service_Spanner_Resource_ProjectsInstances extends Google_Service_R
    * @param string $name Required. The name of the requested instance. Values are
    * of the form `projects//instances/`.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string fieldMask If field_mask is present, specifies the subset of
+   * Instance fields that should be returned. If absent, all Instance fields are
+   * returned.
    * @return Google_Service_Spanner_Instance
    */
   public function get($name, $optParams = array())
@@ -131,6 +135,10 @@ class Google_Service_Spanner_Resource_ProjectsInstances extends Google_Service_R
    * instances is requested. Values are of the form `projects/`.
    * @param array $optParams Optional parameters.
    *
+   * @opt_param int pageSize Number of instances to be returned in the response.
+   * If 0 or less, defaults to the server's maximum allowed page size.
+   * @opt_param string pageToken If non-empty, `page_token` should contain a
+   * next_page_token from a previous ListInstancesResponse.
    * @opt_param string filter An expression for filtering the results of the
    * request. Filter rules are case insensitive. The fields eligible for filtering
    * are:
@@ -148,10 +156,6 @@ class Google_Service_Spanner_Resource_ProjectsInstances extends Google_Service_R
    * * `name:howl labels.env:dev` --> The instance's name contains "howl" and
    * it has the label "env" with its value
    * containing "dev".
-   * @opt_param string pageToken If non-empty, `page_token` should contain a
-   * next_page_token from a previous ListInstancesResponse.
-   * @opt_param int pageSize Number of instances to be returned in the response.
-   * If 0 or less, defaults to the server's maximum allowed page size.
    * @return Google_Service_Spanner_ListInstancesResponse
    */
   public function listProjectsInstances($parent, $optParams = array())
@@ -198,7 +202,7 @@ class Google_Service_Spanner_Resource_ProjectsInstances extends Google_Service_R
    * @param string $name Required. A unique identifier for the instance, which
    * cannot be changed after the instance is created. Values are of the form
    * `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be
-   * between 6 and 30 characters in length.
+   * between 2 and 64 characters in length.
    * @param Google_Service_Spanner_UpdateInstanceRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Spanner_Operation

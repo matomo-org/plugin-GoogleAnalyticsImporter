@@ -45,12 +45,13 @@ class Google_Service_Datastore extends Google_Service
   /**
    * Constructs the internal representation of the Datastore service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://datastore.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://datastore.googleapis.com/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -162,7 +163,32 @@ class Google_Service_Datastore extends Google_Service
         'indexes',
         array(
           'methods' => array(
-            'get' => array(
+            'create' => array(
+              'path' => 'v1/projects/{projectId}/indexes',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'projectId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'delete' => array(
+              'path' => 'v1/projects/{projectId}/indexes/{indexId}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'projectId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'indexId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
               'path' => 'v1/projects/{projectId}/indexes/{indexId}',
               'httpMethod' => 'GET',
               'parameters' => array(
@@ -186,6 +212,10 @@ class Google_Service_Datastore extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -193,10 +223,6 @@ class Google_Service_Datastore extends Google_Service
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
-                ),
-                'filter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),
@@ -248,6 +274,10 @@ class Google_Service_Datastore extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
@@ -255,10 +285,6 @@ class Google_Service_Datastore extends Google_Service
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
-                ),
-                'filter' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),

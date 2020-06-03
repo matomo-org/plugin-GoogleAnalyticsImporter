@@ -17,29 +17,31 @@
 
 class Google_Service_CloudTasks_Queue extends Google_Model
 {
-  protected $appEngineHttpQueueType = 'Google_Service_CloudTasks_AppEngineHttpQueue';
-  protected $appEngineHttpQueueDataType = '';
+  protected $appEngineRoutingOverrideType = 'Google_Service_CloudTasks_AppEngineRouting';
+  protected $appEngineRoutingOverrideDataType = '';
   public $name;
   public $purgeTime;
   protected $rateLimitsType = 'Google_Service_CloudTasks_RateLimits';
   protected $rateLimitsDataType = '';
   protected $retryConfigType = 'Google_Service_CloudTasks_RetryConfig';
   protected $retryConfigDataType = '';
+  protected $stackdriverLoggingConfigType = 'Google_Service_CloudTasks_StackdriverLoggingConfig';
+  protected $stackdriverLoggingConfigDataType = '';
   public $state;
 
   /**
-   * @param Google_Service_CloudTasks_AppEngineHttpQueue
+   * @param Google_Service_CloudTasks_AppEngineRouting
    */
-  public function setAppEngineHttpQueue(Google_Service_CloudTasks_AppEngineHttpQueue $appEngineHttpQueue)
+  public function setAppEngineRoutingOverride(Google_Service_CloudTasks_AppEngineRouting $appEngineRoutingOverride)
   {
-    $this->appEngineHttpQueue = $appEngineHttpQueue;
+    $this->appEngineRoutingOverride = $appEngineRoutingOverride;
   }
   /**
-   * @return Google_Service_CloudTasks_AppEngineHttpQueue
+   * @return Google_Service_CloudTasks_AppEngineRouting
    */
-  public function getAppEngineHttpQueue()
+  public function getAppEngineRoutingOverride()
   {
-    return $this->appEngineHttpQueue;
+    return $this->appEngineRoutingOverride;
   }
   public function setName($name)
   {
@@ -84,6 +86,20 @@ class Google_Service_CloudTasks_Queue extends Google_Model
   public function getRetryConfig()
   {
     return $this->retryConfig;
+  }
+  /**
+   * @param Google_Service_CloudTasks_StackdriverLoggingConfig
+   */
+  public function setStackdriverLoggingConfig(Google_Service_CloudTasks_StackdriverLoggingConfig $stackdriverLoggingConfig)
+  {
+    $this->stackdriverLoggingConfig = $stackdriverLoggingConfig;
+  }
+  /**
+   * @return Google_Service_CloudTasks_StackdriverLoggingConfig
+   */
+  public function getStackdriverLoggingConfig()
+  {
+    return $this->stackdriverLoggingConfig;
   }
   public function setState($state)
   {

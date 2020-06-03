@@ -17,29 +17,10 @@
 
 class Google_Service_Iam_LintPolicyRequest extends Google_Model
 {
-  protected $bindingType = 'Google_Service_Iam_Binding';
-  protected $bindingDataType = '';
   protected $conditionType = 'Google_Service_Iam_Expr';
   protected $conditionDataType = '';
-  public $context;
   public $fullResourceName;
-  protected $policyType = 'Google_Service_Iam_Policy';
-  protected $policyDataType = '';
 
-  /**
-   * @param Google_Service_Iam_Binding
-   */
-  public function setBinding(Google_Service_Iam_Binding $binding)
-  {
-    $this->binding = $binding;
-  }
-  /**
-   * @return Google_Service_Iam_Binding
-   */
-  public function getBinding()
-  {
-    return $this->binding;
-  }
   /**
    * @param Google_Service_Iam_Expr
    */
@@ -54,14 +35,6 @@ class Google_Service_Iam_LintPolicyRequest extends Google_Model
   {
     return $this->condition;
   }
-  public function setContext($context)
-  {
-    $this->context = $context;
-  }
-  public function getContext()
-  {
-    return $this->context;
-  }
   public function setFullResourceName($fullResourceName)
   {
     $this->fullResourceName = $fullResourceName;
@@ -69,19 +42,5 @@ class Google_Service_Iam_LintPolicyRequest extends Google_Model
   public function getFullResourceName()
   {
     return $this->fullResourceName;
-  }
-  /**
-   * @param Google_Service_Iam_Policy
-   */
-  public function setPolicy(Google_Service_Iam_Policy $policy)
-  {
-    $this->policy = $policy;
-  }
-  /**
-   * @return Google_Service_Iam_Policy
-   */
-  public function getPolicy()
-  {
-    return $this->policy;
   }
 }

@@ -65,7 +65,7 @@ class Authorization
         $tokenInfo = $this->getTokenInfo($accessToken, $client);
 
         // if token is not valid for offline access redirect back to get it granted
-        if ($tokenInfo->getAccessType() != 'offline') {
+        if ($tokenInfo->access_type != 'offline') {
             Url::redirectToUrl($client->createAuthUrl());
         }
 

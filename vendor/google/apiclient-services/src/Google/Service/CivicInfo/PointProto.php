@@ -21,8 +21,6 @@ class Google_Service_CivicInfo_PointProto extends Google_Model
   public $lngE7;
   protected $metadataType = 'Google_Service_CivicInfo_FieldMetadataProto';
   protected $metadataDataType = '';
-  protected $temporaryDataType = 'Google_Service_CivicInfo_MessageSet';
-  protected $temporaryDataDataType = '';
 
   public function setLatE7($latE7)
   {
@@ -53,19 +51,5 @@ class Google_Service_CivicInfo_PointProto extends Google_Model
   public function getMetadata()
   {
     return $this->metadata;
-  }
-  /**
-   * @param Google_Service_CivicInfo_MessageSet
-   */
-  public function setTemporaryData(Google_Service_CivicInfo_MessageSet $temporaryData)
-  {
-    $this->temporaryData = $temporaryData;
-  }
-  /**
-   * @return Google_Service_CivicInfo_MessageSet
-   */
-  public function getTemporaryData()
-  {
-    return $this->temporaryData;
   }
 }

@@ -32,8 +32,8 @@ class Google_Service_Cloudbilling_Resource_BillingAccountsProjects extends Googl
    * [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
    * (projects.listBillingAccountsProjects)
    *
-   * @param string $name The resource name of the billing account associated with
-   * the projects that you want to list. For example,
+   * @param string $name Required. The resource name of the billing account
+   * associated with the projects that you want to list. For example,
    * `billingAccounts/012345-567890-ABCDEF`.
    * @param array $optParams Optional parameters.
    *

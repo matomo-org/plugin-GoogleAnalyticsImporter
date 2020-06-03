@@ -17,16 +17,20 @@
 
 class Google_Service_CloudShell_Environment extends Google_Collection
 {
-  protected $collection_key = 'publicKeys';
+  protected $collection_key = 'webPorts';
   public $dockerImage;
   public $id;
   public $name;
   protected $publicKeysType = 'Google_Service_CloudShell_PublicKey';
   protected $publicKeysDataType = 'array';
+  public $size;
   public $sshHost;
   public $sshPort;
   public $sshUsername;
   public $state;
+  public $vmSizeExpireTime;
+  public $webHost;
+  public $webPorts;
 
   public function setDockerImage($dockerImage)
   {
@@ -66,6 +70,14 @@ class Google_Service_CloudShell_Environment extends Google_Collection
   {
     return $this->publicKeys;
   }
+  public function setSize($size)
+  {
+    $this->size = $size;
+  }
+  public function getSize()
+  {
+    return $this->size;
+  }
   public function setSshHost($sshHost)
   {
     $this->sshHost = $sshHost;
@@ -97,5 +109,29 @@ class Google_Service_CloudShell_Environment extends Google_Collection
   public function getState()
   {
     return $this->state;
+  }
+  public function setVmSizeExpireTime($vmSizeExpireTime)
+  {
+    $this->vmSizeExpireTime = $vmSizeExpireTime;
+  }
+  public function getVmSizeExpireTime()
+  {
+    return $this->vmSizeExpireTime;
+  }
+  public function setWebHost($webHost)
+  {
+    $this->webHost = $webHost;
+  }
+  public function getWebHost()
+  {
+    return $this->webHost;
+  }
+  public function setWebPorts($webPorts)
+  {
+    $this->webPorts = $webPorts;
+  }
+  public function getWebPorts()
+  {
+    return $this->webPorts;
   }
 }

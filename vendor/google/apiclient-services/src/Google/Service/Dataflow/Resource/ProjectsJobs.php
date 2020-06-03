@@ -115,12 +115,12 @@ class Google_Service_Dataflow_Resource_ProjectsJobs extends Google_Service_Resou
    * @param string $jobId The job to get messages for.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string location The [regional endpoint]
-   * (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
-   * contains the job specified by job_id.
    * @opt_param string startTime Return only metric data that has changed since
    * this time. Default is to return all information about all metrics for the
    * job.
+   * @opt_param string location The [regional endpoint]
+   * (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that
+   * contains the job specified by job_id.
    * @return Google_Service_Dataflow_JobMetrics
    */
   public function getMetrics($projectId, $jobId, $optParams = array())

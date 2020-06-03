@@ -19,8 +19,8 @@
  * The "instances" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Google_Service_SQLAdmin(...);
- *   $instances = $sqladminService->instances;
+ *   $sqlService = new Google_Service_SQLAdmin(...);
+ *   $instances = $sqlService->instances;
  *  </code>
  */
 class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
@@ -45,8 +45,8 @@ class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
     return $this->call('addServerCa', array($params), "Google_Service_SQLAdmin_Operation");
   }
   /**
-   * Creates a Cloud SQL instance as a clone of the source instance.
-   * (instances.cloneInstances)
+   * Creates a Cloud SQL instance as a clone of the source instance. Using this
+   * operation might cause your instance to restart. (instances.cloneInstances)
    *
    * @param string $project Project ID of the source as well as the clone Cloud
    * SQL instance.
@@ -113,7 +113,8 @@ class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
     return $this->call('export', array($params), "Google_Service_SQLAdmin_Operation");
   }
   /**
-   * Failover the instance to its failover replica instance. (instances.failover)
+   * Failover the instance to its failover replica instance. Using this operation
+   * might cause your instance to restart. (instances.failover)
    *
    * @param string $project ID of the project that contains the read replica.
    * @param string $instance Cloud SQL instance ID. This does not include the
@@ -145,7 +146,7 @@ class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
     return $this->call('get', array($params), "Google_Service_SQLAdmin_DatabaseInstance");
   }
   /**
-   * Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud
+   * Imports data into a Cloud SQL instance from a SQL dump  or CSV file in Cloud
    * Storage. (instances.import)
    *
    * @param string $project Project ID of the project that contains the instance.
@@ -177,19 +178,24 @@ class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
     return $this->call('insert', array($params), "Google_Service_SQLAdmin_Operation");
   }
   /**
-   * Lists instances under a given project in the alphabetical order of the
-   * instance name. (instances.listInstances)
+   * Lists instances under a given project. (instances.listInstances)
    *
    * @param string $project Project ID of the project for which to list Cloud SQL
    * instances.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string filter An expression for filtering the results of the
-   * request, such as by name or label.
-   * @opt_param string maxResults The maximum number of results to return per
-   * response.
    * @opt_param string pageToken A previously-returned page token representing
    * part of the larger set of results to view.
+   * @opt_param string maxResults The maximum number of results to return per
+   * response.
+   * @opt_param string filter A filter expression that filters resources listed in
+   * the response. The expression is in the form of field:value. For example,
+   * 'instanceType:CLOUD_SQL_INSTANCE'. Fields can be nested as needed as per
+   * their JSON representation, such as 'settings.userLabels.auto_start:true'.
+   *
+   * Multiple filter queries are space-separated. For example. 'state:RUNNABLE
+   * instanceType:CLOUD_SQL_INSTANCE'. By default, each expression is an AND
+   * expression. However, you can include AND and OR expressions explicitly.
    * @return Google_Service_SQLAdmin_InstancesListResponse
    */
   public function listInstances($project, $optParams = array())
@@ -218,9 +224,7 @@ class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
     return $this->call('listServerCas', array($params), "Google_Service_SQLAdmin_InstancesListServerCasResponse");
   }
   /**
-   * Updates settings of a Cloud SQL instance. Caution: This is not a partial
-   * update, so you must include values for all the settings that you want to
-   * retain. For partial updates, use patch.. This method supports patch
+   * Updates settings of a Cloud SQL instance. This method supports patch
    * semantics. (instances.patch)
    *
    * @param string $project Project ID of the project that contains the instance.
@@ -238,6 +242,7 @@ class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
   }
   /**
    * Promotes the read replica instance to be a stand-alone Cloud SQL instance.
+   * Using this operation might cause your instance to restart.
    * (instances.promoteReplica)
    *
    * @param string $project ID of the project that contains the read replica.
@@ -284,7 +289,8 @@ class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
     return $this->call('restart', array($params), "Google_Service_SQLAdmin_Operation");
   }
   /**
-   * Restores a backup of a Cloud SQL instance. (instances.restoreBackup)
+   * Restores a backup of a Cloud SQL instance. Using this operation might cause
+   * your instance to restart. (instances.restoreBackup)
    *
    * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Cloud SQL instance ID. This does not include the
@@ -362,9 +368,8 @@ class Google_Service_SQLAdmin_Resource_Instances extends Google_Service_Resource
     return $this->call('truncateLog', array($params), "Google_Service_SQLAdmin_Operation");
   }
   /**
-   * Updates settings of a Cloud SQL instance. Caution: This is not a partial
-   * update, so you must include values for all the settings that you want to
-   * retain. For partial updates, use patch. (instances.update)
+   * Updates settings of a Cloud SQL instance. Using this operation might cause
+   * your instance to restart. (instances.update)
    *
    * @param string $project Project ID of the project that contains the instance.
    * @param string $instance Cloud SQL instance ID. This does not include the

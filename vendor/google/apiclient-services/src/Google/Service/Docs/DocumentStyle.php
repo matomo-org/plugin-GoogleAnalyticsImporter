@@ -27,6 +27,10 @@ class Google_Service_Docs_DocumentStyle extends Google_Model
   public $firstPageHeaderId;
   protected $marginBottomType = 'Google_Service_Docs_Dimension';
   protected $marginBottomDataType = '';
+  protected $marginFooterType = 'Google_Service_Docs_Dimension';
+  protected $marginFooterDataType = '';
+  protected $marginHeaderType = 'Google_Service_Docs_Dimension';
+  protected $marginHeaderDataType = '';
   protected $marginLeftType = 'Google_Service_Docs_Dimension';
   protected $marginLeftDataType = '';
   protected $marginRightType = 'Google_Service_Docs_Dimension';
@@ -36,6 +40,7 @@ class Google_Service_Docs_DocumentStyle extends Google_Model
   public $pageNumberStart;
   protected $pageSizeType = 'Google_Service_Docs_Size';
   protected $pageSizeDataType = '';
+  public $useCustomHeaderFooterMargins;
   public $useEvenPageHeaderFooter;
   public $useFirstPageHeaderFooter;
 
@@ -118,6 +123,34 @@ class Google_Service_Docs_DocumentStyle extends Google_Model
   /**
    * @param Google_Service_Docs_Dimension
    */
+  public function setMarginFooter(Google_Service_Docs_Dimension $marginFooter)
+  {
+    $this->marginFooter = $marginFooter;
+  }
+  /**
+   * @return Google_Service_Docs_Dimension
+   */
+  public function getMarginFooter()
+  {
+    return $this->marginFooter;
+  }
+  /**
+   * @param Google_Service_Docs_Dimension
+   */
+  public function setMarginHeader(Google_Service_Docs_Dimension $marginHeader)
+  {
+    $this->marginHeader = $marginHeader;
+  }
+  /**
+   * @return Google_Service_Docs_Dimension
+   */
+  public function getMarginHeader()
+  {
+    return $this->marginHeader;
+  }
+  /**
+   * @param Google_Service_Docs_Dimension
+   */
   public function setMarginLeft(Google_Service_Docs_Dimension $marginLeft)
   {
     $this->marginLeft = $marginLeft;
@@ -178,6 +211,14 @@ class Google_Service_Docs_DocumentStyle extends Google_Model
   public function getPageSize()
   {
     return $this->pageSize;
+  }
+  public function setUseCustomHeaderFooterMargins($useCustomHeaderFooterMargins)
+  {
+    $this->useCustomHeaderFooterMargins = $useCustomHeaderFooterMargins;
+  }
+  public function getUseCustomHeaderFooterMargins()
+  {
+    return $this->useCustomHeaderFooterMargins;
   }
   public function setUseEvenPageHeaderFooter($useEvenPageHeaderFooter)
   {

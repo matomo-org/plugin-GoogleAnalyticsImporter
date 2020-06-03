@@ -19,10 +19,12 @@ class Google_Service_ServiceUsage_BackendRule extends Google_Model
 {
   public $address;
   public $deadline;
+  public $disableAuth;
   public $jwtAudience;
   public $minDeadline;
   public $operationDeadline;
   public $pathTranslation;
+  public $protocol;
   public $selector;
 
   public function setAddress($address)
@@ -40,6 +42,14 @@ class Google_Service_ServiceUsage_BackendRule extends Google_Model
   public function getDeadline()
   {
     return $this->deadline;
+  }
+  public function setDisableAuth($disableAuth)
+  {
+    $this->disableAuth = $disableAuth;
+  }
+  public function getDisableAuth()
+  {
+    return $this->disableAuth;
   }
   public function setJwtAudience($jwtAudience)
   {
@@ -72,6 +82,14 @@ class Google_Service_ServiceUsage_BackendRule extends Google_Model
   public function getPathTranslation()
   {
     return $this->pathTranslation;
+  }
+  public function setProtocol($protocol)
+  {
+    $this->protocol = $protocol;
+  }
+  public function getProtocol()
+  {
+    return $this->protocol;
   }
   public function setSelector($selector)
   {

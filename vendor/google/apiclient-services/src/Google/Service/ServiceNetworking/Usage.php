@@ -22,6 +22,8 @@ class Google_Service_ServiceNetworking_Usage extends Google_Collection
   public $requirements;
   protected $rulesType = 'Google_Service_ServiceNetworking_UsageRule';
   protected $rulesDataType = 'array';
+  protected $serviceIdentityType = 'Google_Service_ServiceNetworking_ServiceIdentity';
+  protected $serviceIdentityDataType = '';
 
   public function setProducerNotificationChannel($producerNotificationChannel)
   {
@@ -52,5 +54,19 @@ class Google_Service_ServiceNetworking_Usage extends Google_Collection
   public function getRules()
   {
     return $this->rules;
+  }
+  /**
+   * @param Google_Service_ServiceNetworking_ServiceIdentity
+   */
+  public function setServiceIdentity(Google_Service_ServiceNetworking_ServiceIdentity $serviceIdentity)
+  {
+    $this->serviceIdentity = $serviceIdentity;
+  }
+  /**
+   * @return Google_Service_ServiceNetworking_ServiceIdentity
+   */
+  public function getServiceIdentity()
+  {
+    return $this->serviceIdentity;
   }
 }

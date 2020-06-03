@@ -15,11 +15,28 @@
  * the License.
  */
 
-class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2OutputSymlink extends Google_Model
+class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2OutputSymlink extends Google_Collection
 {
+  protected $collection_key = 'nodeProperties';
+  protected $nodePropertiesType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty';
+  protected $nodePropertiesDataType = 'array';
   public $path;
   public $target;
 
+  /**
+   * @param Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty
+   */
+  public function setNodeProperties($nodeProperties)
+  {
+    $this->nodeProperties = $nodeProperties;
+  }
+  /**
+   * @return Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty
+   */
+  public function getNodeProperties()
+  {
+    return $this->nodeProperties;
+  }
   public function setPath($path)
   {
     $this->path = $path;

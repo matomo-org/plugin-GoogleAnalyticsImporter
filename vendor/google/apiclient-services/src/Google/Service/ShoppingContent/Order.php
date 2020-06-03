@@ -21,7 +21,6 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   public $acknowledged;
   protected $billingAddressType = 'Google_Service_ShoppingContent_OrderAddress';
   protected $billingAddressDataType = '';
-  public $channelType;
   protected $customerType = 'Google_Service_ShoppingContent_OrderCustomer';
   protected $customerDataType = '';
   protected $deliveryDetailsType = 'Google_Service_ShoppingContent_OrderDeliveryDetails';
@@ -37,6 +36,8 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   protected $netTaxAmountType = 'Google_Service_ShoppingContent_Price';
   protected $netTaxAmountDataType = '';
   public $paymentStatus;
+  protected $pickupDetailsType = 'Google_Service_ShoppingContent_OrderPickupDetails';
+  protected $pickupDetailsDataType = '';
   public $placedDate;
   protected $promotionsType = 'Google_Service_ShoppingContent_OrderPromotion';
   protected $promotionsDataType = 'array';
@@ -72,14 +73,6 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   public function getBillingAddress()
   {
     return $this->billingAddress;
-  }
-  public function setChannelType($channelType)
-  {
-    $this->channelType = $channelType;
-  }
-  public function getChannelType()
-  {
-    return $this->channelType;
   }
   /**
    * @param Google_Service_ShoppingContent_OrderCustomer
@@ -190,6 +183,20 @@ class Google_Service_ShoppingContent_Order extends Google_Collection
   public function getPaymentStatus()
   {
     return $this->paymentStatus;
+  }
+  /**
+   * @param Google_Service_ShoppingContent_OrderPickupDetails
+   */
+  public function setPickupDetails(Google_Service_ShoppingContent_OrderPickupDetails $pickupDetails)
+  {
+    $this->pickupDetails = $pickupDetails;
+  }
+  /**
+   * @return Google_Service_ShoppingContent_OrderPickupDetails
+   */
+  public function getPickupDetails()
+  {
+    return $this->pickupDetails;
   }
   public function setPlacedDate($placedDate)
   {

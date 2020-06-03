@@ -18,6 +18,7 @@
 class Google_Service_Drive_DriveFileCapabilities extends Google_Model
 {
   public $canAddChildren;
+  public $canAddMyDriveParent;
   public $canChangeCopyRequiresWriterPermission;
   public $canChangeViewersCanCopyContent;
   public $canComment;
@@ -27,15 +28,22 @@ class Google_Service_Drive_DriveFileCapabilities extends Google_Model
   public $canDownload;
   public $canEdit;
   public $canListChildren;
+  public $canModifyContent;
+  public $canMoveChildrenOutOfDrive;
   public $canMoveChildrenOutOfTeamDrive;
+  public $canMoveChildrenWithinDrive;
   public $canMoveChildrenWithinTeamDrive;
   public $canMoveItemIntoTeamDrive;
+  public $canMoveItemOutOfDrive;
   public $canMoveItemOutOfTeamDrive;
+  public $canMoveItemWithinDrive;
   public $canMoveItemWithinTeamDrive;
   public $canMoveTeamDriveItem;
+  public $canReadDrive;
   public $canReadRevisions;
   public $canReadTeamDrive;
   public $canRemoveChildren;
+  public $canRemoveMyDriveParent;
   public $canRename;
   public $canShare;
   public $canTrash;
@@ -49,6 +57,14 @@ class Google_Service_Drive_DriveFileCapabilities extends Google_Model
   public function getCanAddChildren()
   {
     return $this->canAddChildren;
+  }
+  public function setCanAddMyDriveParent($canAddMyDriveParent)
+  {
+    $this->canAddMyDriveParent = $canAddMyDriveParent;
+  }
+  public function getCanAddMyDriveParent()
+  {
+    return $this->canAddMyDriveParent;
   }
   public function setCanChangeCopyRequiresWriterPermission($canChangeCopyRequiresWriterPermission)
   {
@@ -122,6 +138,22 @@ class Google_Service_Drive_DriveFileCapabilities extends Google_Model
   {
     return $this->canListChildren;
   }
+  public function setCanModifyContent($canModifyContent)
+  {
+    $this->canModifyContent = $canModifyContent;
+  }
+  public function getCanModifyContent()
+  {
+    return $this->canModifyContent;
+  }
+  public function setCanMoveChildrenOutOfDrive($canMoveChildrenOutOfDrive)
+  {
+    $this->canMoveChildrenOutOfDrive = $canMoveChildrenOutOfDrive;
+  }
+  public function getCanMoveChildrenOutOfDrive()
+  {
+    return $this->canMoveChildrenOutOfDrive;
+  }
   public function setCanMoveChildrenOutOfTeamDrive($canMoveChildrenOutOfTeamDrive)
   {
     $this->canMoveChildrenOutOfTeamDrive = $canMoveChildrenOutOfTeamDrive;
@@ -129,6 +161,14 @@ class Google_Service_Drive_DriveFileCapabilities extends Google_Model
   public function getCanMoveChildrenOutOfTeamDrive()
   {
     return $this->canMoveChildrenOutOfTeamDrive;
+  }
+  public function setCanMoveChildrenWithinDrive($canMoveChildrenWithinDrive)
+  {
+    $this->canMoveChildrenWithinDrive = $canMoveChildrenWithinDrive;
+  }
+  public function getCanMoveChildrenWithinDrive()
+  {
+    return $this->canMoveChildrenWithinDrive;
   }
   public function setCanMoveChildrenWithinTeamDrive($canMoveChildrenWithinTeamDrive)
   {
@@ -146,6 +186,14 @@ class Google_Service_Drive_DriveFileCapabilities extends Google_Model
   {
     return $this->canMoveItemIntoTeamDrive;
   }
+  public function setCanMoveItemOutOfDrive($canMoveItemOutOfDrive)
+  {
+    $this->canMoveItemOutOfDrive = $canMoveItemOutOfDrive;
+  }
+  public function getCanMoveItemOutOfDrive()
+  {
+    return $this->canMoveItemOutOfDrive;
+  }
   public function setCanMoveItemOutOfTeamDrive($canMoveItemOutOfTeamDrive)
   {
     $this->canMoveItemOutOfTeamDrive = $canMoveItemOutOfTeamDrive;
@@ -153,6 +201,14 @@ class Google_Service_Drive_DriveFileCapabilities extends Google_Model
   public function getCanMoveItemOutOfTeamDrive()
   {
     return $this->canMoveItemOutOfTeamDrive;
+  }
+  public function setCanMoveItemWithinDrive($canMoveItemWithinDrive)
+  {
+    $this->canMoveItemWithinDrive = $canMoveItemWithinDrive;
+  }
+  public function getCanMoveItemWithinDrive()
+  {
+    return $this->canMoveItemWithinDrive;
   }
   public function setCanMoveItemWithinTeamDrive($canMoveItemWithinTeamDrive)
   {
@@ -169,6 +225,14 @@ class Google_Service_Drive_DriveFileCapabilities extends Google_Model
   public function getCanMoveTeamDriveItem()
   {
     return $this->canMoveTeamDriveItem;
+  }
+  public function setCanReadDrive($canReadDrive)
+  {
+    $this->canReadDrive = $canReadDrive;
+  }
+  public function getCanReadDrive()
+  {
+    return $this->canReadDrive;
   }
   public function setCanReadRevisions($canReadRevisions)
   {
@@ -193,6 +257,14 @@ class Google_Service_Drive_DriveFileCapabilities extends Google_Model
   public function getCanRemoveChildren()
   {
     return $this->canRemoveChildren;
+  }
+  public function setCanRemoveMyDriveParent($canRemoveMyDriveParent)
+  {
+    $this->canRemoveMyDriveParent = $canRemoveMyDriveParent;
+  }
+  public function getCanRemoveMyDriveParent()
+  {
+    return $this->canRemoveMyDriveParent;
   }
   public function setCanRename($canRename)
   {

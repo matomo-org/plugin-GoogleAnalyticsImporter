@@ -26,7 +26,10 @@
 class Google_Service_CloudSearch_Resource_StatsIndexDatasources extends Google_Service_Resource
 {
   /**
-   * Gets indexed item statistics for a single data source. (datasources.get)
+   * Gets indexed item statistics for a single data source.
+   *
+   * **Note:** This API requires a standard end user account to execute.
+   * (datasources.get)
    *
    * @param string $name The resource id of the data source to retrieve statistics
    * for, in the following format: "datasources/{source_id}"

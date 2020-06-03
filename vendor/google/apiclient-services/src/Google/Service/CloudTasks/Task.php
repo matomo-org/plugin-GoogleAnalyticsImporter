@@ -24,6 +24,8 @@ class Google_Service_CloudTasks_Task extends Google_Model
   public $dispatchDeadline;
   protected $firstAttemptType = 'Google_Service_CloudTasks_Attempt';
   protected $firstAttemptDataType = '';
+  protected $httpRequestType = 'Google_Service_CloudTasks_HttpRequest';
+  protected $httpRequestDataType = '';
   protected $lastAttemptType = 'Google_Service_CloudTasks_Attempt';
   protected $lastAttemptDataType = '';
   public $name;
@@ -82,6 +84,20 @@ class Google_Service_CloudTasks_Task extends Google_Model
   public function getFirstAttempt()
   {
     return $this->firstAttempt;
+  }
+  /**
+   * @param Google_Service_CloudTasks_HttpRequest
+   */
+  public function setHttpRequest(Google_Service_CloudTasks_HttpRequest $httpRequest)
+  {
+    $this->httpRequest = $httpRequest;
+  }
+  /**
+   * @return Google_Service_CloudTasks_HttpRequest
+   */
+  public function getHttpRequest()
+  {
+    return $this->httpRequest;
   }
   /**
    * @param Google_Service_CloudTasks_Attempt

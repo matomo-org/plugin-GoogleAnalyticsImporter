@@ -143,26 +143,6 @@ class Google_Service_AndroidEnterprise_Resource_Users extends Google_Service_Res
     return $this->call('list', array($params), "Google_Service_AndroidEnterprise_UsersListResponse");
   }
   /**
-   * Updates the details of an EMM-managed user.
-   *
-   * Can be used with EMM-managed users only (not Google managed users). Pass the
-   * new details in the Users resource in the request body. Only the displayName
-   * field can be changed. Other fields must either be unset or have the currently
-   * active value. This method supports patch semantics. (users.patch)
-   *
-   * @param string $enterpriseId The ID of the enterprise.
-   * @param string $userId The ID of the user.
-   * @param Google_Service_AndroidEnterprise_User $postBody
-   * @param array $optParams Optional parameters.
-   * @return Google_Service_AndroidEnterprise_User
-   */
-  public function patch($enterpriseId, $userId, Google_Service_AndroidEnterprise_User $postBody, $optParams = array())
-  {
-    $params = array('enterpriseId' => $enterpriseId, 'userId' => $userId, 'postBody' => $postBody);
-    $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_AndroidEnterprise_User");
-  }
-  /**
    * Revokes access to all devices currently provisioned to the user. The user
    * will no longer be able to use the managed Play store on any of their managed
    * devices.
