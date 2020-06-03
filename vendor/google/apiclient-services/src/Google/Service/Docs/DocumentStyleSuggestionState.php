@@ -26,12 +26,15 @@ class Google_Service_Docs_DocumentStyleSuggestionState extends Google_Model
   public $firstPageFooterIdSuggested;
   public $firstPageHeaderIdSuggested;
   public $marginBottomSuggested;
+  public $marginFooterSuggested;
+  public $marginHeaderSuggested;
   public $marginLeftSuggested;
   public $marginRightSuggested;
   public $marginTopSuggested;
   public $pageNumberStartSuggested;
   protected $pageSizeSuggestionStateType = 'Google_Service_Docs_SizeSuggestionState';
   protected $pageSizeSuggestionStateDataType = '';
+  public $useCustomHeaderFooterMarginsSuggested;
   public $useEvenPageHeaderFooterSuggested;
   public $useFirstPageHeaderFooterSuggested;
 
@@ -105,6 +108,22 @@ class Google_Service_Docs_DocumentStyleSuggestionState extends Google_Model
   {
     return $this->marginBottomSuggested;
   }
+  public function setMarginFooterSuggested($marginFooterSuggested)
+  {
+    $this->marginFooterSuggested = $marginFooterSuggested;
+  }
+  public function getMarginFooterSuggested()
+  {
+    return $this->marginFooterSuggested;
+  }
+  public function setMarginHeaderSuggested($marginHeaderSuggested)
+  {
+    $this->marginHeaderSuggested = $marginHeaderSuggested;
+  }
+  public function getMarginHeaderSuggested()
+  {
+    return $this->marginHeaderSuggested;
+  }
   public function setMarginLeftSuggested($marginLeftSuggested)
   {
     $this->marginLeftSuggested = $marginLeftSuggested;
@@ -150,6 +169,14 @@ class Google_Service_Docs_DocumentStyleSuggestionState extends Google_Model
   public function getPageSizeSuggestionState()
   {
     return $this->pageSizeSuggestionState;
+  }
+  public function setUseCustomHeaderFooterMarginsSuggested($useCustomHeaderFooterMarginsSuggested)
+  {
+    $this->useCustomHeaderFooterMarginsSuggested = $useCustomHeaderFooterMarginsSuggested;
+  }
+  public function getUseCustomHeaderFooterMarginsSuggested()
+  {
+    return $this->useCustomHeaderFooterMarginsSuggested;
   }
   public function setUseEvenPageHeaderFooterSuggested($useEvenPageHeaderFooterSuggested)
   {

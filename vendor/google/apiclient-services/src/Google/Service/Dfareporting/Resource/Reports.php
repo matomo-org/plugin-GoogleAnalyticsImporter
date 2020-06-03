@@ -87,21 +87,6 @@ class Google_Service_Dfareporting_Resource_Reports extends Google_Service_Resour
     return $this->call('list', array($params), "Google_Service_Dfareporting_ReportList");
   }
   /**
-   * Updates a report. This method supports patch semantics. (reports.patch)
-   *
-   * @param string $profileId The DFA user profile ID.
-   * @param string $reportId The ID of the report.
-   * @param Google_Service_Dfareporting_Report $postBody
-   * @param array $optParams Optional parameters.
-   * @return Google_Service_Dfareporting_Report
-   */
-  public function patch($profileId, $reportId, Google_Service_Dfareporting_Report $postBody, $optParams = array())
-  {
-    $params = array('profileId' => $profileId, 'reportId' => $reportId, 'postBody' => $postBody);
-    $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_Dfareporting_Report");
-  }
-  /**
    * Runs a report. (reports.run)
    *
    * @param string $profileId The DFA profile ID.

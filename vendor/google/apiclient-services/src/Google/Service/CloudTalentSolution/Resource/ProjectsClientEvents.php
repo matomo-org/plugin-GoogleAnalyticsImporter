@@ -29,8 +29,8 @@ class Google_Service_CloudTalentSolution_Resource_ProjectsClientEvents extends G
    * Report events issued when end user interacts with customer's application that
    * uses Cloud Talent Solution. You may inspect the created events in [self
    * service tools](https://console.cloud.google.com/talent-solution/overview).
-   * [Learn more](https://cloud.google.com/talent-solution/job-search/docs
-   * /management-tools) about self service tools. (clientEvents.create)
+   * [Learn more](https://cloud.google.com/talent-solution/docs/management-tools)
+   * about self service tools. (clientEvents.create)
    *
    * @param string $parent Parent project name.
    * @param Google_Service_CloudTalentSolution_CreateClientEventRequest $postBody

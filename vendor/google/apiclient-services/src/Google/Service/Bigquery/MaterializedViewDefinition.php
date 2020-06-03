@@ -17,9 +17,19 @@
 
 class Google_Service_Bigquery_MaterializedViewDefinition extends Google_Model
 {
+  public $enableRefresh;
   public $lastRefreshTime;
   public $query;
+  public $refreshIntervalMs;
 
+  public function setEnableRefresh($enableRefresh)
+  {
+    $this->enableRefresh = $enableRefresh;
+  }
+  public function getEnableRefresh()
+  {
+    return $this->enableRefresh;
+  }
   public function setLastRefreshTime($lastRefreshTime)
   {
     $this->lastRefreshTime = $lastRefreshTime;
@@ -35,5 +45,13 @@ class Google_Service_Bigquery_MaterializedViewDefinition extends Google_Model
   public function getQuery()
   {
     return $this->query;
+  }
+  public function setRefreshIntervalMs($refreshIntervalMs)
+  {
+    $this->refreshIntervalMs = $refreshIntervalMs;
+  }
+  public function getRefreshIntervalMs()
+  {
+    return $this->refreshIntervalMs;
   }
 }

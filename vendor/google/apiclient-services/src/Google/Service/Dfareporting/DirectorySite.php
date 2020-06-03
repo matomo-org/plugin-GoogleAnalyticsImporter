@@ -18,7 +18,6 @@
 class Google_Service_Dfareporting_DirectorySite extends Google_Collection
 {
   protected $collection_key = 'interstitialTagFormats';
-  public $active;
   public $id;
   protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
@@ -30,14 +29,6 @@ class Google_Service_Dfareporting_DirectorySite extends Google_Collection
   protected $settingsDataType = '';
   public $url;
 
-  public function setActive($active)
-  {
-    $this->active = $active;
-  }
-  public function getActive()
-  {
-    return $this->active;
-  }
   public function setId($id)
   {
     $this->id = $id;

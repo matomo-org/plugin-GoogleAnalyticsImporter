@@ -25,6 +25,9 @@ class Google_Service_Compute_Instance extends Google_Collection
   public $description;
   protected $disksType = 'Google_Service_Compute_AttachedDisk';
   protected $disksDataType = 'array';
+  protected $displayDeviceType = 'Google_Service_Compute_DisplayDevice';
+  protected $displayDeviceDataType = '';
+  public $fingerprint;
   protected $guestAcceleratorsType = 'Google_Service_Compute_AcceleratorConfig';
   protected $guestAcceleratorsDataType = 'array';
   public $hostname;
@@ -39,11 +42,19 @@ class Google_Service_Compute_Instance extends Google_Collection
   public $name;
   protected $networkInterfacesType = 'Google_Service_Compute_NetworkInterface';
   protected $networkInterfacesDataType = 'array';
+  public $privateIpv6GoogleAccess;
+  protected $reservationAffinityType = 'Google_Service_Compute_ReservationAffinity';
+  protected $reservationAffinityDataType = '';
+  public $resourcePolicies;
   protected $schedulingType = 'Google_Service_Compute_Scheduling';
   protected $schedulingDataType = '';
   public $selfLink;
   protected $serviceAccountsType = 'Google_Service_Compute_ServiceAccount';
   protected $serviceAccountsDataType = 'array';
+  protected $shieldedInstanceConfigType = 'Google_Service_Compute_ShieldedInstanceConfig';
+  protected $shieldedInstanceConfigDataType = '';
+  protected $shieldedInstanceIntegrityPolicyType = 'Google_Service_Compute_ShieldedInstanceIntegrityPolicy';
+  protected $shieldedInstanceIntegrityPolicyDataType = '';
   public $startRestricted;
   public $status;
   public $statusMessage;
@@ -104,6 +115,28 @@ class Google_Service_Compute_Instance extends Google_Collection
   public function getDisks()
   {
     return $this->disks;
+  }
+  /**
+   * @param Google_Service_Compute_DisplayDevice
+   */
+  public function setDisplayDevice(Google_Service_Compute_DisplayDevice $displayDevice)
+  {
+    $this->displayDevice = $displayDevice;
+  }
+  /**
+   * @return Google_Service_Compute_DisplayDevice
+   */
+  public function getDisplayDevice()
+  {
+    return $this->displayDevice;
+  }
+  public function setFingerprint($fingerprint)
+  {
+    $this->fingerprint = $fingerprint;
+  }
+  public function getFingerprint()
+  {
+    return $this->fingerprint;
   }
   /**
    * @param Google_Service_Compute_AcceleratorConfig
@@ -211,6 +244,36 @@ class Google_Service_Compute_Instance extends Google_Collection
   {
     return $this->networkInterfaces;
   }
+  public function setPrivateIpv6GoogleAccess($privateIpv6GoogleAccess)
+  {
+    $this->privateIpv6GoogleAccess = $privateIpv6GoogleAccess;
+  }
+  public function getPrivateIpv6GoogleAccess()
+  {
+    return $this->privateIpv6GoogleAccess;
+  }
+  /**
+   * @param Google_Service_Compute_ReservationAffinity
+   */
+  public function setReservationAffinity(Google_Service_Compute_ReservationAffinity $reservationAffinity)
+  {
+    $this->reservationAffinity = $reservationAffinity;
+  }
+  /**
+   * @return Google_Service_Compute_ReservationAffinity
+   */
+  public function getReservationAffinity()
+  {
+    return $this->reservationAffinity;
+  }
+  public function setResourcePolicies($resourcePolicies)
+  {
+    $this->resourcePolicies = $resourcePolicies;
+  }
+  public function getResourcePolicies()
+  {
+    return $this->resourcePolicies;
+  }
   /**
    * @param Google_Service_Compute_Scheduling
    */
@@ -246,6 +309,34 @@ class Google_Service_Compute_Instance extends Google_Collection
   public function getServiceAccounts()
   {
     return $this->serviceAccounts;
+  }
+  /**
+   * @param Google_Service_Compute_ShieldedInstanceConfig
+   */
+  public function setShieldedInstanceConfig(Google_Service_Compute_ShieldedInstanceConfig $shieldedInstanceConfig)
+  {
+    $this->shieldedInstanceConfig = $shieldedInstanceConfig;
+  }
+  /**
+   * @return Google_Service_Compute_ShieldedInstanceConfig
+   */
+  public function getShieldedInstanceConfig()
+  {
+    return $this->shieldedInstanceConfig;
+  }
+  /**
+   * @param Google_Service_Compute_ShieldedInstanceIntegrityPolicy
+   */
+  public function setShieldedInstanceIntegrityPolicy(Google_Service_Compute_ShieldedInstanceIntegrityPolicy $shieldedInstanceIntegrityPolicy)
+  {
+    $this->shieldedInstanceIntegrityPolicy = $shieldedInstanceIntegrityPolicy;
+  }
+  /**
+   * @return Google_Service_Compute_ShieldedInstanceIntegrityPolicy
+   */
+  public function getShieldedInstanceIntegrityPolicy()
+  {
+    return $this->shieldedInstanceIntegrityPolicy;
   }
   public function setStartRestricted($startRestricted)
   {

@@ -26,8 +26,12 @@
 class Google_Service_RemoteBuildExecution_Resource_V2 extends Google_Service_Resource
 {
   /**
-   * GetCapabilities returns the server capabilities configuration.
-   * (v2.getCapabilities)
+   * GetCapabilities returns the server capabilities configuration of the remote
+   * endpoint. Only the capabilities of the services supported by the endpoint
+   * will be returned: * Execution + CAS + Action Cache endpoints should return
+   * both   CacheCapabilities and ExecutionCapabilities. * Execution only
+   * endpoints should return ExecutionCapabilities. * CAS + Action Cache only
+   * endpoints should return CacheCapabilities. (v2.getCapabilities)
    *
    * @param string $instanceName The instance of the execution system to operate
    * against. A server may support multiple instances of the execution system

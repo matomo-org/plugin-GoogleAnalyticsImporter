@@ -91,9 +91,10 @@ class Google_Service_HangoutsChat_Resource_SpacesMessages extends Google_Service
    * @param Google_Service_HangoutsChat_Message $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string updateMask Required. The field paths to be updated.
+   * @opt_param string updateMask Required. The field paths to be updated, comma
+   * separated if there are multiple.
    *
-   * Currently supported field paths: "text", "cards".
+   * Currently supported field paths: * text * cards
    * @return Google_Service_HangoutsChat_Message
    */
   public function update($name, Google_Service_HangoutsChat_Message $postBody, $optParams = array())

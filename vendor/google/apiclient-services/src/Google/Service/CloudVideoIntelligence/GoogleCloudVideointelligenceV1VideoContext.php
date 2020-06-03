@@ -22,6 +22,8 @@ class Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1VideoC
   protected $explicitContentDetectionConfigDataType = '';
   protected $labelDetectionConfigType = 'Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1LabelDetectionConfig';
   protected $labelDetectionConfigDataType = '';
+  protected $objectTrackingConfigType = 'Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1ObjectTrackingConfig';
+  protected $objectTrackingConfigDataType = '';
   protected $segmentsType = 'Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1VideoSegment';
   protected $segmentsDataType = 'array';
   protected $shotChangeDetectionConfigType = 'Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1ShotChangeDetectionConfig';
@@ -58,6 +60,20 @@ class Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1VideoC
   public function getLabelDetectionConfig()
   {
     return $this->labelDetectionConfig;
+  }
+  /**
+   * @param Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1ObjectTrackingConfig
+   */
+  public function setObjectTrackingConfig(Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1ObjectTrackingConfig $objectTrackingConfig)
+  {
+    $this->objectTrackingConfig = $objectTrackingConfig;
+  }
+  /**
+   * @return Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1ObjectTrackingConfig
+   */
+  public function getObjectTrackingConfig()
+  {
+    return $this->objectTrackingConfig;
   }
   /**
    * @param Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1VideoSegment

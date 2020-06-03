@@ -30,8 +30,8 @@ class Google_Service_Cloudbilling_Resource_Projects extends Google_Service_Resou
    * must have [permission to view the project](https://cloud.google.com/docs
    * /permissions-overview#h.bgs0oxofvnoo ). (projects.getBillingInfo)
    *
-   * @param string $name The resource name of the project for which billing
-   * information is retrieved. For example, `projects/tokyo-rain-123`.
+   * @param string $name Required. The resource name of the project for which
+   * billing information is retrieved. For example, `projects/tokyo-rain-123`.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Cloudbilling_ProjectBillingInfo
    */
@@ -74,9 +74,9 @@ class Google_Service_Cloudbilling_Resource_Projects extends Google_Service_Resou
    * billing, you should always call this method with the name of an *open*
    * billing account. (projects.updateBillingInfo)
    *
-   * @param string $name The resource name of the project associated with the
-   * billing information that you want to update. For example, `projects/tokyo-
-   * rain-123`.
+   * @param string $name Required. The resource name of the project associated
+   * with the billing information that you want to update. For example, `projects
+   * /tokyo-rain-123`.
    * @param Google_Service_Cloudbilling_ProjectBillingInfo $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Cloudbilling_ProjectBillingInfo

@@ -39,6 +39,8 @@ class Google_Service_ContainerAnalysis_Note extends Google_Collection
   protected $relatedUrlDataType = 'array';
   public $shortDescription;
   public $updateTime;
+  protected $upgradeType = 'Google_Service_ContainerAnalysis_UpgradeNote';
+  protected $upgradeDataType = '';
   protected $vulnerabilityTypeType = 'Google_Service_ContainerAnalysis_VulnerabilityType';
   protected $vulnerabilityTypeDataType = '';
 
@@ -195,6 +197,20 @@ class Google_Service_ContainerAnalysis_Note extends Google_Collection
   public function getUpdateTime()
   {
     return $this->updateTime;
+  }
+  /**
+   * @param Google_Service_ContainerAnalysis_UpgradeNote
+   */
+  public function setUpgrade(Google_Service_ContainerAnalysis_UpgradeNote $upgrade)
+  {
+    $this->upgrade = $upgrade;
+  }
+  /**
+   * @return Google_Service_ContainerAnalysis_UpgradeNote
+   */
+  public function getUpgrade()
+  {
+    return $this->upgrade;
   }
   /**
    * @param Google_Service_ContainerAnalysis_VulnerabilityType

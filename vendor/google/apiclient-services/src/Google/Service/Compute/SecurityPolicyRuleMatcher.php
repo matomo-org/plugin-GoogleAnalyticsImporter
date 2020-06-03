@@ -19,6 +19,8 @@ class Google_Service_Compute_SecurityPolicyRuleMatcher extends Google_Model
 {
   protected $configType = 'Google_Service_Compute_SecurityPolicyRuleMatcherConfig';
   protected $configDataType = '';
+  protected $exprType = 'Google_Service_Compute_Expr';
+  protected $exprDataType = '';
   public $versionedExpr;
 
   /**
@@ -34,6 +36,20 @@ class Google_Service_Compute_SecurityPolicyRuleMatcher extends Google_Model
   public function getConfig()
   {
     return $this->config;
+  }
+  /**
+   * @param Google_Service_Compute_Expr
+   */
+  public function setExpr(Google_Service_Compute_Expr $expr)
+  {
+    $this->expr = $expr;
+  }
+  /**
+   * @return Google_Service_Compute_Expr
+   */
+  public function getExpr()
+  {
+    return $this->expr;
   }
   public function setVersionedExpr($versionedExpr)
   {

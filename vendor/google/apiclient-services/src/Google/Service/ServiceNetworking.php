@@ -16,7 +16,7 @@
  */
 
 /**
- * Service definition for ServiceNetworking (v1beta).
+ * Service definition for ServiceNetworking (v1).
  *
  * <p>
  * Provides automatic management of network configurations necessary for certain
@@ -41,19 +41,23 @@ class Google_Service_ServiceNetworking extends Google_Service
   public $operations;
   public $services;
   public $services_connections;
+  public $services_dnsRecordSets;
+  public $services_dnsZones;
+  public $services_roles;
   
   /**
    * Constructs the internal representation of the ServiceNetworking service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://servicenetworking.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://servicenetworking.googleapis.com/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
-    $this->version = 'v1beta';
+    $this->version = 'v1';
     $this->serviceName = 'servicenetworking';
 
     $this->operations = new Google_Service_ServiceNetworking_Resource_Operations(
@@ -62,14 +66,56 @@ class Google_Service_ServiceNetworking extends Google_Service
         'operations',
         array(
           'methods' => array(
-            'get' => array(
-              'path' => 'v1beta/{+name}',
+            'cancel' => array(
+              'path' => 'v1/{+name}:cancel',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'delete' => array(
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+              ),
+            ),'list' => array(
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -83,8 +129,28 @@ class Google_Service_ServiceNetworking extends Google_Service
         array(
           'methods' => array(
             'addSubnetwork' => array(
-              'path' => 'v1beta/{+parent}:addSubnetwork',
+              'path' => 'v1/{+parent}:addSubnetwork',
               'httpMethod' => 'POST',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'disableVpcServiceControls' => array(
+              'path' => 'v1/{+parent}:disableVpcServiceControls',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'enableVpcServiceControls' => array(
+              'path' => 'v1/{+parent}:enableVpcServiceControls',
+              'httpMethod' => 'PATCH',
               'parameters' => array(
                 'parent' => array(
                   'location' => 'path',
@@ -93,7 +159,7 @@ class Google_Service_ServiceNetworking extends Google_Service
                 ),
               ),
             ),'searchRange' => array(
-              'path' => 'v1beta/{+parent}:searchRange',
+              'path' => 'v1/{+parent}:searchRange',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'parent' => array(
@@ -102,22 +168,14 @@ class Google_Service_ServiceNetworking extends Google_Service
                   'required' => true,
                 ),
               ),
-            ),'updateConnections' => array(
-              'path' => 'v1beta/{+name}/connections',
-              'httpMethod' => 'PATCH',
+            ),'validate' => array(
+              'path' => 'v1/{+parent}:validate',
+              'httpMethod' => 'POST',
               'parameters' => array(
-                'name' => array(
+                'parent' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'updateMask' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'force' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ),
               ),
             ),
@@ -131,7 +189,7 @@ class Google_Service_ServiceNetworking extends Google_Service
         array(
           'methods' => array(
             'create' => array(
-              'path' => 'v1beta/{+parent}/connections',
+              'path' => 'v1/{+parent}/connections',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'parent' => array(
@@ -141,7 +199,7 @@ class Google_Service_ServiceNetworking extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1beta/{+parent}/connections',
+              'path' => 'v1/{+parent}/connections',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'parent' => array(
@@ -152,6 +210,114 @@ class Google_Service_ServiceNetworking extends Google_Service
                 'network' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+              ),
+            ),'patch' => array(
+              'path' => 'v1/{+name}',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'name' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'force' => array(
+                  'location' => 'query',
+                  'type' => 'boolean',
+                ),
+                'updateMask' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->services_dnsRecordSets = new Google_Service_ServiceNetworking_Resource_ServicesDnsRecordSets(
+        $this,
+        $this->serviceName,
+        'dnsRecordSets',
+        array(
+          'methods' => array(
+            'add' => array(
+              'path' => 'v1/{+parent}/dnsRecordSets:add',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'remove' => array(
+              'path' => 'v1/{+parent}/dnsRecordSets:remove',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'update' => array(
+              'path' => 'v1/{+parent}/dnsRecordSets:update',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->services_dnsZones = new Google_Service_ServiceNetworking_Resource_ServicesDnsZones(
+        $this,
+        $this->serviceName,
+        'dnsZones',
+        array(
+          'methods' => array(
+            'add' => array(
+              'path' => 'v1/{+parent}/dnsZones:add',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'remove' => array(
+              'path' => 'v1/{+parent}/dnsZones:remove',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),
+          )
+        )
+    );
+    $this->services_roles = new Google_Service_ServiceNetworking_Resource_ServicesRoles(
+        $this,
+        $this->serviceName,
+        'roles',
+        array(
+          'methods' => array(
+            'add' => array(
+              'path' => 'v1/{+parent}/roles:add',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),

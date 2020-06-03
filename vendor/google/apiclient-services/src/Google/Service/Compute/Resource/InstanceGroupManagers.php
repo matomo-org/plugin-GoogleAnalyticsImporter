@@ -79,41 +79,48 @@ class Google_Service_Compute_Resource_InstanceGroupManagers extends Google_Servi
    * @opt_param string filter A filter expression that filters resources listed in
    * the response. The expression must specify the field name, a comparison
    * operator, and the value that you want to use for filtering. The value must be
-   * a string, a number, or a boolean. The comparison operator must be either =,
-   * !=, >, or <.
+   * a string, a number, or a boolean. The comparison operator must be either `=`,
+   * `!=`, `>`, or `<`.
    *
    * For example, if you are filtering Compute Engine instances, you can exclude
-   * instances named example-instance by specifying name != example-instance.
+   * instances named `example-instance` by specifying `name != example-instance`.
    *
    * You can also filter nested fields. For example, you could specify
-   * scheduling.automaticRestart = false to include instances only if they are not
-   * scheduled for automatic restarts. You can use filtering on nested fields to
-   * filter based on resource labels.
+   * `scheduling.automaticRestart = false` to include instances only if they are
+   * not scheduled for automatic restarts. You can use filtering on nested fields
+   * to filter based on resource labels.
    *
    * To filter on multiple expressions, provide each separate expression within
-   * parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform =
-   * "Intel Skylake"). By default, each expression is an AND expression. However,
-   * you can include AND and OR expressions explicitly. For example, (cpuPlatform
-   * = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-   * (scheduling.automaticRestart = true).
+   * parentheses. For example: ``` (scheduling.automaticRestart = true)
+   * (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+   * expression. However, you can include `AND` and `OR` expressions explicitly.
+   * For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+   * Broadwell") AND (scheduling.automaticRestart = true) ```
+   * @opt_param bool includeAllScopes Indicates whether every visible scope for
+   * each scope type (zone, region, global) should be included in the response.
+   * For new resource types added after this field, the flag has no effect as new
+   * resource types will always include every visible scope for each scope type in
+   * response. For resource types which predate this field, if this flag is
+   * omitted or false, only scopes of the scope types where the resource type is
+   * expected to be found will be included.
    * @opt_param string maxResults The maximum number of results per page that
    * should be returned. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests. Acceptable values are 0
-   * to 500, inclusive. (Default: 500)
+   * `maxResults`, Compute Engine returns a `nextPageToken` that can be used to
+   * get the next page of results in subsequent list requests. Acceptable values
+   * are `0` to `500`, inclusive. (Default: `500`)
    * @opt_param string orderBy Sorts list results by a certain order. By default,
    * results are returned in alphanumerical order based on the resource name.
    *
    * You can also sort results in descending order based on the creation timestamp
-   * using orderBy="creationTimestamp desc". This sorts results based on the
-   * creationTimestamp field in reverse chronological order (newest result first).
-   * Use this to sort resources like operations so that the newest operation is
-   * returned first.
+   * using `orderBy="creationTimestamp desc"`. This sorts results based on the
+   * `creationTimestamp` field in reverse chronological order (newest result
+   * first). Use this to sort resources like operations so that the newest
+   * operation is returned first.
    *
-   * Currently, only sorting by name or creationTimestamp desc is supported.
-   * @opt_param string pageToken Specifies a page token to use. Set pageToken to
-   * the nextPageToken returned by a previous list request to get the next page of
-   * results.
+   * Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+   * @opt_param string pageToken Specifies a page token to use. Set `pageToken` to
+   * the `nextPageToken` returned by a previous list request to get the next page
+   * of results.
    * @return Google_Service_Compute_InstanceGroupManagerAggregatedList
    */
   public function aggregatedList($project, $optParams = array())
@@ -121,6 +128,61 @@ class Google_Service_Compute_Resource_InstanceGroupManagers extends Google_Servi
     $params = array('project' => $project);
     $params = array_merge($params, $optParams);
     return $this->call('aggregatedList', array($params), "Google_Service_Compute_InstanceGroupManagerAggregatedList");
+  }
+  /**
+   * Applies changes to selected instances on the managed instance group. This
+   * method can be used to apply new overrides and/or new versions.
+   * (instanceGroupManagers.applyUpdatesToInstances)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $zone The name of the zone where the managed instance group is
+   * located. Should conform to RFC1035.
+   * @param string $instanceGroupManager The name of the managed instance group,
+   * should conform to RFC1035.
+   * @param Google_Service_Compute_InstanceGroupManagersApplyUpdatesRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Compute_Operation
+   */
+  public function applyUpdatesToInstances($project, $zone, $instanceGroupManager, Google_Service_Compute_InstanceGroupManagersApplyUpdatesRequest $postBody, $optParams = array())
+  {
+    $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('applyUpdatesToInstances', array($params), "Google_Service_Compute_Operation");
+  }
+  /**
+   * Creates instances with per-instance configs in this managed instance group.
+   * Instances are created using the current instance template. The create
+   * instances operation is marked DONE if the createInstances request is
+   * successful. The underlying actions take additional time. You must separately
+   * verify the status of the creating or actions with the listmanagedinstances
+   * method. (instanceGroupManagers.createInstances)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $zone The name of the zone where the managed instance group is
+   * located. It should conform to RFC1035.
+   * @param string $instanceGroupManager The name of the managed instance group.
+   * It should conform to RFC1035.
+   * @param Google_Service_Compute_InstanceGroupManagersCreateInstancesRequest $postBody
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string requestId An optional request ID to identify requests.
+   * Specify a unique request ID so that if you must retry your request, the
+   * server will know to ignore the request if it has already been completed.
+   *
+   * For example, consider a situation where you make an initial request and the
+   * request times out. If you make the request again with the same request ID,
+   * the server can check if original operation with the same request ID was
+   * received, and if so, will ignore the second request.
+   *
+   * The request ID must be a valid UUID with the exception that zero UUID is not
+   * supported (00000000-0000-0000-0000-000000000000).
+   * @return Google_Service_Compute_Operation
+   */
+  public function createInstances($project, $zone, $instanceGroupManager, Google_Service_Compute_InstanceGroupManagersCreateInstancesRequest $postBody, $optParams = array())
+  {
+    $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('createInstances', array($params), "Google_Service_Compute_Operation");
   }
   /**
    * Deletes the specified managed instance group and all of the instances in that
@@ -266,41 +328,41 @@ class Google_Service_Compute_Resource_InstanceGroupManagers extends Google_Servi
    * @opt_param string filter A filter expression that filters resources listed in
    * the response. The expression must specify the field name, a comparison
    * operator, and the value that you want to use for filtering. The value must be
-   * a string, a number, or a boolean. The comparison operator must be either =,
-   * !=, >, or <.
+   * a string, a number, or a boolean. The comparison operator must be either `=`,
+   * `!=`, `>`, or `<`.
    *
    * For example, if you are filtering Compute Engine instances, you can exclude
-   * instances named example-instance by specifying name != example-instance.
+   * instances named `example-instance` by specifying `name != example-instance`.
    *
    * You can also filter nested fields. For example, you could specify
-   * scheduling.automaticRestart = false to include instances only if they are not
-   * scheduled for automatic restarts. You can use filtering on nested fields to
-   * filter based on resource labels.
+   * `scheduling.automaticRestart = false` to include instances only if they are
+   * not scheduled for automatic restarts. You can use filtering on nested fields
+   * to filter based on resource labels.
    *
    * To filter on multiple expressions, provide each separate expression within
-   * parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform =
-   * "Intel Skylake"). By default, each expression is an AND expression. However,
-   * you can include AND and OR expressions explicitly. For example, (cpuPlatform
-   * = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-   * (scheduling.automaticRestart = true).
+   * parentheses. For example: ``` (scheduling.automaticRestart = true)
+   * (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+   * expression. However, you can include `AND` and `OR` expressions explicitly.
+   * For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+   * Broadwell") AND (scheduling.automaticRestart = true) ```
    * @opt_param string maxResults The maximum number of results per page that
    * should be returned. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests. Acceptable values are 0
-   * to 500, inclusive. (Default: 500)
+   * `maxResults`, Compute Engine returns a `nextPageToken` that can be used to
+   * get the next page of results in subsequent list requests. Acceptable values
+   * are `0` to `500`, inclusive. (Default: `500`)
    * @opt_param string orderBy Sorts list results by a certain order. By default,
    * results are returned in alphanumerical order based on the resource name.
    *
    * You can also sort results in descending order based on the creation timestamp
-   * using orderBy="creationTimestamp desc". This sorts results based on the
-   * creationTimestamp field in reverse chronological order (newest result first).
-   * Use this to sort resources like operations so that the newest operation is
-   * returned first.
+   * using `orderBy="creationTimestamp desc"`. This sorts results based on the
+   * `creationTimestamp` field in reverse chronological order (newest result
+   * first). Use this to sort resources like operations so that the newest
+   * operation is returned first.
    *
-   * Currently, only sorting by name or creationTimestamp desc is supported.
-   * @opt_param string pageToken Specifies a page token to use. Set pageToken to
-   * the nextPageToken returned by a previous list request to get the next page of
-   * results.
+   * Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+   * @opt_param string pageToken Specifies a page token to use. Set `pageToken` to
+   * the `nextPageToken` returned by a previous list request to get the next page
+   * of results.
    * @return Google_Service_Compute_InstanceGroupManagerList
    */
   public function listInstanceGroupManagers($project, $zone, $optParams = array())
@@ -308,6 +370,65 @@ class Google_Service_Compute_Resource_InstanceGroupManagers extends Google_Servi
     $params = array('project' => $project, 'zone' => $zone);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_Compute_InstanceGroupManagerList");
+  }
+  /**
+   * Lists all errors thrown by actions on instances for a given managed instance
+   * group. (instanceGroupManagers.listErrors)
+   *
+   * @param string $project Project ID for this request.
+   * @param string $zone The name of the zone where the managed instance group is
+   * located. It should conform to RFC1035.
+   * @param string $instanceGroupManager The name of the managed instance group.
+   * It must be a string that meets the requirements in RFC1035, or an unsigned
+   * long integer: must match regexp pattern:
+   * (?:[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?)|[1-9][0-9]{0,19}.
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string filter A filter expression that filters resources listed in
+   * the response. The expression must specify the field name, a comparison
+   * operator, and the value that you want to use for filtering. The value must be
+   * a string, a number, or a boolean. The comparison operator must be either `=`,
+   * `!=`, `>`, or `<`.
+   *
+   * For example, if you are filtering Compute Engine instances, you can exclude
+   * instances named `example-instance` by specifying `name != example-instance`.
+   *
+   * You can also filter nested fields. For example, you could specify
+   * `scheduling.automaticRestart = false` to include instances only if they are
+   * not scheduled for automatic restarts. You can use filtering on nested fields
+   * to filter based on resource labels.
+   *
+   * To filter on multiple expressions, provide each separate expression within
+   * parentheses. For example: ``` (scheduling.automaticRestart = true)
+   * (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+   * expression. However, you can include `AND` and `OR` expressions explicitly.
+   * For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+   * Broadwell") AND (scheduling.automaticRestart = true) ```
+   * @opt_param string maxResults The maximum number of results per page that
+   * should be returned. If the number of available results is larger than
+   * `maxResults`, Compute Engine returns a `nextPageToken` that can be used to
+   * get the next page of results in subsequent list requests. Acceptable values
+   * are `0` to `500`, inclusive. (Default: `500`)
+   * @opt_param string orderBy Sorts list results by a certain order. By default,
+   * results are returned in alphanumerical order based on the resource name.
+   *
+   * You can also sort results in descending order based on the creation timestamp
+   * using `orderBy="creationTimestamp desc"`. This sorts results based on the
+   * `creationTimestamp` field in reverse chronological order (newest result
+   * first). Use this to sort resources like operations so that the newest
+   * operation is returned first.
+   *
+   * Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+   * @opt_param string pageToken Specifies a page token to use. Set `pageToken` to
+   * the `nextPageToken` returned by a previous list request to get the next page
+   * of results.
+   * @return Google_Service_Compute_InstanceGroupManagersListErrorsResponse
+   */
+  public function listErrors($project, $zone, $instanceGroupManager, $optParams = array())
+  {
+    $params = array('project' => $project, 'zone' => $zone, 'instanceGroupManager' => $instanceGroupManager);
+    $params = array_merge($params, $optParams);
+    return $this->call('listErrors', array($params), "Google_Service_Compute_InstanceGroupManagersListErrorsResponse");
   }
   /**
    * Lists all of the instances in the managed instance group. Each instance in
@@ -326,41 +447,41 @@ class Google_Service_Compute_Resource_InstanceGroupManagers extends Google_Servi
    * @opt_param string filter A filter expression that filters resources listed in
    * the response. The expression must specify the field name, a comparison
    * operator, and the value that you want to use for filtering. The value must be
-   * a string, a number, or a boolean. The comparison operator must be either =,
-   * !=, >, or <.
+   * a string, a number, or a boolean. The comparison operator must be either `=`,
+   * `!=`, `>`, or `<`.
    *
    * For example, if you are filtering Compute Engine instances, you can exclude
-   * instances named example-instance by specifying name != example-instance.
+   * instances named `example-instance` by specifying `name != example-instance`.
    *
    * You can also filter nested fields. For example, you could specify
-   * scheduling.automaticRestart = false to include instances only if they are not
-   * scheduled for automatic restarts. You can use filtering on nested fields to
-   * filter based on resource labels.
+   * `scheduling.automaticRestart = false` to include instances only if they are
+   * not scheduled for automatic restarts. You can use filtering on nested fields
+   * to filter based on resource labels.
    *
    * To filter on multiple expressions, provide each separate expression within
-   * parentheses. For example, (scheduling.automaticRestart = true) (cpuPlatform =
-   * "Intel Skylake"). By default, each expression is an AND expression. However,
-   * you can include AND and OR expressions explicitly. For example, (cpuPlatform
-   * = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND
-   * (scheduling.automaticRestart = true).
+   * parentheses. For example: ``` (scheduling.automaticRestart = true)
+   * (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND`
+   * expression. However, you can include `AND` and `OR` expressions explicitly.
+   * For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel
+   * Broadwell") AND (scheduling.automaticRestart = true) ```
    * @opt_param string maxResults The maximum number of results per page that
    * should be returned. If the number of available results is larger than
-   * maxResults, Compute Engine returns a nextPageToken that can be used to get
-   * the next page of results in subsequent list requests. Acceptable values are 0
-   * to 500, inclusive. (Default: 500)
-   * @opt_param string order_by Sorts list results by a certain order. By default,
+   * `maxResults`, Compute Engine returns a `nextPageToken` that can be used to
+   * get the next page of results in subsequent list requests. Acceptable values
+   * are `0` to `500`, inclusive. (Default: `500`)
+   * @opt_param string orderBy Sorts list results by a certain order. By default,
    * results are returned in alphanumerical order based on the resource name.
    *
    * You can also sort results in descending order based on the creation timestamp
-   * using orderBy="creationTimestamp desc". This sorts results based on the
-   * creationTimestamp field in reverse chronological order (newest result first).
-   * Use this to sort resources like operations so that the newest operation is
-   * returned first.
+   * using `orderBy="creationTimestamp desc"`. This sorts results based on the
+   * `creationTimestamp` field in reverse chronological order (newest result
+   * first). Use this to sort resources like operations so that the newest
+   * operation is returned first.
    *
-   * Currently, only sorting by name or creationTimestamp desc is supported.
-   * @opt_param string pageToken Specifies a page token to use. Set pageToken to
-   * the nextPageToken returned by a previous list request to get the next page of
-   * results.
+   * Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+   * @opt_param string pageToken Specifies a page token to use. Set `pageToken` to
+   * the `nextPageToken` returned by a previous list request to get the next page
+   * of results.
    * @return Google_Service_Compute_InstanceGroupManagersListManagedInstancesResponse
    */
   public function listManagedInstances($project, $zone, $instanceGroupManager, $optParams = array())

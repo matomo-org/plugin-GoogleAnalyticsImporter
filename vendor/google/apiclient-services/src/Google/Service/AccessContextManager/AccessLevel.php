@@ -19,11 +19,11 @@ class Google_Service_AccessContextManager_AccessLevel extends Google_Model
 {
   protected $basicType = 'Google_Service_AccessContextManager_BasicLevel';
   protected $basicDataType = '';
-  public $createTime;
+  protected $customType = 'Google_Service_AccessContextManager_CustomLevel';
+  protected $customDataType = '';
   public $description;
   public $name;
   public $title;
-  public $updateTime;
 
   /**
    * @param Google_Service_AccessContextManager_BasicLevel
@@ -39,13 +39,19 @@ class Google_Service_AccessContextManager_AccessLevel extends Google_Model
   {
     return $this->basic;
   }
-  public function setCreateTime($createTime)
+  /**
+   * @param Google_Service_AccessContextManager_CustomLevel
+   */
+  public function setCustom(Google_Service_AccessContextManager_CustomLevel $custom)
   {
-    $this->createTime = $createTime;
+    $this->custom = $custom;
   }
-  public function getCreateTime()
+  /**
+   * @return Google_Service_AccessContextManager_CustomLevel
+   */
+  public function getCustom()
   {
-    return $this->createTime;
+    return $this->custom;
   }
   public function setDescription($description)
   {
@@ -70,13 +76,5 @@ class Google_Service_AccessContextManager_AccessLevel extends Google_Model
   public function getTitle()
   {
     return $this->title;
-  }
-  public function setUpdateTime($updateTime)
-  {
-    $this->updateTime = $updateTime;
-  }
-  public function getUpdateTime()
-  {
-    return $this->updateTime;
   }
 }

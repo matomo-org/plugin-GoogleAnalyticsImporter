@@ -44,7 +44,7 @@ class Google_Service_ShoppingContent_Resource_Shippingsettings extends Google_Se
    *
    * @param string $merchantId The ID of the managing account. If this parameter
    * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
+   * account and `accountId` must be the ID of a sub-account of this account.
    * @param string $accountId The ID of the account for which to get/update
    * shipping settings.
    * @param array $optParams Optional parameters.
@@ -87,6 +87,21 @@ class Google_Service_ShoppingContent_Resource_Shippingsettings extends Google_Se
     return $this->call('getsupportedholidays', array($params), "Google_Service_ShoppingContent_ShippingsettingsGetSupportedHolidaysResponse");
   }
   /**
+   * Retrieves supported pickup services for an account.
+   * (shippingsettings.getsupportedpickupservices)
+   *
+   * @param string $merchantId The ID of the account for which to retrieve the
+   * supported pickup services.
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_ShoppingContent_ShippingsettingsGetSupportedPickupServicesResponse
+   */
+  public function getsupportedpickupservices($merchantId, $optParams = array())
+  {
+    $params = array('merchantId' => $merchantId);
+    $params = array_merge($params, $optParams);
+    return $this->call('getsupportedpickupservices', array($params), "Google_Service_ShoppingContent_ShippingsettingsGetSupportedPickupServicesResponse");
+  }
+  /**
    * Lists the shipping settings of the sub-accounts in your Merchant Center
    * account. (shippingsettings.listShippingsettings)
    *
@@ -110,7 +125,7 @@ class Google_Service_ShoppingContent_Resource_Shippingsettings extends Google_Se
    *
    * @param string $merchantId The ID of the managing account. If this parameter
    * is not the same as accountId, then this account must be a multi-client
-   * account and accountId must be the ID of a sub-account of this account.
+   * account and `accountId` must be the ID of a sub-account of this account.
    * @param string $accountId The ID of the account for which to get/update
    * shipping settings.
    * @param Google_Service_ShoppingContent_ShippingSettings $postBody

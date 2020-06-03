@@ -26,7 +26,8 @@
 class Google_Service_CloudTrace_Resource_ProjectsTracesSpans extends Google_Service_Resource
 {
   /**
-   * Creates a new span. (spans.createSpan)
+   * Creates a new span. In this case, writing traces is not considered an active
+   * developer method since traces are machine generated. (spans.createSpan)
    *
    * @param string $name The resource name of the span in the following format:
    *

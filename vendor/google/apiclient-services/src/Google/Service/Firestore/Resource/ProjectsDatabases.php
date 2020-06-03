@@ -35,7 +35,7 @@ class Google_Service_Firestore_Resource_ProjectsDatabases extends Google_Service
    * completion it may leave partial data behind in Google Cloud Storage.
    * (databases.exportDocuments)
    *
-   * @param string $name Database to export. Should be of the form:
+   * @param string $name Required. Database to export. Should be of the form:
    * `projects/{project_id}/databases/{database_id}`.
    * @param Google_Service_Firestore_GoogleFirestoreAdminV1ExportDocumentsRequest $postBody
    * @param array $optParams Optional parameters.
@@ -55,7 +55,7 @@ class Google_Service_Firestore_Resource_ProjectsDatabases extends Google_Service
    * subset of the data has already been imported to Cloud Firestore.
    * (databases.importDocuments)
    *
-   * @param string $name Database to import into. Should be of the form:
+   * @param string $name Required. Database to import into. Should be of the form:
    * `projects/{project_id}/databases/{database_id}`.
    * @param Google_Service_Firestore_GoogleFirestoreAdminV1ImportDocumentsRequest $postBody
    * @param array $optParams Optional parameters.

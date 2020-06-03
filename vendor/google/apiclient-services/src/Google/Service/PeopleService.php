@@ -36,9 +36,9 @@ class Google_Service_PeopleService extends Google_Service
   /** See and download your contacts. */
   const CONTACTS_READONLY =
       "https://www.googleapis.com/auth/contacts.readonly";
-  /** View your basic profile info, including your age range and language. */
-  const PLUS_LOGIN =
-      "https://www.googleapis.com/auth/plus.login";
+  /** See and download your organization's GSuite directory. */
+  const DIRECTORY_READONLY =
+      "https://www.googleapis.com/auth/directory.readonly";
   /** View your street addresses. */
   const USER_ADDRESSES_READ =
       "https://www.googleapis.com/auth/user.addresses.read";
@@ -48,13 +48,19 @@ class Google_Service_PeopleService extends Google_Service
   /** View your email addresses. */
   const USER_EMAILS_READ =
       "https://www.googleapis.com/auth/user.emails.read";
+  /** See your gender. */
+  const USER_GENDER_READ =
+      "https://www.googleapis.com/auth/user.gender.read";
+  /** See your education, work history and org info. */
+  const USER_ORGANIZATION_READ =
+      "https://www.googleapis.com/auth/user.organization.read";
   /** View your phone numbers. */
   const USER_PHONENUMBERS_READ =
       "https://www.googleapis.com/auth/user.phonenumbers.read";
   /** View your email address. */
   const USERINFO_EMAIL =
       "https://www.googleapis.com/auth/userinfo.email";
-  /** View your basic profile info. */
+  /** See your personal info, including any personal info you've made publicly available. */
   const USERINFO_PROFILE =
       "https://www.googleapis.com/auth/userinfo.profile";
 
@@ -66,12 +72,13 @@ class Google_Service_PeopleService extends Google_Service
   /**
    * Constructs the internal representation of the PeopleService service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://people.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://people.googleapis.com/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -133,17 +140,17 @@ class Google_Service_PeopleService extends Google_Service
               'path' => 'v1/contactGroups',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'syncToken' => array(
+                'pageSize' => array(
                   'location' => 'query',
-                  'type' => 'string',
+                  'type' => 'integer',
                 ),
                 'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageSize' => array(
+                'syncToken' => array(
                   'location' => 'query',
-                  'type' => 'integer',
+                  'type' => 'string',
                 ),
               ),
             ),'update' => array(
@@ -189,12 +196,7 @@ class Google_Service_PeopleService extends Google_Service
             'createContact' => array(
               'path' => 'v1/people:createContact',
               'httpMethod' => 'POST',
-              'parameters' => array(
-                'parent' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-              ),
+              'parameters' => array(),
             ),'deleteContact' => array(
               'path' => 'v1/{+resourceName}:deleteContact',
               'httpMethod' => 'DELETE',
@@ -203,6 +205,20 @@ class Google_Service_PeopleService extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+              ),
+            ),'deleteContactPhoto' => array(
+              'path' => 'v1/{+resourceName}:deleteContactPhoto',
+              'httpMethod' => 'DELETE',
+              'parameters' => array(
+                'resourceName' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'personFields' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),'get' => array(
@@ -214,11 +230,11 @@ class Google_Service_PeopleService extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'personFields' => array(
+                'requestMask.includeField' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'requestMask.includeField' => array(
+                'personFields' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -227,14 +243,14 @@ class Google_Service_PeopleService extends Google_Service
               'path' => 'v1/people:batchGet',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'requestMask.includeField' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'resourceNames' => array(
                   'location' => 'query',
                   'type' => 'string',
                   'repeated' => true,
+                ),
+                'requestMask.includeField' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
                 'personFields' => array(
                   'location' => 'query',
@@ -253,6 +269,16 @@ class Google_Service_PeopleService extends Google_Service
                 'updatePersonFields' => array(
                   'location' => 'query',
                   'type' => 'string',
+                ),
+              ),
+            ),'updateContactPhoto' => array(
+              'path' => 'v1/{+resourceName}:updateContactPhoto',
+              'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'resourceName' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),
@@ -274,19 +300,15 @@ class Google_Service_PeopleService extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'requestSyncToken' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
-                ),
-                'pageToken' => array(
+                'requestMask.includeField' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageSize' => array(
+                'sortOrder' => array(
                   'location' => 'query',
-                  'type' => 'integer',
+                  'type' => 'string',
                 ),
-                'requestMask.includeField' => array(
+                'pageToken' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -294,13 +316,17 @@ class Google_Service_PeopleService extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
                 'personFields' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'sortOrder' => array(
+                'requestSyncToken' => array(
                   'location' => 'query',
-                  'type' => 'string',
+                  'type' => 'boolean',
                 ),
               ),
             ),

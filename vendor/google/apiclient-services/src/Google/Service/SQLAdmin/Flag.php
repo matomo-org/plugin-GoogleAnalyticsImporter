@@ -18,6 +18,7 @@
 class Google_Service_SQLAdmin_Flag extends Google_Collection
 {
   protected $collection_key = 'appliesTo';
+  public $allowedIntValues;
   public $allowedStringValues;
   public $appliesTo;
   public $inBeta;
@@ -28,6 +29,14 @@ class Google_Service_SQLAdmin_Flag extends Google_Collection
   public $requiresRestart;
   public $type;
 
+  public function setAllowedIntValues($allowedIntValues)
+  {
+    $this->allowedIntValues = $allowedIntValues;
+  }
+  public function getAllowedIntValues()
+  {
+    return $this->allowedIntValues;
+  }
   public function setAllowedStringValues($allowedStringValues)
   {
     $this->allowedStringValues = $allowedStringValues;

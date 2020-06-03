@@ -46,7 +46,7 @@ class Google_Service_ShoppingContent_Resource_Regionalinventory extends Google_S
    *
    * @param string $merchantId The ID of the account that contains the product.
    * This account cannot be a multi-client account.
-   * @param string $productId The REST id of the product for which to update the
+   * @param string $productId The REST ID of the product for which to update the
    * regional inventory.
    * @param Google_Service_ShoppingContent_RegionalInventory $postBody
    * @param array $optParams Optional parameters.

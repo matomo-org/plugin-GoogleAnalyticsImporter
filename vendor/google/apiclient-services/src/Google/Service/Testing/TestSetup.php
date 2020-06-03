@@ -28,6 +28,8 @@ class Google_Service_Testing_TestSetup extends Google_Collection
   protected $filesToPushType = 'Google_Service_Testing_DeviceFile';
   protected $filesToPushDataType = 'array';
   public $networkProfile;
+  protected $systraceType = 'Google_Service_Testing_SystraceSetup';
+  protected $systraceDataType = '';
 
   /**
    * @param Google_Service_Testing_Account
@@ -100,5 +102,19 @@ class Google_Service_Testing_TestSetup extends Google_Collection
   public function getNetworkProfile()
   {
     return $this->networkProfile;
+  }
+  /**
+   * @param Google_Service_Testing_SystraceSetup
+   */
+  public function setSystrace(Google_Service_Testing_SystraceSetup $systrace)
+  {
+    $this->systrace = $systrace;
+  }
+  /**
+   * @return Google_Service_Testing_SystraceSetup
+   */
+  public function getSystrace()
+  {
+    return $this->systrace;
   }
 }

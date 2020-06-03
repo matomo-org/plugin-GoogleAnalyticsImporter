@@ -26,15 +26,17 @@
 class Google_Service_CloudSearch_Resource_IndexingDatasources extends Google_Service_Resource
 {
   /**
-   * Deletes the schema of a data source. (datasources.deleteSchema)
+   * Deletes the schema of a data source.
+   *
+   * **Note:** This API requires an admin or service account to execute.
+   * (datasources.deleteSchema)
    *
    * @param string $name Name of the data source to delete Schema.  Format:
    * datasources/{source_id}
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool debugOptions.enableDebugging If set, the request will enable
-   * debugging features of Cloud Search. Only turn on this field, if asked by
-   * Google to help with debugging.
+   * @opt_param bool debugOptions.enableDebugging If you are asked by Google to
+   * help with debugging, set this field. Otherwise, ignore this field.
    * @return Google_Service_CloudSearch_Operation
    */
   public function deleteSchema($name, $optParams = array())
@@ -44,15 +46,17 @@ class Google_Service_CloudSearch_Resource_IndexingDatasources extends Google_Ser
     return $this->call('deleteSchema', array($params), "Google_Service_CloudSearch_Operation");
   }
   /**
-   * Gets the schema of a data source. (datasources.getSchema)
+   * Gets the schema of a data source.
+   *
+   * **Note:** This API requires an admin or service account to execute.
+   * (datasources.getSchema)
    *
    * @param string $name Name of the data source to get Schema.  Format:
    * datasources/{source_id}
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool debugOptions.enableDebugging If set, the request will enable
-   * debugging features of Cloud Search. Only turn on this field, if asked by
-   * Google to help with debugging.
+   * @opt_param bool debugOptions.enableDebugging If you are asked by Google to
+   * help with debugging, set this field. Otherwise, ignore this field.
    * @return Google_Service_CloudSearch_Schema
    */
   public function getSchema($name, $optParams = array())
@@ -62,7 +66,12 @@ class Google_Service_CloudSearch_Resource_IndexingDatasources extends Google_Ser
     return $this->call('getSchema', array($params), "Google_Service_CloudSearch_Schema");
   }
   /**
-   * Updates the schema of a data source. (datasources.updateSchema)
+   * Updates the schema of a data source. This method does not perform incremental
+   * updates to the schema. Instead, this method updates the schema by overwriting
+   * the entire schema.
+   *
+   * **Note:** This API requires an admin or service account to execute.
+   * (datasources.updateSchema)
    *
    * @param string $name Name of the data source to update Schema.  Format:
    * datasources/{source_id}

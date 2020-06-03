@@ -31,9 +31,7 @@
  */
 class Google_Service_AbusiveExperienceReport extends Google_Service
 {
-  /** Test scope for access to the Zoo service. */
-  const XAPI_ZOO =
-      "https://www.googleapis.com/auth/xapi.zoo";
+
 
   public $sites;
   public $violatingSites;
@@ -42,12 +40,13 @@ class Google_Service_AbusiveExperienceReport extends Google_Service
    * Constructs the internal representation of the AbusiveExperienceReport
    * service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://abusiveexperiencereport.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://abusiveexperiencereport.googleapis.com/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';

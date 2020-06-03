@@ -28,8 +28,8 @@ class Google_Service_CloudBuild_Resource_ProjectsBuilds extends Google_Service_R
   /**
    * Cancels a build in progress. (builds.cancel)
    *
-   * @param string $projectId ID of the project.
-   * @param string $id ID of the build.
+   * @param string $projectId Required. ID of the project.
+   * @param string $id Required. ID of the build.
    * @param Google_Service_CloudBuild_CancelBuildRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_Build
@@ -47,7 +47,7 @@ class Google_Service_CloudBuild_Resource_ProjectsBuilds extends Google_Service_R
    * Pass the build ID to `GetBuild` to determine the build status (such as
    * `SUCCESS` or `FAILURE`). (builds.create)
    *
-   * @param string $projectId ID of the project.
+   * @param string $projectId Required. ID of the project.
    * @param Google_Service_CloudBuild_Build $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_Operation
@@ -64,8 +64,8 @@ class Google_Service_CloudBuild_Resource_ProjectsBuilds extends Google_Service_R
    * The `Build` that is returned includes its status (such as `SUCCESS`,
    * `FAILURE`, or `WORKING`), and timing information. (builds.get)
    *
-   * @param string $projectId ID of the project.
-   * @param string $id ID of the build.
+   * @param string $projectId Required. ID of the project.
+   * @param string $id Required. ID of the build.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_Build
    */
@@ -81,7 +81,7 @@ class Google_Service_CloudBuild_Resource_ProjectsBuilds extends Google_Service_R
    * Previously requested builds may still be in-progress, or may have finished
    * successfully or unsuccessfully. (builds.listProjectsBuilds)
    *
-   * @param string $projectId ID of the project.
+   * @param string $projectId Required. ID of the project.
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter The raw filter text to constrain the results.
@@ -124,8 +124,8 @@ class Google_Service_CloudBuild_Resource_ProjectsBuilds extends Google_Service_R
    * or may not be available depending on the bucket's lifecycle management
    * settings. (builds.retry)
    *
-   * @param string $projectId ID of the project.
-   * @param string $id Build ID of the original build.
+   * @param string $projectId Required. ID of the project.
+   * @param string $id Required. Build ID of the original build.
    * @param Google_Service_CloudBuild_RetryBuildRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_Operation

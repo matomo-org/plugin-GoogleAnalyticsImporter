@@ -35,7 +35,6 @@ class Google_Service_Dfareporting_FloodlightActivity extends Google_Collection
   protected $floodlightConfigurationIdDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $floodlightConfigurationIdDimensionValueDataType = '';
   public $floodlightTagType;
-  public $hidden;
   public $id;
   protected $idDimensionValueType = 'Google_Service_Dfareporting_DimensionValue';
   protected $idDimensionValueDataType = '';
@@ -47,6 +46,7 @@ class Google_Service_Dfareporting_FloodlightActivity extends Google_Collection
   public $secure;
   public $sslCompliant;
   public $sslRequired;
+  public $status;
   public $subaccountId;
   public $tagFormat;
   public $tagString;
@@ -182,14 +182,6 @@ class Google_Service_Dfareporting_FloodlightActivity extends Google_Collection
   {
     return $this->floodlightTagType;
   }
-  public function setHidden($hidden)
-  {
-    $this->hidden = $hidden;
-  }
-  public function getHidden()
-  {
-    return $this->hidden;
-  }
   public function setId($id)
   {
     $this->id = $id;
@@ -273,6 +265,14 @@ class Google_Service_Dfareporting_FloodlightActivity extends Google_Collection
   public function getSslRequired()
   {
     return $this->sslRequired;
+  }
+  public function setStatus($status)
+  {
+    $this->status = $status;
+  }
+  public function getStatus()
+  {
+    return $this->status;
   }
   public function setSubaccountId($subaccountId)
   {

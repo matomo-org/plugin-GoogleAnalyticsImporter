@@ -29,7 +29,7 @@ class Google_Service_Cloudbilling_Resource_ServicesSkus extends Google_Service_R
    * Lists all publicly available SKUs for a given cloud service.
    * (skus.listServicesSkus)
    *
-   * @param string $parent The name of the service. Example:
+   * @param string $parent Required. The name of the service. Example:
    * "services/DA34-426B-A397"
    * @param array $optParams Optional parameters.
    *

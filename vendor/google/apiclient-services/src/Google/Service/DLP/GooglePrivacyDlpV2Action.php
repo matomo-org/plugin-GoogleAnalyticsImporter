@@ -21,8 +21,12 @@ class Google_Service_DLP_GooglePrivacyDlpV2Action extends Google_Model
   protected $jobNotificationEmailsDataType = '';
   protected $pubSubType = 'Google_Service_DLP_GooglePrivacyDlpV2PublishToPubSub';
   protected $pubSubDataType = '';
+  protected $publishFindingsToCloudDataCatalogType = 'Google_Service_DLP_GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog';
+  protected $publishFindingsToCloudDataCatalogDataType = '';
   protected $publishSummaryToCsccType = 'Google_Service_DLP_GooglePrivacyDlpV2PublishSummaryToCscc';
   protected $publishSummaryToCsccDataType = '';
+  protected $publishToStackdriverType = 'Google_Service_DLP_GooglePrivacyDlpV2PublishToStackdriver';
+  protected $publishToStackdriverDataType = '';
   protected $saveFindingsType = 'Google_Service_DLP_GooglePrivacyDlpV2SaveFindings';
   protected $saveFindingsDataType = '';
 
@@ -55,6 +59,20 @@ class Google_Service_DLP_GooglePrivacyDlpV2Action extends Google_Model
     return $this->pubSub;
   }
   /**
+   * @param Google_Service_DLP_GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+   */
+  public function setPublishFindingsToCloudDataCatalog(Google_Service_DLP_GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog $publishFindingsToCloudDataCatalog)
+  {
+    $this->publishFindingsToCloudDataCatalog = $publishFindingsToCloudDataCatalog;
+  }
+  /**
+   * @return Google_Service_DLP_GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog
+   */
+  public function getPublishFindingsToCloudDataCatalog()
+  {
+    return $this->publishFindingsToCloudDataCatalog;
+  }
+  /**
    * @param Google_Service_DLP_GooglePrivacyDlpV2PublishSummaryToCscc
    */
   public function setPublishSummaryToCscc(Google_Service_DLP_GooglePrivacyDlpV2PublishSummaryToCscc $publishSummaryToCscc)
@@ -67,6 +85,20 @@ class Google_Service_DLP_GooglePrivacyDlpV2Action extends Google_Model
   public function getPublishSummaryToCscc()
   {
     return $this->publishSummaryToCscc;
+  }
+  /**
+   * @param Google_Service_DLP_GooglePrivacyDlpV2PublishToStackdriver
+   */
+  public function setPublishToStackdriver(Google_Service_DLP_GooglePrivacyDlpV2PublishToStackdriver $publishToStackdriver)
+  {
+    $this->publishToStackdriver = $publishToStackdriver;
+  }
+  /**
+   * @return Google_Service_DLP_GooglePrivacyDlpV2PublishToStackdriver
+   */
+  public function getPublishToStackdriver()
+  {
+    return $this->publishToStackdriver;
   }
   /**
    * @param Google_Service_DLP_GooglePrivacyDlpV2SaveFindings

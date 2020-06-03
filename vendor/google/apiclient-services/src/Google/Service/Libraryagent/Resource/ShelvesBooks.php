@@ -31,7 +31,7 @@ class Google_Service_Libraryagent_Resource_ShelvesBooks extends Google_Service_R
    * Returns quota exceeded error if the amount of books borrowed exceeds
    * allocation quota in any dimensions. (books.borrow)
    *
-   * @param string $name The name of the book to borrow.
+   * @param string $name Required. The name of the book to borrow.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Libraryagent_GoogleExampleLibraryagentV1Book
    */
@@ -44,7 +44,7 @@ class Google_Service_Libraryagent_Resource_ShelvesBooks extends Google_Service_R
   /**
    * Gets a book. Returns NOT_FOUND if the book does not exist. (books.get)
    *
-   * @param string $name The name of the book to retrieve.
+   * @param string $name Required. The name of the book to retrieve.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Libraryagent_GoogleExampleLibraryagentV1Book
    */
@@ -59,15 +59,16 @@ class Google_Service_Libraryagent_Resource_ShelvesBooks extends Google_Service_R
    * created books will not necessarily be added to the end of this list. Returns
    * NOT_FOUND if the shelf does not exist. (books.listShelvesBooks)
    *
-   * @param string $parent The name of the shelf whose books we'd like to list.
+   * @param string $parent Required. The name of the shelf whose books we'd like
+   * to list.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize Requested page size. Server may return fewer books
-   * than requested. If unspecified, server will pick an appropriate default.
    * @opt_param string pageToken A token identifying a page of results the server
    * should return. Typically, this is the value of
    * ListBooksResponse.next_page_token. returned from the previous call to
    * `ListBooks` method.
+   * @opt_param int pageSize Requested page size. Server may return fewer books
+   * than requested. If unspecified, server will pick an appropriate default.
    * @return Google_Service_Libraryagent_GoogleExampleLibraryagentV1ListBooksResponse
    */
   public function listShelvesBooks($parent, $optParams = array())
@@ -81,7 +82,7 @@ class Google_Service_Libraryagent_Resource_ShelvesBooks extends Google_Service_R
    * library successfully. Returns error if the book does not belong to the
    * library or the users didn't borrow before. (books.returnShelvesBooks)
    *
-   * @param string $name The name of the book to return.
+   * @param string $name Required. The name of the book to return.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Libraryagent_GoogleExampleLibraryagentV1Book
    */

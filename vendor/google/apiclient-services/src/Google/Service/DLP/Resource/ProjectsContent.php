@@ -75,7 +75,7 @@ class Google_Service_DLP_Resource_ProjectsContent extends Google_Service_Resourc
    * https://cloud.google.com/dlp/docs/pseudonymization#re-
    * identification_in_free_text_code_example to learn more. (content.reidentify)
    *
-   * @param string $parent The parent resource name.
+   * @param string $parent Required. The parent resource name.
    * @param Google_Service_DLP_GooglePrivacyDlpV2ReidentifyContentRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2ReidentifyContentResponse

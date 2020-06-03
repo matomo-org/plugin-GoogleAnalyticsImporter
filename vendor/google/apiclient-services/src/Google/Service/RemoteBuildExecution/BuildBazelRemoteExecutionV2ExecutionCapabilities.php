@@ -15,12 +15,14 @@
  * the License.
  */
 
-class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2ExecutionCapabilities extends Google_Model
+class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2ExecutionCapabilities extends Google_Collection
 {
+  protected $collection_key = 'supportedNodeProperties';
   public $digestFunction;
   public $execEnabled;
   protected $executionPriorityCapabilitiesType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2PriorityCapabilities';
   protected $executionPriorityCapabilitiesDataType = '';
+  public $supportedNodeProperties;
 
   public function setDigestFunction($digestFunction)
   {
@@ -51,5 +53,13 @@ class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2ExecutionCa
   public function getExecutionPriorityCapabilities()
   {
     return $this->executionPriorityCapabilities;
+  }
+  public function setSupportedNodeProperties($supportedNodeProperties)
+  {
+    $this->supportedNodeProperties = $supportedNodeProperties;
+  }
+  public function getSupportedNodeProperties()
+  {
+    return $this->supportedNodeProperties;
   }
 }

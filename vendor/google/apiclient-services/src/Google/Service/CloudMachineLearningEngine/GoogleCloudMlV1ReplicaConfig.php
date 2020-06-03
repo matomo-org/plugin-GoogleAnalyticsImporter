@@ -15,11 +15,15 @@
  * the License.
  */
 
-class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ReplicaConfig extends Google_Model
+class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ReplicaConfig extends Google_Collection
 {
+  protected $collection_key = 'containerCommand';
   protected $acceleratorConfigType = 'Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AcceleratorConfig';
   protected $acceleratorConfigDataType = '';
+  public $containerArgs;
+  public $containerCommand;
   public $imageUri;
+  public $tpuTfVersion;
 
   /**
    * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1AcceleratorConfig
@@ -35,6 +39,22 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ReplicaConfig ext
   {
     return $this->acceleratorConfig;
   }
+  public function setContainerArgs($containerArgs)
+  {
+    $this->containerArgs = $containerArgs;
+  }
+  public function getContainerArgs()
+  {
+    return $this->containerArgs;
+  }
+  public function setContainerCommand($containerCommand)
+  {
+    $this->containerCommand = $containerCommand;
+  }
+  public function getContainerCommand()
+  {
+    return $this->containerCommand;
+  }
   public function setImageUri($imageUri)
   {
     $this->imageUri = $imageUri;
@@ -42,5 +62,13 @@ class Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1ReplicaConfig ext
   public function getImageUri()
   {
     return $this->imageUri;
+  }
+  public function setTpuTfVersion($tpuTfVersion)
+  {
+    $this->tpuTfVersion = $tpuTfVersion;
+  }
+  public function getTpuTfVersion()
+  {
+    return $this->tpuTfVersion;
   }
 }

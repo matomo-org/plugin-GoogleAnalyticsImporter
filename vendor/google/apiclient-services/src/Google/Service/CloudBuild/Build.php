@@ -30,6 +30,7 @@ class Google_Service_CloudBuild_Build extends Google_Collection
   protected $optionsType = 'Google_Service_CloudBuild_BuildOptions';
   protected $optionsDataType = '';
   public $projectId;
+  public $queueTtl;
   protected $resultsType = 'Google_Service_CloudBuild_Results';
   protected $resultsDataType = '';
   protected $secretsType = 'Google_Service_CloudBuild_Secret';
@@ -140,6 +141,14 @@ class Google_Service_CloudBuild_Build extends Google_Collection
   public function getProjectId()
   {
     return $this->projectId;
+  }
+  public function setQueueTtl($queueTtl)
+  {
+    $this->queueTtl = $queueTtl;
+  }
+  public function getQueueTtl()
+  {
+    return $this->queueTtl;
   }
   /**
    * @param Google_Service_CloudBuild_Results

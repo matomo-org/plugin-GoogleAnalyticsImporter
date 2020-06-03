@@ -17,7 +17,7 @@
 
 class Google_Service_ServiceControl_Operation extends Google_Collection
 {
-  protected $collection_key = 'resources';
+  protected $collection_key = 'traceSpans';
   public $consumerId;
   public $endTime;
   public $importance;
@@ -30,10 +30,11 @@ class Google_Service_ServiceControl_Operation extends Google_Collection
   public $operationName;
   protected $quotaPropertiesType = 'Google_Service_ServiceControl_QuotaProperties';
   protected $quotaPropertiesDataType = '';
-  public $resourceContainer;
   protected $resourcesType = 'Google_Service_ServiceControl_ResourceInfo';
   protected $resourcesDataType = 'array';
   public $startTime;
+  protected $traceSpansType = 'Google_Service_ServiceControl_TraceSpan';
+  protected $traceSpansDataType = 'array';
   public $userLabels;
 
   public function setConsumerId($consumerId)
@@ -126,14 +127,6 @@ class Google_Service_ServiceControl_Operation extends Google_Collection
   {
     return $this->quotaProperties;
   }
-  public function setResourceContainer($resourceContainer)
-  {
-    $this->resourceContainer = $resourceContainer;
-  }
-  public function getResourceContainer()
-  {
-    return $this->resourceContainer;
-  }
   /**
    * @param Google_Service_ServiceControl_ResourceInfo
    */
@@ -155,6 +148,20 @@ class Google_Service_ServiceControl_Operation extends Google_Collection
   public function getStartTime()
   {
     return $this->startTime;
+  }
+  /**
+   * @param Google_Service_ServiceControl_TraceSpan
+   */
+  public function setTraceSpans($traceSpans)
+  {
+    $this->traceSpans = $traceSpans;
+  }
+  /**
+   * @return Google_Service_ServiceControl_TraceSpan
+   */
+  public function getTraceSpans()
+  {
+    return $this->traceSpans;
   }
   public function setUserLabels($userLabels)
   {

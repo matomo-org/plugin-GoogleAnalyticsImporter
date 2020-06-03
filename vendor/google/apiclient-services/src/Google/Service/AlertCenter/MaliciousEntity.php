@@ -17,8 +17,33 @@
 
 class Google_Service_AlertCenter_MaliciousEntity extends Google_Model
 {
+  public $displayName;
+  protected $entityType = 'Google_Service_AlertCenter_User';
+  protected $entityDataType = '';
   public $fromHeader;
 
+  public function setDisplayName($displayName)
+  {
+    $this->displayName = $displayName;
+  }
+  public function getDisplayName()
+  {
+    return $this->displayName;
+  }
+  /**
+   * @param Google_Service_AlertCenter_User
+   */
+  public function setEntity(Google_Service_AlertCenter_User $entity)
+  {
+    $this->entity = $entity;
+  }
+  /**
+   * @return Google_Service_AlertCenter_User
+   */
+  public function getEntity()
+  {
+    return $this->entity;
+  }
   public function setFromHeader($fromHeader)
   {
     $this->fromHeader = $fromHeader;

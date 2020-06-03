@@ -25,11 +25,14 @@ class Google_Service_Dataflow_Environment extends Google_Collection
   public $internalExperiments;
   public $sdkPipelineOptions;
   public $serviceAccountEmail;
+  public $serviceKmsKeyName;
   public $tempStoragePrefix;
   public $userAgent;
   public $version;
   protected $workerPoolsType = 'Google_Service_Dataflow_WorkerPool';
   protected $workerPoolsDataType = 'array';
+  public $workerRegion;
+  public $workerZone;
 
   public function setClusterManagerApiService($clusterManagerApiService)
   {
@@ -87,6 +90,14 @@ class Google_Service_Dataflow_Environment extends Google_Collection
   {
     return $this->serviceAccountEmail;
   }
+  public function setServiceKmsKeyName($serviceKmsKeyName)
+  {
+    $this->serviceKmsKeyName = $serviceKmsKeyName;
+  }
+  public function getServiceKmsKeyName()
+  {
+    return $this->serviceKmsKeyName;
+  }
   public function setTempStoragePrefix($tempStoragePrefix)
   {
     $this->tempStoragePrefix = $tempStoragePrefix;
@@ -124,5 +135,21 @@ class Google_Service_Dataflow_Environment extends Google_Collection
   public function getWorkerPools()
   {
     return $this->workerPools;
+  }
+  public function setWorkerRegion($workerRegion)
+  {
+    $this->workerRegion = $workerRegion;
+  }
+  public function getWorkerRegion()
+  {
+    return $this->workerRegion;
+  }
+  public function setWorkerZone($workerZone)
+  {
+    $this->workerZone = $workerZone;
+  }
+  public function getWorkerZone()
+  {
+    return $this->workerZone;
   }
 }

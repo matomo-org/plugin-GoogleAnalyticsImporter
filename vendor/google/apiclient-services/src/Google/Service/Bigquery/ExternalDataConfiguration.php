@@ -22,11 +22,13 @@ class Google_Service_Bigquery_ExternalDataConfiguration extends Google_Collectio
   protected $bigtableOptionsType = 'Google_Service_Bigquery_BigtableOptions';
   protected $bigtableOptionsDataType = '';
   public $compression;
+  public $connectionId;
   protected $csvOptionsType = 'Google_Service_Bigquery_CsvOptions';
   protected $csvOptionsDataType = '';
   protected $googleSheetsOptionsType = 'Google_Service_Bigquery_GoogleSheetsOptions';
   protected $googleSheetsOptionsDataType = '';
-  public $hivePartitioningMode;
+  protected $hivePartitioningOptionsType = 'Google_Service_Bigquery_HivePartitioningOptions';
+  protected $hivePartitioningOptionsDataType = '';
   public $ignoreUnknownValues;
   public $maxBadRecords;
   protected $schemaType = 'Google_Service_Bigquery_TableSchema';
@@ -64,6 +66,14 @@ class Google_Service_Bigquery_ExternalDataConfiguration extends Google_Collectio
   {
     return $this->compression;
   }
+  public function setConnectionId($connectionId)
+  {
+    $this->connectionId = $connectionId;
+  }
+  public function getConnectionId()
+  {
+    return $this->connectionId;
+  }
   /**
    * @param Google_Service_Bigquery_CsvOptions
    */
@@ -92,13 +102,19 @@ class Google_Service_Bigquery_ExternalDataConfiguration extends Google_Collectio
   {
     return $this->googleSheetsOptions;
   }
-  public function setHivePartitioningMode($hivePartitioningMode)
+  /**
+   * @param Google_Service_Bigquery_HivePartitioningOptions
+   */
+  public function setHivePartitioningOptions(Google_Service_Bigquery_HivePartitioningOptions $hivePartitioningOptions)
   {
-    $this->hivePartitioningMode = $hivePartitioningMode;
+    $this->hivePartitioningOptions = $hivePartitioningOptions;
   }
-  public function getHivePartitioningMode()
+  /**
+   * @return Google_Service_Bigquery_HivePartitioningOptions
+   */
+  public function getHivePartitioningOptions()
   {
-    return $this->hivePartitioningMode;
+    return $this->hivePartitioningOptions;
   }
   public function setIgnoreUnknownValues($ignoreUnknownValues)
   {

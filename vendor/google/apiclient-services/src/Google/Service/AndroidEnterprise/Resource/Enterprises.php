@@ -252,20 +252,6 @@ class Google_Service_AndroidEnterprise_Resource_Enterprises extends Google_Servi
     return $this->call('setAccount', array($params), "Google_Service_AndroidEnterprise_EnterpriseAccount");
   }
   /**
-   * Deprecated and unused. (enterprises.setAndroidDevicePolicyConfig)
-   *
-   * @param string $enterpriseId The ID of the enterprise.
-   * @param Google_Service_AndroidEnterprise_AndroidDevicePolicyConfig $postBody
-   * @param array $optParams Optional parameters.
-   * @return Google_Service_AndroidEnterprise_AndroidDevicePolicyConfig
-   */
-  public function setAndroidDevicePolicyConfig($enterpriseId, Google_Service_AndroidEnterprise_AndroidDevicePolicyConfig $postBody, $optParams = array())
-  {
-    $params = array('enterpriseId' => $enterpriseId, 'postBody' => $postBody);
-    $params = array_merge($params, $optParams);
-    return $this->call('setAndroidDevicePolicyConfig', array($params), "Google_Service_AndroidEnterprise_AndroidDevicePolicyConfig");
-  }
-  /**
    * Sets the store layout for the enterprise. By default, storeLayoutType is set
    * to "basic" and the basic store layout is enabled. The basic layout only
    * contains apps approved by the admin, and that have been added to the

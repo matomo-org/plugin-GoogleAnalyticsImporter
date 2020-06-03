@@ -44,12 +44,13 @@ class Google_Service_Cloudbilling extends Google_Service
   /**
    * Constructs the internal representation of the Cloudbilling service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://cloudbilling.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://cloudbilling.googleapis.com/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
@@ -83,6 +84,10 @@ class Google_Service_Cloudbilling extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
+                ),
+                'options.requestedPolicyVersion' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
                 ),
               ),
             ),'list' => array(

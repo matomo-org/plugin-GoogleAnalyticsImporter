@@ -28,7 +28,7 @@ class Google_Service_CloudIdentity_Resource_GroupsMemberships extends Google_Ser
   /**
    * Creates a Membership. (memberships.create)
    *
-   * @param string $parent [Resource
+   * @param string $parent Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Group to
    * create Membership within. Format: `groups/{group_id}`, where `group_id` is
    * the unique ID assigned to the Group.
@@ -45,7 +45,7 @@ class Google_Service_CloudIdentity_Resource_GroupsMemberships extends Google_Ser
   /**
    * Deletes a Membership. (memberships.delete)
    *
-   * @param string $name [Resource
+   * @param string $name Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Membership
    * to be deleted.
    *
@@ -64,7 +64,7 @@ class Google_Service_CloudIdentity_Resource_GroupsMemberships extends Google_Ser
   /**
    * Retrieves a Membership. (memberships.get)
    *
-   * @param string $name [Resource
+   * @param string $name Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Membership
    * to be retrieved.
    *
@@ -81,9 +81,9 @@ class Google_Service_CloudIdentity_Resource_GroupsMemberships extends Google_Ser
     return $this->call('get', array($params), "Google_Service_CloudIdentity_Membership");
   }
   /**
-   * List Memberships within a Group. (memberships.listGroupsMemberships)
+   * Lists Memberships within a Group. (memberships.listGroupsMemberships)
    *
-   * @param string $parent [Resource
+   * @param string $parent Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Group to
    * list Memberships within.
    *
@@ -109,7 +109,7 @@ class Google_Service_CloudIdentity_Resource_GroupsMemberships extends Google_Ser
    * Looks up [resource name](https://cloud.google.com/apis/design/resource_names)
    * of a Membership within a Group by member's EntityKey. (memberships.lookup)
    *
-   * @param string $parent [Resource
+   * @param string $parent Required. [Resource
    * name](https://cloud.google.com/apis/design/resource_names) of the Group to
    * lookup Membership within.
    *

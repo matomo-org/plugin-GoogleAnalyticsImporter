@@ -17,7 +17,7 @@
 
 class Google_Service_Vision_GoogleCloudVisionV1p4beta1FaceAnnotation extends Google_Collection
 {
-  protected $collection_key = 'landmarks';
+  protected $collection_key = 'recognitionResult';
   public $angerLikelihood;
   public $blurredLikelihood;
   protected $boundingPolyType = 'Google_Service_Vision_GoogleCloudVisionV1p4beta1BoundingPoly';
@@ -31,6 +31,8 @@ class Google_Service_Vision_GoogleCloudVisionV1p4beta1FaceAnnotation extends Goo
   protected $landmarksType = 'Google_Service_Vision_GoogleCloudVisionV1p4beta1FaceAnnotationLandmark';
   protected $landmarksDataType = 'array';
   public $panAngle;
+  protected $recognitionResultType = 'Google_Service_Vision_GoogleCloudVisionV1p4beta1FaceRecognitionResult';
+  protected $recognitionResultDataType = 'array';
   public $rollAngle;
   public $sorrowLikelihood;
   public $surpriseLikelihood;
@@ -134,6 +136,20 @@ class Google_Service_Vision_GoogleCloudVisionV1p4beta1FaceAnnotation extends Goo
   public function getPanAngle()
   {
     return $this->panAngle;
+  }
+  /**
+   * @param Google_Service_Vision_GoogleCloudVisionV1p4beta1FaceRecognitionResult
+   */
+  public function setRecognitionResult($recognitionResult)
+  {
+    $this->recognitionResult = $recognitionResult;
+  }
+  /**
+   * @return Google_Service_Vision_GoogleCloudVisionV1p4beta1FaceRecognitionResult
+   */
+  public function getRecognitionResult()
+  {
+    return $this->recognitionResult;
   }
   public function setRollAngle($rollAngle)
   {

@@ -17,12 +17,13 @@
 
 class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Command extends Google_Collection
 {
-  protected $collection_key = 'outputFiles';
+  protected $collection_key = 'outputPaths';
   public $arguments;
   protected $environmentVariablesType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2CommandEnvironmentVariable';
   protected $environmentVariablesDataType = 'array';
   public $outputDirectories;
   public $outputFiles;
+  public $outputPaths;
   protected $platformType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Platform';
   protected $platformDataType = '';
   public $workingDirectory;
@@ -64,6 +65,14 @@ class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Command ext
   public function getOutputFiles()
   {
     return $this->outputFiles;
+  }
+  public function setOutputPaths($outputPaths)
+  {
+    $this->outputPaths = $outputPaths;
+  }
+  public function getOutputPaths()
+  {
+    return $this->outputPaths;
   }
   /**
    * @param Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Platform

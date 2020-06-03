@@ -15,9 +15,12 @@
  * the License.
  */
 
-class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2SymlinkNode extends Google_Model
+class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2SymlinkNode extends Google_Collection
 {
+  protected $collection_key = 'nodeProperties';
   public $name;
+  protected $nodePropertiesType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty';
+  protected $nodePropertiesDataType = 'array';
   public $target;
 
   public function setName($name)
@@ -27,6 +30,20 @@ class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2SymlinkNode
   public function getName()
   {
     return $this->name;
+  }
+  /**
+   * @param Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty
+   */
+  public function setNodeProperties($nodeProperties)
+  {
+    $this->nodeProperties = $nodeProperties;
+  }
+  /**
+   * @return Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty
+   */
+  public function getNodeProperties()
+  {
+    return $this->nodeProperties;
   }
   public function setTarget($target)
   {

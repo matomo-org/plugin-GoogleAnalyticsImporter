@@ -28,8 +28,8 @@ class Google_Service_Firestore_Resource_ProjectsDatabasesCollectionGroupsFields 
   /**
    * Gets the metadata and configuration for a Field. (fields.get)
    *
-   * @param string $name A name of the form `projects/{project_id}/databases/{data
-   * base_id}/collectionGroups/{collection_id}/fields/{field_id}`
+   * @param string $name Required. A name of the form `projects/{project_id}/datab
+   * ases/{database_id}/collectionGroups/{collection_id}/fields/{field_id}`
    * @param array $optParams Optional parameters.
    * @return Google_Service_Firestore_GoogleFirestoreAdminV1Field
    */
@@ -48,8 +48,8 @@ class Google_Service_Firestore_Resource_ProjectsDatabasesCollectionGroupsFields 
    * `indexConfig.usesAncestorConfig:false`.
    * (fields.listProjectsDatabasesCollectionGroupsFields)
    *
-   * @param string $parent A parent name of the form `projects/{project_id}/databa
-   * ses/{database_id}/collectionGroups/{collection_id}`
+   * @param string $parent Required. A parent name of the form `projects/{project_
+   * id}/databases/{database_id}/collectionGroups/{collection_id}`
    * @param array $optParams Optional parameters.
    *
    * @opt_param string filter The filter to apply to list results. Currently,
