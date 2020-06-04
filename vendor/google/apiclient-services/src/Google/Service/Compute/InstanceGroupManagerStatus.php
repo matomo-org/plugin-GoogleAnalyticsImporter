@@ -17,8 +17,19 @@
 
 class Google_Service_Compute_InstanceGroupManagerStatus extends Google_Model
 {
+  public $autoscaler;
   public $isStable;
+  protected $versionTargetType = 'Google_Service_Compute_InstanceGroupManagerStatusVersionTarget';
+  protected $versionTargetDataType = '';
 
+  public function setAutoscaler($autoscaler)
+  {
+    $this->autoscaler = $autoscaler;
+  }
+  public function getAutoscaler()
+  {
+    return $this->autoscaler;
+  }
   public function setIsStable($isStable)
   {
     $this->isStable = $isStable;
@@ -26,5 +37,19 @@ class Google_Service_Compute_InstanceGroupManagerStatus extends Google_Model
   public function getIsStable()
   {
     return $this->isStable;
+  }
+  /**
+   * @param Google_Service_Compute_InstanceGroupManagerStatusVersionTarget
+   */
+  public function setVersionTarget(Google_Service_Compute_InstanceGroupManagerStatusVersionTarget $versionTarget)
+  {
+    $this->versionTarget = $versionTarget;
+  }
+  /**
+   * @return Google_Service_Compute_InstanceGroupManagerStatusVersionTarget
+   */
+  public function getVersionTarget()
+  {
+    return $this->versionTarget;
   }
 }

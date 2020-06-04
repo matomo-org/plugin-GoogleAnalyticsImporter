@@ -88,10 +88,17 @@ describe("GoogleAnalyticsImporter", function () {
     });
 
     it("should show that the import finished when the import finishes", async function () {
-        await page.waitFor(125000);
+        while (true) { // wait until import finishes
+            await page.waitFor(30000);
 
-        await page.reload({ timeout: 0 });
-        await page.waitFor('.pageWrap');
+            await page.reload();
+            await page.waitFor('.pageWrap');
+
+            const elem = await page.$('td.actions > a.icon-delete');
+            if (elem) {
+                break;
+            }
+        }
 
         await removeStartResumeFinishTime();
 

@@ -17,10 +17,36 @@
 
 class Google_Service_AndroidPublisher_Testers extends Google_Collection
 {
-  protected $collection_key = 'googlePlusCommunities';
+  protected $collection_key = 'googleGroups';
+  public $autoEnrolledAndroidGroups;
+  public $autoEnrolledGoogleGroups;
+  public $excludedGoogleGroups;
   public $googleGroups;
-  public $googlePlusCommunities;
 
+  public function setAutoEnrolledAndroidGroups($autoEnrolledAndroidGroups)
+  {
+    $this->autoEnrolledAndroidGroups = $autoEnrolledAndroidGroups;
+  }
+  public function getAutoEnrolledAndroidGroups()
+  {
+    return $this->autoEnrolledAndroidGroups;
+  }
+  public function setAutoEnrolledGoogleGroups($autoEnrolledGoogleGroups)
+  {
+    $this->autoEnrolledGoogleGroups = $autoEnrolledGoogleGroups;
+  }
+  public function getAutoEnrolledGoogleGroups()
+  {
+    return $this->autoEnrolledGoogleGroups;
+  }
+  public function setExcludedGoogleGroups($excludedGoogleGroups)
+  {
+    $this->excludedGoogleGroups = $excludedGoogleGroups;
+  }
+  public function getExcludedGoogleGroups()
+  {
+    return $this->excludedGoogleGroups;
+  }
   public function setGoogleGroups($googleGroups)
   {
     $this->googleGroups = $googleGroups;
@@ -28,13 +54,5 @@ class Google_Service_AndroidPublisher_Testers extends Google_Collection
   public function getGoogleGroups()
   {
     return $this->googleGroups;
-  }
-  public function setGooglePlusCommunities($googlePlusCommunities)
-  {
-    $this->googlePlusCommunities = $googlePlusCommunities;
-  }
-  public function getGooglePlusCommunities()
-  {
-    return $this->googlePlusCommunities;
   }
 }

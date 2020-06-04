@@ -15,11 +15,13 @@
  * the License.
  */
 
-class Google_Service_ShoppingContent_AccountsLinkRequest extends Google_Model
+class Google_Service_ShoppingContent_AccountsLinkRequest extends Google_Collection
 {
+  protected $collection_key = 'services';
   public $action;
   public $linkType;
   public $linkedAccountId;
+  public $services;
 
   public function setAction($action)
   {
@@ -44,5 +46,13 @@ class Google_Service_ShoppingContent_AccountsLinkRequest extends Google_Model
   public function getLinkedAccountId()
   {
     return $this->linkedAccountId;
+  }
+  public function setServices($services)
+  {
+    $this->services = $services;
+  }
+  public function getServices()
+  {
+    return $this->services;
   }
 }

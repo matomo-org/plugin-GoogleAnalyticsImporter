@@ -17,6 +17,12 @@
 
 class Google_Service_Docs_Response extends Google_Model
 {
+  protected $createFooterType = 'Google_Service_Docs_CreateFooterResponse';
+  protected $createFooterDataType = '';
+  protected $createFootnoteType = 'Google_Service_Docs_CreateFootnoteResponse';
+  protected $createFootnoteDataType = '';
+  protected $createHeaderType = 'Google_Service_Docs_CreateHeaderResponse';
+  protected $createHeaderDataType = '';
   protected $createNamedRangeType = 'Google_Service_Docs_CreateNamedRangeResponse';
   protected $createNamedRangeDataType = '';
   protected $insertInlineImageType = 'Google_Service_Docs_InsertInlineImageResponse';
@@ -26,6 +32,48 @@ class Google_Service_Docs_Response extends Google_Model
   protected $replaceAllTextType = 'Google_Service_Docs_ReplaceAllTextResponse';
   protected $replaceAllTextDataType = '';
 
+  /**
+   * @param Google_Service_Docs_CreateFooterResponse
+   */
+  public function setCreateFooter(Google_Service_Docs_CreateFooterResponse $createFooter)
+  {
+    $this->createFooter = $createFooter;
+  }
+  /**
+   * @return Google_Service_Docs_CreateFooterResponse
+   */
+  public function getCreateFooter()
+  {
+    return $this->createFooter;
+  }
+  /**
+   * @param Google_Service_Docs_CreateFootnoteResponse
+   */
+  public function setCreateFootnote(Google_Service_Docs_CreateFootnoteResponse $createFootnote)
+  {
+    $this->createFootnote = $createFootnote;
+  }
+  /**
+   * @return Google_Service_Docs_CreateFootnoteResponse
+   */
+  public function getCreateFootnote()
+  {
+    return $this->createFootnote;
+  }
+  /**
+   * @param Google_Service_Docs_CreateHeaderResponse
+   */
+  public function setCreateHeader(Google_Service_Docs_CreateHeaderResponse $createHeader)
+  {
+    $this->createHeader = $createHeader;
+  }
+  /**
+   * @return Google_Service_Docs_CreateHeaderResponse
+   */
+  public function getCreateHeader()
+  {
+    return $this->createHeader;
+  }
   /**
    * @param Google_Service_Docs_CreateNamedRangeResponse
    */

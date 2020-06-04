@@ -27,7 +27,9 @@ class Google_Service_AlertCenter_Resource_AlertsFeedback extends Google_Service_
 {
   /**
    * Creates new feedback for an alert. Attempting to create a feedback for a non-
-   * existent alert returns `NOT_FOUND` error. (feedback.create)
+   * existent alert returns `NOT_FOUND` error. Attempting to create a feedback for
+   * an alert that is marked for deletion returns `FAILED_PRECONDITION' error.
+   * (feedback.create)
    *
    * @param string $alertId Required. The identifier of the alert this feedback
    * belongs to.

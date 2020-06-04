@@ -27,13 +27,15 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
 {
   /**
    * Starts a job cancellation request. To access the job resource after
-   * cancellation, call regions/{region}/jobs.list or regions/{region}/jobs.get.
-   * (jobs.cancel)
+   * cancellation, call regions/{region}/jobs.list (https://cloud.google.com/datap
+   * roc/docs/reference/rest/v1/projects.regions.jobs/list) or
+   * regions/{region}/jobs.get (https://cloud.google.com/dataproc/docs/reference/r
+   * est/v1/projects.regions.jobs/get). (jobs.cancel)
    *
    * @param string $projectId Required. The ID of the Google Cloud Platform
    * project that the job belongs to.
-   * @param string $region Required. The Cloud Dataproc region in which to handle
-   * the request.
+   * @param string $region Required. The Dataproc region in which to handle the
+   * request.
    * @param string $jobId Required. The job ID.
    * @param Google_Service_Dataproc_CancelJobRequest $postBody
    * @param array $optParams Optional parameters.
@@ -51,8 +53,8 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    *
    * @param string $projectId Required. The ID of the Google Cloud Platform
    * project that the job belongs to.
-   * @param string $region Required. The Cloud Dataproc region in which to handle
-   * the request.
+   * @param string $region Required. The Dataproc region in which to handle the
+   * request.
    * @param string $jobId Required. The job ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dataproc_DataprocEmpty
@@ -68,8 +70,8 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    *
    * @param string $projectId Required. The ID of the Google Cloud Platform
    * project that the job belongs to.
-   * @param string $region Required. The Cloud Dataproc region in which to handle
-   * the request.
+   * @param string $region Required. The Dataproc region in which to handle the
+   * request.
    * @param string $jobId Required. The job ID.
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dataproc_Job
@@ -102,14 +104,10 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    *
    * @param string $projectId Required. The ID of the Google Cloud Platform
    * project that the job belongs to.
-   * @param string $region Required. The Cloud Dataproc region in which to handle
-   * the request.
+   * @param string $region Required. The Dataproc region in which to handle the
+   * request.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken Optional. The page token, returned by a previous
-   * call, to request the next page of results.
-   * @opt_param int pageSize Optional. The number of results to return in each
-   * response.
    * @opt_param string clusterName Optional. If set, the returned jobs list
    * includes only jobs that were submitted to the named cluster.
    * @opt_param string filter Optional. A filter constraining the jobs to list.
@@ -122,6 +120,10 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    * @opt_param string jobStateMatcher Optional. Specifies enumerated categories
    * of jobs to list. (default = match ALL jobs).If filter is provided,
    * jobStateMatcher will be ignored.
+   * @opt_param string pageToken Optional. The page token, returned by a previous
+   * call, to request the next page of results.
+   * @opt_param int pageSize Optional. The number of results to return in each
+   * response.
    * @return Google_Service_Dataproc_ListJobsResponse
    */
   public function listProjectsRegionsJobs($projectId, $region, $optParams = array())
@@ -135,8 +137,8 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    *
    * @param string $projectId Required. The ID of the Google Cloud Platform
    * project that the job belongs to.
-   * @param string $region Required. The Cloud Dataproc region in which to handle
-   * the request.
+   * @param string $region Required. The Dataproc region in which to handle the
+   * request.
    * @param string $jobId Required. The job ID.
    * @param Google_Service_Dataproc_Job $postBody
    * @param array $optParams Optional parameters.
@@ -156,7 +158,8 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
   }
   /**
    * Sets the access control policy on the specified resource. Replaces any
-   * existing policy. (jobs.setIamPolicy)
+   * existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED
+   * errors. (jobs.setIamPolicy)
    *
    * @param string $resource REQUIRED: The resource for which the policy is being
    * specified. See the operation documentation for the appropriate value for this
@@ -176,8 +179,8 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
    *
    * @param string $projectId Required. The ID of the Google Cloud Platform
    * project that the job belongs to.
-   * @param string $region Required. The Cloud Dataproc region in which to handle
-   * the request.
+   * @param string $region Required. The Dataproc region in which to handle the
+   * request.
    * @param Google_Service_Dataproc_SubmitJobRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Dataproc_Job
@@ -187,6 +190,23 @@ class Google_Service_Dataproc_Resource_ProjectsRegionsJobs extends Google_Servic
     $params = array('projectId' => $projectId, 'region' => $region, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('submit', array($params), "Google_Service_Dataproc_Job");
+  }
+  /**
+   * Submits job to a cluster. (jobs.submitAsOperation)
+   *
+   * @param string $projectId Required. The ID of the Google Cloud Platform
+   * project that the job belongs to.
+   * @param string $region Required. The Dataproc region in which to handle the
+   * request.
+   * @param Google_Service_Dataproc_SubmitJobRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_Dataproc_Operation
+   */
+  public function submitAsOperation($projectId, $region, Google_Service_Dataproc_SubmitJobRequest $postBody, $optParams = array())
+  {
+    $params = array('projectId' => $projectId, 'region' => $region, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('submitAsOperation', array($params), "Google_Service_Dataproc_Operation");
   }
   /**
    * Returns permissions that a caller has on the specified resource. If the

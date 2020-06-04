@@ -32,6 +32,7 @@ class Google_Service_Testing_AndroidModel extends Google_Collection
   public $supportedAbis;
   public $supportedVersionIds;
   public $tags;
+  public $thumbnailUrl;
 
   public function setBrand($brand)
   {
@@ -144,5 +145,13 @@ class Google_Service_Testing_AndroidModel extends Google_Collection
   public function getTags()
   {
     return $this->tags;
+  }
+  public function setThumbnailUrl($thumbnailUrl)
+  {
+    $this->thumbnailUrl = $thumbnailUrl;
+  }
+  public function getThumbnailUrl()
+  {
+    return $this->thumbnailUrl;
   }
 }

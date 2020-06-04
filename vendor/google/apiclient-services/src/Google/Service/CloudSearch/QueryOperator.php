@@ -27,6 +27,7 @@ class Google_Service_CloudSearch_QueryOperator extends Google_Collection
   public $isSortable;
   public $isSuggestable;
   public $lessThanOperatorName;
+  public $objectType;
   public $operatorName;
   public $type;
 
@@ -101,6 +102,14 @@ class Google_Service_CloudSearch_QueryOperator extends Google_Collection
   public function getLessThanOperatorName()
   {
     return $this->lessThanOperatorName;
+  }
+  public function setObjectType($objectType)
+  {
+    $this->objectType = $objectType;
+  }
+  public function getObjectType()
+  {
+    return $this->objectType;
   }
   public function setOperatorName($operatorName)
   {

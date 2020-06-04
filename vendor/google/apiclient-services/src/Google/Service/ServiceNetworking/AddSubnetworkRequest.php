@@ -22,6 +22,7 @@ class Google_Service_ServiceNetworking_AddSubnetworkRequest extends Google_Colle
   public $consumerNetwork;
   public $description;
   public $ipPrefixLength;
+  public $privateIpv6GoogleAccess;
   public $region;
   public $requestedAddress;
   public $subnetwork;
@@ -58,6 +59,14 @@ class Google_Service_ServiceNetworking_AddSubnetworkRequest extends Google_Colle
   public function getIpPrefixLength()
   {
     return $this->ipPrefixLength;
+  }
+  public function setPrivateIpv6GoogleAccess($privateIpv6GoogleAccess)
+  {
+    $this->privateIpv6GoogleAccess = $privateIpv6GoogleAccess;
+  }
+  public function getPrivateIpv6GoogleAccess()
+  {
+    return $this->privateIpv6GoogleAccess;
   }
   public function setRegion($region)
   {

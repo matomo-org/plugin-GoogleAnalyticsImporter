@@ -22,6 +22,8 @@ class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Directory e
   protected $directoriesDataType = 'array';
   protected $filesType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2FileNode';
   protected $filesDataType = 'array';
+  protected $nodePropertiesType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty';
+  protected $nodePropertiesDataType = 'array';
   protected $symlinksType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2SymlinkNode';
   protected $symlinksDataType = 'array';
 
@@ -52,6 +54,20 @@ class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Directory e
   public function getFiles()
   {
     return $this->files;
+  }
+  /**
+   * @param Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty
+   */
+  public function setNodeProperties($nodeProperties)
+  {
+    $this->nodeProperties = $nodeProperties;
+  }
+  /**
+   * @return Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2NodeProperty
+   */
+  public function getNodeProperties()
+  {
+    return $this->nodeProperties;
   }
   /**
    * @param Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2SymlinkNode

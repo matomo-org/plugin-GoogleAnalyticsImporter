@@ -60,6 +60,31 @@ class Google_Service_FirebaseHosting_Resource_SitesVersions extends Google_Servi
     return $this->call('delete', array($params), "Google_Service_FirebaseHosting_FirebasehostingEmpty");
   }
   /**
+   * Lists the versions that have been created on the specified site. Will include
+   * filtering in the future. (versions.listSitesVersions)
+   *
+   * @param string $parent Required. The parent for which to list files, in the
+   * format: sites/site-name
+   * @param array $optParams Optional parameters.
+   *
+   * @opt_param string filter The filter string used to return a subset of
+   * versions in the response. Currently supported fields for filtering are: name,
+   * status, and create_time. Filter processing will be implemented in accordance
+   * with go/filtering.
+   * @opt_param string pageToken The next_page_token from a previous request, if
+   * provided.
+   * @opt_param int pageSize The maximum number of versions to return. The service
+   * may return fewer than this value. If unspecified, at most 25 versions will be
+   * returned. The maximum value is 100; values above 100 will be coerced to 100
+   * @return Google_Service_FirebaseHosting_ListVersionsResponse
+   */
+  public function listSitesVersions($parent, $optParams = array())
+  {
+    $params = array('parent' => $parent);
+    $params = array_merge($params, $optParams);
+    return $this->call('list', array($params), "Google_Service_FirebaseHosting_ListVersionsResponse");
+  }
+  /**
    * Updates the specified metadata for a version. Note that this method will fail
    * with `FAILED_PRECONDITION` in the event of an invalid state transition. The
    * only valid transition for a version is currently from a `CREATED` status to a

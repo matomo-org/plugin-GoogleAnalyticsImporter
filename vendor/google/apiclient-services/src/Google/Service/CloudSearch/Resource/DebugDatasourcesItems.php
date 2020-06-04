@@ -27,16 +27,16 @@ class Google_Service_CloudSearch_Resource_DebugDatasourcesItems extends Google_S
 {
   /**
    * Checks whether an item is accessible by specified principal.
-   * (items.checkAccess)
+   *
+   * **Note:** This API requires an admin account to execute. (items.checkAccess)
    *
    * @param string $name Item name, format:
    * datasources/{source_id}/items/{item_id}
    * @param Google_Service_CloudSearch_Principal $postBody
    * @param array $optParams Optional parameters.
    *
-   * @opt_param bool debugOptions.enableDebugging If set, the request will enable
-   * debugging features of Cloud Search. Only turn on this field, if asked by
-   * Google to help with debugging.
+   * @opt_param bool debugOptions.enableDebugging If you are asked by Google to
+   * help with debugging, set this field. Otherwise, ignore this field.
    * @return Google_Service_CloudSearch_CheckAccessResponse
    */
   public function checkAccess($name, Google_Service_CloudSearch_Principal $postBody, $optParams = array())
@@ -47,7 +47,10 @@ class Google_Service_CloudSearch_Resource_DebugDatasourcesItems extends Google_S
   }
   /**
    * Fetches the item whose viewUrl exactly matches that of the URL provided in
-   * the request. (items.searchByViewUrl)
+   * the request.
+   *
+   * **Note:** This API requires an admin account to execute.
+   * (items.searchByViewUrl)
    *
    * @param string $name Source name, format: datasources/{source_id}
    * @param Google_Service_CloudSearch_SearchItemsByViewUrlRequest $postBody

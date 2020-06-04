@@ -19,6 +19,10 @@ class Google_Service_Compute_NetworkPeering extends Google_Model
 {
   public $autoCreateRoutes;
   public $exchangeSubnetRoutes;
+  public $exportCustomRoutes;
+  public $exportSubnetRoutesWithPublicIp;
+  public $importCustomRoutes;
+  public $importSubnetRoutesWithPublicIp;
   public $name;
   public $network;
   public $state;
@@ -39,6 +43,38 @@ class Google_Service_Compute_NetworkPeering extends Google_Model
   public function getExchangeSubnetRoutes()
   {
     return $this->exchangeSubnetRoutes;
+  }
+  public function setExportCustomRoutes($exportCustomRoutes)
+  {
+    $this->exportCustomRoutes = $exportCustomRoutes;
+  }
+  public function getExportCustomRoutes()
+  {
+    return $this->exportCustomRoutes;
+  }
+  public function setExportSubnetRoutesWithPublicIp($exportSubnetRoutesWithPublicIp)
+  {
+    $this->exportSubnetRoutesWithPublicIp = $exportSubnetRoutesWithPublicIp;
+  }
+  public function getExportSubnetRoutesWithPublicIp()
+  {
+    return $this->exportSubnetRoutesWithPublicIp;
+  }
+  public function setImportCustomRoutes($importCustomRoutes)
+  {
+    $this->importCustomRoutes = $importCustomRoutes;
+  }
+  public function getImportCustomRoutes()
+  {
+    return $this->importCustomRoutes;
+  }
+  public function setImportSubnetRoutesWithPublicIp($importSubnetRoutesWithPublicIp)
+  {
+    $this->importSubnetRoutesWithPublicIp = $importSubnetRoutesWithPublicIp;
+  }
+  public function getImportSubnetRoutesWithPublicIp()
+  {
+    return $this->importSubnetRoutesWithPublicIp;
   }
   public function setName($name)
   {

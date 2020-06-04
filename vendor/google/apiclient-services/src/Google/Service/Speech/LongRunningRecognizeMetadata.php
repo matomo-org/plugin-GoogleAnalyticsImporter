@@ -20,6 +20,7 @@ class Google_Service_Speech_LongRunningRecognizeMetadata extends Google_Model
   public $lastUpdateTime;
   public $progressPercent;
   public $startTime;
+  public $uri;
 
   public function setLastUpdateTime($lastUpdateTime)
   {
@@ -44,5 +45,13 @@ class Google_Service_Speech_LongRunningRecognizeMetadata extends Google_Model
   public function getStartTime()
   {
     return $this->startTime;
+  }
+  public function setUri($uri)
+  {
+    $this->uri = $uri;
+  }
+  public function getUri()
+  {
+    return $this->uri;
   }
 }

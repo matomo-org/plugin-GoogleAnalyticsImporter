@@ -25,6 +25,7 @@ class Google_Service_RemoteBuildExecution_GoogleDevtoolsRemoteworkersV1test2Comm
   protected $filesDataType = 'array';
   protected $inlineBlobsType = 'Google_Service_RemoteBuildExecution_GoogleDevtoolsRemoteworkersV1test2Blob';
   protected $inlineBlobsDataType = 'array';
+  public $workingDirectory;
 
   public function setArguments($arguments)
   {
@@ -75,5 +76,13 @@ class Google_Service_RemoteBuildExecution_GoogleDevtoolsRemoteworkersV1test2Comm
   public function getInlineBlobs()
   {
     return $this->inlineBlobs;
+  }
+  public function setWorkingDirectory($workingDirectory)
+  {
+    $this->workingDirectory = $workingDirectory;
+  }
+  public function getWorkingDirectory()
+  {
+    return $this->workingDirectory;
   }
 }

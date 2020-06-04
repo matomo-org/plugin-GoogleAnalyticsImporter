@@ -54,12 +54,13 @@ class Google_Service_AndroidEnterprise extends Google_Service
   /**
    * Constructs the internal representation of the AndroidEnterprise service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://www.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://www.googleapis.com/';
     $this->servicePath = 'androidenterprise/v1/';
     $this->batchPath = 'batch/androidenterprise/v1';
     $this->version = 'v1';
@@ -71,7 +72,27 @@ class Google_Service_AndroidEnterprise extends Google_Service
         'devices',
         array(
           'methods' => array(
-            'get' => array(
+            'forceReportUpload' => array(
+              'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/forceReportUpload',
+              'httpMethod' => 'POST',
+              'parameters' => array(
+                'enterpriseId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'userId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'deviceId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'get' => array(
               'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}',
               'httpMethod' => 'GET',
               'parameters' => array(
@@ -124,30 +145,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-              ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'userId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'deviceId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'updateMask' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
               ),
             ),'setState' => array(
@@ -328,16 +325,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
-            ),'setAndroidDevicePolicyConfig' => array(
-              'path' => 'enterprises/{enterpriseId}/androidDevicePolicyConfig',
-              'httpMethod' => 'PUT',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
             ),'setStoreLayout' => array(
               'path' => 'enterprises/{enterpriseId}/storeLayout',
               'httpMethod' => 'PUT',
@@ -421,30 +408,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-              ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/users/{userId}/entitlements/{entitlementId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'userId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'entitlementId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'install' => array(
-                  'location' => 'query',
-                  'type' => 'boolean',
                 ),
               ),
             ),'update' => array(
@@ -611,31 +574,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'userId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'deviceId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'installId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
             ),'update' => array(
               'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/installs/{installId}',
               'httpMethod' => 'PUT',
@@ -741,31 +679,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'userId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'deviceId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'managedConfigurationForDeviceId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
             ),'update' => array(
               'path' => 'enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/managedConfigurationsForDevice/{managedConfigurationForDeviceId}',
               'httpMethod' => 'PUT',
@@ -851,26 +764,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
                 'userId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/users/{userId}/managedConfigurationsForUser/{managedConfigurationForUserId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'userId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'managedConfigurationForUserId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -1212,26 +1105,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'pageId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'clusterId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
             ),'update' => array(
               'path' => 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}/clusters/{clusterId}',
               'httpMethod' => 'PUT',
@@ -1307,21 +1180,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
               'httpMethod' => 'GET',
               'parameters' => array(
                 'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/storeLayout/pages/{pageId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'pageId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
@@ -1452,21 +1310,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
                   'required' => true,
                 ),
               ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/users/{userId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'userId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
             ),'revokeDeviceAccess' => array(
               'path' => 'enterprises/{enterpriseId}/users/{userId}/deviceAccess',
               'httpMethod' => 'DELETE',
@@ -1582,21 +1425,6 @@ class Google_Service_AndroidEnterprise extends Google_Service
               'httpMethod' => 'GET',
               'parameters' => array(
                 'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-              ),
-            ),'patch' => array(
-              'path' => 'enterprises/{enterpriseId}/webApps/{webAppId}',
-              'httpMethod' => 'PATCH',
-              'parameters' => array(
-                'enterpriseId' => array(
-                  'location' => 'path',
-                  'type' => 'string',
-                  'required' => true,
-                ),
-                'webAppId' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,

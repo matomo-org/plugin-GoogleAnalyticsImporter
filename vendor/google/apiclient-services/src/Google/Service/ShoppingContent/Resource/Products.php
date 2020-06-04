@@ -44,8 +44,10 @@ class Google_Service_ShoppingContent_Resource_Products extends Google_Service_Re
    *
    * @param string $merchantId The ID of the account that contains the product.
    * This account cannot be a multi-client account.
-   * @param string $productId The REST id of the product.
+   * @param string $productId The REST ID of the product.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string feedId The Content API Supplemental Feed ID.
    */
   public function delete($merchantId, $productId, $optParams = array())
   {
@@ -58,7 +60,7 @@ class Google_Service_ShoppingContent_Resource_Products extends Google_Service_Re
    *
    * @param string $merchantId The ID of the account that contains the product.
    * This account cannot be a multi-client account.
-   * @param string $productId The REST id of the product.
+   * @param string $productId The REST ID of the product.
    * @param array $optParams Optional parameters.
    * @return Google_Service_ShoppingContent_Product
    */
@@ -77,6 +79,8 @@ class Google_Service_ShoppingContent_Resource_Products extends Google_Service_Re
    * This account cannot be a multi-client account.
    * @param Google_Service_ShoppingContent_Product $postBody
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string feedId The Content API Supplemental Feed ID.
    * @return Google_Service_ShoppingContent_Product
    */
   public function insert($merchantId, Google_Service_ShoppingContent_Product $postBody, $optParams = array())
@@ -86,7 +90,9 @@ class Google_Service_ShoppingContent_Resource_Products extends Google_Service_Re
     return $this->call('insert', array($params), "Google_Service_ShoppingContent_Product");
   }
   /**
-   * Lists the products in your Merchant Center account. (products.listProducts)
+   * Lists the products in your Merchant Center account. The response might
+   * contain fewer items than specified by maxResults. Rely on nextPageToken to
+   * determine if there are more items to be requested. (products.listProducts)
    *
    * @param string $merchantId The ID of the account that contains the products.
    * This account cannot be a multi-client account.

@@ -19,8 +19,8 @@
  * The "operations" collection of methods.
  * Typical usage is:
  *  <code>
- *   $sqladminService = new Google_Service_SQLAdmin(...);
- *   $operations = $sqladminService->operations;
+ *   $sqlService = new Google_Service_SQLAdmin(...);
+ *   $operations = $sqlService->operations;
  *  </code>
  */
 class Google_Service_SQLAdmin_Resource_Operations extends Google_Service_Resource
@@ -46,18 +46,18 @@ class Google_Service_SQLAdmin_Resource_Operations extends Google_Service_Resourc
    * (operations.listOperations)
    *
    * @param string $project Project ID of the project that contains the instance.
-   * @param string $instance Cloud SQL instance ID. This does not include the
-   * project ID.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string maxResults Maximum number of operations per response.
+   * @opt_param string instance Cloud SQL instance ID. This does not include the
+   * project ID.
    * @opt_param string pageToken A previously-returned page token representing
    * part of the larger set of results to view.
+   * @opt_param string maxResults Maximum number of operations per response.
    * @return Google_Service_SQLAdmin_OperationsListResponse
    */
-  public function listOperations($project, $instance, $optParams = array())
+  public function listOperations($project, $optParams = array())
   {
-    $params = array('project' => $project, 'instance' => $instance);
+    $params = array('project' => $project);
     $params = array_merge($params, $optParams);
     return $this->call('list', array($params), "Google_Service_SQLAdmin_OperationsListResponse");
   }

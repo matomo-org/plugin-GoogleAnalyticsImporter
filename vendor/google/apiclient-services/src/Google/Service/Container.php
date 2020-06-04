@@ -35,6 +35,7 @@ class Google_Service_Container extends Google_Service
   const CLOUD_PLATFORM =
       "https://www.googleapis.com/auth/cloud-platform";
 
+  public $projects_aggregated_usableSubnetworks;
   public $projects_locations;
   public $projects_locations_clusters;
   public $projects_locations_clusters_nodePools;
@@ -48,17 +49,50 @@ class Google_Service_Container extends Google_Service
   /**
    * Constructs the internal representation of the Container service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://container.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://container.googleapis.com/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1';
     $this->serviceName = 'container';
 
+    $this->projects_aggregated_usableSubnetworks = new Google_Service_Container_Resource_ProjectsAggregatedUsableSubnetworks(
+        $this,
+        $this->serviceName,
+        'usableSubnetworks',
+        array(
+          'methods' => array(
+            'list' => array(
+              'path' => 'v1/{+parent}/aggregated/usableSubnetworks',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'parent' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+                'pageSize' => array(
+                  'location' => 'query',
+                  'type' => 'integer',
+                ),
+              ),
+            ),
+          )
+        )
+    );
     $this->projects_locations = new Google_Service_Container_Resource_ProjectsLocations(
         $this,
         $this->serviceName,

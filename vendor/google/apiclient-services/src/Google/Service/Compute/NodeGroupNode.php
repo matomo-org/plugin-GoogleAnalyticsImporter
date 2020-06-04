@@ -21,6 +21,9 @@ class Google_Service_Compute_NodeGroupNode extends Google_Collection
   public $instances;
   public $name;
   public $nodeType;
+  protected $serverBindingType = 'Google_Service_Compute_ServerBinding';
+  protected $serverBindingDataType = '';
+  public $serverId;
   public $status;
 
   public function setInstances($instances)
@@ -46,6 +49,28 @@ class Google_Service_Compute_NodeGroupNode extends Google_Collection
   public function getNodeType()
   {
     return $this->nodeType;
+  }
+  /**
+   * @param Google_Service_Compute_ServerBinding
+   */
+  public function setServerBinding(Google_Service_Compute_ServerBinding $serverBinding)
+  {
+    $this->serverBinding = $serverBinding;
+  }
+  /**
+   * @return Google_Service_Compute_ServerBinding
+   */
+  public function getServerBinding()
+  {
+    return $this->serverBinding;
+  }
+  public function setServerId($serverId)
+  {
+    $this->serverId = $serverId;
+  }
+  public function getServerId()
+  {
+    return $this->serverId;
   }
   public function setStatus($status)
   {

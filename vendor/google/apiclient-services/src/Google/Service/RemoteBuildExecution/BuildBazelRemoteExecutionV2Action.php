@@ -15,13 +15,15 @@
  * the License.
  */
 
-class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Action extends Google_Model
+class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Action extends Google_Collection
 {
+  protected $collection_key = 'outputNodeProperties';
   protected $commandDigestType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Digest';
   protected $commandDigestDataType = '';
   public $doNotCache;
   protected $inputRootDigestType = 'Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Digest';
   protected $inputRootDigestDataType = '';
+  public $outputNodeProperties;
   public $timeout;
 
   /**
@@ -59,6 +61,14 @@ class Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2Action exte
   public function getInputRootDigest()
   {
     return $this->inputRootDigest;
+  }
+  public function setOutputNodeProperties($outputNodeProperties)
+  {
+    $this->outputNodeProperties = $outputNodeProperties;
+  }
+  public function getOutputNodeProperties()
+  {
+    return $this->outputNodeProperties;
   }
   public function setTimeout($timeout)
   {

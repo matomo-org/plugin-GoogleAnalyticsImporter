@@ -18,12 +18,16 @@
 class Google_Service_RemoteBuildExecution_GoogleDevtoolsRemotebuildbotCommandDurations extends Google_Model
 {
   public $dockerPrep;
+  public $dockerPrepStartTime;
   public $download;
+  public $downloadStartTime;
+  public $execStartTime;
   public $execution;
   public $isoPrepDone;
   public $overall;
   public $stdout;
   public $upload;
+  public $uploadStartTime;
 
   public function setDockerPrep($dockerPrep)
   {
@@ -33,6 +37,14 @@ class Google_Service_RemoteBuildExecution_GoogleDevtoolsRemotebuildbotCommandDur
   {
     return $this->dockerPrep;
   }
+  public function setDockerPrepStartTime($dockerPrepStartTime)
+  {
+    $this->dockerPrepStartTime = $dockerPrepStartTime;
+  }
+  public function getDockerPrepStartTime()
+  {
+    return $this->dockerPrepStartTime;
+  }
   public function setDownload($download)
   {
     $this->download = $download;
@@ -40,6 +52,22 @@ class Google_Service_RemoteBuildExecution_GoogleDevtoolsRemotebuildbotCommandDur
   public function getDownload()
   {
     return $this->download;
+  }
+  public function setDownloadStartTime($downloadStartTime)
+  {
+    $this->downloadStartTime = $downloadStartTime;
+  }
+  public function getDownloadStartTime()
+  {
+    return $this->downloadStartTime;
+  }
+  public function setExecStartTime($execStartTime)
+  {
+    $this->execStartTime = $execStartTime;
+  }
+  public function getExecStartTime()
+  {
+    return $this->execStartTime;
   }
   public function setExecution($execution)
   {
@@ -80,5 +108,13 @@ class Google_Service_RemoteBuildExecution_GoogleDevtoolsRemotebuildbotCommandDur
   public function getUpload()
   {
     return $this->upload;
+  }
+  public function setUploadStartTime($uploadStartTime)
+  {
+    $this->uploadStartTime = $uploadStartTime;
+  }
+  public function getUploadStartTime()
+  {
+    return $this->uploadStartTime;
   }
 }

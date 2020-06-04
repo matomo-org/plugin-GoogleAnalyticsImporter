@@ -152,7 +152,7 @@ class Google_Service_CloudComposer_Resource_ProjectsLocationsEnvironments extend
    * in `environment.labels`. It is an error to provide both a  mask of this form
    * and the "labels" mask.      config.nodeCount  Horizontally scale the number
    * of nodes in the environment. An integer  greater than or equal to 3 must be
-   * provided in the `config.nodeCount` field.
+   * provided in the `config.nodeCount`  field.
    * config.softwareConfig.airflowConfigOverrides  Replace all Apache Airflow
    * config overrides. If a replacement config  overrides map is not included in
    * `environment`, all config overrides  are cleared.  It is an error to provide

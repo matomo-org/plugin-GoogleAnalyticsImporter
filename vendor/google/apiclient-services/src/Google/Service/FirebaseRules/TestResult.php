@@ -21,6 +21,8 @@ class Google_Service_FirebaseRules_TestResult extends Google_Collection
   public $debugMessages;
   protected $errorPositionType = 'Google_Service_FirebaseRules_SourcePosition';
   protected $errorPositionDataType = '';
+  protected $expressionReportsType = 'Google_Service_FirebaseRules_ExpressionReport';
+  protected $expressionReportsDataType = 'array';
   protected $functionCallsType = 'Google_Service_FirebaseRules_FunctionCall';
   protected $functionCallsDataType = 'array';
   public $state;
@@ -48,6 +50,20 @@ class Google_Service_FirebaseRules_TestResult extends Google_Collection
   public function getErrorPosition()
   {
     return $this->errorPosition;
+  }
+  /**
+   * @param Google_Service_FirebaseRules_ExpressionReport
+   */
+  public function setExpressionReports($expressionReports)
+  {
+    $this->expressionReports = $expressionReports;
+  }
+  /**
+   * @return Google_Service_FirebaseRules_ExpressionReport
+   */
+  public function getExpressionReports()
+  {
+    return $this->expressionReports;
   }
   /**
    * @param Google_Service_FirebaseRules_FunctionCall

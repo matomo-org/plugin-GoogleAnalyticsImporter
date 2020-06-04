@@ -33,6 +33,8 @@ class Google_Service_Sheets_Request extends Google_Model
   protected $addProtectedRangeDataType = '';
   protected $addSheetType = 'Google_Service_Sheets_AddSheetRequest';
   protected $addSheetDataType = '';
+  protected $addSlicerType = 'Google_Service_Sheets_AddSlicerRequest';
+  protected $addSlicerDataType = '';
   protected $appendCellsType = 'Google_Service_Sheets_AppendCellsRequest';
   protected $appendCellsDataType = '';
   protected $appendDimensionType = 'Google_Service_Sheets_AppendDimensionRequest';
@@ -59,6 +61,8 @@ class Google_Service_Sheets_Request extends Google_Model
   protected $deleteDimensionDataType = '';
   protected $deleteDimensionGroupType = 'Google_Service_Sheets_DeleteDimensionGroupRequest';
   protected $deleteDimensionGroupDataType = '';
+  protected $deleteDuplicatesType = 'Google_Service_Sheets_DeleteDuplicatesRequest';
+  protected $deleteDuplicatesDataType = '';
   protected $deleteEmbeddedObjectType = 'Google_Service_Sheets_DeleteEmbeddedObjectRequest';
   protected $deleteEmbeddedObjectDataType = '';
   protected $deleteFilterViewType = 'Google_Service_Sheets_DeleteFilterViewRequest';
@@ -99,6 +103,8 @@ class Google_Service_Sheets_Request extends Google_Model
   protected $sortRangeDataType = '';
   protected $textToColumnsType = 'Google_Service_Sheets_TextToColumnsRequest';
   protected $textToColumnsDataType = '';
+  protected $trimWhitespaceType = 'Google_Service_Sheets_TrimWhitespaceRequest';
+  protected $trimWhitespaceDataType = '';
   protected $unmergeCellsType = 'Google_Service_Sheets_UnmergeCellsRequest';
   protected $unmergeCellsDataType = '';
   protected $updateBandingType = 'Google_Service_Sheets_UpdateBandingRequest';
@@ -127,6 +133,8 @@ class Google_Service_Sheets_Request extends Google_Model
   protected $updateProtectedRangeDataType = '';
   protected $updateSheetPropertiesType = 'Google_Service_Sheets_UpdateSheetPropertiesRequest';
   protected $updateSheetPropertiesDataType = '';
+  protected $updateSlicerSpecType = 'Google_Service_Sheets_UpdateSlicerSpecRequest';
+  protected $updateSlicerSpecDataType = '';
   protected $updateSpreadsheetPropertiesType = 'Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest';
   protected $updateSpreadsheetPropertiesDataType = '';
 
@@ -241,6 +249,20 @@ class Google_Service_Sheets_Request extends Google_Model
   public function getAddSheet()
   {
     return $this->addSheet;
+  }
+  /**
+   * @param Google_Service_Sheets_AddSlicerRequest
+   */
+  public function setAddSlicer(Google_Service_Sheets_AddSlicerRequest $addSlicer)
+  {
+    $this->addSlicer = $addSlicer;
+  }
+  /**
+   * @return Google_Service_Sheets_AddSlicerRequest
+   */
+  public function getAddSlicer()
+  {
+    return $this->addSlicer;
   }
   /**
    * @param Google_Service_Sheets_AppendCellsRequest
@@ -423,6 +445,20 @@ class Google_Service_Sheets_Request extends Google_Model
   public function getDeleteDimensionGroup()
   {
     return $this->deleteDimensionGroup;
+  }
+  /**
+   * @param Google_Service_Sheets_DeleteDuplicatesRequest
+   */
+  public function setDeleteDuplicates(Google_Service_Sheets_DeleteDuplicatesRequest $deleteDuplicates)
+  {
+    $this->deleteDuplicates = $deleteDuplicates;
+  }
+  /**
+   * @return Google_Service_Sheets_DeleteDuplicatesRequest
+   */
+  public function getDeleteDuplicates()
+  {
+    return $this->deleteDuplicates;
   }
   /**
    * @param Google_Service_Sheets_DeleteEmbeddedObjectRequest
@@ -705,6 +741,20 @@ class Google_Service_Sheets_Request extends Google_Model
     return $this->textToColumns;
   }
   /**
+   * @param Google_Service_Sheets_TrimWhitespaceRequest
+   */
+  public function setTrimWhitespace(Google_Service_Sheets_TrimWhitespaceRequest $trimWhitespace)
+  {
+    $this->trimWhitespace = $trimWhitespace;
+  }
+  /**
+   * @return Google_Service_Sheets_TrimWhitespaceRequest
+   */
+  public function getTrimWhitespace()
+  {
+    return $this->trimWhitespace;
+  }
+  /**
    * @param Google_Service_Sheets_UnmergeCellsRequest
    */
   public function setUnmergeCells(Google_Service_Sheets_UnmergeCellsRequest $unmergeCells)
@@ -899,6 +949,20 @@ class Google_Service_Sheets_Request extends Google_Model
   public function getUpdateSheetProperties()
   {
     return $this->updateSheetProperties;
+  }
+  /**
+   * @param Google_Service_Sheets_UpdateSlicerSpecRequest
+   */
+  public function setUpdateSlicerSpec(Google_Service_Sheets_UpdateSlicerSpecRequest $updateSlicerSpec)
+  {
+    $this->updateSlicerSpec = $updateSlicerSpec;
+  }
+  /**
+   * @return Google_Service_Sheets_UpdateSlicerSpecRequest
+   */
+  public function getUpdateSlicerSpec()
+  {
+    return $this->updateSlicerSpec;
   }
   /**
    * @param Google_Service_Sheets_UpdateSpreadsheetPropertiesRequest

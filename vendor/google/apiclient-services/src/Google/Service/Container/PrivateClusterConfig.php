@@ -20,6 +20,7 @@ class Google_Service_Container_PrivateClusterConfig extends Google_Model
   public $enablePrivateEndpoint;
   public $enablePrivateNodes;
   public $masterIpv4CidrBlock;
+  public $peeringName;
   public $privateEndpoint;
   public $publicEndpoint;
 
@@ -46,6 +47,14 @@ class Google_Service_Container_PrivateClusterConfig extends Google_Model
   public function getMasterIpv4CidrBlock()
   {
     return $this->masterIpv4CidrBlock;
+  }
+  public function setPeeringName($peeringName)
+  {
+    $this->peeringName = $peeringName;
+  }
+  public function getPeeringName()
+  {
+    return $this->peeringName;
   }
   public function setPrivateEndpoint($privateEndpoint)
   {

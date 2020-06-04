@@ -19,6 +19,7 @@ class Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1TextDe
 {
   protected $collection_key = 'languageHints';
   public $languageHints;
+  public $model;
 
   public function setLanguageHints($languageHints)
   {
@@ -27,5 +28,13 @@ class Google_Service_CloudVideoIntelligence_GoogleCloudVideointelligenceV1TextDe
   public function getLanguageHints()
   {
     return $this->languageHints;
+  }
+  public function setModel($model)
+  {
+    $this->model = $model;
+  }
+  public function getModel()
+  {
+    return $this->model;
   }
 }

@@ -33,9 +33,7 @@ class Google_Service_CloudMachineLearningEngine_Resource_ProjectsModelsVersions 
    * model. When you add a version to a model that already has one or more
    * versions, the default version does not automatically change. If you want a
    * new version to be the default, you must call
-   * [projects.models.versions.setDefault](/ml-
-   * engine/reference/rest/v1/projects.models.versions/setDefault).
-   * (versions.create)
+   * projects.models.versions.setDefault. (versions.create)
    *
    * @param string $parent Required. The name of the model.
    * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version $postBody
@@ -58,8 +56,7 @@ class Google_Service_CloudMachineLearningEngine_Resource_ProjectsModelsVersions 
    * model unless it is the only remaining version. (versions.delete)
    *
    * @param string $name Required. The name of the version. You can get the names
-   * of all the versions of a model by calling [projects.models.versions.list
-   * ](/ml-engine/reference/rest/v1/projects.models.versions/list).
+   * of all the versions of a model by calling projects.models.versions.list.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudMachineLearningEngine_GoogleLongrunningOperation
    */
@@ -72,11 +69,9 @@ class Google_Service_CloudMachineLearningEngine_Resource_ProjectsModelsVersions 
   /**
    * Gets information about a model version.
    *
-   * Models can have multiple versions. You can call
-   * [projects.models.versions.list](/ml-
-   * engine/reference/rest/v1/projects.models.versions/list) to get the same
-   * information that this method returns for all of the versions of a model.
-   * (versions.get)
+   * Models can have multiple versions. You can call projects.models.versions.list
+   * to get the same information that this method returns for all of the versions
+   * of a model. (versions.get)
    *
    * @param string $name Required. The name of the version.
    * @param array $optParams Optional parameters.
@@ -125,8 +120,9 @@ class Google_Service_CloudMachineLearningEngine_Resource_ProjectsModelsVersions 
   /**
    * Updates the specified Version resource.
    *
-   * Currently the only update-able fields are `description` and
-   * `autoScaling.minNodes`. (versions.patch)
+   * Currently the only update-able fields are `description`,
+   * `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
+   * (versions.patch)
    *
    * @param string $name Required. The name of the model.
    * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version $postBody
@@ -137,11 +133,15 @@ class Google_Service_CloudMachineLearningEngine_Resource_ProjectsModelsVersions 
    *
    * For example, to change the description of a version to "foo", the
    * `update_mask` parameter would be specified as `description`, and the `PATCH`
-   * request body would specify the new value, as follows:     {
-   * "description": "foo"     }
+   * request body would specify the new value, as follows:
    *
-   * Currently the only supported update mask fields are `description` and
-   * `autoScaling.minNodes`.
+   * ``` {   "description": "foo" } ```
+   *
+   * Currently the only supported update mask fields are `description`,
+   * `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`.
+   * However, you can only update `manualScaling.nodes` if the version uses a
+   * [Compute Engine (N1) machine type](/ml-engine/docs/machine-types-online-
+   * prediction).
    * @return Google_Service_CloudMachineLearningEngine_GoogleLongrunningOperation
    */
   public function patch($name, Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version $postBody, $optParams = array())
@@ -162,8 +162,7 @@ class Google_Service_CloudMachineLearningEngine_Resource_ProjectsModelsVersions 
    *
    * @param string $name Required. The name of the version to make the default for
    * the model. You can get the names of all the versions of a model by calling
-   * [projects.models.versions.list](/ml-
-   * engine/reference/rest/v1/projects.models.versions/list).
+   * projects.models.versions.list.
    * @param Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1SetDefaultVersionRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudMachineLearningEngine_GoogleCloudMlV1Version

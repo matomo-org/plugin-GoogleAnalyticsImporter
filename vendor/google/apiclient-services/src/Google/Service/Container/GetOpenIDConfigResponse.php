@@ -26,6 +26,8 @@ class Google_Service_Container_GetOpenIDConfigResponse extends Google_Collection
         "responseTypesSupported" => "response_types_supported",
         "subjectTypesSupported" => "subject_types_supported",
   );
+  protected $cacheHeaderType = 'Google_Service_Container_HttpCacheControlResponseHeader';
+  protected $cacheHeaderDataType = '';
   public $claimsSupported;
   public $grantTypes;
   public $idTokenSigningAlgValuesSupported;
@@ -34,6 +36,20 @@ class Google_Service_Container_GetOpenIDConfigResponse extends Google_Collection
   public $responseTypesSupported;
   public $subjectTypesSupported;
 
+  /**
+   * @param Google_Service_Container_HttpCacheControlResponseHeader
+   */
+  public function setCacheHeader(Google_Service_Container_HttpCacheControlResponseHeader $cacheHeader)
+  {
+    $this->cacheHeader = $cacheHeader;
+  }
+  /**
+   * @return Google_Service_Container_HttpCacheControlResponseHeader
+   */
+  public function getCacheHeader()
+  {
+    return $this->cacheHeader;
+  }
   public function setClaimsSupported($claimsSupported)
   {
     $this->claimsSupported = $claimsSupported;

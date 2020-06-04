@@ -30,8 +30,8 @@ class Google_Service_Firestore_Resource_ProjectsDatabasesCollectionGroupsIndexes
    * may be used to track the status of the creation. The metadata for the
    * operation will be the type IndexOperationMetadata. (indexes.create)
    *
-   * @param string $parent A parent name of the form `projects/{project_id}/databa
-   * ses/{database_id}/collectionGroups/{collection_id}`
+   * @param string $parent Required. A parent name of the form `projects/{project_
+   * id}/databases/{database_id}/collectionGroups/{collection_id}`
    * @param Google_Service_Firestore_GoogleFirestoreAdminV1Index $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_Firestore_GoogleLongrunningOperation
@@ -45,8 +45,8 @@ class Google_Service_Firestore_Resource_ProjectsDatabasesCollectionGroupsIndexes
   /**
    * Deletes a composite index. (indexes.delete)
    *
-   * @param string $name A name of the form `projects/{project_id}/databases/{data
-   * base_id}/collectionGroups/{collection_id}/indexes/{index_id}`
+   * @param string $name Required. A name of the form `projects/{project_id}/datab
+   * ases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
    * @param array $optParams Optional parameters.
    * @return Google_Service_Firestore_FirestoreEmpty
    */
@@ -59,8 +59,8 @@ class Google_Service_Firestore_Resource_ProjectsDatabasesCollectionGroupsIndexes
   /**
    * Gets a composite index. (indexes.get)
    *
-   * @param string $name A name of the form `projects/{project_id}/databases/{data
-   * base_id}/collectionGroups/{collection_id}/indexes/{index_id}`
+   * @param string $name Required. A name of the form `projects/{project_id}/datab
+   * ases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
    * @param array $optParams Optional parameters.
    * @return Google_Service_Firestore_GoogleFirestoreAdminV1Index
    */
@@ -74,14 +74,14 @@ class Google_Service_Firestore_Resource_ProjectsDatabasesCollectionGroupsIndexes
    * Lists composite indexes.
    * (indexes.listProjectsDatabasesCollectionGroupsIndexes)
    *
-   * @param string $parent A parent name of the form `projects/{project_id}/databa
-   * ses/{database_id}/collectionGroups/{collection_id}`
+   * @param string $parent Required. A parent name of the form `projects/{project_
+   * id}/databases/{database_id}/collectionGroups/{collection_id}`
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize The number of results to return.
-   * @opt_param string filter The filter to apply to list results.
    * @opt_param string pageToken A page token, returned from a previous call to
    * FirestoreAdmin.ListIndexes, that may be used to get the next page of results.
+   * @opt_param int pageSize The number of results to return.
+   * @opt_param string filter The filter to apply to list results.
    * @return Google_Service_Firestore_GoogleFirestoreAdminV1ListIndexesResponse
    */
   public function listProjectsDatabasesCollectionGroupsIndexes($parent, $optParams = array())

@@ -21,6 +21,8 @@ class Google_Service_TagManager_ContainerVersion extends Google_Collection
   public $accountId;
   protected $builtInVariableType = 'Google_Service_TagManager_BuiltInVariable';
   protected $builtInVariableDataType = 'array';
+  protected $clientType = 'Google_Service_TagManager_Client';
+  protected $clientDataType = 'array';
   protected $containerType = 'Google_Service_TagManager_Container';
   protected $containerDataType = '';
   public $containerId;
@@ -65,6 +67,20 @@ class Google_Service_TagManager_ContainerVersion extends Google_Collection
   public function getBuiltInVariable()
   {
     return $this->builtInVariable;
+  }
+  /**
+   * @param Google_Service_TagManager_Client
+   */
+  public function setClient($client)
+  {
+    $this->client = $client;
+  }
+  /**
+   * @return Google_Service_TagManager_Client
+   */
+  public function getClient()
+  {
+    return $this->client;
   }
   /**
    * @param Google_Service_TagManager_Container

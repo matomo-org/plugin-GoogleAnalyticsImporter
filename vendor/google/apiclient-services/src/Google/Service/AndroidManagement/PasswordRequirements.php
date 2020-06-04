@@ -29,6 +29,7 @@ class Google_Service_AndroidManagement_PasswordRequirements extends Google_Model
   public $passwordMinimumUpperCase;
   public $passwordQuality;
   public $passwordScope;
+  public $requirePasswordUnlock;
 
   public function setMaximumFailedPasswordsForWipe($maximumFailedPasswordsForWipe)
   {
@@ -125,5 +126,13 @@ class Google_Service_AndroidManagement_PasswordRequirements extends Google_Model
   public function getPasswordScope()
   {
     return $this->passwordScope;
+  }
+  public function setRequirePasswordUnlock($requirePasswordUnlock)
+  {
+    $this->requirePasswordUnlock = $requirePasswordUnlock;
+  }
+  public function getRequirePasswordUnlock()
+  {
+    return $this->requirePasswordUnlock;
   }
 }

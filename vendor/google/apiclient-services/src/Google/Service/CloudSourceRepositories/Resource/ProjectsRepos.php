@@ -79,6 +79,16 @@ class Google_Service_CloudSourceRepositories_Resource_ProjectsRepos extends Goog
    * requested. See the operation documentation for the appropriate value for this
    * field.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param int options.requestedPolicyVersion Optional. The policy format
+   * version to be returned.
+   *
+   * Valid values are 0, 1, and 3. Requests specifying an invalid value will be
+   * rejected.
+   *
+   * Requests for policies with any conditional bindings must specify version 3.
+   * Policies without any conditional bindings may specify any valid value or
+   * leave the field unset.
    * @return Google_Service_CloudSourceRepositories_Policy
    */
   public function getIamPolicy($resource, $optParams = array())
@@ -96,11 +106,11 @@ class Google_Service_CloudSourceRepositories_Resource_ProjectsRepos extends Goog
    * of the form `projects/`.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param int pageSize Maximum number of repositories to return; between 1
-   * and 500. If not set or zero, defaults to 100 at the server.
    * @opt_param string pageToken Resume listing repositories where a prior
    * ListReposResponse left off. This is an opaque token that must be obtained
    * from a recent, prior ListReposResponse's next_page_token field.
+   * @opt_param int pageSize Maximum number of repositories to return; between 1
+   * and 500. If not set or zero, defaults to 100 at the server.
    * @return Google_Service_CloudSourceRepositories_ListReposResponse
    */
   public function listProjectsRepos($name, $optParams = array())
@@ -140,6 +150,23 @@ class Google_Service_CloudSourceRepositories_Resource_ProjectsRepos extends Goog
     $params = array('resource' => $resource, 'postBody' => $postBody);
     $params = array_merge($params, $optParams);
     return $this->call('setIamPolicy', array($params), "Google_Service_CloudSourceRepositories_Policy");
+  }
+  /**
+   * Synchronize a connected repo.
+   *
+   * The response contains SyncRepoMetadata in the metadata field. (repos.sync)
+   *
+   * @param string $name The name of the repo to synchronize. Values are of the
+   * form `projects//repos/`.
+   * @param Google_Service_CloudSourceRepositories_SyncRepoRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Google_Service_CloudSourceRepositories_Operation
+   */
+  public function sync($name, Google_Service_CloudSourceRepositories_SyncRepoRequest $postBody, $optParams = array())
+  {
+    $params = array('name' => $name, 'postBody' => $postBody);
+    $params = array_merge($params, $optParams);
+    return $this->call('sync', array($params), "Google_Service_CloudSourceRepositories_Operation");
   }
   /**
    * Returns permissions that a caller has on the specified resource. If the

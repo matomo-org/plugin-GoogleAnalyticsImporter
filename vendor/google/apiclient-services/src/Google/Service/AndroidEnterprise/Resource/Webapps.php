@@ -81,22 +81,6 @@ class Google_Service_AndroidEnterprise_Resource_Webapps extends Google_Service_R
     return $this->call('list', array($params), "Google_Service_AndroidEnterprise_WebAppsListResponse");
   }
   /**
-   * Updates an existing web app. This method supports patch semantics.
-   * (webapps.patch)
-   *
-   * @param string $enterpriseId The ID of the enterprise.
-   * @param string $webAppId The ID of the web app.
-   * @param Google_Service_AndroidEnterprise_WebApp $postBody
-   * @param array $optParams Optional parameters.
-   * @return Google_Service_AndroidEnterprise_WebApp
-   */
-  public function patch($enterpriseId, $webAppId, Google_Service_AndroidEnterprise_WebApp $postBody, $optParams = array())
-  {
-    $params = array('enterpriseId' => $enterpriseId, 'webAppId' => $webAppId, 'postBody' => $postBody);
-    $params = array_merge($params, $optParams);
-    return $this->call('patch', array($params), "Google_Service_AndroidEnterprise_WebApp");
-  }
-  /**
    * Updates an existing web app. (webapps.update)
    *
    * @param string $enterpriseId The ID of the enterprise.

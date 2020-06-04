@@ -41,12 +41,13 @@ class Google_Service_AlertCenter extends Google_Service
   /**
    * Constructs the internal representation of the AlertCenter service.
    *
-   * @param Google_Client $client
+   * @param Google_Client $client The client used to deliver requests.
+   * @param string $rootUrl The root URL used for requests to the service.
    */
-  public function __construct(Google_Client $client)
+  public function __construct(Google_Client $client, $rootUrl = null)
   {
     parent::__construct($client);
-    $this->rootUrl = 'https://alertcenter.googleapis.com/';
+    $this->rootUrl = $rootUrl ?: 'https://alertcenter.googleapis.com/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
     $this->version = 'v1beta1';
@@ -58,7 +59,15 @@ class Google_Service_AlertCenter extends Google_Service
         'alerts',
         array(
           'methods' => array(
-            'delete' => array(
+            'batchDelete' => array(
+              'path' => 'v1beta1/alerts:batchDelete',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
+            ),'batchUndelete' => array(
+              'path' => 'v1beta1/alerts:batchUndelete',
+              'httpMethod' => 'POST',
+              'parameters' => array(),
+            ),'delete' => array(
               'path' => 'v1beta1/alerts/{alertId}',
               'httpMethod' => 'DELETE',
               'parameters' => array(
@@ -74,6 +83,20 @@ class Google_Service_AlertCenter extends Google_Service
               ),
             ),'get' => array(
               'path' => 'v1beta1/alerts/{alertId}',
+              'httpMethod' => 'GET',
+              'parameters' => array(
+                'alertId' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+                'customerId' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
+              ),
+            ),'getMetadata' => array(
+              'path' => 'v1beta1/alerts/{alertId}/metadata',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'alertId' => array(

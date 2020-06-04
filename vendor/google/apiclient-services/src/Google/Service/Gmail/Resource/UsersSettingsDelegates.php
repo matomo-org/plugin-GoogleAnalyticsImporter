@@ -30,7 +30,7 @@ class Google_Service_Gmail_Resource_UsersSettingsDelegates extends Google_Servic
    * without sending any verification email. The delegate user must be a member of
    * the same G Suite organization as the delegator user.
    *
-   * Gmail imposes limtations on the number of delegates and delegators each user
+   * Gmail imposes limitations on the number of delegates and delegators each user
    * in a G Suite organization can have. These limits depend on your organization,
    * but in general each user can have up to 25 delegates and up to 10 delegators.
    *

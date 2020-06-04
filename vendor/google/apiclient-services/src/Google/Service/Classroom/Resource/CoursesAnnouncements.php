@@ -116,6 +116,9 @@ class Google_Service_Classroom_Resource_CoursesAnnouncements extends Google_Serv
    * either the Classroom-assigned identifier or an alias.
    * @param array $optParams Optional parameters.
    *
+   * @opt_param string announcementStates Restriction on the `state` of
+   * announcements returned. If this argument is left unspecified, the default
+   * value is `PUBLISHED`.
    * @opt_param string orderBy Optional sort ordering for results. A comma-
    * separated list of fields with an optional sort direction keyword. Supported
    * field is `updateTime`. Supported direction keywords are `asc` and `desc`. If
@@ -130,9 +133,6 @@ class Google_Service_Classroom_Resource_CoursesAnnouncements extends Google_Serv
    * unspecified indicates that the server may assign a maximum.
    *
    * The server may return fewer than the specified number of results.
-   * @opt_param string announcementStates Restriction on the `state` of
-   * announcements returned. If this argument is left unspecified, the default
-   * value is `PUBLISHED`.
    * @return Google_Service_Classroom_ListAnnouncementsResponse
    */
   public function listCoursesAnnouncements($courseId, $optParams = array())
@@ -190,7 +190,7 @@ class Google_Service_Classroom_Resource_CoursesAnnouncements extends Google_Serv
    * can be cleared by specifying it in the update mask and not in the
    * Announcement object. If a field that does not support empty values is
    * included in the update mask and not set in the Announcement object, an
-   * `INVALID_ARGUMENT` error will be returned.
+   * `INVALID_ARGUMENT` error is returned.
    *
    * The following fields may be specified by teachers:
    *

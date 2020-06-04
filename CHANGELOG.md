@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.4.0
+
+Changes:
+* Update google API client for PHP 7.4 support.
+
 # 1.3.3
 
 Changes:

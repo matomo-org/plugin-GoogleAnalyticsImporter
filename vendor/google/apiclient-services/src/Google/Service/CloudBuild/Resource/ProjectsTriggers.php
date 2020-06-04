@@ -30,8 +30,8 @@ class Google_Service_CloudBuild_Resource_ProjectsTriggers extends Google_Service
    *
    * This API is experimental. (triggers.create)
    *
-   * @param string $projectId ID of the project for which to configure automatic
-   * builds.
+   * @param string $projectId Required. ID of the project for which to configure
+   * automatic builds.
    * @param Google_Service_CloudBuild_BuildTrigger $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_BuildTrigger
@@ -47,8 +47,8 @@ class Google_Service_CloudBuild_Resource_ProjectsTriggers extends Google_Service
    *
    * This API is experimental. (triggers.delete)
    *
-   * @param string $projectId ID of the project that owns the trigger.
-   * @param string $triggerId ID of the `BuildTrigger` to delete.
+   * @param string $projectId Required. ID of the project that owns the trigger.
+   * @param string $triggerId Required. ID of the `BuildTrigger` to delete.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_CloudbuildEmpty
    */
@@ -63,8 +63,9 @@ class Google_Service_CloudBuild_Resource_ProjectsTriggers extends Google_Service
    *
    * This API is experimental. (triggers.get)
    *
-   * @param string $projectId ID of the project that owns the trigger.
-   * @param string $triggerId ID of the `BuildTrigger` to get.
+   * @param string $projectId Required. ID of the project that owns the trigger.
+   * @param string $triggerId Required. Identifier (`id` or `name`) of the
+   * `BuildTrigger` to get.
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_BuildTrigger
    */
@@ -79,8 +80,13 @@ class Google_Service_CloudBuild_Resource_ProjectsTriggers extends Google_Service
    *
    * This API is experimental. (triggers.listProjectsTriggers)
    *
-   * @param string $projectId ID of the project for which to list BuildTriggers.
+   * @param string $projectId Required. ID of the project for which to list
+   * BuildTriggers.
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param string pageToken Token to provide to skip to a particular spot in
+   * the list.
+   * @opt_param int pageSize Number of results to return in the list.
    * @return Google_Service_CloudBuild_ListBuildTriggersResponse
    */
   public function listProjectsTriggers($projectId, $optParams = array())
@@ -94,8 +100,8 @@ class Google_Service_CloudBuild_Resource_ProjectsTriggers extends Google_Service
    *
    * This API is experimental. (triggers.patch)
    *
-   * @param string $projectId ID of the project that owns the trigger.
-   * @param string $triggerId ID of the `BuildTrigger` to update.
+   * @param string $projectId Required. ID of the project that owns the trigger.
+   * @param string $triggerId Required. ID of the `BuildTrigger` to update.
    * @param Google_Service_CloudBuild_BuildTrigger $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_BuildTrigger
@@ -109,8 +115,8 @@ class Google_Service_CloudBuild_Resource_ProjectsTriggers extends Google_Service
   /**
    * Runs a `BuildTrigger` at a particular source revision. (triggers.run)
    *
-   * @param string $projectId ID of the project.
-   * @param string $triggerId ID of the trigger.
+   * @param string $projectId Required. ID of the project.
+   * @param string $triggerId Required. ID of the trigger.
    * @param Google_Service_CloudBuild_RepoSource $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_CloudBuild_Operation

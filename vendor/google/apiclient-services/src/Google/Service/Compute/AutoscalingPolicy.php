@@ -27,6 +27,7 @@ class Google_Service_Compute_AutoscalingPolicy extends Google_Collection
   protected $loadBalancingUtilizationDataType = '';
   public $maxNumReplicas;
   public $minNumReplicas;
+  public $mode;
 
   public function setCoolDownPeriodSec($coolDownPeriodSec)
   {
@@ -93,5 +94,13 @@ class Google_Service_Compute_AutoscalingPolicy extends Google_Collection
   public function getMinNumReplicas()
   {
     return $this->minNumReplicas;
+  }
+  public function setMode($mode)
+  {
+    $this->mode = $mode;
+  }
+  public function getMode()
+  {
+    return $this->mode;
   }
 }

@@ -30,8 +30,8 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
    * https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
    * (storedInfoTypes.create)
    *
-   * @param string $parent The parent resource name, for example projects/my-
-   * project-id or organizations/my-org-id.
+   * @param string $parent Required. The parent resource name, for example
+   * projects/my-project-id or organizations/my-org-id.
    * @param Google_Service_DLP_GooglePrivacyDlpV2CreateStoredInfoTypeRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType
@@ -46,9 +46,10 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
    * Deletes a stored infoType. See https://cloud.google.com/dlp/docs/creating-
    * stored-infotypes to learn more. (storedInfoTypes.delete)
    *
-   * @param string $name Resource name of the organization and storedInfoType to
-   * be deleted, for example `organizations/433245324/storedInfoTypes/432452342`
-   * or projects/project-id/storedInfoTypes/432452342.
+   * @param string $name Required. Resource name of the organization and
+   * storedInfoType to be deleted, for example
+   * `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+   * id/storedInfoTypes/432452342.
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GoogleProtobufEmpty
    */
@@ -62,9 +63,10 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
    * Gets a stored infoType. See https://cloud.google.com/dlp/docs/creating-
    * stored-infotypes to learn more. (storedInfoTypes.get)
    *
-   * @param string $name Resource name of the organization and storedInfoType to
-   * be read, for example `organizations/433245324/storedInfoTypes/432452342` or
-   * projects/project-id/storedInfoTypes/432452342.
+   * @param string $name Required. Resource name of the organization and
+   * storedInfoType to be read, for example
+   * `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+   * id/storedInfoTypes/432452342.
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType
    */
@@ -79,16 +81,18 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
    * stored-infotypes to learn more.
    * (storedInfoTypes.listOrganizationsStoredInfoTypes)
    *
-   * @param string $parent The parent resource name, for example projects/my-
-   * project-id or organizations/my-org-id.
+   * @param string $parent Required. The parent resource name, for example
+   * projects/my-project-id or organizations/my-org-id.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken Optional page token to continue retrieval. Comes
-   * from previous call to `ListStoredInfoTypes`.
-   * @opt_param string orderBy Optional comma separated list of fields to order
-   * by, followed by `asc` or `desc` postfix. This list is case-insensitive,
-   * default sorting order is ascending, redundant space characters are
-   * insignificant.
+   * @opt_param string pageToken Page token to continue retrieval. Comes from
+   * previous call to `ListStoredInfoTypes`.
+   * @opt_param string locationId Deprecated. This field has no effect.
+   * @opt_param int pageSize Size of the page, can be limited by server. If zero
+   * server returns a page of max size 100.
+   * @opt_param string orderBy Comma separated list of fields to order by,
+   * followed by `asc` or `desc` postfix. This list is case-insensitive, default
+   * sorting order is ascending, redundant space characters are insignificant.
    *
    * Example: `name asc, display_name, create_time desc`
    *
@@ -98,8 +102,6 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
    * was created. - `state`: corresponds to the state of the resource. - `name`:
    * corresponds to resource name. - `display_name`: corresponds to info type's
    * display name.
-   * @opt_param int pageSize Optional size of the page, can be limited by server.
-   * If zero server returns a page of max size 100.
    * @return Google_Service_DLP_GooglePrivacyDlpV2ListStoredInfoTypesResponse
    */
   public function listOrganizationsStoredInfoTypes($parent, $optParams = array())
@@ -114,9 +116,10 @@ class Google_Service_DLP_Resource_OrganizationsStoredInfoTypes extends Google_Se
    * https://cloud.google.com/dlp/docs/creating-stored-infotypes to learn more.
    * (storedInfoTypes.patch)
    *
-   * @param string $name Resource name of organization and storedInfoType to be
-   * updated, for example `organizations/433245324/storedInfoTypes/432452342` or
-   * projects/project-id/storedInfoTypes/432452342.
+   * @param string $name Required. Resource name of organization and
+   * storedInfoType to be updated, for example
+   * `organizations/433245324/storedInfoTypes/432452342` or projects/project-
+   * id/storedInfoTypes/432452342.
    * @param Google_Service_DLP_GooglePrivacyDlpV2UpdateStoredInfoTypeRequest $postBody
    * @param array $optParams Optional parameters.
    * @return Google_Service_DLP_GooglePrivacyDlpV2StoredInfoType

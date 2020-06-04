@@ -21,6 +21,7 @@ class Google_Service_FirebaseHosting_Rewrite extends Google_Model
   public $function;
   public $glob;
   public $path;
+  public $regex;
   protected $runType = 'Google_Service_FirebaseHosting_CloudRunRewrite';
   protected $runDataType = '';
 
@@ -55,6 +56,14 @@ class Google_Service_FirebaseHosting_Rewrite extends Google_Model
   public function getPath()
   {
     return $this->path;
+  }
+  public function setRegex($regex)
+  {
+    $this->regex = $regex;
+  }
+  public function getRegex()
+  {
+    return $this->regex;
   }
   /**
    * @param Google_Service_FirebaseHosting_CloudRunRewrite
