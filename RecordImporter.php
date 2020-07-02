@@ -163,7 +163,7 @@ abstract class RecordImporter
 
     protected function addRowToTable(DataTable $record, DataTable\Row $row, $newLabel)
     {
-        if ($newLabel === false) {
+        if ($newLabel === false || $newLabel === null) {
             $recordImporterClass = get_class($this);
             throw new \Exception("Unexpected error: adding row to table with empty label in $recordImporterClass: " . var_export($newLabel, true));
         }
