@@ -46,7 +46,7 @@
 
         function showEditImportEndDateModal(idSite) {
             editImportEndDateIdSite = idSite;
-            $('#editImportEndDate').openModal({ dismissible: false });
+            $('#editImportEndDate').modal({ dismissible: false }).modal('open');
         }
 
         function cancelEditImportEndDateModal() {
@@ -96,7 +96,7 @@
 
         function openScheduleReimportModal(idSite) {
             reimportDateRangeIdSite = idSite;
-            $('#openScheduleReimportModal').openModal({ dismissible: false });
+            $('#openScheduleReimportModal').modal({ dismissible: false }).modal('open');
         }
 
         function scheduleReimport() {
