@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.4.1
+
+Changes:
+* Fix bug in referrers import triggered by not set values in referral path in GA. Imports experiencing the "label column not found" error are failing due to this bug. Re-importing with version 1.4.1 will avoid the issue.
+
 # 1.4.0
 
 Changes:
