@@ -17,6 +17,10 @@ use Piwik\DataTable\Row;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleResponseDataTableFactory;
 
+/**
+ * @group GoogleAnalyticsImporter
+ * @group GoogleAnalyticsImporter_Unit
+ */
 class GoogleResponseDataTableFactoryTest extends TestCase
 {
     public function test_mergeGaResponse_addsToDataTableCorrectly()

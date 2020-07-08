@@ -13,6 +13,10 @@ use PHPUnit\Framework\TestCase;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleMetricMapper;
 
+/**
+ * @group GoogleAnalyticsImporter
+ * @group GoogleAnalyticsImporter_Unit
+ */
 class GoogleMetricMapperTest extends TestCase
 {
     public function test_constructor_shouldInitializeAllCorrectMappings()

@@ -34,6 +34,10 @@ class TasksWithMockExec extends Tasks
     }
 }
 
+/**
+ * @group GoogleAnalyticsImporter
+ * @group GoogleAnalyticsImporter_Integration
+ */
 class TasksTest extends IntegrationTestCase
 {
     /**
