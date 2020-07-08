@@ -98,6 +98,8 @@ describe("GoogleAnalyticsImporter", function () {
             if (elem) {
                 break;
             }
+
+            console.log('waiting...');
         }
 
         await removeStartResumeFinishTime();

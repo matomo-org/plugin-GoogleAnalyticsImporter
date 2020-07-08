@@ -58,7 +58,10 @@ abstract class BaseRecordImporterTest extends IntegrationTestCase
 
     protected function makeMockGaQuery($responses)
     {
-        $mock = $this->getMock(GoogleAnalyticsQueryService::class, ['query'], [], '', $callOriginalConstructor = false);
+        $mock = $this->getMockBuilder(GoogleAnalyticsQueryService::class)
+            ->onlyMethods(['query'])
+            ->disableOriginalConstructor()
+            ->getMock();
         $mock->method('query')
             ->willReturnCallback(function () use (&$responses) {
                 if (empty($responses)) {
