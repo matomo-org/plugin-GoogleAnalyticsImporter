@@ -10,13 +10,14 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Unit\Google;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
+use PHPUnit\Framework\TestCase;
 use Piwik\DataTable;
 use Piwik\DataTable\Renderer\Xml;
 use Piwik\DataTable\Row;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleResponseDataTableFactory;
 
-class GoogleResponseDataTableFactoryTest extends \PHPUnit_Framework_TestCase
+class GoogleResponseDataTableFactoryTest extends TestCase
 {
     public function test_mergeGaResponse_addsToDataTableCorrectly()
     {
