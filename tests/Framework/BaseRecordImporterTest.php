@@ -91,7 +91,10 @@ abstract class BaseRecordImporterTest extends IntegrationTestCase
 
     protected function makeMockRecordInserter()
     {
-        $mock = $this->getMock(RecordInserter::class, ['insertNumericRecords', 'insertRecord'], [], '', $callOriginalConstructor = false);
+        $mock = $this->getMockBuilder(RecordInserter::class)
+            ->onlyMethods(['insertNumericRecords', 'insertRecord'])
+            ->disableOriginalConstructor()
+            ->getMock();
         $mock->method('insertNumericRecords')
             ->willReturnCallback(function ($values) {
                 foreach ($values as $name => $value) {
