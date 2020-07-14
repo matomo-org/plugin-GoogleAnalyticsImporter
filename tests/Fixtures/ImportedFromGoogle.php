@@ -22,6 +22,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\CapturingGoogleClient;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\MockResponseClient;
+use Piwik\Plugins\Login\Auth;
 use Piwik\Plugins\VisitsSummary\API;
 use Piwik\Plugins\VisitsSummary\VisitsSummary;
 use Piwik\Tests\Framework\Fixture;
@@ -123,6 +124,8 @@ class ImportedFromGoogle extends Fixture
     {
         if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
             $this->viewId = 1234567;
+            $this->clientConfig = Option::get(Authorization::CLIENT_CONFIG_OPTION_NAME);
+            $this->accessToken = Option::get(Authorization::ACCESS_TOKEN_OPTION_NAME);
         } else {
             if (!getenv('PIWIK_TEST_GA_ACCESS_TOKEN')
                 || !getenv('PIWIK_TEST_GA_CLIENT_CONFIG')
