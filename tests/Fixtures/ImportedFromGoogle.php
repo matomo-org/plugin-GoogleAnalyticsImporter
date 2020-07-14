@@ -148,7 +148,11 @@ class ImportedFromGoogle extends Fixture
     {
         $domain = Config::getHostname();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
-        $property = $this->getEnvVar('GA_PROPERTY_ID');
+        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+            $property = 'UA-12345-6';
+        } else {
+            $property = $this->getEnvVar('GA_PROPERTY_ID');
+        }
 
         Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
         Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
