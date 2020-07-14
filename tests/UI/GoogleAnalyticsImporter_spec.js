@@ -39,6 +39,26 @@ describe("GoogleAnalyticsImporter", function () {
         await page.waitForNetworkIdle();
         await page.waitFor('.pageWrap');
 
+        let totalTime = 0;
+        while (true) { // wait until import finishes
+            const status = await page.evaluate(() => $('td.status').text());
+            if (status.indexOf('ongoing') !== -1) {
+                break;
+            }
+
+            console.log('waiting...');
+            await page.waitFor(5000);
+
+            await page.reload();
+            await page.waitFor('.pageWrap');
+
+            totalTime += 5;
+
+            if (totalTime > 60 * 7) {
+                throw new Error('timeout waiting for import to start...');
+            }
+        }
+
         await removeStartResumeFinishTime();
 
         const content = await page.$('.pageWrap');
