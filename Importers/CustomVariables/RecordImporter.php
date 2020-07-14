@@ -67,8 +67,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $this->queryCustomVariableSlot($i, $day, $record);
         }
 
-        $this->querySiteSearchCategories($day, $record);
-
         $this->insertRecord(Archiver::CUSTOM_VARIABLE_RECORD_NAME, $record, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable,
             Metrics::INDEX_NB_VISITS);
         Common::destroy($record);
@@ -113,29 +111,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $topLevelRow = $this->addRowToTable($record, $row, $key);
             $this->addRowToSubtable($topLevelRow, $row, $value);
         }
-    }
-
-    private function querySiteSearchCategories(Date $day, DataTable $record)
-    {
-        $gaQuery = $this->getGaQuery();
-        $table = $gaQuery->query($day, $dimensions = ['ga:searchCategory'], array_merge($this->getConversionAwareVisitMetrics(), $this->getActionMetrics()), [
-            'mappings' => [
-                Metrics::INDEX_NB_VISITS => 'ga:searchUniques',
-                Metrics::INDEX_NB_ACTIONS => 'ga:searchResultViews',
-            ],
-        ]);
-
-        foreach ($table->getRows() as $row) {
-            $searchCategory = $row->getMetadata('ga:searchCategory');
-            if (empty($searchCategory)) {
-                $searchCategory = self::NOT_SET_IN_GA_LABEL;
-            }
-
-            $topLevelRow = $this->addRowToTable($record, $row, ActionSiteSearch::CVAR_KEY_SEARCH_CATEGORY);
-            $this->addRowToSubtable($topLevelRow, $row, $searchCategory);
-        }
-
-        Common::destroy($table);
     }
 
     private function cleanValue($value)
