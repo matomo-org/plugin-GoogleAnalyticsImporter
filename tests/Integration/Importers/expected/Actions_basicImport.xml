@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <results>
+	<result record="Actions_SiteSearchCategories">\n
+		<row>
+			<label>cat1</label>
+		</row>
+		<row>
+			<label>cat2</label>
+		</row>
+		<row>
+			<label>cat3</label>
+		</row>
+	</result>
 	<result record="Actions_actions">
 		<row>
 			<col name="label"> Index real</col>
@@ -96,7 +107,7 @@
 			<col name="30">2</col>
 			<col name="31">1</col>
 			<col name="folder_url_start">folder</col>
-			<col name="idsubdatatable">16</col>
+			<col name="idsubdatatable">19</col>
 			<col name="subtable">
 				<row>
 					<col name="label">/page</col>

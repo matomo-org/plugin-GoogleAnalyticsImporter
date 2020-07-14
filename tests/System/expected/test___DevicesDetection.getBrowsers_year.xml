@@ -137,9 +137,9 @@
 	</row>
 	<row>
 		<label>Firefox</label>
-		<nb_visits>95</nb_visits>
-		<nb_actions>342</nb_actions>
-		<sum_visit_length>2203</sum_visit_length>
+		<nb_visits>94</nb_visits>
+		<nb_actions>340</nb_actions>
+		<sum_visit_length>2082</sum_visit_length>
 		<bounce_count>17</bounce_count>
 		<nb_visits_converted>30</nb_visits_converted>
 		<nb_conversions>66</nb_conversions>
@@ -176,9 +176,7 @@
 				<items>199</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>74</sum_daily_nb_uniq_visitors>
-		<max_actions>2</max_actions>
-		<sum_daily_nb_users>0</sum_daily_nb_users>
+		<sum_daily_nb_uniq_visitors>73</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/browsers/FF.png</logo>
 		<segment>browserCode==FF</segment>
 	</row>

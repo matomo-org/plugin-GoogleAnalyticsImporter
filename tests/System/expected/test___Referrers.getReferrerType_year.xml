@@ -575,9 +575,9 @@
 	</row>
 	<row>
 		<label>Direct Entry</label>
-		<nb_visits>53</nb_visits>
-		<nb_actions>78</nb_actions>
-		<sum_visit_length>1890</sum_visit_length>
+		<nb_visits>52</nb_visits>
+		<nb_actions>76</nb_actions>
+		<sum_visit_length>1769</sum_visit_length>
 		<bounce_count>34</bounce_count>
 		<nb_visits_converted>5</nb_visits_converted>
 		<nb_conversions>8</nb_conversions>
@@ -614,9 +614,7 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>52</sum_daily_nb_uniq_visitors>
-		<max_actions>2</max_actions>
-		<sum_daily_nb_users>0</sum_daily_nb_users>
+		<sum_daily_nb_uniq_visitors>51</sum_daily_nb_uniq_visitors>
 		<segment>referrerType==direct</segment>
 		<referrer_type>1</referrer_type>
 	</row>

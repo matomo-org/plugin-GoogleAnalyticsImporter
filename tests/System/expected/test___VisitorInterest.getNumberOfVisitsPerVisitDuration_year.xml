@@ -45,11 +45,6 @@
 		<segment>visitDuration&gt;=0;visitDuration&lt;=10</segment>
 	</row>
 	<row>
-		<label>0-10s</label>
-		<nb_visits>0</nb_visits>
-		<segment>visitDuration&gt;=0;visitDuration&lt;=10</segment>
-	</row>
-	<row>
 		<label>11-30s</label>
 		<nb_visits>20</nb_visits>
 		<nb_actions>101</nb_actions>
@@ -91,11 +86,6 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
-	</row>
-	<row>
-		<label>11-30s</label>
-		<nb_visits>0</nb_visits>
 		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
 	</row>
 	<row>
@@ -143,11 +133,6 @@
 		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
 	</row>
 	<row>
-		<label>31-60s</label>
-		<nb_visits>0</nb_visits>
-		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
-	</row>
-	<row>
 		<label>1-2 min</label>
 		<nb_visits>24</nb_visits>
 		<nb_actions>139</nb_actions>
@@ -189,11 +174,6 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=60;visitDuration&lt;=120</segment>
-	</row>
-	<row>
-		<label>1-2 min</label>
-		<nb_visits>0</nb_visits>
 		<segment>visitDuration&gt;=60;visitDuration&lt;=120</segment>
 	</row>
 	<row>
@@ -241,11 +221,6 @@
 		<segment>visitDuration&gt;=120;visitDuration&lt;=240</segment>
 	</row>
 	<row>
-		<label>2-4 min</label>
-		<nb_visits>1</nb_visits>
-		<segment>visitDuration&gt;=120;visitDuration&lt;=240</segment>
-	</row>
-	<row>
 		<label>4-7 min</label>
 		<nb_visits>17</nb_visits>
 		<nb_actions>122</nb_actions>
@@ -287,11 +262,6 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=240;visitDuration&lt;=420</segment>
-	</row>
-	<row>
-		<label>4-7 min</label>
-		<nb_visits>0</nb_visits>
 		<segment>visitDuration&gt;=240;visitDuration&lt;=420</segment>
 	</row>
 	<row>
@@ -339,11 +309,6 @@
 		<segment>visitDuration&gt;=420;visitDuration&lt;=600</segment>
 	</row>
 	<row>
-		<label>7-10 min</label>
-		<nb_visits>0</nb_visits>
-		<segment>visitDuration&gt;=420;visitDuration&lt;=600</segment>
-	</row>
-	<row>
 		<label>10-15 min</label>
 		<nb_visits>4</nb_visits>
 		<nb_actions>23</nb_actions>
@@ -388,11 +353,6 @@
 		<segment>visitDuration&gt;=600;visitDuration&lt;=900</segment>
 	</row>
 	<row>
-		<label>10-15 min</label>
-		<nb_visits>0</nb_visits>
-		<segment>visitDuration&gt;=600;visitDuration&lt;=900</segment>
-	</row>
-	<row>
 		<label>15-30 min</label>
 		<nb_visits>9</nb_visits>
 		<nb_actions>21</nb_actions>
@@ -434,11 +394,6 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=900;visitDuration&lt;=1800</segment>
-	</row>
-	<row>
-		<label>15-30 min</label>
-		<nb_visits>0</nb_visits>
 		<segment>visitDuration&gt;=900;visitDuration&lt;=1800</segment>
 	</row>
 	<row>

@@ -49,9 +49,9 @@
 	</row>
 	<row>
 		<label>France</label>
-		<nb_visits>131</nb_visits>
-		<nb_actions>373</nb_actions>
-		<sum_visit_length>14675</sum_visit_length>
+		<nb_visits>130</nb_visits>
+		<nb_actions>371</nb_actions>
+		<sum_visit_length>14554</sum_visit_length>
 		<bounce_count>50</bounce_count>
 		<nb_visits_converted>27</nb_visits_converted>
 		<nb_conversions>54</nb_conversions>
@@ -88,9 +88,7 @@
 				<items>164</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>106</sum_daily_nb_uniq_visitors>
-		<max_actions>2</max_actions>
-		<sum_daily_nb_users>0</sum_daily_nb_users>
+		<sum_daily_nb_uniq_visitors>105</sum_daily_nb_uniq_visitors>
 		<code>fr</code>
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 		<segment>countryCode==fr</segment>
