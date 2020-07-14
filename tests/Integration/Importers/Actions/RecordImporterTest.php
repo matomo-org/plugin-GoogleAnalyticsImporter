@@ -309,6 +309,7 @@ class RecordImporterTest extends BaseRecordImporterTest
             $this->makeMockPageTitlesVisitsResponseForMobileApp(),
             $this->makeMockEntryPageTItlesResponseForMobileApp(),
             $this->makeMockExitPageTItlesResponseForMobileApp(),
+            $this->makeMockSiteSearchCategoriesResponse(),
         ], $idSite = 2);
     }
 

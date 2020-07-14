@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <results>
-	<result record="Actions_SiteSearchCategories">\n
+	<result record="Actions_SiteSearchCategories">
 		<row>
 			<label>cat1</label>
 		</row>
