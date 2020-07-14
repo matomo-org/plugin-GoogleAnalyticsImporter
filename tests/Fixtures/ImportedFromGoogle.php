@@ -116,19 +116,23 @@ class ImportedFromGoogle extends Fixture
 
     private function getGoogleAnalyticsParams()
     {
-        if (!getenv('PIWIK_TEST_GA_ACCESS_TOKEN')
-            || !getenv('PIWIK_TEST_GA_CLIENT_CONFIG')
-        ) {
-            $this->tryToUseNonTestEnvCredentials();
+        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+            $this->viewId = 1234567;
         } else {
-            $this->accessToken = $this->getEnvVar('PIWIK_TEST_GA_ACCESS_TOKEN');
-            $this->clientConfig = $this->getEnvVar('PIWIK_TEST_GA_CLIENT_CONFIG');
+            if (!getenv('PIWIK_TEST_GA_ACCESS_TOKEN')
+                || !getenv('PIWIK_TEST_GA_CLIENT_CONFIG')
+            ) {
+                $this->tryToUseNonTestEnvCredentials();
+            } else {
+                $this->accessToken = $this->getEnvVar('PIWIK_TEST_GA_ACCESS_TOKEN');
+                $this->clientConfig = $this->getEnvVar('PIWIK_TEST_GA_CLIENT_CONFIG');
+            }
+
+            Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
+            Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
+
+            $this->viewId = $this->getEnvVar('PIWIK_TEST_GA_VIEW_ID');
         }
-
-        Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
-        Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
-
-        $this->viewId = $this->getEnvVar('PIWIK_TEST_GA_VIEW_ID');
     }
 
     private function getEnvVar($name)

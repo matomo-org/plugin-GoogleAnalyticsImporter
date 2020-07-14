@@ -31,6 +31,7 @@ env:
     # You can also specify a specific Matomo version
     # (PIWIK_TEST_TARGET=2.16.0-b1).
     - PIWIK_TEST_TARGET=4.x-dev
+    - MATOMO_USE_MOCK_RESPONSE=1
   matrix:
     - TEST_SUITE=PluginTests MYSQL_ADAPTER=PDO_MYSQL TEST_AGAINST_PIWIK_BRANCH=$PIWIK_TEST_TARGET
     - TEST_SUITE=PluginTests MYSQL_ADAPTER=PDO_MYSQL TEST_AGAINST_CORE=minimum_required_piwik
