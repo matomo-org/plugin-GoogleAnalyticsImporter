@@ -55,6 +55,11 @@ class ImportedFromGoogle extends Fixture
     {
         parent::setUp();
 
+        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+            $mockResponses = new MockApiResponses();
+            $mockResponses->setUp();
+        }
+
         $this->getGoogleAnalyticsParams();
 
         $this->runGoogleImporter($this->importedDateRange1);

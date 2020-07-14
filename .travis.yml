@@ -9,6 +9,7 @@ php:
 
 services:
   - redis-server
+  - mysql
 
 addons:
   apt:
