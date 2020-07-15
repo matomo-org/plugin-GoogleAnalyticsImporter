@@ -46,7 +46,7 @@ describe("GoogleAnalyticsImporter", function () {
     });
 
     it('should show the error in the UI when an import fails', async function () {
-        await page.waitFor(60000);
+        await page.waitFor(70000);
 
         await page.reload({ timeout: 0 });
         await page.waitFor('.pageWrap');
