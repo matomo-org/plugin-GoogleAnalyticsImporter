@@ -41,7 +41,8 @@ describe("GoogleAnalyticsImporter", function () {
 
         let totalTime = 0;
         while (true) { // wait until import finishes
-            const status = await page.evaluate(() => $('td.status').text());
+            const status = await page.evaluate(() => $('td.status:eq(0)').text());
+            console.log(status);
             if (status.indexOf('ongoing') !== -1) {
                 break;
             }
