@@ -46,7 +46,7 @@ describe("GoogleAnalyticsImporter", function () {
     });
 
     it('should show the error in the UI when an import fails', async function () {
-        await page.waitFor(60000);
+        await page.waitFor(70000);
 
         await page.reload({ timeout: 0 });
         await page.waitFor('.pageWrap');
@@ -88,6 +88,7 @@ describe("GoogleAnalyticsImporter", function () {
     });
 
     it("should show that the import finished when the import finishes", async function () {
+        let totalTime = 0;
         while (true) { // wait until import finishes
             await page.waitFor(30000);
 
@@ -97,6 +98,14 @@ describe("GoogleAnalyticsImporter", function () {
             const elem = await page.$('td.actions > a.icon-delete');
             if (elem) {
                 break;
+            }
+
+            console.log('waiting...');
+
+            totalTime += 30;
+
+            if (totalTime > 60 * 7) {
+                throw new Error('timeout waiting for import to finish...');
             }
         }
 

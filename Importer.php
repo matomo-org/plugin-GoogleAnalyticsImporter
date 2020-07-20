@@ -449,7 +449,7 @@ class Importer
             }
         }
 
-        $quotaUser = SettingsPiwik::getPiwikUrl();
+        $quotaUser = defined('PIWIK_TEST_MODE') ? 'test' : SettingsPiwik::getPiwikUrl();
 
         $gaQuery = new GoogleAnalyticsQueryService(
             $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);

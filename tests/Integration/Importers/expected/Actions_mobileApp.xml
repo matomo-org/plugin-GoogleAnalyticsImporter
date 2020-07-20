@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <results>
+	<result record="Actions_SiteSearchCategories">
+		<row>
+			<label>cat1</label>
+		</row>
+		<row>
+			<label>cat2</label>
+		</row>
+		<row>
+			<label>cat3</label>
+		</row>
+	</result>
 	<result record="Actions_actions">
 		<row>
 			<col name="label"> Homepage</col>

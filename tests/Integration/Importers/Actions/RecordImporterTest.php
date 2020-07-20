@@ -13,6 +13,10 @@ use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\BaseRecordImporterTest
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Tests\Framework\Fixture;
 
+/**
+ * @group GoogleAnalyticsImporter
+ * @group GoogleAnalyticsImporter_Integration
+ */
 class RecordImporterTest extends BaseRecordImporterTest
 {
     public function setUp(): void
@@ -44,6 +48,7 @@ class RecordImporterTest extends BaseRecordImporterTest
             $this->makeMockExitPageUrlsResponse(),
             $this->makeMockExitPageTItlesResponse(),
             $this->makeMockSearchKeywordsResponse(),
+            $this->makeMockSiteSearchCategoriesResponse(),
         ]);
     }
 
@@ -304,6 +309,7 @@ class RecordImporterTest extends BaseRecordImporterTest
             $this->makeMockPageTitlesVisitsResponseForMobileApp(),
             $this->makeMockEntryPageTItlesResponseForMobileApp(),
             $this->makeMockExitPageTItlesResponseForMobileApp(),
+            $this->makeMockSiteSearchCategoriesResponse(),
         ], $idSite = 2);
     }
 
@@ -426,6 +432,27 @@ class RecordImporterTest extends BaseRecordImporterTest
                 'ga:exitScreenName' => 'Another Screen > Sub Screen',
                 Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS => 1,
                 Metrics::INDEX_PAGE_EXIT_NB_VISITS => 1,
+            ],
+        ];
+    }
+
+    private function makeMockSiteSearchCategoriesResponse()
+    {
+        return [
+            [
+                'ga:searchCategory' => 'cat1',
+                'ga:searchUniques' => 5,
+                'ga:searchResultViews' => 6,
+            ],
+            [
+                'ga:searchCategory' => 'cat2',
+                'ga:searchUniques' => 3,
+                'ga:searchResultViews' => 9,
+            ],
+            [
+                'ga:searchCategory' => 'cat3',
+                'ga:searchUniques' => 10,
+                'ga:searchResultViews' => 20,
             ],
         ];
     }

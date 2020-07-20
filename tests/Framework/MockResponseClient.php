@@ -57,7 +57,7 @@ class MockResponseClient extends \Google_Client
                 && Common::isPhpCliMode()
                 && strpos($request->getBody()->getContents(), '2019-06-28') === false
             ) {
-                sleep(6); // wait 10s to make sure UI test reloads w/ 'ongoing' status
+                sleep(10); // wait 10s to make sure UI test reloads w/ 'ongoing' status
                 $this->setErroredOnce();
                 throw new \Exception("forced error for test");
             }

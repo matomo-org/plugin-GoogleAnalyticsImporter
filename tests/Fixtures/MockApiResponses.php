@@ -16,11 +16,20 @@ use Piwik\Tests\Framework\Fixture;
 
 class MockApiResponses extends Fixture
 {
+    private $createSite;
+
+    public function __construct($createSite = true)
+    {
+        $this->createSite = $createSite;
+    }
+
     public function setUp(): void
     {
         parent::setUp();
 
-        self::createWebsite('2012-02-02 00:00:00');
+        if ($this->createSite) {
+            self::createWebsite('2012-02-02 00:00:00');
+        }
 
         Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, 'testaccesstoken');
         Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, json_encode([

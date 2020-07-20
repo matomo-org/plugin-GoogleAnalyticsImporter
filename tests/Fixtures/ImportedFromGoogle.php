@@ -22,6 +22,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\CapturingGoogleClient;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\MockResponseClient;
+use Piwik\Plugins\Login\Auth;
 use Piwik\Plugins\VisitsSummary\API;
 use Piwik\Plugins\VisitsSummary\VisitsSummary;
 use Piwik\Tests\Framework\Fixture;
@@ -54,6 +55,11 @@ class ImportedFromGoogle extends Fixture
     public function setUp(): void
     {
         parent::setUp();
+
+        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+            $mockResponses = new MockApiResponses($createSite = false);
+            $mockResponses->setUp();
+        }
 
         $this->getGoogleAnalyticsParams();
 
@@ -116,19 +122,25 @@ class ImportedFromGoogle extends Fixture
 
     private function getGoogleAnalyticsParams()
     {
-        if (!getenv('PIWIK_TEST_GA_ACCESS_TOKEN')
-            || !getenv('PIWIK_TEST_GA_CLIENT_CONFIG')
-        ) {
-            $this->tryToUseNonTestEnvCredentials();
+        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+            $this->viewId = 1234567;
+            $this->clientConfig = Option::get(Authorization::CLIENT_CONFIG_OPTION_NAME);
+            $this->accessToken = Option::get(Authorization::ACCESS_TOKEN_OPTION_NAME);
         } else {
-            $this->accessToken = $this->getEnvVar('PIWIK_TEST_GA_ACCESS_TOKEN');
-            $this->clientConfig = $this->getEnvVar('PIWIK_TEST_GA_CLIENT_CONFIG');
+            if (!getenv('PIWIK_TEST_GA_ACCESS_TOKEN')
+                || !getenv('PIWIK_TEST_GA_CLIENT_CONFIG')
+            ) {
+                $this->tryToUseNonTestEnvCredentials();
+            } else {
+                $this->accessToken = $this->getEnvVar('PIWIK_TEST_GA_ACCESS_TOKEN');
+                $this->clientConfig = $this->getEnvVar('PIWIK_TEST_GA_CLIENT_CONFIG');
+            }
+
+            Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
+            Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
+
+            $this->viewId = $this->getEnvVar('PIWIK_TEST_GA_VIEW_ID');
         }
-
-        Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
-        Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
-
-        $this->viewId = $this->getEnvVar('PIWIK_TEST_GA_VIEW_ID');
     }
 
     private function getEnvVar($name)
@@ -144,7 +156,11 @@ class ImportedFromGoogle extends Fixture
     {
         $domain = Config::getHostname();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
-        $property = $this->getEnvVar('GA_PROPERTY_ID');
+        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+            $property = 'UA-12345-6';
+        } else {
+            $property = $this->getEnvVar('GA_PROPERTY_ID');
+        }
 
         Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
         Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);

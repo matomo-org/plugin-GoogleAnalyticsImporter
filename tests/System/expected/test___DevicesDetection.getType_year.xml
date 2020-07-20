@@ -2,9 +2,9 @@
 <result>
 	<row>
 		<label>Desktop</label>
-		<nb_visits>372</nb_visits>
-		<nb_actions>1311</nb_actions>
-		<sum_visit_length>12071</sum_visit_length>
+		<nb_visits>371</nb_visits>
+		<nb_actions>1309</nb_actions>
+		<sum_visit_length>11950</sum_visit_length>
 		<bounce_count>86</bounce_count>
 		<nb_visits_converted>111</nb_visits_converted>
 		<nb_conversions>233</nb_conversions>
@@ -41,9 +41,7 @@
 				<items>790</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>161</sum_daily_nb_uniq_visitors>
-		<max_actions>2</max_actions>
-		<sum_daily_nb_users>0</sum_daily_nb_users>
+		<sum_daily_nb_uniq_visitors>160</sum_daily_nb_uniq_visitors>
 		<segment>deviceType==desktop</segment>
 		<logo>plugins/Morpheus/icons/dist/devices/desktop.png</logo>
 	</row>
@@ -190,5 +188,11 @@
 		<nb_visits>0</nb_visits>
 		<segment>deviceType==tv</segment>
 		<logo>plugins/Morpheus/icons/dist/devices/tv.png</logo>
+	</row>
+	<row>
+		<label>Wearable</label>
+		<nb_visits>0</nb_visits>
+		<segment>deviceType==wearable</segment>
+		<logo>plugins/Morpheus/icons/dist/devices/wearable.png</logo>
 	</row>
 </result>

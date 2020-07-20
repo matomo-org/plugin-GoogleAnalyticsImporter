@@ -9,10 +9,15 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Unit\Google;
 
+use PHPUnit\Framework\TestCase;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleMetricMapper;
 
-class GoogleMetricMapperTest extends \PHPUnit_Framework_TestCase
+/**
+ * @group GoogleAnalyticsImporter
+ * @group GoogleAnalyticsImporter_Unit
+ */
+class GoogleMetricMapperTest extends TestCase
 {
     public function test_constructor_shouldInitializeAllCorrectMappings()
     {

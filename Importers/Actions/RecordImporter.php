@@ -105,6 +105,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $this->queryExitPages($day);
             $this->getSiteSearchs($day);
             $this->queryPagesFollowingSiteSearch($day);
+            $this->querySiteSearchCategories($day);
 
             ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_TITLE], $isUrl = false);
             ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_URL], $isUrl = true, $folderPrefix = '');
@@ -560,5 +561,31 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 $this->replaceDefaultActionNameInTable($subtable, $originalDefaultName);
             }
         }
+    }
+
+    private function querySiteSearchCategories(Date $day)
+    {
+        $record = new DataTable();
+
+        $gaQuery = $this->getGaQuery();
+        $table = $gaQuery->query($day, $dimensions = ['ga:searchCategory'], array_merge($this->getConversionAwareVisitMetrics(), $this->getActionMetrics()), [
+            'mappings' => [
+                Metrics::INDEX_NB_VISITS => 'ga:searchUniques',
+                Metrics::INDEX_NB_ACTIONS => 'ga:searchResultViews',
+            ],
+        ]);
+
+        foreach ($table->getRows() as $row) {
+            $searchCategory = $row->getMetadata('ga:searchCategory');
+            if (empty($searchCategory)) {
+                $searchCategory = self::NOT_SET_IN_GA_LABEL;
+            }
+
+            $this->addRowToTable($record, $row, $searchCategory);
+        }
+
+        Common::destroy($table);
+
+        $this->insertRecord(Archiver::SITE_SEARCH_CATEGORY_RECORD_NAME, $record);
     }
 }

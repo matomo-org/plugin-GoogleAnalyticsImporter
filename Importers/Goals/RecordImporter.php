@@ -55,7 +55,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         // then import for dependent segments
         $segments = [
-            GoalsAPI::NEW_VISIT_SEGMENT => [
+            VisitFrequencyAPI::NEW_VISITOR_SEGMENT => [
                 'segmentId' => 'gaid::-2',
             ],
             VisitFrequencyAPI::RETURNING_VISITOR_SEGMENT => [

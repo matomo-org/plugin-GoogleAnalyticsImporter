@@ -8,20 +8,25 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Unit\Google;
 
+use PHPUnit\Framework\TestCase;
 use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
 use Psr\Log\NullLogger;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
-class GoogleQueryObjectFactoryTest extends \PHPUnit_Framework_TestCase
+/**
+ * @group GoogleAnalyticsImporter
+ * @group GoogleAnalyticsImporter_Unit
+ */
+class GoogleQueryObjectFactoryTest extends TestCase
 {
     /**
      * @var GoogleQueryObjectFactory
      */
     private $instance;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
