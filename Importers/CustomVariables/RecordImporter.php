@@ -46,13 +46,8 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     {
         parent::__construct($gaQuery, $idSite, $logger);
 
-        if (Site::isEcommerceEnabledFor($this->getIdSite())) {
-            $this->maximumRowsInDataTableLevelZero = Archiver::MAX_ROWS_WHEN_ECOMMERCE;
-            $this->maximumRowsInSubDataTable = Archiver::MAX_ROWS_WHEN_ECOMMERCE;
-        } else {
-            $this->maximumRowsInDataTableLevelZero = Config::getInstance()->General['datatable_archiving_maximum_rows_custom_variables'];
-            $this->maximumRowsInSubDataTable = Config::getInstance()->General['datatable_archiving_maximum_rows_subtable_custom_variables'];
-        }
+        $this->maximumRowsInDataTableLevelZero = Config::getInstance()->General['datatable_archiving_maximum_rows_custom_variables'] ?? Config::getInstance()->General['datatable_archiving_maximum_rows_custom_dimensions'];
+        $this->maximumRowsInSubDataTable = Config::getInstance()->General['datatable_archiving_maximum_rows_subtable_custom_variables'] ?? Config::getInstance()->General['datatable_archiving_maximum_rows_subtable_custom_dimensions'];
 
         $this->importConfiguration = StaticContainer::get(ImportConfiguration::class);
     }
