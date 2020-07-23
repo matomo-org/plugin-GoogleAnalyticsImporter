@@ -19,6 +19,7 @@ use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\MobileAppMeasurable\Type;
+use Piwik\SettingsServer;
 use Piwik\Site;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
@@ -113,6 +114,35 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         return $this->index();
     }
+
+	private function setFixedEndDateIfWordPress($endDate)
+	{
+		// if Matomo for WordPress is used, then the data will be imported into the same site as the data is also being
+		// tracked into by the sounds. So we need to make sure the import ends before Matomo for WordPress was installed
+		// otherwise it would potentially always overwrite already aggregated report data
+		if (method_exists(SettingsServer::class, 'isMatomoForWordPress')
+		    && SettingsServer::isMatomoForWordPress()
+		    && defined('\WpMatomo\Installer::OPTION_NAME_INSTALL_DATE')) {
+
+			$installDate = get_option(\WpMatomo\Installer::OPTION_NAME_INSTALL_DATE);
+
+			if (empty($installDate)) {
+				// matomo for WordPress was installed before this option was set
+				// we have to make sure there will be an end date otherwise it will always overwrite data
+				// we assume Matomo for WordPress was installed two days ago
+				$installDate = Date::today()->subDay(2);
+			} else {
+				// import up to 1 day before original install
+				$installDate = Date::factory($installDate)->subDay(1);
+			}
+
+			if (!$endDate || Date::factory($endDate)->isLater($installDate)) {
+				$endDate = $installDate->toString();
+			}
+        }
+
+		return $endDate;
+	}
 
     /**
      * Processes the response from google oauth service
@@ -230,6 +260,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $idSite = Common::getRequestVar('idSite', null, 'int');
             $endDate = Common::getRequestVar('endDate', '', 'string');
 
+            $endDate = $this->setFixedEndDateIfWordPress($endDate);
+
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
             $status = $importStatus->getImportStatus($idSite);
@@ -265,6 +297,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             }
 
             $endDate = trim(Common::getRequestVar('endDate', ''));
+	        $endDate = $this->setFixedEndDateIfWordPress($endDate);
             if (!empty($endDate)) {
                 $endDate = Date::factory($endDate . ' 00:00:00');
             }
@@ -377,7 +410,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $startDate = Date::factory($startDate);
 
             $endDate = Common::getRequestVar('endDate', null, 'string');
-            $endDate = Date::factory($endDate);
+	        $endDate = $this->setFixedEndDateIfWordPress($endDate);
+
+	        $endDate = Date::factory($endDate);
 
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
