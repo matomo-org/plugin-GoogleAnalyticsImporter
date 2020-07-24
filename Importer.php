@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Google_Service_Analytics_Goal;
+use PHPMailer\PHPMailer\Exception;
 use Piwik\API\Request;
 use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
@@ -30,6 +31,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleCustomDimensionMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGoalMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
+use Piwik\Plugins\GoogleAnalyticsImporter\Input\MaxEndDateReached;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
@@ -360,6 +362,9 @@ class Importer
         } catch (DailyRateLimitReached $ex) {
             $this->importStatus->rateLimitReached($idSite);
             throw $ex;
+        } catch (MaxEndDateReached $ex) {
+            $this->importStatus->finishedImport($idSite);
+            throw $ex;
         } catch (\Throwable $ex) {
             $dateStr = isset($date) ? $date->toString() : '(unknown)';
             $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
@@ -374,10 +379,10 @@ class Importer
      */
     public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
     {
-    	$maxEndDate = $this->endDate->getMaxEndDate();
-    	if ($maxEndDate && $maxEndDate->isLater($date)) {
-    		return;
-	    }
+        $maxEndDate = $this->endDate->getMaxEndDate();
+        if ($maxEndDate && $maxEndDate->isLater($date)) {
+            throw new MaxEndDateReached();
+        }
 
         $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
         $archiveWriter->initNewArchive();
