@@ -29,6 +29,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleCustomDimensionMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGoalMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
+use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
@@ -109,9 +110,14 @@ class Importer
      */
     private $invalidator;
 
+    /**
+     * @var EndDate
+     */
+    private $endDate;
+
     public function __construct(ReportsProvider $reportsProvider, \Google_Service_Analytics $gaService, \Google_Service_AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
-                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator)
+                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = $gaService;
@@ -122,6 +128,7 @@ class Importer
         $this->idMapper = $idMapper;
         $this->importStatus = $importStatus;
         $this->invalidator = $invalidator;
+        $this->endDate = $endDate;
     }
 
     public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [])
@@ -367,6 +374,11 @@ class Importer
      */
     public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
     {
+    	$maxEndDate = $this->endDate->getMaxEndDate();
+    	if ($maxEndDate && $maxEndDate->isLater($date)) {
+    		return;
+	    }
+
         $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
         $archiveWriter->initNewArchive();
 
