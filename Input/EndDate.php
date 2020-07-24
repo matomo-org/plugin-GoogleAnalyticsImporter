@@ -40,10 +40,8 @@ class EndDate
             if (empty($installDate)) {
                 // matomo for WordPress was installed before this option was set
                 // we have to make sure there will be an end date otherwise it will always overwrite data
-                // we use site creation date as an alternative
-                $site = new \WpMatomo\Site();
-                $idSite = $site->get_current_matomo_site_id();
-                $installDate = Date::factory(Site::getCreationDateFor($idSite))->subDay(1);
+                // we assume it was installed 2 days ago. It's not 100% accurate but best we can do
+                $installDate = Date::today()->subDay(2);
             } else {
                 // import up to 1 day before original install
                 $installDate = Date::factory($installDate)->subDay(1);
