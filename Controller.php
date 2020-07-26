@@ -18,7 +18,9 @@ use Piwik\Notification;
 use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
+use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
+use Piwik\SettingsServer;
 use Piwik\Site;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
@@ -230,6 +232,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $idSite = Common::getRequestVar('idSite', null, 'int');
             $endDate = Common::getRequestVar('endDate', '', 'string');
 
+            $inputEndDate = new EndDate();
+            $endDate = $inputEndDate->limitMaxEndDateIfNeeded($endDate);
+
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
             $status = $importStatus->getImportStatus($idSite);
@@ -265,6 +270,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             }
 
             $endDate = trim(Common::getRequestVar('endDate', ''));
+
+	        $inputEndDate = new EndDate();
+	        $endDate = $inputEndDate->limitMaxEndDateIfNeeded($endDate);
             if (!empty($endDate)) {
                 $endDate = Date::factory($endDate . ' 00:00:00');
             }
@@ -377,7 +385,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $startDate = Date::factory($startDate);
 
             $endDate = Common::getRequestVar('endDate', null, 'string');
-            $endDate = Date::factory($endDate);
+
+	        $inputEndDate = new EndDate();
+	        $endDate = $inputEndDate->limitMaxEndDateIfNeeded($endDate);
+
+	        $endDate = Date::factory($endDate);
 
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
