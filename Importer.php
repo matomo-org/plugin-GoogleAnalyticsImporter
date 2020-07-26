@@ -333,6 +333,8 @@ class Importer
 
     public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '')
     {
+        $date = null;
+
         try {
             $this->currentLock = $lock;
             $this->noDataMessageRemoved = false;
@@ -363,14 +365,23 @@ class Importer
             $this->importStatus->rateLimitReached($idSite);
             throw $ex;
         } catch (MaxEndDateReached $ex) {
+            $this->logger->info('Max end date reached. This occurs in Matomo for Wordpress installs when the importer tries to import days on or after the day Matomo for Wordpress installed.');
+
+            if (!empty($date)) {
+                $this->importStatus->dayImportFinished($idSite, $date);
+            }
+
             $this->importStatus->finishedImport($idSite);
-            throw $ex;
+
+            return true;
         } catch (\Throwable $ex) {
             $dateStr = isset($date) ? $date->toString() : '(unknown)';
             $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
 
             throw $ex;
         }
+
+        return false;
     }
 
     /**
@@ -380,7 +391,7 @@ class Importer
     public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
     {
         $maxEndDate = $this->endDate->getMaxEndDate();
-        if ($maxEndDate && $maxEndDate->isLater($date)) {
+        if ($maxEndDate && $maxEndDate->isEarlier($date)) {
             throw new MaxEndDateReached();
         }
 

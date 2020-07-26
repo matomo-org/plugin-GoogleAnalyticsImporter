@@ -210,7 +210,10 @@ class ImportReports extends ConsoleCommand
 
                 $output->writeln("Importing reports for date range {$startDate} - {$endDate} from GA view $viewId.");
 
-                $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
+                $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
+                if ($aborted) {
+                    break;
+                }
 
                 $isReimportEntry = $index < count($dateRangesToReImport);
                 if ($isReimportEntry) {
