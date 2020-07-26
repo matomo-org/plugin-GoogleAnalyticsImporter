@@ -1,0 +1,22 @@
+{
+    "GoogleAnalyticsImporter": {
+        "AdminMenuTitle": "Import depuis Google Analytics",
+        "ConfigureTheImporter": "Configurer l'importateur",
+        "Authorize": "Autoriser",
+        "ConfigurationFile": "Fichier de configuration",
+        "IsMobileApp": "Application mobile",
+        "Optional": "Optionnel",
+        "Timezone": "Fuseau horaire",
+        "Start": "Début",
+        "None": "aucun",
+        "EndDate": "Date de fin",
+        "Troubleshooting": "Dépannage",
+        "RequiredFunctionsCheck": "Fonctions PHP requises",
+        "Change": "Modifier",
+        "SiteID": "ID du site",
+        "SiteDeleted": "Site supprimé",
+        "ErrorMessage": "Message d'erreur",
+        "Status": "État",
+        "Actions": "Actions"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "GoogleAnalyticsImporter": {
+        "AdminMenuTitle": "Importação do Google Analytics",
+        "ConfigureTheImporter": "Configurar o Importador",
+        "InvalidClientJson": "JSON inválido no arquivo de credenciais. Tente baixar novamente o arquivo a partir do Console de API do Google.",
+        "ConfigurationFile": "Arquivo de configuração",
+        "ConfigurationText": "Texto de configuração",
+        "RemoveClientConfiguration": "Remover configuração de cliente",
+        "StartDate": "Data de início",
+        "IsMobileApp": "Aplicativo móvel",
+        "Optional": "Opcional",
+        "None": "Nenhum",
+        "Change": "Mudar",
+        "Status": "Status",
+        "Actions": "Ações"
+    }
+}

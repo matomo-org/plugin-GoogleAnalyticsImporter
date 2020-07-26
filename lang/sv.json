@@ -1,0 +1,10 @@
+{
+    "GoogleAnalyticsImporter": {
+        "IsMobileApp": "Mobilapp",
+        "Optional": "Frivilligt",
+        "None": "Ingen",
+        "Change": "Ändra",
+        "Status": "Status",
+        "Actions": "Händelser"
+    }
+}
