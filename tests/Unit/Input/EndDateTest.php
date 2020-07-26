@@ -12,8 +12,9 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Unit\Google;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleMetricMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
+use PHPUnit\Framework\TestCase;
 
-class EndDateTest extends \PHPUnit_Framework_TestCase
+class EndDateTest extends TestCase
 {
 
     public function test_getMaxEndDate()
