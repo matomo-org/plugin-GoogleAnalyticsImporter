@@ -380,6 +380,12 @@ class ImportStatus
         }
 
         $status = $this->getImportStatus($idSite);
+
+        // if there is already a reimport scheduled, last_date_imported is being used for it
+        if (empty($status['reimport_ranges'])) {
+            $status['last_date_imported'] = null;
+        }
+
         $status['reimport_ranges'][] = [$startDate->toString(), $endDate->toString()];
 
         if ($status['status'] == self::STATUS_FINISHED) {
@@ -411,6 +417,10 @@ class ImportStatus
             return $s[0] != $datesToImport[0] || $s[1] != $datesToImport[1];
         });
         $status['reimport_ranges'] = array_values($status['reimport_ranges']);
+
+        if (!empty($status['reimport_ranges'])) {
+            $status['last_date_imported'] = null;
+        }
 
         $this->saveStatus($status);
     }

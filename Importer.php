@@ -90,7 +90,7 @@ class Importer
     /**
      * @var int
      */
-    private $queryCount;
+    private $queryCount = 0;
 
     /**
      * @var ImportStatus
@@ -355,12 +355,21 @@ class Importer
                     'date' => $date->toString(),
                 ]);
 
-                $this->importDay($site, $date, $recordImporters, $segment);
+                try {
+                    $this->importDay($site, $date, $recordImporters, $segment);
+                } finally {
+                    // force delete all tables in case they aren't all freed
+                    \Piwik\DataTable\Manager::getInstance()->deleteAll();
+                }
 
                 $this->importStatus->dayImportFinished($idSite, $date);
+
+                throw new \Exception('FORCED ERROR');
             }
 
             $this->importStatus->finishImportIfNothingLeft($idSite);
+
+            unset($recordImporters);
         } catch (DailyRateLimitReached $ex) {
             $this->importStatus->rateLimitReached($idSite);
             throw $ex;
@@ -425,7 +434,7 @@ class Importer
 
                 $sessions = $visitsSummaryRecordImporter->getSessions();
                 if ($sessions <= 0) {
-                    $this->logger->info("Found 0 sessions for {$date}, skipping rest of plugins for this day.");
+                    $this->logger->info("Found 0 sessions for {$date} [segment = $segment], skipping rest of plugins for this day/segment.");
                     break;
                 }
             }
@@ -437,6 +446,8 @@ class Importer
         $archiveWriter->finalizeArchive();
 
         $this->invalidator->markArchivesAsInvalidated([$site->getId()], [$date], 'week', new Segment($segment, [$site->getId()]));
+
+        Common::destroy($archiveWriter);
     }
 
     private function makeArchiveWriter(Site $site, Date $date, $segment = '', $plugin = null)

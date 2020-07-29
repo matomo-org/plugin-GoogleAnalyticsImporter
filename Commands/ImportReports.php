@@ -149,10 +149,8 @@ class ImportReports extends ConsoleCommand
             $importStatus->resumeImport($idSite);
 
             $dates = $this->getDatesToImport($input);
-            if (empty($dates)) {
-                if (!empty($status['last_date_imported'])) {
-                    $startDate = Date::factory($status['last_date_imported'])->addDay(1);
-                } else if (!empty($status['import_range_start'])) {
+            if (empty($dates) && empty($status['import_end_time'])) {
+                if (!empty($status['import_range_start'])) {
                     $startDate = Date::factory($status['import_range_start']);
                 } else {
                     $startDate = Date::factory(Site::getCreationDateFor($idSite));
@@ -180,7 +178,11 @@ class ImportReports extends ConsoleCommand
             }, $dateRangesToReImport);
 
             $dateRangesToImport = $dateRangesToReImport;
-            if (!$dates[1]->isEarlier($dates[0])) { // the range can be invalid if a job is finished, since we'll be at the end date
+
+            // the range can be invalid if a job is finished, since we'll be at the end date
+            if (!empty($dates) &&
+                !$dates[1]->isEarlier($dates[0])
+            ) {
                 $dateRangesToImport = array_merge($dateRangesToReImport, [[$dates[0], $dates[1]]]);
             }
 
@@ -189,8 +191,8 @@ class ImportReports extends ConsoleCommand
 
             $output->writeln("Importing the following date ranges in order: " . $dateRangesText);
 
+            $latestDateImported = null;
             foreach (array_values($dateRangesToImport) as $index => $datesToImport) {
-
                 if (!is_array($datesToImport)
                     || count($datesToImport) != 2
                 ) {
@@ -200,8 +202,14 @@ class ImportReports extends ConsoleCommand
                 }
 
                 list($startDate, $endDate) = $datesToImport;
+
+                if (!empty($status['last_date_imported'])) {
+                    $startDate = Date::factory($status['last_date_imported'])->addDay(1);
+                }
+
                 if (!$this->isValidDate($startDate)
                     || !$this->isValidDate($endDate)
+                    || $endDate->isEarlier($startDate)
                 ) {
                     $output->writeln("Found broken entry in date ranges to import (entry #$index) with invalid date strings, skipping.");
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
@@ -210,9 +218,18 @@ class ImportReports extends ConsoleCommand
 
                 $output->writeln("Importing reports for date range {$startDate} - {$endDate} from GA view $viewId.");
 
-                $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
-                if ($aborted) {
-                    break;
+                try {
+                    $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
+                    if ($aborted) {
+                        break;
+                    }
+                } finally {
+                    // doing it in the finally since we can get rate limited, which will result in an exception thrown
+                    if (!$skipArchiving) {
+                        $output->writeln("Running archiving for newly imported data...");
+                        $status = $importStatus->getImportStatus($idSite);
+                        Tasks::startArchive($status, $wait = true, $startDate, $checkImportIsRunning = false);
+                    }
                 }
 
                 $isReimportEntry = $index < count($dateRangesToReImport);
@@ -224,13 +241,6 @@ class ImportReports extends ConsoleCommand
             $importStatus->finishImportIfNothingLeft($idSite);
 
             $lock->unlock();
-
-            // doing it in the finally since we can get rate limited, which will result in an exception thrown
-            if (!$skipArchiving) {
-                $output->write("Running archiving for newly imported data...");
-                $status = $importStatus->getImportStatus($idSite);
-                Tasks::startArchive($status, $wait = true);
-            }
         }
 
         $queryCount = $importer->getQueryCount();
