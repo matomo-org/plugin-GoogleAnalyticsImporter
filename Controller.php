@@ -160,6 +160,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         try {
             $config = Common::getRequestVar('client', '');
+            $config = Common::unsanitizeInputValue($config);
 
             if (empty($config) && !empty($_FILES['clientfile'])) {
 
