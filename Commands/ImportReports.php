@@ -191,8 +191,11 @@ class ImportReports extends ConsoleCommand
 
             $output->writeln("Importing the following date ranges in order: " . $dateRangesText);
 
-            $latestDateImported = null;
+            // NOTE: date ranges to reimport are handled first, then we go back to the main import (which could be
+            // continuous)
             foreach (array_values($dateRangesToImport) as $index => $datesToImport) {
+                $status = $importStatus->getImportStatus($idSite); // can change in the meantime, so we refetch
+
                 if (!is_array($datesToImport)
                     || count($datesToImport) != 2
                 ) {
@@ -201,17 +204,33 @@ class ImportReports extends ConsoleCommand
                     continue;
                 }
 
+                $isMainImport = !empty($dates) && empty($status['import_end_time']) && $index == count($dateRangesToImport) - 1; // last is always the main import, if one exists
+
                 list($startDate, $endDate) = $datesToImport;
 
-                if (!empty($status['last_date_imported'])) {
-                    $startDate = Date::factory($status['last_date_imported'])->addDay(1);
+                if ($isMainImport) {
+                    $lastDateImported = !empty($status['main_import_progress']) ? $status['main_import_progress'] : null;
+                    $lastDateImported = $lastDateImported ?: (!empty($status['last_date_imported']) ? $status['last_date_imported'] : null);
+                } else {
+                    $lastDateImported = !empty($status['last_date_imported']) ? $status['last_date_imported'] : null;
+                }
+
+                if (!empty($lastDateImported)
+                    && Date::factory($lastDateImported)->addDay(1)->isLater($startDate)
+                ) {
+                    $startDate = Date::factory($lastDateImported)->addDay(1);
                 }
 
                 if (!$this->isValidDate($startDate)
                     || !$this->isValidDate($endDate)
-                    || $endDate->isEarlier($startDate)
                 ) {
                     $output->writeln("Found broken entry in date ranges to import (entry #$index) with invalid date strings, skipping.");
+                    $importStatus->removeReImportEntry($idSite, $datesToImport);
+                    continue;
+                }
+
+                if ($endDate->isEarlier($startDate)) {
+                    $output->writeln("(Entry #$index) is finished, moving on.");
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
                     continue;
                 }
@@ -219,6 +238,7 @@ class ImportReports extends ConsoleCommand
                 $output->writeln("Importing reports for date range {$startDate} - {$endDate} from GA view $viewId.");
 
                 try {
+                    $importer->setIsMainImport($isMainImport);
                     $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
                     if ($aborted) {
                         break;

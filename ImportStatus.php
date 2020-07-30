@@ -67,6 +67,7 @@ class ImportStatus
                 'view' => $viewId,
             ],
             'last_date_imported' => null,
+            'main_import_progress' => null,
             'import_start_time' => $now,
             'import_end_time' => null,
             'last_job_start_time' => $now,
@@ -95,7 +96,7 @@ class ImportStatus
         return $dates;
     }
 
-    public function dayImportFinished($idSite, Date $date)
+    public function dayImportFinished($idSite, Date $date, $isMainImport = true)
     {
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_ONGOING;
@@ -106,6 +107,10 @@ class ImportStatus
             $status['last_date_imported'] = $date->toString();
 
             $this->setImportedDateRange($idSite, $startDate = null, $date);
+
+            if ($isMainImport) {
+                $status['main_import_progress'] = $date->toString();
+            }
         }
 
         if (isset($status['days_finished_since_rate_limit'])
@@ -381,7 +386,7 @@ class ImportStatus
 
         $status = $this->getImportStatus($idSite);
 
-        // if there is already a reimport scheduled, last_date_imported is being used for it
+        // if we're currently reimporting, then we're using last_date_imported, so don't overwrite it
         if (empty($status['reimport_ranges'])) {
             $status['last_date_imported'] = null;
         }

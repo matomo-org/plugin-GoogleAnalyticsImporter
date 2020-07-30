@@ -65,6 +65,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'main_import_progress' => null,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, null, null);
@@ -89,6 +90,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'main_import_progress' => null,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2012-03-04'), Date::factory('2012-03-05'));
@@ -113,6 +115,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'main_import_progress' => null,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2017-03-04'), null);
@@ -137,6 +140,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'main_import_progress' => null,
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
@@ -161,6 +165,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 1,
             'reimport_ranges' => [],
+            'main_import_progress' => '2015-03-02',
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
@@ -187,6 +192,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 3,
             'reimport_ranges' => [],
+            'main_import_progress' => '2015-03-04',
         ], $status);
 
         $this->instance->finishedImport($idSite);
@@ -212,6 +218,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 3,
             'reimport_ranges' => [],
+            'main_import_progress' => '2015-03-04',
         ], $status);
 
         $this->instance->deleteStatus($idSite);
@@ -248,6 +255,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [],
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'main_import_progress' => null,
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
@@ -271,6 +279,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [],
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'main_import_progress' => null,
         ], $status);
     }
 
@@ -303,6 +312,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [],
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'main_import_progress' => null,
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
@@ -325,6 +335,7 @@ class ImportStatusTest extends IntegrationTestCase
             'extra_custom_dimensions' => [],
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'main_import_progress' => null,
         ], $status);
     }
 
@@ -515,6 +526,7 @@ class ImportStatusTest extends IntegrationTestCase
 Account: account
 View: view',
                 'reimport_ranges' => [],
+                'main_import_progress' => null,
             ],
             [
                 'status' => 'started',
@@ -536,6 +548,7 @@ View: view',
 Account: account2
 View: view2',
                 'reimport_ranges' => [],
+                'main_import_progress' => null,
             ],
             [
                 'status' => 'started',
@@ -557,6 +570,7 @@ View: view2',
 Account: account3
 View: view3',
                 'reimport_ranges' => [],
+                'main_import_progress' => null,
             ],
         ], $statuses);
     }
@@ -629,6 +643,7 @@ View: view3',
 Account: account
 View: view',
                 'reimport_ranges' => [],
+                'main_import_progress' => null,
             ],
             [
                 'status' => 'killed',
@@ -650,6 +665,7 @@ View: view',
 Account: account2
 View: view2',
                 'reimport_ranges' => [],
+                'main_import_progress' => null,
             ],
             [
                 'status' => 'started',
@@ -671,6 +687,7 @@ View: view2',
 Account: account3
 View: view3',
                 'reimport_ranges' => [],
+                'main_import_progress' => null,
             ],
             [
                 'status' => 'killed',
@@ -692,6 +709,7 @@ View: view3',
 Account: account4
 View: view4',
                 'reimport_ranges' => [],
+                'main_import_progress' => null,
             ],
             [
                 'status' => 'started',
@@ -713,6 +731,7 @@ View: view4',
 Account: account5
 View: view5',
                 'reimport_ranges' => [],
+                'main_import_progress' => null,
             ],
         ], $statuses);
     }

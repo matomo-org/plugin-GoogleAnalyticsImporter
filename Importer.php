@@ -44,6 +44,7 @@ use Psr\Log\LoggerInterface;
 
 class Importer
 {
+    // TODO: use bigger lock for cloud and only expire if close to end
     const LOCK_TTL = 300; // lock will expire 5 minutes after inactivity
     const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
 
@@ -117,6 +118,12 @@ class Importer
      */
     private $endDate;
 
+    /**
+     * Whether this is the main import date range or for a reimport range.
+     * @var bool
+     */
+    private $isMainImport = true;
+
     public function __construct(ReportsProvider $reportsProvider, \Google_Service_Analytics $gaService, \Google_Service_AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
                                 IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
@@ -131,6 +138,11 @@ class Importer
         $this->importStatus = $importStatus;
         $this->invalidator = $invalidator;
         $this->endDate = $endDate;
+    }
+
+    public function setIsMainImport($isMainImport)
+    {
+        $this->isMainImport = $isMainImport;
     }
 
     public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [])
@@ -362,7 +374,7 @@ class Importer
                     \Piwik\DataTable\Manager::getInstance()->deleteAll();
                 }
 
-                $this->importStatus->dayImportFinished($idSite, $date);
+                $this->importStatus->dayImportFinished($idSite, $date, $this->isMainImport);
 
                 throw new \Exception('FORCED ERROR');
             }
@@ -377,7 +389,7 @@ class Importer
             $this->logger->info('Max end date reached. This occurs in Matomo for Wordpress installs when the importer tries to import days on or after the day Matomo for Wordpress installed.');
 
             if (!empty($date)) {
-                $this->importStatus->dayImportFinished($idSite, $date);
+                $this->importStatus->dayImportFinished($idSite, $date, $this->isMainImport);
             }
 
             $this->importStatus->finishedImport($idSite);
