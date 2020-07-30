@@ -375,8 +375,6 @@ class Importer
                 }
 
                 $this->importStatus->dayImportFinished($idSite, $date, $this->isMainImport);
-
-                throw new \Exception('FORCED ERROR');
             }
 
             $this->importStatus->finishImportIfNothingLeft($idSite);

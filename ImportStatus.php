@@ -400,6 +400,8 @@ class ImportStatus
         $this->saveStatus($status);
     }
 
+    // TODO: we don't ever need to remove an entry that isn't the first one, this should be
+    //       shiftReImportEntryIfEquals(...)
     public function removeReImportEntry($idSite, $datesToImport)
     {
         $status = $this->getImportStatus($idSite);
@@ -423,7 +425,7 @@ class ImportStatus
         });
         $status['reimport_ranges'] = array_values($status['reimport_ranges']);
 
-        if (!empty($status['reimport_ranges'])) {
+        if (!empty($status['reimport_ranges'])) { // we're done w/ one range, so if there are more, reset last_date_imported
             $status['last_date_imported'] = null;
         }
 
