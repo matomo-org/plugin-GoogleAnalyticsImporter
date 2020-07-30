@@ -67,6 +67,7 @@ class ImportStatus
                 'view' => $viewId,
             ],
             'last_date_imported' => null,
+            'main_import_progress' => null,
             'import_start_time' => $now,
             'import_end_time' => null,
             'last_job_start_time' => $now,
@@ -95,7 +96,7 @@ class ImportStatus
         return $dates;
     }
 
-    public function dayImportFinished($idSite, Date $date)
+    public function dayImportFinished($idSite, Date $date, $isMainImport = true)
     {
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_ONGOING;
@@ -106,6 +107,10 @@ class ImportStatus
             $status['last_date_imported'] = $date->toString();
 
             $this->setImportedDateRange($idSite, $startDate = null, $date);
+
+            if ($isMainImport) {
+                $status['main_import_progress'] = $date->toString();
+            }
         }
 
         if (isset($status['days_finished_since_rate_limit'])
@@ -380,6 +385,12 @@ class ImportStatus
         }
 
         $status = $this->getImportStatus($idSite);
+
+        // if we're currently reimporting, then we're using last_date_imported, so don't overwrite it
+        if (empty($status['reimport_ranges'])) {
+            $status['last_date_imported'] = null;
+        }
+
         $status['reimport_ranges'][] = [$startDate->toString(), $endDate->toString()];
 
         if ($status['status'] == self::STATUS_FINISHED) {
@@ -389,6 +400,8 @@ class ImportStatus
         $this->saveStatus($status);
     }
 
+    // TODO: we don't ever need to remove an entry that isn't the first one, this should be
+    //       shiftReImportEntryIfEquals(...)
     public function removeReImportEntry($idSite, $datesToImport)
     {
         $status = $this->getImportStatus($idSite);
@@ -411,6 +424,10 @@ class ImportStatus
             return $s[0] != $datesToImport[0] || $s[1] != $datesToImport[1];
         });
         $status['reimport_ranges'] = array_values($status['reimport_ranges']);
+
+        if (!empty($status['reimport_ranges'])) { // we're done w/ one range, so if there are more, reset last_date_imported
+            $status['last_date_imported'] = null;
+        }
 
         $this->saveStatus($status);
     }
