@@ -93,6 +93,9 @@
     "Schedule": "Schedule",
     "InvalidDateRange": "Invalid date range, the start date must be earlier than the end date.",
     "ScheduledReImports": "Re-imports",
-    "StartFinishTimes": "Start/Finish Times"
+    "StartFinishTimes": "Start/Finish Times",
+    "MaxEndDateHelp": "The maximum end date allowed in this Matomo install is %1$s. If you enter a date past it, it will be changed to this date.",
+    "TodaysDate": "today's date",
+    "YesterdaysDate": "yesterday's date"
   }
 }

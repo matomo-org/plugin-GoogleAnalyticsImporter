@@ -9,17 +9,30 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Input;
 
+use Piwik\Config;
 use Piwik\Date;
 use Piwik\SettingsServer;
 use Piwik\Site;
 
 class EndDate
 {
+    const CONFIG_NAME = 'forced_max_end_date'; // value can be anything that works for Date::factory()
+
     /**
      * @internal tests only
      * @var null|string
      */
     public $forceMaxEndDate = null;
+
+    public function __construct(Config $config)
+    {
+        $this->forceMaxEndDate = $this->readConfigForcedMaxEndDate($config);
+    }
+
+    public function getConfiguredMaxEndDate()
+    {
+        return $this->forceMaxEndDate;
+    }
 
     /**
      * @return Date|null
@@ -66,5 +79,23 @@ class EndDate
         }
 
         return $endDate;
+    }
+
+    private function readConfigForcedMaxEndDate(Config $config)
+    {
+        if (empty($config)) {
+            return null;
+        }
+
+        $configSection = $config->GoogleAnalyticsImporter;
+        $maxEndDate = !empty($configSection[self::CONFIG_NAME]) ? $configSection[self::CONFIG_NAME] : null;
+        if (!empty($maxEndDate)) {
+            try {
+                Date::factory($maxEndDate);
+            } catch (\Exception $ex) {
+                throw new \Exception("Invalid max end date: $maxEndDate");
+            }
+        }
+        return $maxEndDate;
     }
 }
