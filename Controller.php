@@ -71,6 +71,16 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $resumeImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.resumeImportNonce');
         $scheduleReImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.scheduleReImport');
 
+        $endDate = StaticContainer::get(EndDate::class);
+        $maxEndDate = $endDate->getConfiguredMaxEndDate();
+        if ($maxEndDate == 'today' || $maxEndDate == 'now') {
+            $maxEndDateDesc = Piwik::translate('GoogleAnalyticsImporter_TodaysDate');
+        } else if ($maxEndDate == 'yesterday' || $maxEndDate == 'yesterdaySameTime') {
+            $maxEndDateDesc = Piwik::translate('GoogleAnalyticsImporter_YesterdaysDate');
+        } else if (!empty($maxEndDate)) {
+            $maxEndDateDesc = Date::factory($maxEndDate)->toString();
+        }
+
         return $this->renderTemplate('index', [
             'isConfigured' => $authorization->hasAccessToken(),
             'authUrl' => $authUrl,
@@ -82,6 +92,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'changeImportEndDateNonce' => $changeImportEndDateNonce,
             'resumeImportNonce' => $resumeImportNonce,
             'scheduleReImportNonce' => $scheduleReImportNonce,
+            'maxEndDateDesc' => $maxEndDateDesc,
             'extraCustomDimensionsField' => [
                 'field1' => [
                     'key' => 'gaDimension',
@@ -233,7 +244,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $idSite = Common::getRequestVar('idSite', null, 'int');
             $endDate = Common::getRequestVar('endDate', '', 'string');
 
-            $inputEndDate = new EndDate();
+            $inputEndDate = StaticContainer::get(EndDate::class);
             $endDate = $inputEndDate->limitMaxEndDateIfNeeded($endDate);
 
             /** @var ImportStatus $importStatus */
@@ -272,10 +283,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             $endDate = trim(Common::getRequestVar('endDate', ''));
 
-	        $inputEndDate = new EndDate();
+	        $inputEndDate = StaticContainer::get(EndDate::class);
 	        $endDate = $inputEndDate->limitMaxEndDateIfNeeded($endDate);
             if (!empty($endDate)) {
-                $endDate = Date::factory($endDate . ' 00:00:00');
+                $endDate = Date::factory($endDate)->getStartOfDay();
             }
 
             // set credentials in google client
@@ -387,7 +398,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             $endDate = Common::getRequestVar('endDate', null, 'string');
 
-	        $inputEndDate = new EndDate();
+	        $inputEndDate = StaticContainer::get(EndDate::class);
 	        $endDate = $inputEndDate->limitMaxEndDateIfNeeded($endDate);
 
 	        $endDate = Date::factory($endDate);

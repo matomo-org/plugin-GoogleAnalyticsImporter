@@ -80,7 +80,7 @@
                  ng-model="importScheduler.endDate"
                  title="{{ 'GoogleAnalyticsImporter_EndDate'|translate }}"
                  placeholder="{{ 'GoogleAnalyticsImporter_None'|translate }}"
-                 inline-help="{{ 'GoogleAnalyticsImporter_EndDateHelp'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_EndDateHelp'|translate }} {% if maxEndDateDesc|default is not empty %}{{ '<br/><br/>' ~ 'GoogleAnalyticsImporter_MaxEndDateHelp'|translate(maxEndDateDesc)|e('html_attr') }}{% endif %}"
             >
             </div>
 
