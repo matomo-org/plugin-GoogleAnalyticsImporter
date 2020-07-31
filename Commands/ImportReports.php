@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 
 use Piwik\Concurrency\Lock;
 use Piwik\Concurrency\LockBackend\MySqlLockBackend;
+use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Plugin\ConsoleCommand;
@@ -17,6 +18,7 @@ use Piwik\Plugin\Manager;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
+use Piwik\Plugins\GoogleAnalyticsImporter\ImportLock;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
 use Piwik\Plugins\WebsiteMeasurable\Type;
@@ -33,8 +35,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 // TODO: support importing segments
 class ImportReports extends ConsoleCommand
 {
-    const IMPORT_LOCK_NAME = 'GoogleAnalyticsImport_importLock';
-
     protected function configure()
     {
         $this->setName('googleanalyticsimporter:import-reports');
@@ -138,9 +138,10 @@ class ImportReports extends ConsoleCommand
         }
 
         $lock = self::makeLock();
-        $success = $lock->acquireLock($idSite, Importer::LOCK_TTL);
+        $success = $lock->acquireLock($idSite);
         if (empty($success)) {
-            throw new \Exception("An import is currently in progress. (If the other import has failed, you should be able to try again in about 5 minutes.)");
+            $n = ceil(ImportLock::getLockTtlConfig(StaticContainer::get(Config::class)) / 60);
+            throw new \Exception("An import is currently in progress. (If the other import has failed, you should be able to try again in about $n minutes.)");
         }
 
         $timer = new Timer();
@@ -361,7 +362,7 @@ class ImportReports extends ConsoleCommand
 
     public static function makeLock()
     {
-        return new Lock(new MySqlLockBackend(), self::IMPORT_LOCK_NAME);
+        return new ImportLock(StaticContainer::get(Config::class));
     }
 
     private function getExtraCustomDimensions(InputInterface $input)

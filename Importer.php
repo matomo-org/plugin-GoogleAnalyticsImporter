@@ -44,8 +44,6 @@ use Psr\Log\LoggerInterface;
 
 class Importer
 {
-    // TODO: use bigger lock for cloud and only expire if close to end
-    const LOCK_TTL = 300; // lock will expire 5 minutes after inactivity
     const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
 
     /**
@@ -449,7 +447,7 @@ class Importer
                 }
             }
 
-            $this->currentLock->expireLock(self::LOCK_TTL);
+            $this->currentLock->reexpireLock();
         }
 
         $archiveWriter->insertRecord(self::IS_IMPORTED_FROM_GA_NUMERIC, 1);
