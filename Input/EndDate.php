@@ -24,7 +24,10 @@ class EndDate
      */
     public $forceMaxEndDate = null;
 
-    public function __construct(Config $config)
+    /**
+     * @param Config $config
+     */
+    public function __construct($config = null)
     {
         $this->forceMaxEndDate = $this->readConfigForcedMaxEndDate($config);
     }
