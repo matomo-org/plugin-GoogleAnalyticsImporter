@@ -91,7 +91,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/FF.png</logo>
 	</row>
 	<row>
-		<label>Chrome 32.0.1700.</label>
+		<label>Chrome 32.0.1700.76</label>
 		<nb_visits>58</nb_visits>
 		<nb_actions>196</nb_actions>
 		<sum_visit_length>1390</sum_visit_length>
@@ -181,7 +181,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/IE.png</logo>
 	</row>
 	<row>
-		<label>Chrome 33.0.1750.</label>
+		<label>Chrome 33.0.1750.136</label>
 		<nb_visits>44</nb_visits>
 		<nb_actions>172</nb_actions>
 		<sum_visit_length>1812</sum_visit_length>
@@ -271,7 +271,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/IE.png</logo>
 	</row>
 	<row>
-		<label>Chrome 34.0.1847.</label>
+		<label>Chrome 34.0.1847.114</label>
 		<nb_visits>38</nb_visits>
 		<nb_actions>139</nb_actions>
 		<sum_visit_length>548</sum_visit_length>
@@ -316,7 +316,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/CH.png</logo>
 	</row>
 	<row>
-		<label>Chrome 75.0.3770.</label>
+		<label>Chrome 75.0.3770.100</label>
 		<nb_visits>13</nb_visits>
 		<nb_actions>18</nb_actions>
 		<sum_visit_length>1568</sum_visit_length>
@@ -361,7 +361,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/CH.png</logo>
 	</row>
 	<row>
-		<label>Android Browser 75.0.3770.</label>
+		<label>Android Browser 75.0.3770.101</label>
 		<nb_visits>7</nb_visits>
 		<nb_actions>7</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -406,7 +406,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/AN.png</logo>
 	</row>
 	<row>
-		<label>Chrome 75.0.3770.</label>
+		<label>Chrome 75.0.3770.101</label>
 		<nb_visits>6</nb_visits>
 		<nb_actions>9</nb_actions>
 		<sum_visit_length>519</sum_visit_length>
@@ -766,7 +766,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/SF.png</logo>
 	</row>
 	<row>
-		<label>Android Browser 68.0.3440.</label>
+		<label>Android Browser 68.0.3440.85</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
 		<sum_visit_length>52</sum_visit_length>
@@ -811,52 +811,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/AN.png</logo>
 	</row>
 	<row>
-		<label>Android Browser 72.0.3626.</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>browserCode==AN;browserVersion==72.0.3626.121</segment>
-		<logo>plugins/Morpheus/icons/dist/browsers/AN.png</logo>
-	</row>
-	<row>
-		<label>Android Browser 72.0.3626.</label>
+		<label>Android Browser 72.0.3626.76</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
 		<sum_visit_length>1726</sum_visit_length>
@@ -901,7 +856,52 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/AN.png</logo>
 	</row>
 	<row>
-		<label>Android Browser 74.0.3729.</label>
+		<label>Android Browser 72.0.3626.121</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>browserCode==AN;browserVersion==72.0.3626.121</segment>
+		<logo>plugins/Morpheus/icons/dist/browsers/AN.png</logo>
+	</row>
+	<row>
+		<label>Android Browser 74.0.3729.136</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -946,7 +946,7 @@
 		<logo>plugins/Morpheus/icons/dist/browsers/AN.png</logo>
 	</row>
 	<row>
-		<label>Android Browser 74.0.3729.</label>
+		<label>Android Browser 74.0.3729.157</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>

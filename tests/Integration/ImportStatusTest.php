@@ -415,12 +415,10 @@ class ImportStatusTest extends IntegrationTestCase
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage The start date cannot be past the end date.
-     */
     public function test_setImportDateRange_throwsIfStartDateIsPastEndDate()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('The start date cannot be past the end date.');
         $this->instance->startingImport('p', 'a', 'v', 1);
         $this->instance->setImportDateRange(1, Date::factory('2012-03-04'), Date::factory('2012-01-01'));
     }
@@ -721,12 +719,10 @@ View: view5',
         ], $statuses);
     }
 
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionMessage GoogleAnalyticsImporter_InvalidDateRange
-     */
     public function test_reImportDateRange_throwsIfRangeIsInvalid()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('GoogleAnalyticsImporter_InvalidDateRange');
         $this->instance->reImportDateRange($idSite = 1, Date::factory('2015-02-03'), Date::factory('2015-01-03'));
     }
 
