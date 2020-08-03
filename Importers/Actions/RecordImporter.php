@@ -35,7 +35,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private $dataTables;
 
     /**
-     * @var Row
+     * @var Row[]
      */
     private $pageTitleRowsByPageTitle;
 
@@ -128,6 +128,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             foreach ($this->dataTables as &$table) {
                 Common::destroy($table);
             }
+            unset($this->dataTables);
         } finally {
             Config::getInstance()->General['action_default_name'] = $originalDefaultName;
             ArchivingHelper::reloadConfig();

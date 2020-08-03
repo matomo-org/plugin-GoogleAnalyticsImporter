@@ -127,7 +127,9 @@ class TasksTest extends IntegrationTestCase
 
         $tasks = new TasksWithMockExec();
         $tasks->archiveImportedReports();
-        $this->assertEquals([], TasksWithMockExec::$commandsRun);
+        $this->assertEquals([
+            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console' . $this->getCommandHostOption() . ' core:archive --disable-scheduled-tasks --force-idsites=7 --force-periods=week,month,year --force-date-range=2012-02-02,2012-02-02 > ' . PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.7.' . Config::getHostname() . '.log 2>&1 &'],
+        ], TasksWithMockExec::$commandsRun);
     }
 
     public function test_archiveImportedReports_shouldRunTheCommandCorrectly()

@@ -67,6 +67,7 @@ class ImportStatus
                 'view' => $viewId,
             ],
             'last_date_imported' => null,
+            'main_import_progress' => null,
             'import_start_time' => $now,
             'import_end_time' => null,
             'last_job_start_time' => $now,
@@ -95,7 +96,7 @@ class ImportStatus
         return $dates;
     }
 
-    public function dayImportFinished($idSite, Date $date)
+    public function dayImportFinished($idSite, Date $date, $isMainImport = true)
     {
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_ONGOING;
@@ -106,6 +107,10 @@ class ImportStatus
             $status['last_date_imported'] = $date->toString();
 
             $this->setImportedDateRange($idSite, $startDate = null, $date);
+
+            if ($isMainImport) {
+                $status['main_import_progress'] = $date->toString();
+            }
         }
 
         if (isset($status['days_finished_since_rate_limit'])
@@ -133,6 +138,8 @@ class ImportStatus
         if ($status['status'] == self::STATUS_FINISHED) {
             $status['status'] = self::STATUS_ONGOING;
         }
+
+        $status['import_end_time'] = null;
 
         $this->saveStatus($status);
     }
@@ -291,10 +298,10 @@ class ImportStatus
     public static function getEstimatedDaysLeftToFinish($status)
     {
         try {
-            if (!empty($status['last_date_imported'])
+            if (!empty($status['main_import_progress'])
                 && !empty($status['import_range_end'])
             ) {
-                $lastDateImported = Date::factory($status['last_date_imported']);
+                $lastDateImported = Date::factory($status['main_import_progress']);
                 $importEndDate = Date::factory($status['import_range_end']);
 
                 $importStartTime = Date::factory($status['import_start_time']);
@@ -380,6 +387,12 @@ class ImportStatus
         }
 
         $status = $this->getImportStatus($idSite);
+
+        // if we're currently reimporting, then we're using last_date_imported, so don't overwrite it
+        if (empty($status['reimport_ranges'])) {
+            $status['last_date_imported'] = null;
+        }
+
         $status['reimport_ranges'][] = [$startDate->toString(), $endDate->toString()];
 
         if ($status['status'] == self::STATUS_FINISHED) {
@@ -389,6 +402,8 @@ class ImportStatus
         $this->saveStatus($status);
     }
 
+    // TODO: we don't ever need to remove an entry that isn't the first one, this should be
+    //       shiftReImportEntryIfEquals(...)
     public function removeReImportEntry($idSite, $datesToImport)
     {
         $status = $this->getImportStatus($idSite);
@@ -411,6 +426,10 @@ class ImportStatus
             return $s[0] != $datesToImport[0] || $s[1] != $datesToImport[1];
         });
         $status['reimport_ranges'] = array_values($status['reimport_ranges']);
+
+        if (!empty($status['reimport_ranges'])) { // we're done w/ one range, so if there are more, reset last_date_imported
+            $status['last_date_imported'] = null;
+        }
 
         $this->saveStatus($status);
     }
@@ -448,6 +467,7 @@ class ImportStatus
         }
 
         $lastDateImported = isset($status['last_date_imported']) ? $status['last_date_imported'] : null;
+        $mainImportProgress = isset($status['main_import_progress']) ? $status['main_import_progress'] : null;
 
         $importedDateRange = $this->getImportedDateRange($idSite);
         if (empty($importedDateRange)
@@ -458,7 +478,7 @@ class ImportStatus
         }
 
         $startDate = Date::factory($importedDateRange[0] ?: Site::getCreationDateFor($idSite));
-        $endDate = Date::factory($importedDateRange[1] ?: $lastDateImported ?: $startDate);
+        $endDate = Date::factory($importedDateRange[1] ?: $mainImportProgress ?: $lastDateImported ?: $startDate);
 
         return [$startDate, $endDate];
     }
@@ -467,9 +487,9 @@ class ImportStatus
     {
         $status = $this->getImportStatus($idSite);
         if (!empty($status['import_range_end'])
-            && !empty($status['last_date_imported'])
-            && ($status['last_date_imported'] == $status['import_range_end']
-                || Date::factory($status['last_date_imported'])->isLater(Date::factory($status['import_range_end'])))
+            && !empty($status['main_import_progress'])
+            && ($status['main_import_progress'] == $status['import_range_end']
+                || Date::factory($status['main_import_progress'])->isLater(Date::factory($status['import_range_end'])))
             && empty($status['reimport_ranges'])
         ) {
             $this->finishedImport($idSite);

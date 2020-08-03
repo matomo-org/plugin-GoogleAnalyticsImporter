@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Google_Service_Analytics_Goal;
+use PHPMailer\PHPMailer\Exception;
 use Piwik\API\Request;
 use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
@@ -29,6 +30,8 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleCustomDimensionMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGoalMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
+use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
+use Piwik\Plugins\GoogleAnalyticsImporter\Input\MaxEndDateReached;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
@@ -41,7 +44,6 @@ use Psr\Log\LoggerInterface;
 
 class Importer
 {
-    const LOCK_TTL = 300; // lock will expire 5 minutes after inactivity
     const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
 
     /**
@@ -87,7 +89,7 @@ class Importer
     /**
      * @var int
      */
-    private $queryCount;
+    private $queryCount = 0;
 
     /**
      * @var ImportStatus
@@ -109,9 +111,20 @@ class Importer
      */
     private $invalidator;
 
+    /**
+     * @var EndDate
+     */
+    private $endDate;
+
+    /**
+     * Whether this is the main import date range or for a reimport range.
+     * @var bool
+     */
+    private $isMainImport = true;
+
     public function __construct(ReportsProvider $reportsProvider, \Google_Service_Analytics $gaService, \Google_Service_AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
-                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator)
+                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = $gaService;
@@ -122,6 +135,12 @@ class Importer
         $this->idMapper = $idMapper;
         $this->importStatus = $importStatus;
         $this->invalidator = $invalidator;
+        $this->endDate = $endDate;
+    }
+
+    public function setIsMainImport($isMainImport)
+    {
+        $this->isMainImport = $isMainImport;
     }
 
     public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [])
@@ -324,6 +343,8 @@ class Importer
 
     public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '')
     {
+        $date = null;
+
         try {
             $this->currentLock = $lock;
             $this->noDataMessageRemoved = false;
@@ -344,21 +365,40 @@ class Importer
                     'date' => $date->toString(),
                 ]);
 
-                $this->importDay($site, $date, $recordImporters, $segment);
+                try {
+                    $this->importDay($site, $date, $recordImporters, $segment);
+                } finally {
+                    // force delete all tables in case they aren't all freed
+                    \Piwik\DataTable\Manager::getInstance()->deleteAll();
+                }
 
-                $this->importStatus->dayImportFinished($idSite, $date);
+                $this->importStatus->dayImportFinished($idSite, $date, $this->isMainImport);
             }
 
             $this->importStatus->finishImportIfNothingLeft($idSite);
+
+            unset($recordImporters);
         } catch (DailyRateLimitReached $ex) {
             $this->importStatus->rateLimitReached($idSite);
             throw $ex;
+        } catch (MaxEndDateReached $ex) {
+            $this->logger->info('Max end date reached. This occurs in Matomo for Wordpress installs when the importer tries to import days on or after the day Matomo for Wordpress installed.');
+
+            if (!empty($date)) {
+                $this->importStatus->dayImportFinished($idSite, $date, $this->isMainImport);
+            }
+
+            $this->importStatus->finishedImport($idSite);
+
+            return true;
         } catch (\Throwable $ex) {
             $dateStr = isset($date) ? $date->toString() : '(unknown)';
             $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
 
             throw $ex;
         }
+
+        return false;
     }
 
     /**
@@ -367,6 +407,11 @@ class Importer
      */
     public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
     {
+        $maxEndDate = $this->endDate->getMaxEndDate();
+        if ($maxEndDate && $maxEndDate->isEarlier($date)) {
+            throw new MaxEndDateReached();
+        }
+
         $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
         $archiveWriter->initNewArchive();
 
@@ -397,18 +442,20 @@ class Importer
 
                 $sessions = $visitsSummaryRecordImporter->getSessions();
                 if ($sessions <= 0) {
-                    $this->logger->info("Found 0 sessions for {$date}, skipping rest of plugins for this day.");
+                    $this->logger->info("Found 0 sessions for {$date} [segment = $segment], skipping rest of plugins for this day/segment.");
                     break;
                 }
             }
 
-            $this->currentLock->expireLock(self::LOCK_TTL);
+            $this->currentLock->reexpireLock();
         }
 
         $archiveWriter->insertRecord(self::IS_IMPORTED_FROM_GA_NUMERIC, 1);
         $archiveWriter->finalizeArchive();
 
         $this->invalidator->markArchivesAsInvalidated([$site->getId()], [$date], 'week', new Segment($segment, [$site->getId()]));
+
+        Common::destroy($archiveWriter);
     }
 
     private function makeArchiveWriter(Site $site, Date $date, $segment = '', $plugin = null)

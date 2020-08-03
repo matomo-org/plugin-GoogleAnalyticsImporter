@@ -130,7 +130,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         static::exec($shouldUsePassthru = false, $command);
     }
 
-    public static function startArchive(array $status, $wait = false)
+    public static function startArchive(array $status, $wait = false, $lastDayArchived = null, $checkIsRunning = true)
     {
         $logger = StaticContainer::get(LoggerInterface::class);
 
@@ -147,7 +147,7 @@ class Tasks extends \Piwik\Plugin\Tasks
             return;
         }
 
-        if (ImportStatus::isImportRunning($status)) {
+        if ($checkIsRunning && ImportStatus::isImportRunning($status)) {
             $logger->info("Import is currently running for site ID = {$status['idSite']}, not starting archiving right now.");
             return;
         }
@@ -159,18 +159,19 @@ class Tasks extends \Piwik\Plugin\Tasks
             return;
         }
 
-        try {
-            $lastDayArchived = empty($status['last_day_archived']) ? null : Date::factory($status['last_day_archived']);
-        } catch (\Exception $ex) {
-            $logger->info("Found broken import status entry: invalid last day archived date '{$status['last_day_archived']}' for site ID = {$status['idSite']}");
-            return;
+        if (empty($lastDayArchived)) {
+            try {
+                $lastDayArchived = empty($status['last_day_archived']) ? null : Date::factory($status['last_day_archived']);
+            } catch (\Exception $ex) {
+                $logger->info("Found broken import status entry: invalid last day archived date '{$status['last_day_archived']}' for site ID = {$status['idSite']}");
+                return;
+            }
         }
 
         if (!empty($lastDayArchived)
-            && ($lastDateImported->toString() == $lastDayArchived->toString()
-                || $lastDateImported->isEarlier($lastDayArchived))
+            && $lastDateImported->isEarlier($lastDayArchived)
         ) {
-            $logger->debug("Last archived date matches last import date, no need to archive for site ID = {$status['idSite']}");
+            $logger->info("Last archived date ({$lastDayArchived->toString()}) is earlier than last import date ({$lastDateImported->toString()}, no need to archive for site ID = {$status['idSite']}");
             return;
         }
 
