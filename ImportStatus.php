@@ -139,7 +139,7 @@ class ImportStatus
             $status['status'] = self::STATUS_ONGOING;
         }
 
-        unset($status['import_end_time']);
+        $status['import_end_time'] = null;
 
         $this->saveStatus($status);
     }
