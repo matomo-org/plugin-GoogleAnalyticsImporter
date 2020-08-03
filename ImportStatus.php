@@ -486,9 +486,9 @@ class ImportStatus
     {
         $status = $this->getImportStatus($idSite);
         if (!empty($status['import_range_end'])
-            && !empty($status['last_date_imported'])
-            && ($status['last_date_imported'] == $status['import_range_end']
-                || Date::factory($status['last_date_imported'])->isLater(Date::factory($status['import_range_end'])))
+            && !empty($status['main_import_progress'])
+            && ($status['main_import_progress'] == $status['import_range_end']
+                || Date::factory($status['main_import_progress'])->isLater(Date::factory($status['import_range_end'])))
             && empty($status['reimport_ranges'])
         ) {
             $this->finishedImport($idSite);
