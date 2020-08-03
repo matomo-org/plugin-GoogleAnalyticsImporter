@@ -45,6 +45,11 @@
 		<segment>actions==1</segment>
 	</row>
 	<row>
+		<label>1 page</label>
+		<nb_visits>0</nb_visits>
+		<segment>actions==1</segment>
+	</row>
+	<row>
 		<label>2 pages</label>
 		<nb_visits>45</nb_visits>
 		<nb_actions>111</nb_actions>
@@ -86,6 +91,11 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
+		<segment>actions==2</segment>
+	</row>
+	<row>
+		<label>2 pages</label>
+		<nb_visits>1</nb_visits>
 		<segment>actions==2</segment>
 	</row>
 	<row>
@@ -133,6 +143,11 @@
 		<segment>actions==3</segment>
 	</row>
 	<row>
+		<label>3 pages</label>
+		<nb_visits>0</nb_visits>
+		<segment>actions==3</segment>
+	</row>
+	<row>
 		<label>4 pages</label>
 		<nb_visits>4</nb_visits>
 		<nb_actions>16</nb_actions>
@@ -174,6 +189,11 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<segment>actions==4</segment>
+	</row>
+	<row>
+		<label>4 pages</label>
+		<nb_visits>0</nb_visits>
 		<segment>actions==4</segment>
 	</row>
 	<row>
@@ -221,6 +241,11 @@
 		<segment>actions==5</segment>
 	</row>
 	<row>
+		<label>5 pages</label>
+		<nb_visits>0</nb_visits>
+		<segment>actions==5</segment>
+	</row>
+	<row>
 		<label>6 - 7 pages</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>8</nb_actions>
@@ -262,6 +287,11 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>actions&gt;=6;actions&lt;=7</segment>
+	</row>
+	<row>
+		<label>6-7 pages</label>
+		<nb_visits>0</nb_visits>
 		<segment>actions&gt;=6;actions&lt;=7</segment>
 	</row>
 	<row>
@@ -309,6 +339,11 @@
 		<segment>actions&gt;=8;actions&lt;=10</segment>
 	</row>
 	<row>
+		<label>8-10 pages</label>
+		<nb_visits>0</nb_visits>
+		<segment>actions&gt;=8;actions&lt;=10</segment>
+	</row>
+	<row>
 		<label>11 - 14 pages</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>12</nb_actions>
@@ -350,6 +385,11 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>actions&gt;=11;actions&lt;=14</segment>
+	</row>
+	<row>
+		<label>11-14 pages</label>
+		<nb_visits>0</nb_visits>
 		<segment>actions&gt;=11;actions&lt;=14</segment>
 	</row>
 	<row>
@@ -397,7 +437,13 @@
 		<segment>actions&gt;=15;actions&lt;=20</segment>
 	</row>
 	<row>
+		<label>15-20 pages</label>
+		<nb_visits>0</nb_visits>
+		<segment>actions&gt;=15;actions&lt;=20</segment>
+	</row>
+	<row>
 		<label>21+ pages</label>
+		<nb_visits>0</nb_visits>
 		<segment>actions&gt;=21</segment>
 	</row>
 </result>

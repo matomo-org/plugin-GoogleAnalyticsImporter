@@ -2,14 +2,18 @@
 <result>
 	<row>
 		<label>blog</label>
-		<nb_visits>824</nb_visits>
-		<nb_hits>857</nb_hits>
+		<nb_visits>825</nb_visits>
+		<nb_hits>858</nb_hits>
 		<sum_time_spent>29793</sum_time_spent>
 		<entry_nb_visits>578</entry_nb_visits>
 		<entry_nb_actions>2020</entry_nb_actions>
 		<entry_sum_visit_length>28893</entry_sum_visit_length>
 		<entry_bounce_count>150</entry_bounce_count>
-		<exit_nb_visits>586</exit_nb_visits>
+		<exit_nb_visits>587</exit_nb_visits>
+		<sum_bandwidth>0</sum_bandwidth>
+		<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+		<min_bandwidth />
+		<max_bandwidth />
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_page_load_time>0</avg_page_load_time>
 		<avg_time_on_page>35</avg_time_on_page>
@@ -290,33 +294,41 @@
 			</row>
 			<row>
 				<label>inde-par-region-et-ville</label>
-				<nb_visits>94</nb_visits>
-				<nb_hits>100</nb_hits>
+				<nb_visits>95</nb_visits>
+				<nb_hits>101</nb_hits>
 				<sum_time_spent>4153</sum_time_spent>
 				<entry_nb_visits>76</entry_nb_visits>
 				<entry_nb_actions>311</entry_nb_actions>
 				<entry_sum_visit_length>2551</entry_sum_visit_length>
 				<entry_bounce_count>13</entry_bounce_count>
-				<exit_nb_visits>77</exit_nb_visits>
-				<avg_time_on_page>42</avg_time_on_page>
+				<exit_nb_visits>78</exit_nb_visits>
+				<sum_bandwidth>0</sum_bandwidth>
+				<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+				<min_bandwidth />
+				<max_bandwidth />
+				<avg_time_on_page>41</avg_time_on_page>
 				<bounce_rate>17%</bounce_rate>
 				<exit_rate>82%</exit_rate>
 				<segment>pageUrl=^blog%252Finde-par-region-et-ville</segment>
 				<subtable>
 					<row>
 						<label>/index</label>
-						<nb_visits>94</nb_visits>
-						<nb_hits>100</nb_hits>
+						<nb_visits>95</nb_visits>
+						<nb_hits>101</nb_hits>
 						<sum_time_spent>4153</sum_time_spent>
 						<entry_nb_visits>76</entry_nb_visits>
 						<entry_nb_actions>311</entry_nb_actions>
 						<entry_sum_visit_length>2551</entry_sum_visit_length>
 						<entry_bounce_count>13</entry_bounce_count>
-						<exit_nb_visits>77</exit_nb_visits>
-						<sum_daily_nb_uniq_visitors>62</sum_daily_nb_uniq_visitors>
+						<exit_nb_visits>78</exit_nb_visits>
+						<sum_daily_nb_uniq_visitors>63</sum_daily_nb_uniq_visitors>
 						<sum_daily_entry_nb_uniq_visitors>52</sum_daily_entry_nb_uniq_visitors>
-						<sum_daily_exit_nb_uniq_visitors>52</sum_daily_exit_nb_uniq_visitors>
-						<avg_time_on_page>42</avg_time_on_page>
+						<sum_daily_exit_nb_uniq_visitors>53</sum_daily_exit_nb_uniq_visitors>
+						<sum_bandwidth>0</sum_bandwidth>
+						<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+						<min_bandwidth />
+						<max_bandwidth />
+						<avg_time_on_page>41</avg_time_on_page>
 						<bounce_rate>17%</bounce_rate>
 						<exit_rate>82%</exit_rate>
 						<url>http://matthieu.net/blog/blog/inde-par-region-et-ville/</url>
@@ -1401,5 +1413,68 @@
 		<exit_rate>100%</exit_rate>
 		<url>http://matthieu.net/blog/search?search_category=lost+temple+of+dirthamen</url>
 		<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fblog%252Fsearch%253Fsearch_category%253Dlost%252Btemple%252Bof%252Bdirthamen</segment>
+	</row>
+	<row>
+		<label>normal</label>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>120</sum_time_spent>
+		<sum_bandwidth>0</sum_bandwidth>
+		<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+		<min_bandwidth />
+		<max_bandwidth />
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>122</entry_sum_visit_length>
+		<entry_bounce_count>0</entry_bounce_count>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_page_load_time>0</avg_page_load_time>
+		<avg_time_on_page>120</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>pageUrl=^http%253A%252F%252Fmatthieu.net%252Fblog%252Fnormal</segment>
+		<subtable>
+			<row>
+				<label>visit</label>
+				<nb_visits>1</nb_visits>
+				<nb_hits>1</nb_hits>
+				<sum_time_spent>120</sum_time_spent>
+				<sum_bandwidth>0</sum_bandwidth>
+				<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+				<min_bandwidth />
+				<max_bandwidth />
+				<entry_nb_visits>1</entry_nb_visits>
+				<entry_nb_actions>2</entry_nb_actions>
+				<entry_sum_visit_length>122</entry_sum_visit_length>
+				<entry_bounce_count>0</entry_bounce_count>
+				<avg_time_on_page>120</avg_time_on_page>
+				<bounce_rate>0%</bounce_rate>
+				<exit_rate>0%</exit_rate>
+				<segment>pageUrl=^http%253A%252F%252Fmatthieu.net%252Fblog%252Fnormal%252Fvisit</segment>
+				<subtable>
+					<row>
+						<label>/index</label>
+						<nb_visits>1</nb_visits>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>120</sum_time_spent>
+						<sum_bandwidth>0</sum_bandwidth>
+						<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+						<min_bandwidth />
+						<max_bandwidth />
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>122</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+						<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
+						<avg_time_on_page>120</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/normal/visit/</url>
+						<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fnormal%252Fvisit%252F</segment>
+					</row>
+				</subtable>
+			</row>
+		</subtable>
 	</row>
 </result>
