@@ -298,10 +298,10 @@ class ImportStatus
     public static function getEstimatedDaysLeftToFinish($status)
     {
         try {
-            if (!empty($status['last_date_imported'])
+            if (!empty($status['main_import_progress'])
                 && !empty($status['import_range_end'])
             ) {
-                $lastDateImported = Date::factory($status['last_date_imported']);
+                $lastDateImported = Date::factory($status['main_import_progress']);
                 $importEndDate = Date::factory($status['import_range_end']);
 
                 $importStartTime = Date::factory($status['import_start_time']);
@@ -467,6 +467,7 @@ class ImportStatus
         }
 
         $lastDateImported = isset($status['last_date_imported']) ? $status['last_date_imported'] : null;
+        $mainImportProgress = isset($status['main_import_progress']) ? $status['main_import_progress'] : null;
 
         $importedDateRange = $this->getImportedDateRange($idSite);
         if (empty($importedDateRange)
@@ -477,7 +478,7 @@ class ImportStatus
         }
 
         $startDate = Date::factory($importedDateRange[0] ?: Site::getCreationDateFor($idSite));
-        $endDate = Date::factory($importedDateRange[1] ?: $lastDateImported ?: $startDate);
+        $endDate = Date::factory($importedDateRange[1] ?: $mainImportProgress ?: $lastDateImported ?: $startDate);
 
         return [$startDate, $endDate];
     }
