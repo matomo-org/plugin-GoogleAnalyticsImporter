@@ -355,7 +355,7 @@ class ImportStatusTest extends IntegrationTestCase
         return [
             [
                 [
-                    'last_date_imported' => null,
+                    'main_import_progress' => null,
                     'import_range_start' => '2013-02-03',
                     'import_range_end' => '2013-03-05',
                     'import_start_time' => '2019-03-28',
@@ -366,7 +366,7 @@ class ImportStatusTest extends IntegrationTestCase
 
             [
                 [
-                    'last_date_imported' => '2013-02-03',
+                    'main_import_progress' => '2013-02-03',
                     'import_range_start' => '2013-02-03',
                     'import_range_end' => '2013-03-05',
                     'import_start_time' => '2019-03-28',
@@ -377,7 +377,7 @@ class ImportStatusTest extends IntegrationTestCase
 
             [
                 [
-                    'last_date_imported' => '2013-02-15',
+                    'main_import_progress' => '2013-02-15',
                     'import_range_start' => '2013-02-03',
                     'import_range_end' => '2013-03-05',
                     'import_start_time' => '2019-03-28',
@@ -388,7 +388,7 @@ class ImportStatusTest extends IntegrationTestCase
 
             [
                 [
-                    'last_date_imported' => '2013-02-15',
+                    'main_import_progress' => '2013-02-15',
                     'import_range_start' => '2013-02-03',
                     'import_range_end' => '',
                     'import_start_time' => '2019-03-28',
@@ -831,7 +831,7 @@ View: view5',
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
         $status['import_range_end'] = '2012-03-04';
-        $status['last_date_imported'] = '2012-03-04';
+        $status['main_import_progress'] = '2012-03-04';
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
 
@@ -845,7 +845,7 @@ View: view5',
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
         $status['import_range_end'] = '2012-03-04';
-        $status['last_date_imported'] = '2012-03-06';
+        $status['main_import_progress'] = '2012-03-06';
         $status['reimport_ranges'] = [];
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
@@ -860,6 +860,7 @@ View: view5',
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
         $status['last_date_imported'] = '2012-03-06';
+        $status['main_import_progress'] = '2012-03-06';
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
 
@@ -886,7 +887,7 @@ View: view5',
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
         $status['import_range_end'] = '2012-03-04';
-        $status['last_date_imported'] = '2012-03-04';
+        $status['main_import_progress'] = '2012-03-04';
         $status['reimport_ranges'] = [['2013-04-01', '2013-04-05']];
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
@@ -901,7 +902,7 @@ View: view5',
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
         $status['import_range_end'] = '2012-03-04';
-        $status['last_date_imported'] = '2012-03-02';
+        $status['main_import_progress'] = '2012-03-02';
         $status['reimport_ranges'] = [];
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
