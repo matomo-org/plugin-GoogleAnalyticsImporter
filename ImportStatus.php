@@ -486,10 +486,18 @@ class ImportStatus
     public function finishImportIfNothingLeft($idSite)
     {
         $status = $this->getImportStatus($idSite);
+
+        $mainImportProgress = null;
+        if (!empty($status['main_import_progress'])) {
+            $mainImportProgress = $status['main_import_progress'];
+        } else if (!empty($status['last_date_imported'])) {
+            $mainImportProgress = $status['last_date_imported'];
+        }
+
         if (!empty($status['import_range_end'])
-            && !empty($status['main_import_progress'])
-            && ($status['main_import_progress'] == $status['import_range_end']
-                || Date::factory($status['main_import_progress'])->isLater(Date::factory($status['import_range_end'])))
+            && !empty($mainImportProgress)
+            && ($mainImportProgress == $status['import_range_end']
+                || Date::factory($mainImportProgress)->isLater(Date::factory($status['import_range_end'])))
             && empty($status['reimport_ranges'])
         ) {
             $this->finishedImport($idSite);
