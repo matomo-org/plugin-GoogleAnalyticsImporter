@@ -1,5 +1,25 @@
 ## Changelog
 
+# 1.5.1
+
+Changes:
+* Do not throw if the rate limit is reached just log a message.
+* Added safety measure in case of broken internal import status.
+* Default value missing for $maxEndDateDesc (fixes warning).
+* Add link to the user guide to GA API config forms.
+
+# 1.5.0
+
+Changes:
+* Allow lock ttl to be configured and use reexpire lock which waits to expire.
+* Allow forced max end date to be specified through config.
+* Set a fixed end date for Matomo for WordPress.
+
+Bug Fixes:
+* Undo forced input sanitization for client config.
+* Fix reimport not respecting last_day_imported.
+* Reduce amount of memory used.
+
 # 1.4.1
 
 Changes:

@@ -71,6 +71,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $resumeImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.resumeImportNonce');
         $scheduleReImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.scheduleReImport');
 
+        $maxEndDateDesc = null;
+
         $endDate = StaticContainer::get(EndDate::class);
         $maxEndDate = $endDate->getConfiguredMaxEndDate();
         if ($maxEndDate == 'today' || $maxEndDate == 'now') {
