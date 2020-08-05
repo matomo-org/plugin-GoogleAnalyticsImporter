@@ -1,5 +1,13 @@
 ## Changelog
 
+# 1.5.1
+
+Changes:
+* Do not throw if the rate limit is reached just log a message.
+* Added safety measure in case of broken internal import status.
+* Default value missing for $maxEndDateDesc (fixes warning).
+* Add link to the user guide to GA API config forms.
+
 # 1.5.0
 
 Changes:
