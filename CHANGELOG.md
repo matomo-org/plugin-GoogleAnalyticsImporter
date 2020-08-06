@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.5.2
+
+Changes:
+* Fixing typo in previous rate limit change.
+
 # 1.5.1
 
 Changes:
