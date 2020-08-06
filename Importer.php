@@ -381,7 +381,7 @@ class Importer
         } catch (DailyRateLimitReached $ex) {
             $this->importStatus->rateLimitReached($idSite);
             $this->logger->info($ex->getMessage());
-            return false;
+            return true;
         } catch (MaxEndDateReached $ex) {
             $this->logger->info('Max end date reached. This occurs in Matomo for Wordpress installs when the importer tries to import days on or after the day Matomo for Wordpress installed.');
 
