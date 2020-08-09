@@ -12,7 +12,6 @@
         "ClientConfigSuccessfullyUpdated": "Sie haben Ihre Client Konfiguration Details erfolgreich hochgeladen! Nun müssen Sie nur noch Matomo erlauben, um Ihre Google Analytics Daten zu sehen. Klicken Sie den Knopf unten:",
         "Authorize": "Autorisieren",
         "ConfigureClientDesc1": "Damit Ihre Daten von Google Analytics importiert werden können, benötigt Matomo Zugriff zu diesen Daten.",
-        "ConfigureClientDesc2": "Der erste Schritt ist, Ihre OAuth Client Konfiguration bereitzustellen. Laden Sie Ihre Client Konfiguration hoch oder kopieren Sie sie in das Feld unten rein.",
         "ConfigurationFile": "Konfigurationsdatei",
         "ConfigurationText": "Konfigurationstext",
         "RemoveClientConfiguration": "Client Konfiguration entfernen",

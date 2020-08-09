@@ -12,7 +12,6 @@
         "ClientConfigSuccessfullyUpdated": "İstemci yapılandırma bilgilerinizi yüklediniz! Şimdi Matomo için Google Analytics verilerinizi görüntüleme izni vermeniz gerekiyor. Aşağıdaki düğmeye tıklayın:",
         "Authorize": "İzin Ver",
         "ConfigureClientDesc1": "Google Analytics verilerini içe aktarmak için bu verilere Matomo trafından erişilebilmesi gerekiyor.",
-        "ConfigureClientDesc2": "İlk adımda OAuth Client yapılandırmanızı yapmalısınız. İstemci yapılandırmanızı yükleyin ya da aşağıdaki alana yapıştırın.",
         "ConfigurationFile": "Yapılandırma Dosyası",
         "ConfigurationText": "Yapılandırma Metni",
         "RemoveClientConfiguration": "İstemci Yapılandırmasını Sil",
