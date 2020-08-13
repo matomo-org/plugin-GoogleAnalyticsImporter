@@ -147,6 +147,7 @@ class GoogleAnalyticsQueryService
 
         $request = $this->googleQueryObjectFactory->make($this->viewId, $date, $metricNamesChunk, $options);
 
+        $lastGaError = null;
         $this->currentBackoffTime = self::DEFAULT_MIN_BACKOFF_TIME;
 
         $attempts = 0;
@@ -189,6 +190,11 @@ class GoogleAnalyticsQueryService
 
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting one minute before trying again...");
 
+                    $messageContent = @json_decode($ex->getMessage(), true);
+                    if (isset($messageContent['error']['message'])) {
+                        $lastGaError = $messageContent['error']['message'];
+                    }
+
                     $this->backOff();
                 } else {
                     throw $ex;
@@ -196,7 +202,11 @@ class GoogleAnalyticsQueryService
             }
         }
 
-        throw new \Exception("Failed to reach GA after " . self::MAX_ATTEMPTS . " attempts. Restart the import later.");
+        $message = "Failed to reach GA after " . self::MAX_ATTEMPTS . " attempts. Restart the import later.";
+        if (!empty($lastGaError)) {
+            $message .= ' Last GA error message: ' . $lastGaError;
+        }
+        throw new \Exception($message);
     }
 
     /**
