@@ -25,6 +25,7 @@ class GoogleAnalyticsQueryService
     const MAX_ATTEMPTS = 30;
     const MAX_BACKOFF_TIME = 60;
     const PING_MYSQL_EVERY = 25;
+    const DEFAULT_MIN_BACKOFF_TIME = 2; // start at 2s since GA seems to have trouble w/ the 10 requests per 100s limit w/ 1
 
     private static $problematicMetrics = [
         'ga:users',
@@ -54,7 +55,7 @@ class GoogleAnalyticsQueryService
     /**
      * @var int
      */
-    private $currentBackoffTime = 1;
+    private $currentBackoffTime = self::DEFAULT_MIN_BACKOFF_TIME;
 
     private $pingMysqlEverySecs;
 
@@ -146,7 +147,7 @@ class GoogleAnalyticsQueryService
 
         $request = $this->googleQueryObjectFactory->make($this->viewId, $date, $metricNamesChunk, $options);
 
-        $this->currentBackoffTime = 1;
+        $this->currentBackoffTime = self::DEFAULT_MIN_BACKOFF_TIME;
 
         $attempts = 0;
         while ($attempts < self::MAX_ATTEMPTS) {
@@ -159,7 +160,8 @@ class GoogleAnalyticsQueryService
 
                 if (empty($result)) {
                     ++$attempts;
-                    sleep(1);
+
+                    $this->backOff();
 
                     $this->logger->info("Google Analytics API returned null for some reason, trying again...");
 
@@ -180,13 +182,14 @@ class GoogleAnalyticsQueryService
                     ++$attempts;
 
                     $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
-                    $this->sleep($this->currentBackoffTime);
 
-                    $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
+                    $this->backOff();
                 } else if ($ex->getCode() >= 500) {
                     ++$attempts;
+
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting one minute before trying again...");
-                    $this->sleep(60);
+
+                    $this->backOff();
                 } else {
                     throw $ex;
                 }
@@ -223,5 +226,11 @@ class GoogleAnalyticsQueryService
 
             $this->issuePointlessMysqlQuery();
         }
+    }
+
+    private function backOff()
+    {
+        $this->sleep($this->currentBackoffTime);
+        $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
     }
 }
