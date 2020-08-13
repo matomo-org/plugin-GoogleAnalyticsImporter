@@ -22,7 +22,7 @@ use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsQueryService
 {
-    const MAX_ATTEMPTS = 30;
+    const DEFAULT_MAX_ATTEMPTS = 30;
     const MAX_BACKOFF_TIME = 60;
     const PING_MYSQL_EVERY = 25;
     const DEFAULT_MIN_BACKOFF_TIME = 2; // start at 2s since GA seems to have trouble w/ the 10 requests per 100s limit w/ 1
@@ -31,6 +31,11 @@ class GoogleAnalyticsQueryService
         'ga:users',
         'ga:hits',
     ];
+
+    /**
+     * @var int
+     */
+    private $maxAttempts = self::DEFAULT_MAX_ATTEMPTS;
 
     /**
      * @var \Google_Service_Analytics
@@ -151,7 +156,7 @@ class GoogleAnalyticsQueryService
         $this->currentBackoffTime = self::DEFAULT_MIN_BACKOFF_TIME;
 
         $attempts = 0;
-        while ($attempts < self::MAX_ATTEMPTS) {
+        while ($attempts < $this->maxAttempts) {
             try {
                 $this->issuePointlessMysqlQuery();
 
@@ -202,7 +207,7 @@ class GoogleAnalyticsQueryService
             }
         }
 
-        $message = "Failed to reach GA after " . self::MAX_ATTEMPTS . " attempts. Restart the import later.";
+        $message = "Failed to reach GA after " . $this->maxAttempts . " attempts. Restart the import later.";
         if (!empty($lastGaError)) {
             $message .= ' Last GA error message: ' . $lastGaError;
         }
@@ -215,6 +220,14 @@ class GoogleAnalyticsQueryService
     public function setOnQueryMade($onQueryMade)
     {
         $this->onQueryMade = $onQueryMade;
+    }
+
+    /**
+     * @param int $maxAttempts
+     */
+    public function setMaxAttempts($maxAttempts)
+    {
+        $this->maxAttempts = $maxAttempts;
     }
 
     /**
