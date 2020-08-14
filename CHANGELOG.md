@@ -1,5 +1,13 @@
 ## Changelog
 
+# 1.5.3
+
+Changes:
+* Fix referrers table subtable in imported reports so link is correct (only affects newly imported reports).
+* Show last GA error if there was one when cannot reach GA API fails repeatedly.
+* Use exponential backoff for when GA API backend fails.
+* Fix forum link in error message.
+
 # 1.5.2
 
 Changes:
