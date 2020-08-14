@@ -45,7 +45,7 @@
 		<segment>referrerName==google.com</segment>
 		<subtable>
 			<row>
-				<label>/search</label>
+				<label>http://google.com/search</label>
 				<nb_visits>113</nb_visits>
 				<nb_actions>383</nb_actions>
 				<sum_visit_length>4403</sum_visit_length>
@@ -134,7 +134,7 @@
 		<segment>referrerName==scubadiverlife.com</segment>
 		<subtable>
 			<row>
-				<label>/gear-category/fins-reviews-2</label>
+				<label>http://scubadiverlife.com/gear-category/fins-reviews-2</label>
 				<nb_visits>31</nb_visits>
 				<nb_actions>137</nb_actions>
 				<sum_visit_length>381</sum_visit_length>
@@ -177,7 +177,7 @@
 				<sum_daily_nb_uniq_visitors>21</sum_daily_nb_uniq_visitors>
 			</row>
 			<row>
-				<label>/gear-category/bcd</label>
+				<label>http://scubadiverlife.com/gear-category/bcd</label>
 				<nb_visits>27</nb_visits>
 				<nb_actions>95</nb_actions>
 				<sum_visit_length>1084</sum_visit_length>
@@ -220,7 +220,7 @@
 				<sum_daily_nb_uniq_visitors>22</sum_daily_nb_uniq_visitors>
 			</row>
 			<row>
-				<label>/gear-category/exposure-suit</label>
+				<label>http://scubadiverlife.com/gear-category/exposure-suit</label>
 				<nb_visits>27</nb_visits>
 				<nb_actions>117</nb_actions>
 				<sum_visit_length>674</sum_visit_length>
@@ -309,7 +309,7 @@
 		<segment>referrerName==emperordivers.com</segment>
 		<subtable>
 			<row>
-				<label>/blog/dive-courses</label>
+				<label>http://emperordivers.com/blog/dive-courses</label>
 				<nb_visits>29</nb_visits>
 				<nb_actions>125</nb_actions>
 				<sum_visit_length>773</sum_visit_length>
@@ -352,7 +352,7 @@
 				<sum_daily_nb_uniq_visitors>18</sum_daily_nb_uniq_visitors>
 			</row>
 			<row>
-				<label>/blog/conservation</label>
+				<label>http://emperordivers.com/blog/conservation</label>
 				<nb_visits>28</nb_visits>
 				<nb_actions>83</nb_actions>
 				<sum_visit_length>225</sum_visit_length>
@@ -441,7 +441,7 @@
 		<segment>referrerName==divein.com</segment>
 		<subtable>
 			<row>
-				<label>/guide/how-to-become-a-padi-dive-instructor</label>
+				<label>http://divein.com/guide/how-to-become-a-padi-dive-instructor</label>
 				<nb_visits>33</nb_visits>
 				<nb_actions>152</nb_actions>
 				<sum_visit_length>1113</sum_visit_length>
@@ -484,7 +484,7 @@
 				<sum_daily_nb_uniq_visitors>24</sum_daily_nb_uniq_visitors>
 			</row>
 			<row>
-				<label>/guide/going-pro-become-a-dive-master</label>
+				<label>http://divein.com/guide/going-pro-become-a-dive-master</label>
 				<nb_visits>23</nb_visits>
 				<nb_actions>75</nb_actions>
 				<sum_visit_length>1322</sum_visit_length>
@@ -573,7 +573,7 @@
 		<segment>referrerName==divebums.com</segment>
 		<subtable>
 			<row>
-				<label>/dive-sites/La-Jolla-Shores.html</label>
+				<label>http://divebums.com/dive-sites/La-Jolla-Shores.html</label>
 				<nb_visits>21</nb_visits>
 				<nb_actions>94</nb_actions>
 				<sum_visit_length>1341</sum_visit_length>
@@ -616,7 +616,7 @@
 				<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
 			</row>
 			<row>
-				<label>/dive-sites/index.html</label>
+				<label>http://divebums.com/dive-sites/index.html</label>
 				<nb_visits>19</nb_visits>
 				<nb_actions>85</nb_actions>
 				<sum_visit_length>378</sum_visit_length>
@@ -705,7 +705,7 @@
 		<segment>referrerName==oahuscubadiving.com</segment>
 		<subtable>
 			<row>
-				<label>/oahu-dive-sites/</label>
+				<label>http://oahuscubadiving.com/oahu-dive-sites/</label>
 				<nb_visits>17</nb_visits>
 				<nb_actions>62</nb_actions>
 				<sum_visit_length>249</sum_visit_length>
@@ -794,7 +794,7 @@
 		<segment>referrerName==phpmyvisites.net</segment>
 		<subtable>
 			<row>
-				<label>/newsletter.html</label>
+				<label>http://phpmyvisites.net/newsletter.html</label>
 				<nb_visits>1</nb_visits>
 				<nb_actions>2</nb_actions>
 				<sum_visit_length>44</sum_visit_length>
@@ -883,7 +883,7 @@
 		<segment>referrerName==qwant.com</segment>
 		<subtable>
 			<row>
-				<label>/</label>
+				<label>http://qwant.com/</label>
 				<nb_visits>1</nb_visits>
 				<nb_actions>2</nb_actions>
 				<sum_visit_length>14</sum_visit_length>
