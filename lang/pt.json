@@ -6,6 +6,7 @@
         "MissingClientConfiguration": "Configuração do cliente em falta ou inválida, por favor, reenvie novamente.",
         "SettingUp": "Configuração",
         "ImporterHelp1": "O «Importador da Analítica Google» requer que defina a configuração do «Cliente» de OAuth na «Consola da API Google» antes de fazer qualquer outra coisa.",
+        "ImporterHelp2": "Para ver um guia passo a passo para fazer isto e configurar esta extensão, %1$sclique aqui.%2$s",
         "ImporterIsConfigured": "O importador está configurado e pode começar a importar os dados através da linha de comandos.",
         "ReAuthorize": "Voltar a autorizar",
         "Authorize": "Autorizar",
