@@ -34,6 +34,15 @@ class EndDateTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Date::factory('today'), $endDate->getMaxEndDate());
     }
 
+    public function test_getMaxEndDate_withConfigSectionWithInvalidValue()
+    {
+        $mockConfig = $this->getMockConfig([
+            EndDate::CONFIG_NAME => 'tasdlfjsadf',
+        ]);
+        $endDate = new EndDate($mockConfig);
+        $this->assertNull($endDate->getMaxEndDate());
+    }
+
     public function test_getMaxEndDate_withConfigSectionWithValue_thatIsExplicitDate()
     {
         $mockConfig = $this->getMockConfig([
