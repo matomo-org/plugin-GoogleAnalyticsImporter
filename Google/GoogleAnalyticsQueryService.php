@@ -16,6 +16,7 @@ use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Db;
 use Piwik\Metrics;
+use Piwik\Piwik;
 use Piwik\Site;
 use Piwik\Tracker\GoalManager;
 use Psr\Log\LoggerInterface;
@@ -180,6 +181,11 @@ class GoogleAnalyticsQueryService
                     'message' => $ex->getMessage(),
                 ]);
 
+                /**
+                 * @ignore
+                 */
+                Piwik::postEvent('GoogleAnalyticsImporter.onApiError', [$ex]);
+
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
                     if (strpos($ex->getMessage(), 'daily') !== false) {
                         throw new DailyRateLimitReached();
@@ -190,10 +196,16 @@ class GoogleAnalyticsQueryService
                     $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
 
                     $this->backOff();
+                } else if ($this->isIgnorableException($ex)) {
+                    ++$attempts;
+
+                    $this->logger->info("Google Analytics API returned an ignorable or temporary error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
+
+                    $this->backOff();
                 } else if ($ex->getCode() >= 500) {
                     ++$attempts;
 
-                    $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting one minute before trying again...");
+                    $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
 
                     $messageContent = @json_decode($ex->getMessage(), true);
                     if (isset($messageContent['error']['message'])) {
@@ -255,5 +267,23 @@ class GoogleAnalyticsQueryService
     {
         $this->sleep($this->currentBackoffTime);
         $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
+    }
+
+    private function isIgnorableException(\Exception $ex)
+    {
+        if ($ex->getCode() !== 400) {
+            return false;
+        }
+
+        $messageContent = @json_decode($ex->getMessage(), true);
+        if (empty($messageContent['error']['message'])) {
+            return false;
+        }
+
+        if (strpos($messageContent['error']['message'], 'Unknown metric') === 0) {
+            return true;
+        }
+
+        return false;
     }
 }
