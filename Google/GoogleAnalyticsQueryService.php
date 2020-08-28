@@ -16,6 +16,7 @@ use Piwik\DataTable\Row;
 use Piwik\Date;
 use Piwik\Db;
 use Piwik\Metrics;
+use Piwik\Piwik;
 use Piwik\Site;
 use Piwik\Tracker\GoalManager;
 use Psr\Log\LoggerInterface;
@@ -179,6 +180,11 @@ class GoogleAnalyticsQueryService
                 $this->logger->debug("Google Analytics returned an error: {message}", [
                     'message' => $ex->getMessage(),
                 ]);
+
+                /**
+                 * @ignore
+                 */
+                Piwik::postEvent('GoogleAnalyticsImporter.onApiError', [$ex]);
 
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
                     if (strpos($ex->getMessage(), 'daily') !== false) {
