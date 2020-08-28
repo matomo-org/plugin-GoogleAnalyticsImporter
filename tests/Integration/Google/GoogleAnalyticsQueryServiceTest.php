@@ -34,6 +34,12 @@ class GoogleAnalyticsQueryServiceTest extends IntegrationTestCase
                 ],
             ]), 503), 'Failed to reach GA after 2 attempts. Restart the import later.'],
             [new \Exception('lakjdsflsdj', 503), 'Failed to reach GA after 2 attempts. Restart the import later.'],
+
+            [new \Exception(json_encode([
+                'error' => [
+                    'message' => 'Unknown metric(s): blah, blah and blah',
+                ],
+            ]), 400), 'Failed to reach GA after 2 attempts. Restart the import later. Last GA error message: this is a test exception'],
         ];
     }
 
@@ -50,7 +56,7 @@ class GoogleAnalyticsQueryServiceTest extends IntegrationTestCase
         $builder = $this->getMockBuilder(\Google_Service_AnalyticsReporting_Resource_Reports::class);
         $mockReportingService->reports = $builder
             ->disableOriginalConstructor()
-            ->onlyMethods([ 'batchGet' ])
+            ->onlyMethods(['batchGet'])
             ->getMock();
         $mockReportingService->reports->method('batchGet')->willThrowException($testEx);
 
