@@ -12,7 +12,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Input;
 use Piwik\Config;
 use Piwik\Date;
 use Piwik\SettingsServer;
-use Piwik\Site;
 
 class EndDate
 {
@@ -50,22 +49,36 @@ class EndDate
                 $installDate = get_option(\WpMatomo\Installer::OPTION_NAME_INSTALL_DATE);
             }
 
-            if (empty($installDate)) {
+            try {
+                $installDate = Date::factory($installDate);
+            } catch (\Exception $ex) {
+                // ignore
+            }
+
+            if (empty($installDate)
+                || !($installDate instanceof Date)
+            ) {
                 // matomo for WordPress was installed before this option was set
                 // we have to make sure there will be an end date otherwise it will always overwrite data
                 // we assume it was installed 2 days ago. It's not 100% accurate but best we can do
                 $installDate = Date::today()->subDay(2);
             } else {
                 // import up to 1 day before original install
-                $installDate = Date::factory($installDate)->subDay(1);
+                $installDate = $installDate->subDay(1);
             }
 
             return $installDate;
         }
 
         if ($this->forceMaxEndDate) {
-            return Date::factory($this->forceMaxEndDate);
+            try {
+                return Date::factory($this->forceMaxEndDate);
+            } catch (\Exception $ex) {
+                return null;
+            }
         }
+
+        return null;
     }
 
     public function limitMaxEndDateIfNeeded($endDate)
