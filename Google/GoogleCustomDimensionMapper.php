@@ -22,7 +22,7 @@ class GoogleCustomDimensionMapper
             'extractions' => [],
             'case_sensitive' => true,
             'scope' => $this->mapScope($gaCustomDimension),
-            'active' => $gaCustomDimension->getActive(),
+            'active' => (bool) $gaCustomDimension->getActive(),
         ];
 
         $blockedChars = Name::getBlockedCharacters();
