@@ -22,6 +22,7 @@ use Piwik\Date;
 use Piwik\Db;
 use Piwik\Option;
 use Piwik\Period\Factory;
+use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
@@ -393,10 +394,14 @@ class Importer
 
             return true;
         } catch (\Throwable $ex) {
-            $dateStr = isset($date) ? $date->toString() : '(unknown)';
-            $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
+            if ($this->isGaAuthroizationError($ex)) {
+                $this->importStatus->erroredImport($idSite, Piwik::translate('GoogleAnalyticsImporter_InsufficientScopes'));
+            } else {
+                $dateStr = isset($date) ? $date->toString() : '(unknown)';
+                $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
+            }
 
-            throw $ex;
+            return true;
         }
 
         return false;
@@ -632,5 +637,24 @@ class Importer
             ];
         }
         return $cleaned;
+    }
+
+    private function isGaAuthroizationError(\Exception $ex)
+    {
+        if ($ex->getCode() != 403) {
+            return false;
+        }
+
+        $this->logger->info("isGaAuthroizationError 1");
+
+        $messageContent = @json_decode($ex->getMessage(), true);
+        $this->logger->info(var_export($messageContent, true));
+        if (isset($messageContent['error']['message'])
+            && stristr($messageContent['error']['message'], 'Request had insufficient authentication scopes')
+        ) {
+            return true;
+        }
+
+        return false;
     }
 }
