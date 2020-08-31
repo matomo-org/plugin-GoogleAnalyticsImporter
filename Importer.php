@@ -144,7 +144,7 @@ class Importer
         $this->isMainImport = $isMainImport;
     }
 
-    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [])
+    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [], $forceCustomDimensionSlotCheck = false)
     {
         $extraCustomDimensions = $this->checkExtraCustomDimensions($extraCustomDimensions);
 
@@ -184,9 +184,48 @@ class Importer
             }
         }
 
+        if ($forceCustomDimensionSlotCheck) {
+            $this->checkCustomDimensionCount($extraCustomDimensions, $idSite, $accountId, $propertyId);
+        }
+
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
 
         return $idSite;
+    }
+
+    public function checkCustomDimensionCount($extraDimensions, $idSite, $accountId, $propertyId) // TODO: move to mapper and unit test
+    {
+        $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
+
+        $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
+
+        foreach ($availableScopes as $scope) {
+            $requestedScopes = 0;
+            foreach ($extraDimensions as $extraDimension) {
+                if ($extraDimension['dimensionScope'] == $scope['value']) {
+                    ++$requestedScopes;
+                }
+            }
+
+            /** @var \Google_Service_Analytics_CustomDimension $gaCustomDimension */
+            foreach ($customDimensions->getItems() as $gaCustomDimension) {
+                try {
+                    $mappedScope = $this->customDimensionMapper->mapScope($gaCustomDimension);
+                } catch (CannotImportCustomDimensionException $ex) {
+                    continue;
+                }
+
+                if ($mappedScope == $scope['value']) {
+                    ++$requestedScopes;
+                }
+            }
+
+            $availableScopes = (int) $scope['numSlotsAvailable'];
+
+            if ($requestedScopes > $availableScopes) {
+                throw new OutOfCustomDimensionsException($requestedScopes, $availableScopes); // TODO: make
+            }
+        }
     }
 
     public function importEntities($idSite, $accountId, $propertyId, $viewId)
@@ -287,9 +326,16 @@ class Importer
                 continue;
             }
 
-            $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
-                $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
-                $customDimension['case_sensitive']);
+            try {
+                $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+                    $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
+                    $customDimension['case_sensitive']);
+            } catch (\Exception $ex) {
+                if (strpos($ex->getMessage(), 'All Custom Dimensions for website') === 0) {
+                    $this->logger->warning("Cannot map custom dimension {$customDimension['name']}: " . $ex->getMessage());
+                    continue;
+                }
+            }
 
             $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension, $idSite);
         }
