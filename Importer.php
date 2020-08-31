@@ -645,10 +645,7 @@ class Importer
             return false;
         }
 
-        $this->logger->info("isGaAuthroizationError 1");
-
         $messageContent = @json_decode($ex->getMessage(), true);
-        $this->logger->info(var_export($messageContent, true));
         if (isset($messageContent['error']['message'])
             && stristr($messageContent['error']['message'], 'Request had insufficient authentication scopes')
         ) {
