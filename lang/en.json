@@ -96,6 +96,7 @@
     "StartFinishTimes": "Start/Finish Times",
     "MaxEndDateHelp": "The maximum end date allowed in this Matomo install is %1$s. If you enter a date past it, it will be changed to this date.",
     "TodaysDate": "today's date",
-    "YesterdaysDate": "yesterday's date"
+    "YesterdaysDate": "yesterday's date",
+    "InsufficientScopes": "Your OAuth credentials do not have permission to access all of your Google Analytics data. Please ensure you have enabled access to the Google Analytics API and the Google Analytics Reporting API."
   }
 }
