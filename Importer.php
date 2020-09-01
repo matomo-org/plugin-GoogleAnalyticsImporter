@@ -9,7 +9,6 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Google_Service_Analytics_Goal;
-use PHPMailer\PHPMailer\Exception;
 use Piwik\API\Request;
 use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
@@ -144,7 +143,7 @@ class Importer
         $this->isMainImport = $isMainImport;
     }
 
-    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [])
+    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [], $forceCustomDimensionSlotCheck = false)
     {
         $extraCustomDimensions = $this->checkExtraCustomDimensions($extraCustomDimensions);
 
@@ -182,6 +181,13 @@ class Importer
                     "idsite = $idSite"
                 );
             }
+        }
+
+        if ($forceCustomDimensionSlotCheck) {
+            $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
+            $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
+
+            $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions, $idSite, $accountId, $propertyId);
         }
 
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
@@ -287,9 +293,16 @@ class Importer
                 continue;
             }
 
-            $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
-                $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
-                $customDimension['case_sensitive']);
+            try {
+                $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+                    $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
+                    $customDimension['case_sensitive']);
+            } catch (\Exception $ex) {
+                if (strpos($ex->getMessage(), 'All Custom Dimensions for website') === 0) {
+                    $this->logger->warning("Cannot map custom dimension {$customDimension['name']}: " . $ex->getMessage());
+                    continue;
+                }
+            }
 
             $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension, $idSite);
         }
