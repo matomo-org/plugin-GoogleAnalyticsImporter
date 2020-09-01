@@ -131,6 +131,12 @@
             >
             </div>
 
+            <div piwik-field uicontrol="checkbox" name="forceIgnoreOutOfCustomDimSlotError"
+                 ng-mode="importScheduler.forceCustomDimensionSlotCheck"
+                 title="{{ 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheck'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp'|translate('<a href="https://matomo.org/docs/custom-dimensions/">', '</a>') }}"
+            ></div>
+
             <h3>{{ 'GoogleAnalyticsImporter_Troubleshooting'|translate }}</h3>
 
             <div piwik-field uicontrol="checkbox" name="isVerboseLoggingEnabled"

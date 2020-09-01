@@ -49,7 +49,8 @@
                 isMobileApp: vm.isMobileApp ? '1' : '0',
                 timezone: vm.timezone,
                 extraCustomDimensions: vm.extraCustomDimensions,
-                isVerboseLoggingEnabled: vm.isVerboseLoggingEnabled ? '1' : '0'
+                isVerboseLoggingEnabled: vm.isVerboseLoggingEnabled ? '1' : '0',
+                forceCustomDimensionSlotCheck: vm.forceCustomDimensionSlotCheck ? '1' : '0'
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });

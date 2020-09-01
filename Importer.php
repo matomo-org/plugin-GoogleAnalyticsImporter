@@ -9,7 +9,6 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Google_Service_Analytics_Goal;
-use PHPMailer\PHPMailer\Exception;
 use Piwik\API\Request;
 use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
@@ -185,47 +184,15 @@ class Importer
         }
 
         if ($forceCustomDimensionSlotCheck) {
-            $this->checkCustomDimensionCount($extraCustomDimensions, $idSite, $accountId, $propertyId);
+            $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
+            $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
+
+            $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions, $idSite, $accountId, $propertyId);
         }
 
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
 
         return $idSite;
-    }
-
-    public function checkCustomDimensionCount($extraDimensions, $idSite, $accountId, $propertyId) // TODO: move to mapper and unit test
-    {
-        $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
-
-        $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
-
-        foreach ($availableScopes as $scope) {
-            $requestedScopes = 0;
-            foreach ($extraDimensions as $extraDimension) {
-                if ($extraDimension['dimensionScope'] == $scope['value']) {
-                    ++$requestedScopes;
-                }
-            }
-
-            /** @var \Google_Service_Analytics_CustomDimension $gaCustomDimension */
-            foreach ($customDimensions->getItems() as $gaCustomDimension) {
-                try {
-                    $mappedScope = $this->customDimensionMapper->mapScope($gaCustomDimension);
-                } catch (CannotImportCustomDimensionException $ex) {
-                    continue;
-                }
-
-                if ($mappedScope == $scope['value']) {
-                    ++$requestedScopes;
-                }
-            }
-
-            $availableScopes = (int) $scope['numSlotsAvailable'];
-
-            if ($requestedScopes > $availableScopes) {
-                throw new OutOfCustomDimensionsException($requestedScopes, $availableScopes); // TODO: make
-            }
-        }
     }
 
     public function importEntities($idSite, $accountId, $propertyId, $viewId)
