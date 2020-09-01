@@ -202,9 +202,8 @@ class Importer
             $this->importCustomDimensions($idSite, $accountId, $propertyId);
             $this->importCustomVariableSlots();
         } catch (\Exception $ex) {
-            $this->importStatus->erroredImport($idSite, $ex->getMessage());
-
-            throw $ex;
+            $this->onError($idSite, $ex);
+            return true;
         }
     }
 
@@ -406,14 +405,8 @@ class Importer
             $this->importStatus->finishedImport($idSite);
 
             return true;
-        } catch (\Throwable $ex) {
-            if ($this->isGaAuthroizationError($ex)) {
-                $this->importStatus->erroredImport($idSite, Piwik::translate('GoogleAnalyticsImporter_InsufficientScopes'));
-            } else {
-                $dateStr = isset($date) ? $date->toString() : '(unknown)';
-                $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
-            }
-
+        } catch (\Exception $ex) {
+            $this->onError($idSite, $ex, $date);
             return true;
         }
 
@@ -666,5 +659,15 @@ class Importer
         }
 
         return false;
+    }
+
+    private function onError($idSite, \Exception $ex, Date $date = null)
+    {
+        if ($this->isGaAuthroizationError($ex)) {
+            $this->importStatus->erroredImport($idSite, Piwik::translate('GoogleAnalyticsImporter_InsufficientScopes'));
+        } else {
+            $dateStr = isset($date) ? $date->toString() : '(unknown)';
+            $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
+        }
     }
 }
