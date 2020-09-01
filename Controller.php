@@ -307,8 +307,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
             $extraCustomDimensions = Common::getRequestVar('extraCustomDimensions', [], $type = 'array');
             $isVerboseLoggingEnabled = Common::getRequestVar('isVerboseLoggingEnabled', 0, $type = 'int') == 1;
+            $forceCustomDimensionSlotCheck = Common::getRequestVar('forceCustomDimensionSlotCheck', 1, $type = 'int') == 1;
 
-            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions);
+            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions,
+                $forceCustomDimensionSlotCheck);
 
             try {
                 if (empty($idSite)) {
