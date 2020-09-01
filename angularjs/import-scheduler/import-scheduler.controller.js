@@ -20,6 +20,7 @@
         vm.isStartingImport = false;
         vm.extraCustomDimensions = [];
         vm.isVerboseLoggingEnabled = false;
+        vm.ignoreCustomDimensionSlotCheck = false;
         vm.startImport = startImport;
 
         function startImport() {
@@ -36,6 +37,7 @@
 
             vm.isStartingImport = true;
 
+            var forceCustomDimensionSlotCheck = !vm.ignoreCustomDimensionSlotCheck;
             piwikApi.withTokenInUrl();
             return piwikApi.post({
                 module: 'GoogleAnalyticsImporter',
@@ -50,7 +52,7 @@
                 timezone: vm.timezone,
                 extraCustomDimensions: vm.extraCustomDimensions,
                 isVerboseLoggingEnabled: vm.isVerboseLoggingEnabled ? '1' : '0',
-                forceCustomDimensionSlotCheck: vm.forceCustomDimensionSlotCheck ? '1' : '0'
+                forceCustomDimensionSlotCheck: forceCustomDimensionSlotCheck ? '1' : '0'
             }, { token_auth: piwik.token_auth })['finally'](function () {
                 window.location.reload();
             });
