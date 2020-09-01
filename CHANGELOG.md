@@ -10,6 +10,7 @@ Changes:
 Bug Fixes:
 * Handle GA API active custom dimension value of empty string properly.
 * Handle invalid max end date configuration.
+* Check for custom dimension slots before importing & allow ignoring extra custom dimensions
 
 # 1.5.3
 
