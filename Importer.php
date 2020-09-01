@@ -406,7 +406,7 @@ class Importer
 
             return true;
         } catch (\Exception $ex) {
-            $this->onError($idSite, $ex);
+            $this->onError($idSite, $ex, $date);
             return true;
         }
 
@@ -661,7 +661,7 @@ class Importer
         return false;
     }
 
-    private function onError($idSite, \Exception $ex)
+    private function onError($idSite, \Exception $ex, Date $date = null)
     {
         if ($this->isGaAuthroizationError($ex)) {
             $this->importStatus->erroredImport($idSite, Piwik::translate('GoogleAnalyticsImporter_InsufficientScopes'));
