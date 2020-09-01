@@ -3,7 +3,7 @@
 # 1.5.4
 
 Changes:
-* Abort on all errors and report when when it is due to a insufficient privileges exception.
+* Abort on all errors and report when it is due to a insufficient privileges exception.
 * Ignore unknown metric exceptions.
 * Better debug exception messages when errors occur during controller actions.
 
