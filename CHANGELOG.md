@@ -1,5 +1,17 @@
 ## Changelog
 
+# 1.5.4
+
+Changes:
+* Abort on all errors and report when when it is due to a insufficient privileges exception.
+* Ignore unknown metric exceptions.
+* Better debug exception messages when errors occur during controller actions.
+
+Bug Fixes:
+* Handle GA API active custom dimension value of empty string properly.
+* Handle invalid max end date configuration.
+* Check for custom dimension slots before importing & allow ignoring extra custom dimensions
+
 # 1.5.3
 
 Changes:
