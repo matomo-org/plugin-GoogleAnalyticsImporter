@@ -30,7 +30,8 @@
                 } catch (e) {
                     var UI = require('piwik/UI');
                     var notification = new UI.Notification();
-                    notification.show(_pk_translate('GoogleAnalyticsImporter_InvalidDateFormat', 'YYYY-MM-DD'), {context: 'error'});
+                    notification.show(_pk_translate('GoogleAnalyticsImporter_InvalidDateFormat', ['YYYY-MM-DD']), {context: 'error'});
+                    notification.scrollToNotification();
                     return;
                 }
             }
