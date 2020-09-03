@@ -153,7 +153,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $client = $authorization->getConfiguredClient();
             $authorization->saveAccessToken($oauthCode, $client);
         } catch (\Exception $e) {
-            return $this->index($e->getMessage());
+            return $this->index($this->getNotificationExceptionText($e));
         }
 
         // reload index action to prove everything is configured
@@ -197,7 +197,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $authorization->validateConfig($config);
             $authorization->saveConfig($config);
         } catch (\Exception $ex) {
-            $errorMessage = $ex->getMessage();
+            $errorMessage = $this->getNotificationExceptionText($ex);
+            $errorMessage = substr($errorMessage, 0, 1024);
         }
 
         Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
@@ -224,7 +225,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode(['result' => 'ok']);
         } catch (\Exception $ex) {
-            $notification = new Notification($ex->getMessage());
+            $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
@@ -259,7 +260,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode(['result' => 'ok']);
         } catch (\Exception $ex) {
-            $notification = new Notification($ex->getMessage());
+            $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
@@ -306,8 +307,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
             $extraCustomDimensions = Common::getRequestVar('extraCustomDimensions', [], $type = 'array');
             $isVerboseLoggingEnabled = Common::getRequestVar('isVerboseLoggingEnabled', 0, $type = 'int') == 1;
+            $forceCustomDimensionSlotCheck = Common::getRequestVar('forceCustomDimensionSlotCheck', 1, $type = 'int') == 1;
 
-            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions);
+            $idSite = $importer->makeSite($account, $propertyId, $viewId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions,
+                $forceCustomDimensionSlotCheck);
 
             try {
                 if (empty($idSite)) {
@@ -338,7 +341,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {
-            $notification = new Notification($ex->getMessage());
+            $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
@@ -373,7 +376,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {
-            $notification = new Notification($ex->getMessage());
+            $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
@@ -415,12 +418,21 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {
-            $notification = new Notification($ex->getMessage());
+            $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
             $notification->hasNoClear();
             Notification\Manager::notify('GoogleAnalyticsImporter_rescheduleImport_failure', $notification);
         }
+    }
+
+    private function getNotificationExceptionText(\Exception $e)
+    {
+        $message = $e->getMessage();
+        if (\Piwik_ShouldPrintBackTraceWithMessage()) {
+            $message .= "\n" . $e->getTraceAsString();
+        }
+        return $message;
     }
 }

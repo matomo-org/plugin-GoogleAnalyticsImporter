@@ -131,6 +131,12 @@
             >
             </div>
 
+            <div piwik-field uicontrol="checkbox" name="forceIgnoreOutOfCustomDimSlotError"
+                 ng-model="importScheduler.ignoreCustomDimensionSlotCheck"
+                 title="{{ 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheck'|translate }}"
+                 inline-help="{{ 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp'|translate('<a href="https://matomo.org/docs/custom-dimensions/" rel="noreferrer noopener">', '</a>') }}"
+            ></div>
+
             <h3>{{ 'GoogleAnalyticsImporter_Troubleshooting'|translate }}</h3>
 
             <div piwik-field uicontrol="checkbox" name="isVerboseLoggingEnabled"
@@ -200,7 +206,7 @@
                                 <br/>
                                 {{ 'GoogleAnalyticsImporter_ErrorMessage'|translate }}: {{ status.error|default('no message') }}
                                 <br/>
-                                {{ 'GoogleAnalyticsImporter_ErrorMessageBugReportRequest'|translate('<a href="http://forums.matomo.org/" rell="noreferrer noopener" target="_blank">', '</a>')|raw }}
+                                {{ 'GoogleAnalyticsImporter_ErrorMessageBugReportRequest'|translate('<a href="https://forum.matomo.org/" rell="noreferrer noopener" target="_blank">', '</a>')|raw }}
                             {% elseif status.status == 'killed' %}
                                 <span
                                         class="icon icon-help"

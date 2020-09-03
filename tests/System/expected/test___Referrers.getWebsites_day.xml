@@ -45,7 +45,7 @@
 		<segment>referrerName==google.com</segment>
 		<subtable>
 			<row>
-				<label>/search</label>
+				<label>http://google.com/search</label>
 				<nb_uniq_visitors>23</nb_uniq_visitors>
 				<nb_visits>36</nb_visits>
 				<nb_actions>126</nb_actions>
@@ -134,7 +134,7 @@
 		<segment>referrerName==scubadiverlife.com</segment>
 		<subtable>
 			<row>
-				<label>/gear-category/bcd</label>
+				<label>http://scubadiverlife.com/gear-category/bcd</label>
 				<nb_uniq_visitors>8</nb_uniq_visitors>
 				<nb_visits>9</nb_visits>
 				<nb_actions>25</nb_actions>
@@ -177,7 +177,7 @@
 				</goals>
 			</row>
 			<row>
-				<label>/gear-category/exposure-suit</label>
+				<label>http://scubadiverlife.com/gear-category/exposure-suit</label>
 				<nb_uniq_visitors>6</nb_uniq_visitors>
 				<nb_visits>6</nb_visits>
 				<nb_actions>24</nb_actions>
@@ -220,7 +220,7 @@
 				</goals>
 			</row>
 			<row>
-				<label>/gear-category/fins-reviews-2</label>
+				<label>http://scubadiverlife.com/gear-category/fins-reviews-2</label>
 				<nb_uniq_visitors>5</nb_uniq_visitors>
 				<nb_visits>6</nb_visits>
 				<nb_actions>23</nb_actions>
@@ -309,7 +309,7 @@
 		<segment>referrerName==emperordivers.com</segment>
 		<subtable>
 			<row>
-				<label>/blog/conservation</label>
+				<label>http://emperordivers.com/blog/conservation</label>
 				<nb_uniq_visitors>8</nb_uniq_visitors>
 				<nb_visits>9</nb_visits>
 				<nb_actions>23</nb_actions>
@@ -352,7 +352,7 @@
 				</goals>
 			</row>
 			<row>
-				<label>/blog/dive-courses</label>
+				<label>http://emperordivers.com/blog/dive-courses</label>
 				<nb_uniq_visitors>7</nb_uniq_visitors>
 				<nb_visits>7</nb_visits>
 				<nb_actions>39</nb_actions>
@@ -441,7 +441,7 @@
 		<segment>referrerName==divein.com</segment>
 		<subtable>
 			<row>
-				<label>/guide/how-to-become-a-padi-dive-instructor</label>
+				<label>http://divein.com/guide/how-to-become-a-padi-dive-instructor</label>
 				<nb_uniq_visitors>5</nb_uniq_visitors>
 				<nb_visits>7</nb_visits>
 				<nb_actions>36</nb_actions>
@@ -484,7 +484,7 @@
 				</goals>
 			</row>
 			<row>
-				<label>/guide/going-pro-become-a-dive-master</label>
+				<label>http://divein.com/guide/going-pro-become-a-dive-master</label>
 				<nb_uniq_visitors>5</nb_uniq_visitors>
 				<nb_visits>6</nb_visits>
 				<nb_actions>19</nb_actions>
@@ -573,7 +573,7 @@
 		<segment>referrerName==divebums.com</segment>
 		<subtable>
 			<row>
-				<label>/dive-sites/index.html</label>
+				<label>http://divebums.com/dive-sites/index.html</label>
 				<nb_uniq_visitors>6</nb_uniq_visitors>
 				<nb_visits>6</nb_visits>
 				<nb_actions>18</nb_actions>
@@ -616,7 +616,7 @@
 				</goals>
 			</row>
 			<row>
-				<label>/dive-sites/La-Jolla-Shores.html</label>
+				<label>http://divebums.com/dive-sites/La-Jolla-Shores.html</label>
 				<nb_uniq_visitors>3</nb_uniq_visitors>
 				<nb_visits>4</nb_visits>
 				<nb_actions>24</nb_actions>
@@ -705,7 +705,7 @@
 		<segment>referrerName==oahuscubadiving.com</segment>
 		<subtable>
 			<row>
-				<label>/oahu-dive-sites/</label>
+				<label>http://oahuscubadiving.com/oahu-dive-sites/</label>
 				<nb_uniq_visitors>2</nb_uniq_visitors>
 				<nb_visits>5</nb_visits>
 				<nb_actions>18</nb_actions>

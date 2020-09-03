@@ -171,7 +171,11 @@ class ImportReports extends ConsoleCommand
                 $importStatus->setImportDateRange($idSite, $dates[0], $dates[1]);
             }
 
-            $importer->importEntities($idSite, $account, $property, $viewId);
+            $abort = $importer->importEntities($idSite, $account, $property, $viewId);
+            if ($abort) {
+                $output->writeln("Failed to import property entities, aborting.");
+                return;
+            }
 
             $dateRangesToReImport = empty($status['reimport_ranges']) ? [] : $status['reimport_ranges'];
             $dateRangesToReImport = array_map(function ($d) {

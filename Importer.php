@@ -9,7 +9,6 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Google_Service_Analytics_Goal;
-use PHPMailer\PHPMailer\Exception;
 use Piwik\API\Request;
 use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
@@ -22,6 +21,7 @@ use Piwik\Date;
 use Piwik\Db;
 use Piwik\Option;
 use Piwik\Period\Factory;
+use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
@@ -143,7 +143,7 @@ class Importer
         $this->isMainImport = $isMainImport;
     }
 
-    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [])
+    public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [], $forceCustomDimensionSlotCheck = false)
     {
         $extraCustomDimensions = $this->checkExtraCustomDimensions($extraCustomDimensions);
 
@@ -183,6 +183,13 @@ class Importer
             }
         }
 
+        if ($forceCustomDimensionSlotCheck) {
+            $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
+            $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
+
+            $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions, $idSite, $accountId, $propertyId);
+        }
+
         $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
 
         return $idSite;
@@ -195,9 +202,8 @@ class Importer
             $this->importCustomDimensions($idSite, $accountId, $propertyId);
             $this->importCustomVariableSlots();
         } catch (\Exception $ex) {
-            $this->importStatus->erroredImport($idSite, $ex->getMessage());
-
-            throw $ex;
+            $this->onError($idSite, $ex);
+            return true;
         }
     }
 
@@ -286,9 +292,16 @@ class Importer
                 continue;
             }
 
-            $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
-                $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
-                $customDimension['case_sensitive']);
+            try {
+                $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+                    $idSite, $customDimension['name'], $customDimension['scope'], $customDimension['active'], $customDimension['extractions'],
+                    $customDimension['case_sensitive']);
+            } catch (\Exception $ex) {
+                if (strpos($ex->getMessage(), 'All Custom Dimensions for website') === 0) {
+                    $this->logger->warning("Cannot map custom dimension {$customDimension['name']}: " . $ex->getMessage());
+                    continue;
+                }
+            }
 
             $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension, $idSite);
         }
@@ -392,11 +405,9 @@ class Importer
             $this->importStatus->finishedImport($idSite);
 
             return true;
-        } catch (\Throwable $ex) {
-            $dateStr = isset($date) ? $date->toString() : '(unknown)';
-            $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
-
-            throw $ex;
+        } catch (\Exception $ex) {
+            $this->onError($idSite, $ex, $date);
+            return true;
         }
 
         return false;
@@ -632,5 +643,31 @@ class Importer
             ];
         }
         return $cleaned;
+    }
+
+    private function isGaAuthroizationError(\Exception $ex)
+    {
+        if ($ex->getCode() != 403) {
+            return false;
+        }
+
+        $messageContent = @json_decode($ex->getMessage(), true);
+        if (isset($messageContent['error']['message'])
+            && stristr($messageContent['error']['message'], 'Request had insufficient authentication scopes')
+        ) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function onError($idSite, \Exception $ex, Date $date = null)
+    {
+        if ($this->isGaAuthroizationError($ex)) {
+            $this->importStatus->erroredImport($idSite, Piwik::translate('GoogleAnalyticsImporter_InsufficientScopes'));
+        } else {
+            $dateStr = isset($date) ? $date->toString() : '(unknown)';
+            $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
+        }
     }
 }

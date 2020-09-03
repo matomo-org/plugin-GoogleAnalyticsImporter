@@ -193,10 +193,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             } else {
                 $parsedUrl = @parse_url($referrerUrl);
                 $host = isset($parsedUrl['host']) ? $parsedUrl['host'] : self::NOT_SET_IN_GA_LABEL;
-                $path = isset($parsedUrl['path']) ? $parsedUrl['path'] : self::NOT_SET_IN_GA_LABEL;
 
                 $topLevelRow = $this->addRowToTable($urlByWebsite, $row, $host);
-                $this->addRowToSubtable($topLevelRow, $row, $path);
+                $this->addRowToSubtable($topLevelRow, $row, $referrerUrl);
 
                 $this->addRowToTable($this->referrerTypeRecord, $row, Common::REFERRER_TYPE_WEBSITE);
             }
