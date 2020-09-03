@@ -139,6 +139,9 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             Archiver::CAMPAIGN_KEYWORD_RECORD_NAME => array(
                 array("ga:keyword")
             ),
+            Archiver::CAMPAIGN_ID_RECORD_NAME => array(
+                array("ga:campaignCode")
+            ),
             Archiver::CAMPAIGN_SOURCE_RECORD_NAME => array(
                 array("ga:source"),
             ),
@@ -158,6 +161,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getDimensionsToQuery()
     {
         return [
+            'ga:campaignCode',
             'ga:campaign',
             'ga:keyword',
             'ga:source',

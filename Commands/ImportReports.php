@@ -246,6 +246,7 @@ class ImportReports extends ConsoleCommand
                     $importer->setIsMainImport($isMainImport);
                     $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
                     if ($aborted) {
+                        $output->writeln("Error encountered, aborting.");
                         break;
                     }
                 } finally {
