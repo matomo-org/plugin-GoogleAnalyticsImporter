@@ -189,6 +189,10 @@ class ImportedFromGoogle extends Fixture
             throw new \Exception("Found problem warning in GA Import output: " . $allOutput);
         }
 
+        if (stristr($allOutput, 'aborting')) {
+            throw new \Exception("GA Import was aborted, output: " . $allOutput);
+        }
+
         print "Done in $timer\n";
 
         return $allOutput;
