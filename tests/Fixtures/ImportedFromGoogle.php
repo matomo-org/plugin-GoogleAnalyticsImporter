@@ -85,6 +85,7 @@ class ImportedFromGoogle extends Fixture
         DbHelper::getTablesInstalled(true);
 
         $cronArchive = new CronArchive();
+        $cronArchive->init();
         $cronArchive->invalidateArchivedReportsForSitesThatNeedToBeArchivedAgain(1);
         $cronArchive->invalidateArchivedReportsForSitesThatNeedToBeArchivedAgain(2);
     }
