@@ -102,7 +102,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                 'idSite' => $params->getSite()->getId(),
                 'period' => $params->getPeriod()->getLabel(),
                 'date1' => $params->getPeriod()->getDateStart()->getStartOfDay()->toString(),
-                'date2' => $params->getPeriod()->getDateEnd()->getDateEnd()->toString(),
+                'date2' => $params->getPeriod()->getDateEnd()->getEndOfDay()->toString(),
             ]
         );
 
