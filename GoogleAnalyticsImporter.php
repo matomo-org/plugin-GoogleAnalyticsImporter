@@ -14,12 +14,9 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\RawLogDao;
 use Piwik\DataTable;
 use Piwik\Date;
-use Piwik\Option;
-use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
-use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
@@ -95,10 +92,19 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
         $dao = new RawLogDao();
         $hasVisits = $dao->hasSiteVisitsBetweenTimeframe(
-            $params->getPeriod()->getDateStart(), $params->getPeriod()->getDateEnd(), $params->getSite()->getId());
+            $params->getPeriod()->getDateStart()->getStartOfDay(), $params->getPeriod()->getDateEnd()->getEndOfDay(), $params->getSite()->getId());
         if ($hasVisits) {
             return;
         }
+
+        StaticContainer::get(LoggerInterface::class)->debug(
+            "GoogleAnalyticsImporter stopped day from being archived since it is in imported range and there is no raw log data. [idSite = {idSite}, period = {period}({date1} - {date2})]", [
+                'idSite' => $params->getSite()->getId(),
+                'period' => $params->getPeriod()->getLabel(),
+                'date1' => $params->getPeriod()->getDateStart()->getStartOfDay()->toString(),
+                'date2' => $params->getPeriod()->getDateEnd()->getDateEnd()->toString(),
+            ]
+        );
 
         $isRequestAuthorizedToArchive = false;
     }
