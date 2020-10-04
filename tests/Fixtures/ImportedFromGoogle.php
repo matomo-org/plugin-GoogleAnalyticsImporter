@@ -91,7 +91,9 @@ class ImportedFromGoogle extends Fixture
         DbHelper::getTablesInstalled(true);
 
         $cronArchive = new CronArchive();
-        $cronArchive->invalidateArchivedReportsForSitesThatNeedToBeArchivedAgain();
+        $cronArchive->init();
+        $cronArchive->invalidateArchivedReportsForSitesThatNeedToBeArchivedAgain(1);
+        $cronArchive->invalidateArchivedReportsForSitesThatNeedToBeArchivedAgain(2);
     }
 
     private function aggregateForYear()
