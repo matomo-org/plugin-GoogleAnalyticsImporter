@@ -141,7 +141,8 @@ class ImportReports extends ConsoleCommand
         $success = $lock->acquireLock($idSite);
         if (empty($success)) {
             $n = ceil(ImportLock::getLockTtlConfig(StaticContainer::get(Config::class)) / 60);
-            throw new \Exception("An import is currently in progress. (If the other import has failed, you should be able to try again in about $n minutes.)");
+            $output->writeln("<error>An import is currently in progress. (If the other import has failed, you should be able to try again in about $n minutes.)</error>");
+            return;
         }
 
         $timer = new Timer();
