@@ -17,6 +17,7 @@ use Piwik\Date;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
+use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
@@ -90,9 +91,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             return;
         }
 
+        $timezone = Site::getTimezoneFor($params->getSite()->getId());
+        list($date1, $date2) = $params->getPeriod()->getBoundsInTimezone($timezone);
+
         $dao = new RawLogDao();
-        $hasVisits = $dao->hasSiteVisitsBetweenTimeframe(
-            $params->getPeriod()->getDateStart()->getStartOfDay(), $params->getPeriod()->getDateEnd()->getEndOfDay(), $params->getSite()->getId());
+        $hasVisits = $dao->hasSiteVisitsBetweenTimeframe($date1->getDatetime(), $date2->getDatetime(), $params->getSite()->getId());
         if ($hasVisits) {
             return;
         }
@@ -101,8 +104,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             "GoogleAnalyticsImporter stopped day from being archived since it is in imported range and there is no raw log data. [idSite = {idSite}, period = {period}({date1} - {date2})]", [
                 'idSite' => $params->getSite()->getId(),
                 'period' => $params->getPeriod()->getLabel(),
-                'date1' => $params->getPeriod()->getDateStart()->getStartOfDay()->toString(),
-                'date2' => $params->getPeriod()->getDateEnd()->getEndOfDay()->toString(),
+                'date1' => $date1->getDatetime(),
+                'date2' => $date2->getDatetime(),
             ]
         );
 

@@ -10,6 +10,8 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
 
 use Piwik\ArchiveProcessor\Parameters;
+use Piwik\Common;
+use Piwik\Db;
 use Piwik\Option;
 use Piwik\Period\Factory;
 use Piwik\Plugin\Manager;
@@ -20,6 +22,10 @@ use Piwik\Site;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
+/**
+ * @group GoogleAnalyticsImporter
+ * @group GoogleAnalyticsImporter_Integration
+ */
 class GoogleAnalyticsImporterTest extends IntegrationTestCase
 {
     public function setUp(): void
@@ -88,7 +94,7 @@ class GoogleAnalyticsImporterTest extends IntegrationTestCase
 
         $this->setImportedDateRange('2018-03-02', '2018-05-10');
 
-        $t = Fixture::getTracker($idSite = 1, '2018-05-05 03:04:05');
+        $t = Fixture::getTracker($idSite = 1, '2018-05-05 12:04:05');
         $t->setUrl('http://example.com');
         Fixture::checkResponse($t->doTrackPageView('some title'));
 
