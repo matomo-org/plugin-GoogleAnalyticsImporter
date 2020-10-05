@@ -54,11 +54,6 @@ class ImportReports extends ConsoleCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $googleAuth = StaticContainer::get(Authorization::class);
-        $googleClient = $googleAuth->getConfiguredClient();
-
-        $service = new \Google_Service_Analytics($googleClient);
-
         $isAccountDeduced = false;
 
         $skipArchiving = $input->getOption('skip-archiving');
@@ -75,6 +70,23 @@ class ImportReports extends ConsoleCommand
         $type = $isMobileApp ? \Piwik\Plugins\MobileAppMeasurable\Type::ID : Type::ID;
 
         $idSite = $this->getIdSite($input);
+
+        /** @var ImportStatus $importStatus */
+        $importStatus = StaticContainer::get(ImportStatus::class);
+
+        $googleAuth = StaticContainer::get(Authorization::class);
+        try {
+            $googleClient = $googleAuth->getConfiguredClient();
+        } catch (\Exception $ex) {
+            $output->writeln("Cannot continue with import, client is misconfigured: " . $ex->getMessage());
+            if (!empty($idSite)) {
+                $importStatus->erroredImport($idSite, $ex->getMessage());
+            }
+            return;
+        }
+
+        $service = new \Google_Service_Analytics($googleClient);
+
         if (empty($idSite)) {
             $viewId = $this->getViewId($input, $output, $service);
             $property = $input->getOption('property');
@@ -94,9 +106,6 @@ class ImportReports extends ConsoleCommand
 
         /** @var Importer $importer */
         $importer = StaticContainer::get(Importer::class);
-
-        /** @var ImportStatus $importStatus */
-        $importStatus = StaticContainer::get(ImportStatus::class);
 
         $lock = null;
 
@@ -290,8 +299,10 @@ class ImportReports extends ConsoleCommand
 
         $profiles = $service->management_profiles->listManagementProfiles($accountId, $propertyId);
 
-        /** @var \Google_Service_Analytics_Profile $profile */
-        $profile = reset($profiles->getItems());
+        /** @var \Google_Service_Analytics_Profile[] $profiles */
+        $profiles = $profiles->getItems();
+
+        $profile = reset($profiles);
         $profileId = $profile->id;
 
         $output->writeln("No view ID supplied, using first profile in the supplied account/property: " . $profileId);
