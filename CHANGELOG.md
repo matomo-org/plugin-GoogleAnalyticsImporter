@@ -1,5 +1,14 @@
 ## Changelog
 
+# 1.5.5
+
+Changes:
+* Report error without failing command when client is misconfigured in import-reports.
+* Fail w/o thrown exception if lock is already acquired.
+
+Bug Fixes:
+* Fix issue where days could not be re-archived for imported sites due to lack of timestamp information present in dates.
+
 # 1.5.4
 
 Changes:
