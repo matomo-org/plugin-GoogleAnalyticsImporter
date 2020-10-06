@@ -92,7 +92,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
 
         $timezone = Site::getTimezoneFor($params->getSite()->getId());
-        list($date1, $date2) = $params->getPeriod()->getBoundsInTimezone($timezone);
+        list($date1, $date2) = $this->getBoundsInTimezone($params->getPeriod(), $timezone);
 
         $dao = new RawLogDao();
         $hasVisits = $dao->hasSiteVisitsBetweenTimeframe($date1->getDatetime(), $date2->getDatetime(), $params->getSite()->getId());
@@ -289,5 +289,13 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
 
         $importStatus->importArchiveFinished($idSite, $dateFinished);
+    }
+
+    private function getBoundsInTimezone(\Piwik\Period $period, $timezone)
+    {
+        $date1 = $period->getDateTimeStart()->setTimezone($timezone);
+        $date2 = $period->getDateTimeEnd()->setTimezone($timezone);
+
+        return [$date1, $date2];
     }
 }
