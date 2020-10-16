@@ -3,7 +3,7 @@
 # 1.5.6
 
 Bug Fixes:
-* Fix issue showing broken URLs when importing page URLs with hash values in them.
+* Fix issue showing broken URLs when importing page URLs with hash values in them. Affected users will have to re-import affected days.
 
 # 1.5.5
 
