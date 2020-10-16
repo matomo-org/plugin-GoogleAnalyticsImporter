@@ -551,12 +551,11 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
     private function replaceDefaultActionNameInTable(DataTable $table, $originalDefaultName)
     {
-        $row = $table->getRowFromLabel('/' . self::LABEL_DEFAULT_NAME);
-        if (!empty($row)) {
-            $row->setColumn('label', '/' . $originalDefaultName);
-        }
-
         foreach ($table->getRows() as $row) {
+            $label = $row->getColumn('label');
+            $label = str_replace(self::LABEL_DEFAULT_NAME, $originalDefaultName, $label);
+            $row->setColumn('label', $label);
+
             $subtable = $row->getSubtable();
             if ($subtable) {
                 $this->replaceDefaultActionNameInTable($subtable, $originalDefaultName);
