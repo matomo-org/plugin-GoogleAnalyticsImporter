@@ -1,5 +1,10 @@
 ## Changelog
 
+# 1.5.6
+
+Bug Fixes:
+* Fix issue showing broken URLs when importing page URLs with hash values in them.
+
 # 1.5.5
 
 Changes:
