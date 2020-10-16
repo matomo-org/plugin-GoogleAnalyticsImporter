@@ -70,6 +70,13 @@ class RecordImporterTest extends BaseRecordImporterTest
                 Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 4,
             ],
             [
+                'ga:pagePath' => '/folder/#ahashvalue',
+                Metrics::INDEX_PAGE_NB_HITS => 12,
+                Metrics::INDEX_PAGE_SUM_TIME_SPENT => 6,
+                Metrics::INDEX_PAGE_SUM_TIME_GENERATION => 1,
+                Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 1,
+            ],
+            [
                 'ga:pagePath' => '/apage',
                 Metrics::INDEX_PAGE_NB_HITS => 10,
                 Metrics::INDEX_PAGE_SUM_TIME_SPENT => 5,
