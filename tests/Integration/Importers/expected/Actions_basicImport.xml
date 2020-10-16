@@ -79,25 +79,25 @@
 			<col name="url">http://piwik.net/index</col>
 		</row>
 		<row>
-			<col name="label">/apage</col>
-			<col name="2">14</col>
-			<col name="1">4</col>
-			<col name="12">10</col>
-			<col name="13">5</col>
-			<col name="30">2</col>
-			<col name="31">6</col>
-			<col name="url">http://piwik.net/apage</col>
-		</row>
-		<row>
 			<col name="label">folder</col>
 			<col name="2">7</col>
-			<col name="12">9</col>
-			<col name="13">10</col>
-			<col name="30">2</col>
-			<col name="31">1</col>
+			<col name="12">21</col>
+			<col name="13">16</col>
+			<col name="30">3</col>
+			<col name="31">2</col>
 			<col name="folder_url_start">folder</col>
 			<col name="idsubdatatable">16</col>
 			<col name="subtable">
+				<row>
+					<col name="label">/index#ahashvalue</col>
+					<col name="2">0</col>
+					<col name="1">0</col>
+					<col name="12">12</col>
+					<col name="13">6</col>
+					<col name="30">1</col>
+					<col name="31">1</col>
+					<col name="url">http://piwik.net/folder/#ahashvalue</col>
+				</row>
 				<row>
 					<col name="label">/page</col>
 					<col name="2">7</col>
@@ -109,6 +109,16 @@
 					<col name="url">http://piwik.net/folder/page</col>
 				</row>
 			</col>
+		</row>
+		<row>
+			<col name="label">/apage</col>
+			<col name="2">14</col>
+			<col name="1">4</col>
+			<col name="12">10</col>
+			<col name="13">5</col>
+			<col name="30">2</col>
+			<col name="31">6</col>
+			<col name="url">http://piwik.net/apage</col>
 		</row>
 	</result>
 	<result record="Actions_sitesearch">
@@ -136,7 +146,7 @@
 	</result>
 	<result record="Actions_nb_pageviews">
 		<row>
-			<value>61</value>
+			<value>73</value>
 		</row>
 	</result>
 	<result record="Actions_nb_uniq_pageviews">
@@ -146,12 +156,12 @@
 	</result>
 	<result record="Actions_sum_time_generation">
 		<row>
-			<value>10</value>
+			<value>11</value>
 		</row>
 	</result>
 	<result record="Actions_nb_hits_with_time_generation">
 		<row>
-			<value>15</value>
+			<value>16</value>
 		</row>
 	</result>
 	<result record="Actions_nb_searches">
