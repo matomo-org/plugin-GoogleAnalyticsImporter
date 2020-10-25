@@ -75,6 +75,7 @@
         "ThisJobShouldFinishToday": "这项工作应该在今天完成。",
         "EstimatedFinishIn": "预计在%1$s天内完成。",
         "JobWillRunUntilManuallyCancelled": "未指定导入结束日期。 该作业将一直运行，直到手动取消为止。",
+        "MatomoSite": "Matomo站点",
         "GoogleAnalyticsInfo": "Google Analytics（分析）信息",
         "Status": "状态",
         "LatestDayProcessed": "最后一天处理",
