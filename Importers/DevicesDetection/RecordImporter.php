@@ -10,10 +10,9 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\DevicesDetection;
 
 use DeviceDetector\Parser\Client\Browser;
-use DeviceDetector\Parser\Device\DeviceParserAbstract;
 use DeviceDetector\Parser\OperatingSystem;
 use DeviceDetector\Yaml\Spyc;
-use Piwik\Cache\Transient;
+use Matomo\Cache\Transient;
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
@@ -21,7 +20,7 @@ use Piwik\Date;
 use Piwik\Plugins\DevicesDetection\Archiver;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Psr\Log\LoggerInterface;
-use DeviceDetector\Parser\Device\DeviceParserAbstract AS DeviceParser;
+use DeviceDetector\Parser\Device\AbstractDeviceParser AS DeviceParser;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
@@ -280,7 +279,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
 
         $result = $this->cache->fetch($cacheKey);
         if (empty($result)) {
-            $result = $this->buildValueMapping(DeviceParserAbstract::$deviceBrands);
+            $result = $this->buildValueMapping(DeviceParser::$deviceBrands);
             $result['oukitel'] = $result['ouki'];
             $result['blackberry'] = $result['rim'];
             $result['tecno'] = $result['tecno mobile'];
