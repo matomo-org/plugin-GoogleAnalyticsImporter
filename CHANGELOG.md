@@ -1,5 +1,9 @@
 ## Changelog
 
+# 4.0.0
+
+Compatibility with Matomo 4
+
 # 1.5.6
 
 Bug Fixes:
