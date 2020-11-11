@@ -123,8 +123,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $session = $this->getSession();
 
-        $session->gaauthtime = time();
-        $session->setExpirationSeconds(60 * 15, 'gaauthtime');
+        $session->gaauthtime = time() + 60 * 15;
 
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
@@ -163,10 +162,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $error     = Common::getRequestVar('error', '');
         $oauthCode = Common::getRequestVar('code', '');
-        $authTime  = $this->getSession()->gaauthtime;
+        $timeLimit = $this->getSession()->gaauthtime;
 
         // if the auth wasn't triggered within the last 15 minutes
-        if (!$authTime || $authTime < time()-60*15) {
+        if (!$timeLimit || time() > $timeLimit) {
             $error = true;
         }
 

@@ -11,8 +11,8 @@
          content-title="{{ title|e('html_attr') }}"
     >
         {% if hasClientConfiguration %}
-            <form method="post" action="{{ {action: 'forwardToAuth'}|urlRewriteWithParameters }}" id="clientauthform">
-                <input type="hidden" name="auth_nonce" value="{{ auth_nonce }}" />
+            <form method="post" action="{{ {action: 'forwardToAuth'}|urlRewriteWithParameters|e('html_attr') }}" id="clientauthform">
+                <input type="hidden" name="auth_nonce" value="{{ auth_nonce|e('html_attr') }}" />
                 {% if isConfigured %}
                 <p>{{ 'GoogleAnalyticsImporter_ImporterIsConfigured'|translate }}</p>
                 <button type="submit" class="btn">{{ 'GoogleAnalyticsImporter_ReAuthorize'|translate }}</button>
