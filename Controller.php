@@ -20,7 +20,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
-use Piwik\SettingsServer;
+use Piwik\Session\SessionNamespace;
 use Piwik\Site;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
@@ -85,7 +85,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         return $this->renderTemplate('index', [
             'isConfigured' => $authorization->hasAccessToken(),
-            'authUrl' => $authUrl,
+            'auth_nonce' => Nonce::getNonce('gaimport.auth'),
             'hasClientConfiguration' => $hasClientConfiguration,
             'nonce' => $nonce,
             'statuses' => $statuses,
@@ -115,6 +115,27 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         ]);
     }
 
+    public function forwardToAuth()
+    {
+        Piwik::checkUserHasSuperUserAccess();
+
+        Nonce::checkNonce('gaimport.auth', Common::getRequestVar('auth_nonce'));
+
+        $session = $this->getSession();
+
+        $session->gaauthtime = time() + 60 * 15;
+
+        /** @var Authorization $authorization */
+        $authorization = StaticContainer::get(Authorization::class);
+
+        Url::redirectToUrl($authorization->getConfiguredClient()->createAuthUrl());
+    }
+
+    protected function getSession()
+    {
+        return new SessionNamespace('searchperformance');
+    }
+
     public function deleteClientCredentials()
     {
         Piwik::checkUserHasSuperUserAccess();
@@ -141,6 +162,14 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $error     = Common::getRequestVar('error', '');
         $oauthCode = Common::getRequestVar('code', '');
+        $timeLimit = $this->getSession()->gaauthtime;
+
+        // if the auth wasn't triggered within the last 15 minutes
+        if (!$timeLimit || time() > $timeLimit) {
+            $error = true;
+        }
+
+        $this->getSession()->unsetAll(); // remove namespace variables
 
         if ($error) {
             return $this->index($error);

@@ -11,15 +11,16 @@
          content-title="{{ title|e('html_attr') }}"
     >
         {% if hasClientConfiguration %}
-            {% if isConfigured %}
-            <p>{{ 'GoogleAnalyticsImporter_ImporterIsConfigured'|translate }}</p>
-
-            <a class="btn" href="{{ authUrl }}">{{ 'GoogleAnalyticsImporter_ReAuthorize'|translate }}</a>
-            {% else %}
-            <p>{{ 'GoogleAnalyticsImporter_ClientConfigSuccessfullyUpdated'|translate }}</p>
-
-            <a class="btn" href="{{ authUrl }}">{{ 'GoogleAnalyticsImporter_Authorize'|translate }}</a>
-            {% endif %}
+            <form method="post" action="{{ {action: 'forwardToAuth'}|urlRewriteWithParameters|e('html_attr') }}" id="clientauthform">
+                <input type="hidden" name="auth_nonce" value="{{ auth_nonce|e('html_attr') }}" />
+                {% if isConfigured %}
+                <p>{{ 'GoogleAnalyticsImporter_ImporterIsConfigured'|translate }}</p>
+                <button type="submit" class="btn">{{ 'GoogleAnalyticsImporter_ReAuthorize'|translate }}</button>
+                {% else %}
+                <p>{{ 'GoogleAnalyticsImporter_ClientConfigSuccessfullyUpdated'|translate }}</p>
+                <button type="submit" class="btn">{{ 'GoogleAnalyticsImporter_Authorize'|translate }}</button>
+                {% endif %}
+            </form>
         {% else %}
             <form action="{{ linkTo({'action': 'configureClient'}) }}" method="POST" enctype="multipart/form-data">
                 <p>{{ 'GoogleAnalyticsImporter_ConfigureClientDesc1'|translate }}</p>
