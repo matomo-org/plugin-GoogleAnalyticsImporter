@@ -2,7 +2,8 @@
     "require": {
         "php": ">=7.2.5",
         "google/apiclient": "^2.5",
-        "google/apiclient-services": "v0.138"
+        "google/apiclient-services": "v0.138",
+        "guzzlehttp/guzzle": "^6.5"
     },
     "replace": {
         "monolog/monolog": "*"
