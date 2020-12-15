@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
+use DI\NotFoundException;
 use Piwik\CliMulti\CliPhp;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
@@ -250,7 +251,16 @@ class Tasks extends \Piwik\Plugin\Tasks
 
     private static function getNohupCommandIfPresent()
     {
-        if (true || SettingsServer::isWindows()) {
+        try {
+            $useNohup = StaticContainer::get('GoogleAnalyticsImporter.useNohup');
+            if (!$useNohup) {
+                return '';
+            }
+        } catch (NotFoundException $ex) {
+            // ignore
+        }
+
+        if (SettingsServer::isWindows()) {
             return '';
         }
 

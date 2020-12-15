@@ -6,6 +6,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 return [
     'GoogleAnalyticsImporter.pingMysqlEverySecs' => null,
+    'GoogleAnalyticsImporter.useNohup' => true,
 
     'GoogleAnalyticsImporter.googleClientClass' => 'Google_Client',
     'GoogleAnalyticsImporter.googleClient' => function (\Psr\Container\ContainerInterface $c) {
