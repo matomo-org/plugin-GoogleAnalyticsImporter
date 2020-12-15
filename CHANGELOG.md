@@ -1,4 +1,10 @@
+
 ## Changelog
+
+# 4.0.4
+
+Changes:
+* Do not use nohup on windows and allow users to disable nohup via DI config.
 
 # 4.0.0
 

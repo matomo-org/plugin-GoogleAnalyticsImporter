@@ -8,11 +8,13 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
+use DI\NotFoundException;
 use Piwik\CliMulti\CliPhp;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
+use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
@@ -112,7 +114,9 @@ class Tasks extends \Piwik\Plugin\Tasks
             $pathToConsole = '/tests/PHPUnit/proxy/console';
         }
 
-        $command = "nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
+        $nohup = self::getNohupCommandIfPresent();
+
+        $command = "$nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
@@ -204,7 +208,9 @@ class Tasks extends \Piwik\Plugin\Tasks
         $cliPhp = new CliPhp();
         $phpBinary = $cliPhp->findPhpBinary() ?: 'php';
 
-        $command = self::DATE_FINISHED_ENV_VAR . '=' . $lastDateImported->toString() . " nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
+        $nohup = self::getNohupCommandIfPresent();
+
+        $command = self::DATE_FINISHED_ENV_VAR . '=' . $lastDateImported->toString() . " $nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
@@ -243,4 +249,21 @@ class Tasks extends \Piwik\Plugin\Tasks
         return preg_replace('/[^a-zA-Z0-9:_-]]/', '', $gaDimension);
     }
 
+    private static function getNohupCommandIfPresent()
+    {
+        try {
+            $useNohup = StaticContainer::get('GoogleAnalyticsImporter.useNohup');
+            if (!$useNohup) {
+                return '';
+            }
+        } catch (NotFoundException $ex) {
+            // ignore
+        }
+
+        if (SettingsServer::isWindows()) {
+            return '';
+        }
+
+        return 'nohup';
+    }
 }
