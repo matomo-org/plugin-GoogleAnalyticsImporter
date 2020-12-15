@@ -13,6 +13,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic;
 use Piwik\CliMulti\CliPhp;
 use Piwik\Plugins\Diagnostics\Diagnostic\Diagnostic;
 use Piwik\Plugins\Diagnostics\Diagnostic\DiagnosticResult;
+use Piwik\SettingsServer;
 use Piwik\Translation\Translator;
 
 class RequiredExecutablesCheck implements Diagnostic
@@ -47,14 +48,16 @@ class RequiredExecutablesCheck implements Diagnostic
             $results[] = DiagnosticResult::singleResult($label, DiagnosticResult::STATUS_OK);
         }
 
-        $isNohupPresent = $this->isNohupPresent();
+        if (!SettingsServer::isWindows()) {
+            $isNohupPresent = $this->isNohupPresent();
 
-        $label = $baseLabel . ' (nohup)';
-        if ($isNohupPresent) {
-            $results[] = DiagnosticResult::singleResult($label, DiagnosticResult::STATUS_OK);
-        } else {
-            $explanation = $this->translator->translate('GoogleAnalyticsImporter_NohupExecutableMissing');
-            $results[] = DiagnosticResult::singleResult($label, DiagnosticResult::STATUS_ERROR, $explanation);
+            $label = $baseLabel . ' (nohup)';
+            if ($isNohupPresent) {
+                $results[] = DiagnosticResult::singleResult($label, DiagnosticResult::STATUS_OK);
+            } else {
+                $explanation = $this->translator->translate('GoogleAnalyticsImporter_NohupExecutableMissing');
+                $results[] = DiagnosticResult::singleResult($label, DiagnosticResult::STATUS_ERROR, $explanation);
+            }
         }
 
         return $results;
