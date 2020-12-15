@@ -44,6 +44,7 @@
 		<nb_hits>10</nb_hits>
 		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==winter+palace</segment>
 	</row>
 	<row>
 		<label>haven</label>
@@ -89,6 +90,7 @@
 		<nb_hits>9</nb_hits>
 		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==haven</segment>
 	</row>
 	<row>
 		<label>specializations</label>
@@ -134,6 +136,7 @@
 		<nb_hits>8</nb_hits>
 		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==specializations</segment>
 	</row>
 	<row>
 		<label>inner circle</label>
@@ -179,6 +182,7 @@
 		<nb_hits>6</nb_hits>
 		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==inner+circle</segment>
 	</row>
 	<row>
 		<label>inquisitor's path</label>
@@ -224,6 +228,7 @@
 		<nb_hits>6</nb_hits>
 		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==inquisitor%27s+path</segment>
 	</row>
 	<row>
 		<label>lost temple of dirthamen</label>
@@ -269,6 +274,7 @@
 		<nb_hits>5</nb_hits>
 		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==lost+temple+of+dirthamen</segment>
 	</row>
 	<row>
 		<label>skyhold</label>
@@ -314,6 +320,7 @@
 		<nb_hits>3</nb_hits>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==skyhold</segment>
 	</row>
 	<row>
 		<label>hissing wastes</label>
@@ -359,5 +366,6 @@
 		<nb_hits>1</nb_hits>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==hissing+wastes</segment>
 	</row>
 </result>
