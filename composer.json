@@ -9,6 +9,7 @@
         "monolog/monolog": "*"
     },
     "scripts": {
+        "post-install-cmd": "Google\\Task\\Composer::cleanup",
         "post-update-cmd": "Google\\Task\\Composer::cleanup"
     },
     "extra": {
