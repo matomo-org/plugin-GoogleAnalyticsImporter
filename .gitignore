@@ -1,3 +1,14 @@
 /tests/System/processed/
 /tests/Integration/Importers/processed/
 /tests/UI/processed-ui-screenshots/
+vendor/**/tests
+vendor/**/.travis.yml
+vendor/**/.gitignore
+vendor/**/*.md
+vendor/**/.php_cs
+vendor/**/.gitattributes
+vendor/**/.editorconfig
+vendor/**/phpunit.xml*
+vendor/**/phpcs.xml*
+vendor/**/composer.json
+vendor/**/composer.lock

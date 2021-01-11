@@ -1,5 +1,22 @@
 {
     "require": {
-        "google/apiclient": "^2.5"
+        "php": ">=7.2.5",
+        "google/apiclient": "^2.5",
+        "google/apiclient-services": "v0.138",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "replace": {
+        "monolog/monolog": "*"
+    },
+    "scripts": {
+        "post-install-cmd": "Google\\Task\\Composer::cleanup",
+        "post-update-cmd": "Google\\Task\\Composer::cleanup"
+    },
+    "extra": {
+        "google/apiclient-services": [
+            "Analytics",
+            "AnalyticsReporting",
+            "Oauth2"
+        ]
     }
 }
