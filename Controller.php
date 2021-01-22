@@ -27,6 +27,8 @@ use Psr\Log\LoggerInterface;
 
 class Controller extends \Piwik\Plugin\ControllerAdmin
 {
+    const OAUTH_STATE_NONCE_NAME = 'GoogleAnalyticsImporter.oauthStateNonce';
+
     public function index($errorMessage = false)
     {
         Piwik::checkUserHasSuperUserAccess();
@@ -121,19 +123,16 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         Nonce::checkNonce('gaimport.auth', Common::getRequestVar('auth_nonce'));
 
-        $session = $this->getSession();
-
-        $session->gaauthtime = time() + 60 * 15;
-
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
 
-        Url::redirectToUrl($authorization->getConfiguredClient()->createAuthUrl());
-    }
+        /** @var \Google_Client $client */
+        $client = $authorization->getConfiguredClient();
 
-    protected function getSession()
-    {
-        return new SessionNamespace('searchperformance');
+        $state = Nonce::getNonce(self::OAUTH_STATE_NONCE_NAME, 900);
+        $client->setState($state);
+
+        Url::redirectToUrl($client->createAuthUrl());
     }
 
     public function deleteClientCredentials()
@@ -162,14 +161,14 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $error     = Common::getRequestVar('error', '');
         $oauthCode = Common::getRequestVar('code', '');
-        $timeLimit = $this->getSession()->gaauthtime;
 
-        // if the auth wasn't triggered within the last 15 minutes
-        if (!$timeLimit || time() > $timeLimit) {
-            $error = true;
+        if (!$error) {
+            try {
+                Nonce::checkNonce(static::OAUTH_STATE_NONCE_NAME, Common::getRequestVar('state'));
+            } catch (\Exception $ex) {
+                $error = $ex->getMessage();
+            }
         }
-
-        $this->getSession()->unsetAll(); // remove namespace variables
 
         if ($error) {
             return $this->index($error);
