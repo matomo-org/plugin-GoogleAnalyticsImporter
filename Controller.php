@@ -162,7 +162,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $error     = Common::getRequestVar('error', '');
         $oauthCode = Common::getRequestVar('code', '');
 
-        Nonce::checkNonce(static::OAUTH_STATE_NONCE_NAME, Common::getRequestVar('state'));
+        Nonce::checkNonce(self::OAUTH_STATE_NONCE_NAME, Common::getRequestVar('state'));
 
         if ($error) {
             return $this->index($error);

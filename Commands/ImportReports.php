@@ -8,6 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 
+use Monolog\Logger;
 use Piwik\Concurrency\Lock;
 use Piwik\Concurrency\LockBackend\MySqlLockBackend;
 use Piwik\Config;
@@ -20,6 +21,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportLock;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
+use Piwik\Plugins\GoogleAnalyticsImporter\Logger\LogToSingleFileProcessor;
 use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Site;
@@ -70,6 +72,7 @@ class ImportReports extends ConsoleCommand
         $type = $isMobileApp ? \Piwik\Plugins\MobileAppMeasurable\Type::ID : Type::ID;
 
         $idSite = $this->getIdSite($input);
+        LogToSingleFileProcessor::handleLogToSingleFile($idSite, $output);
 
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
@@ -78,7 +81,7 @@ class ImportReports extends ConsoleCommand
         try {
             $googleClient = $googleAuth->getConfiguredClient();
         } catch (\Exception $ex) {
-            $output->writeln("Cannot continue with import, client is misconfigured: " . $ex->getMessage());
+            $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Cannot continue with import, client is misconfigured: " . $ex->getMessage());
             if (!empty($idSite)) {
                 $importStatus->erroredImport($idSite, $ex->getMessage());
             }
@@ -96,9 +99,11 @@ class ImportReports extends ConsoleCommand
                 $isAccountDeduced = true;
 
                 $account = self::guessAccountFromProperty($property);
-                $output->writeln("<comment>No account ID specified, assuming it is '$account'.</comment>");
+                $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "<comment>No account ID specified, assuming it is '$account'.</comment>");
             }
         }
+
+        LogToSingleFileProcessor::handleLogToSingleFile($idSite);
 
         /** @var ImportConfiguration $importerConfiguration */
         $importerConfiguration = StaticContainer::get(ImportConfiguration::class);
@@ -118,13 +123,13 @@ class ImportReports extends ConsoleCommand
                 $idSite = $importer->makeSite($account, $property, $viewId, $timezone, $type, $extraCustomDimensions);
             } catch (\Google_Exception $ex) {
                 if ($isAccountDeduced) {
-                    $output->writeln("<comment>NOTE: We tried to deduce your GA account ID from the property ID above, it's possible your account ID differs. If this is the case specify it manually using --account=... and try again.</comment>");
+                    $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "<comment>NOTE: We tried to deduce your GA account ID from the property ID above, it's possible your account ID differs. If this is the case specify it manually using --account=... and try again.</comment>");
                 }
                 throw $ex;
             }
 
             $createdSiteInCommand = true;
-            $output->writeln("Created new site with ID = $idSite.");
+            $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Created new site with ID = $idSite.");
         } else {
             $status = $importStatus->getImportStatus($idSite);
             if (empty($status)) {
@@ -136,9 +141,9 @@ class ImportReports extends ConsoleCommand
             }
 
             if ($status['status'] == ImportStatus::STATUS_ERRORED) {
-                $output->writeln("Import for site with ID = $idSite has errored, will attempt to resume.");
+                $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Import for site with ID = $idSite has errored, will attempt to resume.");
             } else {
-                $output->writeln("Resuming import into existing site $idSite.");
+                $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Resuming import into existing site $idSite.");
             }
 
             $account = $status['ga']['account'];
@@ -150,7 +155,7 @@ class ImportReports extends ConsoleCommand
         $success = $lock->acquireLock($idSite);
         if (empty($success)) {
             $n = ceil(ImportLock::getLockTtlConfig(StaticContainer::get(Config::class)) / 60);
-            $output->writeln("<error>An import is currently in progress. (If the other import has failed, you should be able to try again in about $n minutes.)</error>");
+            $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "<error>An import is currently in progress. (If the other import has failed, you should be able to try again in about $n minutes.)</error>");
             return;
         }
 
@@ -165,7 +170,7 @@ class ImportReports extends ConsoleCommand
                     $startDate = Date::factory($status['import_range_start']);
                 } else {
                     $startDate = Date::factory(Site::getCreationDateFor($idSite));
-                    $output->writeln("No dates specified with --dates, importing data from when the GA site was created to today: {$startDate}");
+                    $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "No dates specified with --dates, importing data from when the GA site was created to today: {$startDate}");
                 }
 
                 if (!empty($status['import_range_end'])) {
@@ -183,7 +188,7 @@ class ImportReports extends ConsoleCommand
 
             $abort = $importer->importEntities($idSite, $account, $property, $viewId);
             if ($abort) {
-                $output->writeln("Failed to import property entities, aborting.");
+                $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Failed to import property entities, aborting.");
                 return;
             }
 
@@ -204,7 +209,7 @@ class ImportReports extends ConsoleCommand
             $dateRangesText = array_map(function ($d) { return $d[0] . ',' . $d[1]; }, $dateRangesToImport);
             $dateRangesText = implode(', ', $dateRangesText);
 
-            $output->writeln("Importing the following date ranges in order: " . $dateRangesText);
+            $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Importing the following date ranges in order: " . $dateRangesText);
 
             // NOTE: date ranges to reimport are handled first, then we go back to the main import (which could be
             // continuous)
@@ -214,7 +219,7 @@ class ImportReports extends ConsoleCommand
                 if (!is_array($datesToImport)
                     || count($datesToImport) != 2
                 ) {
-                    $output->writeln("Found broken entry in date ranges to import (entry #$index) with improper type, skipping.");
+                    $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Found broken entry in date ranges to import (entry #$index) with improper type, skipping.");
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
                     continue;
                 }
@@ -239,30 +244,30 @@ class ImportReports extends ConsoleCommand
                 if (!$this->isValidDate($startDate)
                     || !$this->isValidDate($endDate)
                 ) {
-                    $output->writeln("Found broken entry in date ranges to import (entry #$index) with invalid date strings, skipping.");
+                    $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Found broken entry in date ranges to import (entry #$index) with invalid date strings, skipping.");
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
                     continue;
                 }
 
                 if ($endDate->isEarlier($startDate)) {
-                    $output->writeln("(Entry #$index) is finished, moving on.");
+                    $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "(Entry #$index) is finished, moving on.");
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
                     continue;
                 }
 
-                $output->writeln("Importing reports for date range {$startDate} - {$endDate} from GA view $viewId.");
+                $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Importing reports for date range {$startDate} - {$endDate} from GA view $viewId.");
 
                 try {
                     $importer->setIsMainImport($isMainImport);
                     $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
                     if ($aborted) {
-                        $output->writeln("Error encountered, aborting.");
+                        $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Error encountered, aborting.");
                         break;
                     }
                 } finally {
                     // doing it in the finally since we can get rate limited, which will result in an exception thrown
                     if (!$skipArchiving) {
-                        $output->writeln("Running archiving for newly imported data...");
+                        $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Running archiving for newly imported data...");
                         $status = $importStatus->getImportStatus($idSite);
                         Tasks::startArchive($status, $wait = true, $startDate, $checkImportIsRunning = false);
                     }
@@ -280,7 +285,7 @@ class ImportReports extends ConsoleCommand
         }
 
         $queryCount = $importer->getQueryCount();
-        $output->writeln("Done in $timer. [$queryCount API requests made to GA]");
+        $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Done in $timer. [$queryCount API requests made to GA]");
     }
 
     private function getViewId(InputInterface $input, OutputInterface $output, \Google_Service_Analytics $service)
@@ -306,7 +311,7 @@ class ImportReports extends ConsoleCommand
         $profile = reset($profiles);
         $profileId = $profile->id;
 
-        $output->writeln("No view ID supplied, using first profile in the supplied account/property: " . $profileId);
+        $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "No view ID supplied, using first profile in the supplied account/property: " . $profileId);
 
         return $profileId;
     }
