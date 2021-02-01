@@ -129,9 +129,9 @@ class Tasks extends \Piwik\Plugin\Tasks
         }
 
         if ($logToSingleFile || !$isVerboseLoggingEnabled) {
-            $command .= ' >>';
+            $command .= ' >> ';
         } else {
-            $command .= ' >';
+            $command .= ' > ';
         }
 
         $command .= $importLogFile . ' 2>&1 &';
