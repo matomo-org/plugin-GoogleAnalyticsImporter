@@ -222,10 +222,12 @@ class ImportStatus
 
         $hostname = Config::getHostname();
 
-        $importLogFile = Tasks::getImportLogFile($idSite, $hostname);
+        $logToSingleFile = StaticContainer::get('GoogleAnalyticsImporter.logToSingleFile');
+
+        $importLogFile = Tasks::getImportLogFile($idSite, $hostname, $logToSingleFile);
         @unlink($importLogFile);
 
-        $archiveLogFile = Tasks::getImportLogFile($idSite, $hostname);
+        $archiveLogFile = Tasks::getImportLogFile($idSite, $hostname, $logToSingleFile);
         @unlink($archiveLogFile);
     }
 
