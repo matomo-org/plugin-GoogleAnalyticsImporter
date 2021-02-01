@@ -14,6 +14,7 @@ use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
+use Piwik\Plugins\GoogleAnalyticsImporter\Logger\LogToSingleFileProcessor;
 use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -94,12 +95,14 @@ class Tasks extends \Piwik\Plugin\Tasks
             return;
         }
 
+        $logToSingleFile = StaticContainer::get('GoogleAnalyticsImporter.logToSingleFile');
+
         $idSite = $status['idSite'];
         $isVerboseLoggingEnabled = !empty($status['is_verbose_logging_enabled']);
 
         $hostname = Config::getHostname();
 
-        $importLogFile = self::getImportLogFile($idSite, $hostname);
+        $importLogFile = self::getImportLogFile($idSite, $hostname, $logToSingleFile);
         if (!is_writable($importLogFile)
             && !is_writable(dirname($importLogFile))
         ) {
@@ -122,10 +125,15 @@ class Tasks extends \Piwik\Plugin\Tasks
         }
         $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$idSite;
         if ($isVerboseLoggingEnabled) {
-            $command .= ' -vvv > ';
-        } else {
-            $command .= ' >> ';
+            $command .= ' -vvv';
         }
+
+        if ($logToSingleFile || !$isVerboseLoggingEnabled) {
+            $command .= ' >> ';
+        } else {
+            $command .= ' > ';
+        }
+
         $command .= $importLogFile . ' 2>&1 &';
 
         $logger = StaticContainer::get(LoggerInterface::class);
@@ -191,7 +199,9 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         $hostname = Config::getHostname();
 
-        $archiveLogFile = self::getArchiveLogFile($idSite, $hostname);
+        $logToSingleFile = StaticContainer::get('GoogleAnalyticsImporter.logToSingleFile');
+
+        $archiveLogFile = self::getArchiveLogFile($idSite, $hostname, $logToSingleFile);
         if (!is_writable($archiveLogFile)
             && !is_writable(dirname($archiveLogFile))
         ) {
@@ -210,14 +220,23 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         $nohup = self::getNohupCommandIfPresent();
 
-        $command = self::DATE_FINISHED_ENV_VAR . '=' . $lastDateImported->toString() . " $nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
+        $command = self::DATE_FINISHED_ENV_VAR . '=' . $lastDateImported->toString();
+        if (StaticContainer::get('GoogleAnalyticsImporter.logToSingleFile')) {
+            $command .= ' MATOMO_GA_IMPORTER_LOG_TO_SINGLE_FILE=' . $idSite;
+        }
+        $command .= " $nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
         $command .= 'core:archive --disable-scheduled-tasks --force-idsites=' . $idSite . ' --force-periods=week,month,year --force-date-range=' . $dateRange;
 
         if (!$wait) {
-            $command .= ' > ' . $archiveLogFile . ' 2>&1 &';
+            if ($logToSingleFile) {
+                $command .= ' >> ';
+            } else {
+                $command .= ' > ';
+            }
+            $command .= $archiveLogFile . ' 2>&1 &';
         }
 
         $logger->debug("Archive command for imported site: {command}", ['command' => $command]);
@@ -234,13 +253,19 @@ class Tasks extends \Piwik\Plugin\Tasks
         }
     }
 
-    public static function getArchiveLogFile($idSite, $hostname)
+    public static function getArchiveLogFile($idSite, $hostname, $logToSingleFile)
     {
+        if ($logToSingleFile) {
+            return StaticContainer::get('path.tmp') . '/logs/gaimport.log';
+        }
         return StaticContainer::get('path.tmp') . '/logs/gaimportlog.archive.' . $idSite . '.' . $hostname . '.log';
     }
 
-    public static function getImportLogFile($idSite, $hostname)
+    public static function getImportLogFile($idSite, $hostname, $logToSingleFile)
     {
+        if ($logToSingleFile) {
+            return StaticContainer::get('path.tmp') . '/logs/gaimport.log';
+        }
         return StaticContainer::get('path.tmp') . '/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
     }
 

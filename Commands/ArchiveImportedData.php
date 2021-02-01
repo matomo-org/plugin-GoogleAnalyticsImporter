@@ -11,6 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 use Piwik\Container\StaticContainer;
 use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
+use Piwik\Plugins\GoogleAnalyticsImporter\Logger\LogToSingleFileProcessor;
 use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -30,19 +31,21 @@ class ArchiveImportedData extends ConsoleCommand
     {
         $idSite = (int) $input->getOption('idSite');
 
+        LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite);
+
         $importStatus = StaticContainer::get(ImportStatus::class);
 
         try {
             $status = $importStatus->getImportStatus($idSite);
         } catch (\Exception $ex) {
-            $output->writeln("No import found for site ID = $idSite.");
+            $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "No import found for site ID = $idSite.");
             return;
         }
 
-        $output->writeln("Starting core:archive for site ID = $idSite.");
+        $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Starting core:archive for site ID = $idSite.");
 
         Tasks::startArchive($status, $wait = true);
 
-        $output->writeln("Done.");
+        $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Done.");
     }
 }

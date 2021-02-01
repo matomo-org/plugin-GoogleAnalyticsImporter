@@ -1,12 +1,22 @@
 <?php
 
 use Piwik\Url;
+use Psr\Container\ContainerInterface;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 return [
     'GoogleAnalyticsImporter.pingMysqlEverySecs' => null,
     'GoogleAnalyticsImporter.useNohup' => true,
+    'GoogleAnalyticsImporter.logToSingleFile' => false,
+
+    'log.processors' => \DI\decorate(function ($previous, ContainerInterface $container) {
+        $idSite = (int) getenv('MATOMO_GA_IMPORTER_LOG_TO_SINGLE_FILE');
+        if (!empty($idSite)) {
+            $previous[] = new \Piwik\Plugins\GoogleAnalyticsImporter\Logger\LogToSingleFileProcessor($idSite);
+        }
+        return $previous;
+    }),
 
     'GoogleAnalyticsImporter.googleClientClass' => 'Google_Client',
     'GoogleAnalyticsImporter.googleClient' => function (\Psr\Container\ContainerInterface $c) {
