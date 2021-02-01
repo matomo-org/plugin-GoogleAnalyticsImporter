@@ -8,7 +8,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 return [
     'GoogleAnalyticsImporter.pingMysqlEverySecs' => null,
     'GoogleAnalyticsImporter.useNohup' => true,
-    'GoogleAnalyticsImporter.logToSingleFile' => true,
+    'GoogleAnalyticsImporter.logToSingleFile' => false,
 
     'log.processors' => \DI\decorate(function ($previous, ContainerInterface $container) {
         $idSite = (int) getenv('MATOMO_GA_IMPORTER_LOG_TO_SINGLE_FILE');
