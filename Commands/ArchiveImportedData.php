@@ -31,7 +31,7 @@ class ArchiveImportedData extends ConsoleCommand
     {
         $idSite = (int) $input->getOption('idSite');
 
-        LogToSingleFileProcessor::handleLogToSingleFile($idSite);
+        LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite);
 
         $importStatus = StaticContainer::get(ImportStatus::class);
 

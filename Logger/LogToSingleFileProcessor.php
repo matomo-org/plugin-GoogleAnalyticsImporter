@@ -41,7 +41,7 @@ class LogToSingleFileProcessor
         return $record;
     }
 
-    public static function handleLogToSingleFile($idSite)
+    public static function handleLogToSingleFileInCliCommand($idSite)
     {
         if (self::$logToSingleFileHandled || empty($idSite)) {
             return;
