@@ -1,6 +1,14 @@
 
 ## Changelog
 
+# 4.1.0
+
+New Features:
+* Allow logging to a single file via DI config setting 'GoogleAnalyticsImporter.logToSingleFile'.
+
+Changes:
+* Remove extraneous google services from vendor via composer.
+
 # 4.0.4
 
 Changes:
