@@ -1,6 +1,13 @@
 
 ## Changelog
 
+# 4.1.1
+
+Bug Fixes:
+* Check referrer URL comes from google when checking oauth nonce.
+* Disable tagmanager container creation while creating new site to import into.
+* Only show admin menu item for superusers.
+
 # 4.1.0
 
 New Features:
