@@ -35,6 +35,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Input\MaxEndDateReached;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
+use Piwik\Plugins\TagManager\TagManager;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Segment;
 use Piwik\SettingsPiwik;
@@ -145,54 +146,69 @@ class Importer
 
     public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [], $forceCustomDimensionSlotCheck = false)
     {
-        $extraCustomDimensions = $this->checkExtraCustomDimensions($extraCustomDimensions);
+        if (class_exists(TagManager::class)
+            && isset($originalEnableAutoContainerCreation)
+        ) {
+            $originalEnableAutoContainerCreation = TagManager::$enableAutoContainerCreation;
+            TagManager::$enableAutoContainerCreation = false;
+        }
 
-        $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
-        $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
+        try {
+            $extraCustomDimensions = $this->checkExtraCustomDimensions($extraCustomDimensions);
 
-        $startDate = Date::factory($webproperty->getCreated())->toString();
-        if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
-            $idSite = SitesManagerAPI::getInstance()->addSite(
-                $siteName = $webproperty->getName(),
-                $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
-                $ecommerce = $view->eCommerceTracking ? 1 : 0,
-                $siteSearch = !empty($view->siteSearchQueryParameters),
-                $searchKeywordParams = $view->siteSearchQueryParameters,
-                $searchCategoryParams = $view->siteSearchCategoryParameters,
-                $excludedIps = null,
-                $excludedParams = $view->excludeQueryParameters,
-                $timezone = empty($timezone) ? $view->timezone : $timezone,
-                $currency = $view->currency,
-                $group = null,
-                $startDate,
-                $excludedUserAgents = null,
-                $keepURLFragments = null,
-                $type
-            );
-        } else { // matomo for wordpress
-            $site = new \WpMatomo\Site();
-            $idSite = $site->get_current_matomo_site_id();
+            $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
+            $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
 
-            $creationTime = Date::factory(Site::getCreationDateFor($idSite));
-            if ($creationTime->isLater(Date::factory($startDate))) {
-                // manually set the website creation date to a day earlier than the earliest day we import
-                Db::get()->update(Common::prefixTable("site"),
-                    ['ts_created' => $startDate],
-                    "idsite = $idSite"
+            $startDate = Date::factory($webproperty->getCreated())->toString();
+            if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
+                $idSite = SitesManagerAPI::getInstance()->addSite(
+                    $siteName = $webproperty->getName(),
+                    $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
+                    $ecommerce = $view->eCommerceTracking ? 1 : 0,
+                    $siteSearch = !empty($view->siteSearchQueryParameters),
+                    $searchKeywordParams = $view->siteSearchQueryParameters,
+                    $searchCategoryParams = $view->siteSearchCategoryParameters,
+                    $excludedIps = null,
+                    $excludedParams = $view->excludeQueryParameters,
+                    $timezone = empty($timezone) ? $view->timezone : $timezone,
+                    $currency = $view->currency,
+                    $group = null,
+                    $startDate,
+                    $excludedUserAgents = null,
+                    $keepURLFragments = null,
+                    $type
                 );
+            } else { // matomo for wordpress
+                $site = new \WpMatomo\Site();
+                $idSite = $site->get_current_matomo_site_id();
+
+                $creationTime = Date::factory(Site::getCreationDateFor($idSite));
+                if ($creationTime->isLater(Date::factory($startDate))) {
+                    // manually set the website creation date to a day earlier than the earliest day we import
+                    Db::get()->update(Common::prefixTable("site"),
+                        ['ts_created' => $startDate],
+                        "idsite = $idSite"
+                    );
+                }
+            }
+
+            if ($forceCustomDimensionSlotCheck) {
+                $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
+                $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
+
+                $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions, $idSite, $accountId, $propertyId);
+            }
+
+            $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
+
+            return $idSite;
+        } finally {
+            if (class_exists(TagManager::class)
+                && isset($originalEnableAutoContainerCreation)
+            ) {
+                TagManager::$enableAutoContainerCreation = $originalEnableAutoContainerCreation;
             }
         }
-
-        if ($forceCustomDimensionSlotCheck) {
-            $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
-            $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
-
-            $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions, $idSite, $accountId, $propertyId);
-        }
-
-        $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
-
-        return $idSite;
     }
 
     public function importEntities($idSite, $accountId, $propertyId, $viewId)
