@@ -86,6 +86,15 @@
         "ScheduleImportDesc1": "Planen Sie unten einen neuen Import. Er wird einmal täglich ausgeführt bis alle Daten importiert wurden. Hinweis: Wir starten täglich weil es eine Begrenzung an Anfragen über die von Google bereitgestellte API gibt. Wenn diese erreicht ist, können wir erst am nächsten Tag wieder importieren. (Dieses ist generell nach dem Import von 4 Monaten mit Daten erreicht).",
         "ScheduleImportDesc2": "Wenn kein Enddatum angegeben ist, wird der Import so lange weiterfahren, bis Sie ihn unten manuell abbrechen.",
         "ResumeDesc": "Fortfachen. Hinweis: Wenn Ihr Import fehlgeschlagen ist, wird das Fortfahren sehr wahrscheinlich zum selben Fehler führen, ausser Sie haben das Plugin mit einem Fix aktualisert. Im Fall einer Datenbegrenzung wird sehr wahrscheinlich zu demselben Fehler führen, aber möglicherweise am nächsten Tag wenn das Datenlimit aufgehoben ist automatisch neu starten.",
-        "KilledStatusHelp": "So wie es aussieht, wurde der Job beendet. Falls Sie das nicht veranlasst haben, mag Ihr Host möglicherweise keine lang laufenden PHP Prozesse. Der Job Import wird in einer Stunde wieder starten, so dass der Import wieder aufgenommen wird. Falls die Importgeschwindigkeit weiterhin tief ist (prüfen Sie das morgen), dann schauen Sie im Benutzerhandbuch für mehr Informationen und Abhilfen."
+        "KilledStatusHelp": "So wie es aussieht, wurde der Job beendet. Falls Sie das nicht veranlasst haben, mag Ihr Host möglicherweise keine lang laufenden PHP Prozesse. Der Job Import wird in einer Stunde wieder starten, so dass der Import wieder aufgenommen wird. Falls die Importgeschwindigkeit weiterhin tief ist (prüfen Sie das morgen), dann schauen Sie im Benutzerhandbuch für mehr Informationen und Abhilfen.",
+        "ReimportDate": "Datumsbereich re-importieren",
+        "EnterImportDateRange": "Start- und Enddatum eingeben zum reimportieren",
+        "Schedule": "Zeitplan",
+        "InvalidDateRange": "Ungültiger Datumsbereich, das Startdatum muss vor dem Enddatum liegen.",
+        "ScheduledReImports": "Re-Importe",
+        "StartFinishTimes": "Start- \/ Endzeiten",
+        "TodaysDate": "heutiges Datum",
+        "YesterdaysDate": "gestriges Datum",
+        "InvalidDateFormat": "Das Datum muss das folgende Format haben: %1$s"
     }
 }
