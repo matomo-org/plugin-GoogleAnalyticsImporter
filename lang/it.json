@@ -12,6 +12,7 @@
         "ClientConfigSuccessfullyUpdated": "Hai caricato con successo i dettagli di configurazione del tuo client! Adesso devi solo autorizzare Matomo a leggere i dati di Google Analytics. Clicca sul pulsante qui sotto:",
         "Authorize": "Autorizza",
         "ConfigureClientDesc1": "Per importare i dati da Google Analytics, Matomo deve potervi accedere.",
+        "ConfigureClientDesc2": "%1$sPer iniziare, segui le nostre istruzioni per recuperare la configurazione del tuo client OAuth.%2$s Quindi carica la configurazione del client o incollala nel campo sottostante.",
         "ConfigurationFile": "File di Configurazione",
         "ConfigurationText": "Testo di Configurazione",
         "RemoveClientConfiguration": "Elimina la Configurazione del Client",
@@ -86,6 +87,20 @@
         "ScheduleImportDesc1": "Pianifica qui sotto una nuova importazione. Verrà eseguito una volta al giorno fino a quando non verrà importato l'intero intervallo di date. Nota: lo eseguiamo quotidianamente poiché esiste un limite giornaliero di richieste API che Google applica. Una volta raggiunto, non possiamo continuare a importare fino al giorno successivo. (Questo limite è raggiunto, in genere, dopo avere importato 4 mesi di dati).",
         "ScheduleImportDesc2": "Se non viene fornita alcuna data di fine, l'importazione continuerà fino a quando non verrà annullata manualmente qui di seguito.",
         "ResumeDesc": "Resume. Nota: se l'importazione è errata, una ripresa molto probabilmente comporterà lo stesso errore a meno che non sia stato aggiornato il plug-in con una correzione. Se è stata limitata la frequenza, il resume molto probabilmente comporterà lo stesso errore di limitazione della frequenza, ma si riavvierà automaticamente il giorno successivo quando il limite di velocità si esaurisce.",
-        "KilledStatusHelp": "Sembra che il processo di importazione sia stato terminato. Se non l'hai fatto tu stesso, probabilmente al tuo host non piacciono i processi PHP di lunga durata. Il processo di importazione verrà riavviato entro l'ora successiva, quindi l'importazione continuerà comunque. Se la velocità di importazione è ancora lenta nel complesso (ricontrolla tra un giorno per vedere), consulta la guida per l'utente per ulteriori informazioni e soluzioni alternative."
+        "KilledStatusHelp": "Sembra che il processo di importazione sia stato terminato. Se non l'hai fatto tu stesso, probabilmente al tuo host non piacciono i processi PHP di lunga durata. Il processo di importazione verrà riavviato entro l'ora successiva, quindi l'importazione continuerà comunque. Se la velocità di importazione è ancora lenta nel complesso (ricontrolla tra un giorno per vedere), consulta la guida per l'utente per ulteriori informazioni e soluzioni alternative.",
+        "ReimportDate": "Importa di nuovo l'intervallo di date",
+        "EnterImportDateRange": "Inserisci le date di inizio e di fine da importare di nuovo",
+        "Schedule": "Programmazione",
+        "InvalidDateRange": "Intervallo di date non valido, la data di inizio deve essere precedente la data di fine.",
+        "ScheduledReImports": "Reimportazioni",
+        "StartFinishTimes": "Orari di Inizio\/Fine",
+        "MaxEndDateHelp": "La data di fine massima consentita in questa installazione di Matomo è %1$s. Se inserisci una data successiva, verrà modificata in questa data.",
+        "TodaysDate": "data di oggi",
+        "YesterdaysDate": "data di ieri",
+        "InsufficientScopes": "Le tue credenziali OAuth non sono autorizzate ad accedere a tutti i tuoi dati di Google Analytics. Assicurati di aver abilitato l'accesso all'API di Google Analytics e all'API di Google Analytics Reporting.",
+        "CannotImportMissingCustomDimensionSlots": "Impossibile importare la proprietà di Google Analytics, ci sono più dimensioni personalizzate di tipo %1$s dell'area per le dimensioni personalizzate in Matomo. La tua proprietà utilizza %2$s dimensioni personalizzate, ma Matomo al momento ha spazio solo per %3$s dimensioni. Per ulteriori informazioni, consulta la documentazione sulle dimensioni personalizzate.",
+        "ForceCustomDimensionSlotCheck": "Ignora il limite dell'area dimensioni personalizzate",
+        "ForceCustomDimensionSlotCheckHelp": "Ogni installazione Matomo ha un determinato numero di dimensioni personalizzate per ambito che è possibile utilizzare per un determinato sito. È possibile che la tua proprietà di Google Analytics utilizzi più di questo numero. Se questa opzione è selezionata, l'importatore ignorerà semplicemente le dimensioni personalizzate che non può aggiungere. Se desideri mantenerle tutte, puoi aggiungere più slot di dimensioni personalizzate al tuo Matomo %1$s (consulta la documentazione sulle dimensioni personalizzate).%2$s",
+        "InvalidDateFormat": "La data deve essere nel seguente formato: %1$s"
     }
 }
