@@ -12,6 +12,7 @@
         "ClientConfigSuccessfullyUpdated": "İstemci yapılandırma bilgilerinizi yüklediniz! Şimdi Matomo için Google Analytics verilerinizi görüntüleme izni vermeniz gerekiyor. Aşağıdaki düğmeye tıklayın:",
         "Authorize": "İzin Ver",
         "ConfigureClientDesc1": "Google Analytics verilerini içe aktarmak için bu verilere Matomo trafından erişilebilmesi gerekiyor.",
+        "ConfigureClientDesc2": "%1$sİlk adımda OAuth İstemcisi yapılandırmanızı almak için yönergeleri izleyin.%2$s Ardından istemci yapılandırmasını yükleyin ya da aşağıdaki alana yapıştırın.",
         "ConfigurationFile": "Yapılandırma Dosyası",
         "ConfigurationText": "Yapılandırma Metni",
         "RemoveClientConfiguration": "İstemci Yapılandırmasını Sil",
@@ -86,6 +87,20 @@
         "ScheduleImportDesc1": "Aşağıdan yeni bir içe aktarma zamanlayın. Görev, tüm tarih aralığı içe aktarılana kadar günde bir kez çalıştırılır. Not: Google tarafından günlük API isteği sayısına sınırlama uygulandığından görevi günlük olarak çalıştırıyoruz. Sınıra ulaşıldığında, içe aktarma işlemi ertesi güne kadar devam edilemez (bu noktaya genellikle 4 aylık verilerin içe aktarılmasından sonra ulaşılır).",
         "ScheduleImportDesc2": "Herhangi bir bitiş tarihi belirtilmezse, içe aktarma işlemi aşağıdan el ile iptal edilene kadar sürdürülür.",
         "ResumeDesc": "Sürdür. Not: İçe aktarma işleminde sorun çıkıyorsa, uygulama ekini bir düzeltme ile güncellemediğiniz sürece işlemi sürdürmek büyük olasılıkla aynı soruna yol açar. Sorun istek sayısı sınırından kaynaklanıyorsa, işlemi sürdürmek büyük olasılıkla aynı istek sayısı sınırı hatasına neden olur. Ancak bir sonraki gün istek sayısı sınırı sıfırlandığında işlem otomatik olarak yeniden başlatılır.",
-        "KilledStatusHelp": "İçeri aktarma görevi sona erdirilmiş gibi görünüyor. Bunu siz yapmadıysanız, barındırma hizmetiniz uzun süren PHP işlemlerini sevmiyor olabilir. İçe aktarma görevi bir sonraki saatte yeniden başlatılacak. Böylece içe aktarma işlemi sürdürülecek. İçe aktarma hızı genel olarak hala düşükse (görmek için bir gün içinde yeniden bakın), ayrıntılı bilgi almak ve çözüm bulmak kullanıcı rehberine bakın."
+        "KilledStatusHelp": "İçeri aktarma görevi sona erdirilmiş gibi görünüyor. Bunu siz yapmadıysanız, barındırma hizmetiniz uzun süren PHP işlemlerini sevmiyor olabilir. İçe aktarma görevi bir sonraki saatte yeniden başlatılacak. Böylece içe aktarma işlemi sürdürülecek. İçe aktarma hızı genel olarak hala düşükse (görmek için bir gün içinde yeniden bakın), ayrıntılı bilgi almak ve çözüm bulmak kullanıcı rehberine bakın.",
+        "ReimportDate": "Yeniden içe aktarma tarih aralığı",
+        "EnterImportDateRange": "Yeniden içe aktarılacak başlangıç ve bitiş tarihlerini yazın",
+        "Schedule": "Zamanlama",
+        "InvalidDateRange": "Tarih aralığı geçersiz. Başlangıç tarihi bitiş tarihinden önce olmalıdır.",
+        "ScheduledReImports": "Yeniden içe aktarmalar",
+        "StartFinishTimes": "Başlangıç\/Bitiş Zamanları",
+        "MaxEndDateHelp": "Bu Matomo kurulumu için en son bitiş tarihi %1$s olabilir. Yazılabilecek daha ileri tarihler bu tarih ile değiştirilir.",
+        "TodaysDate": "bugünün tarihi",
+        "YesterdaysDate": "dünün tarihi",
+        "InsufficientScopes": "OAuth kimlik doğrulama bilgilerinin tüm Google Analytics verilerine erişme izni yok. Lütfen bu kimlik doğrulama bilgileri için Google Analytics API ve Google Analytics Raporlama API erişimlerinin etkinleştirilmiş olduğundan emin olun.",
+        "CannotImportMissingCustomDimensionSlots": "Google Analytics mülkü içe aktarılamadı, Matomo üzerindeki özel boyut aralığından daha fazla %1$s türünde özel boyut var. Mülkünüzde %2$s özel boyut kullanıyor, ancak Matomo üzerinde şu anda yalnız %3$s boyut için yer var. Ayrıntılı bilgi almak için Özel Boyutlar belgelerine bakabilirsiniz.",
+        "ForceCustomDimensionSlotCheck": "Özel boyut aralığı sınırlaması yok sayılsın",
+        "ForceCustomDimensionSlotCheckHelp": "Her Matomo kurulumunda, belirli bir site için kapsam başına kullanılabilecek belirli sayıda özel boyut bulunur. Google Analytics mülkünüz bu sayıdan fazlasını kullanıyor olabilir. Bu seçenek işaretlendiğinde, içe aktarıcı ekleyemeyeceği özel boyutları yok sayar. Tümünün korumasını istiyorsanız, Matomo üzerine daha fazla özel boyut aralığı ekleyebilirsiniz %1$s(Özel Boyutlar belgelerine bakabilirsiniz)%2$s.",
+        "InvalidDateFormat": "Tarih şu biçimde olmalıdır: %1$s"
     }
 }
