@@ -1,6 +1,14 @@
 
 ## Changelog
 
+# 4.1.2
+
+Bug Fixes:
+* Fix check for whether we should avoid tagmanager container creation.
+
+Changes:
+* Add some more logging for exceptions caught in the controller.
+
 # 4.1.1
 
 Bug Fixes:
