@@ -146,9 +146,7 @@ class Importer
 
     public function makeSite($accountId, $propertyId, $viewId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [], $forceCustomDimensionSlotCheck = false)
     {
-        if (class_exists(TagManager::class)
-            && isset($originalEnableAutoContainerCreation)
-        ) {
+        if (class_exists(TagManager::class)) {
             $originalEnableAutoContainerCreation = TagManager::$enableAutoContainerCreation;
             TagManager::$enableAutoContainerCreation = false;
         }
