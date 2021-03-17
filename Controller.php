@@ -247,11 +247,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode(['result' => 'ok']);
         } catch (\Exception $ex) {
+            $this->logException($ex, __FUNCTION__);
+
             $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
-            $notification->hasNoClear();
             Notification\Manager::notify('GoogleAnalyticsImporter_deleteImportStatus_failure', $notification);
         }
     }
@@ -282,11 +283,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode(['result' => 'ok']);
         } catch (\Exception $ex) {
+            $this->logException($ex, __FUNCTION__);
+
             $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
-            $notification->hasNoClear();
             Notification\Manager::notify('GoogleAnalyticsImporter_changeImportEndDate_failure', $notification);
         }
     }
@@ -363,11 +365,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {
+            $this->logException($ex, __FUNCTION__);
+
             $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
-            $notification->hasNoClear();
             Notification\Manager::notify('GoogleAnalyticsImporter_startImport_failure', $notification);
         }
     }
@@ -398,11 +401,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {
+            $this->logException($ex, __FUNCTION__);
+
             $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
-            $notification->hasNoClear();
             Notification\Manager::notify('GoogleAnalyticsImporter_resumeImport_failure', $notification);
         }
     }
@@ -440,13 +444,22 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {
+            $this->logException($ex, __FUNCTION__);
+
             $notification = new Notification($this->getNotificationExceptionText($ex));
             $notification->type = Notification::TYPE_TRANSIENT;
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->title = Piwik::translate('General_Error');
-            $notification->hasNoClear();
             Notification\Manager::notify('GoogleAnalyticsImporter_rescheduleImport_failure', $notification);
         }
+    }
+
+    private function logException(\Throwable $ex, $functionName)
+    {
+        StaticContainer::get(LoggerInterface::class)->error('Encountered exception in GoogleAnalyticsImporter.{function} controller method: {exception}', [
+            'exception' => $ex,
+            'function' => $functionName,
+        ]);
     }
 
     private function getNotificationExceptionText(\Exception $e)
