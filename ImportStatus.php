@@ -212,6 +212,20 @@ class ImportStatus
             $status = $this->enrichStatus($status, $checkKilledStatus);
             $result[] = $status;
         }
+
+        usort($result, function (&$lhs, $rhs) {
+            $lhsIdSite = (int)$lhs['idSite'];
+            $rhsIdSite = (int)$rhs['idSite'];
+
+            if ($lhsIdSite < $rhsIdSite) {
+                return -1;
+            } else if ($lhsIdSite > $rhsIdSite) {
+                return 1;
+            } else {
+                return 0;
+            }
+        });
+
         return $result;
     }
 

@@ -501,9 +501,14 @@ class ImportStatusTest extends IntegrationTestCase
         Fixture::createWebsite('2012-02-02');
         Fixture::createWebsite('2012-02-02');
 
+        for ($idSite = 4; $idSite < 11; ++$idSite) {
+            Fixture::createWebsite('2012-02-02'); // create a bunch of sites so we have an idSite=10 used
+        }
+
         $this->instance->startingImport('property', 'account', 'view', 1);
         $this->instance->startingImport('property2', 'account2', 'view2', 2);
         $this->instance->startingImport('property3', 'account3', 'view3', 3);
+        $this->instance->startingImport('property3', 'account3', 'view3', 10);
 
         $statuses = $this->instance->getAllImportStatuses();
         $this->cleanStatuses($statuses);
@@ -568,6 +573,28 @@ View: view2',
                 'extra_custom_dimensions' => [],
                 'days_finished_since_rate_limit' => 0,
                 'site' => new Site(3),
+                'gaInfoPretty' => 'Property: property3
+Account: account3
+View: view3',
+                'reimport_ranges' => [],
+                'main_import_progress' => null,
+            ],
+            [
+                'status' => 'started',
+                'idSite' => 10,
+                'ga' => [
+                    'property' => 'property3',
+                    'account' => 'account3',
+                    'view' => 'view3',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(10),
                 'gaInfoPretty' => 'Property: property3
 Account: account3
 View: view3',
