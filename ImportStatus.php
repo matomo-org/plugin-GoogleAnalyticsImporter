@@ -214,8 +214,8 @@ class ImportStatus
         }
 
         usort($result, function (&$lhs, $rhs) {
-            $lhsIdSite = (int)$lhs['idSite'];
-            $rhsIdSite = (int)$rhs['idSite'];
+            $lhsIdSite = (int)($lhs['idSite'] ?? 0);
+            $rhsIdSite = (int)($rhs['idSite'] ?? 0);
 
             if ($lhsIdSite < $rhsIdSite) {
                 return -1;
