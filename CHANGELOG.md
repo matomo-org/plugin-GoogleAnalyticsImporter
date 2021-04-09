@@ -1,6 +1,14 @@
 
 ## Changelog
 
+# 4.1.3
+
+Bug fixes:
+* Order import statuses by site ID as integer value instead of as text value.
+
+Other changes:
+* Bump phpseclib/phpseclib from 2.0.29 to 2.0.31
+
 # 4.1.2
 
 Bug Fixes:
