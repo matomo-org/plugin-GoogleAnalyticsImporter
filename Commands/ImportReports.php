@@ -21,6 +21,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportLock;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
+use Piwik\Plugins\GoogleAnalyticsImporter\ImportWasCancelledException;
 use Piwik\Plugins\GoogleAnalyticsImporter\Logger\LogToSingleFileProcessor;
 use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
 use Piwik\Plugins\WebsiteMeasurable\Type;
@@ -55,6 +56,15 @@ class ImportReports extends ConsoleCommand
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        try {
+            return $this->executeImpl($input, $output);
+        } catch (ImportWasCancelledException $ex) {
+            $output->writeln("Import was cancelled, aborting.");
+        }
+    }
+
+    protected function executeImpl(InputInterface $input, OutputInterface $output)
     {
         $isAccountDeduced = false;
 
