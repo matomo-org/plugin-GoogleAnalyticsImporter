@@ -323,9 +323,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             /** @var Importer $importer */
             $importer = StaticContainer::get(Importer::class);
 
-            $propertyId = Common::getRequestVar('propertyId');
-            $viewId = Common::getRequestVar('viewId');
-            $accountId = Common::getRequestVar('accountId', false);
+            $propertyId = trim(Common::getRequestVar('propertyId'));
+            $viewId = trim(Common::getRequestVar('viewId'));
+            $accountId = trim(Common::getRequestVar('accountId', false));
             $account = $accountId ?: ImportReports::guessAccountFromProperty($propertyId);
             $isMobileApp = Common::getRequestVar('isMobileApp', 0, 'int') == 1;
             $timezone = trim(Common::getRequestVar('timezone', '', 'string'));

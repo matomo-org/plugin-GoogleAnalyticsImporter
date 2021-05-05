@@ -28,8 +28,8 @@ describe("GoogleAnalyticsImporter", function () {
     it("should start an import properly", async function () {
         await page.type('input#startDate', '2019-06-27');
         await page.type('input#endDate', '2019-07-02');
-        await page.type('input#propertyId', 'UA-12345-6');
-        await page.type('input#accountId', '12345');
+        await page.type('input#propertyId', 'UA-12345-6  '); // whitespace on purpose to test trim
+        await page.type('input#accountId', '  12345'); // whitespace on purpose to test trim
         await page.type('input#viewId', '1234567');
         await page.evaluate(() => $('div[name=extraCustomDimensions] input.control_text').val('ga:networkLocation').change());
         await page.evaluate(() => $('div[name=extraCustomDimensions] select:eq(0)').val('string:visit').change());
