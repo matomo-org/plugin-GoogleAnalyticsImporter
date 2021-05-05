@@ -173,7 +173,7 @@ class ImportStatus
         Option::clearCachedOption($optionName);
         $data = Option::get($optionName);
         if (empty($data)) {
-            throw new \Exception("Import was cancelled.");
+            throw new ImportWasCancelledException();
         }
         $data = json_decode($data, true);
         return $data;
