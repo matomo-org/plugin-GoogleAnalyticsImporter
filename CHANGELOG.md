@@ -1,6 +1,12 @@
 
 ## Changelog
 
+# 4.1.4
+
+Changes:
+* Catch cancelled import exceptions and do not propagate in import reports command
+* trim property/view/account ID when starting an import to avoid errors on typos
+
 # 4.1.3
 
 Bug fixes:
