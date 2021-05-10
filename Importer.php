@@ -194,7 +194,7 @@ class Importer
                 $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
                 $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
 
-                $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions, $idSite, $accountId, $propertyId);
+                $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions);
             }
 
             $this->importStatus->startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions);
@@ -479,7 +479,8 @@ class Importer
         $archiveWriter->insertRecord(self::IS_IMPORTED_FROM_GA_NUMERIC, 1);
         $archiveWriter->finalizeArchive();
 
-        $this->invalidator->markArchivesAsInvalidated([$site->getId()], [$date], 'week', new Segment($segment, [$site->getId()]));
+        $this->invalidator->markArchivesAsInvalidated([$site->getId()], [$date], 'week', new Segment($segment, [$site->getId()]),
+            false, false, null, $ignorePurgeLogDataDate = true);
 
         Common::destroy($archiveWriter);
     }
