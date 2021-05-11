@@ -1,6 +1,11 @@
 
 ## Changelog
 
+# 4.1.5
+
+Changes:
+* Do not use log data purge check when invalidating week periods after a day is imported.
+
 # 4.1.4
 
 Changes:
