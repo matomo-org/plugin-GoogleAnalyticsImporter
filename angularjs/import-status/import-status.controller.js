@@ -54,24 +54,26 @@
         }
 
         function changeImportEndDateModal() {
+            piwikApi.withTokenInUrl();
             return piwikApi.post({
                 module: 'GoogleAnalyticsImporter',
                 action: 'changeImportEndDate',
                 idSite: editImportEndDateIdSite,
                 nonce: vm.changeImportEndDateNonce,
                 endDate: vm.newImportEndDate
-            }, { token_auth: piwik.token_auth })['finally'](function () {
+            })['finally'](function () {
                 window.location.reload();
             });
         }
 
         function manuallyResume(idSite) {
+            piwikApi.withTokenInUrl();
             return piwikApi.post({
                 module: 'GoogleAnalyticsImporter',
                 action: 'resumeImport',
                 idSite: idSite,
                 nonce: vm.resumeImportNonce
-            }, { token_auth: piwik.token_auth })['finally'](function () {
+            })['finally'](function () {
                 window.location.reload();
             });
         }
@@ -84,12 +86,13 @@
                 return;
             }
 
+            piwikApi.withTokenInUrl();
             return piwikApi.post({
                 module: 'GoogleAnalyticsImporter',
                 action: 'deleteImportStatus',
                 idSite: idSite,
                 nonce: vm.nonce
-            }, { token_auth: piwik.token_auth })['finally'](function () {
+            })['finally'](function () {
                 window.location.reload();
             });
         }
@@ -100,6 +103,7 @@
         }
 
         function scheduleReimport() {
+            piwikApi.withTokenInUrl();
             return piwikApi.post({
                 module: 'GoogleAnalyticsImporter',
                 action: 'scheduleReImport',
@@ -107,7 +111,7 @@
                 startDate: vm.reimportStartDate,
                 endDate: vm.reimportEndDate,
                 nonce: vm.scheduleReImportNonce
-            }, { token_auth: piwik.token_auth })['finally'](function () {
+            })['finally'](function () {
                 window.location.reload();
             });
         }
