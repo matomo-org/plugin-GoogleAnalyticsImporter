@@ -1,6 +1,11 @@
 
 ## Changelog
 
+# 4.1.6
+
+Changes:
+* Compatibility with Matomo 4.3.0.
+
 # 4.1.5
 
 Changes:
