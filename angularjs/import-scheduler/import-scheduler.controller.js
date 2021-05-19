@@ -54,7 +54,7 @@
                 extraCustomDimensions: vm.extraCustomDimensions,
                 isVerboseLoggingEnabled: vm.isVerboseLoggingEnabled ? '1' : '0',
                 forceCustomDimensionSlotCheck: forceCustomDimensionSlotCheck ? '1' : '0'
-            }, { token_auth: piwik.token_auth })['finally'](function () {
+            })['finally'](function () {
                 window.location.reload();
             });
         }
