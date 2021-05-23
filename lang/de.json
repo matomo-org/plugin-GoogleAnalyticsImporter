@@ -12,6 +12,7 @@
         "ClientConfigSuccessfullyUpdated": "Sie haben Ihre Client Konfiguration Details erfolgreich hochgeladen! Nun müssen Sie nur noch Matomo erlauben, um Ihre Google Analytics Daten zu sehen. Klicken Sie den Knopf unten:",
         "Authorize": "Autorisieren",
         "ConfigureClientDesc1": "Damit Ihre Daten von Google Analytics importiert werden können, benötigt Matomo Zugriff zu diesen Daten.",
+        "ConfigureClientDesc2": "%1$sUm zu beginnen, folgen Sie unseren Instruktionen, um Ihre OAuth Client Konfiguration zu erhalten.%2$s Dann entweder diese Cient Konfiguration hochladen oder in das untenstehende Feld reinkopieren.",
         "ConfigurationFile": "Konfigurationsdatei",
         "ConfigurationText": "Konfigurationstext",
         "RemoveClientConfiguration": "Client Konfiguration entfernen",
@@ -48,7 +49,7 @@
         "DimensionScope": "Dimensionsbereich",
         "Troubleshooting": "Fehlerbehebung",
         "IsVerboseLoggingEnabled": "Erweitertes protokollieren aktivieren",
-        "IsVerboseLoggingEnabledHelp": "Wenn Ihr Import aus irgendeinem Grund an einem spezifischen Tag fehlschlägt, können Sie Verbose Logging aktivieren um mehr Informationen über den Fall zu erfahren. Aktivieren Sie es nur für das fehlgeschlagene Datum, weil das zu vielen Einträgen in der Logausgabe führt. Nachdem der Import beendet ist, finden Sie die Logdateien im %1$s Verzeichnis mit einem Namen wie %2$s. Senden Sie diese Logdatei mit Fehlermeldungen\/Supportanfragen.",
+        "IsVerboseLoggingEnabledHelp": "Wenn Ihr Import aus irgendeinem Grund an einem spezifischen Tag fehlschlägt, können Sie Verbose Logging aktivieren, um mehr Informationen über den Fall zu erfahren. Aktivieren Sie es nur für das fehlgeschlagene Datum, weil das zu vielen Einträgen in der Logausgabe führt. Nachdem der Import beendet ist, finden Sie die Logdateien im %1$s Verzeichnis mit einem Namen wie %2$s. Senden Sie diese Logdatei mit Fehlermeldungen\/Supportanfragen.",
         "RequiredExecutablesCheck": "Benötigte Entscheidungen",
         "PhpExecutableMissing": "Matomo kann die PHP executable nicht finden. Der Google Analytics Importer ruft PHP mit der Kommandozeile auf um zu importieren. Diese muss in PHP vorhanden und aufrufbar sein, damit der Importer funktioniert.",
         "NohupExecutableMissing": "Matomo kann die nohup Ausführung nicht finden. Der Google Analytics Importer verwendet nohup um den Importprozess auszuführen, also wird er selbständig weiterfahren, nachdem ein Web Request geendet hat. Diese Ausführung muss für PHP verfügbar und aktiviert sein, damit der Importer funktionieren kann.",
@@ -93,8 +94,13 @@
         "InvalidDateRange": "Ungültiger Datumsbereich, das Startdatum muss vor dem Enddatum liegen.",
         "ScheduledReImports": "Re-Importe",
         "StartFinishTimes": "Start- \/ Endzeiten",
+        "MaxEndDateHelp": "Das maximale erlaubte Enddatum in dieser Matomo Installation ist %1$s. Wenn Sie ein späteres Datum einsetzen, wird es durch dieses Datum ersetzt.",
         "TodaysDate": "heutiges Datum",
         "YesterdaysDate": "gestriges Datum",
+        "InsufficientScopes": "Mit Ihren OAuth Einstellungen verfügen Sie nicht über die Berechtigung, um Zugriff auf all Ihre Google Analytics Daten zu erhalten. Bitte stellen Sie sicher, dass Sie Zugriff auf die Google Analytics API und die Google Analytics Reporting API haben.",
+        "CannotImportMissingCustomDimensionSlots": "Google Analytics Eigenschaft kann nicht importiert werden, es hat mehr benutzerdefinierte Dimensionen des Typ %1$s als benutzerdefinierte Dimensionspositionen in Matomo. Ihre Eigenschaft verwendet %2$s benutzerdefinierte Dimensionen, aber Matomo hat aktuell Platz für %3$s Dimensionen. Siehe Dokumentation Benutzerdefinierte Dimensionen für mehr Informationen.",
+        "ForceCustomDimensionSlotCheck": "Ignoriere das Limit für benutzerdefinierte Dimensionen",
+        "ForceCustomDimensionSlotCheckHelp": "Jede Matomo Installation hat eine Anzahl benutzerdefinierter Dimensionen pro Scope, welches Sie für eine bestimmte Seite verwenden können. Es ist möglich, dass Ihre Google Analytics Eigenschaft mehr als diese Anzahl verwendet. Wenn das der Fall ist, werden beim Import die nicht importierbaren benutzerdefinierten Dimensionen einfach ignoriert. Wenn Sie diese alle behalten wollen, können Sie Ihrer Matomo Installation zusätzliche benutzerdefinierte Dimensionen hinzufügen %1$s(siehe Dokumentation benutzerdefinierte Dimensionen)%2$s.",
         "InvalidDateFormat": "Das Datum muss das folgende Format haben: %1$s"
     }
 }
