@@ -32,7 +32,7 @@
     "AccountIdHelp": "The ID of the account that owns the property. This is sometimes the number after UA in the property ID, but that is not always the case.",
     "IsMobileAppHelp": "If your analytics property is for a mobile app, check this box. Otherwise, the import may fail if there is no URL associated with your property.",
     "Timezone": "Timezone",
-    "TimezoneHelp": "Google Analytics uses some time zones that are not valid PHP time zones. If your site uses one, you may have to manually set a timezone here. See %1$sthis list%2$s for a list of valid PHP time zones.",
+    "TimezoneHelp": "Google Analytics uses some time zones that are not valid PHP time zones. If your site uses one, you may have to manually set a time zone here. See %1$sthis list%2$s for a list of valid PHP time zones.",
     "Start": "Start",
     "None": "None",
     "EndDate": "End Date",
