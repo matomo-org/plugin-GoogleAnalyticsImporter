@@ -30,9 +30,9 @@
     "ViewIdHelp": "The ID of the view to import. It will be a large number, for example, 3450293.",
     "PropertyIdHelp": "The ID of the property to import. It will have the following format: UA-XXXXX-X, where the X's are digits.",
     "AccountIdHelp": "The ID of the account that owns the property. This is sometimes the number after UA in the property ID, but that is not always the case.",
-    "IsMobileAppHelp": "If your analytics property is for a mobile app, check this box. Otherwise the import may fail if there is no URL associated with your property.",
+    "IsMobileAppHelp": "If your analytics property is for a mobile app, check this box. Otherwise, the import may fail if there is no URL associated with your property.",
     "Timezone": "Timezone",
-    "TimezoneHelp": "Google Analytics uses some timezones that are not valid PHP timezones. If your site uses one, you may have to manually set a timezone here. See %1$sthis list%2$s for a list of valid PHP timezones.",
+    "TimezoneHelp": "Google Analytics uses some time zones that are not valid PHP time zones. If your site uses one, you may have to manually set a timezone here. See %1$sthis list%2$s for a list of valid PHP time zones.",
     "Start": "Start",
     "None": "None",
     "EndDate": "End Date",
@@ -87,7 +87,7 @@
     "ScheduleImportDesc1": "Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).",
     "ScheduleImportDesc2": "If no end date is supplied, the import will continue until you manually cancel it below.",
     "ResumeDesc": "Resume. Note: if your import has errored, resuming it will most likely result in the same error unless you have updated the plugin with a fix. If it has been rate limited, resuming will most likely result in the same rate limiting error, but it will automatically restart the next day when the rate limit wears off.",
-    "KilledStatusHelp": "It looks like the import job was terminated. If you didn't do this yourself, then your host probably does not like long running PHP processes. The import job will start again within the next hour so the import will still continue. If the import speed is still slow overall (check back in a day to see), then view the user guide for more information and workarounds.",
+    "KilledStatusHelp": "It looks like the import job was terminated. If you didn't do this yourself, then your host probably does not like long-running PHP processes. The import job will start again within the next hour so the import will still continue. If the import speed is still slow overall (check back in a day to see), then view the user guide for more information and workarounds.",
     "ReimportDate": "Re-import date range",
     "EnterImportDateRange": "Enter the start and end dates to re-import",
     "Schedule": "Schedule",
@@ -100,7 +100,7 @@
     "InsufficientScopes": "Your OAuth credentials do not have permission to access all of your Google Analytics data. Please ensure you have enabled access to the Google Analytics API and the Google Analytics Reporting API.",
     "CannotImportMissingCustomDimensionSlots": "Cannot import Google Analytics property, there are more custom dimensions of %1$s type than custom dimension slots in Matomo. Your property is using %2$s custom dimensions but Matomo currently only has room for %3$s dimensions. See the Custom Dimensions documentation for more information.",
     "ForceCustomDimensionSlotCheck": "Ignore custom dimension slot limit",
-    "ForceCustomDimensionSlotCheckHelp": "Every Matomo installation has a set number of custom dimensions per scope that you can use for a given site. Its possible your Google Analytics property uses more than this number. If this is checked, the importer will simply ignore the custom dimensions it cannot add. If you would like to keep them all, you can add more custom dimension slots to your Matomo %1$s(see the Custom Dimensions documentation)%2$s.",
+    "ForceCustomDimensionSlotCheckHelp": "Every Matomo installation has a set number of custom dimensions per scope that you can use for a given site. It's possible your Google Analytics property uses more than this number. If this is checked, the importer will simply ignore the custom dimensions it cannot add. If you would like to keep them all, you can add more custom dimension slots to your Matomo %1$s(see the Custom Dimensions documentation)%2$s.",
     "InvalidDateFormat": "The date must be in the following format: %1$s"
   }
 }
