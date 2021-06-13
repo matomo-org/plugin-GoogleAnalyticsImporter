@@ -9,7 +9,6 @@
         "IsMobileApp": "Aplicație mobilă",
         "Optional": "Opţional",
         "Timezone": "Fus orar",
-        "TimezoneHelp": "Google Analytics folosește câteva fusuri orare care nu sunt recunoscute de PHP. Dacă site-ul dumneavoastră folosește unul, atunci va trebui să setați manual aici fusul orar. Vedeți %1$s această listă %2$spentru o listă cu fusuri orare recunoscute de PHP.",
         "None": "Nu sunt",
         "NotSetInGA": "Nu este setat în Google Analytics",
         "RequiredExecutablesCheck": "Executabile necesare",

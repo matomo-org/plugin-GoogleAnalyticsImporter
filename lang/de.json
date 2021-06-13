@@ -30,9 +30,7 @@
         "ViewIdHelp": "Die ID der zu importierenden Ansicht . Das ist eine grosse Zahl, zum Beispiel 3450293.",
         "PropertyIdHelp": "Die ID der zu importierenden Eigenschaft. Sie wird das folgende Format haben: UA-XXXXX-X, wobei die X Ziffern sind.",
         "AccountIdHelp": "Die ID des Benutzerkontos, welche die Property besitzt. Dies ist manchmal die Nummer nach UA in der Property, aber das ist nicht immer der Fall.",
-        "IsMobileAppHelp": "Wenn Ihre Analyse Property für eine Mobile App ist, wählen Sie diese Box an. Sonst könnte der Import fehlschlagen wenn keine URL mit Ihrer Property verknüpft ist.",
         "Timezone": "Zeitzone",
-        "TimezoneHelp": "Google Analytics verwendet Zeitzonen werden keine gültigen PHP Zeitzonen sind. Wenn Ihre Seite solche verwendet, müssen Sie möglihcerweise hier eine Zeitzone manuell setzen. Berücksichtigen Sie einen Wert %1$sdieser Liste%2$s, um eine gültige PHP Zeitzone zu verwenden.",
         "Start": "Beginn",
         "None": "Keine",
         "EndDate": "Enddatum",
@@ -87,7 +85,6 @@
         "ScheduleImportDesc1": "Planen Sie unten einen neuen Import. Er wird einmal täglich ausgeführt bis alle Daten importiert wurden. Hinweis: Wir starten täglich weil es eine Begrenzung an Anfragen über die von Google bereitgestellte API gibt. Wenn diese erreicht ist, können wir erst am nächsten Tag wieder importieren. (Dieses ist generell nach dem Import von 4 Monaten mit Daten erreicht).",
         "ScheduleImportDesc2": "Wenn kein Enddatum angegeben ist, wird der Import so lange weiterfahren, bis Sie ihn unten manuell abbrechen.",
         "ResumeDesc": "Fortfachen. Hinweis: Wenn Ihr Import fehlgeschlagen ist, wird das Fortfahren sehr wahrscheinlich zum selben Fehler führen, ausser Sie haben das Plugin mit einem Fix aktualisert. Im Fall einer Datenbegrenzung wird sehr wahrscheinlich zu demselben Fehler führen, aber möglicherweise am nächsten Tag wenn das Datenlimit aufgehoben ist automatisch neu starten.",
-        "KilledStatusHelp": "So wie es aussieht, wurde der Job beendet. Falls Sie das nicht veranlasst haben, mag Ihr Host möglicherweise keine lang laufenden PHP Prozesse. Der Job Import wird in einer Stunde wieder starten, so dass der Import wieder aufgenommen wird. Falls die Importgeschwindigkeit weiterhin tief ist (prüfen Sie das morgen), dann schauen Sie im Benutzerhandbuch für mehr Informationen und Abhilfen.",
         "ReimportDate": "Datumsbereich re-importieren",
         "EnterImportDateRange": "Start- und Enddatum eingeben zum reimportieren",
         "Schedule": "Zeitplan",
@@ -100,7 +97,6 @@
         "InsufficientScopes": "Mit Ihren OAuth Einstellungen verfügen Sie nicht über die Berechtigung, um Zugriff auf all Ihre Google Analytics Daten zu erhalten. Bitte stellen Sie sicher, dass Sie Zugriff auf die Google Analytics API und die Google Analytics Reporting API haben.",
         "CannotImportMissingCustomDimensionSlots": "Google Analytics Eigenschaft kann nicht importiert werden, es hat mehr benutzerdefinierte Dimensionen des Typ %1$s als benutzerdefinierte Dimensionspositionen in Matomo. Ihre Eigenschaft verwendet %2$s benutzerdefinierte Dimensionen, aber Matomo hat aktuell Platz für %3$s Dimensionen. Siehe Dokumentation Benutzerdefinierte Dimensionen für mehr Informationen.",
         "ForceCustomDimensionSlotCheck": "Ignoriere das Limit für benutzerdefinierte Dimensionen",
-        "ForceCustomDimensionSlotCheckHelp": "Jede Matomo Installation hat eine Anzahl benutzerdefinierter Dimensionen pro Scope, welches Sie für eine bestimmte Seite verwenden können. Es ist möglich, dass Ihre Google Analytics Eigenschaft mehr als diese Anzahl verwendet. Wenn das der Fall ist, werden beim Import die nicht importierbaren benutzerdefinierten Dimensionen einfach ignoriert. Wenn Sie diese alle behalten wollen, können Sie Ihrer Matomo Installation zusätzliche benutzerdefinierte Dimensionen hinzufügen %1$s(siehe Dokumentation benutzerdefinierte Dimensionen)%2$s.",
         "InvalidDateFormat": "Das Datum muss das folgende Format haben: %1$s"
     }
 }
