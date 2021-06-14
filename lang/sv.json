@@ -29,9 +29,7 @@
         "ViewIdHelp": "ID för vyn som ska importeras. Det kommer att vara en stor siffra, till exempel 3450293.",
         "PropertyIdHelp": "ID för egendomen som ska importeras. Den har följande format: UA-XXXXX-X, där X-talet är siffror.",
         "AccountIdHelp": "ID för det konto som äger egendomen. Detta är ibland numret efter UA i egendoms-ID:t, men så är inte alltid fallet.",
-        "IsMobileAppHelp": "Om din analytics-egendom är för en mobilapp, markerar du den här rutan. I annat fall kan importen misslyckas om det inte finns någon webbadress kopplad till din egendom.",
         "Timezone": "Tidszon",
-        "TimezoneHelp": "Google Analytics använder vissa tidszoner som inte är giltiga PHP-tidszoner. Om din webbplats använder en, kan du behöva ställa in en tidszon här. Se %1$sden här listan%2$s för en lista över giltiga PHP-tidszoner.",
         "Start": "Start",
         "None": "Ingen",
         "EndDate": "Slutdatum",
@@ -85,7 +83,6 @@
         "ThereAreNoImportJobs": "Det finns inga importjobb att visa.",
         "ScheduleImportDesc1": "Schemalägg en ny import nedan. Den körs en gång om dagen tills hela datumintervallet importerats. Obs: Vi kör den dagligen eftersom det finns en daglig API-begäran-begränsning som Google upprätthåller. När den har nåtts kan vi inte fortsätta importera förrän nästa dag. (Denna begränsning nås vanligtvis efter import av fyra månaders data).",
         "ScheduleImportDesc2": "Om inget slutdatum anges fortsätter importen tills du manuellt avbryter den nedan.",
-        "ResumeDesc": "Återuppta. Obs: Om din import har misslyckats kommer det troligtvis att resultera i samma fel om du återupptar den om du inte har uppdaterat plugin-programmet med en fix. Om det har hastighetsbegränsats, kommer återupptagning troligen att resultera i samma fel, men det startas automatiskt om nästa dag när hastighetsbegränsningen försvinner.",
-        "KilledStatusHelp": "Det verkar som om importjobbet avslutades. Om du inte gjorde det själv, gillar din host förmodligen inte långvariga PHP-processer. Importjobbet startar igen inom nästa timme så importen fortsätter fortfarande. Om importhastigheten fortfarande är långsam (kolla in igen efter en dag för att se), gå till användarhandboken för mer information och lösningar."
+        "ResumeDesc": "Återuppta. Obs: Om din import har misslyckats kommer det troligtvis att resultera i samma fel om du återupptar den om du inte har uppdaterat plugin-programmet med en fix. Om det har hastighetsbegränsats, kommer återupptagning troligen att resultera i samma fel, men det startas automatiskt om nästa dag när hastighetsbegränsningen försvinner."
     }
 }
