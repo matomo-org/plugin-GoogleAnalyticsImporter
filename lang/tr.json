@@ -30,7 +30,9 @@
         "ViewIdHelp": "İçe aktarılacak görünümün kimliği. 3450293 gibi büyük bir sayıdır.",
         "PropertyIdHelp": "İçe aktarılacak mülkün kimliği. X yerine rakamlar olacak şekilde UA-XXXXX-X biçimindedir.",
         "AccountIdHelp": "Mülkün sahibi olan hesabın kimliği. Bu değer genellikle mülk kimliğindeki UA arkasında bulunan sayıdır ancak bazen farklı olabilir.",
+        "IsMobileAppHelp": "Analytics mülkünüz bir mobil uygulama için ise bu seçeneği işaretleyin. Yoksa, mülkünüz ile ilişkili bir adres bulunmadığından içe aktarma işlemi yapılamaz.",
         "Timezone": "Saat dilimi",
+        "TimezoneHelp": "Google Analytics, bazen PHP için geçerli olmayan bazı saat dilimleri kullanabiliyor. Siteniz böyle bir saat dilimi kullanıyorsa, saat dilimini buradan el ile ayarlamanız gerekebilir. PHP için geçerli olan saat dilimlerine%1$sbu listeden%2$s bakabilirsiniz.",
         "Start": "Başlat",
         "None": "Yok",
         "EndDate": "Bitiş Tarihi",
@@ -85,6 +87,7 @@
         "ScheduleImportDesc1": "Aşağıdan yeni bir içe aktarma zamanlayın. Görev, tüm tarih aralığı içe aktarılana kadar günde bir kez çalıştırılır. Not: Google tarafından günlük API isteği sayısına sınırlama uygulandığından görevi günlük olarak çalıştırıyoruz. Sınıra ulaşıldığında, içe aktarma işlemi ertesi güne kadar devam edilemez (bu noktaya genellikle 4 aylık verilerin içe aktarılmasından sonra ulaşılır).",
         "ScheduleImportDesc2": "Herhangi bir bitiş tarihi belirtilmezse, içe aktarma işlemi aşağıdan el ile iptal edilene kadar sürdürülür.",
         "ResumeDesc": "Sürdür. Not: İçe aktarma işleminde sorun çıkıyorsa, uygulama ekini bir düzeltme ile güncellemediğiniz sürece işlemi sürdürmek büyük olasılıkla aynı soruna yol açar. Sorun istek sayısı sınırından kaynaklanıyorsa, işlemi sürdürmek büyük olasılıkla aynı istek sayısı sınırı hatasına neden olur. Ancak bir sonraki gün istek sayısı sınırı sıfırlandığında işlem otomatik olarak yeniden başlatılır.",
+        "KilledStatusHelp": "İçeri aktarma görevi sona erdirilmiş gibi görünüyor. Bunu siz yapmadıysanız, barındırma hizmetiniz uzun süren PHP işlemlerini sevmiyor olabilir. İçe aktarma görevi bir sonraki saatte yeniden başlatılacak. Böylece içe aktarma işlemi sürdürülecek. İçe aktarma hızı genel olarak hala düşükse (görmek için bir gün içinde yeniden bakın), ayrıntılı bilgi almak ve çözüm bulmak kullanıcı rehberine bakın.",
         "ReimportDate": "Yeniden içe aktarma tarih aralığı",
         "EnterImportDateRange": "Yeniden içe aktarılacak başlangıç ve bitiş tarihlerini yazın",
         "Schedule": "Zamanlama",
@@ -97,6 +100,7 @@
         "InsufficientScopes": "OAuth kimlik doğrulama bilgilerinin tüm Google Analytics verilerine erişme izni yok. Lütfen bu kimlik doğrulama bilgileri için Google Analytics API ve Google Analytics Raporlama API erişimlerinin etkinleştirilmiş olduğundan emin olun.",
         "CannotImportMissingCustomDimensionSlots": "Google Analytics mülkü içe aktarılamadı, Matomo üzerindeki özel boyut aralığından daha fazla %1$s türünde özel boyut var. Mülkünüzde %2$s özel boyut kullanıyor, ancak Matomo üzerinde şu anda yalnız %3$s boyut için yer var. Ayrıntılı bilgi almak için Özel Boyutlar belgelerine bakabilirsiniz.",
         "ForceCustomDimensionSlotCheck": "Özel boyut aralığı sınırlaması yok sayılsın",
+        "ForceCustomDimensionSlotCheckHelp": "Her Matomo kurulumunda, belirli bir site için kapsam başına kullanılabilecek belirli sayıda özel boyut bulunur. Google Analytics mülkünüz bu sayıdan fazlasını kullanıyor olabilir. Bu seçenek işaretlendiğinde, içe aktarıcı ekleyemeyeceği özel boyutları yok sayar. Tümünün korumasını istiyorsanız, Matomo üzerine daha fazla özel boyut aralığı ekleyebilirsiniz %1$s(Özel Boyutlar belgelerine bakabilirsiniz)%2$s.",
         "InvalidDateFormat": "Tarih şu biçimde olmalıdır: %1$s"
     }
 }
