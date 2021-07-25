@@ -30,7 +30,9 @@
         "ViewIdHelp": "Die ID der zu importierenden Ansicht . Das ist eine grosse Zahl, zum Beispiel 3450293.",
         "PropertyIdHelp": "Die ID der zu importierenden Eigenschaft. Sie wird das folgende Format haben: UA-XXXXX-X, wobei die X Ziffern sind.",
         "AccountIdHelp": "Die ID des Benutzerkontos, welche die Property besitzt. Dies ist manchmal die Nummer nach UA in der Property, aber das ist nicht immer der Fall.",
+        "IsMobileAppHelp": "Wenn Ihre Analytics Eigenschaft für eine Mobile App gedacht ist, wählen Sie diese Checkbox an. Falls nicht, könnte der Import fehlschlagen wenn keine URL mit Ihrer Eigenschaft verknüpft ist.",
         "Timezone": "Zeitzone",
+        "TimezoneHelp": "Google Analytics verwendet manchmal Zonen, die nicht gültige PHP Zeitzonen sind. Wenn Ihre Seite eine verwendet, müssen Sie hier diese Zeitzone manuell setzen. Schauen Sie in %1$sdieser Liste%2$s , um eine Liste der gültigen PHP Zeitzonen zu erhalten.",
         "Start": "Beginn",
         "None": "Keine",
         "EndDate": "Enddatum",
@@ -85,6 +87,7 @@
         "ScheduleImportDesc1": "Planen Sie unten einen neuen Import. Er wird einmal täglich ausgeführt bis alle Daten importiert wurden. Hinweis: Wir starten täglich weil es eine Begrenzung an Anfragen über die von Google bereitgestellte API gibt. Wenn diese erreicht ist, können wir erst am nächsten Tag wieder importieren. (Dieses ist generell nach dem Import von 4 Monaten mit Daten erreicht).",
         "ScheduleImportDesc2": "Wenn kein Enddatum angegeben ist, wird der Import so lange weiterfahren, bis Sie ihn unten manuell abbrechen.",
         "ResumeDesc": "Fortfachen. Hinweis: Wenn Ihr Import fehlgeschlagen ist, wird das Fortfahren sehr wahrscheinlich zum selben Fehler führen, ausser Sie haben das Plugin mit einem Fix aktualisert. Im Fall einer Datenbegrenzung wird sehr wahrscheinlich zu demselben Fehler führen, aber möglicherweise am nächsten Tag wenn das Datenlimit aufgehoben ist automatisch neu starten.",
+        "KilledStatusHelp": "Es scheint, der Importauftrag wurde abgebrochen. Wenn Sie dies nicht selber erzwungen haben, dann unterstützt Ihr Host möglicherweise keine langlaufende PHP Prozesse. Der Importauftrag wird innerhalb der nächsten Stunde noch einmal starten sodass der Import weiterhin ausgeführt wird. Wenn die Importgeschwindigkeit weiterhin langsam ist (in 24 Stunden noch einmal nachschauen), dann konsultieren Sie das Benutzerhandbuch für weitere Informationen und Workarounds.",
         "ReimportDate": "Datumsbereich re-importieren",
         "EnterImportDateRange": "Start- und Enddatum eingeben zum reimportieren",
         "Schedule": "Zeitplan",
@@ -97,6 +100,7 @@
         "InsufficientScopes": "Mit Ihren OAuth Einstellungen verfügen Sie nicht über die Berechtigung, um Zugriff auf all Ihre Google Analytics Daten zu erhalten. Bitte stellen Sie sicher, dass Sie Zugriff auf die Google Analytics API und die Google Analytics Reporting API haben.",
         "CannotImportMissingCustomDimensionSlots": "Google Analytics Eigenschaft kann nicht importiert werden, es hat mehr benutzerdefinierte Dimensionen des Typ %1$s als benutzerdefinierte Dimensionspositionen in Matomo. Ihre Eigenschaft verwendet %2$s benutzerdefinierte Dimensionen, aber Matomo hat aktuell Platz für %3$s Dimensionen. Siehe Dokumentation Benutzerdefinierte Dimensionen für mehr Informationen.",
         "ForceCustomDimensionSlotCheck": "Ignoriere das Limit für benutzerdefinierte Dimensionen",
+        "ForceCustomDimensionSlotCheckHelp": "Jede Matomo Installation hat eine pro Scope definierte Anzahl von benutzerspezifischen Dimensionen, welche Sie für eine bestimmte Seite verwenden können. Es ist möglich, dass Ihre Google Analytics Eigenschaft mehr als diese Anzahl verwendet. Wenn diese Option angewählt ist, wird der Importer einfach die nicht hinzufügbaren benutzerspezifischen Dimensionen ignorieren. Wenn Sie diese behalten möchten, können Sie Ihrer Matomo Installation mehr Slots für benutzerspezifische Dimensionen hinzufügen %1$s(siehe die Dokumentation benutzerspezifischer Dimensionen)%2$s.",
         "InvalidDateFormat": "Das Datum muss das folgende Format haben: %1$s"
     }
 }
