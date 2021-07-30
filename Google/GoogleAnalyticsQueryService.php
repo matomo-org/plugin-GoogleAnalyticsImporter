@@ -181,6 +181,11 @@ class GoogleAnalyticsQueryService
                     'message' => $ex->getMessage(),
                 ]);
 
+                $messageContent = @json_decode($ex->getMessage(), true);
+                if (isset($messageContent['error']['message'])) {
+                    $lastGaError = $messageContent['error']['message'];
+                }
+
                 /**
                  * @ignore
                  */
@@ -206,11 +211,6 @@ class GoogleAnalyticsQueryService
                     ++$attempts;
 
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
-
-                    $messageContent = @json_decode($ex->getMessage(), true);
-                    if (isset($messageContent['error']['message'])) {
-                        $lastGaError = $messageContent['error']['message'];
-                    }
 
                     $this->backOff();
                 } else {
