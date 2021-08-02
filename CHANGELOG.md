@@ -1,6 +1,11 @@
 
 ## Changelog
 
+# 4.1.7
+
+Changes:
+* Report all types of error messages to end user for easier issue diagnosis.
+
 # 4.1.6
 
 Changes:
