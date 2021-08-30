@@ -39,7 +39,7 @@
         "IsVerboseLoggingEnabled": "Ativar Registo Verboso",
         "RequiredExecutablesCheck": "Executáveis Requeridos",
         "RequiredFunctionsCheck": "Funções de PHP Requeridas",
-        "CancelExistingImportFirst": "Já existe uma importação para o <i>site<\/i> com a Id. = %1$s. Por favor, cancele-a antes de iniciar uma nova.",
+        "CancelExistingImportFirst": "Já existe uma importação para o site com a Id. = %1$s. Por favor, cancele-a antes de iniciar uma nova.",
         "EditEndDate": "Alterar Data de Fim da Importação",
         "EnterImportEndDate": "Inserir a nova data de fim",
         "Change": "Alterar",
