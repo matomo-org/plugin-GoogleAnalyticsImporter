@@ -6,7 +6,7 @@
         "MissingClientConfiguration": "Ontbrekende of ongeldige cliënt configuratie. Upload opnieuw.",
         "SettingUp": "Opzetten",
         "ImporterHelp1": "De Google Analytics Import functionaliteit vereist dat de OAuth-cliënt configuratie instelt in de Google API-console voordat je iets anders kunt doen.",
-        "ImporterHelp2": "Om een ​​stapsgewijze handleiding te zien om dit te doen en deze plug-in in te stellen %1$s klik hier. %2$s",
+        "ImporterHelp2": "Om een stapsgewijze handleiding te zien om dit te doen en deze plug-in in te stellen %1$s klik hier. %2$s",
         "ImporterIsConfigured": "De importer is geconfigureerd en je kunt beginnen met het importeren van gegevens via de command line.",
         "ReAuthorize": "Opnieuw autoriseren",
         "ClientConfigSuccessfullyUpdated": "Je hebt je klantconfiguratiegegevens succesvol geüpload! Nu hoef je alleen Matomo te autoriseren om de Google Analytics-gegevens te bekijken. Klik op onderstaande knop:",
