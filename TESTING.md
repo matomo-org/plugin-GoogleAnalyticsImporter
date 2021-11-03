@@ -11,6 +11,7 @@ Before running, the following environment variables must be set:
 ```
 $ export PIWIK_TEST_GA_VIEW_ID=2352671
 $ export GA_PROPERTY_ID=UA-95026-4
+$ export MATOMO_USE_MOCK_RESPONSE=1
 ```
 
 You must also provide credentials to the test GA site in some way. There are two ways to do this:

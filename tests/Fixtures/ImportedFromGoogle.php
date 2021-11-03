@@ -68,7 +68,7 @@ class ImportedFromGoogle extends Fixture
         $this->scheduleReimport($idSite = 1, '2019-06-27', '2019-06-27');
 
         $output = $this->runGoogleImporter($this->importedDateRange2, $idSite = 1);
-        $this->assertContains('Importing reports for date range 2019-06-27 - 2019-06-27 from GA view', $output);
+        $this->assertStringContainsString('Importing reports for date range 2019-06-27 - 2019-06-27 from GA view', $output);
 
         $this->runGoogleImporter($this->campaignDataDateRange);
 

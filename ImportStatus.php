@@ -213,7 +213,7 @@ class ImportStatus
             $result[] = $status;
         }
 
-        usort($result, function (&$lhs, $rhs) {
+        usort($result, function ($lhs, $rhs) {
             $lhsIdSite = (int)($lhs['idSite'] ?? 0);
             $rhsIdSite = (int)($rhs['idSite'] ?? 0);
 
