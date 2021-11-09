@@ -1,6 +1,11 @@
 
 ## Changelog
 
+# 4.1.8
+
+Changes:
+* Added changes to make it compatible with php8.
+
 # 4.1.7
 
 Changes:
