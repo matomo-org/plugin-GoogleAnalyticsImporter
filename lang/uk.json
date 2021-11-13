@@ -1,9 +1,9 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "Мобільний Додаток",
-        "Optional": "Не обовязково",
+        "Actions": "Дії",
+        "IsMobileApp": "Мобільний Застосунок",
         "None": "Немає",
-        "Status": "Статус",
-        "Actions": "Дії"
+        "Optional": "Не обовязково",
+        "Status": "Статус"
     }
 }
