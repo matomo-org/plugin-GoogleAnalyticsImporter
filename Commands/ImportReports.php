@@ -98,7 +98,7 @@ class ImportReports extends ConsoleCommand
             return;
         }
 
-        $service = new \Google_Service_Analytics($googleClient);
+        $service = new \Google\Service\Analytics($googleClient);
 
         if (empty($idSite)) {
             $viewId = $this->getViewId($input, $output, $service);
@@ -298,7 +298,7 @@ class ImportReports extends ConsoleCommand
         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Done in $timer. [$queryCount API requests made to GA]");
     }
 
-    private function getViewId(InputInterface $input, OutputInterface $output, \Google_Service_Analytics $service)
+    private function getViewId(InputInterface $input, OutputInterface $output, \Google\Service\Analytics $service)
     {
         $viewId = $input->getOption('view');
         if (!empty($viewId)) {
@@ -315,7 +315,7 @@ class ImportReports extends ConsoleCommand
 
         $profiles = $service->management_profiles->listManagementProfiles($accountId, $propertyId);
 
-        /** @var \Google_Service_Analytics_Profile[] $profiles */
+        /** @var \Google\Service\Analytics\Profile[] $profiles */
         $profiles = $profiles->getItems();
 
         $profile = reset($profiles);

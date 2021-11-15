@@ -30,10 +30,10 @@ class GoogleGoalMapper
     }
 
     /**
-     * @param \Google_Service_Analytics_Goal $gaGoal
+     * @param \Google\Service\Analytics\Goal $gaGoal
      * @throws CannotImportGoalException
      */
-    public function map(\Google_Service_Analytics_Goal $gaGoal, $idSite)
+    public function map(\Google\Service\Analytics\Goal $gaGoal, $idSite)
     {
         $urls = array_filter(API::getInstance()->getSiteUrlsFromId($idSite));
 
@@ -52,7 +52,7 @@ class GoogleGoalMapper
         return $result;
     }
 
-    private function mapEventGoal(array &$result, \Google_Service_Analytics_Goal $gaGoal)
+    private function mapEventGoal(array &$result, \Google\Service\Analytics\Goal $gaGoal)
     {
         $eventDetails = $gaGoal->getEventDetails();
         if (count($eventDetails->getEventConditions()) > 1) {
@@ -61,7 +61,7 @@ class GoogleGoalMapper
 
         $conditions = $eventDetails->getEventConditions();
 
-        /** @var \Google_Service_Analytics_GoalEventDetailsEventConditions $condition */
+        /** @var \Google\Service\Analytics\GoalEventDetailsEventConditions $condition */
         $condition = reset($conditions);
 
         switch (strtolower($condition->getType())) {
@@ -93,7 +93,7 @@ class GoogleGoalMapper
         }
     }
 
-    private function mapUrlDestinationGoal(array &$result, \Google_Service_Analytics_Goal $gaGoal, $siteUrls)
+    private function mapUrlDestinationGoal(array &$result, \Google\Service\Analytics\Goal $gaGoal, $siteUrls)
     {
         $urlMatchDetails = $gaGoal->getUrlDestinationDetails();
 
@@ -117,7 +117,7 @@ class GoogleGoalMapper
         $result['funnel'] = $this->mapFunnelSteps($gaGoal, $urlMatchDetails);
     }
 
-    private function mapVisitDurationGoal(array &$result, \Google_Service_Analytics_Goal $gaGoal)
+    private function mapVisitDurationGoal(array &$result, \Google\Service\Analytics\Goal $gaGoal)
     {
         $visitDurationGoalDetails = $gaGoal->getVisitTimeOnSiteDetails();
 
@@ -126,7 +126,7 @@ class GoogleGoalMapper
         $result['pattern'] = $visitDurationGoalDetails->getComparisonValue();
     }
 
-    public function mapManualGoal(\Google_Service_Analytics_Goal $gaGoal)
+    public function mapManualGoal(\Google\Service\Analytics\Goal $gaGoal)
     {
         $result = $this->mapBasicGoalProperties($gaGoal);
         $result['match_attribute'] = 'manually';
@@ -135,7 +135,7 @@ class GoogleGoalMapper
         return $result;
     }
 
-    private function mapBasicGoalProperties(\Google_Service_Analytics_Goal $gaGoal)
+    private function mapBasicGoalProperties(\Google\Service\Analytics\Goal $gaGoal)
     {
         $result = [
             'name' => $gaGoal->getName(),
@@ -193,11 +193,11 @@ class GoogleGoalMapper
         throw new CannotImportGoalException($gaGoal, 'Unsupported comparison type \'' . $comparisonType . '\'');
     }
 
-    private function mapFunnelSteps(\Google_Service_Analytics_Goal $gaGoal, \Google_Service_Analytics_GoalUrlDestinationDetails $urlMatchDetails)
+    private function mapFunnelSteps(\Google\Service\Analytics\Goal $gaGoal, \Google\Service\Analytics\GoalUrlDestinationDetails $urlMatchDetails)
     {
         $steps = [];
 
-        /** @var \Google_Service_Analytics_GoalUrlDestinationDetailsSteps $step */
+        /** @var \Google\Service\Analytics\GoalUrlDestinationDetailsSteps $step */
         foreach ($urlMatchDetails->getSteps() as $step) {
             $steps[] = [
                 'name' => $step->getName(),

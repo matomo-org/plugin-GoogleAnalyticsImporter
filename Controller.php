@@ -126,7 +126,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
 
-        /** @var \Google_Client $client */
+        /** @var \Google\Client $client */
         $client = $authorization->getConfiguredClient();
 
         $state = Nonce::getNonce(self::OAUTH_STATE_NONCE_NAME, 900);

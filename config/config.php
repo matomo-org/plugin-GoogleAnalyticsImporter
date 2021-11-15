@@ -18,14 +18,14 @@ return [
         return $previous;
     }),
 
-    'GoogleAnalyticsImporter.googleClientClass' => 'Google_Client',
+    'GoogleAnalyticsImporter.googleClientClass' => '\Google\Client',
     'GoogleAnalyticsImporter.googleClient' => function (\Psr\Container\ContainerInterface $c) {
         $klass = $c->get('GoogleAnalyticsImporter.googleClientClass');
 
-        /** @var \Google_Client $googleClient */
+        /** @var \Google\Client $googleClient */
         $googleClient = new $klass();
-        $googleClient->addScope(\Google_Service_Analytics::ANALYTICS_READONLY);
-        $googleClient->addScope(\Google_Service_AnalyticsReporting::ANALYTICS_READONLY);
+        $googleClient->addScope(\Google\Service\Analytics::ANALYTICS_READONLY);
+        $googleClient->addScope(\Google\Service\AnalyticsReporting::ANALYTICS_READONLY);
         $googleClient->setAccessType('offline');
         $googleClient->setApprovalPrompt('force');
         $redirectUrl = Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode';

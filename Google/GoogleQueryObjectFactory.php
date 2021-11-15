@@ -50,7 +50,7 @@ class GoogleQueryObjectFactory
         $metricNames = array_values($metricNames);
         $metrics = array_map(function ($name) { return $this->makeGaMetric($name); }, $metricNames);
 
-        $request = new \Google_Service_AnalyticsReporting_ReportRequest();
+        $request = new \Google\Service\AnalyticsReporting\ReportRequest();
         $request->setViewId($viewId);
         $request->setDateRanges([$this->makeGaDateRange($date)]);
         $request->setDimensions($dimensions);
@@ -63,10 +63,10 @@ class GoogleQueryObjectFactory
             $request->setOrderBys($this->makeGaOrderBys($options['orderBys']));
         }
 
-        $getReport = new \Google_Service_AnalyticsReporting_GetReportsRequest();
+        $getReport = new \Google\Service\AnalyticsReporting\GetReportsRequest();
         $getReport->setReportRequests([$request]);
 
-        $body = new \Google_Service_AnalyticsReporting_GetReportsRequest();
+        $body = new \Google\Service\AnalyticsReporting\GetReportsRequest();
         $body->setReportRequests([$request]);
 
         return $body;
@@ -95,7 +95,7 @@ class GoogleQueryObjectFactory
 
     private function makeGaSegment($segment)
     {
-        $segmentObj = new \Google_Service_AnalyticsReporting_Segment();
+        $segmentObj = new \Google\Service\AnalyticsReporting\Segment();
         if (isset($segment['segmentId'])) {
             $segmentObj->setSegmentId($segment['segmentId']);
         } else {
@@ -107,7 +107,7 @@ class GoogleQueryObjectFactory
     private function makeGaDateRange(Date $date)
     {
         $dateStr = $date->toString();
-        $dateRange = new \Google_Service_AnalyticsReporting_DateRange();
+        $dateRange = new \Google\Service\AnalyticsReporting\DateRange();
         $dateRange->setStartDate($dateStr);
         $dateRange->setEndDate($dateStr);
         return $dateRange;
@@ -115,21 +115,21 @@ class GoogleQueryObjectFactory
 
     private function makeGaSegmentDimension()
     {
-        $segmentDimensions = new \Google_Service_AnalyticsReporting_Dimension();
+        $segmentDimensions = new \Google\Service\AnalyticsReporting\Dimension();
         $segmentDimensions->setName("ga:segment");
         return $segmentDimensions;
     }
 
     private function makeGaDimension($gaDimension)
     {
-        $result = new \Google_Service_AnalyticsReporting_Dimension();
+        $result = new \Google\Service\AnalyticsReporting\Dimension();
         $result->setName($gaDimension);
         return $result;
     }
 
     private function makeGaMetric($gaMetric)
     {
-        $metric = new \Google_Service_AnalyticsReporting_Metric();
+        $metric = new \Google\Service\AnalyticsReporting\Metric();
         $metric->setExpression($gaMetric);
         return $metric;
     }
@@ -138,7 +138,7 @@ class GoogleQueryObjectFactory
     {
         $gaOrderBys = [];
         foreach ($orderBys as $orderByInfo) {
-            $orderBy = new \Google_Service_AnalyticsReporting_OrderBy();
+            $orderBy = new \Google\Service\AnalyticsReporting\OrderBy();
             $orderBy->setFieldName($orderByInfo['field']);
             $orderBy->setOrderType('VALUE');
 
