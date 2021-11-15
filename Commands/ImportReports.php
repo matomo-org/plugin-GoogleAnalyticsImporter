@@ -131,7 +131,7 @@ class ImportReports extends ConsoleCommand
         ) {
             try {
                 $idSite = $importer->makeSite($account, $property, $viewId, $timezone, $type, $extraCustomDimensions);
-            } catch (\Google_Exception $ex) {
+            } catch (\Google\Exception $ex) {
                 if ($isAccountDeduced) {
                     $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "<comment>NOTE: We tried to deduce your GA account ID from the property ID above, it's possible your account ID differs. If this is the case specify it manually using --account=... and try again.</comment>");
                 }
