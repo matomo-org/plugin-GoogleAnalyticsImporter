@@ -50,17 +50,17 @@ class GoogleAnalyticsQueryServiceTest extends IntegrationTestCase
     {
         Fixture::createWebsite('2012-02-02 00:00:00');
 
-        $client = new \Google\Client();
-        $mockReportingService = new \Google\Service\AnalyticsReporting($client);
+        $client = new \Google_Client();
+        $mockReportingService = new \Google_Service_AnalyticsReporting($client);
 
-        $builder = $this->getMockBuilder(\Google\Service\AnalyticsReporting\Resource\Reports::class);
+        $builder = $this->getMockBuilder(\Google_Service_AnalyticsReporting_Resource_Reports::class);
         $mockReportingService->reports = $builder
             ->disableOriginalConstructor()
             ->onlyMethods(['batchGet'])
             ->getMock();
         $mockReportingService->reports->method('batchGet')->willThrowException($testEx);
 
-        $this->getMockBuilder(\Google\Service\AnalyticsReporting::class);
+        $this->getMockBuilder(\Google_Service_AnalyticsReporting::class);
         $gaQueryService = new GoogleAnalyticsQueryService($mockReportingService, 'testviewid', [], 1, 'testuser',
             StaticContainer::get(GoogleQueryObjectFactory::class), StaticContainer::get(LoggerInterface::class));
         $gaQueryService->setMaxAttempts(2);

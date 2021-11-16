@@ -65,7 +65,7 @@ class ImporterTest extends IntegrationTestCase
     public function provideContainerConfig()
     {
         return [
-            \Google\Service\Analytics::class => $this->makeMockService(),
+            \Google_Service_Analytics::class => $this->makeMockService(),
         ];
     }
 
@@ -74,11 +74,11 @@ class ImporterTest extends IntegrationTestCase
         // goals
 
         // event goal
-        $goal1 = new \Google\Service\Analytics\Goal();
+        $goal1 = new \Google_Service_Analytics_Goal();
         $goal1->setId(5);
         $goal1->setName('goal 1');
-        $eventDetails = new \Google\Service\Analytics\GoalEventDetails();
-        $condition = new \Google\Service\Analytics\GoalEventDetailsEventConditions();
+        $eventDetails = new \Google_Service_Analytics_GoalEventDetails();
+        $condition = new \Google_Service_Analytics_GoalEventDetailsEventConditions();
         $condition->setType('category');
         $condition->setMatchType('regexp');
         $condition->setExpression('abc');
@@ -86,35 +86,35 @@ class ImporterTest extends IntegrationTestCase
         $goal1->setEventDetails($eventDetails);
 
         // url destination goal
-        $goal2 = new \Google\Service\Analytics\Goal();
+        $goal2 = new \Google_Service_Analytics_Goal();
         $goal2->setId(6);
         $goal2->setName('goal 2');
-        $urlDestinationDetails = new \Google\Service\Analytics\GoalUrlDestinationDetails();
+        $urlDestinationDetails = new \Google_Service_Analytics_GoalUrlDestinationDetails();
         $urlDestinationDetails->setMatchType('head');
         $urlDestinationDetails->setUrl('def');
         $urlDestinationDetails->setCaseSensitive(true);
         $goal2->setUrlDestinationDetails($urlDestinationDetails);
 
         // time on site goal
-        $goal3 = new \Google\Service\Analytics\Goal();
+        $goal3 = new \Google_Service_Analytics_Goal();
         $goal3->setId(7);
         $goal3->setName('goal 3');
-        $visitTimeOnSiteDetails = new \Google\Service\Analytics\GoalVisitTimeOnSiteDetails();
+        $visitTimeOnSiteDetails = new \Google_Service_Analytics_GoalVisitTimeOnSiteDetails();
         $visitTimeOnSiteDetails->setComparisonType('greater_than');
         $visitTimeOnSiteDetails->setComparisonValue(45);
         $goal3->setVisitTimeOnSiteDetails($visitTimeOnSiteDetails);
 
         // broken goal (unsupported goal type)
-        $goal4 = new \Google\Service\Analytics\Goal();
+        $goal4 = new \Google_Service_Analytics_Goal();
         $goal4->setName('goal 4');
         $goal4->setId(8);
 
         // event goal w/ multiple criteria
-        $goal5 = new \Google\Service\Analytics\Goal();
+        $goal5 = new \Google_Service_Analytics_Goal();
         $goal5->setName('goal 5');
         $goal5->setId(9);
-        $eventDetails = new \Google\Service\Analytics\GoalEventDetails();
-        $condition1 = new \Google\Service\Analytics\GoalEventDetailsEventConditions();
+        $eventDetails = new \Google_Service_Analytics_GoalEventDetails();
+        $condition1 = new \Google_Service_Analytics_GoalEventDetailsEventConditions();
         $condition1->setType('category');
         $condition1->setMatchType('regexp');
         $condition1->setExpression('abc');
@@ -124,19 +124,19 @@ class ImporterTest extends IntegrationTestCase
         $this->mockData['goals'] = [$goal1, $goal2, $goal3, $goal4, $goal5];
 
         // custom dimensions
-        $customDim1 = new \Google\Service\Analytics\CustomDimension();
+        $customDim1 = new \Google_Service_Analytics_CustomDimension();
         $customDim1->setId('ga:dimension1');
         $customDim1->setName('cdim 1');
         $customDim1->setActive(true);
         $customDim1->setScope('hit');
 
-        $customDim2 = new \Google\Service\Analytics\CustomDimension();
+        $customDim2 = new \Google_Service_Analytics_CustomDimension();
         $customDim2->setId('ga:dimension2');
         $customDim2->setName('cdim < 2');
         $customDim2->setActive(false);
         $customDim2->setScope('session');
 
-        $customDim3 = new \Google\Service\Analytics\CustomDimension();
+        $customDim3 = new \Google_Service_Analytics_CustomDimension();
         $customDim3->setId('ga:dimension3');
         $customDim3->setName('cdim & 3');
         $customDim3->setActive(true);
@@ -257,7 +257,7 @@ class ImporterTest extends IntegrationTestCase
     }
 }
 
-class MockGoogleServiceAnalytics extends \Google\Service\Analytics
+class MockGoogleServiceAnalytics extends \Google_Service_Analytics
 {
     public function __construct(ImporterTest $test)
     {
@@ -275,7 +275,7 @@ class MockGaManagementGoals
 
     public function listManagementGoals()
     {
-        $result = new \Google\Service\Analytics\Goals();
+        $result = new \Google_Service_Analytics_Goals();
         $result->setItems($this->test->mockData['goals']);
         return $result;
     }
@@ -290,7 +290,7 @@ class MockGaCustomDimensions
 
     public function listManagementCustomDimensions()
     {
-        $result = new \Google\Service\Analytics\CustomDimensions();
+        $result = new \Google_Service_Analytics_CustomDimensions();
         $result->setItems($this->test->mockData['customDimensions']);
         return $result;
     }
