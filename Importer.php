@@ -123,7 +123,7 @@ class Importer
      */
     private $isMainImport = true;
 
-    public function __construct(ReportsProvider $reportsProvider, \Google_Service_Analytics $gaService, \Google_Service_AnalyticsReporting $gaReportingService,
+    public function __construct(ReportsProvider $reportsProvider, \Google\Service\Analytics $gaService, \Google\Service\AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
                                 IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
     {
