@@ -29,12 +29,6 @@ class MockResponseClient extends \Google\Client
 
             $key = md5(json_encode($decoded[0]));
             $value = unserialize($decoded[1]);
-            if (!$value) {
-                $decoded[1] = preg_replace_callback('!s:(\d+):"(.*?)";!', function ($match) {
-                    return ($match[1] == strlen($match[2])) ? $match[0] : 's:' . strlen($match[2]) . ':"' . $match[2] . '";';
-                }, $decoded[1]);
-                $value = unserialize($decoded[1]);
-            }
             $this->mockResponses[$key] = $value;
         }
     }
