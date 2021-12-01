@@ -8,7 +8,8 @@ At the moment there is only one test that tests the entire importing process. Th
 
 Before running, the following environment variables must be set:
 
-```
+Note: The below details might not work in your local env when you test with MATOMO_USE_MOCK_RESPONSE=0, to fix that ask Matthieu to give your user a view access to http://matthieu.net/blog GA account and replace the view and property id accordingly
+``` 
 $ export PIWIK_TEST_GA_VIEW_ID=2352671
 $ export GA_PROPERTY_ID=UA-95026-4
 $ export MATOMO_USE_MOCK_RESPONSE=1

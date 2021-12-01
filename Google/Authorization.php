@@ -58,7 +58,7 @@ class Authorization
         Option::set(self::CLIENT_CONFIG_OPTION_NAME, $config);
     }
 
-    public function saveAccessToken($oauthCode, \Google_Client $client)
+    public function saveAccessToken($oauthCode, \Google\Client $client)
     {
         $accessToken = $client->fetchAccessTokenWithAuthCode($oauthCode);
 
@@ -81,16 +81,16 @@ class Authorization
      * Returns information for the given access token
      *
      * @param array $accessToken
-     * @return \Google_Service_Oauth2_Tokeninfo
+     * @return \Google\Service\Oauth2\Tokeninfo
      * @throws \Exception
      */
     protected function getTokenInfo($accessToken, $client)
     {
-        $service = new \Google_Service_Oauth2($client);
+        $service = new \Google\Service\Oauth2($client);
         return $service->tokeninfo(['access_token' => $accessToken['access_token']]);
     }
 
-    public function configureClient(\Google_Client $client)
+    public function configureClient(\Google\Client $client)
     {
         $clientConfig = $this->getClientConfiguration();
 
@@ -124,9 +124,9 @@ class Authorization
         return $client;
     }
 
-    protected function getUserInfoByAccessToken(\Google_Client $client)
+    protected function getUserInfoByAccessToken(\Google\Client $client)
     {
-        $service = new \Google_Service_Oauth2($client);
+        $service = new \Google\Service\Oauth2($client);
         return $service->userinfo->get();
     }
 }

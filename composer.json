@@ -1,8 +1,8 @@
 {
     "require": {
         "php": ">=7.2.5",
-        "google/apiclient": "^2.5",
-        "google/apiclient-services": "v0.138",
+        "google/apiclient": "^2.11",
+        "google/apiclient-services": "^0.221",
         "guzzlehttp/guzzle": "^6.5"
     },
     "replace": {

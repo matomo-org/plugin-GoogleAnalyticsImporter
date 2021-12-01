@@ -14,7 +14,7 @@ use Psr\Http\Message\RequestInterface;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
-class MockResponseClient extends \Google_Client
+class MockResponseClient extends \Google\Client
 {
     public static $isForSystemTest = false;
     private $mockResponses = [];

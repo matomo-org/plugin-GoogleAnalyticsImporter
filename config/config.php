@@ -18,14 +18,14 @@ return [
         return $previous;
     }),
 
-    'GoogleAnalyticsImporter.googleClientClass' => 'Google_Client',
+    'GoogleAnalyticsImporter.googleClientClass' => '\Google\Client',
     'GoogleAnalyticsImporter.googleClient' => function (\Psr\Container\ContainerInterface $c) {
         $klass = $c->get('GoogleAnalyticsImporter.googleClientClass');
 
-        /** @var \Google_Client $googleClient */
+        /** @var \Google\Client $googleClient */
         $googleClient = new $klass();
-        $googleClient->addScope(\Google_Service_Analytics::ANALYTICS_READONLY);
-        $googleClient->addScope(\Google_Service_AnalyticsReporting::ANALYTICS_READONLY);
+        $googleClient->addScope(\Google\Service\Analytics::ANALYTICS_READONLY);
+        $googleClient->addScope(\Google\Service\AnalyticsReporting::ANALYTICS_READONLY);
         $googleClient->setAccessType('offline');
         $googleClient->setApprovalPrompt('force');
         $redirectUrl = Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode';
@@ -33,8 +33,8 @@ return [
         return $googleClient;
     },
 
-    Google_Service_Analytics::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
-    Google_Service_AnalyticsReporting::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
+    \Google\Service\Analytics::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
+    \Google\Service\AnalyticsReporting::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
 
     'GoogleAnalyticsImporter.recordImporters' => [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter::class, // must be first

@@ -58,12 +58,12 @@ class Importer
     private $logger;
 
     /**
-     * @var \Google_Service_Analytics
+     * @var \Google\Service\Analytics
      */
     private $gaService;
 
     /**
-     * @var \Google_Service_AnalyticsReporting
+     * @var \Google\Service\AnalyticsReporting
      */
     private $gaServiceReporting;
 
@@ -123,7 +123,7 @@ class Importer
      */
     private $isMainImport = true;
 
-    public function __construct(ReportsProvider $reportsProvider, \Google_Service_Analytics $gaService, \Google_Service_AnalyticsReporting $gaReportingService,
+    public function __construct(ReportsProvider $reportsProvider, \Google\Service\Analytics $gaService, \Google\Service\AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
                                 IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
     {
@@ -282,7 +282,7 @@ class Importer
         $existingCustomDimensions = \Piwik\Plugins\CustomDimensions\API::getInstance()->getConfiguredCustomDimensions($idSite);
         $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
 
-        /** @var \Google_Service_Analytics_CustomDimension $gaCustomDimension */
+        /** @var \Google\Service\Analytics\CustomDimension $gaCustomDimension */
         foreach ($customDimensions->getItems() as $gaCustomDimension) {
             if (!preg_match('/ga:dimension([0-9]+)/', $gaCustomDimension->getId(), $matches)) {
                 $this->logger->warning("Could not parse custom dimension ID from GA: {$gaCustomDimension->getId()}");
@@ -587,7 +587,7 @@ class Importer
         return false;
     }
 
-    private function customDimensionExists(array $existingCustomDimensions, \Google_Service_Analytics_CustomDimension $gaCustomDimension)
+    private function customDimensionExists(array $existingCustomDimensions, \Google\Service\Analytics\CustomDimension $gaCustomDimension)
     {
         foreach ($existingCustomDimensions as $customDimension) {
             $customDimensionId = $this->idMapper->getGoogleAnalyticsId('customdimension', $customDimension['idcustomdimension'], $customDimension['idsite']);
