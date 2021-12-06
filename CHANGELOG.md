@@ -1,6 +1,11 @@
 
 ## Changelog
 
+# 4.1.9
+
+Changes:
+* Upgraded google-apiclient library to v2.11 to make it compatible with PHP8.1.
+
 # 4.1.8
 
 Changes:
