@@ -1,10 +1,11 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "Mobil-app",
-        "Optional": "Valgfritt",
-        "None": "Ingen",
+        "Actions": "Handlinger",
         "Change": "Endre",
-        "Status": "Status",
-        "Actions": "Handlinger"
+        "ConfigureTheImporter": "Sett opp importøren",
+        "IsMobileApp": "Mobil-app",
+        "None": "Ingen",
+        "Optional": "Valgfritt",
+        "Status": "Status"
     }
 }
