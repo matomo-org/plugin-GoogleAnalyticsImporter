@@ -1,11 +1,22 @@
 {
     "GoogleAnalyticsImporter": {
         "Actions": "Handlinger",
+        "AdminMenuTitle": "Google Analytics-import",
         "Change": "Endre",
         "ConfigureTheImporter": "Sett opp importøren",
+        "ErrorMessage": "Feilmelding",
+        "ImporterHelp1": "Google Analytics-importøren krever at du setter opp OAuth-klient i Google sin API-konsoll før du kan gjøre noe annet.",
+        "ImporterHelp2": "%1$sStegvis veiledning%2$s for å gjøre dette og sette opp dette programtillegget.",
+        "ImporterIsConfigured": "Importøren er satt opp og du kan begynne å importere data gjennom kommandolinjen.",
+        "InvalidDateFormat": "Datoen må være i følgende format: %1$s",
         "IsMobileApp": "Mobil-app",
         "None": "Ingen",
         "Optional": "Valgfritt",
+        "ScheduleAnImport": "Planlegg en import",
+        "SettingUp": "Oppsett",
+        "SiteDeleted": "Side slettet",
+        "SiteID": "Side-ID",
+        "StartDate": "Startdato",
         "Status": "Status"
     }
 }
