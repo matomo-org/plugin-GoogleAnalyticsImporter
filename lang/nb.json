@@ -16,7 +16,9 @@
         "SettingUp": "Oppsett",
         "SiteDeleted": "Side slettet",
         "SiteID": "Side-ID",
+        "Start": "Begynn",
         "StartDate": "Startdato",
-        "Status": "Status"
+        "Status": "Status",
+        "Troubleshooting": "Feilsøking"
     }
 }
