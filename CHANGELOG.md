@@ -1,5 +1,8 @@
 ## Changelog
 
+# 1.5.7
+* Fix instance Id
+
 # 1.5.6
 
 Bug Fixes:
