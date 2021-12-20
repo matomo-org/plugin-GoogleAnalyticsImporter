@@ -170,7 +170,7 @@ class TasksTest extends IntegrationTestCase
 
     private function getCommandHostOption()
     {
-        $host = SettingsPiwik::getPiwikInstanceId()
+        $host = SettingsPiwik::getPiwikInstanceId();
         if (!empty($host)) {
             return " --matomo-domain='{$host}'";
         }
