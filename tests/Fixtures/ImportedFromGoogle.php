@@ -23,6 +23,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\CapturingGoogleClient;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\MockResponseClient;
 use Piwik\Plugins\VisitsSummary\API;
+use Piwik\SettingsPiwik;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Timer;
 use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
@@ -154,7 +155,7 @@ class ImportedFromGoogle extends Fixture
 
     private function runGoogleImporter($dates, $idSiteToResume = null)
     {
-        $domain = Config::getHostname();
+        $domain = SettingsPiwik::getPiwikInstanceId();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
         if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
             $property = 'UA-12345-6';
