@@ -196,7 +196,7 @@ class Tasks extends \Piwik\Plugin\Tasks
             }
         }
 
-        $hostname = Config::getHostname();
+        $hostname = SettingsPiwik::getPiwikInstanceId();
 
         $logToSingleFile = StaticContainer::get('GoogleAnalyticsImporter.logToSingleFile');
 
