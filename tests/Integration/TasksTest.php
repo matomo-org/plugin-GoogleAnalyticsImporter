@@ -16,6 +16,7 @@ use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
+use Piwik\SettingsPiwik;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
 
@@ -169,7 +170,7 @@ class TasksTest extends IntegrationTestCase
 
     private function getCommandHostOption()
     {
-        $host = Config::getHostname();
+        $host = SettingsPiwik::getPiwikInstanceId()
         if (!empty($host)) {
             return " --matomo-domain='{$host}'";
         }
