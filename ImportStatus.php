@@ -18,6 +18,7 @@ use Piwik\Date;
 use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
+use Piwik\SettingsPiwik;
 use Piwik\Site;
 
 // TODO: maybe make an import status entity class
@@ -220,7 +221,7 @@ class ImportStatus
         $optionName = $this->getOptionName($idSite);
         Option::delete($optionName);
 
-        $hostname = Config::getHostname();
+        $hostname = SettingsPiwik::getPiwikInstanceId();
 
         $importLogFile = Tasks::getImportLogFile($idSite, $hostname);
         @unlink($importLogFile);
