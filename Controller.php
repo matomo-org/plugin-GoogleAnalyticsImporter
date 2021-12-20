@@ -20,7 +20,6 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
-use Piwik\Session\SessionNamespace;
 use Piwik\Site;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;

@@ -10,8 +10,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
 
 use Piwik\ArchiveProcessor\Parameters;
-use Piwik\Common;
-use Piwik\Db;
 use Piwik\Option;
 use Piwik\Period\Factory;
 use Piwik\Plugin\Manager;

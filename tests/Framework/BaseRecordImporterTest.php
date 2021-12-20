@@ -15,7 +15,6 @@ use Piwik\DataTable\Renderer\Xml;
 use Piwik\Date;
 use Piwik\Filesystem;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
-use Piwik\Plugins\GoogleAnalyticsImporter\Importers\Actions\RecordImporter;
 use Piwik\Plugins\GoogleAnalyticsImporter\RecordInserter;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;

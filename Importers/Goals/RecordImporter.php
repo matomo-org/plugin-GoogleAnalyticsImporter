@@ -17,7 +17,6 @@ use Piwik\Metrics;
 use Piwik\Plugins\Goals\Archiver;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
-use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\VisitFrequency\API as VisitFrequencyAPI;
 use Piwik\Site;
 use Piwik\Tracker\GoalManager;

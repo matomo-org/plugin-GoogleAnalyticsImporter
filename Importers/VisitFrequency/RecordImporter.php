@@ -10,7 +10,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency;
 
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
-use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\VisitFrequency\API;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter as VisitsSummaryAPI;

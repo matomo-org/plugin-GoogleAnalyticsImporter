@@ -11,7 +11,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitorInterest;
 
 
 use Piwik\Common;
-use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Plugins\VisitorInterest\Archiver;
 

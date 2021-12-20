@@ -9,7 +9,6 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Concurrency\Lock;
-use Piwik\Concurrency\LockBackend;
 use Piwik\Concurrency\LockBackend\MySqlLockBackend;
 use Piwik\Config;
 

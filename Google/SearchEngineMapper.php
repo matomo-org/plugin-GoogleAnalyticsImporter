@@ -10,7 +10,6 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 
-use Piwik\Container\StaticContainer;
 use Piwik\Plugins\Referrers\SearchEngine;
 use Psr\Log\LoggerInterface;
 

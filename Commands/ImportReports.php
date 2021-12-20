@@ -8,9 +8,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 
-use Monolog\Logger;
-use Piwik\Concurrency\Lock;
-use Piwik\Concurrency\LockBackend\MySqlLockBackend;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;

@@ -9,10 +9,8 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 
-use Piwik\Container\StaticContainer;
 use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportGoalException;
 use Piwik\Plugins\SitesManager\API;
-use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
 class GoogleGoalMapper

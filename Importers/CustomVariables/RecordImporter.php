@@ -16,13 +16,10 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
-use Piwik\Piwik;
-use Piwik\Plugins\Actions\Actions\ActionSiteSearch;
 use Piwik\Plugins\CustomVariables\Archiver;
 use Piwik\Plugins\CustomVariables\Model;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
-use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter

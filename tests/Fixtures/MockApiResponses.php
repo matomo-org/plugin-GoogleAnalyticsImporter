@@ -8,7 +8,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
-use Piwik\Date;
 use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\MockResponseClient;

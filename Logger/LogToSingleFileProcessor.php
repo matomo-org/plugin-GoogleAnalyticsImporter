@@ -11,7 +11,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Logger;
 
 use Monolog\Logger;
 use Piwik\Container\StaticContainer;
-use Symfony\Component\Console\Output\OutputInterface;
 
 class LogToSingleFileProcessor
 {
