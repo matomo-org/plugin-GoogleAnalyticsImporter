@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\System;
 
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures\ImportedFromGoogle;
 use Piwik\Tests\Framework\TestCase\SystemTestCase;
+use Piwik\Version;
 
 // TODO: in-table segments should be disabled for these imported reports (would need to mark records as imported and delete segment metadata in hooks)
 
@@ -100,6 +101,7 @@ class ImportTest extends SystemTestCase
     public function getApiTestsToRun()
     {
         $apiToTest = [];
+        $apiNotToTest = [];
 
         $config = require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
@@ -111,11 +113,16 @@ class ImportTest extends SystemTestCase
             $apiToTest[] = $class::PLUGIN_NAME;
         }
 
+        if (version_compare(Version::VERSION, '4.6.0', '<')) {
+            $apiNotToTest[] = 'DevicesDetection.getBrowserEngines';
+        }
+
         return [
             [$apiToTest, [
                 'idSite' => self::$fixture->idSite,
                 'date' => self::$fixture->dateTime,
                 'periods' => ['day', 'week', 'month', 'year'],
+                'apiNotToCall' => $apiNotToTest
             ]],
 
             [['Goals.getDaysToConversion', 'Goals.getVisitsUntilConversion'], [
