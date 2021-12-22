@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>WebKit (Safari, Chrome)</label>
+		<label>WebKit (Safari)</label>
 		<nb_visits>266</nb_visits>
 		<nb_actions>958</nb_actions>
 		<sum_visit_length>12529</sum_visit_length>

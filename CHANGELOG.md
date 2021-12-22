@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 4.1.10
+
+Use correct instanceId in a multi account set up.
+
 # 4.1.9
 
 Changes:
