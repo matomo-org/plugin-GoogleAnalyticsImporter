@@ -13,6 +13,7 @@ use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
+use Piwik\SettingsPiwik;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
@@ -95,7 +96,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         $idSite = $status['idSite'];
         $isVerboseLoggingEnabled = !empty($status['is_verbose_logging_enabled']);
 
-        $hostname = Config::getHostname();
+        $hostname = SettingsPiwik::getPiwikInstanceId();
 
         $importLogFile = self::getImportLogFile($idSite, $hostname);
         if (!is_writable($importLogFile)
@@ -185,7 +186,7 @@ class Tasks extends \Piwik\Plugin\Tasks
             }
         }
 
-        $hostname = Config::getHostname();
+        $hostname = SettingsPiwik::getPiwikInstanceId();
 
         $archiveLogFile = self::getArchiveLogFile($idSite, $hostname);
         if (!is_writable($archiveLogFile)
