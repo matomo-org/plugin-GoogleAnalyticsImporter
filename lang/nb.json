@@ -17,6 +17,7 @@
         "IsMobileApp": "Mobil-app",
         "IsVerboseLoggingEnabled": "Skru på sirlig loggføring",
         "MatomoSite": "Matomo-side",
+        "MissingClientConfiguration": "Manglende eller ugyldig klientoppsett. Last opp filen igjen.",
         "None": "Ingen",
         "Optional": "Valgfritt",
         "RemoveClientConfiguration": "Fjern klientoppsett",
