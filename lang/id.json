@@ -1,10 +1,12 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "Aplikasi Mobil",
-        "Optional": "Pilihan",
-        "None": "Tidak Ada",
+        "Actions": "Tindakan",
         "Change": "Ubah",
-        "Status": "Status",
-        "Actions": "Tindakan"
+        "EnterImportDateRange": "Masukkan tanggal mulai dan akhir untuk mengimpor ulang",
+        "IsMobileApp": "Aplikasi Mobil",
+        "None": "Tidak Ada",
+        "Optional": "Pilihan",
+        "ReimportDate": "Impor ulang rentang tanggal",
+        "Status": "Status"
     }
 }
