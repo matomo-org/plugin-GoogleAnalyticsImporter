@@ -1,10 +1,13 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "モバイルアプリ",
-        "Optional": "オプション",
-        "None": "なし",
+        "Actions": "アクション",
+        "AdminMenuTitle": "Google Analyticsのインポート",
         "Change": "変更",
-        "Status": "ステータス",
-        "Actions": "アクション"
+        "ConfigurationFile": "設定ファイル",
+        "IsMobileApp": "モバイルアプリ",
+        "None": "なし",
+        "Optional": "オプション",
+        "ReAuthorize": "再認可する",
+        "Status": "ステータス"
     }
 }
