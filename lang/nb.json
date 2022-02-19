@@ -6,6 +6,7 @@
         "Change": "Endre",
         "ConfigurationFile": "Oppsettsfil",
         "ConfigurationText": "Oppsettstekst",
+        "ConfigureClientDesc2": "%1$sFor å starte vår instruks for mottak av ditt OAuth-klientoppsett.%2$s Last så enten opp klientoppsettet eller lim det inn i feltet nedenfor.",
         "ConfigureTheImporter": "Sett opp importøren",
         "CreationDate": "Opprettelsesdato for vev-egenskap",
         "DeleteUploadedClientConfig": "Fjern opplastet klientoppsett ved å klikke nedenfor",
