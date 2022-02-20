@@ -6,11 +6,13 @@
         "Change": "Endre",
         "ConfigurationFile": "Oppsettsfil",
         "ConfigurationText": "Oppsettstekst",
+        "ConfigureClientDesc1": "Matomo trenger tilgang til denne daten for å importere den fra Google Analytics.",
         "ConfigureClientDesc2": "%1$sFor å starte vår instruks for mottak av ditt OAuth-klientoppsett.%2$s Last så enten opp klientoppsettet eller lim det inn i feltet nedenfor.",
         "ConfigureTheImporter": "Sett opp importøren",
         "CreationDate": "Opprettelsesdato for vev-egenskap",
         "DeleteUploadedClientConfig": "Fjern opplastet klientoppsett ved å klikke nedenfor",
         "EndDate": "Sluttdato",
+        "EndDateHelp": "Dato å slutte importering. Som forvalg vil den kjøres hver dag til du bestemmer deg for å avbryte den.",
         "EnterImportEndDate": "Skriv inn den nye sluttdatoen",
         "ErrorMessage": "Feilmelding",
         "EstimatedFinishIn": "Forventet fullført om %1$s dager.",
@@ -53,9 +55,11 @@
         "TimeFinished": "Fullføringstidspunkt",
         "TimeStarted": "Starttidspunkt",
         "Timezone": "Tidssone",
+        "TimezoneHelp": "Google Analytics bruker noen tidssoner som ikke er gyldige PGP-tidssoner. Hvis siden din bruker en av dem, må du manuelt sette en tidssone her. Sjekk %1$sdenne listen%2$s for info om gyldige PHP-tidssoner.",
         "TodaysDate": "dagens dato",
         "Troubleshooting": "Feilsøking",
         "ViewId": "Google Analytics-visnings-ID",
+        "ViewIdHelp": "ID-en tilhørende visningen som skal importeres. Det er et stort tall, for eksempel «3450293».",
         "YesterdaysDate": "gårsdagens dato"
     }
 }
