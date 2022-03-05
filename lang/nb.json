@@ -4,6 +4,7 @@
         "Actions": "Handlinger",
         "AdminMenuTitle": "Google Analytics-import",
         "Change": "Endre",
+        "ClientConfigSuccessfullyUpdated": "Du har lastet opp klientoppsettsdetaljene dine. Nå må du godkjenne at Matomo kan bruke dataen fra Google Analytics. Klikk på knappen nedenfor:",
         "ConfigurationFile": "Oppsettsfil",
         "ConfigurationText": "Oppsettstekst",
         "ConfigureClientDesc1": "Matomo trenger tilgang til denne daten for å importere den fra Google Analytics.",
