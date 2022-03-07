@@ -31,6 +31,7 @@
         "StartDate": "Data d'inici",
         "StartDateHelp": "La data per començar a importar. De manera predeterminada aquest és el dia que vau crear la vostra propietat web de GA.",
         "Status": "Estat",
+        "Timezone": "Fus horari",
         "ViewId": "Identificador de visualització de Google Analytics",
         "ViewIdHelp": "L'identificador de la vista a importar. Serà un gran nombre, per exemple, 3450293."
     }
