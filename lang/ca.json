@@ -1,7 +1,37 @@
 {
     "GoogleAnalyticsImporter": {
+        "AccountId": "Identificador del compte de Google Analytics",
+        "AccountIdHelp": "L'identificador del compte propietari de la propietat. De vegades aquest és el número després d'UA a l'identificador de la propietat, però no sempre és així.",
+        "Actions": "Accions",
+        "AdminMenuTitle": "Importar de Google Analytics",
+        "Authorize": "Autoritzar",
+        "ClientConfigSuccessfullyUpdated": "Heu carregat correctament els detalls de configuració del vostre client! Ara només cal autoritzar Matomo per veure les vostres dades de Google Analytics. Feu clic al botó següent:",
+        "ConfigurationFile": "Fitxer de configuració",
+        "ConfigurationText": "Text de configuració",
+        "ConfigureClientDesc1": "Per importar les vostres dades de Google Analytics, Matomo necessita accedir-hi.",
+        "ConfigureClientDesc2": "%1$sPer començar, seguiu les nostres instruccions per recuperar la configuració del vostre client OAuth.%2$s A continuació, carregueu aquesta configuració de client o enganxeu-la al camp següent.",
+        "ConfigureTheImporter": "Configurar l'importador",
+        "CreationDate": "Data de creació del lloc web",
+        "DeleteUploadedClientConfig": "Si voleu eliminar la configuració del client carregada, feu clic a continuació",
+        "ImportJobs": "Importar feines",
+        "ImporterHelp1": "L'importador de Google Analytics requereix que configureu la configuració del client OAuth a la consola de l'API de Google abans de poder fer qualsevol altra cosa.",
+        "ImporterHelp2": "Per veure una guia pas a pas per fer-ho i configurar aquest connector %1$s feu clic aquí.%2$s",
+        "ImporterIsConfigured": "L'importador està configurat i podeu començar a importar dades mitjançant la línia de comandes.",
+        "InvalidClientJson": "JSON no vàlid al fitxer de credencials; proveu de tornar a baixar el fitxer des de la consola de l'API de Google.",
+        "IsMobileApp": "Aplicació mòbil",
+        "IsMobileAppHelp": "Si la vostra propietat d'anàlisi és per a una aplicació mòbil, marqueu aquesta casella. En cas contrari, la importació pot fallar si no hi ha cap URL associat a la vostra propietat.",
+        "MissingClientConfiguration": "Falta la configuració del client o no és vàlida, torneu a carregar-la.",
         "Optional": "Opcional",
+        "PropertyId": "Identificador de la propietat de Google Analytics",
+        "PropertyIdHelp": "L'identificador de la propietat a importar. Tindrà el format següent: UA-XXXX-X, on les X són dígits.",
+        "ReAuthorize": "Torneu a autoritzar",
+        "RemoveClientConfiguration": "Elimina la configuració del client",
+        "ScheduleAnImport": "Programar una importació",
+        "SettingUp": "Preparant",
+        "StartDate": "Data d'inici",
+        "StartDateHelp": "La data per començar a importar. De manera predeterminada aquest és el dia que vau crear la vostra propietat web de GA.",
         "Status": "Estat",
-        "Actions": "Accions"
+        "ViewId": "Identificador de visualització de Google Analytics",
+        "ViewIdHelp": "L'identificador de la vista a importar. Serà un gran nombre, per exemple, 3450293."
     }
 }
