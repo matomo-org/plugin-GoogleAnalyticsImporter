@@ -267,7 +267,7 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<logo>plugins/Morpheus/icons/dist/brand/unk.png</logo>
+		<logo>plugins/Morpheus/icons/dist/brand/Infinix.png</logo>
 		<segment>deviceBrand==Infinix</segment>
 	</row>
 	<row>
