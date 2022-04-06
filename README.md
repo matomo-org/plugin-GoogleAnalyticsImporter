@@ -1,6 +1,6 @@
 # Matomo GoogleAnalyticsImporter Plugin
 
-[![Build Status](https://travis-ci.com/matomo-org/plugin-GoogleAnalyticsImporter.svg?branch=4.x-dev)](https://travis-ci.com/matomo-org/plugin-GoogleAnalyticsImporter)
+[![Build Status](https://app.travis-ci.com/matomo-org/plugin-GoogleAnalyticsImporter.svg?branch=4.x-dev)](https://travis-ci.com/github/matomo-org/plugin-GoogleAnalyticsImporter)
 
 ## Description
 
