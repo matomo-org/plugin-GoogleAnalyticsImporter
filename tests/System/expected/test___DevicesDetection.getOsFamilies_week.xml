@@ -6,19 +6,19 @@
 		<nb_actions>751</nb_actions>
 		<sum_visit_length>7992</sum_visit_length>
 		<bounce_count>52</bounce_count>
-		<nb_visits_converted>50</nb_visits_converted>
+		<nb_visits_converted>48</nb_visits_converted>
 		<nb_conversions>114</nb_conversions>
 		<revenue>639265</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>24</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>24</nb_visits_converted>
+				<nb_visits_converted>19</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>26</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>25</nb_visits_converted>
+				<nb_visits_converted>24</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
@@ -41,7 +41,7 @@
 				<items>470</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>101</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>165</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
 	</row>
 	<row>
@@ -50,19 +50,19 @@
 		<nb_actions>647</nb_actions>
 		<sum_visit_length>5049</sum_visit_length>
 		<bounce_count>41</bounce_count>
-		<nb_visits_converted>38</nb_visits_converted>
+		<nb_visits_converted>37</nb_visits_converted>
 		<nb_conversions>94</nb_conversions>
 		<revenue>588341</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>19</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>18</nb_visits_converted>
+				<nb_visits_converted>16</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>18</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>18</nb_visits_converted>
+				<nb_visits_converted>16</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
@@ -85,7 +85,7 @@
 				<items>425</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>89</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>128</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/os/WIN.png</logo>
 	</row>
 	<row>
