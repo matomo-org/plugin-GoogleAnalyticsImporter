@@ -7,7 +7,7 @@
         "SettingUp": "Setting Up",
         "ImporterHelp1": "The Google Analytics Importer requires you to set up OAuth Client configuration in the Google API Console before you can do anything else.",
         "ImporterHelp2": "To see a step-by-step guide for doing this and setting up this plugin %1$sclick here.%2$s",
-        "ImporterHelp3": "%1$sNote:%2$s This importer will create new idSite to import your data.",
+        "ImporterHelp3": "%1$sNote:%2$s This import will create a new idSite where it will import your data.",
         "ImporterIsConfigured": "The importer is configured and you can start importing data through the command line.",
         "ReAuthorize": "Re-authorize",
         "ClientConfigSuccessfullyUpdated": "You've successfully uploaded your client configuration details! Now you just need to authorize Matomo to view your Google Analytics data. Click the button below:",
