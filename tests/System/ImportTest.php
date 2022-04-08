@@ -103,7 +103,7 @@ class ImportTest extends SystemTestCase
         $apiToTest = [];
         $apiNotToTest = [];
 
-        $config = require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
+        $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
         foreach ($recordImporterClasses as $class) {
             if ($class::PLUGIN_NAME == 'MarketingCampaignsReporting') {
