@@ -39,6 +39,7 @@
         "ImportStartTime": "İçe aktarma başlangıç saati",
         "ImporterHelp1": "Google Analytics içe aktarıcı ile herhangi bir işlem yapmadan önce Google API konsolu üzerinden OAuth istemcisini yapılandırmalısınız.",
         "ImporterHelp2": "Bu işlemi yapmak ve bu uygulama ekini ayarlamak için yapılacak işlemleri adım adım anlatan %1$srehbere bakın%2$s",
+        "ImporterHelp3": "%1$sNot:%2$s Bu içe aktarma işlemi, bilgilerinizin içe aktarılacağı yeni bir idSite oluşturacak.",
         "ImporterIsConfigured": "İçe aktarıcı yapılandırıldı. Komut satırından verileri içe aktarmaya başlayabilirsiniz.",
         "InsufficientScopes": "OAuth kimlik doğrulama bilgilerinin tüm Google Analytics verilerine erişme izni yok. Lütfen bu kimlik doğrulama bilgileri için Google Analytics API ve Google Analytics Raporlama API erişimlerinin etkinleştirilmiş olduğundan emin olun.",
         "InvalidClientJson": "Kimlik doğrulama bilgileri dosyasındaki JSON geçersiz. Google API konsolundan dosyayı yeniden indirmeyi deneyin.",
