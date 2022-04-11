@@ -39,6 +39,7 @@
         "ImportStartTime": "Waktu Mulai Mengimpor",
         "ImporterHelp1": "Importir Google Analytics mengharuskan Anda untuk menyiapkan konfigurasi OAuth Client di Google API Console sebelum Anda dapat melakukan hal lain.",
         "ImporterHelp2": "Untuk melihat panduan langkah demi langkah untuk melakukan dan menyiapkan plugin ini, %1$sklik di sini.%2$s",
+        "ImporterHelp3": "%1$sCatatan:%2$s Impor ini akan membuat idSite baru yang akan mengimpor data Anda.",
         "ImporterIsConfigured": "Importir telah diatur dan Anda dapat memulai untuk mengimpor data melalui baris perintah.",
         "InsufficientScopes": "Kredensial OAuth Anda tidak memiliki izin untuk mengakses semua data Google Analytics Anda. Harap pastikan Anda telah mengaktifkan akses ke Google Analytics API dan Google Analytics Reporting API.",
         "InvalidClientJson": "JSON dalam berkas kredensial tidak valid, coba unduh ulang berkas dari Google API Console.",
