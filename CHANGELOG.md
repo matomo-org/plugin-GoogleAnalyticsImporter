@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.1.11
+Mention about the new idSite creation in the notification. 
+
 # 4.1.10
 
 Use correct instanceId in a multi account set up.
