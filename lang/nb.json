@@ -39,6 +39,7 @@
         "ImportStartTime": "Starttid for import",
         "ImporterHelp1": "Google Analytics-importøren krever at du setter opp OAuth-klient i Google sin API-konsoll før du kan gjøre noe annet.",
         "ImporterHelp2": "%1$sStegvis veiledning%2$s for å gjøre dette og sette opp dette programtillegget.",
+        "ImporterHelp3": "%1$sMerk:%2$s Denne importen vil opprette en ny «idSite» der du kan importere dataen din.",
         "ImporterIsConfigured": "Importøren er satt opp og du kan begynne å importere data gjennom kommandolinjen.",
         "InsufficientScopes": "Dine OAuth-identitetsdetaljer har ikke tilgang til din Google Analytics-data. Forsikre deg om at du har skrudd på tilgang til GOogle Analytics API-et og innrapporterings-API-et i Google Analytics.",
         "InvalidClientJson": "Ugyldig JSON i identitetdetaljsfil. Prøv å laste den ned igjen fra Google API-konsollen.",
