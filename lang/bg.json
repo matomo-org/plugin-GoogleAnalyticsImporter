@@ -1,8 +1,14 @@
 {
     "GoogleAnalyticsImporter": {
-        "Optional": "По избор",
+        "Actions": "Действия",
+        "AdminMenuTitle": "Импортиране от Google Analytics",
+        "ConfigureTheImporter": "Конфигурирайте импортера",
+        "ImporterHelp3": "%1$sЗабележка:%2$s Това импортиране ще създаде нов idSite, където ще бъдат импортирани Вашите данни.",
+        "InvalidClientJson": "Невалиден JSON във файла с идентификационни данни, опитайте да изтеглите отново файла от конзолата на Google API.",
+        "MissingClientConfiguration": "Липсваща или невалидна клиентска конфигурация, моля, качете отново.",
         "None": "Няма",
-        "Status": "Състояние",
-        "Actions": "Действия"
+        "Optional": "По избор",
+        "SettingUp": "Настройка",
+        "Status": "Състояние"
     }
 }
