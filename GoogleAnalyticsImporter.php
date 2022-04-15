@@ -53,7 +53,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function registerEvents()
     {
         return [
-            'AssetManager.getJavaScriptFiles'        => 'getJsFiles',
             'AssetManager.getStylesheetFiles'        => 'getStylesheetFiles',
             'CronArchive.archiveSingleSite.finish' => 'archivingFinishedForSite',
             'Visualization.beforeRender' => 'configureImportedReportView',
@@ -136,12 +135,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
     }
 
-    public function getJsFiles(&$jsFiles)
-    {
-        $jsFiles[] = "plugins/GoogleAnalyticsImporter/angularjs/import-status/import-status.controller.js";
-        $jsFiles[] = "plugins/GoogleAnalyticsImporter/angularjs/widget-events/widget-events.run.js";
-    }
-
     public function getStylesheetFiles(&$stylesheets)
     {
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/stylesheets/styles.less";
@@ -178,6 +171,39 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_Troubleshooting';
         $translationKeys[] = 'GoogleAnalyticsImporter_Start';
+        $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_KilledStatusHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ResumeDesc';
+        $translationKeys[] = 'GoogleAnalyticsImporter_MatomoSite';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GoogleAnalyticsInfo';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Status';
+        $translationKeys[] = 'GoogleAnalyticsImporter_LatestDayProcessed';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ScheduledReImports';
+        $translationKeys[] = 'GoogleAnalyticsImporter_StartFinishTimes';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Actions';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SiteDeleted';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SiteID';
+        $translationKeys[] = 'GoogleAnalyticsImporter_FinishedImportingDaysWaiting';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ErrorMessage';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ErrorMessageBugReportRequest';
+        $translationKeys[] = 'GoogleAnalyticsImporter_LastDayImported';
+        $translationKeys[] = 'GoogleAnalyticsImporter_LastDayArchived';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImportStartDate';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImportEndDate';
+        $translationKeys[] = 'GoogleAnalyticsImporter_EditEndDate';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ReimportDate';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImportStartTime';
+        $translationKeys[] = 'GoogleAnalyticsImporter_LastResumeTime';
+        $translationKeys[] = 'GoogleAnalyticsImporter_TimeFinished';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ThisJobShouldFinishToday';
+        $translationKeys[] = 'GoogleAnalyticsImporter_EstimatedFinishIn';
+        $translationKeys[] = 'GoogleAnalyticsImporter_JobWillRunUntilManuallyCancelled';
+        $translationKeys[] = 'General_Unknown';
+        $translationKeys[] = 'GoogleAnalyticsImporter_EnterImportDateRange';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Schedule';
+        $translationKeys[] = 'GoogleAnalyticsImporter_EnterImportEndDate';
+        $translationKeys[] = 'GoogleAnalyticsImporter_LeaveEmptyToRemove';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Change';
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)

@@ -91,7 +91,25 @@
         {% if statuses is empty %}
         <p>{{ 'GoogleAnalyticsImporter_ThereAreNoImportJobs'|translate }}</p>
         {% else %}
-        <div
+    <div
+      vue-entry="GoogleAnalyticsImporter.ImportStatus"
+      has-client-configuration="{{ hasClientConfiguration|default(null)|json_encode|e('html_attr') }}"
+      is-configured="{{ isConfigured|default(null)|json_encode|e('html_attr') }}"
+      start-import-nonce="{{ startImportNonce|default(null)|json_encode|e('html_attr') }}"
+      max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode|e('html_attr') }}"
+      extra-custom-dimensions-field="{{ extraCustomDimensionsField|default(null)|json_encode|e('html_attr') }}"
+      statuses="{{ statuses|default(null)|json_encode|e('html_attr') }}"
+      stop-import-nonce="{{ stopImportNonce|default(null)|json_encode|e('html_attr') }}"
+      change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode|e('html_attr') }}"
+      resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode|e('html_attr') }}"
+      schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode|e('html_attr') }}"
+      period="{{ period|default(null)|json_encode|e('html_attr') }}"
+      date="{{ date|default(null)|json_encode|e('html_attr') }}"
+      none-text="{{ noneText|default(null)|json_encode|e('html_attr') }}"
+      website-creation-time="{{ websiteCreationTime|default(null)|json_encode|e('html_attr') }}"
+      is-done="{{ isDone|default(null)|json_encode|e('html_attr') }}"
+    ></div>
+    <div
                 ng-controller="ImportStatusController as importStatus"
                 ng-init="importStatus.nonce = {{ stopImportNonce|json_encode|e('html_attr') }}; importStatus.changeImportEndDateNonce = {{ changeImportEndDateNonce|json_encode|e('html_attr') }}; importStatus.resumeImportNonce = {{ resumeImportNonce|json_encode|e('html_attr') }}; importStatus.scheduleReImportNonce = {{  scheduleReImportNonce|json_encode|e('html_attr') }}"
         >
