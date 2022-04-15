@@ -139,7 +139,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function getJsFiles(&$jsFiles)
     {
         $jsFiles[] = "plugins/GoogleAnalyticsImporter/angularjs/import-status/import-status.controller.js";
-        $jsFiles[] = "plugins/GoogleAnalyticsImporter/angularjs/import-scheduler/import-scheduler.controller.js";
         $jsFiles[] = "plugins/GoogleAnalyticsImporter/angularjs/widget-events/widget-events.run.js";
     }
 
@@ -152,6 +151,33 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     {
         $translationKeys[] = 'GoogleAnalyticsImporter_InvalidDateFormat';
         $translationKeys[] = 'GoogleAnalyticsImporter_LogDataRequiredForReport';
+        $translationKeys[] = 'GoogleAnalyticsImporter_StartDate';
+        $translationKeys[] = 'GoogleAnalyticsImporter_CreationDate';
+        $translationKeys[] = 'GoogleAnalyticsImporter_StartDateHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_EndDate';
+        $translationKeys[] = 'GoogleAnalyticsImporter_None';
+        $translationKeys[] = 'GoogleAnalyticsImporter_EndDateHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PropertyId';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PropertyIdHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_AccountId';
+        $translationKeys[] = 'GoogleAnalyticsImporter_AccountIdHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ViewId';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ViewIdHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_IsMobileApp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_IsMobileAppHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Timezone';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Optional';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ExtraCustomDimensions';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheck';
+        $translationKeys[] = 'GoogleAnalyticsImporter_IsVerboseLoggingEnabled';
+        $translationKeys[] = 'GoogleAnalyticsImporter_IsVerboseLoggingEnabledHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDesc1';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDesc2';
+        $translationKeys[] = 'GoogleAnalyticsImporter_TimezoneHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ExtraCustomDimensionsHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Troubleshooting';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Start';
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)

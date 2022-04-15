@@ -64,91 +64,23 @@
         content-title="{{ 'GoogleAnalyticsImporter_ScheduleAnImport'|translate }}"
     >
         <div
-            ng-controller="ImportSchedulerController as importScheduler"
-            ng-init="importScheduler.nonce = {{ startImportNonce|json_encode|e('html_attr') }}"
-        >
-            <p>{{ 'GoogleAnalyticsImporter_ScheduleImportDesc1'|translate }}</p>
-            <p>{{ 'GoogleAnalyticsImporter_ScheduleImportDesc2'|translate }}</p>
-
-            <div piwik-field uicontrol="text" name="startDate"
-                 ng-model="importScheduler.startDate"
-                 title="{{ 'GoogleAnalyticsImporter_StartDate'|translate }}"
-                 placeholder="{{ 'GoogleAnalyticsImporter_CreationDate'|translate }}"
-                 inline-help="{{ 'GoogleAnalyticsImporter_StartDateHelp'|translate }}"
-            >
-            </div>
-
-            <div piwik-field uicontrol="text" name="endDate"
-                 ng-model="importScheduler.endDate"
-                 title="{{ 'GoogleAnalyticsImporter_EndDate'|translate }}"
-                 placeholder="{{ 'GoogleAnalyticsImporter_None'|translate }}"
-                 inline-help="{{ 'GoogleAnalyticsImporter_EndDateHelp'|translate }} {% if maxEndDateDesc|default is not empty %}{{ '<br/><br/>' ~ 'GoogleAnalyticsImporter_MaxEndDateHelp'|translate(maxEndDateDesc)|e('html_attr') }}{% endif %}"
-            >
-            </div>
-
-            <div piwik-field uicontrol="text" name="propertyId"
-                 ng-model="importScheduler.propertyId"
-                 title="{{ 'GoogleAnalyticsImporter_PropertyId'|translate }}"
-                 placeholder="eg. UA-XXXXX-X"
-                 inline-help="{{ 'GoogleAnalyticsImporter_PropertyIdHelp'|translate }}"
-            >
-            </div>
-
-            <div piwik-field uicontrol="text" name="accountId"
-                 ng-model="importScheduler.accountId"
-                 title="{{ 'GoogleAnalyticsImporter_AccountId'|translate }}"
-                 placeholder="eg. 1234567"
-                 inline-help="{{ 'GoogleAnalyticsImporter_AccountIdHelp'|translate }}"
-            >
-            </div>
-
-            <div piwik-field uicontrol="text" name="viewId"
-                 ng-model="importScheduler.viewId"
-                 title="{{ 'GoogleAnalyticsImporter_ViewId'|translate }}"
-                 placeholder="eg. 1234567"
-                 inline-help="{{ 'GoogleAnalyticsImporter_ViewIdHelp'|translate }}"
-            >
-            </div>
-
-            <div piwik-field uicontrol="checkbox" name="isMobileApp"
-                 ng-model="importScheduler.isMobileApp"
-                 title="{{ 'GoogleAnalyticsImporter_IsMobileApp'|translate }}"
-                 inline-help="{{ 'GoogleAnalyticsImporter_IsMobileAppHelp'|translate }}"
-            >
-            </div>
-
-            <div piwik-field uicontrol="text" name="timezone"
-                 ng-model="importScheduler.timezone"
-                 title="{{ 'GoogleAnalyticsImporter_Timezone'|translate }}"
-                 placeholder="{{ 'GoogleAnalyticsImporter_Optional'|translate }}"
-                 inline-help="{{ 'GoogleAnalyticsImporter_TimezoneHelp'|translate('<a href="https://www.php.net/manual/en/timezones.php" rel="noreferrer noopener">', '</a>') }}"
-            >
-            </div>
-
-            <div piwik-field uicontrol="multituple" name="extraCustomDimensions"
-                 ng-model="importScheduler.extraCustomDimensions"
-                 title="{{ 'GoogleAnalyticsImporter_ExtraCustomDimensions'|translate }}"
-                 inline-help="{{ 'GoogleAnalyticsImporter_ExtraCustomDimensionsHelp'|translate('<a href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/" rel="noreferrer noopener">', '</a>') }}"
-                 ui-control-attributes='{{ extraCustomDimensionsField|json_encode }}'
-            >
-            </div>
-
-            <div piwik-field uicontrol="checkbox" name="forceIgnoreOutOfCustomDimSlotError"
-                 ng-model="importScheduler.ignoreCustomDimensionSlotCheck"
-                 title="{{ 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheck'|translate }}"
-                 inline-help="{{ 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp'|translate('<a href="https://matomo.org/docs/custom-dimensions/" rel="noreferrer noopener">', '</a>') }}"
-            ></div>
-
-            <h3>{{ 'GoogleAnalyticsImporter_Troubleshooting'|translate }}</h3>
-
-            <div piwik-field uicontrol="checkbox" name="isVerboseLoggingEnabled"
-                 ng-model="importScheduler.isVerboseLoggingEnabled"
-                 title="{{ 'GoogleAnalyticsImporter_IsVerboseLoggingEnabled'|translate }}"
-                 inline-help="{{ 'GoogleAnalyticsImporter_IsVerboseLoggingEnabledHelp'|translate('/path/to/matomo/tmp/logs/', 'gaimportlog.$idSite.$matomoDomain.log') }}"
-            ></div>
-
-            <button type="submit" id="startImportSubmit" class="btn" ng-click="importScheduler.startImport()" ng-disabled="importScheduler.isStartingImport">{{ 'GoogleAnalyticsImporter_Start'|translate }}</button>
-        </div>
+          vue-entry="GoogleAnalyticsImporter.ImportScheduler"
+          has-client-configuration="{{ hasClientConfiguration|default(null)|json_encode|e('html_attr') }}"
+          is-configured="{{ isConfigured|default(null)|json_encode|e('html_attr') }}"
+          start-import-nonce="{{ startImportNonce|default(null)|json_encode|e('html_attr') }}"
+          max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode|e('html_attr') }}"
+          extra-custom-dimensions-field="{{ extraCustomDimensionsField|default(null)|json_encode|e('html_attr') }}"
+          statuses="{{ statuses|default(null)|json_encode|e('html_attr') }}"
+          stop-import-nonce="{{ stopImportNonce|default(null)|json_encode|e('html_attr') }}"
+          change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode|e('html_attr') }}"
+          resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode|e('html_attr') }}"
+          schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode|e('html_attr') }}"
+          period="{{ period|default(null)|json_encode|e('html_attr') }}"
+          date="{{ date|default(null)|json_encode|e('html_attr') }}"
+          none-text="{{ noneText|default(null)|json_encode|e('html_attr') }}"
+          website-creation-time="{{ websiteCreationTime|default(null)|json_encode|e('html_attr') }}"
+          is-done="{{ isDone|default(null)|json_encode|e('html_attr') }}"
+        ></div>
     </div>
 
     <div
