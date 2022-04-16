@@ -10,7 +10,7 @@
         v-if="status.site"
         target="_blank"
         :href="siteUrl"
-      >{{ status.site.getName() }}</a>
+      >{{ siteName }}</a>
       <span
         style="text-transform:uppercase;"
         v-else
@@ -35,7 +35,6 @@
         </span>
       </div>
       <div v-else-if="status.status === 'errored'">
-        <br />
         {{ translate('GoogleAnalyticsImporter_ErrorMessage') }}: {{ status.error || 'no message' }}
         <br />
         <span v-html="$sanitize(errorMessageBugReportRequest)"></span>
@@ -48,32 +47,35 @@
       </div>
     </td>
     <td class="last-date-imported">
-      {{ translate('GoogleAnalyticsImporter_LastDayImported') }}:
-      {{ status.last_date_imported || noneText }}<br />
-      {{ translate('GoogleAnalyticsImporter_LastDayArchived') }}:
-      {{ status.last_day_archived || noneText }}<br />
-      {{ translate('GoogleAnalyticsImporter_ImportStartDate') }}:
-      {{ status.import_range_start || websiteCreationTime }} <br />
-      {{ translate('GoogleAnalyticsImporter_ImportEndDate') }}:
-      {{ status.import_range_end || noneText }}
-      <br />
-      <div v-if="status.status !== 'finished'">
+      <div>
+        {{ translate('GoogleAnalyticsImporter_LastDayImported') }}:
+        {{ status.last_date_imported || noneText }}<br />
+        {{ translate('GoogleAnalyticsImporter_LastDayArchived') }}:
+        {{ status.last_day_archived || noneText }}<br />
+        {{ translate('GoogleAnalyticsImporter_ImportStartDate') }}:
+        {{ status.import_range_start || websiteCreationTime }} <br />
+        {{ translate('GoogleAnalyticsImporter_ImportEndDate') }}:
+        {{ status.import_range_end || noneText }}
         <br />
+        <br />
+      </div>
+      <div v-if="status.status !== 'finished'">
         <a
           class="edit-import-end-link table-command-link"
           href
           @click.prevent="$emit('end-import')"
         >{{ translate('GoogleAnalyticsImporter_EditEndDate') }}</a>
       </div>
-      <br />
-      <a
-        id="reimport-date-range"
-        class="table-command-link"
-        href
-        @click.prevent="$emit('reimport')"
-      >
-        {{ translate('GoogleAnalyticsImporter_ReimportDate') }}
-      </a>
+      <div>
+        <a
+          id="reimport-date-range"
+          class="table-command-link"
+          href
+          @click.prevent="$emit('reimport')"
+        >
+          {{ translate('GoogleAnalyticsImporter_ReimportDate') }}
+        </a>
+      </div>
     </td>
     <td class="scheduled-reimports">
       <ul v-if="status.reimport_ranges?.length">
@@ -134,7 +136,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { MatomoUrl, translate } from 'CoreHome';
+import { MatomoUrl, translate, Matomo } from 'CoreHome';
 
 export default defineComponent({
   props: {
@@ -171,6 +173,15 @@ export default defineComponent({
     thisJobShouldFinishToday() {
       return this.status.estimated_days_left_to_finish === 0
         || this.status.estimated_days_left_to_finish === '0';
+    },
+    siteName() {
+      return Matomo.helper.htmlDecode(this.status.site?.name);
+    },
+    noneText() {
+      return translate('GoogleAnalyticsImporter_None');
+    },
+    websiteCreationTime() {
+      return translate('GoogleAnalyticsImporter_CreationDate');
     },
   },
 });

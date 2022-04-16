@@ -20,7 +20,7 @@
   <div>
     <p>{{ translate('GoogleAnalyticsImporter_ScheduleImportDesc1') }}</p>
     <p>{{ translate('GoogleAnalyticsImporter_ScheduleImportDesc2') }}</p>
-    <div>
+    <div name="startDate">
       <Field
         uicontrol="text"
         name="startDate"
@@ -31,7 +31,7 @@
       >
       </Field>
     </div>
-    <div>
+    <div name="endDate">
       <Field
         uicontrol="text"
         name="endDate"
@@ -42,7 +42,7 @@
       >
       </Field>
     </div>
-    <div>
+    <div name="propertyId">
       <Field
         uicontrol="text"
         name="propertyId"
@@ -53,7 +53,7 @@
       >
       </Field>
     </div>
-    <div>
+    <div name="accountId">
       <Field
         uicontrol="text"
         name="accountId"
@@ -64,7 +64,7 @@
       >
       </Field>
     </div>
-    <div>
+    <div name="viewId">
       <Field
         uicontrol="text"
         name="viewId"
@@ -75,7 +75,7 @@
       >
       </Field>
     </div>
-    <div>
+    <div name="isMobileApp">
       <Field
         uicontrol="checkbox"
         name="isMobileApp"
@@ -85,7 +85,7 @@
       >
       </Field>
     </div>
-    <div>
+    <div name="timezone">
       <Field
         uicontrol="text"
         name="timezone"
@@ -96,7 +96,7 @@
       >
       </Field>
     </div>
-    <div>
+    <div name="extraCustomDimensions">
       <Field
         uicontrol="multituple"
         name="extraCustomDimensions"
@@ -107,7 +107,7 @@
       >
       </Field>
     </div>
-    <div>
+    <div name="forceIgnoreOutOfCustomDimSlotError">
       <Field
         uicontrol="checkbox"
         name="forceIgnoreOutOfCustomDimSlotError"
@@ -117,7 +117,7 @@
       />
     </div>
     <h3>{{ translate('GoogleAnalyticsImporter_Troubleshooting') }}</h3>
-    <div>
+    <div name="isVerboseLoggingEnabled">
       <Field
         uicontrol="checkbox"
         name="isVerboseLoggingEnabled"
@@ -173,7 +173,7 @@ export default defineComponent({
     },
     maxEndDateDesc: String,
     extraCustomDimensionsField: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },
@@ -246,7 +246,7 @@ export default defineComponent({
       const endDateHelp = translate('GoogleAnalyticsImporter_EndDateHelp');
       const maxEndDateDesc = this.maxEndDateDesc
         && translate('<br/><br/>GoogleAnalyticsImporter_MaxEndDateHelp', this.maxEndDateDesc);
-      return `${endDateHelp} ${maxEndDateDesc}`;
+      return `${endDateHelp} ${maxEndDateDesc || ''}`;
     },
     timezoneHelp() {
       return translate(

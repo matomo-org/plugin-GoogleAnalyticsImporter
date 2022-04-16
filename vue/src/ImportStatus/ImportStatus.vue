@@ -4,17 +4,6 @@
   @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
 -->
 
-<todo>
-- get to build
-- REMOVE DUPLICATE CODE IN TEMPLATE
-- test in UI
-- check uses:
-  ./plugins/GoogleAnalyticsImporter/templates/index.twig
-  ./plugins/GoogleAnalyticsImporter/angularjs/import-status/import-status.controller.js
-- create PR
-- v-html check
-</todo>
-
 <template>
   <div ref="root" v-tooltips="{ content: tooltipContent, delay: 500, duration: 200 }">
     <table class="entityTable importStatusesTable">
@@ -114,7 +103,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import {
-  translate,
   AjaxHelper,
   Matomo,
   Tooltips,
@@ -265,12 +253,6 @@ export default defineComponent({
     },
   },
   computed: {
-    noneText() {
-      return translate('GoogleAnalyticsImporter_None');
-    },
-    websiteCreationTime() {
-      return translate('GoogleAnalyticsImporter_CreationDate');
-    },
     tooltipContent() {
       return function tooltipContent(this: HTMLElement) {
         const $this = $(this);
