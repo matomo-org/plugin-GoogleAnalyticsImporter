@@ -61,6 +61,7 @@
           href
           class="modal-action modal-close btn"
           @click="scheduleReimport()"
+          style="margin-right:3.5px"
         >{{ translate('GoogleAnalyticsImporter_Schedule') }}</a>
         <a
           href
@@ -89,6 +90,7 @@
           href
           class="modal-action modal-close btn"
           @click="changeImportEndDateModal()"
+          style="margin-right:3.5px"
         >{{ translate('GoogleAnalyticsImporter_Change') }}</a>
         <a
           href

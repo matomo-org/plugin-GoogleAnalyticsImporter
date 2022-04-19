@@ -4,18 +4,6 @@
   @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
 -->
 
-// TODO
-<todo>
-- get to build
-- REMOVE DUPLICATE CODE IN TEMPLATE
-- test in UI
-- check uses:
-  ./plugins/GoogleAnalyticsImporter/templates/index.twig
-  ./plugins/GoogleAnalyticsImporter/angularjs/import-scheduler/import-scheduler.controller.js
-- create PR
-- v-html check
-</todo>
-
 <template>
   <div>
     <p>{{ translate('GoogleAnalyticsImporter_ScheduleImportDesc1') }}</p>
@@ -249,9 +237,10 @@ export default defineComponent({
       return `${endDateHelp} ${maxEndDateDesc || ''}`;
     },
     timezoneHelp() {
+      const url = 'https://www.php.net/manual/en/timezones.php';
       return translate(
         'GoogleAnalyticsImporter_TimezoneHelp',
-        '<a href="https://www.php.net/manual/en/timezones.php" rel="noreferrer noopener">',
+        `<a href="${url}" rel="noreferrer noopener" target="_blank">`,
         '</a>',
       );
     },
@@ -259,14 +248,15 @@ export default defineComponent({
       const link = 'https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/';
       return translate(
         'GoogleAnalyticsImporter_ExtraCustomDimensionsHelp',
-        `<a href="${link}" rel="noreferrer noopener">`,
+        `<a href="${link}" rel="noreferrer noopener" target="_blank">`,
         '</a>',
       );
     },
     forceIgnoreOutOfCustomDimSlotErrorHelp() {
+      const url = 'https://matomo.org/docs/custom-dimensions/';
       return translate(
         'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp',
-        '<a href="https://matomo.org/docs/custom-dimensions/" rel="noreferrer noopener">',
+        `<a href="${url}" rel="noreferrer noopener" target="_blank">`,
         '</a>',
       );
     },
