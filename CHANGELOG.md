@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 4.2.0
+
+Migrate AngularJS code to Vue.
+
 # 4.1.11
 Mention about the new idSite creation in the notification. 
 
