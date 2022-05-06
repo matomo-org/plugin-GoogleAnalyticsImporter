@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9b1676ccc3bb11486d30ca7d7ea69e8cd60baf1a',
+        'reference' => '76128fd81a2f8071a953135972ef0a28c5759b69',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9b1676ccc3bb11486d30ca7d7ea69e8cd60baf1a',
+            'reference' => '76128fd81a2f8071a953135972ef0a28c5759b69',
             'dev_requirement' => false,
         ),
         'firebase/php-jwt' => array(
@@ -65,12 +65,12 @@
             'dev_requirement' => false,
         ),
         'guzzlehttp/promises' => array(
-            'pretty_version' => '1.4.0',
-            'version' => '1.4.0.0',
+            'pretty_version' => '1.5.1',
+            'version' => '1.5.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/promises',
             'aliases' => array(),
-            'reference' => '60d379c243457e073cff02bc323a2a86cb355631',
+            'reference' => 'fe752aedc9fd8fcca3fe7ad05d419d32998a06da',
             'dev_requirement' => false,
         ),
         'guzzlehttp/psr7' => array(
