@@ -101,7 +101,7 @@ class Authorization
         }
 
         // no client config available
-        if (!$client->getClientId() || !$client->getClientSecret()) {
+        if (!$client->getConfig('client_id') || (!$client->getConfig('client_secret') && !$client->getConfig('client_email'))) {
             throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
         }
 
