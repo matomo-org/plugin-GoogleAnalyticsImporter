@@ -39,6 +39,7 @@
         "ImportStartTime": "Hora d'inici de la importació",
         "ImporterHelp1": "L'importador de Google Analytics requereix que configureu la configuració del client OAuth a la consola de l'API de Google abans de poder fer qualsevol altra cosa.",
         "ImporterHelp2": "Per veure una guia pas a pas per fer-ho i configurar aquest connector %1$s feu clic aquí.%2$s",
+        "ImporterHelp3": "%1$sNota:%2$s Aquesta importació crearà un nou idSite on importarà les vostres dades.",
         "ImporterIsConfigured": "L'importador està configurat i podeu començar a importar dades mitjançant la línia de comandes.",
         "InsufficientScopes": "Les vostres credencials d'OAuth no tenen permís per accedir a totes les vostres dades de Google Analytics. Assegureu-vos d'haver activat l'accés a l'API de Google Analytics i a l'API d'informes de Google Analytics.",
         "InvalidClientJson": "JSON no vàlid al fitxer de credencials; proveu de tornar a baixar el fitxer des de la consola de l'API de Google.",
