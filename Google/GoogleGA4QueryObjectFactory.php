@@ -31,7 +31,7 @@ class GoogleGA4QueryObjectFactory
         $this->logger = $logger;
     }
 
-    public function make($viewId, Date $date, $metricNames, $options)
+    public function make($propertyID, Date $date, $metricNames, $options)
     {
         $dimensionNames = !empty($options['dimensions']) ? $options['dimensions'] : [];
 
@@ -49,24 +49,27 @@ class GoogleGA4QueryObjectFactory
         $metricNames = array_values($metricNames);
         $metrics = array_map(function ($name) { return $this->makeGaMetric($name); }, $metricNames);
 
-        $request = new \Google\Service\AnalyticsReporting\ReportRequest();
-        $request->setViewId($viewId);
-        $request->setDateRanges([$this->makeGaDateRange($date)]);
-        $request->setDimensions($dimensions);
-        $request->setSegments($segments);
-        $request->setMetrics($metrics);
+        $body = [
+            'property' => $propertyID,
+            'dateRanges' => [
+                $this->makeGaDateRange($date)
+            ],
+            'returnPropertyQuota' => true
+        ];
 
         if (!empty($options['orderBys'])) {
             $this->checkOrderBys($options['orderBys'], $metricNames, $dimensionNames);
 
-            $request->setOrderBys($this->makeGaOrderBys($options['orderBys']));
+            $body['orderBys'] = [$this->makeGaOrderBys($options['orderBys'], $metricNames, $dimensionNames)];
         }
 
-        $getReport = new \Google\Service\AnalyticsReporting\GetReportsRequest();
-        $getReport->setReportRequests([$request]);
+        if (!empty($dimensions)) {
+            $body['dimensions'] = $dimensions;
+        }
 
-        $body = new \Google\Service\AnalyticsReporting\GetReportsRequest();
-        $body->setReportRequests([$request]);
+        if (!empty($metrics)) {
+            $body['metrics'] = $metrics;
+        }
 
         return $body;
     }
@@ -92,6 +95,7 @@ class GoogleGA4QueryObjectFactory
         throw new \Exception("Not sure what metric to use to order results, got: " . implode(', ', $gaMetricsToQuery));
     }
 
+    //TODO: Need to change as per GA4
     private function makeGaSegment($segment)
     {
         $segmentObj = new \Google\Service\AnalyticsReporting\Segment();
@@ -106,10 +110,12 @@ class GoogleGA4QueryObjectFactory
     private function makeGaDateRange(Date $date)
     {
         $dateStr = $date->toString();
-        $dateRange = new \Google\Service\AnalyticsReporting\DateRange();
-        $dateRange->setStartDate($dateStr);
-        $dateRange->setEndDate($dateStr);
-        return $dateRange;
+       return new \Google\Analytics\Data\V1beta\DateRange(
+            [
+                'start_date' => $dateStr,
+                'end_date' => $dateStr
+            ]
+        );
     }
 
     private function makeGaSegmentDimension()
@@ -121,36 +127,39 @@ class GoogleGA4QueryObjectFactory
 
     private function makeGaDimension($gaDimension)
     {
-        $result = new \Google\Service\AnalyticsReporting\Dimension();
-        $result->setName($gaDimension);
-        return $result;
+        return  new \Google\Analytics\Data\V1beta\Dimension(
+            [
+                'name' => $gaDimension
+            ]
+        );
     }
 
     private function makeGaMetric($gaMetric)
     {
-        $metric = new \Google\Service\AnalyticsReporting\Metric();
-        $metric->setExpression($gaMetric);
-        return $metric;
+        return new \Google\Analytics\Data\V1beta\Metric(
+            [
+                'name' => $gaMetric
+            ]
+        );
     }
 
-    private function makeGaOrderBys($orderBys)
+    private function makeGaOrderBys($orderBys, $metricNames, $dimensionNames)
     {
-        $gaOrderBys = [];
-        foreach ($orderBys as $orderByInfo) {
-            $orderBy = new \Google\Service\AnalyticsReporting\OrderBy();
-            $orderBy->setFieldName($orderByInfo['field']);
-            $orderBy->setOrderType('VALUE');
-
-            $order = strtoupper($orderByInfo['order']);
-            if ($order == 'DESC') {
-                $order = 'DESCENDING';
-            } else if ($order == 'ASC') {
-                $order = 'ASCENDING';
-            }
-            $orderBy->setSortOrder($order);
-            $gaOrderBys[] = $orderBy;
+        $orderByInfo = $orderBys[0];
+        $order = strtoupper($orderByInfo['order']);
+        $data = [
+            'desc' => ($order == 'DESC')
+        ];
+        if (in_array($orderByInfo['field'], $metricNames)) {
+            $metric = new \Google\Analytics\Data\V1beta\OrderBy\MetricOrderBy();
+            $metric->setMetricName($orderByInfo['field']);
+            $data['metric'] = $metric;
+        } else {
+            $dimension = new \Google\Analytics\Data\V1beta\OrderBy\DimensionOrderBy();
+            $dimension->setDimensionName($orderByInfo['field']);
+            $data['dimension'] = $dimension;
         }
-        return $gaOrderBys;
+        return  new \Google\Analytics\Data\V1beta\OrderBy($data);
     }
 
     private function checkOrderBys($orderBys, array $metricsQueried, array $dimensions)

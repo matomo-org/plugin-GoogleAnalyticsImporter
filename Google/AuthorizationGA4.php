@@ -11,6 +11,8 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
+use Piwik\Piwik;
+use Piwik\Option;
 
 class AuthorizationGA4
 {
@@ -39,6 +41,11 @@ class AuthorizationGA4
     {
         $value = Option::get(self::CLIENT_CONFIG_OPTION_NAME);
         $value = @json_decode($value, true);
+
+        if (empty($value['client_id']) || empty($value['client_email'])) {
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
+        }
+
         return $value;
     }
 

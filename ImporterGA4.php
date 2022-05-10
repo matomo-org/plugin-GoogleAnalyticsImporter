@@ -35,6 +35,7 @@ use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Plugins\TagManager\TagManager;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
+use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGA4CustomDimensionMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGA4GoalMapper;
@@ -164,21 +165,21 @@ class ImporterGA4
         try {
             $extraCustomDimensions = $this->checkExtraCustomDimensions($extraCustomDimensions);
 
-            $webproperty = $this->gaAdminClient->getProperty($propertyId);
+            $webProperty = $this->gaAdminClient->getProperty($propertyId);
 
-            $startDate = Date::factory($webproperty->getCreateTime()->toDateTime()->getTimestamp())->toString();
+            $startDate = Date::factory($webProperty->getCreateTime()->toDateTime()->getTimestamp())->toString();
             if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
                 $idSite = SitesManagerAPI::getInstance()->addSite(
-                    $siteName = $webproperty->getDisplayName(),
-                    $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getDisplayName()],
+                    $siteName = $webProperty->getDisplayName(),
+                    $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webProperty->getDisplayName()],
                     $ecommerce = 1,
                     $siteSearch = false,
                     $searchKeywordParams = '',
                     $searchCategoryParams = '',
                     $excludedIps = null,
                     $excludedParams = '',
-                    $timezone = empty($timezone) ? $webproperty->getTimeZone() : $timezone,
-                    $currency = $webproperty->getCurrencyCode(),
+                    $timezone = empty($timezone) ? $webProperty->getTimeZone() : $timezone,
+                    $currency = $webProperty->getCurrencyCode(),
                     $group = null,
                     $startDate,
                     $excludedUserAgents = null,
@@ -199,13 +200,13 @@ class ImporterGA4
                 }
             }
 
-            if ($forceCustomDimensionSlotCheck || true) {
+            if ($forceCustomDimensionSlotCheck) {
                 $availableScopes = CustomDimensionsAPI::getInstance()->getAvailableScopes($idSite);
                 $customDimensions = $this->gaAdminClient->listCustomDimensions($propertyId);
                 $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions);
             }
 
-            $this->importStatus->startingImport($propertyId, $webproperty->getAccount(), '', $idSite, $extraCustomDimensions);
+            $this->importStatus->startingImport($propertyId, $webProperty->getAccount(), '', $idSite, $extraCustomDimensions);
 
             return $idSite;
         } finally {
@@ -394,7 +395,7 @@ class ImporterGA4
 
             $site = new Site($idSite);
             for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
-                $this->logger->info("Importing data for GA View {viewId} for date {date}...", [
+                $this->logger->info("Importing data for GA Property {propertyID} for date {date}...", [
                     'propertyID' => $propertyId,
                     'date' => $date->toString(),
                 ]);

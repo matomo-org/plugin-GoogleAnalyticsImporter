@@ -103,47 +103,28 @@ class GoogleAnalyticsGA4QueryService
 
         $gaMetricsToQuery = $this->metricMapper->getMappedMetrics($metrics);
 
-        $dataTableFactory = new GoogleResponseDataTableFactory($dimensions, $metrics, $gaMetricsToQuery);
+        $dataTableFactory = new GoogleGA4ResponseDataTableFactory($dimensions, $metrics, $gaMetricsToQuery);
 
         // detect the metric used to order result sets. we need to send this metric with each partial request to ensure correct order.
         $orderByMetric = $this->googleGA4QueryObjectFactory->getOrderByMetric($gaMetricsToQuery, $options);
 
-        foreach (array_chunk($gaMetricsToQuery, 9) as $chunk) {
-            $chunkResponse = $this->gaBatchGet($day, array_values($chunk), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
+        $response = $this->gaRunReport($day, array_values($gaMetricsToQuery), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
 
-            // some metric/date combinations seem to cause GA to return absolutely nothing (no rows + NULL row count).
-            // in this case we remove the problematic metrics and try again.
-            if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
-                $chunk = array_diff($chunk, self::$problematicMetrics);
-                if (empty($chunk)) {
-                    continue;
-                }
-
-                $chunkResponse = $this->gaBatchGet($day, $chunk, array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
-
-                // the second request can still fail, in which case repeated requests tend to still fail. so we ignore this data. seems to only
-                // happen for old data anyway.
-                if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
-                    continue;
-                }
-            }
-
+        if ($response->getRowCount()) {
             if ($this->onQueryMade) {
                 $callable = $this->onQueryMade;
                 $callable();
             }
 
-            usleep(100 * 1000);
+            $dataTableFactory->mergeGaResponse($response, $gaMetricsToQuery);
 
-            $dataTableFactory->mergeGaResponse($chunkResponse, $chunk);
+            $dataTableFactory->convertGaColumnsToMetricIndexes($this->metricMapper->getMappings());
         }
-
-        $dataTableFactory->convertGaColumnsToMetricIndexes($this->metricMapper->getMappings());
 
         return $dataTableFactory->getDataTable();
     }
 
-    private function gaBatchGet(Date $date, $metricNamesChunk, $options, $orderByMetric)
+    private function gaRunReport(Date $date, $metricNamesChunk, $options, $orderByMetric)
     {
         if (!in_array($orderByMetric, $metricNamesChunk)) {
             $metricNamesChunk[] = $orderByMetric; // make sure the order by metric is included in this query so we can sort
@@ -166,9 +147,7 @@ class GoogleAnalyticsGA4QueryService
             try {
                 $this->issuePointlessMysqlQuery();
 
-                $result = $this->gaClient->reports->batchGet($request, [
-                    'quotaUser' => $this->quotaUser,
-                ]);
+                $result = $this->gaClient->runReport($request);
 
                 if (empty($result)) {
                     ++$attempts;
