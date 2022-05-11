@@ -108,7 +108,12 @@ class GoogleGA4MetricMapper
                     return floor($row->getColumn('userEngagementDuration'));
                 },
             ],
-//            Metrics::INDEX_BOUNCE_COUNT => 'ga:bounces', Not available in GA4 changed to Enagegement metric
+            Metrics::INDEX_BOUNCE_COUNT => [
+                'metric' => ['sessions', 'bounceRate'],
+                'calculate' => function (Row $row) {
+                    return $row->getColumn('sessions') * $row->getColumn('bounceRate');
+                }
+            ],
 
             // TODO: goalConversionRateAll doesn't seem to include ecommerce orders. not sure how to make it accurate in this case...
             Metrics::INDEX_NB_VISITS_CONVERTED => 'conversions',
