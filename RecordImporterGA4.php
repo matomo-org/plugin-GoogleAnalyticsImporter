@@ -92,7 +92,7 @@ abstract class RecordImporterGA4
             Metrics::INDEX_NB_VISITS,
             Metrics::INDEX_NB_ACTIONS,
             Metrics::INDEX_SUM_VISIT_LENGTH,
-//            Metrics::INDEX_BOUNCE_COUNT, Not available in GA4
+            Metrics::INDEX_BOUNCE_COUNT,
             Metrics::INDEX_NB_VISITS_CONVERTED,
         ];
     }

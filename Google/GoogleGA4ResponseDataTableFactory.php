@@ -57,18 +57,32 @@ class GoogleGA4ResponseDataTableFactory
             $tableRow = clone $this->defaultRow;
 
             $metricValues = $gaRow->getMetricValues();
+            $gaRowMetrics = [];
             for ($i = 0; $i < $metricValues->count(); $i++) {
-                $tableRow->setColumn($gaMetricsToQuery[$i], $metricValues[$i]->getValue());
+                $gaRowMetrics[] = $metricValues[$i]->getValue();
+            }
+
+            foreach (array_values($gaMetricsToQuery) as $index => $metricName) {
+                $tableRow->setColumn($metricName, $gaRowMetrics[$index]);
             }
 
             // gather all dimensions to create the label column (we need to be able to find existing rows from dimensions
             // so we combine these dimensions into a single label)
             $dimensionValues = $gaRow->getDimensionValues();
             $label = [];
+            $gaRowDimensions = [];
             for ($i = 0; $i < $dimensionValues->count(); $i++) {
+                $gaRowDimensions = $dimensionValues[$i]->getValue();
                 $labelValue = $dimensionValues[$i]->getValue();
                 $tableRow->setMetadata($this->dimensions[$i], $labelValue);
                 $label[$this->dimensions[$i]] = $labelValue;
+            }
+
+            foreach (array_values($this->dimensions) as $index => $dimension) {
+                $labelValue = $gaRowDimensions[$index];
+                $tableRow->setMetadata($dimension, $labelValue);
+
+                $label[$dimension] = $labelValue;
             }
 
             if (!empty($label)) {
