@@ -56,6 +56,8 @@ return [
     ],
     'GoogleAnalyticsGA4Importer.recordImporters' => [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporterGA4::class, // must be first
+
+        \Piwik\Plugins\GoogleAnalyticsImporter\Importers\MarketingCampaignsReporting\RecordImporterGA4::class,
     ],
 
     'diagnostics.optional' => \DI\add([

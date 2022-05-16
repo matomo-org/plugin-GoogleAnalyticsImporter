@@ -72,14 +72,11 @@ class GoogleGA4ResponseDataTableFactory
             $label = [];
             $gaRowDimensions = [];
             for ($i = 0; $i < $dimensionValues->count(); $i++) {
-                $gaRowDimensions = $dimensionValues[$i]->getValue();
-                $labelValue = $dimensionValues[$i]->getValue();
-                $tableRow->setMetadata($this->dimensions[$i], $labelValue);
-                $label[$this->dimensions[$i]] = $labelValue;
+                $gaRowDimensions[] = $dimensionValues[$i]->getValue();
             }
 
             foreach (array_values($this->dimensions) as $index => $dimension) {
-                $labelValue = $gaRowDimensions[$index];
+                $labelValue = $gaRowDimensions[$index] == '(not set)' ? null : $gaRowDimensions[$index];
                 $tableRow->setMetadata($dimension, $labelValue);
 
                 $label[$dimension] = $labelValue;
