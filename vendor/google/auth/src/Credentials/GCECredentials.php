@@ -126,6 +126,8 @@ class GCECredentials extends CredentialsLoader implements
 
     /**
      * Result of fetchAuthToken.
+     *
+     * @var array<mixed>
      */
     protected $lastReceivedToken;
 
@@ -166,7 +168,7 @@ class GCECredentials extends CredentialsLoader implements
 
     /**
      * @param Iam $iam [optional] An IAM instance.
-     * @param string|array $scope [optional] the scope of the access request,
+     * @param string|string[] $scope [optional] the scope of the access request,
      *        expressed either as an array or as a space-delimited string.
      * @param string $targetAudience [optional] The audience for the ID token.
      * @param string $quotaProject [optional] Specifies a project to bill for access
@@ -197,10 +199,10 @@ class GCECredentials extends CredentialsLoader implements
 
             $scope = implode(',', $scope);
 
-            $tokenUri = $tokenUri . '?scopes='. $scope;
+            $tokenUri = $tokenUri . '?scopes=' . $scope;
         } elseif ($targetAudience) {
             $tokenUri = self::getIdTokenUri($serviceAccountIdentity);
-            $tokenUri = $tokenUri . '?audience='. $targetAudience;
+            $tokenUri = $tokenUri . '?audience=' . $targetAudience;
             $this->targetAudience = $targetAudience;
         }
 
@@ -297,7 +299,7 @@ class GCECredentials extends CredentialsLoader implements
      */
     public static function onAppEngineFlexible()
     {
-        return substr(getenv('GAE_INSTANCE'), 0, 4) === 'aef-';
+        return substr((string) getenv('GAE_INSTANCE'), 0, 4) === 'aef-';
     }
 
     /**
@@ -351,15 +353,14 @@ class GCECredentials extends CredentialsLoader implements
      *
      * @param callable $httpHandler callback which delivers psr7 request
      *
-     * @return array A set of auth related metadata, based on the token type.
+     * @return array<mixed> {
+     *     A set of auth related metadata, based on the token type.
      *
-     * Access tokens have the following keys:
-     *   - access_token (string)
-     *   - expires_in (int)
-     *   - token_type (string)
-     * ID tokens have the following keys:
-     *   - id_token (string)
-     *
+     *     @type string $access_token for access tokens
+     *     @type int    $expires_in   for access tokens
+     *     @type string $token_type   for access tokens
+     *     @type string $id_token     for ID tokens
+     * }
      * @throws \Exception
      */
     public function fetchAuthToken(callable $httpHandler = null)
@@ -402,7 +403,7 @@ class GCECredentials extends CredentialsLoader implements
     }
 
     /**
-     * @return array|null
+     * @return array{access_token:string,expires_at:int}|null
      */
     public function getLastReceivedToken()
     {
@@ -460,9 +461,12 @@ class GCECredentials extends CredentialsLoader implements
      * @param string $stringToSign The string to sign.
      * @param bool $forceOpenSsl [optional] Does not apply to this credentials
      *        type.
+     * @param string $accessToken The access token to use to sign the blob. If
+     *        provided, saves a call to the metadata server for a new access
+     *        token. **Defaults to** `null`.
      * @return string
      */
-    public function signBlob($stringToSign, $forceOpenSsl = false)
+    public function signBlob($stringToSign, $forceOpenSsl = false, $accessToken = null)
     {
         $httpHandler = HttpHandlerFactory::build(HttpClientCache::getHttpClient());
 
@@ -472,10 +476,12 @@ class GCECredentials extends CredentialsLoader implements
 
         $email = $this->getClientName($httpHandler);
 
-        $previousToken = $this->getLastReceivedToken();
-        $accessToken = $previousToken
-            ? $previousToken['access_token']
-            : $this->fetchAuthToken($httpHandler)['access_token'];
+        if (is_null($accessToken)) {
+            $previousToken = $this->getLastReceivedToken();
+            $accessToken = $previousToken
+                ? $previousToken['access_token']
+                : $this->fetchAuthToken($httpHandler)['access_token'];
+        }
 
         return $signer->signBlob($email, $accessToken, $stringToSign);
     }

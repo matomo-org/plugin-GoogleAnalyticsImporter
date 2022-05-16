@@ -37,7 +37,7 @@ describe("GoogleAnalyticsImporter", function () {
 
         await page.click('#startImportSubmit');
         await page.waitForNetworkIdle();
-        await page.waitFor('.pageWrap');
+        await page.waitForSelector('.pageWrap');
 
         await removeStartResumeFinishTime();
 
@@ -46,10 +46,10 @@ describe("GoogleAnalyticsImporter", function () {
     });
 
     it('should show the error in the UI when an import fails', async function () {
-        await page.waitFor(70000);
+        await page.waitForTimeout(70000);
 
         await page.reload({ timeout: 0 });
-        await page.waitFor('.pageWrap');
+        await page.waitForSelector('.pageWrap');
 
         await removeStartResumeFinishTime();
 
@@ -60,7 +60,7 @@ describe("GoogleAnalyticsImporter", function () {
     it('should manually resume an import when the resume button is clicked', async function () {
         await page.click('td.actions > a.icon-play');
         await page.waitForNetworkIdle();
-        await page.waitFor('.pageWrap');
+        await page.waitForSelector('.pageWrap');
 
         await removeStartResumeFinishTime();
 
@@ -69,17 +69,17 @@ describe("GoogleAnalyticsImporter", function () {
     });
 
     it('should schedule a re-import when the modal is used', async function () {
-        await page.waitFor(90000);
+        await page.waitForTimeout(90000);
 
         await page.click('#reimport-date-range');
 
-        await page.waitFor('#openScheduleReimportModal', { visible: true });
+        await page.waitForSelector('#openScheduleReimportModal', { visible: true });
         await page.type('#re-import-start-date', '2019-06-27');
         await page.type('#re-import-end-date', '2019-06-27');
 
         await page.click('#scheduleReimportSubmit');
         await page.waitForNetworkIdle();
-        await page.waitFor('.pageWrap');
+        await page.waitForSelector('.pageWrap');
 
         await removeStartResumeFinishTime();
 
@@ -90,10 +90,10 @@ describe("GoogleAnalyticsImporter", function () {
     it("should show that the import finished when the import finishes", async function () {
         let totalTime = 0;
         while (true) { // wait until import finishes
-            await page.waitFor(30000);
+            await page.waitForTimeout(30000);
 
             await page.reload();
-            await page.waitFor('.pageWrap');
+            await page.waitForSelector('.pageWrap');
 
             const elem = await page.$('td.actions > a.icon-delete');
             if (elem) {
@@ -118,7 +118,7 @@ describe("GoogleAnalyticsImporter", function () {
     it('should remove the status when the trash icon is clicked', async function () {
         await page.click('td.actions > a.icon-delete');
         await page.waitForNetworkIdle();
-        await page.waitFor('.pageWrap');
+        await page.waitForSelector('.pageWrap');
 
         await removeStartResumeFinishTime();
 
@@ -129,7 +129,7 @@ describe("GoogleAnalyticsImporter", function () {
     it('should remove client configuration when the button is pressed', async function () {
         await page.click('#removeConfigForm button[type=submit]');
         await page.waitForNetworkIdle();
-        await page.waitFor('.pageWrap');
+        await page.waitForSelector('.pageWrap');
 
         await removeStartResumeFinishTime();
 
