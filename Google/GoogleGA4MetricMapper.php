@@ -162,6 +162,12 @@ class GoogleGA4MetricMapper
                     return floor($row->getColumn('userEngagementDuration'));
                 },
             ],
+            Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT => [
+                'metric' => ['sessions', 'bounceRate'],
+                'calculate' => function (Row $row) {
+                    return $row->getColumn('sessions') * $row->getColumn('bounceRate');
+                }
+            ],
 
             // actions (requires correct dimensions)
             Metrics::INDEX_PAGE_IS_FOLLOWING_SITE_SEARCH_NB_HITS => 'eventCount',

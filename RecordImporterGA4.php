@@ -117,6 +117,8 @@ abstract class RecordImporterGA4
 
     protected function getPageMetrics()
     {
+        return $this->getActionMetrics();
+        // Not available in GA4
         return array_merge($this->getActionMetrics(), [
             Metrics::INDEX_PAGE_SUM_TIME_SPENT,
             Metrics::INDEX_PAGE_SUM_TIME_GENERATION,
