@@ -296,7 +296,7 @@ class ImporterGA4
 
         /** @var \Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension */
         foreach ($customDimensions->iterateAllElements() as $gaCustomDimension) {
-            $gaCustomDimension->id = str_replace($propertyId . '/customDimensions/', '', $gaCustomDimension->getName());
+            $gaCustomDimension->id = ($gaCustomDimension->getScope() === 1 ? 'customEvent:' : 'customUser:') . $gaCustomDimension->getParameterName();
             if ($this->customDimensionExists($existingCustomDimensions, $gaCustomDimension)) {
                 $this->logger->info("Custom Dimension '{gaCustomDimension}' already imported.", [
                     'gaCustomDimension' => $gaCustomDimension->getName(),

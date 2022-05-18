@@ -74,7 +74,7 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
 
         $this->pageTitleDimension = $this->isMobileApp ? 'unifiedScreenName' : 'pageTitle';
 //        $this->uniquePageviewsMetric = $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:uniquePageviews'; Not available in GA4
-        $this->hitsMetric = $this->isMobileApp ? 'screenPageViews' : 'screenPageViews';
+        $this->hitsMetric = 'screenPageViews';
 
         $this->pageTitleEntryDimensions = $this->isMobileApp ? ['unifiedScreenName'] : ['landingPage', 'pageTitle'];
 //        $this->pageTitleExitDimensions = $this->isMobileApp ? ['ga:exitScreenName'] : ['ga:exitPagePath', 'pageTitle']; Not available in GA4
