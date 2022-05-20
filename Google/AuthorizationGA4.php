@@ -17,11 +17,14 @@ use Piwik\Option;
 class AuthorizationGA4
 {
     const CLIENT_CONFIG_OPTION_NAME = 'GoogleAnalyticsImporter.clientConfiguration';
+    const ACCESS_TOKEN_OPTION_NAME = 'GoogleAnalyticsImporter.oauthAccessToken';
 
     public function getClient()
     {
         $client = new BetaAnalyticsDataClient([
-            'credentials' => $this->getClientConfiguration()
+            'credentials' => \Google\ApiCore\CredentialsWrapper::build([
+                'keyFile' => $this->getClientConfiguration()
+            ])
         ]);
 
         return $client;
@@ -31,7 +34,9 @@ class AuthorizationGA4
     public function getAdminClient()
     {
         $adminClient = new AnalyticsAdminServiceClient([
-            'credentials' => $this->getClientConfiguration()
+            'credentials' => \Google\ApiCore\CredentialsWrapper::build([
+                'keyFile' => $this->getClientConfiguration()
+            ])
         ]);
 
         return $adminClient;
@@ -42,11 +47,32 @@ class AuthorizationGA4
         $value = Option::get(self::CLIENT_CONFIG_OPTION_NAME);
         $value = @json_decode($value, true);
 
-        if (empty($value['client_id']) || empty($value['client_email'])) {
+        if (empty($value['web']['client_id']) || empty($value['web']['client_secret'])) {
             throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
         }
+
+        return [
+            'type' => 'authorized_user',
+            'client_id' => $value['web']['client_id'],
+            'client_secret' => $value['web']['client_secret'],
+            'refresh_token' => $this->getRefreshToken()
+        ];
+    }
+
+    private function getAccessToken()
+    {
+        $value = Option::get(self::ACCESS_TOKEN_OPTION_NAME);
 
         return $value;
     }
 
+    private function getRefreshToken()
+    {
+        $accessToken = @json_decode($this->getAccessToken(), true);
+        if (empty($accessToken['refresh_token'])) {
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
+        }
+
+        return $accessToken['refresh_token'];
+    }
 }
