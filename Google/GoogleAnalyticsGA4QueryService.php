@@ -28,8 +28,8 @@ class GoogleAnalyticsGA4QueryService
     const DEFAULT_MIN_BACKOFF_TIME = 2; // start at 2s since GA seems to have trouble w/ the 10 requests per 100s limit w/ 1
 
     private static $problematicMetrics = [
-        'ga:users',
-        'ga:hits',
+        'totalUsers',
+        'eventCount',
     ];
 
     /**
@@ -107,19 +107,37 @@ class GoogleAnalyticsGA4QueryService
 
         // detect the metric used to order result sets. we need to send this metric with each partial request to ensure correct order.
         $orderByMetric = $this->googleGA4QueryObjectFactory->getOrderByMetric($gaMetricsToQuery, $options);
+        foreach (array_chunk($gaMetricsToQuery, 10) as $chunk) {
+            $chunkResponse = $this->gaRunReport($day, array_values($chunk), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
 
-        $response = $this->gaRunReport($day, array_values($gaMetricsToQuery), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
+            // some metric/date combinations seem to cause GA to return absolutely nothing (no rows + NULL row count).
+            // in this case we remove the problematic metrics and try again.
+            if ($chunkResponse->getRowCount() === null) {
+                $chunk = array_diff($chunk, self::$problematicMetrics);
+                if (empty($chunk)) {
+                    continue;
+                }
 
-        if ($response->getRowCount()) {
+                $chunkResponse = $this->gaRunReport($day, $chunk, array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
+
+                // the second request can still fail, in which case repeated requests tend to still fail. so we ignore this data. seems to only
+                // happen for old data anyway.
+                if ($chunkResponse->getRowCount() === null) {
+                    continue;
+                }
+            }
+
             if ($this->onQueryMade) {
                 $callable = $this->onQueryMade;
                 $callable();
             }
 
-            $dataTableFactory->mergeGaResponse($response, $gaMetricsToQuery);
+            usleep(100 * 1000);
 
-            $dataTableFactory->convertGaColumnsToMetricIndexes($this->metricMapper->getMappings());
+            $dataTableFactory->mergeGaResponse($chunkResponse, $chunk);
         }
+
+        $dataTableFactory->convertGaColumnsToMetricIndexes($this->metricMapper->getMappings());
 
         return $dataTableFactory->getDataTable();
     }
