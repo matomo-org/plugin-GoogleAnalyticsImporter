@@ -21,31 +21,18 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
 
     public function importRecords(Date $day)
     {
-        $dimension = 'language';
         $recordName = Archiver::LANGUAGE_RECORD_NAME;
-
-        /** @var RegionDataProvider $regionDataProvider */
-        $regionDataProvider = StaticContainer::get('Piwik\Intl\Data\Provider\RegionDataProvider');
-        $countryCodes = $regionDataProvider->getCountryList($includeInternalCodes = true);
-
         $record = new DataTable();
 
         $gaQuery = $this->getGaClient();
-        $table = $gaQuery->query($day, [$dimension], $this->getConversionAwareVisitMetrics());
+        $table = $gaQuery->query($day, ['languageCode'], $this->getConversionAwareVisitMetrics());
         foreach ($table->getRows() as $row) {
-            $label = $row->getMetadata($dimension);
-            if (empty($label)) {
-                $label = self::NOT_SET_IN_GA_LABEL;
+            $languageCode = $row->getMetadata('languageCode');
+            if (empty($languageCode)) {
+                $languageCode = self::NOT_SET_IN_GA_LABEL;
             }
 
-            $langCode = Common::extractLanguageCodeFromBrowserLanguage($label);
-            $countryCode = Common::extractCountryCodeFromBrowserLanguage($label, $countryCodes, $enableLanguageToCountryGuess = true);
-
-            if ($countryCode == 'xx' || $countryCode == $langCode) {
-                $this->addRowToTable($record, $row, $langCode);
-            } else {
-                $this->addRowToTable($record, $row, $langCode . '-' . $countryCode);
-            }
+            $this->addRowToTable($record, $row, $languageCode);
         }
 
         $this->insertRecord($recordName, $record);
