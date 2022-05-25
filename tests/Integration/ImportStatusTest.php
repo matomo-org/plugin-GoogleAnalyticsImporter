@@ -534,6 +534,7 @@ Account: account
 View: view',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
             [
                 'status' => 'started',
@@ -556,6 +557,7 @@ Account: account2
 View: view2',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
             [
                 'status' => 'started',
@@ -578,6 +580,7 @@ Account: account3
 View: view3',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
             [
                 'status' => 'started',
@@ -600,6 +603,7 @@ Account: account3
 View: view3',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
         ], $statuses);
     }
@@ -673,6 +677,7 @@ Account: account
 View: view',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
             [
                 'status' => 'killed',
@@ -695,6 +700,7 @@ Account: account2
 View: view2',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
             [
                 'status' => 'started',
@@ -717,6 +723,7 @@ Account: account3
 View: view3',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
             [
                 'status' => 'killed',
@@ -739,6 +746,7 @@ Account: account4
 View: view4',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
             [
                 'status' => 'started',
@@ -761,6 +769,7 @@ Account: account5
 View: view5',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
+                'isGA4' => false,
             ],
         ], $statuses);
     }
