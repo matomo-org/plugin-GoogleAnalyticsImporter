@@ -60,12 +60,13 @@
           id="scheduleReimportSubmit"
           href
           class="modal-action modal-close btn"
-          @click="scheduleReimport()"
+          @click.prevent="scheduleReimport()"
           style="margin-right:3.5px"
         >{{ translate('GoogleAnalyticsImporter_Schedule') }}</a>
         <a
           href
           class="modal-action modal-close modal-no"
+          @click.prevent
         >{{ translate('General_Cancel') }}</a>
       </div>
     </div>
