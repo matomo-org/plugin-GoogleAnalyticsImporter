@@ -17,6 +17,9 @@
       >{{ translate('GoogleAnalyticsImporter_SiteDeleted') }}</span>
       <br />
       {{ translate('GoogleAnalyticsImporter_SiteID') }}: {{ status.idSite }}
+      <br />
+      {{ translate('GoogleAnalyticsImporter_ImportType') }}:
+      {{ status.isGA4 ? 'GA4' : 'Universal Analytics' }}
     </td>
     <td class="ga-info" v-html="$sanitize(gaInfoPretty)"></td>
     <td class="status">

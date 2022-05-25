@@ -16,8 +16,10 @@ use Piwik\Date;
 use Piwik\Nonce;
 use Piwik\Notification;
 use Piwik\Piwik;
+use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportGA4Reports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
@@ -108,6 +110,23 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                 'field1' => [
                     'key' => 'gaDimension',
                     'title' => Piwik::translate('GoogleAnalyticsImporter_GADimension'),
+                    'uiControl' => 'text',
+                    'availableValues' => null,
+                ],
+                'field2' => [
+                    'key' => 'dimensionScope',
+                    'title' => Piwik::translate('GoogleAnalyticsImporter_DimensionScope'),
+                    'uiControl' => 'select',
+                    'availableValues' => [
+                        'visit' => Piwik::translate('General_Visit'),
+                        'action' => Piwik::translate('General_Action'),
+                    ],
+                ],
+            ],
+            'extraCustomDimensionsFieldGA4' => [
+                'field1' => [
+                    'key' => 'ga4Dimension',
+                    'title' => Piwik::translate('GoogleAnalyticsImporter_GA4Dimension'),
                     'uiControl' => 'text',
                     'availableValues' => null,
                 ],
@@ -382,6 +401,87 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         }
     }
 
+    public function startImportGA4()
+    {
+        Piwik::checkUserHasSuperUserAccess();
+        $this->checkTokenInUrl();
+
+        Json::sendHeaderJSON();
+
+        try {
+            Nonce::checkNonce('GoogleAnalyticsImporter.startImportNonce', Common::getRequestVar('nonce'));
+
+            $startDate = trim(Common::getRequestVar('startDate', ''));
+            if (!empty($startDate)) {
+                $startDate = Date::factory($startDate . ' 00:00:00');
+            }
+
+            $endDate = trim(Common::getRequestVar('endDate', ''));
+
+            $inputEndDate = StaticContainer::get(EndDate::class);
+            $endDate = $inputEndDate->limitMaxEndDateIfNeeded($endDate);
+            if (!empty($endDate)) {
+                $endDate = Date::factory($endDate)->getStartOfDay();
+            }
+
+            // set credentials in google client
+            $googleAuth = StaticContainer::get(AuthorizationGA4::class);
+
+            /** @var ImporterGA4 $importer */
+            $importer = StaticContainer::get(ImporterGA4::class);
+            $importer->setGAClient($googleAuth->getClient());
+            $importer->setGAAdminClient($googleAuth->getAdminClient());
+
+            $propertyId = trim(Common::getRequestVar('propertyId'));
+            ImportGA4Reports::validatePropertyID($propertyId);
+            $isMobileApp = Common::getRequestVar('isMobileApp', 0, 'int') == 1;
+            $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
+            $extraCustomDimensions = Common::getRequestVar('extraCustomDimensions', [], $type = 'array');
+            $isVerboseLoggingEnabled = Common::getRequestVar('isVerboseLoggingEnabled', 0, $type = 'int') == 1;
+            $forceCustomDimensionSlotCheck = Common::getRequestVar('forceCustomDimensionSlotCheck', 1, $type = 'int') == 1;
+
+            $idSite = $importer->makeSite($propertyId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions,
+                $forceCustomDimensionSlotCheck);
+
+            try {
+                if (empty($idSite)) {
+                    throw new \Exception("Unable to import site entity."); // sanity check
+                }
+
+                /** @var ImportStatus $importStatus */
+                $importStatus = StaticContainer::get(ImportStatus::class);
+
+                if (!empty($startDate)
+                    || !empty($endDate)
+                ) {
+                    // we set the last imported date to one day before the start date
+                    $importStatus->setImportDateRange($idSite, $startDate ?: null, $endDate ?: null);
+                }
+
+                if ($isVerboseLoggingEnabled) {
+                    $importStatus->setIsVerboseLoggingEnabled($idSite, $isVerboseLoggingEnabled);
+                }
+
+                // start import now since the scheduled task may not run until tomorrow
+                Tasks::startImportGA4($importStatus->getImportStatus($idSite));
+            } catch (\Exception $ex) {
+                $importStatus->erroredImport($idSite, $ex->getMessage());
+
+                throw $ex;
+            }
+
+            echo json_encode([ 'result' => 'ok' ]);
+        } catch (\Exception $ex) {
+            $this->logException($ex, __FUNCTION__);
+
+            $notification = new Notification($this->getNotificationExceptionText($ex));
+            $notification->type = Notification::TYPE_TRANSIENT;
+            $notification->context = Notification::CONTEXT_ERROR;
+            $notification->title = Piwik::translate('General_Error');
+            Notification\Manager::notify('GoogleAnalyticsImporter_startImport_failure', $notification);
+        }
+    }
+
     public function resumeImport()
     {
         Piwik::checkUserHasSuperUserAccess();
@@ -393,6 +493,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             Nonce::checkNonce('GoogleAnalyticsImporter.resumeImportNonce', Common::getRequestVar('nonce'));
 
             $idSite = Common::getRequestVar('idSite', null, 'int');
+            $isGA4 = Common::getRequestVar('isGA4', 0, 'int') == 1;
             new Site($idSite);
 
             /** @var ImportStatus $importStatus */
@@ -404,7 +505,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             $importStatus->resumeImport($idSite);
 
-            Tasks::startImport($status);
+            if ($isGA4) {
+                Tasks::startImportGA4($status);
+            } else {
+                Tasks::startImport($status);
+            }
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {
@@ -431,6 +536,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $idSite = Common::getRequestVar('idSite', null, 'int');
             new Site($idSite);
 
+            $isGA4 = Common::getRequestVar('isGA4', 0, 'int') == 1;
             $startDate = Common::getRequestVar('startDate', null, 'string');
             $startDate = Date::factory($startDate);
 
@@ -447,7 +553,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $importStatus->resumeImport($idSite);
 
             // start import now since the scheduled task may not run until tomorrow
-            Tasks::startImport($importStatus->getImportStatus($idSite));
+            if ($isGA4) {
+                Tasks::startImportGA4($importStatus->getImportStatus($idSite));
+            } else {
+                Tasks::startImport($importStatus->getImportStatus($idSite));
+            }
 
             echo json_encode([ 'result' => 'ok' ]);
         } catch (\Exception $ex) {

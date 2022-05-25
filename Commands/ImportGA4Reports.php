@@ -359,4 +359,11 @@ class ImportGA4Reports extends ConsoleCommand
         }
     }
 
+    public function validatePropertyID($propertyId)
+    {
+        if (!preg_match('/^properties\/[^\/]+$/', $propertyId, $matches)) {
+            throw new \Exception("Invalid property ID, required format properties/{propertyID}");
+        }
+    }
+
 }

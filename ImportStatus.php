@@ -211,6 +211,7 @@ class ImportStatus
         foreach ($optionValues as $optionValue) {
             $status = json_decode($optionValue, true);
             $status = $this->enrichStatus($status, $checkKilledStatus);
+            $status['isGA4'] = isset($status['ga']['property']) && stripos($status['ga']['property'], 'properties/') !== FALSE;
             $result[] = $status;
         }
 

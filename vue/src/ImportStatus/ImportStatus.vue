@@ -23,10 +23,10 @@
           v-for="(status, index) in statuses"
           :status="status"
           :key="index"
-          @end-import="showEditImportEndDateModal(status.idSite)"
-          @reimport="openScheduleReimportModal(status.idSite)"
+          @end-import="showEditImportEndDateModal(status.idSite, status.isGA4)"
+          @reimport="openScheduleReimportModal(status.idSite, status.isGA4)"
           @delete="deleteImportStatus(status.idSite, $event.isDone)"
-          @manually-resume="manuallyResume(status.idSite)"
+          @manually-resume="manuallyResume(status.idSite, status.isGA4)"
         />
       </tbody>
     </table>
@@ -118,6 +118,7 @@ interface ImportStatusState {
   reimportStartDate: string;
   reimportEndDate: string;
   newImportEndDate: string;
+  isGA4: boolean
 }
 
 const { $ } = window;
@@ -159,24 +160,28 @@ export default defineComponent({
       reimportStartDate: '',
       reimportEndDate: '',
       newImportEndDate: '',
+      isGA4: false,
     };
   },
   methods: {
-    showEditImportEndDateModal(idSite: string|number) {
+    showEditImportEndDateModal(idSite: string|number, isGA4: boolean) {
       this.editImportEndDateIdSite = idSite;
+      this.isGA4 = isGA4;
       $('#editImportEndDate').modal({
         dismissible: false,
       }).modal('open');
     },
     cancelEditImportEndDateModal() {
       this.editImportEndDateIdSite = null;
+      this.isGA4 = false;
     },
-    manuallyResume(idSite: string|number) {
+    manuallyResume(idSite: string|number, isGA4: boolean) {
       return AjaxHelper.post(
         {
           module: 'GoogleAnalyticsImporter',
           action: 'resumeImport',
           idSite,
+          isGA4: isGA4 ? 1 : 0,
           nonce: this.resumeImportNonce,
         },
         {},
@@ -212,8 +217,9 @@ export default defineComponent({
         window.location.reload();
       });
     },
-    openScheduleReimportModal(idSite: string|number) {
+    openScheduleReimportModal(idSite: string|number, isGA4: boolean) {
       this.reimportDateRangeIdSite = idSite;
+      this.isGA4 = isGA4;
       $('#openScheduleReimportModal').modal({
         dismissible: false,
       }).modal('open');
@@ -244,6 +250,7 @@ export default defineComponent({
           startDate: this.reimportStartDate,
           endDate: this.reimportEndDate,
           nonce: this.scheduleReImportNonce,
+          isGA4: this.isGA4 ? 1 : 0,
         },
         {},
         {

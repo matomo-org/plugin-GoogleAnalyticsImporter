@@ -151,7 +151,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_None';
         $translationKeys[] = 'GoogleAnalyticsImporter_EndDateHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_PropertyId';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PropertyIdGA4';
         $translationKeys[] = 'GoogleAnalyticsImporter_PropertyIdHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PropertyIdGA4Help';
         $translationKeys[] = 'GoogleAnalyticsImporter_AccountId';
         $translationKeys[] = 'GoogleAnalyticsImporter_AccountIdHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_ViewId';
@@ -167,7 +169,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDesc1';
         $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDesc2';
         $translationKeys[] = 'GoogleAnalyticsImporter_TimezoneHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_TimezoneGA4Help';
         $translationKeys[] = 'GoogleAnalyticsImporter_ExtraCustomDimensionsHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ExtraCustomDimensionsGA4Help';
         $translationKeys[] = 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_Troubleshooting';
         $translationKeys[] = 'GoogleAnalyticsImporter_Start';
@@ -183,6 +187,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_Actions';
         $translationKeys[] = 'GoogleAnalyticsImporter_SiteDeleted';
         $translationKeys[] = 'GoogleAnalyticsImporter_SiteID';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImportType';
         $translationKeys[] = 'GoogleAnalyticsImporter_FinishedImportingDaysWaiting';
         $translationKeys[] = 'GoogleAnalyticsImporter_ErrorMessage';
         $translationKeys[] = 'GoogleAnalyticsImporter_ErrorMessageBugReportRequest';

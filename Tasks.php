@@ -68,7 +68,11 @@ class Tasks extends \Piwik\Plugin\Tasks
                 $importStatus->resumeImport($status['idSite']);
             }
 
-            self::startImport($status);
+            if ($status['isGA4']) {
+                self::startImportGA4($status);
+            } else {
+                self::startImport($status);
+            }
         }
 
         $logger->info('Done scheduling imports.');
@@ -123,6 +127,59 @@ class Tasks extends \Piwik\Plugin\Tasks
             $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
         $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$idSite;
+        if ($isVerboseLoggingEnabled) {
+            $command .= ' -vvv';
+        }
+
+        if ($logToSingleFile || !$isVerboseLoggingEnabled) {
+            $command .= ' >> ';
+        } else {
+            $command .= ' > ';
+        }
+
+        $command .= $importLogFile . ' 2>&1 &';
+
+        $logger = StaticContainer::get(LoggerInterface::class);
+        $logger->debug("Import command: {command}", ['command' => $command]);
+
+        static::exec($shouldUsePassthru = false, $command);
+    }
+
+    public static function startImportGA4($status)
+    {
+        if (ImportStatus::isImportRunning($status)) {
+            return;
+        }
+
+        $logToSingleFile = StaticContainer::get('GoogleAnalyticsImporter.logToSingleFile');
+
+        $idSite = $status['idSite'];
+        $isVerboseLoggingEnabled = !empty($status['is_verbose_logging_enabled']);
+
+        $hostname = SettingsPiwik::getPiwikInstanceId();
+
+        $importLogFile = self::getImportLogFile($idSite, $hostname, $logToSingleFile);
+        if (!is_writable($importLogFile)
+            && !is_writable(dirname($importLogFile))
+        ) {
+            $importLogFile = '/dev/null';
+        }
+
+        $cliPhp = new CliPhp();
+        $phpBinary = $cliPhp->findPhpBinary() ?: 'php';
+
+        $pathToConsole = '/console';
+        if (defined('PIWIK_TEST_MODE')) {
+            $pathToConsole = '/tests/PHPUnit/proxy/console';
+        }
+
+        $nohup = self::getNohupCommandIfPresent();
+
+        $command = "$nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
+        if (!empty($hostname)) {
+            $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
+        }
+        $command .= 'googleanalyticsimporter:import-ga4-reports --idsite=' . (int)$idSite;
         if ($isVerboseLoggingEnabled) {
             $command .= ' -vvv';
         }
