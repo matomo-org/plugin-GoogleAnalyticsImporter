@@ -70,7 +70,6 @@
         "LeaveEmptyToRemove": "Leave this empty to remove the end date and continue the import until manually cancelled.",
         "RateLimitHelp": "Google Analytics by default limits the number of requests you can make to the API for a specific project to 50,000 a day. It looks like this import job has exceeded that limit, so the import cannot continue until tomorrow.",
         "SiteID": "Site ID",
-        "ImportType": "Import Type",
         "SiteDeleted": "Site Deleted",
         "FinishedImportingDaysWaiting": "Finished %1$s days since last resume, waiting until tomorrow to resume again.",
         "ErrorMessage": "Error message",

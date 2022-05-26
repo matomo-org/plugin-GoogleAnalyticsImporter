@@ -210,8 +210,8 @@ class ImportStatus
         $result = [];
         foreach ($optionValues as $optionValue) {
             $status = json_decode($optionValue, true);
-            $status = $this->enrichStatus($status, $checkKilledStatus);
             $status['isGA4'] = isset($status['ga']['property']) && stripos($status['ga']['property'], 'properties/') !== FALSE;
+            $status = $this->enrichStatus($status, $checkKilledStatus);
             $result[] = $status;
         }
 
@@ -219,9 +219,9 @@ class ImportStatus
             $lhsIdSite = (int)($lhs['idSite'] ?? 0);
             $rhsIdSite = (int)($rhs['idSite'] ?? 0);
 
-            if ($lhsIdSite < $rhsIdSite) {
+            if ($lhsIdSite > $rhsIdSite) {
                 return -1;
-            } else if ($lhsIdSite > $rhsIdSite) {
+            } else if ($lhsIdSite < $rhsIdSite) {
                 return 1;
             } else {
                 return 0;
@@ -295,8 +295,12 @@ class ImportStatus
         }
 
         if (!empty($status['ga'])) {
-            $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
-                . "\nView: " . $status['ga']['view'];
+            if ($status['isGA4']) {
+                $status['gaInfoPretty'] = 'Import Type: GA4'. "\n" . 'Property: ' . $status['ga']['property'];
+            } else {
+                $status['gaInfoPretty'] = 'Import Type: Universal Analytics'. "\n" . 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
+                    . "\nView: " . $status['ga']['view'];
+            }
         }
 
         if ($checkKilledStatus

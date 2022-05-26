@@ -515,11 +515,11 @@ class ImportStatusTest extends IntegrationTestCase
         $this->assertEquals([
             [
                 'status' => 'started',
-                'idSite' => 1,
+                'idSite' => 10,
                 'ga' => [
-                    'property' => 'property',
-                    'account' => 'account',
-                    'view' => 'view',
+                    'property' => 'property3',
+                    'account' => 'account3',
+                    'view' => 'view3',
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -528,33 +528,11 @@ class ImportStatusTest extends IntegrationTestCase
                 'import_range_end' => null,
                 'extra_custom_dimensions' => [],
                 'days_finished_since_rate_limit' => 0,
-                'site' => new Site(1),
-                'gaInfoPretty' => 'Property: property
-Account: account
-View: view',
-                'reimport_ranges' => [],
-                'main_import_progress' => null,
-                'isGA4' => false,
-            ],
-            [
-                'status' => 'started',
-                'idSite' => 2,
-                'ga' => [
-                    'property' => 'property2',
-                    'account' => 'account2',
-                    'view' => 'view2',
-                ],
-                'last_date_imported' => null,
-                'import_end_time' => null,
-                'last_day_archived' => null,
-                'import_range_start' => null,
-                'import_range_end' => null,
-                'extra_custom_dimensions' => [],
-                'days_finished_since_rate_limit' => 0,
-                'site' => new Site(2),
-                'gaInfoPretty' => 'Property: property2
-Account: account2
-View: view2',
+                'site' => new Site(10),
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property3
+Account: account3
+View: view3',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
@@ -575,7 +553,8 @@ View: view2',
                 'extra_custom_dimensions' => [],
                 'days_finished_since_rate_limit' => 0,
                 'site' => new Site(3),
-                'gaInfoPretty' => 'Property: property3
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property3
 Account: account3
 View: view3',
                 'reimport_ranges' => [],
@@ -584,11 +563,11 @@ View: view3',
             ],
             [
                 'status' => 'started',
-                'idSite' => 10,
+                'idSite' => 2,
                 'ga' => [
-                    'property' => 'property3',
-                    'account' => 'account3',
-                    'view' => 'view3',
+                    'property' => 'property2',
+                    'account' => 'account2',
+                    'view' => 'view2',
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -597,10 +576,35 @@ View: view3',
                 'import_range_end' => null,
                 'extra_custom_dimensions' => [],
                 'days_finished_since_rate_limit' => 0,
-                'site' => new Site(10),
-                'gaInfoPretty' => 'Property: property3
-Account: account3
-View: view3',
+                'site' => new Site(2),
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property2
+Account: account2
+View: view2',
+                'reimport_ranges' => [],
+                'main_import_progress' => null,
+                'isGA4' => false,
+            ],
+            [
+                'status' => 'started',
+                'idSite' => 1,
+                'ga' => [
+                    'property' => 'property',
+                    'account' => 'account',
+                    'view' => 'view',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(1),
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property
+Account: account
+View: view',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
@@ -657,58 +661,12 @@ View: view3',
 
         $this->assertEquals([
             [
-                'status' => 'killed',
-                'idSite' => 1,
-                'ga' => [
-                    'property' => 'property',
-                    'account' => 'account',
-                    'view' => 'view',
-                ],
-                'last_date_imported' => null,
-                'import_end_time' => null,
-                'last_day_archived' => null,
-                'import_range_start' => null,
-                'import_range_end' => null,
-                'extra_custom_dimensions' => [],
-                'days_finished_since_rate_limit' => 0,
-                'site' => new Site(1),
-                'gaInfoPretty' => 'Property: property
-Account: account
-View: view',
-                'reimport_ranges' => [],
-                'main_import_progress' => null,
-                'isGA4' => false,
-            ],
-            [
-                'status' => 'killed',
-                'idSite' => 2,
-                'ga' => [
-                    'property' => 'property2',
-                    'account' => 'account2',
-                    'view' => 'view2',
-                ],
-                'last_date_imported' => null,
-                'import_end_time' => null,
-                'last_day_archived' => null,
-                'import_range_start' => null,
-                'import_range_end' => null,
-                'extra_custom_dimensions' => [],
-                'days_finished_since_rate_limit' => 0,
-                'site' => new Site(2),
-                'gaInfoPretty' => 'Property: property2
-Account: account2
-View: view2',
-                'reimport_ranges' => [],
-                'main_import_progress' => null,
-                'isGA4' => false,
-            ],
-            [
                 'status' => 'started',
-                'idSite' => 3,
+                'idSite' => 5,
                 'ga' => [
-                    'property' => 'property3',
-                    'account' => 'account3',
-                    'view' => 'view3',
+                    'property' => 'property5',
+                    'account' => 'account5',
+                    'view' => 'view5',
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -717,10 +675,11 @@ View: view2',
                 'import_range_end' => null,
                 'extra_custom_dimensions' => [],
                 'days_finished_since_rate_limit' => 0,
-                'site' => new Site(3),
-                'gaInfoPretty' => 'Property: property3
-Account: account3
-View: view3',
+                'site' => new Site(5),
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property5
+Account: account5
+View: view5',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
@@ -741,7 +700,8 @@ View: view3',
                 'extra_custom_dimensions' => [],
                 'days_finished_since_rate_limit' => 0,
                 'site' => new Site(4),
-                'gaInfoPretty' => 'Property: property4
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property4
 Account: account4
 View: view4',
                 'reimport_ranges' => [],
@@ -750,11 +710,11 @@ View: view4',
             ],
             [
                 'status' => 'started',
-                'idSite' => 5,
+                'idSite' => 3,
                 'ga' => [
-                    'property' => 'property5',
-                    'account' => 'account5',
-                    'view' => 'view5',
+                    'property' => 'property3',
+                    'account' => 'account3',
+                    'view' => 'view3',
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -763,10 +723,59 @@ View: view4',
                 'import_range_end' => null,
                 'extra_custom_dimensions' => [],
                 'days_finished_since_rate_limit' => 0,
-                'site' => new Site(5),
-                'gaInfoPretty' => 'Property: property5
-Account: account5
-View: view5',
+                'site' => new Site(3),
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property3
+Account: account3
+View: view3',
+                'reimport_ranges' => [],
+                'main_import_progress' => null,
+                'isGA4' => false,
+            ],
+            [
+                'status' => 'killed',
+                'idSite' => 2,
+                'ga' => [
+                    'property' => 'property2',
+                    'account' => 'account2',
+                    'view' => 'view2',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(2),
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property2
+Account: account2
+View: view2',
+                'reimport_ranges' => [],
+                'main_import_progress' => null,
+                'isGA4' => false,
+            ],
+            [
+                'status' => 'killed',
+                'idSite' => 1,
+                'ga' => [
+                    'property' => 'property',
+                    'account' => 'account',
+                    'view' => 'view',
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(1),
+                'gaInfoPretty' => 'Import Type: Universal Analytics
+Property: property
+Account: account
+View: view',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,

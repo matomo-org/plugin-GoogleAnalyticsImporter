@@ -137,6 +137,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
     public function getStylesheetFiles(&$stylesheets)
     {
+        $stylesheets[] = "plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.less";
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/stylesheets/styles.less";
     }
 
@@ -187,7 +188,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_Actions';
         $translationKeys[] = 'GoogleAnalyticsImporter_SiteDeleted';
         $translationKeys[] = 'GoogleAnalyticsImporter_SiteID';
-        $translationKeys[] = 'GoogleAnalyticsImporter_ImportType';
         $translationKeys[] = 'GoogleAnalyticsImporter_FinishedImportingDaysWaiting';
         $translationKeys[] = 'GoogleAnalyticsImporter_ErrorMessage';
         $translationKeys[] = 'GoogleAnalyticsImporter_ErrorMessageBugReportRequest';
