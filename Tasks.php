@@ -68,7 +68,7 @@ class Tasks extends \Piwik\Plugin\Tasks
                 $importStatus->resumeImport($status['idSite']);
             }
 
-            if ($status['isGA4']) {
+            if (!empty($status['isGA4'])) {
                 self::startImportGA4($status);
             } else {
                 self::startImport($status);
