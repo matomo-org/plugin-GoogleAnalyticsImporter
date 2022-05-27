@@ -45,7 +45,7 @@ class ImportGA4Reports extends ConsoleCommand
         $this->addOption('skip-archiving', null, InputOption::VALUE_NONE, 'Skips launching archiving at the end of an import. Use this only if executing PHP from the command line results in an error on your system.');
         $this->addOption('mobile-app', null, InputOption::VALUE_NONE, 'If this option is used, the Matomo measurable that is created will be a mobile app. Requires the MobileAppMeasurable be activated.');
         $this->addOption('timezone', null, InputOption::VALUE_REQUIRED, 'If your GA property\'s timezone is set to a value that is not a timezone recognized by PHP, you can specify a valid timezone manually with this option.');
-        $this->addOption('extra-custom-dimension', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Map extra google analytics dimensions as matomo dimensions. This can be used to import dimensions like age & gender. Values should be like "gaDimension,dimensionScope", for example "ga:userGender,visit".', []);
+        $this->addOption('extra-custom-dimension', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Map extra google analytics dimensions as matomo dimensions. This can be used to import dimensions like age & gender. Values should be like "gaDimension,dimensionScope", for example "userAgeBracket,visit".', []);
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -63,6 +63,7 @@ class ImportGA4Reports extends ConsoleCommand
         $timezone = $input->getOption('timezone');
         $extraCustomDimensions = $this->getExtraCustomDimensions($input);
         $property = $input->getOption('property');
+        $this->validatePropertyID($property);
 
         $isMobileApp = $input->getOption('mobile-app');
         if ($isMobileApp
@@ -97,7 +98,7 @@ class ImportGA4Reports extends ConsoleCommand
         $importerConfiguration = StaticContainer::get(ImportConfiguration::class);
         $this->setImportRunConfiguration($importerConfiguration, $input);
 
-        /** @var Importer $importer */
+        /** @var ImporterGA4 $importer */
         $importer = StaticContainer::get(ImporterGA4::class);
         $importer->setGAClient($gaClient);
         $importer->setGAAdminClient($gaAdminClient);
@@ -282,7 +283,7 @@ class ImportGA4Reports extends ConsoleCommand
             }
 
             $parts = array_map('trim', $parts);
-            return ['gaDimension' => $parts[0], 'dimensionScope' => strtolower($parts[1])];
+            return ['ga4Dimension' => $parts[0], 'dimensionScope' => strtolower($parts[1])];
         }, $dimensions);
         return $dimensions;
     }

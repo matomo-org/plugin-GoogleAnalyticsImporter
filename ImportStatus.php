@@ -47,7 +47,7 @@ class ImportStatus
         }
     }
 
-    public function startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions = [])
+    public function startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions = [], $importType = 'ua')
     {
         try {
             $status = $this->getImportStatus($idSite);
@@ -59,10 +59,12 @@ class ImportStatus
         }
 
         $now = Date::getNowTimestamp();
+        $isGA4 = ($importType === 'ga4');
         $status = [
             'status' => self::STATUS_STARTED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => ($isGA4 ? 'GA4' : 'Universal Analytics'),
                 'property' => $propertyId,
                 'account' => $accountId,
                 'view' => $viewId,
@@ -78,6 +80,7 @@ class ImportStatus
             'extra_custom_dimensions' => $extraCustomDimensions,
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'isGA4' => $isGA4,
         ];
 
         $this->saveStatus($status);
@@ -210,7 +213,6 @@ class ImportStatus
         $result = [];
         foreach ($optionValues as $optionValue) {
             $status = json_decode($optionValue, true);
-            $status['isGA4'] = isset($status['ga']['property']) && stripos($status['ga']['property'], 'properties/') !== FALSE;
             $status = $this->enrichStatus($status, $checkKilledStatus);
             $result[] = $status;
         }

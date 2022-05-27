@@ -206,7 +206,7 @@ class ImporterGA4
                 $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions);
             }
 
-            $this->importStatus->startingImport($propertyId, $webProperty->getAccount(), '', $idSite, $extraCustomDimensions);
+            $this->importStatus->startingImport($propertyId, $webProperty->getAccount(), '', $idSite, $extraCustomDimensions, 'ga4');
 
             return $idSite;
         } finally {
@@ -639,13 +639,13 @@ class ImporterGA4
 
         $cleaned = [];
         foreach ($extraCustomDimensions as $index => $field) {
-            if (empty($field['gaDimension'])
+            if (empty($field['ga4Dimension'])
                 && empty($field['dimensionScope'])
             ) {
                 continue;
             }
 
-            if (empty($field['gaDimension'])) {
+            if (empty($field['ga4Dimension'])) {
                 throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #$index is missing the gaDimension property.");
             }
 
@@ -661,7 +661,7 @@ class ImporterGA4
             }
 
             $cleaned[] = [
-                'gaDimension' => $field['gaDimension'],
+                'gaDimension' => $field['ga4Dimension'],
                 'dimensionScope' => $field['dimensionScope'],
             ];
         }
