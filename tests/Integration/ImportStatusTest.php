@@ -56,6 +56,7 @@ class ImportStatusTest extends IntegrationTestCase
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
+                'import_type' => 'Universal Analytics'
             ],
             'last_date_imported' => null,
             'import_start_time' => Date::$now,
@@ -70,6 +71,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
             'main_import_progress' => null,
+            'isGA4' => false,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, null, null);
@@ -78,6 +80,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_STARTED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -95,6 +98,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
             'main_import_progress' => null,
+            'isGA4' => false,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2012-03-04'), Date::factory('2012-03-05'));
@@ -103,6 +107,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_STARTED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -120,6 +125,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
             'main_import_progress' => null,
+            'isGA4' => false,
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2017-03-04'), null);
@@ -128,6 +134,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_STARTED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -145,6 +152,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
             'main_import_progress' => null,
+            'isGA4' => false,
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
@@ -153,6 +161,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_ONGOING,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -170,6 +179,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 1,
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-02',
+            'isGA4' => false,
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
@@ -180,6 +190,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_ONGOING,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -197,6 +208,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 3,
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-04',
+            'isGA4' => false,
         ], $status);
 
         $this->instance->finishedImport($idSite);
@@ -206,6 +218,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_FINISHED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -223,6 +236,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 3,
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-04',
+            'isGA4' => false,
         ], $status);
 
         $this->instance->deleteStatus($idSite);
@@ -245,6 +259,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_STARTED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -260,6 +275,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
             'main_import_progress' => null,
+            'isGA4' => false,
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
@@ -268,6 +284,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_ERRORED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -284,6 +301,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
             'main_import_progress' => null,
+            'isGA4' => false,
         ], $status);
     }
 
@@ -302,6 +320,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_STARTED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -317,6 +336,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
             'main_import_progress' => null,
+            'isGA4' => false,
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
@@ -325,6 +345,7 @@ class ImportStatusTest extends IntegrationTestCase
             'status' => ImportStatus::STATUS_RATE_LIMITED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => 'Universal Analytics',
                 'property' => 'property',
                 'account' => 'account',
                 'view' => 'view',
@@ -340,6 +361,7 @@ class ImportStatusTest extends IntegrationTestCase
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
             'main_import_progress' => null,
+            'isGA4' => false,
         ], $status);
     }
 
@@ -520,6 +542,7 @@ class ImportStatusTest extends IntegrationTestCase
                     'property' => 'property3',
                     'account' => 'account3',
                     'view' => 'view3',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -544,6 +567,7 @@ View: view3',
                     'property' => 'property3',
                     'account' => 'account3',
                     'view' => 'view3',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -568,6 +592,7 @@ View: view3',
                     'property' => 'property2',
                     'account' => 'account2',
                     'view' => 'view2',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -592,6 +617,7 @@ View: view2',
                     'property' => 'property',
                     'account' => 'account',
                     'view' => 'view',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -667,6 +693,7 @@ View: view',
                     'property' => 'property5',
                     'account' => 'account5',
                     'view' => 'view5',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -691,6 +718,7 @@ View: view5',
                     'property' => 'property4',
                     'account' => 'account4',
                     'view' => 'view4',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -715,6 +743,7 @@ View: view4',
                     'property' => 'property3',
                     'account' => 'account3',
                     'view' => 'view3',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -739,6 +768,7 @@ View: view3',
                     'property' => 'property2',
                     'account' => 'account2',
                     'view' => 'view2',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
@@ -763,6 +793,7 @@ View: view2',
                     'property' => 'property',
                     'account' => 'account',
                     'view' => 'view',
+                    'import_type' => 'Universal Analytics'
                 ],
                 'last_date_imported' => null,
                 'import_end_time' => null,
