@@ -19,8 +19,8 @@
         "RemoveClientConfiguration": "Remove Client Configuration",
         "DeleteUploadedClientConfig": "If you'd like to remove the uploaded client configuration, click below",
         "ImportJobs": "Import Jobs",
-        "ScheduleAnImport": "Schedule An Import for Universal Analytics",
-        "ScheduleAnImportGA4": "Schedule An Import for GA4",
+        "ScheduleAnImport": "Schedule An Import for Google Universal Analytics (GA3)",
+        "ScheduleAnImportGA4": "Schedule An Import for Google Analytics 4 (GA4)",
         "StartDate": "Start Date",
         "CreationDate": "Web Property Creation Date",
         "StartDateHelp": "The date to start importing from. By default, this is the day you created your GA web property.",
@@ -108,6 +108,12 @@
         "CannotImportMissingCustomDimensionSlots": "Cannot import Google Analytics property, there are more custom dimensions of %1$s type than custom dimension slots in Matomo. Your property is using %2$s custom dimensions but Matomo currently only has room for %3$s dimensions. See the Custom Dimensions documentation for more information.",
         "ForceCustomDimensionSlotCheck": "Ignore custom dimension slot limit",
         "ForceCustomDimensionSlotCheckHelp": "Every Matomo installation has a set number of custom dimensions per scope that you can use for a given site. It's possible your Google Analytics property uses more than this number. If this is checked, the importer will simply ignore the custom dimensions it cannot add. If you would like to keep them all, you can add more custom dimension slots to your Matomo %1$s(see the Custom Dimensions documentation)%2$s.",
-        "InvalidDateFormat": "The date must be in the following format: %1$s"
+        "InvalidDateFormat": "The date must be in the following format: %1$s",
+        "SelectImporter": "Schedule an Import for Google Analytics",
+        "SelectImporterSelection": "Which Google Analytics version do you want to import data from?",
+        "SelectImporterUATitle": "Google Universal analytics (GA3)",
+        "SelectImporterUAInlineHelp": "Choose this if ...",
+        "SelectImporterGA4Title": "Google Analytics 4 (GA4)",
+        "SelectImporterGA4InlineHelp": "Choose this if ..."
     }
 }

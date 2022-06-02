@@ -106,6 +106,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'resumeImportNonce' => $resumeImportNonce,
             'scheduleReImportNonce' => $scheduleReImportNonce,
             'maxEndDateDesc' => $maxEndDateDesc,
+            'importOptionsUA' => array(
+                'ua' => Piwik::translate('GoogleAnalyticsImporter_SelectImporterUATitle')
+            ),
+            'importOptionsGA4' => [
+                'ga4' => Piwik::translate('GoogleAnalyticsImporter_SelectImporterGA4Title')
+            ],
             'extraCustomDimensionsField' => [
                 'field1' => [
                     'key' => 'gaDimension',

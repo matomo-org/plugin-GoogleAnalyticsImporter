@@ -209,6 +209,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_EnterImportEndDate';
         $translationKeys[] = 'GoogleAnalyticsImporter_LeaveEmptyToRemove';
         $translationKeys[] = 'GoogleAnalyticsImporter_Change';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelp';
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)

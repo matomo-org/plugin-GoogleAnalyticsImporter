@@ -1,0 +1,56 @@
+<template>
+  <div v-form>
+    <div>
+      <Field
+        uicontrol="radio"
+        name="selectedImporter"
+        v-model="selectedImporter"
+        :options="importOptionsUa"
+        :inline-help="translate('GoogleAnalyticsImporter_SelectImporterUAInlineHelp')"
+      >
+      </Field>
+      <Field
+        uicontrol="radio"
+        name="selectedImporter"
+        v-model="selectedImporterGA4"
+        :options="importOptionsGa4"
+        :inline-help="translate('GoogleAnalyticsImporter_SelectImporterGA4InlineHelp')"
+      >
+      </Field>
+    </div>
+  </div>
+</template>
+<script lang="ts">
+import { defineComponent } from 'vue';
+import { Form, Field } from 'CorePluginsAdmin';
+
+interface ImportSelector {
+  selectedImporter: string,
+  selectedImporterGA4: string,
+}
+
+export default defineComponent({
+  props: {
+    importOptionsUa: {
+      type: Array,
+      required: true,
+    },
+    importOptionsGa4: {
+      type: Array,
+      required: true,
+    },
+  },
+  components: {
+    Field,
+  },
+  directives: {
+    Form,
+  },
+  data() : ImportSelector {
+    return {
+      selectedImporter: '',
+      selectedImporterGA4: '',
+    };
+  },
+});
+</script>
