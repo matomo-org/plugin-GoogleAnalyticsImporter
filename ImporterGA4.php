@@ -253,7 +253,7 @@ class ImporterGA4
                 }
 
                 try {
-                    $goal = $this->goalMapper->mapManualGoal($gaGoal);
+                    $goal = $this->goalMapper->mapEventGoal($gaGoal);
                 } catch (CannotImportGoalException $ex) {
                     $this->logger->warning($ex->getMessage());
                     $this->logger->warning('Importing this goal as a manually triggered goal. Metrics for this goal will be available, but tracking will not work for this goal in Matomo.');

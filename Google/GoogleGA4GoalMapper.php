@@ -36,11 +36,20 @@ class GoogleGA4GoalMapper
         return $result;
     }
 
+    public function mapEventGoal(\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
+    {
+        $result = $this->mapBasicGoalProperties($gaGoal);
+        $result['match_attribute'] = 'event_name';
+        $result['pattern'] = $gaGoal->getEventName();
+        $result['pattern_type'] = 'exact';
+        return $result;
+    }
+
     private function mapBasicGoalProperties(\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
     {
         $result = [
             'name' => $gaGoal->getEventName(),
-            'description' => '(imported from Google Analytics, original id = ' . $gaGoal->id. ')',
+            'description' => '(imported from Google Analytics(GA4), original id = ' . $gaGoal->id. ')',
             'match_attribute' => false,
             'pattern' => false,
             'pattern_type' => false,
