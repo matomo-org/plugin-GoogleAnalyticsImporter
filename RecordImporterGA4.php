@@ -19,7 +19,8 @@ use Psr\Log\LoggerInterface;
 abstract class RecordImporterGA4
 {
     const IS_IMPORTED_FROM_GOOGLE_METADATA_NAME = 'is_imported_from_google';
-    const NOT_SET_IN_GA_LABEL = '__not_set_in_google_analytics__';
+    const NOT_SET_IN_GA_LABEL = '__not_set_in_google_analytics_4__';
+    const NOT_AVAILABLE_IN_GA_LABEL = '__not_available_in_google_analytics_4__';
 
     /**
      * @var GoogleAnalyticsGA4QueryService
