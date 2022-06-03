@@ -32,11 +32,11 @@ interface ImportSelector {
 export default defineComponent({
   props: {
     importOptionsUa: {
-      type: Array,
+      type: Object,
       required: true,
     },
     importOptionsGa4: {
-      type: Array,
+      type: Object,
       required: true,
     },
   },

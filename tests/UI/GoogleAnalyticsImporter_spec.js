@@ -25,6 +25,14 @@ describe("GoogleAnalyticsImporter", function () {
         expect(await content.screenshot()).to.matchImage('load');
     });
 
+  it("should load the settings correctly with UA option selected", async function () {
+    await page.goto(url);
+
+    const content = await page.$('.pageWrap');
+    await page.evaluate(() => $('input:radio[name=selectedImporter]').val('ua').change());
+    expect(await content.screenshot()).to.matchImage('load');
+  });
+
     it("should start an import properly", async function () {
         await page.type('input#startDate', '2019-06-27');
         await page.type('input#endDate', '2019-07-02');
@@ -125,6 +133,113 @@ describe("GoogleAnalyticsImporter", function () {
         const content = await page.$('.pageWrap');
         expect(await content.screenshot()).to.matchImage('removed_import');
     });
+
+  it("should load the settings correctly with GA4 option selected", async function () {
+    await page.goto(url);
+
+    const content = await page.$('.pageWrap');
+    await page.evaluate(() => $('input:radio[name=selectedImporter]').val('ga4').change());
+    expect(await content.screenshot()).to.matchImage('load');
+  });
+
+  it("should start an import properly for GA4", async function () {
+    await page.type('input#startDateGA4', '2019-06-27');
+    await page.type('input#endDateGA4', '2019-07-02');
+    await page.type('input#propertyIdGA4', 'properties/12345  '); // whitespace on purpose to test trim
+    await page.evaluate(() => $('div[name=extraCustomDimensionsGA4] input.control_text').val('userAgeBracket').change());
+    await page.evaluate(() => $('div[name=extraCustomDimensionsGA4] select:eq(0)').val('string:visit').change());
+    await page.click('[name=isVerboseLoggingEnabledGA4] label');
+
+    await page.click('#startImportSubmit');
+    await page.waitForNetworkIdle();
+    await page.waitForSelector('.pageWrap');
+
+    await removeStartResumeFinishTime();
+
+    const content = await page.$('.pageWrap');
+    expect(await content.screenshot()).to.matchImage('start_import_ga4');
+  });
+
+  it('should show the error in the UI when an import fails GA4', async function () {
+    await page.waitForTimeout(70000);
+
+    await page.reload({ timeout: 0 });
+    await page.waitForSelector('.pageWrap');
+
+    await removeStartResumeFinishTime();
+
+    const content = await page.$('.pageWrap');
+    expect(await content.screenshot()).to.matchImage('errored_import_ga4');
+  });
+
+  it('should manually resume an import when the resume button is clicked GA4', async function () {
+    await page.click('td.actions > a.icon-play');
+    await page.waitForNetworkIdle();
+    await page.waitForSelector('.pageWrap');
+
+    await removeStartResumeFinishTime();
+
+    const content = await page.$('.pageWrap');
+    expect(await content.screenshot()).to.matchImage('resumed_import_ga4');
+  });
+
+  it('should schedule a re-import when the modal is used GA4', async function () {
+    await page.waitForTimeout(90000);
+
+    await page.click('#reimport-date-range');
+
+    await page.waitForSelector('#openScheduleReimportModal', { visible: true });
+    await page.type('#re-import-start-date', '2019-06-27');
+    await page.type('#re-import-end-date', '2019-06-27');
+
+    await page.click('#scheduleReimportSubmit');
+    await page.waitForNetworkIdle();
+    await page.waitForSelector('.pageWrap');
+
+    await removeStartResumeFinishTime();
+
+    const content = await page.$('.pageWrap');
+    expect(await content.screenshot()).to.matchImage('reimport_range_ga4');
+  });
+
+  it("should show that the import finished when the import finishes GA4", async function () {
+    let totalTime = 0;
+    while (true) { // wait until import finishes
+      await page.waitForTimeout(30000);
+
+      await page.reload();
+      await page.waitForSelector('.pageWrap');
+
+      const elem = await page.$('td.actions > a.icon-delete');
+      if (elem) {
+        break;
+      }
+
+      console.log('waiting...');
+
+      totalTime += 30;
+
+      if (totalTime > 60 * 7) {
+        throw new Error('timeout waiting for import to finish...');
+      }
+    }
+
+    await removeStartResumeFinishTime();
+
+    const content = await page.$('.pageWrap');
+    expect(await content.screenshot()).to.matchImage('finished_import_ga4');
+  });
+
+  it('should remove the status when the trash icon is clicked GA4', async function () {
+    await page.click('td.actions > a.icon-delete');
+    await page.waitForNetworkIdle();
+    await page.waitForSelector('.pageWrap');
+
+    await removeStartResumeFinishTime();
+
+    const content = await page.$('.pageWrap');
+    expect(await content.screenshot()).to.matchImage('removed_import_ga4');
+  });
 
     it('should remove client configuration when the button is pressed', async function () {
         await page.click('#removeConfigForm button[type=submit]');
