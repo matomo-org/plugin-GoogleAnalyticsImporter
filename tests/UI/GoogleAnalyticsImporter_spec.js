@@ -30,7 +30,7 @@ describe("GoogleAnalyticsImporter", function () {
 
     const content = await page.$('.pageWrap');
     await page.evaluate(() => $('input:radio[name=selectedImporter]').val('ua').change());
-    expect(await content.screenshot()).to.matchImage('load');
+    expect(await content.screenshot()).to.matchImage('load_ua');
   });
 
     it("should start an import properly", async function () {
@@ -139,7 +139,7 @@ describe("GoogleAnalyticsImporter", function () {
 
     const content = await page.$('.pageWrap');
     await page.evaluate(() => $('input:radio[name=selectedImporter]').val('ga4').change());
-    expect(await content.screenshot()).to.matchImage('load');
+    expect(await content.screenshot()).to.matchImage('load_ga4');
   });
 
   it("should start an import properly for GA4", async function () {
@@ -150,7 +150,7 @@ describe("GoogleAnalyticsImporter", function () {
     await page.evaluate(() => $('div[name=extraCustomDimensionsGA4] select:eq(0)').val('string:visit').change());
     await page.click('[name=isVerboseLoggingEnabledGA4] label');
 
-    await page.click('#startImportSubmit');
+    await page.click('#startImportSubmitGA4');
     await page.waitForNetworkIdle();
     await page.waitForSelector('.pageWrap');
 

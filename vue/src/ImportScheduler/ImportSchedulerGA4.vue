@@ -95,9 +95,9 @@
     </div>
     <button
       type="submit"
-      id="startImportSubmit"
+      id="startImportSubmitGA4"
       class="btn"
-      @click="startImport()"
+      @click="startImportGA4()"
       :disabled="isStartingImport"
     >{{ translate('GoogleAnalyticsImporter_Start') }}</button>
   </div>
@@ -166,7 +166,7 @@ export default defineComponent({
     return this;
   },
   methods: {
-    startImport() {
+    startImportGA4() {
       if (this.startDateGA4) {
         try {
           parseDate(this.startDateGA4);
