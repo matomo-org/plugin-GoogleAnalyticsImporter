@@ -10,7 +10,7 @@
     context="info"
     type="transient"
     :noclear="true"
-    :notification-title="translate('GoogleAnalyticsImporter_SettingUp')"
+    :title="translate('GoogleAnalyticsImporter_SettingUp')"
   >
     {{ translate('GoogleAnalyticsImporter_ImporterHelp1') }}
     <span v-html="$sanitize(importerHelp2Text)"></span>
