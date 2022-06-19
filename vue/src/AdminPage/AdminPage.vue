@@ -5,63 +5,67 @@
 -->
 
 <template>
-  <Notification
-    notification-id="ga-importer-help"
-    context="info"
-    type="transient"
-    :noclear="true"
-    :title="translate('GoogleAnalyticsImporter_SettingUp')"
-  >
-    {{ translate('GoogleAnalyticsImporter_ImporterHelp1') }}
-    <span v-html="$sanitize(importerHelp2Text)"></span>
-    <span v-html="$sanitize(importerHelp3Text)"></span>
-  </Notification>
+  <div>
+    <Notification
+      notification-id="ga-importer-help"
+      context="info"
+      type="transient"
+      :noclear="true"
+      :title="translate('GoogleAnalyticsImporter_SettingUp')"
+    >
+      {{ translate('GoogleAnalyticsImporter_ImporterHelp1') }}
+      <span v-html="$sanitize(importerHelp2Text)"></span>
+      <span v-html="$sanitize(importerHelp3Text)"></span>
+    </Notification>
 
-  <ClientConfig
-    :has-client-configuration="hasClientConfiguration"
-    :is-configured="isConfigured"
-    :auth-nonce="authNonce"
-    :config-nonce="configNonce"
-  />
-
-  <ContentBlock
-    v-if="hasClientConfiguration && isConfigured"
-    :content-title="translate('GoogleAnalyticsImporter_ScheduleAnImport')"
-  >
-    <ImportScheduler
-      vue-entry="GoogleAnalyticsImporter.ImportScheduler"
+    <ClientConfig
       :has-client-configuration="hasClientConfiguration"
       :is-configured="isConfigured"
-      :start-import-nonce="startImportNonce"
-      :max-end-date-desc="maxEndDateDesc"
-      :extra-custom-dimensions-field="extraCustomDimensionsField"
+      :auth-nonce="authNonce"
+      :config-nonce="configNonce"
     />
-  </ContentBlock>
 
-  <ContentBlock
-    v-if="hasClientConfiguration && isConfigured"
-    id="importStatusContainer"
-    :content-title="translate('GoogleAnalyticsImporter_ImportJobs')"
-  >
-    <p v-if="!statuses?.length">{{ translate('GoogleAnalyticsImporter_ThereAreNoImportJobs') }}</p>
-    <ImportStatus
-      v-if="statuses?.length"
-      :statuses="statuses"
-      :stop-import-nonce="stopImportNonce"
-      :change-import-end-date-nonce="changeImportEndDateNonce"
-      :resume-import-nonce="resumeImportNonce"
-      :schedule-re-import-nonce="scheduleReImportNonce"
-    ></ImportStatus>
-  </ContentBlock>
+    <ContentBlock
+      v-if="hasClientConfiguration && isConfigured"
+      :content-title="translate('GoogleAnalyticsImporter_ScheduleAnImport')"
+    >
+      <ImportScheduler
+        vue-entry="GoogleAnalyticsImporter.ImportScheduler"
+        :has-client-configuration="hasClientConfiguration"
+        :is-configured="isConfigured"
+        :start-import-nonce="startImportNonce"
+        :max-end-date-desc="maxEndDateDesc"
+        :extra-custom-dimensions-field="extraCustomDimensionsField"
+      />
+    </ContentBlock>
 
-  <div
-    v-if="hasClientConfiguration && isConfigured"
-    class="ui-confirm"
-    id="confirmCancelJob"
-  >
-    <h2>{{ translate('GoogleAnalyticsImporter_CancelJobConfirm') }}</h2>
-    <input role="yes" type="button" :value="translate('General_Yes')"/>
-    <input role="no" type="button" :value="translate('General_No')"/>
+    <ContentBlock
+      v-if="hasClientConfiguration && isConfigured"
+      id="importStatusContainer"
+      :content-title="translate('GoogleAnalyticsImporter_ImportJobs')"
+    >
+      <p v-if="!statuses?.length">
+        {{ translate('GoogleAnalyticsImporter_ThereAreNoImportJobs') }}
+      </p>
+      <ImportStatus
+        v-if="statuses?.length"
+        :statuses="statuses"
+        :stop-import-nonce="stopImportNonce"
+        :change-import-end-date-nonce="changeImportEndDateNonce"
+        :resume-import-nonce="resumeImportNonce"
+        :schedule-re-import-nonce="scheduleReImportNonce"
+      ></ImportStatus>
+    </ContentBlock>
+
+    <div
+      v-if="hasClientConfiguration && isConfigured"
+      class="ui-confirm"
+      id="confirmCancelJob"
+    >
+      <h2>{{ translate('GoogleAnalyticsImporter_CancelJobConfirm') }}</h2>
+      <input role="yes" type="button" :value="translate('General_Yes')"/>
+      <input role="no" type="button" :value="translate('General_No')"/>
+    </div>
   </div>
 </template>
 

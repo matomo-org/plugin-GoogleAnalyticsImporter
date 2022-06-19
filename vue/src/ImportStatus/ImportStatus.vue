@@ -258,8 +258,6 @@ export default defineComponent({
   computed: {
     tooltipContent() {
       return function tooltipContent(this: HTMLElement) {
-        const $this = $(this);
-
         const title = $(this).attr('title') || '';
         return window.vueSanitize(title.replace(/\n/g, '<br />'));
       };
