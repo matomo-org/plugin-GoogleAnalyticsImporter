@@ -204,6 +204,29 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_EnterImportEndDate';
         $translationKeys[] = 'GoogleAnalyticsImporter_LeaveEmptyToRemove';
         $translationKeys[] = 'GoogleAnalyticsImporter_Change';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporter';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImporterIsConfigured';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ReAuthorize';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ClientConfigSuccessfullyUpdated';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Authorize';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureClientDesc1';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureClientDesc2';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigurationFile';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigurationText';
+        $translationKeys[] = 'GoogleAnalyticsImporter_RemoveClientConfiguration';
+        $translationKeys[] = 'GoogleAnalyticsImporter_DeleteUploadedClientConfig';
+        $translationKeys[] = 'General_Remove';
+        $translationKeys[] = 'General_Save';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SettingUp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImporterHelp1';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImporterHelp2';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImporterHelp3';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleAnImport';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ImportJobs';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ThereAreNoImportJobs';
+        $translationKeys[] = 'GoogleAnalyticsImporter_CancelJobConfirm';
+        $translationKeys[] = 'General_Yes';
+        $translationKeys[] = 'General_No';
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)
