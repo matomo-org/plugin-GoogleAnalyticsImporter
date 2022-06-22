@@ -36,6 +36,9 @@ return [
     \Google\Service\Analytics::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
     \Google\Service\AnalyticsReporting::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
 
+    'GoogleAnalyticsImporter.googleAnalyticsDataClientClass' => '\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient',
+    'GoogleAnalyticsImporter.googleAnalyticsAdminServiceClientClass' => '\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient',
+
     'GoogleAnalyticsImporter.recordImporters' => [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter::class, // must be first
 

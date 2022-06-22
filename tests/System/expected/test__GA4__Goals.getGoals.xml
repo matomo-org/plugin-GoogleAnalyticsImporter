@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row key="1">
+		<idsite>1</idsite>
+		<idgoal>1</idgoal>
+		<name>purchase</name>
+		<description>(imported from Google Analytics(GA4), original id = properties/317278922/conversionEvents/3599588244)</description>
+		<match_attribute>event_name</match_attribute>
+		<pattern>purchase</pattern>
+		<pattern_type>exact</pattern_type>
+		<case_sensitive>0</case_sensitive>
+		<allow_multiple>0</allow_multiple>
+		<revenue>0</revenue>
+		<deleted>0</deleted>
+		<event_value_as_revenue>0</event_value_as_revenue>
+	</row>
+</result>

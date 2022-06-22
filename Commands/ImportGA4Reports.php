@@ -63,7 +63,6 @@ class ImportGA4Reports extends ConsoleCommand
         $timezone = $input->getOption('timezone');
         $extraCustomDimensions = $this->getExtraCustomDimensions($input);
         $property = $input->getOption('property');
-        $this->validatePropertyID($property);
 
         $isMobileApp = $input->getOption('mobile-app');
         if ($isMobileApp
@@ -136,6 +135,7 @@ class ImportGA4Reports extends ConsoleCommand
 
             $property = $status['ga']['property'];
         }
+        self::validatePropertyID($property);
 
         $lock = self::makeLock();
         $success = $lock->acquireLock($idSite);
@@ -360,7 +360,7 @@ class ImportGA4Reports extends ConsoleCommand
         }
     }
 
-    public function validatePropertyID($propertyId)
+    public static function validatePropertyID($propertyId)
     {
         if (!preg_match('/^properties\/[^\/]+$/', $propertyId, $matches)) {
             throw new \Exception("Invalid property ID, required format properties/{propertyID}");

@@ -112,8 +112,8 @@
         "SelectImporter": "Schedule an Import for Google Analytics",
         "SelectImporterSelection": "Which Google Analytics version do you want to import data from?",
         "SelectImporterUATitle": "Google Universal analytics (GA3)",
-        "SelectImporterUAInlineHelp": "Choose this if ...",
+        "SelectImporterUAInlineHelp": "Choose this if your property ID start with UA and end with a number (UA-XXXXXXXXX-1).",
         "SelectImporterGA4Title": "Google Analytics 4 (GA4)",
-        "SelectImporterGA4InlineHelp": "Choose this if ..."
+        "SelectImporterGA4InlineHelp": "Choose this if your property ID have only numbers (XXXXXXXXX)."
     }
 }
