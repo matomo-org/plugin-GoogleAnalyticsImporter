@@ -197,7 +197,7 @@ class ImportedFromGoogleGA4 extends Fixture
         print "Done in $timer\n";
 
         return $allOutput;
-     }
+    }
 
     public function provideContainerConfig()
     {

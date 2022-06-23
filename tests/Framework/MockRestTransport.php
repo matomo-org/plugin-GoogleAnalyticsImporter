@@ -26,12 +26,14 @@ class MockRestTransport extends RestTransport
      * @var string
      */
     private $capturedDataFile;
+    private $mockResponses = [];
 
     public function __construct(
         RequestBuilder $requestBuilder,
         callable       $httpHandler
     )
     {
+        ini_set('memory_limit', '-1');
         $this->capturedDataFile = PIWIK_INCLUDE_PATH . self::PATH_TO_CAPTURED_DATA_FILE;
         foreach (new \SplFileObject($this->capturedDataFile) as $line) {
             if (empty($line)) {

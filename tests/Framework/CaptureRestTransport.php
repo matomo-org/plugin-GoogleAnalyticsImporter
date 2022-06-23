@@ -18,12 +18,14 @@ use Piwik\Option;
 class CaptureRestTransport extends RestTransport
 {
     use HttpUnaryTransportTrait;
+
     const PATH_TO_CAPTURED_DATA_FILE = '/plugins/GoogleAnalyticsImporter/tests/resources/capturedresponses-ga4.log';
 
     public function __construct(
         RequestBuilder $requestBuilder,
-        callable $httpHandler
-    ) {
+        callable       $httpHandler
+    )
+    {
         $this->capturedDataFile = PIWIK_INCLUDE_PATH . self::PATH_TO_CAPTURED_DATA_FILE;
         parent::__construct($requestBuilder, $httpHandler);
     }
@@ -31,7 +33,7 @@ class CaptureRestTransport extends RestTransport
     public static function build($apiEndpoint, $restConfigPath, array $config = [])
     {
         $config += [
-            'httpHandler'  => null,
+            'httpHandler' => null,
             'clientCertSource' => null,
         ];
         list($baseUri, $port) = self::normalizeServiceAddress($apiEndpoint);
@@ -68,7 +70,7 @@ class CaptureRestTransport extends RestTransport
         $propertyId = getenv('GA4_PROPERTY_ID');
         $entry = str_replace(str_replace('properties/', '', $propertyId), '12345', $entry);
 
-       $this->saveResponse($entry);
+        $this->saveResponse($entry);
         return $response;
     }
 

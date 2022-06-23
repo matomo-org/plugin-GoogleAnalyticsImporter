@@ -17,7 +17,7 @@ class CapturingGoogleClientGA4 extends \Google\Analytics\Data\V1beta\BetaAnalyti
     public function __construct(array $options = [])
     {
         $defaultOptions = $this->getDefaultOptions();
-        $clientOptions = $this->buildClientOptions(array_merge($defaultOptions,$options));
+        $clientOptions = $this->buildClientOptions(array_merge($defaultOptions, $options));
         $options['transport'] = CaptureRestTransport::build($clientOptions['apiEndpoint'], $clientOptions['transportConfig']['rest']['restClientConfigPath'], $clientOptions['transportConfig']['rest']);
         parent::__construct($options);
     }

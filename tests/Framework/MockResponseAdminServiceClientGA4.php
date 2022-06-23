@@ -22,7 +22,7 @@ class MockResponseAdminServiceClientGA4 extends \Google\Analytics\Admin\V1alpha\
     public function __construct(array $options = [])
     {
         $defaultOptions = $this->getDefaultOptions();
-        $clientOptions = $this->buildClientOptions(array_merge($defaultOptions,$options));
+        $clientOptions = $this->buildClientOptions(array_merge($defaultOptions, $options));
         $options['transport'] = MockRestTransport::build($clientOptions['apiEndpoint'], $clientOptions['transportConfig']['rest']['restClientConfigPath'], $clientOptions['transportConfig']['rest']);
         parent::__construct($options);
     }
