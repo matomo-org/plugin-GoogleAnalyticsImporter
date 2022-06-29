@@ -52,7 +52,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
     });
 
     it('should show the error in the UI when an import fails', async function () {
-        await page.waitForTimeout(70000);
+        // await page.waitForTimeout(70000);
 
         await page.reload({ timeout: 0 });
         await page.waitForSelector('.pageWrap');
@@ -75,15 +75,17 @@ describe("GoogleAnalyticsImporterGA4", function () {
     });
 
     it('should schedule a re-import when the modal is used', async function () {
-        await page.waitForTimeout(90000);
+        // await page.waitFor(90000);
 
         await page.click('#reimport-date-range');
 
         await page.waitForSelector('#openScheduleReimportModal', { visible: true });
-        await page.type('#re-import-start-date', '2019-06-27');
-        await page.type('#re-import-end-date', '2019-06-27');
+        await page.evaluate(() => $('#re-import-start-date').val('2022-06-02').change());
+        await page.evaluate(() => $('#re-import-end-date').val('2022-06-02').change());
+        await page.waitForSelector('#openScheduleReimportModal', { visible: false });
 
         await page.click('#scheduleReimportSubmit');
+        // await page.evaluate(() => $('#scheduleReimportSubmit').click());
         await page.waitForNetworkIdle();
         await page.waitForSelector('.pageWrap');
 
