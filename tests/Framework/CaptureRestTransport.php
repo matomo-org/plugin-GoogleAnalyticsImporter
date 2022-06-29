@@ -19,14 +19,15 @@ class CaptureRestTransport extends RestTransport
 {
     use HttpUnaryTransportTrait;
 
-    const PATH_TO_CAPTURED_DATA_FILE = '/plugins/GoogleAnalyticsImporter/tests/resources/capturedresponses-ga4.log';
-
     public function __construct(
         RequestBuilder $requestBuilder,
         callable       $httpHandler
     )
     {
-        $this->capturedDataFile = PIWIK_INCLUDE_PATH . self::PATH_TO_CAPTURED_DATA_FILE;
+        $this->capturedDataFile = PIWIK_INCLUDE_PATH . MockResponseBuilderGA4::PATH_TO_CAPTURED_DATA_FILE;
+        if (!is_writable(dirname($this->capturedDataFile))) {
+            throw new \Exception("Captured data file is not writable.");
+        }
         parent::__construct($requestBuilder, $httpHandler);
     }
 

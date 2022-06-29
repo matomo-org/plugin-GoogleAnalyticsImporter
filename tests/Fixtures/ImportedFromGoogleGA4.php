@@ -77,7 +77,7 @@ class ImportedFromGoogleGA4 extends Fixture
 
         $this->aggregateForYear();
 
-        // track a visit on 2019-07-03 and make sure it appears correctly in reports
+        // track a visit on 2022-06-08 and make sure it appears correctly in reports
         $this->trackVisitAfterImport();
 
         $this->invalidateArchives(); // trigger core:archive invalidation
@@ -276,12 +276,12 @@ class ImportedFromGoogleGA4 extends Fixture
 
         /** @var ArchiveInvalidator $archiveInvalidator */
         $archiveInvalidator = StaticContainer::get(ArchiveInvalidator::class);
-        $archiveInvalidator->markArchivesAsInvalidated([$this->idSite], [Date::factory('2019-06-28')], 'day');
+        $archiveInvalidator->markArchivesAsInvalidated([$this->idSite], [Date::factory('2022-06-09')], 'day');
 
         $original = @$_GET['trigger'];
         $_GET['trigger'] = 'archivephp';
         try {
-            API::getInstance()->get($this->idSite, 'day', '2019-06-28');
+            API::getInstance()->get($this->idSite, 'day', '2022-06-09');
         } finally {
             if (!empty($original)) {
                 $_GET['trigger'] = $original;

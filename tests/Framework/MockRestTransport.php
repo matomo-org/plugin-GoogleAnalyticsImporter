@@ -20,8 +20,6 @@ class MockRestTransport extends RestTransport
 {
     use HttpUnaryTransportTrait;
 
-    const PATH_TO_CAPTURED_DATA_FILE = '/plugins/GoogleAnalyticsImporter/tests/resources/capturedresponses-ga4.log';
-
     /**
      * @var string
      */
@@ -34,17 +32,7 @@ class MockRestTransport extends RestTransport
     )
     {
         ini_set('memory_limit', '-1');
-        $this->capturedDataFile = PIWIK_INCLUDE_PATH . self::PATH_TO_CAPTURED_DATA_FILE;
-        foreach (new \SplFileObject($this->capturedDataFile) as $line) {
-            if (empty($line)) {
-                continue;
-            }
-            $decoded = json_decode($line, $isAssoc = true);
-
-            $key = md5(json_encode($decoded[0]));
-            $value = unserialize(base64_decode($decoded[1]));
-            $this->mockResponses[$key] = $value;
-        }
+        MockResponseBuilderGA4::populateMockResponse();
         parent::__construct($requestBuilder, $httpHandler);
     }
 
@@ -90,11 +78,11 @@ class MockRestTransport extends RestTransport
         $key = json_encode(json_decode(json_encode($requestParts), true)); // need to do double json encode/decode to convert objects {} -> to array [], else the md5 will mismatch
         $key = $this->replaceEnvVars($key);
         $key = md5($key);
-        if (empty($this->mockResponses[$key])) {
+        if (empty(MockResponseBuilderGA4::$responses[$key])) {
             throw new \Exception("Could not find mock response for request: " . json_encode($requestParts));
         }
 
-        return $this->mockResponses[$key];
+        return MockResponseBuilderGA4::$responses[$key];
     }
 
     private static function normalizeServiceAddress($apiEndpoint)
