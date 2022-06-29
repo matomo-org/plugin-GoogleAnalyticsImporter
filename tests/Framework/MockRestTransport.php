@@ -79,7 +79,7 @@ class MockRestTransport extends RestTransport
         $key = $this->replaceEnvVars($key);
         $key = md5($key);
         if (empty(MockResponseBuilderGA4::$responses[$key])) {
-            throw new \Exception("Could not find mock response for request: " . json_encode($requestParts));
+            throw new \Exception("Array Length: {".count(MockResponseBuilderGA4::$responses)."} ================ Could not find mock response for request: " . json_encode($requestParts));
         }
 
         return MockResponseBuilderGA4::$responses[$key];
