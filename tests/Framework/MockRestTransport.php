@@ -31,7 +31,7 @@ class MockRestTransport extends RestTransport
         callable       $httpHandler
     )
     {
-        ini_set('memory_limit', '-1');
+//        ini_set('memory_limit', '-1');
         MockResponseBuilderGA4::populateMockResponse();
         parent::__construct($requestBuilder, $httpHandler);
     }

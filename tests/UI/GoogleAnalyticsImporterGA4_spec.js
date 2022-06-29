@@ -30,7 +30,6 @@ describe("GoogleAnalyticsImporterGA4", function () {
 
         const content = await page.$('.pageWrap');
         await page.evaluate(() => $('input:radio[name=selectedImporter]').val('ga4').change());
-        await page.waitForTimeout(250);
         expect(await content.screenshot()).to.matchImage('load_ga4');
     });
 
@@ -43,7 +42,6 @@ describe("GoogleAnalyticsImporterGA4", function () {
         await page.click('[name=isVerboseLoggingEnabledGA4] label');
 
         await page.click('#startImportSubmitGA4');
-        await page.waitForTimeout(250);
         await page.waitForNetworkIdle();
         await page.waitForSelector('.pageWrap');
 
@@ -67,7 +65,6 @@ describe("GoogleAnalyticsImporterGA4", function () {
 
     it('should manually resume an import when the resume button is clicked', async function () {
         await page.click('td.actions > a.icon-play');
-        await page.waitForTimeout(250);
         await page.waitForNetworkIdle();
         await page.waitForSelector('.pageWrap');
 
@@ -86,10 +83,10 @@ describe("GoogleAnalyticsImporterGA4", function () {
         await page.evaluate(() => $('#re-import-start-date').val('2022-06-02').change());
         await page.evaluate(() => $('#re-import-end-date').val('2022-06-02').change());
         await page.waitForSelector('#openScheduleReimportModal', { visible: false });
+        await page.waitForTimeout(250);
 
         await page.click('#scheduleReimportSubmit');
         // await page.evaluate(() => $('#scheduleReimportSubmit').click());
-        await page.waitForTimeout(250);
         await page.waitForNetworkIdle();
         await page.waitForSelector('.pageWrap');
 
@@ -129,7 +126,6 @@ describe("GoogleAnalyticsImporterGA4", function () {
 
     it('should remove the status when the trash icon is clicked', async function () {
         await page.click('td.actions > a.icon-delete');
-        await page.waitForTimeout(250);
         await page.waitForNetworkIdle();
         await page.waitForSelector('.pageWrap');
 
@@ -141,7 +137,6 @@ describe("GoogleAnalyticsImporterGA4", function () {
 
     it('should remove client configuration when the button is pressed', async function () {
         await page.click('#removeConfigForm button[type=submit]');
-        await page.waitForTimeout(250);
         await page.waitForNetworkIdle();
         await page.waitForSelector('.pageWrap');
 
