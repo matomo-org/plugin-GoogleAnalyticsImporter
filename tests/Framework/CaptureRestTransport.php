@@ -52,6 +52,9 @@ class CaptureRestTransport extends RestTransport
         $response = parent::startUnaryCall($call, $options);
         $response->wait();
 
+        if (isset($options['headers']['x-goog-api-client'])) {
+            $options['headers']['x-goog-api-client'] = [];
+        }
         $requestParts = [
             $call->getMethod(),
             utf8_encode($call->getMessage()->serializeToJsonString()),
