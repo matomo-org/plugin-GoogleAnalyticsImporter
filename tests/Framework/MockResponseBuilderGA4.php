@@ -25,9 +25,6 @@ class MockResponseBuilderGA4
                 continue;
             }
             $decoded = json_decode($line, $isAssoc = true);
-            if (isset($decoded[0][5]['headers']['x-goog-api-client'])) {
-                $decoded[0][5]['headers']['x-goog-api-client'] = [];
-            }
 
             $key = md5(json_encode($decoded[0]));
             $value = unserialize(base64_decode($decoded[1]));
