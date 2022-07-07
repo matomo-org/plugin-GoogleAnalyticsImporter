@@ -437,7 +437,7 @@ class ImporterGA4
 
     /**
      * For use in RecordImporters that need to archive data for segments.
-     * @var RecordImporter[] $recordImporters
+     * @var RecordImporterGA4[] $recordImporters
      */
     public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
     {
@@ -471,7 +471,7 @@ class ImporterGA4
             }
 
             if ($plugin === 'VisitsSummary') {
-                /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter $visitsSummaryRecordImporter */
+                /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporterGA4 $visitsSummaryRecordImporter */
                 $visitsSummaryRecordImporter = $recordImporter;
 
                 $sessions = $visitsSummaryRecordImporter->getSessions();

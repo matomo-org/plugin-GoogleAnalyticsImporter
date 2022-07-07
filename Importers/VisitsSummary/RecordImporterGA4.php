@@ -30,10 +30,16 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
      */
     private $segmentToApply;
 
-    public function __construct(GoogleAnalyticsGA4QueryService $gaQuery, $idSite, LoggerInterface $logger, $segmentToApply = null)
+    /**
+     * @var string
+     */
+    private $filters;
+
+    public function __construct(GoogleAnalyticsGA4QueryService $gaQuery, $idSite, LoggerInterface $logger, $segmentToApply = null, $filters = [])
     {
         parent::__construct($gaQuery, $idSite, $logger);
         $this->segmentToApply = $segmentToApply;
+        $this->filters = $filters;
     }
 
     public function importRecords(Date $day)
@@ -45,7 +51,15 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
             $options['segment'] = $this->segmentToApply;
         }
 
-        $result = $gaQuery->query($day, [], $this->getVisitMetrics(), $options);
+        $dimension = [];
+        if (!empty($this->filters['dimensionFilter'])) {
+            $options['dimensionFilter'] = $this->filters['dimensionFilter'];
+            if (!empty($options['dimensionFilter']['dimension']) && !in_array($options['dimensionFilter']['dimension'], $dimension)) {
+                $dimension[] = $options['dimensionFilter']['dimension'];
+            }
+        }
+
+        $result = $gaQuery->query($day, $dimension, $this->getVisitMetrics(), $options);
 
         $row = $result->getFirstRow();
         if (empty($row)) {

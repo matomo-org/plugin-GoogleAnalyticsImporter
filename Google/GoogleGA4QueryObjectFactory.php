@@ -35,6 +35,11 @@ class GoogleGA4QueryObjectFactory
     {
         $dimensionNames = !empty($options['dimensions']) ? $options['dimensions'] : [];
 
+        $dimensionFilter = '';
+        if (!empty($options['dimensionFilter'])) {
+            $dimensionFilter = $this->makeGaDimensionFilter($options['dimensionFilter']);
+        }
+
         $dimensions = [];
         foreach ($dimensionNames as $gaDimension) {
             $dimensions[] = $this->makeGaDimension($gaDimension);
@@ -47,7 +52,9 @@ class GoogleGA4QueryObjectFactory
         }
 
         $metricNames = array_values($metricNames);
-        $metrics = array_map(function ($name) { return $this->makeGaMetric($name); }, $metricNames);
+        $metrics = array_map(function ($name) {
+            return $this->makeGaMetric($name);
+        }, $metricNames);
 
         $body = [
             'property' => $propertyID,
@@ -69,6 +76,10 @@ class GoogleGA4QueryObjectFactory
 
         if (!empty($metrics)) {
             $body['metrics'] = $metrics;
+        }
+
+        if (!empty($dimensionFilter)) {
+            $body['dimensionFilter'] = $dimensionFilter;
         }
 
         return $body;
@@ -110,7 +121,7 @@ class GoogleGA4QueryObjectFactory
     private function makeGaDateRange(Date $date)
     {
         $dateStr = $date->toString();
-       return new \Google\Analytics\Data\V1beta\DateRange(
+        return new \Google\Analytics\Data\V1beta\DateRange(
             [
                 'start_date' => $dateStr,
                 'end_date' => $dateStr
@@ -125,9 +136,32 @@ class GoogleGA4QueryObjectFactory
         return $segmentDimensions;
     }
 
+    private function makeGaDimensionFilter($gaDimensionFilter)
+    {
+        switch ($gaDimensionFilter['filterType']) {
+            case 'inList':
+                $filterType = array(
+                    'field_name' => $gaDimensionFilter['dimension'],
+                    'in_list_filter' => new \Google\Analytics\Data\V1beta\Filter\InListFilter([
+                        'values' => $gaDimensionFilter['filterValue'],
+                        'case_sensitive' => false
+                    ])
+                );
+                break;
+        }
+        if (!empty($filterType)) {
+            return new \Google\Analytics\Data\V1beta\FilterExpression([
+                'filter' => new \Google\Analytics\Data\V1beta\Filter($filterType)
+            ]);
+        }
+
+        return [];
+    }
+
+
     private function makeGaDimension($gaDimension)
     {
-        return  new \Google\Analytics\Data\V1beta\Dimension(
+        return new \Google\Analytics\Data\V1beta\Dimension(
             [
                 'name' => $gaDimension
             ]
@@ -159,7 +193,7 @@ class GoogleGA4QueryObjectFactory
             $dimension->setDimensionName($orderByInfo['field']);
             $data['dimension'] = $dimension;
         }
-        return  new \Google\Analytics\Data\V1beta\OrderBy($data);
+        return new \Google\Analytics\Data\V1beta\OrderBy($data);
     }
 
     private function checkOrderBys($orderBys, array $metricsQueried, array $dimensions)
