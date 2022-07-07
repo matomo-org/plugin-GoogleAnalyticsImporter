@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>0-10s</label>
+		<label>0&#x2013;10s</label>
 		<nb_visits>574</nb_visits>
 		<nb_actions>1712</nb_actions>
 		<sum_visit_length>381</sum_visit_length>
@@ -45,12 +45,12 @@
 		<segment>visitDuration&gt;=0;visitDuration&lt;=10</segment>
 	</row>
 	<row>
-		<label>0-10s</label>
+		<label>0&#x2013;10s</label>
 		<nb_visits>0</nb_visits>
 		<segment>visitDuration&gt;=0;visitDuration&lt;=10</segment>
 	</row>
 	<row>
-		<label>11-30s</label>
+		<label>11&#x2013;30s</label>
 		<nb_visits>20</nb_visits>
 		<nb_actions>101</nb_actions>
 		<sum_visit_length>375</sum_visit_length>
@@ -94,12 +94,12 @@
 		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
 	</row>
 	<row>
-		<label>11-30s</label>
+		<label>11&#x2013;30s</label>
 		<nb_visits>0</nb_visits>
 		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
 	</row>
 	<row>
-		<label>31-60s</label>
+		<label>31&#x2013;60s</label>
 		<nb_visits>30</nb_visits>
 		<nb_actions>159</nb_actions>
 		<sum_visit_length>1331</sum_visit_length>
@@ -143,7 +143,7 @@
 		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
 	</row>
 	<row>
-		<label>31-60s</label>
+		<label>31&#x2013;60s</label>
 		<nb_visits>0</nb_visits>
 		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
 	</row>
