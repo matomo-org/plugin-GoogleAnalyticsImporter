@@ -386,7 +386,8 @@ class Importer
             $recordImporters = $this->getRecordImporters($idSite, $viewId);
 
             $site = new Site($idSite);
-            for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
+            $dates = $this->getDates($start,$endPlusOne);
+            foreach ($dates as $date) {
                 $this->logger->info("Importing data for GA View {viewId} for date {date}...", [
                     'viewId' => $viewId,
                     'date' => $date->toString(),
@@ -686,5 +687,20 @@ class Importer
             $dateStr = isset($date) ? $date->toString() : '(unknown)';
             $this->importStatus->erroredImport($idSite, "Error on day $dateStr, " . $ex->getMessage());
         }
+    }
+
+    private function getDates(Date $startDate, Date $endPlusOne)
+    {
+        $dates = [];
+        $todayTimestamp = Date::today()->getTimestamp();
+        for ($date = $startDate; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
+            if ($date->getTimestamp() >= $todayTimestamp) {
+                array_push($dates, $date);
+            } else {
+                array_unshift($dates, $date);
+            }
+        }
+
+        return $dates;
     }
 }
