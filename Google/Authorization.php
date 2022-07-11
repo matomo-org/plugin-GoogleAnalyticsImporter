@@ -109,6 +109,15 @@ class Authorization
         if (!empty($accessToken)) {
             $client->setAccessToken($accessToken);
         }
+
+        if (!empty($clientConfig['web']['redirect_uris'])) {
+            $uri = $this->getValidUri($clientConfig['web']['redirect_uris']);
+            if (empty($uri)) {
+                throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_InvalidRedirectUriInClientConfiguration', array(Url::getCurrentUrlWithoutQueryString(). '?module=GoogleAnalyticsImporter&action=processAuthCode')));
+            }
+
+            $client->setRedirectUri($uri);
+        }
     }
 
     public function deleteClientConfiguration()
@@ -128,5 +137,23 @@ class Authorization
     {
         $service = new \Google\Service\Oauth2($client);
         return $service->userinfo->get();
+    }
+
+    /**
+     * Returns a valid ur
+     *
+     * @param array $uris
+     * @return string
+     */
+    private function getValidUri($uris)
+    {
+        $validUri = Url::getCurrentUrlWithoutQueryString(). '?module=GoogleAnalyticsImporter&action=processAuthCode';
+        foreach ($uris as $uri) {
+            if (stripos($uri, $validUri) !== FALSE) {
+                return $uri;
+            }
+        }
+
+        return false;
     }
 }

@@ -16,6 +16,7 @@
         "ConfigureClientDesc2": "%1$sTo start follow our instructions to retrieve your OAuth Client configuration.%2$s Then either upload this client configuration or paste it into the field below.",
         "ConfigurationFile": "Configuration File",
         "ConfigurationText": "Configuration Text",
+        "InvalidRedirectUriInClientConfiguration": "Invalid redirect_uris, atleast 1 uri should match the uri \"%1$s\" in the uploaded configuration file",
         "RemoveClientConfiguration": "Remove Client Configuration",
         "DeleteUploadedClientConfig": "If you'd like to remove the uploaded client configuration, click below",
         "ImportJobs": "Import Jobs",
