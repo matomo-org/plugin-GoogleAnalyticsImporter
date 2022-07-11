@@ -45,6 +45,7 @@
         "InvalidClientJson": "JSON no vàlid al fitxer de credencials; proveu de tornar a baixar el fitxer des de la consola de l'API de Google.",
         "InvalidDateFormat": "La data ha de tenir el format següent: %1$s",
         "InvalidDateRange": "L'interval de dates no és vàlid, la data d'inici ha de ser anterior a la data de final.",
+        "InvalidRedirectUriInClientConfiguration": "Redirect_uris no vàlid, almenys 1 uri hauria de coincidir amb l'uri \"%1$s\" al fitxer de configuració carregat",
         "IsMobileApp": "Aplicació mòbil",
         "IsMobileAppHelp": "Si la vostra propietat d'anàlisi és per a una aplicació mòbil, marqueu aquesta casella. En cas contrari, la importació pot fallar si no hi ha cap URL associat a la vostra propietat.",
         "IsVerboseLoggingEnabled": "Activa el registre detallat",
