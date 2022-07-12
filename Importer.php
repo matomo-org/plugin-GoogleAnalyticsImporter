@@ -386,7 +386,7 @@ class Importer
             $recordImporters = $this->getRecordImporters($idSite, $viewId);
 
             $site = new Site($idSite);
-            $dates = $this->getDates($start,$endPlusOne);
+            $dates = $this->getRecentDatesToImport($start, $endPlusOne, Date::today()->getTimestamp());
             foreach ($dates as $date) {
                 $this->logger->info("Importing data for GA View {viewId} for date {date}...", [
                     'viewId' => $viewId,
@@ -689,12 +689,18 @@ class Importer
         }
     }
 
-    private function getDates(Date $startDate, Date $endPlusOne)
+    /**
+     * @param Date $startDate
+     * @param Date $endPlusOne
+     * @param $thresholdTimeStampForRecent
+     * @return array
+     */
+
+    public function getRecentDatesToImport(Date $startDate, Date $endPlusOne, $thresholdTimeStampForRecent)
     {
         $dates = [];
-        $todayTimestamp = Date::today()->getTimestamp();
         for ($date = $startDate; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
-            if ($date->getTimestamp() >= $todayTimestamp) {
+            if ($date->getTimestamp() >= $thresholdTimeStampForRecent) {
                 array_push($dates, $date);
             } else {
                 array_unshift($dates, $date);
