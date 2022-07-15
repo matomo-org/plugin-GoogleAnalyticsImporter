@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>0-10s</label>
-		<nb_visits>574</nb_visits>
-		<nb_actions>1712</nb_actions>
-		<sum_visit_length>381</sum_visit_length>
-		<bounce_count>180</bounce_count>
-		<nb_visits_converted>141</nb_visits_converted>
-		<nb_conversions>313</nb_conversions>
-		<revenue>1460671</revenue>
+		<label>0–10s</label>
+		<nb_visits>418</nb_visits>
+		<nb_actions>1157</nb_actions>
+		<sum_visit_length>366</sum_visit_length>
+		<bounce_count>144</bounce_count>
+		<nb_visits_converted>122</nb_visits_converted>
+		<nb_conversions>247</nb_conversions>
+		<revenue>869981</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>79</nb_conversions>
+				<nb_conversions>69</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>75</nb_visits_converted>
+				<nb_visits_converted>65</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>66</nb_conversions>
+				<nb_conversions>57</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>59</nb_visits_converted>
+				<nb_visits_converted>51</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -36,131 +36,33 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>168</nb_conversions>
-				<revenue>1460671</revenue>
-				<items>1076</items>
+				<nb_conversions>121</nb_conversions>
+				<revenue>869981</revenue>
+				<items>629</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>305</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>260</sum_daily_nb_uniq_visitors>
 		<segment>visitDuration&gt;=0;visitDuration&lt;=10</segment>
 	</row>
 	<row>
-		<label>0-10s</label>
+		<label>0–10s</label>
 		<nb_visits>0</nb_visits>
 		<segment>visitDuration&gt;=0;visitDuration&lt;=10</segment>
 	</row>
 	<row>
-		<label>11-30s</label>
-		<nb_visits>20</nb_visits>
-		<nb_actions>101</nb_actions>
-		<sum_visit_length>375</sum_visit_length>
+		<label>11–30s</label>
+		<nb_visits>14</nb_visits>
+		<nb_actions>68</nb_actions>
+		<sum_visit_length>267</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>10</nb_visits_converted>
-		<nb_conversions>17</nb_conversions>
-		<revenue>54432</revenue>
+		<nb_visits_converted>8</nb_visits_converted>
+		<nb_conversions>13</nb_conversions>
+		<revenue>29550</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>4</nb_conversions>
+				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>6</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>6</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>7</nb_conversions>
-				<revenue>54432</revenue>
-				<items>47</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
-	</row>
-	<row>
-		<label>11-30s</label>
-		<nb_visits>0</nb_visits>
-		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
-	</row>
-	<row>
-		<label>31-60s</label>
-		<nb_visits>30</nb_visits>
-		<nb_actions>159</nb_actions>
-		<sum_visit_length>1331</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>6</nb_visits_converted>
-		<nb_conversions>17</nb_conversions>
-		<revenue>126783</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>2</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>2</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>4</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>11</nb_conversions>
-				<revenue>126783</revenue>
-				<items>103</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>30</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
-	</row>
-	<row>
-		<label>31-60s</label>
-		<nb_visits>0</nb_visits>
-		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
-	</row>
-	<row>
-		<label>1-2 min</label>
-		<nb_visits>24</nb_visits>
-		<nb_actions>139</nb_actions>
-		<sum_visit_length>2141</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>9</nb_visits_converted>
-		<nb_conversions>20</nb_conversions>
-		<revenue>108177</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>4</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
+				<nb_visits_converted>3</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>5</nb_conversions>
@@ -183,38 +85,38 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>11</nb_conversions>
-				<revenue>108177</revenue>
-				<items>85</items>
+				<nb_conversions>5</nb_conversions>
+				<revenue>29550</revenue>
+				<items>26</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=60;visitDuration&lt;=120</segment>
+		<sum_daily_nb_uniq_visitors>14</sum_daily_nb_uniq_visitors>
+		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
 	</row>
 	<row>
-		<label>1-2 min</label>
+		<label>11–30s</label>
 		<nb_visits>0</nb_visits>
-		<segment>visitDuration&gt;=60;visitDuration&lt;=120</segment>
+		<segment>visitDuration&gt;=11;visitDuration&lt;=30</segment>
 	</row>
 	<row>
-		<label>2-4 min</label>
-		<nb_visits>25</nb_visits>
-		<nb_actions>139</nb_actions>
-		<sum_visit_length>4234</sum_visit_length>
+		<label>31–60s</label>
+		<nb_visits>15</nb_visits>
+		<nb_actions>66</nb_actions>
+		<sum_visit_length>679</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>13</nb_visits_converted>
-		<nb_conversions>23</nb_conversions>
-		<revenue>90656</revenue>
+		<nb_visits_converted>5</nb_visits_converted>
+		<nb_conversions>9</nb_conversions>
+		<revenue>34972</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>9</nb_conversions>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>9</nb_visits_converted>
+				<nb_visits_converted>2</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>4</nb_conversions>
+				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
+				<nb_visits_converted>3</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -232,28 +134,77 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>10</nb_conversions>
-				<revenue>90656</revenue>
-				<items>63</items>
+				<nb_conversions>4</nb_conversions>
+				<revenue>34972</revenue>
+				<items>31</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>25</sum_daily_nb_uniq_visitors>
-		<segment>visitDuration&gt;=120;visitDuration&lt;=240</segment>
+		<sum_daily_nb_uniq_visitors>15</sum_daily_nb_uniq_visitors>
+		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
+	</row>
+	<row>
+		<label>31–60s</label>
+		<nb_visits>0</nb_visits>
+		<segment>visitDuration&gt;=31;visitDuration&lt;=60</segment>
+	</row>
+	<row>
+		<label>1-2 min</label>
+		<nb_visits>16</nb_visits>
+		<nb_actions>83</nb_actions>
+		<sum_visit_length>1396</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>8</nb_visits_converted>
+		<nb_conversions>15</nb_conversions>
+		<revenue>58889</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>5</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>5</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>7</nb_conversions>
+				<revenue>58889</revenue>
+				<items>47</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>15</sum_daily_nb_uniq_visitors>
+		<segment>visitDuration&gt;=60;visitDuration&lt;=120</segment>
+	</row>
+	<row>
+		<label>1-2 min</label>
+		<nb_visits>0</nb_visits>
+		<segment>visitDuration&gt;=60;visitDuration&lt;=120</segment>
 	</row>
 	<row>
 		<label>2-4 min</label>
-		<nb_visits>1</nb_visits>
-		<segment>visitDuration&gt;=120;visitDuration&lt;=240</segment>
-	</row>
-	<row>
-		<label>4-7 min</label>
 		<nb_visits>17</nb_visits>
-		<nb_actions>122</nb_actions>
-		<sum_visit_length>5339</sum_visit_length>
+		<nb_actions>92</nb_actions>
+		<sum_visit_length>3045</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>12</nb_visits_converted>
-		<nb_conversions>22</nb_conversions>
-		<revenue>107779</revenue>
+		<nb_conversions>20</nb_conversions>
+		<revenue>64924</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>8</nb_conversions>
@@ -281,12 +232,61 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>10</nb_conversions>
-				<revenue>107779</revenue>
-				<items>78</items>
+				<nb_conversions>8</nb_conversions>
+				<revenue>64924</revenue>
+				<items>47</items>
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>17</sum_daily_nb_uniq_visitors>
+		<segment>visitDuration&gt;=120;visitDuration&lt;=240</segment>
+	</row>
+	<row>
+		<label>2-4 min</label>
+		<nb_visits>1</nb_visits>
+		<segment>visitDuration&gt;=120;visitDuration&lt;=240</segment>
+	</row>
+	<row>
+		<label>4-7 min</label>
+		<nb_visits>16</nb_visits>
+		<nb_actions>111</nb_actions>
+		<sum_visit_length>5076</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>12</nb_visits_converted>
+		<nb_conversions>21</nb_conversions>
+		<revenue>92227</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>8</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>8</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>4</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>4</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>9</nb_conversions>
+				<revenue>92227</revenue>
+				<items>67</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>16</sum_daily_nb_uniq_visitors>
 		<segment>visitDuration&gt;=240;visitDuration&lt;=420</segment>
 	</row>
 	<row>
@@ -394,12 +394,12 @@
 	</row>
 	<row>
 		<label>15-30 min</label>
-		<nb_visits>9</nb_visits>
-		<nb_actions>21</nb_actions>
-		<sum_visit_length>12434</sum_visit_length>
+		<nb_visits>7</nb_visits>
+		<nb_actions>17</nb_actions>
+		<sum_visit_length>9094</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>10</nb_visits_converted>
-		<nb_conversions>10</nb_conversions>
+		<nb_visits_converted>8</nb_visits_converted>
+		<nb_conversions>8</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -413,9 +413,9 @@
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>9</nb_conversions>
+				<nb_conversions>7</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>9</nb_visits_converted>
+				<nb_visits_converted>7</nb_visits_converted>
 			</row>
 			<row idgoal='4'>
 				<nb_conversions>0</nb_conversions>
@@ -433,7 +433,7 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 		<segment>visitDuration&gt;=900;visitDuration&lt;=1800</segment>
 	</row>
 	<row>

@@ -9,6 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
 use Piwik\Container\StaticContainer;
+use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Tests\Framework\Fixture;
@@ -55,6 +56,30 @@ class ImporterTest extends IntegrationTestCase
         $this->importer->importEntities($idSite, 'accountid', 'propertyid', 'viewid');
 
         $this->checkEntitiesCreated($idSite);
+    }
+
+    public function test_getRecentDatesToImport()
+    {
+        $startDate = Date::factory('2022-07-07');
+        $endDate = Date::factory('2022-07-13');
+        $dates = $this->importer->getRecentDatesToImport($startDate, $endDate->addDay(1), strtotime('2022-07-12'));
+        $processed = [];
+        foreach ($dates as $dateObj) {
+            $processed[] = $dateObj->toString();
+        }
+        $this->assertEquals(['2022-07-11', '2022-07-10', '2022-07-09', '2022-07-08', '2022-07-07', '2022-07-12', '2022-07-13'], $processed);
+    }
+
+    public function test_getRecentDatesToImport_Past()
+    {
+        $startDate = Date::factory('2019-07-07');
+        $endDate = Date::factory('2019-07-13');
+        $dates = $this->importer->getRecentDatesToImport($startDate, $endDate->addDay(1), Date::now()->getTimestamp());
+        $processed = [];
+        foreach ($dates as $dateObj) {
+            $processed[] = $dateObj->toString();
+        }
+        $this->assertEquals(['2019-07-13', '2019-07-12', '2019-07-11', '2019-07-10', '2019-07-09', '2019-07-08', '2019-07-07'], $processed);
     }
 
     public function makeMockService()
