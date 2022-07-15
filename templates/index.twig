@@ -14,7 +14,7 @@
         {{ 'GoogleAnalyticsImporter_ImporterHelp3'|translate('<br><br><strong>', '</strong>')|raw }}
     </div>
     <div piwik-content-block
-         content-title="{{ title|e('html_attr') }}"
+         content-title="{{ title }}"
     >
         {% if hasClientConfiguration %}
             <form method="post" action="{{ {action: 'forwardToAuth'}|urlRewriteWithParameters|e('html_attr') }}" id="clientauthform">
