@@ -39,6 +39,7 @@
         "ImportStartTime": "Import Startzeit",
         "ImporterHelp1": "Für den Google Analytics Importer müssen Sie eine OAuth Client Konfiguration in der Google API Konsole einrichten, bevor Sie irgend etwas anderes machen können.",
         "ImporterHelp2": "Um eine Schritt-für-Schritt Anleitung dafür zu sehen und dieses Plugin einzurichten, %1$sklicken Sie hier.%2$s",
+        "ImporterHelp3": "%1$sHinweis:%2$s Bei diesem Import wird eine neue idSite erstellt, in die Ihre Daten importiert werden.",
         "ImporterIsConfigured": "Der Importer ist konfiguriert und Sie können über die Command Line beginnen, Daten zu importieren.",
         "InsufficientScopes": "Mit Ihren OAuth Einstellungen verfügen Sie nicht über die Berechtigung, um Zugriff auf all Ihre Google Analytics Daten zu erhalten. Bitte stellen Sie sicher, dass Sie Zugriff auf die Google Analytics API und die Google Analytics Reporting API haben.",
         "InvalidClientJson": "Ungültiges JSON in der Credentials Datei, versuchen Sie die Datei der Google API Konsole noch einmal herunterzuladen.",
