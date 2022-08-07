@@ -1,5 +1,12 @@
 {
     "GoogleAnalyticsImporter": {
-        "Actions": "Tindakan"
+        "Actions": "Tindakan",
+        "AdminMenuTitle": "Import Google Analitis",
+        "ConfigureTheImporter": "Konfigurasikan Pengimport",
+        "ImporterHelp1": "Pengimport Google Analitis memerlukan anda menyediakan konfigurasi Klien OAuth dalam Konsol API Google sebelum anda boleh melakukan perkara lain.",
+        "ImporterHelp2": "Untuk melihat panduan langkah demi langkah untuk melakukan ini dan menyediakan pemalam ini %1$sklik di sini.%2$s",
+        "InvalidClientJson": "JSON tidak sah dalam fail bukti kelayakan, cuba muat turun semula fail daripada Google API Console.",
+        "MissingClientConfiguration": "Konfigurasi pelanggan yang tiada atau tidak sah, sila muat naik semula.",
+        "SettingUp": "Melaraskan"
     }
 }
