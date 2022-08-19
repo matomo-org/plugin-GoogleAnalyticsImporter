@@ -181,6 +181,7 @@ class GoogleAnalyticsGA4QueryService
             } catch (\Exception $ex) {
                 $this->logger->debug("Google Analytics returned an error: {message}", [
                     'message' => $ex->getMessage(),
+                    'errorCode' => $ex->getCode()
                 ]);
 
                 $messageContent = @json_decode($ex->getMessage(), true);
@@ -194,8 +195,10 @@ class GoogleAnalyticsGA4QueryService
                 Piwik::postEvent('GoogleAnalyticsImporter.onApiError', [$ex]);
 
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
-                    if (strpos($ex->getMessage(), 'daily') !== false) {
+                    if (stripos($ex->getMessage(), 'daily') !== false || stripos($ex->getMessage(), 'day') !== false) {
                         throw new DailyRateLimitReached();
+                    } else if(stripos($ex->getMessage(), 'hour') !== false) {
+                        throw new HourlyRateLimitReached();
                     }
 
                     ++$attempts;

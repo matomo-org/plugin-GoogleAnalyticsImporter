@@ -43,6 +43,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsGA4QueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGA4QueryObjectFactory;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\MaxEndDateReached;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\HourlyRateLimitReached;
 
 class ImporterGA4
 {
@@ -415,6 +416,10 @@ class ImporterGA4
 
             unset($recordImporters);
         } catch (DailyRateLimitReached $ex) {
+            $this->importStatus->rateLimitReached($idSite);
+            $this->logger->info($ex->getMessage());
+            return true;
+        } catch (HourlyRateLimitReached $ex) {
             $this->importStatus->rateLimitReached($idSite);
             $this->logger->info($ex->getMessage());
             return true;
