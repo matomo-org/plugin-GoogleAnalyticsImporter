@@ -206,6 +206,12 @@ class GoogleAnalyticsGA4QueryService
                     $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
 
                     $this->backOff();
+                } else if (($ex->getCode() == 8 && stripos($ex->getMessage(), 'Exhausted') !== false) || (method_exists($ex, 'getStatus') && $ex->getStatus() == 'RESOURCE_EXHAUSTED')) {
+                    if (stripos($ex->getMessage(), 'daily') !== false || stripos($ex->getMessage(), 'day') !== false) {
+                        throw new DailyRateLimitReached();
+                    } else if(stripos($ex->getMessage(), 'hour') !== false) {
+                        throw new HourlyRateLimitReached();
+                    }
                 } else if ($this->isIgnorableException($ex)) {
                     ++$attempts;
 
