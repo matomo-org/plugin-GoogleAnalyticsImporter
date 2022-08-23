@@ -177,6 +177,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_Troubleshooting';
         $translationKeys[] = 'GoogleAnalyticsImporter_Start';
         $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHourlyHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_KilledStatusHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_ResumeDesc';
         $translationKeys[] = 'GoogleAnalyticsImporter_MatomoSite';

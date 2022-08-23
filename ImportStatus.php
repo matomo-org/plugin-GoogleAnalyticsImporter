@@ -32,6 +32,7 @@ class ImportStatus
     const STATUS_FINISHED = 'finished';
     const STATUS_ERRORED = 'errored';
     const STATUS_RATE_LIMITED = 'rate_limited';
+    const STATUS_RATE_LIMITED_HOURLY = 'rate_limited_hourly';
     const STATUS_KILLED = 'killed';
 
     public static function isImportRunning($status)
@@ -203,6 +204,13 @@ class ImportStatus
     {
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_RATE_LIMITED;
+        $this->saveStatus($status);
+    }
+
+    public function rateLimitReachedHourly($idSite)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['status'] = self::STATUS_RATE_LIMITED_HOURLY;
         $this->saveStatus($status);
     }
 

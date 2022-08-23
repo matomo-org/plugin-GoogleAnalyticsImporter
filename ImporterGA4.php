@@ -420,7 +420,7 @@ class ImporterGA4
             $this->logger->info($ex->getMessage());
             return true;
         } catch (HourlyRateLimitReached $ex) {
-            $this->importStatus->rateLimitReached($idSite);
+            $this->importStatus->rateLimitReachedHourly($idSite);
             $this->logger->info($ex->getMessage());
             return true;
         } catch (MaxEndDateReached $ex) {
