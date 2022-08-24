@@ -212,6 +212,12 @@ class GoogleAnalyticsGA4QueryService
                     } else if(stripos($ex->getMessage(), 'hour') !== false) {
                         throw new HourlyRateLimitReached();
                     }
+
+                    ++$attempts;
+
+                    $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
+
+                    $this->backOff();
                 } else if ($this->isIgnorableException($ex)) {
                     ++$attempts;
 
