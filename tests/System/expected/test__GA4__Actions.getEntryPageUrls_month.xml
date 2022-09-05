@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label>normal</label>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>120</sum_time_spent>
+		<sum_bandwidth>0</sum_bandwidth>
+		<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+		<min_bandwidth />
+		<max_bandwidth />
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>121</entry_sum_visit_length>
+		<entry_bounce_count>0</entry_bounce_count>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_page_load_time>0</avg_page_load_time>
+		<avg_time_on_page>120</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>pageUrl=^http%253A%252F%252FGA4%2B%2528matthieu.net%252Fblog%2529%252Fnormal</segment>
+		<subtable>
+			<row>
+				<label>visit</label>
+				<nb_visits>1</nb_visits>
+				<nb_hits>1</nb_hits>
+				<sum_time_spent>120</sum_time_spent>
+				<sum_bandwidth>0</sum_bandwidth>
+				<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+				<min_bandwidth />
+				<max_bandwidth />
+				<entry_nb_visits>1</entry_nb_visits>
+				<entry_nb_actions>2</entry_nb_actions>
+				<entry_sum_visit_length>121</entry_sum_visit_length>
+				<entry_bounce_count>0</entry_bounce_count>
+				<avg_time_on_page>120</avg_time_on_page>
+				<bounce_rate>0%</bounce_rate>
+				<exit_rate>0%</exit_rate>
+				<segment>pageUrl=^http%253A%252F%252FGA4%2B%2528matthieu.net%252Fblog%2529%252Fnormal%252Fvisit</segment>
+				<subtable>
+					<row>
+						<label>/index</label>
+						<nb_visits>1</nb_visits>
+						<nb_hits>1</nb_hits>
+						<sum_time_spent>120</sum_time_spent>
+						<sum_bandwidth>0</sum_bandwidth>
+						<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
+						<min_bandwidth />
+						<max_bandwidth />
+						<entry_nb_visits>1</entry_nb_visits>
+						<entry_nb_actions>2</entry_nb_actions>
+						<entry_sum_visit_length>121</entry_sum_visit_length>
+						<entry_bounce_count>0</entry_bounce_count>
+						<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+						<sum_daily_entry_nb_uniq_visitors>1</sum_daily_entry_nb_uniq_visitors>
+						<avg_time_on_page>120</avg_time_on_page>
+						<bounce_rate>0%</bounce_rate>
+						<exit_rate>0%</exit_rate>
+						<url>http://matthieu.net/normal/visit/</url>
+						<segment>entryPageUrl==http%253A%252F%252Fmatthieu.net%252Fnormal%252Fvisit%252F</segment>
+					</row>
+				</subtable>
+			</row>
+		</subtable>
+	</row>
+</result>

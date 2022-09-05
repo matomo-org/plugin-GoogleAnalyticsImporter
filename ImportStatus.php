@@ -32,6 +32,7 @@ class ImportStatus
     const STATUS_FINISHED = 'finished';
     const STATUS_ERRORED = 'errored';
     const STATUS_RATE_LIMITED = 'rate_limited';
+    const STATUS_RATE_LIMITED_HOURLY = 'rate_limited_hourly';
     const STATUS_KILLED = 'killed';
 
     public static function isImportRunning($status)
@@ -47,7 +48,7 @@ class ImportStatus
         }
     }
 
-    public function startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions = [])
+    public function startingImport($propertyId, $accountId, $viewId, $idSite, $extraCustomDimensions = [], $importType = 'ua')
     {
         try {
             $status = $this->getImportStatus($idSite);
@@ -59,10 +60,12 @@ class ImportStatus
         }
 
         $now = Date::getNowTimestamp();
+        $isGA4 = ($importType === 'ga4');
         $status = [
             'status' => self::STATUS_STARTED,
             'idSite' => $idSite,
             'ga' => [
+                'import_type' => ($isGA4 ? 'GA4' : 'Universal Analytics'),
                 'property' => $propertyId,
                 'account' => $accountId,
                 'view' => $viewId,
@@ -78,6 +81,7 @@ class ImportStatus
             'extra_custom_dimensions' => $extraCustomDimensions,
             'days_finished_since_rate_limit' => 0,
             'reimport_ranges' => [],
+            'isGA4' => $isGA4,
         ];
 
         $this->saveStatus($status);
@@ -203,6 +207,13 @@ class ImportStatus
         $this->saveStatus($status);
     }
 
+    public function rateLimitReachedHourly($idSite)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['status'] = self::STATUS_RATE_LIMITED_HOURLY;
+        $this->saveStatus($status);
+    }
+
     public function getAllImportStatuses($checkKilledStatus = false)
     {
         $optionValues = Option::getLike(self::OPTION_NAME_PREFIX . '%');
@@ -218,9 +229,9 @@ class ImportStatus
             $lhsIdSite = (int)($lhs['idSite'] ?? 0);
             $rhsIdSite = (int)($rhs['idSite'] ?? 0);
 
-            if ($lhsIdSite < $rhsIdSite) {
+            if ($lhsIdSite > $rhsIdSite) {
                 return -1;
-            } else if ($lhsIdSite > $rhsIdSite) {
+            } else if ($lhsIdSite < $rhsIdSite) {
                 return 1;
             } else {
                 return 0;
@@ -294,8 +305,12 @@ class ImportStatus
         }
 
         if (!empty($status['ga'])) {
-            $status['gaInfoPretty'] = 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
-                . "\nView: " . $status['ga']['view'];
+            if (!empty($status['isGA4'])) {
+                $status['gaInfoPretty'] = 'Import Type: GA4'. "\n" . 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account'];
+            } else {
+                $status['gaInfoPretty'] = 'Import Type: Universal Analytics'. "\n" . 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
+                    . "\nView: " . $status['ga']['view'];
+            }
         }
 
         if ($checkKilledStatus

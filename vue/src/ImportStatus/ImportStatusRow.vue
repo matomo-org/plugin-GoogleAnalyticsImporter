@@ -34,6 +34,12 @@
           ) }}
         </span>
       </div>
+      <div v-if="status.status === 'rate_limited_hourly'">
+        <span
+          class="icon icon-help"
+          :title="translate('GoogleAnalyticsImporter_RateLimitHourlyHelp')"
+        />
+      </div>
       <div v-else-if="status.status === 'errored'">
         {{ translate('GoogleAnalyticsImporter_ErrorMessage') }}: {{ status.error || 'no message' }}
         <br />

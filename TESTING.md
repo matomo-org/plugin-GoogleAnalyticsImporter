@@ -1,6 +1,6 @@
 ## Testing
 
-This document outlines how to run the automated tests for the Google Analytics Importer plugin.
+This document outlines how to run the automated tests for the Google Analytics Importer plugin - GA3(Universal Analytics).
 
 ## System Test
 
