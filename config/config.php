@@ -1,5 +1,6 @@
 <?php
 
+use Piwik\Config;
 use Piwik\Url;
 use Psr\Container\ContainerInterface;
 
@@ -30,6 +31,26 @@ return [
         $googleClient->setApprovalPrompt('force');
         $redirectUrl = Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode';
         $googleClient->setRedirectUri($redirectUrl);
+
+        $proxyHost = Config::getInstance()->proxy['host'];
+
+        if ($proxyHost) {
+            $proxyPort     = Config::getInstance()->proxy['port'];
+            $proxyUser     = Config::getInstance()->proxy['username'];
+            $proxyPassword = Config::getInstance()->proxy['password'];
+
+            if ($proxyUser) {
+                $proxy = sprintf('http://%s:%s@%s:%s', $proxyUser, $proxyPassword, $proxyHost, $proxyPort);
+            } else {
+                $proxy = sprintf('http://%s:%s', $proxyHost, $proxyPort);
+            }
+            $httpClient = new \GuzzleHttp\Client([
+                'proxy'      => $proxy,
+                'exceptions' => false,
+                'base_uri'   => \Google_Client::API_BASE_PATH
+            ]);
+            $googleClient->setHttpClient($httpClient);
+        }
         return $googleClient;
     },
 
