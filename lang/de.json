@@ -45,6 +45,7 @@
         "InvalidClientJson": "Ungültiges JSON in der Credentials Datei, versuchen Sie die Datei der Google API Konsole noch einmal herunterzuladen.",
         "InvalidDateFormat": "Das Datum muss das folgende Format haben: %1$s",
         "InvalidDateRange": "Ungültiger Datumsbereich, das Startdatum muss vor dem Enddatum liegen.",
+        "InvalidRedirectUriInClientConfiguration": "Ungültige redirect_uris, mindestens 1 uri sollte mit der uri \"%1$s\" in der hochgeladenen Konfigurationsdatei übereinstimmen",
         "IsMobileApp": "Mobil-App",
         "IsMobileAppHelp": "Wenn Ihre Analytics Eigenschaft für eine Mobile App gedacht ist, wählen Sie diese Checkbox an. Falls nicht, könnte der Import fehlschlagen wenn keine URL mit Ihrer Eigenschaft verknüpft ist.",
         "IsVerboseLoggingEnabled": "Erweitertes protokollieren aktivieren",

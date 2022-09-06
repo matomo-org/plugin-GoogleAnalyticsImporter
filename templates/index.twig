@@ -3,6 +3,11 @@
 {% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
 
 {% block content %}
+    <style>
+        .hide-import-main-div {
+            display: none;
+        }
+    </style>
     {{ postEvent('Template.beforeGoogleAnalyticsImporterHeader') }}
     {% if isClientConfigurable %}
     <div piwik-notification notification-id="ga-importer-help" context="info" type="transient" noclear="1" notification-title="{{ 'GoogleAnalyticsImporter_SettingUp'|translate }}">
@@ -63,30 +68,67 @@
     {% endif %}
 
     {% if hasClientConfiguration and isConfigured %}
-    <div
-        piwik-content-block
-        content-title="{{ 'GoogleAnalyticsImporter_ScheduleAnImport'|translate }}"
-    >
         <div
-          vue-entry="GoogleAnalyticsImporter.ImportScheduler"
-          has-client-configuration="{{ hasClientConfiguration|default(null)|json_encode|e('html_attr') }}"
-          is-configured="{{ isConfigured|default(null)|json_encode|e('html_attr') }}"
-          start-import-nonce="{{ startImportNonce|default(null)|json_encode|e('html_attr') }}"
-          max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode|e('html_attr') }}"
-          extra-custom-dimensions-field="{{ extraCustomDimensionsField|default(null)|json_encode|e('html_attr') }}"
-          statuses="{{ statuses|default(null)|json_encode|e('html_attr') }}"
-          stop-import-nonce="{{ stopImportNonce|default(null)|json_encode|e('html_attr') }}"
-          change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode|e('html_attr') }}"
-          resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode|e('html_attr') }}"
-          schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode|e('html_attr') }}"
-          period="{{ period|default(null)|json_encode|e('html_attr') }}"
-          date="{{ date|default(null)|json_encode|e('html_attr') }}"
-          none-text="{{ noneText|default(null)|json_encode|e('html_attr') }}"
-          website-creation-time="{{ websiteCreationTime|default(null)|json_encode|e('html_attr') }}"
-          is-done="{{ isDone|default(null)|json_encode|e('html_attr') }}"
-        ></div>
-    </div>
+            piwik-content-block
+            content-title="{{ 'GoogleAnalyticsImporter_SelectImporter'|translate }}"
+        >
 
+            <p>{{ 'GoogleAnalyticsImporter_SelectImporterSelection'|translate }}</p>
+            <div
+             vue-entry="GoogleAnalyticsImporter.ImportSelector"
+             import-options-ua="{{ importOptionsUA|default(null)|json_encode|e('html_attr') }}"
+             import-options-ga4="{{ importOptionsGA4|default(null)|json_encode|e('html_attr') }}"
+             >
+            </div>
+
+            <div
+            class="hide-import-main-div ga-import-main-div ua-main-div"
+            >
+                <h3>{{ 'GoogleAnalyticsImporter_ScheduleAnImport'|translate }}</h3>
+                <div
+                        vue-entry="GoogleAnalyticsImporter.ImportScheduler"
+                        has-client-configuration="{{ hasClientConfiguration|default(null)|json_encode|e('html_attr') }}"
+                        is-configured="{{ isConfigured|default(null)|json_encode|e('html_attr') }}"
+                        start-import-nonce="{{ startImportNonce|default(null)|json_encode|e('html_attr') }}"
+                        max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode|e('html_attr') }}"
+                        extra-custom-dimensions-field="{{ extraCustomDimensionsField|default(null)|json_encode|e('html_attr') }}"
+                        statuses="{{ statuses|default(null)|json_encode|e('html_attr') }}"
+                        stop-import-nonce="{{ stopImportNonce|default(null)|json_encode|e('html_attr') }}"
+                        change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode|e('html_attr') }}"
+                        resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode|e('html_attr') }}"
+                        schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode|e('html_attr') }}"
+                        period="{{ period|default(null)|json_encode|e('html_attr') }}"
+                        date="{{ date|default(null)|json_encode|e('html_attr') }}"
+                        none-text="{{ noneText|default(null)|json_encode|e('html_attr') }}"
+                        website-creation-time="{{ websiteCreationTime|default(null)|json_encode|e('html_attr') }}"
+                        is-done="{{ isDone|default(null)|json_encode|e('html_attr') }}"
+                ></div>
+            </div>
+
+            <div
+            class="hide-import-main-div ga-import-main-div ga4-main-div"
+            >
+                <h3>{{ 'GoogleAnalyticsImporter_ScheduleAnImportGA4'|translate }}</h3>
+                <div
+                        vue-entry="GoogleAnalyticsImporter.ImportSchedulerGA4"
+                        has-client-configuration="{{ hasClientConfiguration|default(null)|json_encode|e('html_attr') }}"
+                        is-configured="{{ isConfigured|default(null)|json_encode|e('html_attr') }}"
+                        start-import-nonce="{{ startImportNonce|default(null)|json_encode|e('html_attr') }}"
+                        max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode|e('html_attr') }}"
+                        extra-custom-dimensions-field="{{ extraCustomDimensionsFieldGA4|default(null)|json_encode|e('html_attr') }}"
+                        statuses="{{ statuses|default(null)|json_encode|e('html_attr') }}"
+                        stop-import-nonce="{{ stopImportNonce|default(null)|json_encode|e('html_attr') }}"
+                        change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode|e('html_attr') }}"
+                        resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode|e('html_attr') }}"
+                        schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode|e('html_attr') }}"
+                        period="{{ period|default(null)|json_encode|e('html_attr') }}"
+                        date="{{ date|default(null)|json_encode|e('html_attr') }}"
+                        none-text="{{ noneText|default(null)|json_encode|e('html_attr') }}"
+                        website-creation-time="{{ websiteCreationTime|default(null)|json_encode|e('html_attr') }}"
+                        is-done="{{ isDone|default(null)|json_encode|e('html_attr') }}"
+                ></div>
+            </div>
+        </div>
     <div
         id="importStatusContainer"
         piwik-content-block
@@ -122,4 +164,11 @@
         <input role="no" type="button" value="{{ 'General_No'|translate }}"/>
     </div>
     {% endif %}
+    <script>
+        $('body').on('change', '#selectedImporterua, #selectedImporterga4', function(){
+            var value = $(this).val();
+            $('.ga-import-main-div').hide();
+            $('.' + value+ '-main-div').show();
+        });
+    </script>
 {% endblock %}
