@@ -94,7 +94,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $maxEndDateDesc = Date::factory($maxEndDate)->toString();
         }
 
+        $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
         return $this->renderTemplate('index', [
+            'isClientConfigurable' => $isClientConfigurable,
             'isConfigured' => $authorization->hasAccessToken(),
             'auth_nonce' => Nonce::getNonce('gaimport.auth'),
             'hasClientConfiguration' => $hasClientConfiguration,
