@@ -61,8 +61,8 @@ class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -122,8 +122,8 @@ class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
         ),
         'Google\\' => 
         array (
-            0 => __DIR__ . '/..' . '/google/common-protos/src',
-            1 => __DIR__ . '/..' . '/google/apiclient/src',
+            0 => __DIR__ . '/..' . '/google/apiclient/src',
+            1 => __DIR__ . '/..' . '/google/common-protos/src',
         ),
         'GPBMetadata\\Google\\Protobuf\\' => 
         array (

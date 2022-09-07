@@ -7,7 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'phpseclib3\\' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src', $vendorDir . '/psr/http-factory/src'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
     'ParagonIE\\ConstantTime\\' => array($vendorDir . '/paragonie/constant_time_encoding/src'),
@@ -22,7 +22,7 @@ return array(
     'Google\\ApiCore\\' => array($vendorDir . '/google/gax/src'),
     'Google\\Analytics\\Data\\' => array($vendorDir . '/google/analytics-data/src'),
     'Google\\Analytics\\Admin\\' => array($vendorDir . '/google/analytics-admin/src'),
-    'Google\\' => array($vendorDir . '/google/common-protos/src', $vendorDir . '/google/apiclient/src'),
+    'Google\\' => array($vendorDir . '/google/apiclient/src', $vendorDir . '/google/common-protos/src'),
     'GPBMetadata\\Google\\Protobuf\\' => array($vendorDir . '/google/protobuf/src/GPBMetadata/Google/Protobuf'),
     'GPBMetadata\\Google\\Analytics\\Data\\' => array($vendorDir . '/google/analytics-data/metadata'),
     'GPBMetadata\\Google\\Analytics\\Admin\\' => array($vendorDir . '/google/analytics-admin/metadata'),
