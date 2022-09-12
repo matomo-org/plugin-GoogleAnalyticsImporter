@@ -31,8 +31,8 @@
     >
       <p>{{ translate('GoogleAnalyticsImporter_SelectImporterSelection') }}</p>
       <ImportSelector
-        :import-options-ua="importOptionsUA"
-        :import-options-ga4="importOptionsGA4"
+        :import-options-ua="importOptionsUa"
+        :import-options-ga4="importOptionsGa4"
         @update:selected-importer="selectedImporter = $event"
       >
       </ImportSelector>
@@ -147,11 +147,11 @@ export default defineComponent({
       type: String,
       required: true,
     },
-    importOptionsUA: {
+    importOptionsUa: {
       type: Object,
       required: true,
     },
-    importOptionsGA4: {
+    importOptionsGa4: {
       type: Object,
       required: true,
     },
