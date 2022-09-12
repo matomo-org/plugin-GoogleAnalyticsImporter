@@ -5,7 +5,7 @@
         uicontrol="radio"
         name="selectedImporter"
         :model-value="selectedImporter"
-        @update:model-value="$emit('update:selectedImporter', 'ua')"
+        @update:model-value="selectedImporter = $event; $emit('update:selectedImporter', 'ua')"
         :options="importOptionsUa"
         :inline-help="translate('GoogleAnalyticsImporter_SelectImporterUAInlineHelp')"
       >
@@ -14,7 +14,7 @@
         uicontrol="radio"
         name="selectedImporter"
         :model-value="selectedImporterGa4"
-        @update:model-value="$emit('update:selectedImporterGa4', 'ga4')"
+        @update:model-value="selectedImporterGa4 = $event; $emit('update:selectedImporter', 'ga4')"
         :options="importOptionsGa4"
         :inline-help="translate('GoogleAnalyticsImporter_SelectImporterGA4InlineHelp')"
       >
