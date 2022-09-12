@@ -1,7 +1,7 @@
 [
   {
     "title":       "Added feature to import GA4 data",
-    "description": "Now you can import GA4 data into matomo ",
+    "description": "Now you can import Google Analytics 4 data into Matomo.",
     "version":     "4.3.0",
     "link_name":   "Check this guide to start importing",
     "link":        "https://matomo.org/faq/general/set-up-google-analytics-import/"
