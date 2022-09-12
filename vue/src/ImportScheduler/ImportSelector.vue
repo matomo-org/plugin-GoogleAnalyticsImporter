@@ -4,8 +4,7 @@
       <Field
         uicontrol="radio"
         name="selectedImporter"
-        :model-value="selectedImporter"
-        @update:model-value="selectedImporter = $event; $emit('update:selectedImporter', 'ua')"
+        v-model="selectedImporter"
         :options="importOptionsUa"
         :inline-help="translate('GoogleAnalyticsImporter_SelectImporterUAInlineHelp')"
       >
@@ -13,8 +12,7 @@
       <Field
         uicontrol="radio"
         name="selectedImporter"
-        :model-value="selectedImporterGa4"
-        @update:model-value="selectedImporterGa4 = $event; $emit('update:selectedImporter', 'ga4')"
+        v-model="selectedImporter"
         :options="importOptionsGa4"
         :inline-help="translate('GoogleAnalyticsImporter_SelectImporterGA4InlineHelp')"
       >
@@ -28,7 +26,6 @@ import { Form, Field } from 'CorePluginsAdmin';
 
 interface ImportSelector {
   selectedImporter: string;
-  selectedImporterGa4: string;
 }
 
 export default defineComponent({
@@ -49,10 +46,14 @@ export default defineComponent({
     Form,
   },
   emits: ['update:selectedImporter'],
+  watch: {
+    selectedImporter(newVal) {
+      this.$emit('update:selectedImporter', newVal);
+    },
+  },
   data(): ImportSelector {
     return {
       selectedImporter: '',
-      selectedImporterGa4: '',
     };
   },
 });

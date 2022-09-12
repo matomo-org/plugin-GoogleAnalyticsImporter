@@ -680,9 +680,9 @@ function ImportSchedulerGA4vue_type_template_id_24397cc0_render(_ctx, _cache, $p
 ImportSchedulerGA4vue_type_script_lang_ts.render = ImportSchedulerGA4vue_type_template_id_24397cc0_render
 
 /* harmony default export */ var ImportSchedulerGA4 = (ImportSchedulerGA4vue_type_script_lang_ts);
-// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=template&id=bccb33ea
+// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=template&id=0d85075d
 
-function ImportSelectorvue_type_template_id_bccb33ea_render(_ctx, _cache, $props, $setup, $data, $options) {
+function ImportSelectorvue_type_template_id_0d85075d_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Field = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("Field");
 
   var _directive_form = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDirective"])("form");
@@ -690,28 +690,24 @@ function ImportSelectorvue_type_template_id_bccb33ea_render(_ctx, _cache, $props
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])((Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
     uicontrol: "radio",
     name: "selectedImporter",
-    "model-value": _ctx.selectedImporter,
+    modelValue: _ctx.selectedImporter,
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      _ctx.selectedImporter = $event;
-
-      _ctx.$emit('update:selectedImporter', 'ua');
+      return _ctx.selectedImporter = $event;
     }),
     options: _ctx.importOptionsUa,
     "inline-help": _ctx.translate('GoogleAnalyticsImporter_SelectImporterUAInlineHelp')
-  }, null, 8, ["model-value", "options", "inline-help"]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
+  }, null, 8, ["modelValue", "options", "inline-help"]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
     uicontrol: "radio",
     name: "selectedImporter",
-    "model-value": _ctx.selectedImporterGa4,
+    modelValue: _ctx.selectedImporter,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      _ctx.selectedImporterGa4 = $event;
-
-      _ctx.$emit('update:selectedImporter', 'ga4');
+      return _ctx.selectedImporter = $event;
     }),
     options: _ctx.importOptionsGa4,
     "inline-help": _ctx.translate('GoogleAnalyticsImporter_SelectImporterGA4InlineHelp')
-  }, null, 8, ["model-value", "options", "inline-help"])])], 512)), [[_directive_form]]);
+  }, null, 8, ["modelValue", "options", "inline-help"])])], 512)), [[_directive_form]]);
 }
-// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=template&id=bccb33ea
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=template&id=0d85075d
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-typescript/node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/babel-loader/lib!./node_modules/@vue/cli-plugin-typescript/node_modules/ts-loader??ref--14-2!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=script&lang=ts
 
@@ -734,10 +730,14 @@ function ImportSelectorvue_type_template_id_bccb33ea_render(_ctx, _cache, $props
     Form: external_CorePluginsAdmin_["Form"]
   },
   emits: ['update:selectedImporter'],
+  watch: {
+    selectedImporter: function selectedImporter(newVal) {
+      this.$emit('update:selectedImporter', newVal);
+    }
+  },
   data: function data() {
     return {
-      selectedImporter: '',
-      selectedImporterGa4: ''
+      selectedImporter: ''
     };
   }
 }));
@@ -747,7 +747,7 @@ function ImportSelectorvue_type_template_id_bccb33ea_render(_ctx, _cache, $props
 
 
 
-ImportSelectorvue_type_script_lang_ts.render = ImportSelectorvue_type_template_id_bccb33ea_render
+ImportSelectorvue_type_script_lang_ts.render = ImportSelectorvue_type_template_id_0d85075d_render
 
 /* harmony default export */ var ImportSelector = (ImportSelectorvue_type_script_lang_ts);
 // CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.vue?vue&type=template&id=0bff8708
