@@ -1,10 +1,11 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "Aplicación móvil",
-        "Optional": "Opcional",
-        "None": "Ninguno",
+        "Actions": "Acciones",
+        "AdminMenuTitle": "Importación de Google Analytics",
         "Change": "Cambiar",
-        "Status": "Estado",
-        "Actions": "Acciones"
+        "IsMobileApp": "Aplicación móvil",
+        "None": "Ninguno",
+        "Optional": "Opcional",
+        "Status": "Estado"
     }
 }

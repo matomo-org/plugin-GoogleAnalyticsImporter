@@ -1,212 +1,68 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>455</label>
-		<nb_hits>8</nb_hits>
-		<sum_time_spent>78</sum_time_spent>
-		<nb_visits>8</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>6</exit_nb_visits>
-		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>8</entry_nb_actions>
-		<entry_sum_visit_length>34</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>10</avg_time_on_dimension>
-		<bounce_rate>13%</bounce_rate>
-		<exit_rate>75%</exit_rate>
-		<segment>dimension6==455</segment>
-	</row>
-	<row>
 		<label>374</label>
-		<nb_hits>7</nb_hits>
+		<nb_hits>5</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>7</nb_visits>
+		<nb_visits>5</nb_visits>
 		<bounce_count>2</bounce_count>
-		<exit_nb_visits>7</exit_nb_visits>
-		<entry_nb_visits>6</entry_nb_visits>
-		<entry_nb_actions>7</entry_nb_actions>
+		<exit_nb_visits>5</exit_nb_visits>
+		<entry_nb_visits>4</entry_nb_visits>
+		<entry_nb_actions>5</entry_nb_actions>
 		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>29%</bounce_rate>
+		<bounce_rate>40%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==374</segment>
 	</row>
 	<row>
-		<label>141</label>
-		<nb_hits>6</nb_hits>
-		<sum_time_spent>85</sum_time_spent>
-		<nb_visits>6</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>5</exit_nb_visits>
-		<entry_nb_visits>6</entry_nb_visits>
-		<entry_nb_actions>6</entry_nb_actions>
-		<entry_sum_visit_length>86</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>14</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>83%</exit_rate>
-		<segment>dimension6==141</segment>
-	</row>
-	<row>
-		<label>330</label>
-		<nb_hits>6</nb_hits>
-		<sum_time_spent>262</sum_time_spent>
-		<nb_visits>6</nb_visits>
-		<bounce_count>0</bounce_count>
+		<label>455</label>
+		<nb_hits>5</nb_hits>
+		<sum_time_spent>46</sum_time_spent>
+		<nb_visits>5</nb_visits>
+		<bounce_count>1</bounce_count>
 		<exit_nb_visits>4</exit_nb_visits>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>6</entry_nb_actions>
-		<entry_sum_visit_length>653</entry_sum_visit_length>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>5</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>44</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==330</segment>
+		<avg_time_on_dimension>9</avg_time_on_dimension>
+		<bounce_rate>20%</bounce_rate>
+		<exit_rate>80%</exit_rate>
+		<segment>dimension6==455</segment>
 	</row>
 	<row>
 		<label>476</label>
-		<nb_hits>6</nb_hits>
+		<nb_hits>5</nb_hits>
 		<sum_time_spent>35</sum_time_spent>
-		<nb_visits>6</nb_visits>
+		<nb_visits>5</nb_visits>
 		<bounce_count>1</bounce_count>
-		<exit_nb_visits>5</exit_nb_visits>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>6</entry_nb_actions>
+		<exit_nb_visits>4</exit_nb_visits>
+		<entry_nb_visits>4</entry_nb_visits>
+		<entry_nb_actions>5</entry_nb_actions>
 		<entry_sum_visit_length>36</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>6</avg_time_on_dimension>
-		<bounce_rate>17%</bounce_rate>
-		<exit_rate>83%</exit_rate>
+		<avg_time_on_dimension>7</avg_time_on_dimension>
+		<bounce_rate>20%</bounce_rate>
+		<exit_rate>80%</exit_rate>
 		<segment>dimension6==476</segment>
 	</row>
 	<row>
-		<label>40</label>
-		<nb_hits>5</nb_hits>
-		<sum_time_spent>53</sum_time_spent>
-		<nb_visits>5</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>5</entry_nb_actions>
-		<entry_sum_visit_length>54</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>11</avg_time_on_dimension>
-		<bounce_rate>20%</bounce_rate>
-		<exit_rate>60%</exit_rate>
-		<segment>dimension6==40</segment>
-	</row>
-	<row>
 		<label>140</label>
-		<nb_hits>6</nb_hits>
+		<nb_hits>5</nb_hits>
 		<sum_time_spent>124</sum_time_spent>
-		<nb_visits>5</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>5</exit_nb_visits>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>6</entry_nb_actions>
+		<exit_nb_visits>4</exit_nb_visits>
+		<entry_nb_visits>4</entry_nb_visits>
+		<entry_nb_actions>5</entry_nb_actions>
 		<entry_sum_visit_length>125</entry_sum_visit_length>
+		<nb_visits>4</nb_visits>
+		<bounce_count>0</bounce_count>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>21</avg_time_on_dimension>
+		<avg_time_on_dimension>25</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==140</segment>
-	</row>
-	<row>
-		<label>315</label>
-		<nb_hits>5</nb_hits>
-		<sum_time_spent>33</sum_time_spent>
-		<nb_visits>5</nb_visits>
-		<bounce_count>3</bounce_count>
-		<exit_nb_visits>5</exit_nb_visits>
-		<entry_nb_visits>5</entry_nb_visits>
-		<entry_nb_actions>5</entry_nb_actions>
-		<entry_sum_visit_length>33</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>7</avg_time_on_dimension>
-		<bounce_rate>60%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==315</segment>
-	</row>
-	<row>
-		<label>20</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>4</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>25%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==20</segment>
-	</row>
-	<row>
-		<label>28</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>222</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>4</exit_nb_visits>
-		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>222</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>56</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==28</segment>
-	</row>
-	<row>
-		<label>53</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>132</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>133</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>33</avg_time_on_dimension>
-		<bounce_rate>25%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==53</segment>
-	</row>
-	<row>
-		<label>70</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>85</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>85</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>21</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>75%</exit_rate>
-		<segment>dimension6==70</segment>
-	</row>
-	<row>
-		<label>152</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>478</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>525</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>120</avg_time_on_dimension>
-		<bounce_rate>25%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==152</segment>
 	</row>
 	<row>
 		<label>158</label>
@@ -241,244 +97,36 @@
 		<segment>dimension6==164</segment>
 	</row>
 	<row>
-		<label>198</label>
+		<label>330</label>
 		<nb_hits>4</nb_hits>
-		<sum_time_spent>913</sum_time_spent>
+		<sum_time_spent>103</sum_time_spent>
 		<nb_visits>4</nb_visits>
 		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>228</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>75%</exit_rate>
-		<segment>dimension6==198</segment>
-	</row>
-	<row>
-		<label>212</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>175</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>44</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>75%</exit_rate>
-		<segment>dimension6==212</segment>
-	</row>
-	<row>
-		<label>340</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>4</exit_nb_visits>
 		<entry_nb_visits>3</entry_nb_visits>
 		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==340</segment>
-	</row>
-	<row>
-		<label>393</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>4</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>25%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==393</segment>
-	</row>
-	<row>
-		<label>399</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>4</exit_nb_visits>
-		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==399</segment>
-	</row>
-	<row>
-		<label>405</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>135</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>1</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>96</entry_sum_visit_length>
+		<entry_sum_visit_length>494</entry_sum_visit_length>
 		<exit_nb_visits>3</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>34</avg_time_on_dimension>
-		<bounce_rate>25%</bounce_rate>
-		<exit_rate>75%</exit_rate>
-		<segment>dimension6==405</segment>
-	</row>
-	<row>
-		<label>408</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>455</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>496</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>114</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>25%</exit_rate>
-		<segment>dimension6==408</segment>
-	</row>
-	<row>
-		<label>418</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>57</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>57</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>14</avg_time_on_dimension>
-		<bounce_rate>25%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==418</segment>
-	</row>
-	<row>
-		<label>439</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>4</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>4</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>4</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==439</segment>
-	</row>
-	<row>
-		<label>460</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>859</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>860</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>215</avg_time_on_dimension>
+		<avg_time_on_dimension>26</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>75%</exit_rate>
-		<segment>dimension6==460</segment>
+		<segment>dimension6==330</segment>
 	</row>
 	<row>
-		<label>477</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>110</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>110</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>28</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>75%</exit_rate>
-		<segment>dimension6==477</segment>
-	</row>
-	<row>
-		<label>478</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>4</sum_time_spent>
-		<nb_visits>4</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>4</exit_nb_visits>
-		<entry_nb_visits>4</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>4</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==478</segment>
-	</row>
-	<row>
-		<label>6</label>
+		<label>20</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>5</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>6</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>2</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==6</segment>
-	</row>
-	<row>
-		<label>18</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>33</sum_time_spent>
+		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>3</nb_visits>
 		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
+		<exit_nb_visits>3</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>11</avg_time_on_dimension>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==18</segment>
-	</row>
-	<row>
-		<label>21</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<bounce_rate>33%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==21</segment>
+		<segment>dimension6==20</segment>
 	</row>
 	<row>
 		<label>23</label>
@@ -497,20 +145,20 @@
 		<segment>dimension6==23</segment>
 	</row>
 	<row>
-		<label>31</label>
+		<label>28</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>222</sum_time_spent>
 		<nb_visits>3</nb_visits>
-		<bounce_count>2</bounce_count>
+		<bounce_count>0</bounce_count>
 		<exit_nb_visits>3</exit_nb_visits>
 		<entry_nb_visits>3</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>222</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>67%</bounce_rate>
+		<avg_time_on_dimension>74</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==31</segment>
+		<segment>dimension6==28</segment>
 	</row>
 	<row>
 		<label>33</label>
@@ -529,20 +177,20 @@
 		<segment>dimension6==33</segment>
 	</row>
 	<row>
-		<label>46</label>
+		<label>40</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>57</sum_time_spent>
+		<sum_time_spent>53</sum_time_spent>
 		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>3</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>57</entry_sum_visit_length>
-		<exit_nb_visits>2</exit_nb_visits>
+		<entry_sum_visit_length>54</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>19</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<avg_time_on_dimension>18</avg_time_on_dimension>
+		<bounce_rate>33%</bounce_rate>
 		<exit_rate>67%</exit_rate>
-		<segment>dimension6==46</segment>
+		<segment>dimension6==40</segment>
 	</row>
 	<row>
 		<label>54</label>
@@ -561,84 +209,20 @@
 		<segment>dimension6==54</segment>
 	</row>
 	<row>
-		<label>102</label>
+		<label>70</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==102</segment>
-	</row>
-	<row>
-		<label>105</label>
-		<nb_hits>4</nb_hits>
-		<sum_time_spent>67</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>4</entry_nb_actions>
-		<entry_sum_visit_length>36</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>17</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==105</segment>
-	</row>
-	<row>
-		<label>108</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>4</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>4</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==108</segment>
-	</row>
-	<row>
-		<label>116</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==116</segment>
-	</row>
-	<row>
-		<label>134</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
+		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>3</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>3</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==134</segment>
+		<segment>dimension6==70</segment>
 	</row>
 	<row>
 		<label>135</label>
@@ -657,6 +241,22 @@
 		<segment>dimension6==135</segment>
 	</row>
 	<row>
+		<label>141</label>
+		<nb_hits>3</nb_hits>
+		<sum_time_spent>85</sum_time_spent>
+		<nb_visits>3</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
+		<entry_nb_visits>3</entry_nb_visits>
+		<entry_nb_actions>3</entry_nb_actions>
+		<entry_sum_visit_length>86</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>28</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>67%</exit_rate>
+		<segment>dimension6==141</segment>
+	</row>
+	<row>
 		<label>145</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -673,36 +273,20 @@
 		<segment>dimension6==145</segment>
 	</row>
 	<row>
-		<label>160</label>
+		<label>152</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>69</sum_time_spent>
+		<sum_time_spent>382</sum_time_spent>
 		<nb_visits>3</nb_visits>
 		<bounce_count>1</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>172</entry_sum_visit_length>
+		<entry_sum_visit_length>383</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>23</avg_time_on_dimension>
+		<avg_time_on_dimension>127</avg_time_on_dimension>
 		<bounce_rate>33%</bounce_rate>
 		<exit_rate>67%</exit_rate>
-		<segment>dimension6==160</segment>
-	</row>
-	<row>
-		<label>161</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>40</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>1</bounce_count>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>40</entry_sum_visit_length>
-		<exit_nb_visits>2</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>13</avg_time_on_dimension>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==161</segment>
+		<segment>dimension6==152</segment>
 	</row>
 	<row>
 		<label>163</label>
@@ -737,22 +321,6 @@
 		<segment>dimension6==178</segment>
 	</row>
 	<row>
-		<label>179</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==179</segment>
-	</row>
-	<row>
 		<label>190</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
@@ -769,52 +337,36 @@
 		<segment>dimension6==190</segment>
 	</row>
 	<row>
-		<label>201</label>
+		<label>198</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>15</sum_time_spent>
+		<sum_time_spent>913</sum_time_spent>
 		<nb_visits>3</nb_visits>
-		<bounce_count>2</bounce_count>
+		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>15</entry_sum_visit_length>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>5</avg_time_on_dimension>
-		<bounce_rate>67%</bounce_rate>
+		<avg_time_on_dimension>304</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
 		<exit_rate>67%</exit_rate>
-		<segment>dimension6==201</segment>
+		<segment>dimension6==198</segment>
 	</row>
 	<row>
-		<label>204</label>
+		<label>212</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
+		<sum_time_spent>175</sum_time_spent>
 		<nb_visits>3</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
 		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==204</segment>
-	</row>
-	<row>
-		<label>225</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<avg_time_on_dimension>58</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==225</segment>
+		<exit_rate>67%</exit_rate>
+		<segment>dimension6==212</segment>
 	</row>
 	<row>
 		<label>226</label>
@@ -831,54 +383,6 @@
 		<bounce_rate>33%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==226</segment>
-	</row>
-	<row>
-		<label>233</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>112</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<exit_nb_visits>2</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>37</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==233</segment>
-	</row>
-	<row>
-		<label>237</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>3</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>3</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==237</segment>
-	</row>
-	<row>
-		<label>238</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>170</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>171</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>57</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>33%</exit_rate>
-		<segment>dimension6==238</segment>
 	</row>
 	<row>
 		<label>240</label>
@@ -913,22 +417,6 @@
 		<segment>dimension6==242</segment>
 	</row>
 	<row>
-		<label>246</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>259</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>317</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>86</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==246</segment>
-	</row>
-	<row>
 		<label>251</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>3</sum_time_spent>
@@ -943,22 +431,6 @@
 		<bounce_rate>33%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==251</segment>
-	</row>
-	<row>
-		<label>260</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>284</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>318</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>95</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>33%</exit_rate>
-		<segment>dimension6==260</segment>
 	</row>
 	<row>
 		<label>266</label>
@@ -977,70 +449,6 @@
 		<segment>dimension6==266</segment>
 	</row>
 	<row>
-		<label>273</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==273</segment>
-	</row>
-	<row>
-		<label>276</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>201</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>169</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>67</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>33%</exit_rate>
-		<segment>dimension6==276</segment>
-	</row>
-	<row>
-		<label>277</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==277</segment>
-	</row>
-	<row>
-		<label>289</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>2</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>67%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==289</segment>
-	</row>
-	<row>
 		<label>308</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>63</sum_time_spent>
@@ -1055,6 +463,22 @@
 		<bounce_rate>33%</bounce_rate>
 		<exit_rate>67%</exit_rate>
 		<segment>dimension6==308</segment>
+	</row>
+	<row>
+		<label>315</label>
+		<nb_hits>3</nb_hits>
+		<sum_time_spent>33</sum_time_spent>
+		<nb_visits>3</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>3</exit_nb_visits>
+		<entry_nb_visits>3</entry_nb_visits>
+		<entry_nb_actions>3</entry_nb_actions>
+		<entry_sum_visit_length>33</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>11</avg_time_on_dimension>
+		<bounce_rate>33%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==315</segment>
 	</row>
 	<row>
 		<label>320</label>
@@ -1105,23 +529,7 @@
 		<segment>dimension6==337</segment>
 	</row>
 	<row>
-		<label>339</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>194</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>194</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>65</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==339</segment>
-	</row>
-	<row>
-		<label>346</label>
+		<label>340</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>3</nb_visits>
@@ -1134,23 +542,7 @@
 		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==346</segment>
-	</row>
-	<row>
-		<label>347</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==347</segment>
+		<segment>dimension6==340</segment>
 	</row>
 	<row>
 		<label>358</label>
@@ -1169,38 +561,6 @@
 		<segment>dimension6==358</segment>
 	</row>
 	<row>
-		<label>381</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>68</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>69</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>23</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>33%</exit_rate>
-		<segment>dimension6==381</segment>
-	</row>
-	<row>
-		<label>383</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>65</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>65</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>22</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>33%</exit_rate>
-		<segment>dimension6==383</segment>
-	</row>
-	<row>
 		<label>386</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -1217,39 +577,23 @@
 		<segment>dimension6==386</segment>
 	</row>
 	<row>
-		<label>389</label>
+		<label>393</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>41</sum_time_spent>
+		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>3</entry_nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>3</exit_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>41</entry_sum_visit_length>
-		<exit_nb_visits>2</exit_nb_visits>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>14</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==389</segment>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>33%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==393</segment>
 	</row>
 	<row>
-		<label>396</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>224</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<exit_nb_visits>2</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>75</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==396</segment>
-	</row>
-	<row>
-		<label>403</label>
+		<label>399</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>3</nb_visits>
@@ -1262,7 +606,23 @@
 		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==403</segment>
+		<segment>dimension6==399</segment>
+	</row>
+	<row>
+		<label>405</label>
+		<nb_hits>3</nb_hits>
+		<sum_time_spent>96</sum_time_spent>
+		<nb_visits>3</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>3</exit_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>3</entry_nb_actions>
+		<entry_sum_visit_length>96</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>32</avg_time_on_dimension>
+		<bounce_rate>33%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==405</segment>
 	</row>
 	<row>
 		<label>412</label>
@@ -1297,22 +657,6 @@
 		<segment>dimension6==413</segment>
 	</row>
 	<row>
-		<label>416</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>42</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>43</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>14</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==416</segment>
-	</row>
-	<row>
 		<label>424</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>3</sum_time_spent>
@@ -1345,84 +689,20 @@
 		<segment>dimension6==427</segment>
 	</row>
 	<row>
-		<label>434</label>
+		<label>460</label>
 		<nb_hits>3</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==434</segment>
-	</row>
-	<row>
-		<label>451</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>3</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>3</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>3</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>33%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==451</segment>
-	</row>
-	<row>
-		<label>454</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>98</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>99</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>33</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==454</segment>
-	</row>
-	<row>
-		<label>456</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>55</sum_time_spent>
-		<nb_visits>3</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>18</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>67%</exit_rate>
-		<segment>dimension6==456</segment>
-	</row>
-	<row>
-		<label>471</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>35</sum_time_spent>
+		<sum_time_spent>859</sum_time_spent>
 		<nb_visits>3</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>3</entry_nb_visits>
 		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>36</entry_sum_visit_length>
+		<entry_sum_visit_length>860</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>12</avg_time_on_dimension>
+		<avg_time_on_dimension>286</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>67%</exit_rate>
-		<segment>dimension6==471</segment>
+		<segment>dimension6==460</segment>
 	</row>
 	<row>
 		<label>497</label>
@@ -1439,6 +719,22 @@
 		<bounce_rate>67%</bounce_rate>
 		<exit_rate>67%</exit_rate>
 		<segment>dimension6==497</segment>
+	</row>
+	<row>
+		<label>6</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>5</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>6</entry_sum_visit_length>
+		<exit_nb_visits>1</exit_nb_visits>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>3</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>50%</exit_rate>
+		<segment>dimension6==6</segment>
 	</row>
 	<row>
 		<label>8</label>
@@ -1473,6 +769,22 @@
 		<segment>dimension6==10</segment>
 	</row>
 	<row>
+		<label>21</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>1</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==21</segment>
+	</row>
+	<row>
 		<label>22</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>1</sum_time_spent>
@@ -1505,55 +817,7 @@
 		<segment>dimension6==24</segment>
 	</row>
 	<row>
-		<label>27</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==27</segment>
-	</row>
-	<row>
-		<label>32</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==32</segment>
-	</row>
-	<row>
-		<label>42</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==42</segment>
-	</row>
-	<row>
-		<label>43</label>
+		<label>31</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>2</nb_visits>
@@ -1566,39 +830,39 @@
 		<avg_time_on_dimension>0</avg_time_on_dimension>
 		<bounce_rate>50%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==43</segment>
+		<segment>dimension6==31</segment>
 	</row>
 	<row>
-		<label>47</label>
+		<label>46</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>39</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>149</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>20</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==47</segment>
-	</row>
-	<row>
-		<label>55</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
+		<sum_time_spent>3</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<entry_sum_visit_length>3</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==55</segment>
+		<segment>dimension6==46</segment>
+	</row>
+	<row>
+		<label>53</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>13</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>14</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>7</avg_time_on_dimension>
+		<bounce_rate>50%</bounce_rate>
+		<exit_rate>50%</exit_rate>
+		<segment>dimension6==53</segment>
 	</row>
 	<row>
 		<label>57</label>
@@ -1633,22 +897,6 @@
 		<segment>dimension6==59</segment>
 	</row>
 	<row>
-		<label>62</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==62</segment>
-	</row>
-	<row>
 		<label>64</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
@@ -1681,38 +929,6 @@
 		<segment>dimension6==66</segment>
 	</row>
 	<row>
-		<label>68</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==68</segment>
-	</row>
-	<row>
-		<label>71</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==71</segment>
-	</row>
-	<row>
 		<label>73</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>38</sum_time_spent>
@@ -1727,22 +943,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>50%</exit_rate>
 		<segment>dimension6==73</segment>
-	</row>
-	<row>
-		<label>84</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==84</segment>
 	</row>
 	<row>
 		<label>85</label>
@@ -1777,36 +977,20 @@
 		<segment>dimension6==88</segment>
 	</row>
 	<row>
-		<label>92</label>
+		<label>102</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
+		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==92</segment>
-	</row>
-	<row>
-		<label>95</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>20</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>20</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>10</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==95</segment>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==102</segment>
 	</row>
 	<row>
 		<label>106</label>
@@ -1825,20 +1009,20 @@
 		<segment>dimension6==106</segment>
 	</row>
 	<row>
-		<label>109</label>
+		<label>108</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
+		<sum_time_spent>4</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<entry_sum_visit_length>4</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==109</segment>
+		<segment>dimension6==108</segment>
 	</row>
 	<row>
 		<label>115</label>
@@ -1889,70 +1073,6 @@
 		<segment>dimension6==123</segment>
 	</row>
 	<row>
-		<label>125</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==125</segment>
-	</row>
-	<row>
-		<label>126</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>24</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>25</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>12</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==126</segment>
-	</row>
-	<row>
-		<label>131</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==131</segment>
-	</row>
-	<row>
-		<label>132</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==132</segment>
-	</row>
-	<row>
 		<label>147</label>
 		<nb_hits>3</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
@@ -2001,36 +1121,36 @@
 		<segment>dimension6==155</segment>
 	</row>
 	<row>
-		<label>156</label>
+		<label>160</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==156</segment>
-	</row>
-	<row>
-		<label>157</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>98</sum_time_spent>
+		<sum_time_spent>69</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>1</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>100</entry_sum_visit_length>
+		<entry_sum_visit_length>172</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>49</avg_time_on_dimension>
+		<avg_time_on_dimension>35</avg_time_on_dimension>
 		<bounce_rate>50%</bounce_rate>
 		<exit_rate>50%</exit_rate>
-		<segment>dimension6==157</segment>
+		<segment>dimension6==160</segment>
+	</row>
+	<row>
+		<label>161</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>1</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>50%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==161</segment>
 	</row>
 	<row>
 		<label>166</label>
@@ -2047,22 +1167,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==166</segment>
-	</row>
-	<row>
-		<label>167</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>2</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>100%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==167</segment>
 	</row>
 	<row>
 		<label>175</label>
@@ -2097,20 +1201,20 @@
 		<segment>dimension6==176</segment>
 	</row>
 	<row>
-		<label>180</label>
+		<label>179</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==180</segment>
+		<segment>dimension6==179</segment>
 	</row>
 	<row>
 		<label>182</label>
@@ -2145,35 +1249,19 @@
 		<segment>dimension6==187</segment>
 	</row>
 	<row>
-		<label>188</label>
+		<label>193</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
+		<sum_time_spent>102</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
 		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<avg_time_on_dimension>51</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==188</segment>
-	</row>
-	<row>
-		<label>193</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>102</sum_time_spent>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>34</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>150%</exit_rate>
 		<segment>dimension6==193</segment>
 	</row>
 	<row>
@@ -2241,52 +1329,20 @@
 		<segment>dimension6==199</segment>
 	</row>
 	<row>
-		<label>202</label>
+		<label>204</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>1</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==202</segment>
-	</row>
-	<row>
-		<label>203</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<bounce_rate>50%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==203</segment>
-	</row>
-	<row>
-		<label>207</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==207</segment>
+		<segment>dimension6==204</segment>
 	</row>
 	<row>
 		<label>208</label>
@@ -2353,51 +1409,51 @@
 		<segment>dimension6==229</segment>
 	</row>
 	<row>
-		<label>230</label>
+		<label>233</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==230</segment>
-	</row>
-	<row>
-		<label>231</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>114</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>168</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>57</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==231</segment>
-	</row>
-	<row>
-		<label>243</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
+		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==243</segment>
+		<segment>dimension6==233</segment>
+	</row>
+	<row>
+		<label>237</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>3</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>3</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==237</segment>
+	</row>
+	<row>
+		<label>238</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>170</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>171</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>85</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==238</segment>
 	</row>
 	<row>
 		<label>248</label>
@@ -2416,20 +1472,20 @@
 		<segment>dimension6==248</segment>
 	</row>
 	<row>
-		<label>249</label>
+		<label>260</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>240</sum_time_spent>
 		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>273</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==249</segment>
+		<avg_time_on_dimension>120</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>50%</exit_rate>
+		<segment>dimension6==260</segment>
 	</row>
 	<row>
 		<label>264</label>
@@ -2464,20 +1520,20 @@
 		<segment>dimension6==269</segment>
 	</row>
 	<row>
-		<label>270</label>
+		<label>273</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>1</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>50%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==270</segment>
+		<segment>dimension6==273</segment>
 	</row>
 	<row>
 		<label>275</label>
@@ -2496,36 +1552,36 @@
 		<segment>dimension6==275</segment>
 	</row>
 	<row>
-		<label>280</label>
+		<label>277</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>111</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>111</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>56</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==280</segment>
-	</row>
-	<row>
-		<label>287</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
+		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_visits>0</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==287</segment>
+		<segment>dimension6==277</segment>
+	</row>
+	<row>
+		<label>289</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>1</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>50%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==289</segment>
 	</row>
 	<row>
 		<label>295</label>
@@ -2558,70 +1614,6 @@
 		<bounce_rate>50%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==296</segment>
-	</row>
-	<row>
-		<label>304</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==304</segment>
-	</row>
-	<row>
-		<label>312</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>245</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>246</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>123</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==312</segment>
-	</row>
-	<row>
-		<label>313</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==313</segment>
-	</row>
-	<row>
-		<label>324</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>18</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>18</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>9</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==324</segment>
 	</row>
 	<row>
 		<label>326</label>
@@ -2671,100 +1663,20 @@
 		<segment>dimension6==335</segment>
 	</row>
 	<row>
-		<label>341</label>
+		<label>347</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==341</segment>
-	</row>
-	<row>
-		<label>342</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>42</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>21</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==342</segment>
-	</row>
-	<row>
-		<label>351</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>13</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>13</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>7</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==351</segment>
-	</row>
-	<row>
-		<label>355</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>1</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>50%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==355</segment>
-	</row>
-	<row>
-		<label>361</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==361</segment>
-	</row>
-	<row>
-		<label>362</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==362</segment>
+		<segment>dimension6==347</segment>
 	</row>
 	<row>
 		<label>364</label>
@@ -2799,22 +1711,6 @@
 		<segment>dimension6==365</segment>
 	</row>
 	<row>
-		<label>369</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>3</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>150%</exit_rate>
-		<segment>dimension6==369</segment>
-	</row>
-	<row>
 		<label>371</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>63</sum_time_spent>
@@ -2831,68 +1727,83 @@
 		<segment>dimension6==371</segment>
 	</row>
 	<row>
-		<label>373</label>
+		<label>389</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==373</segment>
-	</row>
-	<row>
-		<label>398</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==398</segment>
-	</row>
-	<row>
-		<label>400</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>154</sum_time_spent>
+		<sum_time_spent>4</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>4</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>51</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==400</segment>
+		<segment>dimension6==389</segment>
 	</row>
 	<row>
-		<label>407</label>
+		<label>396</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>50</sum_time_spent>
+		<sum_time_spent>178</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>89</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==396</segment>
+	</row>
+	<row>
+		<label>403</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==403</segment>
+	</row>
+	<row>
+		<label>408</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>371</sum_time_spent>
+		<nb_visits>2</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>2</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>373</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>186</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==408</segment>
+	</row>
+	<row>
+		<label>416</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>42</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>50</entry_sum_visit_length>
+		<entry_sum_visit_length>43</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>25</avg_time_on_dimension>
+		<avg_time_on_dimension>21</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>50%</exit_rate>
-		<segment>dimension6==407</segment>
+		<segment>dimension6==416</segment>
 	</row>
 	<row>
 		<label>419</label>
@@ -2911,22 +1822,6 @@
 		<segment>dimension6==419</segment>
 	</row>
 	<row>
-		<label>422</label>
-		<nb_hits>3</nb_hits>
-		<sum_time_spent>20</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>3</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>7</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==422</segment>
-	</row>
-	<row>
 		<label>425</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>1087</sum_time_spent>
@@ -2943,100 +1838,20 @@
 		<segment>dimension6==425</segment>
 	</row>
 	<row>
-		<label>428</label>
+		<label>439</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>4</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>4</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==428</segment>
-	</row>
-	<row>
-		<label>429</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==429</segment>
-	</row>
-	<row>
-		<label>438</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==438</segment>
-	</row>
-	<row>
-		<label>441</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>527</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>264</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==441</segment>
-	</row>
-	<row>
-		<label>443</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>232</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>265</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>116</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==443</segment>
-	</row>
-	<row>
-		<label>448</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>50%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==448</segment>
+		<segment>dimension6==439</segment>
 	</row>
 	<row>
 		<label>450</label>
@@ -3055,98 +1870,84 @@
 		<segment>dimension6==450</segment>
 	</row>
 	<row>
-		<label>453</label>
+		<label>451</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
+		<sum_time_spent>3</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<entry_sum_visit_length>3</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==453</segment>
+		<segment>dimension6==451</segment>
 	</row>
 	<row>
-		<label>464</label>
+		<label>454</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>2</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>2</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==464</segment>
-	</row>
-	<row>
-		<label>465</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>51</sum_time_spent>
+		<sum_time_spent>98</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>51</entry_sum_visit_length>
+		<entry_sum_visit_length>99</entry_sum_visit_length>
+		<exit_nb_visits>1</exit_nb_visits>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>26</avg_time_on_dimension>
+		<avg_time_on_dimension>49</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==465</segment>
+		<exit_rate>50%</exit_rate>
+		<segment>dimension6==454</segment>
 	</row>
 	<row>
-		<label>466</label>
+		<label>471</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>774</sum_time_spent>
+		<sum_time_spent>35</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>775</entry_sum_visit_length>
+		<entry_sum_visit_length>36</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>387</avg_time_on_dimension>
+		<avg_time_on_dimension>18</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>50%</exit_rate>
-		<segment>dimension6==466</segment>
+		<segment>dimension6==471</segment>
 	</row>
 	<row>
-		<label>467</label>
+		<label>477</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==467</segment>
+		<segment>dimension6==477</segment>
 	</row>
 	<row>
-		<label>472</label>
+		<label>478</label>
 		<nb_hits>2</nb_hits>
-		<sum_time_spent>84</sum_time_spent>
+		<sum_time_spent>4</sum_time_spent>
 		<nb_visits>2</nb_visits>
 		<bounce_count>0</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>2</entry_nb_visits>
 		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>85</entry_sum_visit_length>
+		<entry_sum_visit_length>4</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>42</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==472</segment>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==478</segment>
 	</row>
 	<row>
 		<label>492</label>
@@ -3165,38 +1966,6 @@
 		<segment>dimension6==492</segment>
 	</row>
 	<row>
-		<label>493</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==493</segment>
-	</row>
-	<row>
-		<label>496</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==496</segment>
-	</row>
-	<row>
 		<label>498</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>3</sum_time_spent>
@@ -3211,22 +1980,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==498</segment>
-	</row>
-	<row>
-		<label>499</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>54</sum_time_spent>
-		<nb_visits>2</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>2</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>54</entry_sum_visit_length>
-		<exit_nb_visits>1</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>27</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>50%</exit_rate>
-		<segment>dimension6==499</segment>
 	</row>
 	<row>
 		<label>3</label>
@@ -3292,23 +2045,7 @@
 		<segment>dimension6==14</segment>
 	</row>
 	<row>
-		<label>15</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==15</segment>
-	</row>
-	<row>
-		<label>16</label>
+		<label>18</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
@@ -3321,7 +2058,7 @@
 		<avg_time_on_dimension>0</avg_time_on_dimension>
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==16</segment>
+		<segment>dimension6==18</segment>
 	</row>
 	<row>
 		<label>25</label>
@@ -3340,6 +2077,22 @@
 		<segment>dimension6==25</segment>
 	</row>
 	<row>
+		<label>27</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>1</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==27</segment>
+	</row>
+	<row>
 		<label>29</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>1</sum_time_spent>
@@ -3354,6 +2107,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==29</segment>
+	</row>
+	<row>
+		<label>32</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==32</segment>
 	</row>
 	<row>
 		<label>34</label>
@@ -3418,35 +2187,52 @@
 		<segment>dimension6==41</segment>
 	</row>
 	<row>
-		<label>44</label>
+		<label>42</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==42</segment>
+	</row>
+	<row>
+		<label>43</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==44</segment>
+		<segment>dimension6==43</segment>
 	</row>
 	<row>
-		<label>49</label>
+		<label>47</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>80</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>81</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>80</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==49</segment>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==47</segment>
 	</row>
 	<row>
 		<label>50</label>
@@ -3496,6 +2282,22 @@
 		<segment>dimension6==52</segment>
 	</row>
 	<row>
+		<label>55</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==55</segment>
+	</row>
+	<row>
 		<label>61</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -3510,6 +2312,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==61</segment>
+	</row>
+	<row>
+		<label>62</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==62</segment>
 	</row>
 	<row>
 		<label>63</label>
@@ -3528,6 +2346,22 @@
 		<segment>dimension6==63</segment>
 	</row>
 	<row>
+		<label>68</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==68</segment>
+	</row>
+	<row>
 		<label>69</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>54</sum_time_spent>
@@ -3543,36 +2377,20 @@
 		<segment>dimension6==69</segment>
 	</row>
 	<row>
-		<label>72</label>
+		<label>71</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==72</segment>
-	</row>
-	<row>
-		<label>76</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==76</segment>
+		<segment>dimension6==71</segment>
 	</row>
 	<row>
 		<label>77</label>
@@ -3591,22 +2409,6 @@
 		<segment>dimension6==77</segment>
 	</row>
 	<row>
-		<label>80</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>100%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==80</segment>
-	</row>
-	<row>
 		<label>83</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -3621,6 +2423,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==83</segment>
+	</row>
+	<row>
+		<label>84</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==84</segment>
 	</row>
 	<row>
 		<label>86</label>
@@ -3639,20 +2457,20 @@
 		<segment>dimension6==86</segment>
 	</row>
 	<row>
-		<label>89</label>
+		<label>92</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==89</segment>
+		<segment>dimension6==92</segment>
 	</row>
 	<row>
 		<label>93</label>
@@ -3684,6 +2502,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
 		<segment>dimension6==94</segment>
+	</row>
+	<row>
+		<label>95</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>1</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==95</segment>
 	</row>
 	<row>
 		<label>97</label>
@@ -3718,38 +2552,6 @@
 		<segment>dimension6==99</segment>
 	</row>
 	<row>
-		<label>100</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==100</segment>
-	</row>
-	<row>
-		<label>101</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==101</segment>
-	</row>
-	<row>
 		<label>103</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -3764,6 +2566,38 @@
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==103</segment>
+	</row>
+	<row>
+		<label>105</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>67</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>36</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>34</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==105</segment>
+	</row>
+	<row>
+		<label>109</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>1</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==109</segment>
 	</row>
 	<row>
 		<label>110</label>
@@ -3795,22 +2629,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==111</segment>
-	</row>
-	<row>
-		<label>113</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==113</segment>
 	</row>
 	<row>
 		<label>117</label>
@@ -3861,6 +2679,37 @@
 		<segment>dimension6==120</segment>
 	</row>
 	<row>
+		<label>125</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==125</segment>
+	</row>
+	<row>
+		<label>126</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>24</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>25</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>24</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==126</segment>
+	</row>
+	<row>
 		<label>129</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
@@ -3877,20 +2726,36 @@
 		<segment>dimension6==129</segment>
 	</row>
 	<row>
-		<label>130</label>
+		<label>131</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==130</segment>
+		<segment>dimension6==131</segment>
+	</row>
+	<row>
+		<label>132</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==132</segment>
 	</row>
 	<row>
 		<label>133</label>
@@ -3907,6 +2772,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==133</segment>
+	</row>
+	<row>
+		<label>134</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==134</segment>
 	</row>
 	<row>
 		<label>136</label>
@@ -3939,22 +2820,6 @@
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==137</segment>
-	</row>
-	<row>
-		<label>138</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>1</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>1</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>1</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==138</segment>
 	</row>
 	<row>
 		<label>146</label>
@@ -4004,20 +2869,35 @@
 		<segment>dimension6==151</segment>
 	</row>
 	<row>
-		<label>153</label>
+		<label>156</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
-		<bounce_count>1</bounce_count>
+		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>100%</bounce_rate>
+		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==153</segment>
+		<segment>dimension6==156</segment>
+	</row>
+	<row>
+		<label>157</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>98</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>100</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>98</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==157</segment>
 	</row>
 	<row>
 		<label>159</label>
@@ -4033,6 +2913,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
 		<segment>dimension6==159</segment>
+	</row>
+	<row>
+		<label>167</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==167</segment>
 	</row>
 	<row>
 		<label>168</label>
@@ -4064,22 +2960,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==169</segment>
-	</row>
-	<row>
-		<label>172</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==172</segment>
 	</row>
 	<row>
 		<label>173</label>
@@ -4130,6 +3010,22 @@
 		<segment>dimension6==177</segment>
 	</row>
 	<row>
+		<label>180</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==180</segment>
+	</row>
+	<row>
 		<label>183</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>201</sum_time_spent>
@@ -4176,6 +3072,22 @@
 		<segment>dimension6==185</segment>
 	</row>
 	<row>
+		<label>188</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>1</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==188</segment>
+	</row>
+	<row>
 		<label>189</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -4208,22 +3120,6 @@
 		<segment>dimension6==191</segment>
 	</row>
 	<row>
-		<label>192</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==192</segment>
-	</row>
-	<row>
 		<label>196</label>
 		<nb_hits>2</nb_hits>
 		<sum_time_spent>1</sum_time_spent>
@@ -4240,35 +3136,36 @@
 		<segment>dimension6==196</segment>
 	</row>
 	<row>
-		<label>200</label>
+		<label>202</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_visits>0</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==200</segment>
+		<segment>dimension6==202</segment>
 	</row>
 	<row>
-		<label>210</label>
+		<label>203</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>104</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>104</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>104</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==210</segment>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==203</segment>
 	</row>
 	<row>
 		<label>213</label>
@@ -4285,22 +3182,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==213</segment>
-	</row>
-	<row>
-		<label>214</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==214</segment>
 	</row>
 	<row>
 		<label>215</label>
@@ -4334,36 +3215,35 @@
 		<segment>dimension6==221</segment>
 	</row>
 	<row>
-		<label>227</label>
+		<label>225</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>100%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==227</segment>
-	</row>
-	<row>
-		<label>232</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==232</segment>
+		<segment>dimension6==225</segment>
+	</row>
+	<row>
+		<label>231</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>26</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>47</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>26</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==231</segment>
 	</row>
 	<row>
 		<label>235</label>
@@ -4430,20 +3310,35 @@
 		<segment>dimension6==241</segment>
 	</row>
 	<row>
-		<label>245</label>
+		<label>243</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==245</segment>
+		<segment>dimension6==243</segment>
+	</row>
+	<row>
+		<label>246</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>259</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>317</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>259</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==246</segment>
 	</row>
 	<row>
 		<label>247</label>
@@ -4494,22 +3389,6 @@
 		<segment>dimension6==256</segment>
 	</row>
 	<row>
-		<label>257</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==257</segment>
-	</row>
-	<row>
 		<label>259</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -4558,38 +3437,6 @@
 		<segment>dimension6==262</segment>
 	</row>
 	<row>
-		<label>263</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>100%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==263</segment>
-	</row>
-	<row>
-		<label>265</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==265</segment>
-	</row>
-	<row>
 		<label>268</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -4604,6 +3451,22 @@
 		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==268</segment>
+	</row>
+	<row>
+		<label>270</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==270</segment>
 	</row>
 	<row>
 		<label>271</label>
@@ -4638,6 +3501,21 @@
 		<segment>dimension6==272</segment>
 	</row>
 	<row>
+		<label>276</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>167</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>168</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>167</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==276</segment>
+	</row>
+	<row>
 		<label>279</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -4654,36 +3532,20 @@
 		<segment>dimension6==279</segment>
 	</row>
 	<row>
-		<label>281</label>
+		<label>280</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==281</segment>
-	</row>
-	<row>
-		<label>283</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==283</segment>
+		<segment>dimension6==280</segment>
 	</row>
 	<row>
 		<label>284</label>
@@ -4700,6 +3562,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==284</segment>
+	</row>
+	<row>
+		<label>287</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==287</segment>
 	</row>
 	<row>
 		<label>288</label>
@@ -4746,21 +3624,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
 		<segment>dimension6==291</segment>
-	</row>
-	<row>
-		<label>294</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>34</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>34</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>34</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==294</segment>
 	</row>
 	<row>
 		<label>297</label>
@@ -4843,22 +3706,6 @@
 		<segment>dimension6==301</segment>
 	</row>
 	<row>
-		<label>302</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==302</segment>
-	</row>
-	<row>
 		<label>303</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>1</sum_time_spent>
@@ -4873,6 +3720,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==303</segment>
+	</row>
+	<row>
+		<label>304</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==304</segment>
 	</row>
 	<row>
 		<label>305</label>
@@ -4921,6 +3784,37 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==311</segment>
+	</row>
+	<row>
+		<label>312</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>245</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>246</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>245</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==312</segment>
+	</row>
+	<row>
+		<label>313</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==313</segment>
 	</row>
 	<row>
 		<label>314</label>
@@ -5019,35 +3913,51 @@
 		<segment>dimension6==333</segment>
 	</row>
 	<row>
-		<label>334</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>302</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>44</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>151</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==334</segment>
-	</row>
-	<row>
-		<label>336</label>
+		<label>339</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==336</segment>
+		<segment>dimension6==339</segment>
+	</row>
+	<row>
+		<label>341</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==341</segment>
+	</row>
+	<row>
+		<label>342</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>42</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>42</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==342</segment>
 	</row>
 	<row>
 		<label>343</label>
@@ -5066,20 +3976,20 @@
 		<segment>dimension6==343</segment>
 	</row>
 	<row>
-		<label>344</label>
+		<label>346</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==344</segment>
+		<segment>dimension6==346</segment>
 	</row>
 	<row>
 		<label>349</label>
@@ -5114,20 +4024,20 @@
 		<segment>dimension6==350</segment>
 	</row>
 	<row>
-		<label>353</label>
+		<label>351</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>13</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>13</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>13</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==353</segment>
+		<segment>dimension6==351</segment>
 	</row>
 	<row>
 		<label>354</label>
@@ -5146,20 +4056,20 @@
 		<segment>dimension6==354</segment>
 	</row>
 	<row>
-		<label>356</label>
+		<label>355</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==356</segment>
+		<segment>dimension6==355</segment>
 	</row>
 	<row>
 		<label>357</label>
@@ -5193,20 +4103,36 @@
 		<segment>dimension6==359</segment>
 	</row>
 	<row>
-		<label>360</label>
+		<label>361</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==360</segment>
+		<segment>dimension6==361</segment>
+	</row>
+	<row>
+		<label>362</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==362</segment>
 	</row>
 	<row>
 		<label>363</label>
@@ -5225,35 +4151,20 @@
 		<segment>dimension6==363</segment>
 	</row>
 	<row>
-		<label>366</label>
-		<nb_hits>1</nb_hits>
+		<label>369</label>
+		<nb_hits>2</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>2</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
+		<entry_nb_actions>2</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==366</segment>
-	</row>
-	<row>
-		<label>367</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==367</segment>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>200%</exit_rate>
+		<segment>dimension6==369</segment>
 	</row>
 	<row>
 		<label>370</label>
@@ -5270,6 +4181,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==370</segment>
+	</row>
+	<row>
+		<label>373</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==373</segment>
 	</row>
 	<row>
 		<label>379</label>
@@ -5304,6 +4231,37 @@
 		<segment>dimension6==380</segment>
 	</row>
 	<row>
+		<label>381</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>22</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>23</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>22</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==381</segment>
+	</row>
+	<row>
+		<label>383</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==383</segment>
+	</row>
+	<row>
 		<label>384</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
@@ -5320,36 +4278,20 @@
 		<segment>dimension6==384</segment>
 	</row>
 	<row>
-		<label>385</label>
+		<label>398</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
+		<bounce_count>1</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
+		<bounce_rate>100%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==385</segment>
-	</row>
-	<row>
-		<label>395</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>2</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>200%</exit_rate>
-		<segment>dimension6==395</segment>
+		<segment>dimension6==398</segment>
 	</row>
 	<row>
 		<label>402</label>
@@ -5480,6 +4422,22 @@
 		<segment>dimension6==417</segment>
 	</row>
 	<row>
+		<label>418</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==418</segment>
+	</row>
+	<row>
 		<label>420</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
@@ -5494,6 +4452,22 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==420</segment>
+	</row>
+	<row>
+		<label>422</label>
+		<nb_hits>2</nb_hits>
+		<sum_time_spent>20</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>10</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==422</segment>
 	</row>
 	<row>
 		<label>426</label>
@@ -5512,20 +4486,20 @@
 		<segment>dimension6==426</segment>
 	</row>
 	<row>
-		<label>432</label>
+		<label>429</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>1</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==432</segment>
+		<segment>dimension6==429</segment>
 	</row>
 	<row>
 		<label>433</label>
@@ -5544,6 +4518,22 @@
 		<segment>dimension6==433</segment>
 	</row>
 	<row>
+		<label>434</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==434</segment>
+	</row>
+	<row>
 		<label>435</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>1</sum_time_spent>
@@ -5558,21 +4548,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==435</segment>
-	</row>
-	<row>
-		<label>436</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>18</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>74</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>18</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==436</segment>
 	</row>
 	<row>
 		<label>437</label>
@@ -5591,6 +4566,22 @@
 		<segment>dimension6==437</segment>
 	</row>
 	<row>
+		<label>438</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==438</segment>
+	</row>
+	<row>
 		<label>440</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>1</sum_time_spent>
@@ -5607,20 +4598,35 @@
 		<segment>dimension6==440</segment>
 	</row>
 	<row>
-		<label>444</label>
+		<label>441</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>527</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>527</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==441</segment>
+	</row>
+	<row>
+		<label>443</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==444</segment>
+		<segment>dimension6==443</segment>
 	</row>
 	<row>
 		<label>445</label>
@@ -5639,20 +4645,52 @@
 		<segment>dimension6==445</segment>
 	</row>
 	<row>
-		<label>446</label>
-		<nb_hits>2</nb_hits>
-		<sum_time_spent>41</sum_time_spent>
+		<label>448</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>1</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>100%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==448</segment>
+	</row>
+	<row>
+		<label>453</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==453</segment>
+	</row>
+	<row>
+		<label>456</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
 		<exit_nb_visits>1</exit_nb_visits>
 		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>2</entry_nb_actions>
+		<entry_nb_actions>1</entry_nb_actions>
 		<entry_sum_visit_length>0</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>21</avg_time_on_dimension>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==446</segment>
+		<segment>dimension6==456</segment>
 	</row>
 	<row>
 		<label>457</label>
@@ -5670,22 +4708,6 @@
 		<segment>dimension6==457</segment>
 	</row>
 	<row>
-		<label>458</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==458</segment>
-	</row>
-	<row>
 		<label>459</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>11</sum_time_spent>
@@ -5701,7 +4723,38 @@
 		<segment>dimension6==459</segment>
 	</row>
 	<row>
-		<label>462</label>
+		<label>464</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>2</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>2</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>2</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==464</segment>
+	</row>
+	<row>
+		<label>466</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>774</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>775</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>774</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==466</segment>
+	</row>
+	<row>
+		<label>467</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<nb_visits>1</nb_visits>
@@ -5714,23 +4767,7 @@
 		<avg_time_on_dimension>0</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
-		<segment>dimension6==462</segment>
-	</row>
-	<row>
-		<label>468</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==468</segment>
+		<segment>dimension6==467</segment>
 	</row>
 	<row>
 		<label>469</label>
@@ -5749,20 +4786,19 @@
 		<segment>dimension6==469</segment>
 	</row>
 	<row>
-		<label>474</label>
+		<label>472</label>
 		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
+		<sum_time_spent>20</sum_time_spent>
 		<nb_visits>1</nb_visits>
 		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
 		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_sum_visit_length>21</entry_sum_visit_length>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<avg_time_on_dimension>20</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==474</segment>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==472</segment>
 	</row>
 	<row>
 		<label>479</label>
@@ -5795,22 +4831,6 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==480</segment>
-	</row>
-	<row>
-		<label>481</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>1</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>100%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==481</segment>
 	</row>
 	<row>
 		<label>482</label>
@@ -5876,37 +4896,6 @@
 		<segment>dimension6==487</segment>
 	</row>
 	<row>
-		<label>488</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<segment>dimension6==488</segment>
-	</row>
-	<row>
-		<label>489</label>
-		<nb_hits>1</nb_hits>
-		<sum_time_spent>0</sum_time_spent>
-		<nb_visits>1</nb_visits>
-		<bounce_count>0</bounce_count>
-		<exit_nb_visits>1</exit_nb_visits>
-		<entry_nb_visits>1</entry_nb_visits>
-		<entry_nb_actions>1</entry_nb_actions>
-		<entry_sum_visit_length>0</entry_sum_visit_length>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_dimension>0</avg_time_on_dimension>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>100%</exit_rate>
-		<segment>dimension6==489</segment>
-	</row>
-	<row>
 		<label>491</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
@@ -5923,6 +4912,22 @@
 		<segment>dimension6==491</segment>
 	</row>
 	<row>
+		<label>493</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==493</segment>
+	</row>
+	<row>
 		<label>495</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>2</sum_time_spent>
@@ -5937,6 +4942,38 @@
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>100%</exit_rate>
 		<segment>dimension6==495</segment>
+	</row>
+	<row>
+		<label>496</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>0</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==496</segment>
+	</row>
+	<row>
+		<label>499</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>1</sum_time_spent>
+		<nb_visits>1</nb_visits>
+		<bounce_count>0</bounce_count>
+		<exit_nb_visits>1</exit_nb_visits>
+		<entry_nb_visits>1</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>1</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>100%</exit_rate>
+		<segment>dimension6==499</segment>
 	</row>
 	<row>
 		<label>500</label>
@@ -5999,7 +5036,20 @@
 		<segment>dimension6==149</segment>
 	</row>
 	<row>
-		<label>250</label>
+		<label>334</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>258</sum_time_spent>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>258</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==334</segment>
+	</row>
+	<row>
+		<label>395</label>
 		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
 		<exit_nb_visits>1</exit_nb_visits>
@@ -6010,6 +5060,32 @@
 		<avg_time_on_dimension>0</avg_time_on_dimension>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
-		<segment>dimension6==250</segment>
+		<segment>dimension6==395</segment>
+	</row>
+	<row>
+		<label>400</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>154</sum_time_spent>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>154</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==400</segment>
+	</row>
+	<row>
+		<label>446</label>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>41</sum_time_spent>
+		<entry_nb_visits>0</entry_nb_visits>
+		<entry_nb_actions>1</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_dimension>41</avg_time_on_dimension>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>dimension6==446</segment>
 	</row>
 </result>

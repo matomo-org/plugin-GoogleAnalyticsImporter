@@ -27,16 +27,42 @@
 
     <ContentBlock
       v-if="hasClientConfiguration && isConfigured"
-      :content-title="translate('GoogleAnalyticsImporter_ScheduleAnImport')"
+      :content-title="translate('GoogleAnalyticsImporter_SelectImporter')"
     >
-      <ImportScheduler
-        vue-entry="GoogleAnalyticsImporter.ImportScheduler"
-        :has-client-configuration="hasClientConfiguration"
-        :is-configured="isConfigured"
-        :start-import-nonce="startImportNonce"
-        :max-end-date-desc="maxEndDateDesc"
-        :extra-custom-dimensions-field="extraCustomDimensionsField"
-      />
+      <p>{{ translate('GoogleAnalyticsImporter_SelectImporterSelection') }}</p>
+      <ImportSelector
+        :import-options-ua="importOptionsUA"
+        :import-options-ga4="importOptionsGA4"
+        @update:selected-importer="selectedImporter = $event"
+      >
+      </ImportSelector>
+
+      <div
+        class="hide-import-main-div ga-import-main-div ua-main-div"
+        v-show="selectedImporter === 'ua'"
+      >
+        <h3>{{ translate('GoogleAnalyticsImporter_ScheduleAnImport') }}</h3>
+        <ImportScheduler
+          vue-entry="GoogleAnalyticsImporter.ImportScheduler"
+          :has-client-configuration="hasClientConfiguration"
+          :is-configured="isConfigured"
+          :start-import-nonce="startImportNonce"
+          :max-end-date-desc="maxEndDateDesc"
+          :extra-custom-dimensions-field="extraCustomDimensionsField"
+        />
+      </div>
+
+      <div
+        class="hide-import-main-div ga-import-main-div ga4-main-div"
+        v-show="selectedImporter === 'ga4'"
+      >
+        <h3>{{ translate('GoogleAnalyticsImporter_ScheduleAnImportGA4') }}</h3>
+        <ImportSchedulerGA4
+          :start-import-nonce="startImportNonce"
+          :max-end-date-desc="maxEndDateDesc"
+          :extra-custom-dimensions-field="extraCustomDimensionsFieldGa4"
+        />
+      </div>
     </ContentBlock>
 
     <ContentBlock
@@ -75,6 +101,12 @@ import { Notification, ContentBlock, translate } from 'CoreHome';
 import ClientConfig from '../ClientConfig/ClientConfig.vue';
 import ImportScheduler from '../ImportScheduler/ImportScheduler.vue';
 import ImportStatus from '../ImportStatus/ImportStatus.vue';
+import ImportSelector from '../ImportScheduler/ImportSelector.vue';
+import ImportSchedulerGA4 from '../ImportScheduler/ImportSchedulerGA4.vue';
+
+interface AdminPageState {
+  selectedImporter: string;
+}
 
 export default defineComponent({
   props: {
@@ -88,6 +120,10 @@ export default defineComponent({
     },
     maxEndDateDesc: String,
     extraCustomDimensionsField: {
+      type: Object,
+      required: true,
+    },
+    extraCustomDimensionsFieldGa4: {
       type: Object,
       required: true,
     },
@@ -111,13 +147,28 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    importOptionsUA: {
+      type: Object,
+      required: true,
+    },
+    importOptionsGA4: {
+      type: Object,
+      required: true,
+    },
   },
   components: {
+    ImportSchedulerGA4,
     Notification,
     ContentBlock,
     ClientConfig,
     ImportScheduler,
     ImportStatus,
+    ImportSelector,
+  },
+  data(): AdminPageState {
+    return {
+      selectedImporter: '',
+    };
   },
   computed: {
     importerHelp2Text() {

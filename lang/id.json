@@ -45,6 +45,7 @@
         "InvalidClientJson": "JSON dalam berkas kredensial tidak valid, coba unduh ulang berkas dari Google API Console.",
         "InvalidDateFormat": "Tanggal harus dalam format berikut: %1$s",
         "InvalidDateRange": "Rentang tanggal tidak valid, tanggal mulai harus lebih awal dari tanggal akhir.",
+        "InvalidRedirectUriInClientConfiguration": "redirect_uris tidak valid, minimal 1 uri harus cocok dengan uri \"%1$s\" di berkas konfigurasi yang diunggah",
         "IsMobileApp": "Aplikasi Seluler",
         "IsMobileAppHelp": "Jika atribut analitik Anda digunakan untuk aplikasi seluler, centang kotak ini. Jika tidak, impor mungkin gagal jika tidak ada URL yang terkait dengan atribut Anda.",
         "IsVerboseLoggingEnabled": "Aktifkan Pencatatan Verbose",

@@ -137,6 +137,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
     public function getStylesheetFiles(&$stylesheets)
     {
+        $stylesheets[] = "plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.less";
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/stylesheets/styles.less";
     }
 
@@ -151,7 +152,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_None';
         $translationKeys[] = 'GoogleAnalyticsImporter_EndDateHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_PropertyId';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PropertyIdGA4';
         $translationKeys[] = 'GoogleAnalyticsImporter_PropertyIdHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PropertyIdGA4Help';
         $translationKeys[] = 'GoogleAnalyticsImporter_AccountId';
         $translationKeys[] = 'GoogleAnalyticsImporter_AccountIdHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_ViewId';
@@ -167,11 +170,14 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDesc1';
         $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDesc2';
         $translationKeys[] = 'GoogleAnalyticsImporter_TimezoneHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_TimezoneGA4Help';
         $translationKeys[] = 'GoogleAnalyticsImporter_ExtraCustomDimensionsHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ExtraCustomDimensionsGA4Help';
         $translationKeys[] = 'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_Troubleshooting';
         $translationKeys[] = 'GoogleAnalyticsImporter_Start';
         $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHourlyHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_KilledStatusHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_ResumeDesc';
         $translationKeys[] = 'GoogleAnalyticsImporter_MatomoSite';
@@ -227,6 +233,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_CancelJobConfirm';
         $translationKeys[] = 'General_Yes';
         $translationKeys[] = 'General_No';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelp';
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)

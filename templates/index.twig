@@ -3,6 +3,8 @@
 {% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
 
 {% block content %}
+    {{ postEvent('Template.beforeGoogleAnalyticsImporterHeader') }}
+
     <div
         vue-entry="GoogleAnalyticsImporter.AdminPage"
         has-client-configuration="{{ hasClientConfiguration|json_encode }}"
@@ -12,10 +14,13 @@
         start-import-nonce="{{ startImportNonce|default(null)|json_encode }}"
         max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode }}"
         extra-custom-dimensions-field="{{ extraCustomDimensionsField|default(null)|json_encode }}"
+        extra-custom-dimensions-field-ga4="{{ extraCustomDimensionsFieldGA4|default(null)|json_encode }}"
         statuses="{{ statuses|default(null)|json_encode }}"
         stop-import-nonce="{{ stopImportNonce|default(null)|json_encode }}"
         change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode }}"
         resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode }}"
         schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode }}"
+        import-options-ua="{{ importOptionsUA|default(null)|json_encode }}"
+        import-options-ga4="{{ importOptionsGA4|default(null)|json_encode }}"
     ></div>
 {% endblock %}

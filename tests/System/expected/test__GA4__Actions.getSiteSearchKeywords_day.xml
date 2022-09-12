@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label />
+		<nb_visits>6</nb_visits>
+		<nb_uniq_visitors>4</nb_uniq_visitors>
+		<nb_hits>8</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<nb_pages_per_search>1.3</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+	</row>
+</result>

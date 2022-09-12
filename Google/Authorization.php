@@ -109,6 +109,16 @@ class Authorization
         if (!empty($accessToken)) {
             $client->setAccessToken($accessToken);
         }
+
+        //since there ie no host defined when running via console it results in error, but we don't need to set any URI when running console commands so can be ignored
+        if (!empty($clientConfig['web']['redirect_uris']) && Url::getCurrentHost('no-host-defined') !== 'no-host-defined') {
+            $uri = $this->getValidUri($clientConfig['web']['redirect_uris']);
+            if (empty($uri)) {
+                throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_InvalidRedirectUriInClientConfiguration', array(Url::getCurrentUrlWithoutQueryString(). '?module=GoogleAnalyticsImporter&action=processAuthCode')));
+            }
+
+            $client->setRedirectUri($uri);
+        }
     }
 
     public function deleteClientConfiguration()
@@ -128,5 +138,23 @@ class Authorization
     {
         $service = new \Google\Service\Oauth2($client);
         return $service->userinfo->get();
+    }
+
+    /**
+     * Returns a valid ur
+     *
+     * @param array $uris
+     * @return string
+     */
+    private function getValidUri($uris)
+    {
+        $validUri = Url::getCurrentUrlWithoutQueryString(). '?module=GoogleAnalyticsImporter&action=processAuthCode';
+        foreach ($uris as $uri) {
+            if (stripos($uri, $validUri) !== FALSE) {
+                return $uri;
+            }
+        }
+
+        return false;
     }
 }

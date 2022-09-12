@@ -45,6 +45,7 @@
         "InvalidClientJson": "Ugyldig JSON i identitetdetaljsfil. Prøv å laste den ned igjen fra Google API-konsollen.",
         "InvalidDateFormat": "Datoen må være i følgende format: %1$s",
         "InvalidDateRange": "Ugyldig datofølge. Startdato må være før sluttdatoen.",
+        "InvalidRedirectUriInClientConfiguration": "Ugyldig redirect_uris. Minst én URI skal samsvare med URI-en «%1$s» i opplastet oppsettsfil",
         "IsMobileApp": "Mobil-app",
         "IsMobileAppHelp": "Hvis din analyseegenskap tilhører et mobilprogram huker du av i denne boksen. Ellers kan det hende at importen mislykkes siden det ikke er noen nettadresse tilknyttet egenskapen din.",
         "IsVerboseLoggingEnabled": "Skru på sirlig loggføring",

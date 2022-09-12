@@ -25,6 +25,14 @@ describe("GoogleAnalyticsImporter", function () {
         expect(await content.screenshot()).to.matchImage('load');
     });
 
+    it("should load the settings correctly with UA option selected", async function () {
+        await page.goto(url);
+
+        const content = await page.$('.pageWrap');
+        await page.evaluate(() => $('input:radio[name=selectedImporter]').val('ua').change());
+        expect(await content.screenshot()).to.matchImage('load_ua');
+    });
+
     it("should start an import properly", async function () {
         await page.type('input#startDate', '2019-06-27');
         await page.type('input#endDate', '2019-07-02');

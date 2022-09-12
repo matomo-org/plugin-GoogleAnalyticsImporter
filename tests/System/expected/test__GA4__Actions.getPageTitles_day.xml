@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row>
+		<label> - Blog Voyages &amp; Photographies de Matthieu Aubry, français en Nouvelle Zélande.</label>
+		<nb_visits>3</nb_visits>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_hits>4</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_actions>12</entry_nb_actions>
+		<entry_sum_visit_length>8</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_page_load_time>0</avg_page_load_time>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>pageTitle==-%2BBlog%2BVoyages%2B%2526%2BPhotographies%2Bde%2BMatthieu%2BAubry%252C%2Bfran%25C3%25A7ais%2Ben%2BNouvelle%2BZ%25C3%25A9lande.</segment>
+	</row>
+	<row>
+		<label> La Croisière Plongée ; Un incontournable ! - Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_actions>2</entry_nb_actions>
+		<entry_sum_visit_length>1</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_page_load_time>0</avg_page_load_time>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>pageTitle==La%2BCroisi%25C3%25A8re%2BPlong%25C3%25A9e%2B%253B%2BUn%2Bincontournable%2B%2521%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
+	</row>
+	<row>
+		<label> Loisirs en inde - Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_actions>5</entry_nb_actions>
+		<entry_sum_visit_length>8</entry_sum_visit_length>
+		<entry_bounce_count>0</entry_bounce_count>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_page_load_time>0</avg_page_load_time>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>pageTitle==Loisirs%2Ben%2Binde%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
+	</row>
+	<row>
+		<label> Top 10 des plus belles Plongées Sous Marine dans le Monde ! - Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_actions>3</entry_nb_actions>
+		<entry_sum_visit_length>0</entry_sum_visit_length>
+		<entry_bounce_count>1</entry_bounce_count>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_page_load_time>0</avg_page_load_time>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>pageTitle==Top%2B10%2Bdes%2Bplus%2Bbelles%2BPlong%25C3%25A9es%2BSous%2BMarine%2Bdans%2Ble%2BMonde%2B%2521%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
+	</row>
+	<row>
+		<label> Video meilleur joueur de tetris du monde - Blog &amp; photos Matthieu</label>
+		<nb_visits>1</nb_visits>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_hits>1</nb_hits>
+		<sum_time_spent>0</sum_time_spent>
+		<entry_nb_actions>4</entry_nb_actions>
+		<entry_sum_visit_length>9</entry_sum_visit_length>
+		<entry_bounce_count>0</entry_bounce_count>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_page_load_time>0</avg_page_load_time>
+		<avg_time_on_page>0</avg_time_on_page>
+		<bounce_rate>0%</bounce_rate>
+		<exit_rate>0%</exit_rate>
+		<segment>pageTitle==Video%2Bmeilleur%2Bjoueur%2Bde%2Btetris%2Bdu%2Bmonde%2B-%2BBlog%2B%2526%2Bphotos%2BMatthieu</segment>
+	</row>
+</result>
