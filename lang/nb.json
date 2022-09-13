@@ -82,6 +82,7 @@
         "ScheduleImportDesc1": "Planlegge en ny import nedenfor. Vil kjøre en gang om dagen til hele datofølget er importert. Merk: Den kjøres daglig siden Google har en daglig grense for API-forespørsler. Når denne er nådd kan ingen flere importeres før neste dag. (Dette skjer vanligvis etter å ha importert 4 måneder med data).",
         "ScheduleImportDesc2": "Hvis ingen sluttdato angis, vil importen fortsette til du manuelt avbryter den nedenfor.",
         "ScheduledReImports": "Re-importeringer",
+        "SelectImporterSelection": "Hvilken Google Analytics-versjon vil du importere data fra?",
         "SettingUp": "Oppsett",
         "SiteDeleted": "Side slettet",
         "SiteID": "Side-ID",
