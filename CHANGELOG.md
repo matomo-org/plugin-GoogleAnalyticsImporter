@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 5.0.0
+
+Remove all use of AngularJS from the plugin.
+
 # 4.2.0
 
 Migrate AngularJS code to Vue.
