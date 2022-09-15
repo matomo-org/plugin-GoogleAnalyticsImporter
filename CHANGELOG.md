@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.3.1
+- Added missing translation key
+
 # 4.3.0
 - Added support to import GA4 data into Matomo
 - Added code to import recent dates first
