@@ -10,7 +10,6 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 
-use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Option;
 use Piwik\Piwik;
@@ -112,7 +111,7 @@ class Authorization
         }
 
         //since there ie no host defined when running via console it results in error, but we don't need to set any URI when running console commands so can be ignored
-        if (!empty($clientConfig['web']['redirect_uris']) && !Common::isRunningConsoleCommand()) {
+        if (!empty($clientConfig['web']['redirect_uris']) && Url::getCurrentHost('no-host-defined') !== 'no-host-defined') {
             $uri = $this->getValidUri($clientConfig['web']['redirect_uris']);
             if (empty($uri)) {
                 throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_InvalidRedirectUriInClientConfiguration', array(Url::getCurrentUrlWithoutQueryString(). '?module=GoogleAnalyticsImporter&action=processAuthCode')));
