@@ -2,15 +2,15 @@
 <result>
 	<row>
 		<label>1 visit</label>
-		<nb_conversions>60</nb_conversions>
+		<nb_conversions>102</nb_conversions>
 	</row>
 	<row>
 		<label>2 visits</label>
-		<nb_conversions>15</nb_conversions>
+		<nb_conversions>33</nb_conversions>
 	</row>
 	<row>
 		<label>3 visits</label>
-		<nb_conversions>2</nb_conversions>
+		<nb_conversions>5</nb_conversions>
 	</row>
 	<row>
 		<label>4 visits</label>
