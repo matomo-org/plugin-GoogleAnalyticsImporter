@@ -396,7 +396,7 @@ class ImporterGA4
 
             $site = new Site($idSite);
             $dates = $this->getRecentDatesToImport($start, $endPlusOne, Date::today()->getTimestamp());
-            foreach ($dates as $date) {
+            for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
                 $this->logger->info("Importing data for GA Property {propertyID} for date {date}...", [
                     'propertyID' => $propertyId,
                     'date' => $date->toString(),

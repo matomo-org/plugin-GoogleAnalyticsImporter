@@ -387,7 +387,7 @@ class Importer
 
             $site = new Site($idSite);
             $dates = $this->getRecentDatesToImport($start, $endPlusOne, Date::today()->getTimestamp());
-            foreach ($dates as $date) {
+            for ($date = $start; $date->getTimestamp() < $endPlusOne->getTimestamp(); $date = $date->addDay(1)) {
                 $this->logger->info("Importing data for GA View {viewId} for date {date}...", [
                     'viewId' => $viewId,
                     'date' => $date->toString(),
