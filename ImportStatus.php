@@ -531,7 +531,7 @@ class ImportStatus
             $mainImportProgress = $status['last_date_imported'];
         }
 
-        if (!empty($status['import_range_end'])
+        if (!empty($status['import_range_start'])
             && !empty($mainImportProgress)
             && ($mainImportProgress == $status['import_range_start']
                 || Date::factory($mainImportProgress)->isEarlier(Date::factory($status['import_range_start'])))
