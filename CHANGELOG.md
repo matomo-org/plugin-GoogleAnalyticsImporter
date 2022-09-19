@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 4.3.2
+- Fixed redirect uri bug when passing domain in console command
+- Fixed recent dates not importing all dates.
+
 # 4.3.1
 - Added missing translation key
 
