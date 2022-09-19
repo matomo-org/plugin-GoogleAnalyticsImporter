@@ -195,7 +195,7 @@ class ImportStatusTest extends IntegrationTestCase
                 'account' => 'account',
                 'view' => 'view',
             ],
-            'last_date_imported' => '2015-03-04',
+            'last_date_imported' => '2015-03-02',
             'import_start_time' => Date::$now,
             'import_end_time' => null,
             'last_job_start_time' => Date::$now,
@@ -207,7 +207,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 3,
             'reimport_ranges' => [],
-            'main_import_progress' => '2015-03-04',
+            'main_import_progress' => '2015-03-02',
             'isGA4' => false,
         ], $status);
 
@@ -223,7 +223,7 @@ class ImportStatusTest extends IntegrationTestCase
                 'account' => 'account',
                 'view' => 'view',
             ],
-            'last_date_imported' => '2015-03-04',
+            'last_date_imported' => '2015-03-02',
             'import_start_time' => Date::$now,
             'import_end_time' => Date::$now,
             'last_job_start_time' => Date::$now,
@@ -235,7 +235,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 3,
             'reimport_ranges' => [],
-            'main_import_progress' => '2015-03-04',
+            'main_import_progress' => '2015-03-02',
             'isGA4' => false,
         ], $status);
 
@@ -403,7 +403,7 @@ class ImportStatusTest extends IntegrationTestCase
                 'account' => 'account',
                 'view' => '',
             ],
-            'last_date_imported' => '2015-03-04',
+            'last_date_imported' => '2015-03-02',
             'import_start_time' => Date::$now,
             'import_end_time' => null,
             'last_job_start_time' => Date::$now,
@@ -415,7 +415,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 3,
             'reimport_ranges' => [],
-            'main_import_progress' => '2015-03-04',
+            'main_import_progress' => '2015-03-02',
             'isGA4' => true,
         ], $status);
 
@@ -431,7 +431,7 @@ class ImportStatusTest extends IntegrationTestCase
                 'account' => 'account',
                 'view' => '',
             ],
-            'last_date_imported' => '2015-03-04',
+            'last_date_imported' => '2015-03-02',
             'import_start_time' => Date::$now,
             'import_end_time' => Date::$now,
             'last_job_start_time' => Date::$now,
@@ -443,7 +443,7 @@ class ImportStatusTest extends IntegrationTestCase
             ],
             'days_finished_since_rate_limit' => 3,
             'reimport_ranges' => [],
-            'main_import_progress' => '2015-03-04',
+            'main_import_progress' => '2015-03-02',
             'isGA4' => true,
         ], $status);
 
@@ -1496,7 +1496,7 @@ View: view',
         $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
-        $status['import_range_end'] = '2012-03-04';
+        $status['import_range_start'] = '2012-03-04';
         $status['main_import_progress'] = '2012-03-04';
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
@@ -1510,7 +1510,7 @@ View: view',
         $status = $this->instance->startingImport('properties/p', 'a', '', $idSite = 1, [], 'ga4');
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
-        $status['import_range_end'] = '2012-03-04';
+        $status['import_range_start'] = '2012-03-04';
         $status['main_import_progress'] = '2012-03-04';
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
@@ -1519,13 +1519,13 @@ View: view',
         $this->assertEquals(ImportStatus::STATUS_FINISHED, $status['status']);
     }
 
-    public function test_finishImportIfNothingLeft_finishesImportIfLastDateImportedIsPastEndDate()
+    public function test_finishImportIfNothingLeft_finishesImportIfLastDateImportedIsPastStartDate()
     {
         $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
-        $status['import_range_end'] = '2012-03-04';
-        $status['main_import_progress'] = '2012-03-06';
+        $status['import_range_start'] = '2012-03-04';
+        $status['main_import_progress'] = '2012-03-03';
         $status['reimport_ranges'] = [];
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
@@ -1534,13 +1534,13 @@ View: view',
         $this->assertEquals(ImportStatus::STATUS_FINISHED, $status['status']);
     }
 
-    public function test_finishImportIfNothingLeft_finishesImportIfLastDateImportedIsPastEndDateGA4()
+    public function test_finishImportIfNothingLeft_finishesImportIfLastDateImportedIsPastStartDateGA4()
     {
         $status = $this->instance->startingImport('properties/p', 'a', '', $idSite = 1, [], 'ga4');
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
-        $status['import_range_end'] = '2012-03-04';
-        $status['main_import_progress'] = '2012-03-06';
+        $status['import_range_start'] = '2012-03-04';
+        $status['main_import_progress'] = '2012-03-03';
         $status['reimport_ranges'] = [];
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
@@ -1582,7 +1582,7 @@ View: view',
         $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
-        $status['import_range_end'] = '2012-03-04';
+        $status['import_range_start'] = '2012-03-04';
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
 
@@ -1595,7 +1595,7 @@ View: view',
         $status = $this->instance->startingImport('properties/p', 'a', '', $idSite = 1, [], 'ga4');
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
-        $status['import_range_end'] = '2012-03-04';
+        $status['import_range_start'] = '2012-03-04';
         $this->instance->saveStatus($status);
         $this->instance->finishImportIfNothingLeft($idSite);
 
@@ -1608,7 +1608,7 @@ View: view',
         $status = $this->instance->startingImport('p', 'a', 'v', $idSite = 1);
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
-        $status['import_range_end'] = '2012-03-04';
+        $status['import_range_start'] = '2012-03-04';
         $status['main_import_progress'] = '2012-03-04';
         $status['reimport_ranges'] = [['2013-04-01', '2013-04-05']];
         $this->instance->saveStatus($status);
@@ -1623,7 +1623,7 @@ View: view',
         $status = $this->instance->startingImport('properties/p', 'a', '', $idSite = 1, [], 'ga4');
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
 
-        $status['import_range_end'] = '2012-03-04';
+        $status['import_range_start'] = '2012-03-04';
         $status['main_import_progress'] = '2012-03-04';
         $status['reimport_ranges'] = [['2013-04-01', '2013-04-05']];
         $this->instance->saveStatus($status);
