@@ -12,8 +12,14 @@
         "monolog/monolog": "*"
     },
     "scripts": {
-        "post-install-cmd": "Google\\Task\\Composer::cleanup",
-        "post-update-cmd": "Google\\Task\\Composer::cleanup"
+        "post-install-cmd": [
+            "Google\\Task\\Composer::cleanup",
+            "@php ../../console composer:prefix-dependency --plugin=GoogleAnalyticsImporter --remove-originals"
+        ],
+        "post-update-cmd": [
+            "Google\\Task\\Composer::cleanup",
+            "@php ../../console composer:prefix-dependency --plugin=GoogleAnalyticsImporter --remove-originals"
+        ]
     },
     "extra": {
         "google/apiclient-services": [
