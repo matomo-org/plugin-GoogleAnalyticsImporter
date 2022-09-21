@@ -14,7 +14,7 @@ use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
-use Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
 
 abstract class RecordImporter
 {

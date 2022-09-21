@@ -30,7 +30,7 @@ use Piwik\Segment;
 use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Plugins\TagManager\TagManager;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;

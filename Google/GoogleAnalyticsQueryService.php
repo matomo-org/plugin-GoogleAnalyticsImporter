@@ -15,7 +15,7 @@ use Piwik\Date;
 use Piwik\Db;
 use Piwik\Piwik;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsQueryService
 {

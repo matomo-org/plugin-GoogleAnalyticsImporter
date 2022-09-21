@@ -11,7 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportGoalException;
 use Piwik\Plugins\SitesManager\API;
-use Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
 
 class GoogleGoalMapper
 {
