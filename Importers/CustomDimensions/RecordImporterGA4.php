@@ -23,7 +23,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\IdMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
 
 class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporterGA4
 {

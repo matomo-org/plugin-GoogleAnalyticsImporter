@@ -202,7 +202,7 @@ class ImportedFromGoogle extends Fixture
     public function provideContainerConfig()
     {
         $result = [
-            'Psr\Log\LoggerInterface' => \DI\get('Monolog\Logger'),
+            'Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface' => \DI\get('Monolog\Logger'),
             'log.handlers' => [
                 \DI\get(ConsoleHandler::class),
             ],
