@@ -69,7 +69,9 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
              */
 
 
-            $topLevelRowCity = $this->addRowToTable($cities, $row, $city);
+            if (!empty($city)) {
+                $topLevelRowCity = $this->addRowToTable($cities, $row, $city);
+            }
 
             /** Not available in GA4
             if (is_numeric($lat)
