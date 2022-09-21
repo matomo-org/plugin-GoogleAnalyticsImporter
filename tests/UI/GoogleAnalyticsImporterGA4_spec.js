@@ -96,7 +96,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
     it("should show that the import finished when the import finishes", async function () {
         let totalTime = 0;
         while (true) { // wait until import finishes
-            await page.waitForTimeout(30000);
+            await page.waitForTimeout(50000);
 
             await page.reload();
             await page.waitForSelector('.pageWrap');
@@ -110,7 +110,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
 
             totalTime += 30;
 
-            if (totalTime > 60 * 7) {
+            if (totalTime > 60 * 12) {
                 throw new Error('timeout waiting for import to finish...');
             }
         }
