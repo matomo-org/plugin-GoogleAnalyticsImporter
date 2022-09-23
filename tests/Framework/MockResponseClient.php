@@ -10,7 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 
 use Piwik\Common;
 use Piwik\Option;
-use Psr\Http\Message\RequestInterface;
+use \Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\RequestInterface;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
