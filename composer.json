@@ -27,9 +27,5 @@
             "AnalyticsReporting",
             "Oauth2"
         ]
-    },
-    "prefixedDependencies": [
-        "google/apiclient",
-        "google/apiclient-services"
-    ]
+    }
 }

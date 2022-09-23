@@ -20,7 +20,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\VisitFrequency\API as VisitFrequencyAPI;
 use Piwik\Site;
 use Piwik\Tracker\GoalManager;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {

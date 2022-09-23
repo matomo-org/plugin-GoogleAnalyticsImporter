@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  * Copyright 2018 gRPC authors.
@@ -16,7 +17,7 @@
  * limitations under the License.
  *
  */
-namespace Grpc;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc;
 
 /**
  * CallInvoker is used to pass the self defined channel into the stub,

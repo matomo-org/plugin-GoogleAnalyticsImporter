@@ -36,8 +36,8 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Serializer;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ServerStreamingCallInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Code;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Status;
-use Grpc\ServerStreamingCall;
-use Grpc\Gcp\GCPServerStreamCall;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\ServerStreamingCall;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GCPServerStreamCall;
 /**
  * Class ServerStreamingCallWrapper implements \Google\ApiCore\ServerStreamingCallInterface.
  * This is essentially a wrapper class around the \Grpc\ServerStreamingCall.

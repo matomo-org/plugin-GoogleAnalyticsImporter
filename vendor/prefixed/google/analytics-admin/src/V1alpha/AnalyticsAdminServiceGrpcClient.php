@@ -21,7 +21,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1a
 /**
  * Service Interface for the Analytics Admin API (GA4).
  */
-class AnalyticsAdminServiceGrpcClient extends \Grpc\BaseStub
+class AnalyticsAdminServiceGrpcClient extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\BaseStub
 {
     /**
      * @param string $hostname hostname

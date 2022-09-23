@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  * Copyright 2018 gRPC authors.
@@ -16,8 +17,7 @@
  * limitations under the License.
  *
  */
-
-namespace Grpc\Internal;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Internal;
 
 /**
  * This is a PRIVATE API and can change without notice.
@@ -26,7 +26,6 @@ class InterceptorChannel extends \Grpc\Channel
 {
     private $next = null;
     private $interceptor;
-
     /**
      * @param Channel|InterceptorChannel $channel An already created Channel
      * or InterceptorChannel object (optional)
@@ -34,41 +33,32 @@ class InterceptorChannel extends \Grpc\Channel
      */
     public function __construct($channel, $interceptor)
     {
-        if (!is_a($channel, 'Grpc\Channel') &&
-            !is_a($channel, 'Grpc\Internal\InterceptorChannel')) {
-            throw new \Exception('The channel argument is not a Channel object '.
-                'or an InterceptorChannel object created by '.
-                'Interceptor::intercept($channel, Interceptor|Interceptor[] $interceptors)');
+        if (!\is_a($channel, 'Grpc\\Channel') && !\is_a($channel, 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Internal\\InterceptorChannel')) {
+            throw new \Exception('The channel argument is not a Channel object ' . 'or an InterceptorChannel object created by ' . 'Interceptor::intercept($channel, Interceptor|Interceptor[] $interceptors)');
         }
         $this->interceptor = $interceptor;
         $this->next = $channel;
     }
-
     public function getNext()
     {
         return $this->next;
     }
-
     public function getInterceptor()
     {
         return $this->interceptor;
     }
-
     public function getTarget()
     {
         return $this->getNext()->getTarget();
     }
-
     public function watchConnectivityState($new_state, $deadline)
     {
         return $this->getNext()->watchConnectivityState($new_state, $deadline);
     }
-
-    public function getConnectivityState($try_to_connect = false)
+    public function getConnectivityState($try_to_connect = \false)
     {
         return $this->getNext()->getConnectivityState($try_to_connect);
     }
-
     public function close()
     {
         return $this->getNext()->close();

@@ -31,32 +31,32 @@ class GoogleGA4ResponseDataTableFactoryTest extends TestCase
             ['someMetric', 'someOtherMetric', 'aThirdMetric']);
 
         // first response
-        $r = new \Google\Analytics\Data\V1beta\RunReportResponse();
+        $r = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\RunReportResponse();
 
-        $row1 = new \Google\Analytics\Data\V1beta\Row();
-        $metric1 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $row1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Row();
+        $metric1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric1->setValue(3);
-        $metric2 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $metric2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric2->setValue(4);
 
-        $dimension1 = new \Google\Analytics\Data\V1beta\DimensionValue();
+        $dimension1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DimensionValue();
         $dimension1->setValue('a');
-        $dimension2 = new \Google\Analytics\Data\V1beta\DimensionValue();
+        $dimension2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DimensionValue();
         $dimension2->setValue('c');
 
         $row1->setMetricValues([$metric1, $metric2]);
         $row1->setDimensionValues([$dimension1, $dimension2]);
 
 
-        $row2 = new \Google\Analytics\Data\V1beta\Row();
-        $metric1 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $row2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Row();
+        $metric1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric1->setValue(1);
-        $metric2 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $metric2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric2->setValue(2);
 
-        $dimension1 = new \Google\Analytics\Data\V1beta\DimensionValue();
+        $dimension1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DimensionValue();
         $dimension1->setValue('c');
-        $dimension2 = new \Google\Analytics\Data\V1beta\DimensionValue();
+        $dimension2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DimensionValue();
         $dimension2->setValue('d');
 
         $row2->setMetricValues([$metric1, $metric2]);
@@ -92,31 +92,31 @@ END;
         $this->assertEquals($expectedXml, $xml);
 
         // second response
-        $r = new \Google\Analytics\Data\V1beta\RunReportResponse();
-        $row1 = new \Google\Analytics\Data\V1beta\Row();
-        $metric1 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $r = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\RunReportResponse();
+        $row1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Row();
+        $metric1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric1->setValue(5);
-        $metric2 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $metric2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric2->setValue(4);
 
-        $dimension1 = new \Google\Analytics\Data\V1beta\DimensionValue();
+        $dimension1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DimensionValue();
         $dimension1->setValue('a');
-        $dimension2 = new \Google\Analytics\Data\V1beta\DimensionValue();
+        $dimension2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DimensionValue();
         $dimension2->setValue('c');
 
         $row1->setMetricValues([$metric1, $metric2]);
         $row1->setDimensionValues([$dimension1, $dimension2]);
 
 
-        $row2 = new \Google\Analytics\Data\V1beta\Row();
-        $metric1 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $row2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Row();
+        $metric1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric1->setValue(5);
-        $metric2 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $metric2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric2->setValue(5);
 
-        $dimension1 = new \Google\Analytics\Data\V1beta\DimensionValue();
+        $dimension1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DimensionValue();
         $dimension1->setValue('c');
-        $dimension2 = new \Google\Analytics\Data\V1beta\DimensionValue();
+        $dimension2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DimensionValue();
         $dimension2->setValue('d');
 
         $row2->setMetricValues([$metric1, $metric2]);
@@ -160,13 +160,13 @@ END;
             ['someMetric', 'someOtherMetric', 'aThirdMetric']);
 
         // first response
-        $r = new \Google\Analytics\Data\V1beta\RunReportResponse();
-        $row1 = new \Google\Analytics\Data\V1beta\Row();
-        $metric1 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $r = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\RunReportResponse();
+        $row1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Row();
+        $metric1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric1->setValue(3);
-        $metric2 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $metric2 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric2->setValue(4);
-        $metric3 = new \Google\Analytics\Data\V1beta\MetricValue();
+        $metric3 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\MetricValue();
         $metric3->setValue(5);
 
 

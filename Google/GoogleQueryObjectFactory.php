@@ -9,7 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 use Piwik\Date;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 
 class GoogleQueryObjectFactory
 {

@@ -8,7 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
-use Google_Service_Analytics_Goal;
+use \Matomo\Dependencies\GoogleAnalyticsImporter\Google_Service_Analytics_Goal;
 use Piwik\API\Request;
 use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
@@ -41,7 +41,7 @@ use Piwik\Segment;
 use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 
 class Importer
 {

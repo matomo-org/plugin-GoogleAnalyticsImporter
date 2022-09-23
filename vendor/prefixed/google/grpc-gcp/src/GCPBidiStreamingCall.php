@@ -17,19 +17,19 @@
  * limitations under the License.
  *
  */
-namespace Grpc\Gcp;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp;
 
 /**
  * Represents an active call that allows for sending and recieving messages
  * in streams in any order.
  */
-class GCPBidiStreamingCall extends \Grpc\Gcp\GcpBaseCall
+class GCPBidiStreamingCall extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GcpBaseCall
 {
     private $response = null;
     protected function createRealCall($data = null)
     {
         $channel_ref = $this->_rpcPreProcess($data);
-        $this->real_call = new \Grpc\BidiStreamingCall($channel_ref->getRealChannel($this->gcp_channel->credentials), $this->method, $this->deserialize, $this->options);
+        $this->real_call = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\BidiStreamingCall($channel_ref->getRealChannel($this->gcp_channel->credentials), $this->method, $this->deserialize, $this->options);
         $this->real_call->start($this->metadata_rpc);
         return $this->real_call;
     }

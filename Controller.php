@@ -24,7 +24,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
 use Piwik\Url;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 
 class Controller extends \Piwik\Plugin\ControllerAdmin
 {

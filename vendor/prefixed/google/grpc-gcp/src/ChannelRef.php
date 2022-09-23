@@ -17,7 +17,7 @@
  * limitations under the License.
  *
  */
-namespace Grpc\Gcp;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp;
 
 /**
  * ChannelRef is used to record how many active streams the channel has.
@@ -40,7 +40,7 @@ class ChannelRef
         $this->affinity_ref = $affinity_ref;
         $this->active_stream_ref = $active_stream_ref;
         $this->opts = $opts;
-        $this->has_deserialized = new \Grpc\Gcp\CreatedByDeserializeCheck();
+        $this->has_deserialized = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\CreatedByDeserializeCheck();
     }
     public function getRealChannel($credentials)
     {

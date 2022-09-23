@@ -32,7 +32,7 @@ class MockRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      */
     public function __construct($data = NULL)
     {
-        \GPBMetadata\ApiCore\Testing\Mocks::initOnce();
+        \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\ApiCore\Testing\Mocks::initOnce();
         parent::__construct($data);
     }
     /**

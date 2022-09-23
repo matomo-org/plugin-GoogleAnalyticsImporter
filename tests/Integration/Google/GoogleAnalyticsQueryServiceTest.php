@@ -17,7 +17,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsQueryServiceTest extends IntegrationTestCase
 {
@@ -50,17 +50,17 @@ class GoogleAnalyticsQueryServiceTest extends IntegrationTestCase
     {
         Fixture::createWebsite('2012-02-02 00:00:00');
 
-        $client = new \Google\Client();
-        $mockReportingService = new \Google\Service\AnalyticsReporting($client);
+        $client = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client();
+        $mockReportingService = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting($client);
 
-        $builder = $this->getMockBuilder(\Google\Service\AnalyticsReporting\Resource\Reports::class);
+        $builder = $this->getMockBuilder(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\Resource\Reports::class);
         $mockReportingService->reports = $builder
             ->disableOriginalConstructor()
             ->onlyMethods(['batchGet'])
             ->getMock();
         $mockReportingService->reports->method('batchGet')->willThrowException($testEx);
 
-        $this->getMockBuilder(\Google\Service\AnalyticsReporting::class);
+        $this->getMockBuilder(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting::class);
         $gaQueryService = new GoogleAnalyticsQueryService($mockReportingService, 'testviewid', [], 1, 'testuser',
             StaticContainer::get(GoogleQueryObjectFactory::class), StaticContainer::get(LoggerInterface::class));
         $gaQueryService->setMaxAttempts(2);

@@ -4,26 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitac8d1134369feb88185b970581105e08
+class ComposerStaticInit4808a32f5bbcbb839b0bdee79b0ccfae
 {
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'GPBMetadata\\ApiCore\\Testing\\Mocks' => __DIR__ . '/../..' . '/google/gax/metadata/ApiCore/Testing/Mocks.php',
-        'Grpc\\Gcp\\AffinityConfig' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig.php',
-        'Grpc\\Gcp\\AffinityConfig_Command' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig_Command.php',
-        'Grpc\\Gcp\\ApiConfig' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/ApiConfig.php',
-        'Grpc\\Gcp\\ChannelPoolConfig' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/ChannelPoolConfig.php',
-        'Grpc\\Gcp\\ChannelRef' => __DIR__ . '/../..' . '/google/grpc-gcp/src/ChannelRef.php',
-        'Grpc\\Gcp\\Config' => __DIR__ . '/../..' . '/google/grpc-gcp/src/Config.php',
-        'Grpc\\Gcp\\CreatedByDeserializeCheck' => __DIR__ . '/../..' . '/google/grpc-gcp/src/CreatedByDeserializeCheck.php',
-        'Grpc\\Gcp\\GCPBidiStreamingCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPBidiStreamingCall.php',
-        'Grpc\\Gcp\\GCPCallInvoker' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPCallInvoker.php',
-        'Grpc\\Gcp\\GCPClientStreamCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPClientStreamCall.php',
-        'Grpc\\Gcp\\GCPServerStreamCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPServerStreamCall.php',
-        'Grpc\\Gcp\\GCPUnaryCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPUnaryCall.php',
-        'Grpc\\Gcp\\GcpBaseCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GcpBaseCall.php',
-        'Grpc\\Gcp\\GcpExtensionChannel' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GcpExtensionChannel.php',
-        'Grpc\\Gcp\\MethodConfig' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/MethodConfig.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\BeforeValidException' => __DIR__ . '/../..' . '/firebase/php-jwt/src/BeforeValidException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\CachedKeySet' => __DIR__ . '/../..' . '/firebase/php-jwt/src/CachedKeySet.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\ExpiredException' => __DIR__ . '/../..' . '/firebase/php-jwt/src/ExpiredException.php',
@@ -31,6 +15,7 @@ class ComposerStaticInitac8d1134369feb88185b970581105e08
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\JWT' => __DIR__ . '/../..' . '/firebase/php-jwt/src/JWT.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\Key' => __DIR__ . '/../..' . '/firebase/php-jwt/src/Key.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\SignatureInvalidException' => __DIR__ . '/../..' . '/firebase/php-jwt/src/SignatureInvalidException.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\ApiCore\\Testing\\Mocks' => __DIR__ . '/../..' . '/google/gax/metadata/ApiCore/Testing/Mocks.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Analytics\\Admin\\V1Alpha\\AnalyticsAdmin' => __DIR__ . '/../..' . '/google/analytics-admin/metadata/V1Alpha/AnalyticsAdmin.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Analytics\\Admin\\V1Alpha\\Resources' => __DIR__ . '/../..' . '/google/analytics-admin/metadata/V1Alpha/Resources.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Analytics\\Data\\V1Alpha\\AnalyticsDataApi' => __DIR__ . '/../..' . '/google/analytics-data/metadata/V1Alpha/AnalyticsDataApi.php',
@@ -1119,6 +1104,37 @@ class ComposerStaticInitac8d1134369feb88185b970581105e08
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_Task_Retryable' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_Task_Runner' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_Utils_UriTemplate' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\AbstractCall' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/AbstractCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\BaseStub' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/BaseStub.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\BidiStreamingCall' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/BidiStreamingCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\CallInvoker' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/CallInvoker.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\ClientStreamingCall' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/ClientStreamingCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\DefaultCallInvoker' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/DefaultCallInvoker.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\AffinityConfig' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\AffinityConfig_Command' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig_Command.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\ApiConfig' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/ApiConfig.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\ChannelPoolConfig' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/ChannelPoolConfig.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\ChannelRef' => __DIR__ . '/../..' . '/google/grpc-gcp/src/ChannelRef.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\Config' => __DIR__ . '/../..' . '/google/grpc-gcp/src/Config.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\CreatedByDeserializeCheck' => __DIR__ . '/../..' . '/google/grpc-gcp/src/CreatedByDeserializeCheck.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\GCPBidiStreamingCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPBidiStreamingCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\GCPCallInvoker' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPCallInvoker.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\GCPClientStreamCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPClientStreamCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\GCPServerStreamCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPServerStreamCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\GCPUnaryCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GCPUnaryCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\GcpBaseCall' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GcpBaseCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\GcpExtensionChannel' => __DIR__ . '/../..' . '/google/grpc-gcp/src/GcpExtensionChannel.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Gcp\\MethodConfig' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/MethodConfig.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Interceptor' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/Interceptor.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Internal\\InterceptorChannel' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/Internal/InterceptorChannel.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\MethodDescriptor' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/MethodDescriptor.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\RpcServer' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/RpcServer.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\ServerCallReader' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/ServerCallReader.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\ServerCallWriter' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/ServerCallWriter.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\ServerContext' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/ServerContext.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\ServerStreamingCall' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/ServerStreamingCall.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\Status' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/Status.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Grpc\\UnaryCall' => __DIR__ . '/../..' . '/grpc/grpc/src/lib/UnaryCall.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\BodySummarizer' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/BodySummarizer.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\BodySummarizerInterface' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/BodySummarizerInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Client' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Client.php',
@@ -1572,7 +1588,7 @@ class ComposerStaticInitac8d1134369feb88185b970581105e08
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInitac8d1134369feb88185b970581105e08::$classMap;
+            $loader->classMap = ComposerStaticInit4808a32f5bbcbb839b0bdee79b0ccfae::$classMap;
 
         }, null, ClassLoader::class);
     }

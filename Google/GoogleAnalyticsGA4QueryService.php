@@ -17,7 +17,7 @@ use Piwik\Date;
 use Piwik\Db;
 use Piwik\Piwik;
 use Piwik\Site;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGA4MetricMapper;
 
 class GoogleAnalyticsGA4QueryService

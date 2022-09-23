@@ -99,6 +99,10 @@ class DescriptorPool
     }
     public function getDescriptorByClassName($klass)
     {
+        $unprefixedKlass = \str_replace('Matomo\\Dependencies\\GoogleAnalyticsImporter\\', '', $klass);
+        if (isset($this->class_to_desc[$unprefixedKlass])) {
+            return $this->class_to_desc[$unprefixedKlass];
+        }
         if (isset($this->class_to_desc[$klass])) {
             return $this->class_to_desc[$klass];
         } else {
@@ -107,6 +111,10 @@ class DescriptorPool
     }
     public function getEnumDescriptorByClassName($klass)
     {
+        $unprefixedKlass = \str_replace('Matomo\\Dependencies\\GoogleAnalyticsImporter\\', '', $klass);
+        if (isset($this->class_to_enum_desc[$unprefixedKlass])) {
+            return $this->class_to_enum_desc[$unprefixedKlass];
+        }
         if (isset($this->class_to_enum_desc[$klass])) {
             return $this->class_to_enum_desc[$klass];
         } else {

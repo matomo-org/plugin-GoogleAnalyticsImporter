@@ -45,10 +45,10 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Transport\Grpc\Se
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ValidationException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ValidationTrait;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Code;
-use Grpc\BaseStub;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\BaseStub;
 use Grpc\Channel;
 use Grpc\ChannelCredentials;
-use Grpc\Interceptor;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Interceptor;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\Promise;
 /**
  * A gRPC based transport implementation.

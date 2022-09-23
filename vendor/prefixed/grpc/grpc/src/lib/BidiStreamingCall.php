@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  * Copyright 2015 gRPC authors.
@@ -16,14 +17,13 @@
  * limitations under the License.
  *
  */
-
-namespace Grpc;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc;
 
 /**
  * Represents an active call that allows for sending and receiving messages
  * in streams in any order.
  */
-class BidiStreamingCall extends AbstractCall
+class BidiStreamingCall extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\AbstractCall
 {
     /**
      * Start the call.
@@ -33,11 +33,8 @@ class BidiStreamingCall extends AbstractCall
      */
     public function start(array $metadata = [])
     {
-        $this->call->startBatch([
-            OP_SEND_INITIAL_METADATA => $metadata,
-        ]);
+        $this->call->startBatch([OP_SEND_INITIAL_METADATA => $metadata]);
     }
-
     /**
      * Reads the next value from the server.
      *
@@ -45,18 +42,16 @@ class BidiStreamingCall extends AbstractCall
      */
     public function read()
     {
-        $batch = [OP_RECV_MESSAGE => true];
+        $batch = [OP_RECV_MESSAGE => \true];
         if ($this->metadata === null) {
-            $batch[OP_RECV_INITIAL_METADATA] = true;
+            $batch[OP_RECV_INITIAL_METADATA] = \true;
         }
         $read_event = $this->call->startBatch($batch);
         if ($this->metadata === null) {
             $this->metadata = $read_event->metadata;
         }
-
         return $this->_deserializeResponse($read_event->message);
     }
-
     /**
      * Write a single message to the server. This cannot be called after
      * writesDone is called.
@@ -68,24 +63,18 @@ class BidiStreamingCall extends AbstractCall
     public function write($data, array $options = [])
     {
         $message_array = ['message' => $this->_serializeMessage($data)];
-        if (array_key_exists('flags', $options)) {
+        if (\array_key_exists('flags', $options)) {
             $message_array['flags'] = $options['flags'];
         }
-        $this->call->startBatch([
-            OP_SEND_MESSAGE => $message_array,
-        ]);
+        $this->call->startBatch([OP_SEND_MESSAGE => $message_array]);
     }
-
     /**
      * Indicate that no more writes will be sent.
      */
     public function writesDone()
     {
-        $this->call->startBatch([
-            OP_SEND_CLOSE_FROM_CLIENT => true,
-        ]);
+        $this->call->startBatch([OP_SEND_CLOSE_FROM_CLIENT => \true]);
     }
-
     /**
      * Wait for the server to send the status, and return it.
      *
@@ -94,12 +83,8 @@ class BidiStreamingCall extends AbstractCall
      */
     public function getStatus()
     {
-        $status_event = $this->call->startBatch([
-            OP_RECV_STATUS_ON_CLIENT => true,
-        ]);
-
+        $status_event = $this->call->startBatch([OP_RECV_STATUS_ON_CLIENT => \true]);
         $this->trailing_metadata = $status_event->status->metadata;
-
         return $status_event->status;
     }
 }

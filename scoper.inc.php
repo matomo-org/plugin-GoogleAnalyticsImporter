@@ -20,7 +20,45 @@ return [
             ->in($dependency);
     }, $dependenciesToPrefix),
     'patchers' => [
-        // define custom patchers here
+        // patchers for protobuf
+        static function (string $filePath, string $prefix, string $content): string {
+            $klassReplaceCode = <<<EOC
+\$unprefixedKlass = str_replace('Matomo\\Dependencies\\GoogleAnalyticsImporter\\\\\', '', \$klass);
+        if (isset(\$this->%1\$s[\$unprefixedKlass])) {
+            return \$this->%1\$s[\$unprefixedKlass];
+        }
+EOC;
+
+            // remove namespace prefix when using classes in protobuf, so it matches generated binary data in the library
+            if (preg_match('%google/protobuf/src/Google/Protobuf/Internal/DescriptorPool\\.php$%', $filePath)) {
+                $functions = [
+                    'getEnumDescriptorByClassName' => 'class_to_enum_desc',
+                    'getDescriptorByClassName' => 'class_to_desc',
+                ];
+                foreach ($functions as $fn => $paramVal) {
+                    $content = preg_replace(
+                        '/(public function ' . $fn . '\(\$klass\)\s+\{\s+)/',
+                        '$1' . sprintf($klassReplaceCode, $paramVal),
+                        $content,
+                    );
+                }
+            } else if (preg_match('%google/protobuf/src/Google/Protobuf/Internal/GPBUtil\\.php$%', $filePath)) {
+                $content = str_replace(
+                    '$var->getClass() !== $klass',
+                    '$var->getClass() !== $klass && \'Matomo\Dependencies\GoogleAnalyticsImporter\\\\\' . $var->getClass() !== $klass',
+                    $content,
+                );
+
+                $replaceCode = "\$klass = strpos(\$klass, 'Matomo\Dependencies\GoogleAnalyticsImporter\\\\\') === 0 ? \$klass : 'Matomo\Dependencies\GoogleAnalyticsImporter\\\\\' . \$klass;\n        ";
+                $content = preg_replace(
+                    '/(public static function checkMessage\(\&\$var, \$klass, \$newClass = null\)\s+\{\s+)/',
+                    '$1' . $replaceCode,
+                    $content,
+                );
+            }
+
+            return $content;
+        },
     ],
     'include-namespaces' => $namespacesToPrefix,
 ];

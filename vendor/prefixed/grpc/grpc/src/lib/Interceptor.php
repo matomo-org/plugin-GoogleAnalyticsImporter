@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  * Copyright 2018 gRPC authors.
@@ -16,8 +17,7 @@
  * limitations under the License.
  *
  */
-
-namespace Grpc;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc;
 
 /**
  * Represents an interceptor that intercept RPC invocations before call starts.
@@ -26,48 +26,22 @@ namespace Grpc;
  */
 class Interceptor
 {
-    public function interceptUnaryUnary(
-        $method,
-        $argument,
-        $deserialize,
-        $continuation,
-        array $metadata = [],
-        array $options = []
-    ) {
+    public function interceptUnaryUnary($method, $argument, $deserialize, $continuation, array $metadata = [], array $options = [])
+    {
         return $continuation($method, $argument, $deserialize, $metadata, $options);
     }
-
-    public function interceptStreamUnary(
-        $method,
-        $deserialize,
-        $continuation,
-        array $metadata = [],
-        array $options = []
-    ) {
+    public function interceptStreamUnary($method, $deserialize, $continuation, array $metadata = [], array $options = [])
+    {
         return $continuation($method, $deserialize, $metadata, $options);
     }
-
-    public function interceptUnaryStream(
-        $method,
-        $argument,
-        $deserialize,
-        $continuation,
-        array $metadata = [],
-        array $options = []
-    ) {
+    public function interceptUnaryStream($method, $argument, $deserialize, $continuation, array $metadata = [], array $options = [])
+    {
         return $continuation($method, $argument, $deserialize, $metadata, $options);
     }
-
-    public function interceptStreamStream(
-        $method,
-        $deserialize,
-        $continuation,
-        array $metadata = [],
-        array $options = []
-    ) {
+    public function interceptStreamStream($method, $deserialize, $continuation, array $metadata = [], array $options = [])
+    {
         return $continuation($method, $deserialize, $metadata, $options);
     }
-
     /**
      * Intercept the methods with Channel
      *
@@ -78,14 +52,13 @@ class Interceptor
      */
     public static function intercept($channel, $interceptors)
     {
-        if (is_array($interceptors)) {
-            for ($i = count($interceptors) - 1; $i >= 0; $i--) {
-                $channel = new Internal\InterceptorChannel($channel, $interceptors[$i]);
+        if (\is_array($interceptors)) {
+            for ($i = \count($interceptors) - 1; $i >= 0; $i--) {
+                $channel = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Internal\InterceptorChannel($channel, $interceptors[$i]);
             }
         } else {
-            $channel =  new Internal\InterceptorChannel($channel, $interceptors);
+            $channel = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Internal\InterceptorChannel($channel, $interceptors);
         }
         return $channel;
     }
 }
-

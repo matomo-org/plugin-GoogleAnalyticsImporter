@@ -17,7 +17,7 @@
  * limitations under the License.
  *
  */
-namespace Grpc\Gcp;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp;
 
 /**
  * GCPCallInvoker updates the channel pool(GcpExtensionChannel) for
@@ -30,7 +30,7 @@ namespace Grpc\Gcp;
  *     spanner session name.
  *   - if the RPC is defined as unbind, unbind the channel with the key.
  */
-class GCPCallInvoker implements \Grpc\CallInvoker
+class GCPCallInvoker implements \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\CallInvoker
 {
     private $channel;
     private $affinity_conf;
@@ -54,7 +54,7 @@ class GCPCallInvoker implements \Grpc\CallInvoker
             $this->channel->updateOpts($opts);
         } else {
             $opts['affinity_conf'] = $this->affinity_conf;
-            $channel = new \Grpc\Gcp\GcpExtensionChannel($hostname, $opts);
+            $channel = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GcpExtensionChannel($hostname, $opts);
             $this->channel = $channel;
         }
         return $this->channel;
@@ -66,18 +66,18 @@ class GCPCallInvoker implements \Grpc\CallInvoker
     }
     public function UnaryCall($channel, $method, $deserialize, $options)
     {
-        return new \Grpc\Gcp\GCPUnaryCall($channel, $method, $deserialize, $options);
+        return new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GCPUnaryCall($channel, $method, $deserialize, $options);
     }
     public function ClientStreamingCall($channel, $method, $deserialize, $options)
     {
-        return new \Grpc\Gcp\GCPClientStreamCall($channel, $method, $deserialize, $options);
+        return new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GCPClientStreamCall($channel, $method, $deserialize, $options);
     }
     public function ServerStreamingCall($channel, $method, $deserialize, $options)
     {
-        return new \Grpc\Gcp\GCPServerStreamCall($channel, $method, $deserialize, $options);
+        return new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GCPServerStreamCall($channel, $method, $deserialize, $options);
     }
     public function BidiStreamingCall($channel, $method, $deserialize, $options)
     {
-        return new \Grpc\Gcp\GCPBidiStreamingCall($channel, $method, $deserialize, $options);
+        return new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GCPBidiStreamingCall($channel, $method, $deserialize, $options);
     }
 }

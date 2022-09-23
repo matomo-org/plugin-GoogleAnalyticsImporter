@@ -18,7 +18,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\RecordInserter;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
-use Matomo\Dependencies\Monolog\Psr\Log\NullLogger;
+use Matomo\Dependencies\Psr\Log\NullLogger;
 
 abstract class BaseRecordImporterTest extends IntegrationTestCase
 {

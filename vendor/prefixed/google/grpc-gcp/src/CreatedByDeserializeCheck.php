@@ -17,7 +17,7 @@
  * limitations under the License.
  *
  */
-namespace Grpc\Gcp;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp;
 
 /**
  * DeserializeCheck is used to check whether _ChannelRef is created by deserialization or not.

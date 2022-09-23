@@ -17,18 +17,18 @@
  * limitations under the License.
  *
  */
-namespace Grpc\Gcp;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp;
 
 /**
  * Represents an active call that sends a stream of messages and then gets
  * a single response.
  */
-class GCPClientStreamCall extends \Grpc\Gcp\GcpBaseCall
+class GCPClientStreamCall extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GcpBaseCall
 {
     protected function createRealCall($data = null)
     {
         $channel_ref = $this->_rpcPreProcess($data);
-        $this->real_call = new \Grpc\ClientStreamingCall($channel_ref->getRealChannel($this->gcp_channel->credentials), $this->method, $this->deserialize, $this->options);
+        $this->real_call = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\ClientStreamingCall($channel_ref->getRealChannel($this->gcp_channel->credentials), $this->method, $this->deserialize, $this->options);
         $this->real_call->start($this->metadata_rpc);
         return $this->real_call;
     }

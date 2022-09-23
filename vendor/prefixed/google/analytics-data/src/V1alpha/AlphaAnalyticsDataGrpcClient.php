@@ -21,7 +21,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1al
 /**
  * Google Analytics reporting data service.
  */
-class AlphaAnalyticsDataGrpcClient extends \Grpc\BaseStub
+class AlphaAnalyticsDataGrpcClient extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\BaseStub
 {
     /**
      * @param string $hostname hostname

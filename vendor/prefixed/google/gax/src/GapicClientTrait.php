@@ -47,8 +47,8 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\CredentialsLoader;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\FetchAuthTokenInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\Operation;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\Message;
-use Grpc\Gcp\ApiConfig;
-use Grpc\Gcp\Config;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\ApiConfig;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\Config;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
 use LogicException;
 /**

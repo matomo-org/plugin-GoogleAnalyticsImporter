@@ -19,7 +19,7 @@ use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Plugins\DevicesDetection\Archiver;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsGA4QueryService;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 use DeviceDetector\Parser\Device\AbstractDeviceParser AS DeviceParser;
 
 class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporterGA4

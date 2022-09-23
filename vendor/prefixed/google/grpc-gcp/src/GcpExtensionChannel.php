@@ -17,7 +17,7 @@
  * limitations under the License.
  *
  */
-namespace Grpc\Gcp;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp;
 
 /**
  * GcpExtensionChannel maintains an array of channels for certain API.
@@ -157,7 +157,7 @@ class GcpExtensionChannel
                 $this->options['grpc_target_persist_bound'] = $this->max_size;
             }
             $cur_opts = \array_merge($this->options, ['grpc_gcp_channel_id' => $num_channel_refs]);
-            $channel_ref = new \Grpc\Gcp\ChannelRef($this->target, $num_channel_refs, $cur_opts);
+            $channel_ref = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\ChannelRef($this->target, $num_channel_refs, $cur_opts);
             \array_unshift($this->channel_refs, $channel_ref);
         }
         return $this->channel_refs[0];

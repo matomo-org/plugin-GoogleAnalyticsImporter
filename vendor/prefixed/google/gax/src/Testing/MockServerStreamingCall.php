@@ -40,7 +40,7 @@ use stdClass;
  * The MockServerStreamingCall class is used to mock out the \Grpc\ServerStreamingCall class
  * (https://github.com/grpc/grpc/blob/master/src/php/lib/Grpc/ServerStreamingCall.php)
  */
-class MockServerStreamingCall extends \Grpc\ServerStreamingCall
+class MockServerStreamingCall extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\ServerStreamingCall
 {
     use \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Testing\SerializationTrait;
     private $responses;

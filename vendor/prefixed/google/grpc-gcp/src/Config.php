@@ -17,7 +17,7 @@
  * limitations under the License.
  *
  */
-namespace Grpc\Gcp;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Cache\CacheItemPoolInterface;
 /**
@@ -40,7 +40,7 @@ class Config
     {
         if ($conf == null) {
             // If there is no configure file, use the default gRPC channel.
-            $this->gcp_call_invoker = new \Grpc\DefaultCallInvoker();
+            $this->gcp_call_invoker = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\DefaultCallInvoker();
             return;
         }
         $gcp_channel = null;
@@ -49,7 +49,7 @@ class Config
         $channel_pool_key = $this->hostname . '.gcp.channel.' . \getmypid();
         if (!$cacheItemPool) {
             $affinity_conf = $this->parseConfObject($conf);
-            $gcp_call_invoker = new \Grpc\Gcp\GCPCallInvoker($affinity_conf);
+            $gcp_call_invoker = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GCPCallInvoker($affinity_conf);
             $this->gcp_call_invoker = $gcp_call_invoker;
         } else {
             $item = $cacheItemPool->getItem($channel_pool_key);
@@ -59,7 +59,7 @@ class Config
             } else {
                 $affinity_conf = $this->parseConfObject($conf);
                 // Create GCP channel based on the information.
-                $gcp_call_invoker = new \Grpc\Gcp\GCPCallInvoker($affinity_conf);
+                $gcp_call_invoker = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GCPCallInvoker($affinity_conf);
             }
             $this->gcp_call_invoker = $gcp_call_invoker;
             \register_shutdown_function(function ($gcp_call_invoker, $cacheItemPool, $item) {

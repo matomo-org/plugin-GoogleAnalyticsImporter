@@ -172,6 +172,7 @@ class GPBUtil
     }
     public static function checkMessage(&$var, $klass, $newClass = null)
     {
+        $klass = \strpos($klass, 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\') === 0 ? $klass : 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\' . $klass;
         if (!$var instanceof $klass && !\is_null($var)) {
             throw new \Exception("Expect {$klass}.");
         }
@@ -191,7 +192,7 @@ class GPBUtil
             if ($var->getType() != $type) {
                 throw new \Exception("Expect repeated field of different type.");
             }
-            if ($var->getType() === GPBType::MESSAGE && $var->getClass() !== $klass && $var->getLegacyClass() !== $klass) {
+            if ($var->getType() === GPBType::MESSAGE && $var->getClass() !== $klass && 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\' . $var->getClass() !== $klass && $var->getLegacyClass() !== $klass) {
                 throw new \Exception("Expect repeated field of " . $klass . ".");
             }
             return $var;

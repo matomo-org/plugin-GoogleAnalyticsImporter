@@ -7,20 +7,4 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
-    'Grpc\\AbstractCall' => $vendorDir . '/grpc/grpc/src/lib/AbstractCall.php',
-    'Grpc\\BaseStub' => $vendorDir . '/grpc/grpc/src/lib/BaseStub.php',
-    'Grpc\\BidiStreamingCall' => $vendorDir . '/grpc/grpc/src/lib/BidiStreamingCall.php',
-    'Grpc\\CallInvoker' => $vendorDir . '/grpc/grpc/src/lib/CallInvoker.php',
-    'Grpc\\ClientStreamingCall' => $vendorDir . '/grpc/grpc/src/lib/ClientStreamingCall.php',
-    'Grpc\\DefaultCallInvoker' => $vendorDir . '/grpc/grpc/src/lib/DefaultCallInvoker.php',
-    'Grpc\\Interceptor' => $vendorDir . '/grpc/grpc/src/lib/Interceptor.php',
-    'Grpc\\Internal\\InterceptorChannel' => $vendorDir . '/grpc/grpc/src/lib/Internal/InterceptorChannel.php',
-    'Grpc\\MethodDescriptor' => $vendorDir . '/grpc/grpc/src/lib/MethodDescriptor.php',
-    'Grpc\\RpcServer' => $vendorDir . '/grpc/grpc/src/lib/RpcServer.php',
-    'Grpc\\ServerCallReader' => $vendorDir . '/grpc/grpc/src/lib/ServerCallReader.php',
-    'Grpc\\ServerCallWriter' => $vendorDir . '/grpc/grpc/src/lib/ServerCallWriter.php',
-    'Grpc\\ServerContext' => $vendorDir . '/grpc/grpc/src/lib/ServerContext.php',
-    'Grpc\\ServerStreamingCall' => $vendorDir . '/grpc/grpc/src/lib/ServerStreamingCall.php',
-    'Grpc\\Status' => $vendorDir . '/grpc/grpc/src/lib/Status.php',
-    'Grpc\\UnaryCall' => $vendorDir . '/grpc/grpc/src/lib/UnaryCall.php',
 );

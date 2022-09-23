@@ -21,7 +21,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\ImporterGA4;
 use Piwik\Plugins\VisitFrequency\API as VisitFrequencyAPI;
 use Piwik\Site;
 use Piwik\Tracker\GoalManager;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 
 class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporterGA4
 {

@@ -31,27 +31,27 @@ class GoogleResponseDataTableFactoryTest extends TestCase
             ['ga:someMetric', 'ga:someOtherMetric', 'ga:aThirdMetric']);
 
         // first response
-        $r = new \Google\Service\AnalyticsReporting\GetReportsResponse();
+        $r = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\GetReportsResponse();
 
-        $report = new \Google\Service\AnalyticsReporting\Report();
+        $report = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\Report();
         $r->setReports([$report]);
 
-        $data = new \Google\Service\AnalyticsReporting\ReportData();
+        $data = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportData();
         $report->setData($data);
 
         $rows = [
-            new \Google\Service\AnalyticsReporting\ReportRow(),
-            new \Google\Service\AnalyticsReporting\ReportRow(),
+            new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportRow(),
+            new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportRow(),
         ];
         $data->setRows($rows);
 
         $rows[0]->setDimensions(['a', 'c']);
-        $metrics = new \Google\Service\AnalyticsReporting\DateRangeValues();
+        $metrics = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\DateRangeValues();
         $rows[0]->setMetrics([$metrics]);
         $metrics->setValues([3, 4]);
 
         $rows[1]->setDimensions(['c', 'd']);
-        $metrics = new \Google\Service\AnalyticsReporting\DateRangeValues();
+        $metrics = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\DateRangeValues();
         $rows[1]->setMetrics([$metrics]);
         $metrics->setValues([1, 2]);
 
@@ -83,27 +83,27 @@ END;
         $this->assertEquals($expectedXml, $xml);
 
         // second response
-        $r = new \Google\Service\AnalyticsReporting\GetReportsResponse();
+        $r = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\GetReportsResponse();
 
-        $report = new \Google\Service\AnalyticsReporting\Report();
+        $report = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\Report();
         $r->setReports([$report]);
 
-        $data = new \Google\Service\AnalyticsReporting\ReportData();
+        $data = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportData();
         $report->setData($data);
 
         $rows = [
-            new \Google\Service\AnalyticsReporting\ReportRow(),
-            new \Google\Service\AnalyticsReporting\ReportRow(),
+            new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportRow(),
+            new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportRow(),
         ];
         $data->setRows($rows);
 
         $rows[0]->setDimensions(['a', 'c']);
-        $metrics = new \Google\Service\AnalyticsReporting\DateRangeValues();
+        $metrics = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\DateRangeValues();
         $rows[0]->setMetrics([$metrics]);
         $metrics->setValues([5]);
 
         $rows[1]->setDimensions(['c', 'd']);
-        $metrics = new \Google\Service\AnalyticsReporting\DateRangeValues();
+        $metrics = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\DateRangeValues();
         $rows[1]->setMetrics([$metrics]);
         $metrics->setValues([4]);
 
@@ -143,21 +143,21 @@ END;
             ['ga:someMetric', 'ga:someOtherMetric', 'ga:aThirdMetric']);
 
         // first response
-        $r = new \Google\Service\AnalyticsReporting\GetReportsResponse();
+        $r = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\GetReportsResponse();
 
-        $report = new \Google\Service\AnalyticsReporting\Report();
+        $report = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\Report();
         $r->setReports([$report]);
 
-        $data = new \Google\Service\AnalyticsReporting\ReportData();
+        $data = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportData();
         $report->setData($data);
 
         $rows = [
-            new \Google\Service\AnalyticsReporting\ReportRow(),
+            new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportRow(),
         ];
         $data->setRows($rows);
 
         $rows[0]->setDimensions([]);
-        $metrics = new \Google\Service\AnalyticsReporting\DateRangeValues();
+        $metrics = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\DateRangeValues();
         $rows[0]->setMetrics([$metrics]);
         $metrics->setValues([3, 4, 5]);
 

@@ -18,7 +18,7 @@ use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
 {

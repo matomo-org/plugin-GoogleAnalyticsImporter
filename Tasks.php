@@ -16,7 +16,7 @@ use Piwik\Date;
 use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
-use Matomo\Dependencies\Monolog\Psr\Log\LoggerInterface;
+use Matomo\Dependencies\Psr\Log\LoggerInterface;
 
 class Tasks extends \Piwik\Plugin\Tasks
 {

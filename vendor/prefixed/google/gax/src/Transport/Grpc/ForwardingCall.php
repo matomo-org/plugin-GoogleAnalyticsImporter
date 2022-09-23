@@ -32,7 +32,7 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Transport\Grpc;
 
-use Grpc\AbstractCall;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\AbstractCall;
 /**
  * Class ForwardingCall wraps a \Grpc\AbstractCall.
  *

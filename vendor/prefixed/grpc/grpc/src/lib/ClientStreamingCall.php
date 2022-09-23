@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  * Copyright 2015 gRPC authors.
@@ -16,14 +17,13 @@
  * limitations under the License.
  *
  */
-
-namespace Grpc;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc;
 
 /**
  * Represents an active call that sends a stream of messages and then gets
  * a single response.
  */
-class ClientStreamingCall extends AbstractCall
+class ClientStreamingCall extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\AbstractCall
 {
     /**
      * Start the call.
@@ -33,11 +33,8 @@ class ClientStreamingCall extends AbstractCall
      */
     public function start(array $metadata = [])
     {
-        $this->call->startBatch([
-            OP_SEND_INITIAL_METADATA => $metadata,
-        ]);
+        $this->call->startBatch([OP_SEND_INITIAL_METADATA => $metadata]);
     }
-
     /**
      * Write a single message to the server. This cannot be called after
      * wait is called.
@@ -49,14 +46,11 @@ class ClientStreamingCall extends AbstractCall
     public function write($data, array $options = [])
     {
         $message_array = ['message' => $this->_serializeMessage($data)];
-        if (array_key_exists('flags', $options)) {
+        if (\array_key_exists('flags', $options)) {
             $message_array['flags'] = $options['flags'];
         }
-        $this->call->startBatch([
-            OP_SEND_MESSAGE => $message_array,
-        ]);
+        $this->call->startBatch([OP_SEND_MESSAGE => $message_array]);
     }
-
     /**
      * Wait for the server to respond with data and a status.
      *
@@ -64,17 +58,10 @@ class ClientStreamingCall extends AbstractCall
      */
     public function wait()
     {
-        $event = $this->call->startBatch([
-            OP_SEND_CLOSE_FROM_CLIENT => true,
-            OP_RECV_INITIAL_METADATA => true,
-            OP_RECV_MESSAGE => true,
-            OP_RECV_STATUS_ON_CLIENT => true,
-        ]);
+        $event = $this->call->startBatch([OP_SEND_CLOSE_FROM_CLIENT => \true, OP_RECV_INITIAL_METADATA => \true, OP_RECV_MESSAGE => \true, OP_RECV_STATUS_ON_CLIENT => \true]);
         $this->metadata = $event->metadata;
-
         $status = $event->status;
         $this->trailing_metadata = $status->metadata;
-
         return [$this->_deserializeResponse($event->message), $status];
     }
 }

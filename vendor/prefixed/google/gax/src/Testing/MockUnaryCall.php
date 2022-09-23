@@ -41,7 +41,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Code;
  * method, and an optional status. The response object and status are returned immediately from the
  * wait() method.
  */
-class MockUnaryCall extends \Grpc\UnaryCall
+class MockUnaryCall extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\UnaryCall
 {
     use \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Testing\SerializationTrait;
     private $response;

@@ -17,17 +17,17 @@
  * limitations under the License.
  *
  */
-namespace Grpc\Gcp;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp;
 
 /**
  * Represents an active call that sends a single message and then gets a
  * single response.
  */
-class GCPUnaryCall extends \Grpc\Gcp\GcpBaseCall
+class GCPUnaryCall extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Gcp\GcpBaseCall
 {
     protected function createRealCall($channel)
     {
-        $this->real_call = new \Grpc\UnaryCall($channel, $this->method, $this->deserialize, $this->options);
+        $this->real_call = new \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\UnaryCall($channel, $this->method, $this->deserialize, $this->options);
         $this->has_real_call = \true;
         return $this->real_call;
     }

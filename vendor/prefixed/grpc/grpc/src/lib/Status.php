@@ -1,4 +1,5 @@
 <?php
+
 /*
  *
  * Copyright 2020 gRPC authors.
@@ -16,8 +17,7 @@
  * limitations under the License.
  *
  */
-
-namespace Grpc;
+namespace Matomo\Dependencies\GoogleAnalyticsImporter\Grpc;
 
 /**
  * This is an experimental and incomplete implementation of gRPC server
@@ -25,28 +25,26 @@ namespace Grpc;
  *
  * DO NOT USE in production.
  */
-
-class ServerCallReader
+/**
+ * Class Status
+ * @package Grpc
+ */
+class Status
 {
-    public function __construct($call, string $request_type)
+    public static function status(int $code, string $details, array $metadata = null) : array
     {
-        $this->call_ = $call;
-        $this->request_type_ = $request_type;
-    }
-
-    public function read()
-    {
-        $event = $this->call_->startBatch([
-            OP_RECV_MESSAGE => true,
-        ]);
-        if ($event->message === null) {
-            return null;
+        $status = ['code' => $code, 'details' => $details];
+        if ($metadata) {
+            $status['metadata'] = $metadata;
         }
-        $data = new $this->request_type_;
-        $data->mergeFromString($event->message);
-        return $data;
+        return $status;
     }
-
-    private $call_;
-    private $request_type_;
+    public static function ok(array $metadata = null) : array
+    {
+        return \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Status::status(STATUS_OK, 'OK', $metadata);
+    }
+    public static function unimplemented() : array
+    {
+        return \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Status::status(STATUS_UNIMPLEMENTED, 'UNIMPLEMENTED');
+    }
 }
