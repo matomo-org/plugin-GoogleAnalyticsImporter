@@ -50,9 +50,9 @@ class GoogleGA4ResponseDataTableFactory
         $this->dataTable = $table;
     }
 
-    public function mergeGaResponse(\Google\Analytics\Data\V1beta\RunReportResponse $response, array $gaMetricsToQuery)
+    public function mergeGaResponse(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\RunReportResponse $response, array $gaMetricsToQuery)
     {
-        /** @var \Google\Analytics\Data\V1beta\Row $gaRow */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Row $gaRow */
         foreach ($response->getRows() as $gaRow) {
             $tableRow = clone $this->defaultRow;
 

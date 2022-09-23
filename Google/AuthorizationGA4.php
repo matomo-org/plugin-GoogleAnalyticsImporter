@@ -9,8 +9,8 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
-use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
-use Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
 use Piwik\Container\StaticContainer;
 use Piwik\Piwik;
 use Piwik\Option;
@@ -24,7 +24,7 @@ class AuthorizationGA4
     {
         $klass = StaticContainer::get('GoogleAnalyticsImporter.googleAnalyticsDataClientClass');
         $client = new $klass([
-            'credentials' => \Google\ApiCore\CredentialsWrapper::build([
+            'credentials' => \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\CredentialsWrapper::build([
                 'keyFile' => $this->getClientConfiguration()
             ])
         ]);
@@ -37,7 +37,7 @@ class AuthorizationGA4
     {
         $klass = StaticContainer::get('GoogleAnalyticsImporter.googleAnalyticsAdminServiceClientClass');
         $adminClient = new $klass([
-            'credentials' => \Google\ApiCore\CredentialsWrapper::build([
+            'credentials' => \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\CredentialsWrapper::build([
                 'keyFile' => $this->getClientConfiguration()
             ])
         ]);

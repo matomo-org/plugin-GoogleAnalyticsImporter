@@ -15,7 +15,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\OutOfCustomDimensionsException;
 class GoogleGA4CustomDimensionMapper
 {
 
-    public function map(\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension)
+    public function map(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension)
     {
         $result = [
             'name' => $gaCustomDimension->getDisplayName(),
@@ -31,7 +31,7 @@ class GoogleGA4CustomDimensionMapper
         return $result;
     }
 
-    public function mapScope(\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension)
+    public function mapScope(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension)
     {
         $scope = $gaCustomDimension->getScope();
         switch ($scope) {
@@ -55,7 +55,7 @@ class GoogleGA4CustomDimensionMapper
                 }
             }
 
-            /** @var \Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension */
+            /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension */
             foreach ($gaCustomDimensions->iterateAllElements() as $gaCustomDimension) {
                 try {
                     $mappedScope = $this->mapScope($gaCustomDimension);

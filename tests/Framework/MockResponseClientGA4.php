@@ -8,11 +8,11 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 
-use Google\ApiCore\GapicClientTrait;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\GapicClientTrait;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
-class MockResponseClientGA4 extends \Google\Analytics\Data\V1beta\BetaAnalyticsDataClient
+class MockResponseClientGA4 extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient
 {
     public static $isForSystemTest = false;
     private $mockResponses = [];
@@ -34,7 +34,7 @@ class MockResponseClientGA4 extends \Google\Analytics\Data\V1beta\BetaAnalyticsD
 
     private function getDefaultOptions()
     {
-        $rc = new \ReflectionClass(\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient::class);
+        $rc = new \ReflectionClass(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient::class);
         $parentDir = dirname($rc->getFileName());
         //Since parent::getClientDefaults is private we only add required params here
         //In future if getClientDefaults() is updated we need to update here too

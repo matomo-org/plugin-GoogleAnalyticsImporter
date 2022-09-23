@@ -8,9 +8,9 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 
-use Google\ApiCore\GapicClientTrait;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\GapicClientTrait;
 
-class CapturingGoogleClientGA4 extends \Google\Analytics\Data\V1beta\BetaAnalyticsDataClient
+class CapturingGoogleClientGA4 extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient
 {
     use GapicClientTrait;
 
@@ -24,7 +24,7 @@ class CapturingGoogleClientGA4 extends \Google\Analytics\Data\V1beta\BetaAnalyti
 
     private function getDefaultOptions()
     {
-        $rc = new \ReflectionClass(\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient::class);
+        $rc = new \ReflectionClass(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient::class);
         $parentDir = dirname($rc->getFileName());
         //Since parent::getClientDefaults is private we only add required params here
         //In future if getClientDefaults() is updated we need to update here too

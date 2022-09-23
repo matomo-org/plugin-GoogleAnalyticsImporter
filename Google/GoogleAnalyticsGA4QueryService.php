@@ -9,8 +9,8 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
-use Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
-use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;

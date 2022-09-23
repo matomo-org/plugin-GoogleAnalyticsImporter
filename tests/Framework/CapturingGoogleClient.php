@@ -11,7 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 use Piwik\Option;
 use Psr\Http\Message\RequestInterface;
 
-class CapturingGoogleClient extends \Google\Client
+class CapturingGoogleClient extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client
 {
     const PATH_TO_CAPTURED_DATA_FILE = '/plugins/GoogleAnalyticsImporter/tests/resources/capturedresponses.log';
 

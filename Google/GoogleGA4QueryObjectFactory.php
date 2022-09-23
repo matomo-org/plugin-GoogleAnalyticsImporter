@@ -109,7 +109,7 @@ class GoogleGA4QueryObjectFactory
     //TODO: Need to change as per GA4
     private function makeGaSegment($segment)
     {
-        $segmentObj = new \Google\Service\AnalyticsReporting\Segment();
+        $segmentObj = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\Segment();
         if (isset($segment['segmentId'])) {
             $segmentObj->setSegmentId($segment['segmentId']);
         } else {
@@ -121,7 +121,7 @@ class GoogleGA4QueryObjectFactory
     private function makeGaDateRange(Date $date)
     {
         $dateStr = $date->toString();
-        return new \Google\Analytics\Data\V1beta\DateRange(
+        return new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\DateRange(
             [
                 'start_date' => $dateStr,
                 'end_date' => $dateStr
@@ -131,7 +131,7 @@ class GoogleGA4QueryObjectFactory
 
     private function makeGaSegmentDimension()
     {
-        $segmentDimensions = new \Google\Service\AnalyticsReporting\Dimension();
+        $segmentDimensions = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\Dimension();
         $segmentDimensions->setName("ga:segment");
         return $segmentDimensions;
     }
@@ -142,7 +142,7 @@ class GoogleGA4QueryObjectFactory
             case 'inList':
                 $filterType = array(
                     'field_name' => $gaDimensionFilter['dimension'],
-                    'in_list_filter' => new \Google\Analytics\Data\V1beta\Filter\InListFilter([
+                    'in_list_filter' => new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Filter\InListFilter([
                         'values' => $gaDimensionFilter['filterValue'],
                         'case_sensitive' => false
                     ])
@@ -150,8 +150,8 @@ class GoogleGA4QueryObjectFactory
                 break;
         }
         if (!empty($filterType)) {
-            return new \Google\Analytics\Data\V1beta\FilterExpression([
-                'filter' => new \Google\Analytics\Data\V1beta\Filter($filterType)
+            return new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\FilterExpression([
+                'filter' => new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Filter($filterType)
             ]);
         }
 
@@ -161,7 +161,7 @@ class GoogleGA4QueryObjectFactory
 
     private function makeGaDimension($gaDimension)
     {
-        return new \Google\Analytics\Data\V1beta\Dimension(
+        return new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Dimension(
             [
                 'name' => $gaDimension
             ]
@@ -170,7 +170,7 @@ class GoogleGA4QueryObjectFactory
 
     private function makeGaMetric($gaMetric)
     {
-        return new \Google\Analytics\Data\V1beta\Metric(
+        return new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Metric(
             [
                 'name' => $gaMetric
             ]
@@ -185,15 +185,15 @@ class GoogleGA4QueryObjectFactory
             'desc' => ($order == 'DESC')
         ];
         if (in_array($orderByInfo['field'], $metricNames)) {
-            $metric = new \Google\Analytics\Data\V1beta\OrderBy\MetricOrderBy();
+            $metric = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\OrderBy\MetricOrderBy();
             $metric->setMetricName($orderByInfo['field']);
             $data['metric'] = $metric;
         } else {
-            $dimension = new \Google\Analytics\Data\V1beta\OrderBy\DimensionOrderBy();
+            $dimension = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\OrderBy\DimensionOrderBy();
             $dimension->setDimensionName($orderByInfo['field']);
             $data['dimension'] = $dimension;
         }
-        return new \Google\Analytics\Data\V1beta\OrderBy($data);
+        return new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\OrderBy($data);
     }
 
     private function checkOrderBys($orderBys, array $metricsQueried, array $dimensions)

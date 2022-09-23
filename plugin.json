@@ -25,6 +25,12 @@
     "keywords": ["google", "analytics", "import"],
     "prefixedDependencies": [
         "google/apiclient",
-        "google/apiclient-services"
+        "google/apiclient-services",
+        "google/analytics-admin",
+        "google/analytics-data",
+        "google/common-protos",
+        "google/gax",
+        "google/grpc-gcp",
+        "google/protobuf"
     ]
 }

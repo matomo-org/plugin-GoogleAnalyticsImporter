@@ -111,7 +111,7 @@ class ImportGA4Reports extends ConsoleCommand
         ) {
             try {
                 $idSite = $importer->makeSite($property, $timezone, $type, $extraCustomDimensions);
-            } catch (\Google\Exception $ex) {
+            } catch (\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Exception $ex) {
                 throw $ex;
             }
 

@@ -58,7 +58,7 @@ class Authorization
         Option::set(self::CLIENT_CONFIG_OPTION_NAME, $config);
     }
 
-    public function saveAccessToken($oauthCode, \Google\Client $client)
+    public function saveAccessToken($oauthCode, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client $client)
     {
         $accessToken = $client->fetchAccessTokenWithAuthCode($oauthCode);
 
@@ -81,16 +81,16 @@ class Authorization
      * Returns information for the given access token
      *
      * @param array $accessToken
-     * @return \Google\Service\Oauth2\Tokeninfo
+     * @return \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Oauth2\Tokeninfo
      * @throws \Exception
      */
     protected function getTokenInfo($accessToken, $client)
     {
-        $service = new \Google\Service\Oauth2($client);
+        $service = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Oauth2($client);
         return $service->tokeninfo(['access_token' => $accessToken['access_token']]);
     }
 
-    public function configureClient(\Google\Client $client)
+    public function configureClient(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client $client)
     {
         $clientConfig = $this->getClientConfiguration();
 
@@ -134,9 +134,9 @@ class Authorization
         return $client;
     }
 
-    protected function getUserInfoByAccessToken(\Google\Client $client)
+    protected function getUserInfoByAccessToken(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client $client)
     {
-        $service = new \Google\Service\Oauth2($client);
+        $service = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Oauth2($client);
         return $service->userinfo->get();
     }
 

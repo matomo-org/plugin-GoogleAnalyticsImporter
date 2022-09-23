@@ -90,7 +90,7 @@ class ImporterTest extends IntegrationTestCase
     public function provideContainerConfig()
     {
         return [
-            \Google\Service\Analytics::class => $this->makeMockService(),
+            \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics::class => $this->makeMockService(),
         ];
     }
 
@@ -99,10 +99,10 @@ class ImporterTest extends IntegrationTestCase
         // goals
 
         // event goal
-        $goal1 = new \Google\Service\Analytics\Goal();
+        $goal1 = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal();
         $goal1->setId(5);
         $goal1->setName('goal 1');
-        $eventDetails = new \Google\Service\Analytics\GoalEventDetails();
+        $eventDetails = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\GoalEventDetails();
         $condition = new \Google\Service\Analytics\GoalEventDetailsEventConditions();
         $condition->setType('category');
         $condition->setMatchType('regexp');

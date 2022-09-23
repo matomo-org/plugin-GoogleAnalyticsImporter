@@ -8,11 +8,11 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 
-use Google\ApiCore\Call;
-use Google\ApiCore\RequestBuilder;
-use Google\ApiCore\Transport\RestTransport;
-use Google\ApiCore\Transport\HttpUnaryTransportTrait;
-use Google\ApiCore\ValidationException;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Call;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\RequestBuilder;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Transport\RestTransport;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Transport\HttpUnaryTransportTrait;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ValidationException;
 use Piwik\Common;
 use Piwik\Option;
 

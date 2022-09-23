@@ -8,11 +8,11 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 
-use Google\ApiCore\GapicClientTrait;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\GapicClientTrait;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 
-class MockResponseAdminServiceClientGA4 extends \Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient
+class MockResponseAdminServiceClientGA4 extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient
 {
     public static $isForSystemTest = false;
     private $mockResponses = [];
@@ -29,7 +29,7 @@ class MockResponseAdminServiceClientGA4 extends \Google\Analytics\Admin\V1alpha\
 
     private function getDefaultOptions()
     {
-        $rc = new \ReflectionClass(\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient::class);
+        $rc = new \ReflectionClass(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient::class);
         $parentDir = dirname($rc->getFileName());
         return [
             'serviceName' => parent::SERVICE_NAME,

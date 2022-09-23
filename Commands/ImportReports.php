@@ -95,7 +95,7 @@ class ImportReports extends ConsoleCommand
             return;
         }
 
-        $service = new \Google\Service\Analytics($googleClient);
+        $service = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics($googleClient);
 
         if (empty($idSite)) {
             $viewId = $this->getViewId($input, $output, $service);
@@ -128,7 +128,7 @@ class ImportReports extends ConsoleCommand
         ) {
             try {
                 $idSite = $importer->makeSite($account, $property, $viewId, $timezone, $type, $extraCustomDimensions);
-            } catch (\Google\Exception $ex) {
+            } catch (\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Exception $ex) {
                 if ($isAccountDeduced) {
                     $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "<comment>NOTE: We tried to deduce your GA account ID from the property ID above, it's possible your account ID differs. If this is the case specify it manually using --account=... and try again.</comment>");
                 }
@@ -295,7 +295,7 @@ class ImportReports extends ConsoleCommand
         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Done in $timer. [$queryCount API requests made to GA]");
     }
 
-    private function getViewId(InputInterface $input, OutputInterface $output, \Google\Service\Analytics $service)
+    private function getViewId(InputInterface $input, OutputInterface $output, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics $service)
     {
         $viewId = $input->getOption('view');
         if (!empty($viewId)) {
@@ -312,7 +312,7 @@ class ImportReports extends ConsoleCommand
 
         $profiles = $service->management_profiles->listManagementProfiles($accountId, $propertyId);
 
-        /** @var \Google\Service\Analytics\Profile[] $profiles */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Profile[] $profiles */
         $profiles = $profiles->getItems();
 
         $profile = reset($profiles);

@@ -19,14 +19,14 @@ return [
         return $previous;
     }),
 
-    'GoogleAnalyticsImporter.googleClientClass' => '\Google\Client',
+    'GoogleAnalyticsImporter.googleClientClass' => '\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client',
     'GoogleAnalyticsImporter.googleClient' => function (\Psr\Container\ContainerInterface $c) {
         $klass = $c->get('GoogleAnalyticsImporter.googleClientClass');
 
-        /** @var \Google\Client $googleClient */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client $googleClient */
         $googleClient = new $klass();
-        $googleClient->addScope(\Google\Service\Analytics::ANALYTICS_READONLY);
-        $googleClient->addScope(\Google\Service\AnalyticsReporting::ANALYTICS_READONLY);
+        $googleClient->addScope(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics::ANALYTICS_READONLY);
+        $googleClient->addScope(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting::ANALYTICS_READONLY);
         $googleClient->setAccessType('offline');
         $googleClient->setApprovalPrompt('force');
         $redirectUrl = Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode';
@@ -34,11 +34,11 @@ return [
         return $googleClient;
     },
 
-    \Google\Service\Analytics::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
-    \Google\Service\AnalyticsReporting::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
+    \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
+    \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
 
-    'GoogleAnalyticsImporter.googleAnalyticsDataClientClass' => '\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient',
-    'GoogleAnalyticsImporter.googleAnalyticsAdminServiceClientClass' => '\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient',
+    'GoogleAnalyticsImporter.googleAnalyticsDataClientClass' => '\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient',
+    'GoogleAnalyticsImporter.googleAnalyticsAdminServiceClientClass' => '\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient',
 
     'GoogleAnalyticsImporter.recordImporters' => [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporter::class, // must be first

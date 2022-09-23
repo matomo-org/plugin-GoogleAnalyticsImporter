@@ -14,10 +14,10 @@ class CannotImportGoalException extends \Exception
 
     /**
      * CannotImportGoalException constructor.
-     * @param \Google\Service\Analytics\Goal $gaGoal
+     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal $gaGoal
      * @param string $string
      */
-    public function __construct(\Google\Service\Analytics\Goal $gaGoal, $reason)
+    public function __construct(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal $gaGoal, $reason)
     {
         parent::__construct("Unable to import the '{$gaGoal->getName()}' goal: $reason.");
         $this->gaGoal = $gaGoal;

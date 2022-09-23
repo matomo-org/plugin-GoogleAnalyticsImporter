@@ -14,11 +14,11 @@
     "scripts": {
         "post-install-cmd": [
             "Google\\Task\\Composer::cleanup",
-            "@php ../../console composer:prefix-dependency --plugin=GoogleAnalyticsImporter --remove-originals"
+            "@php ../../console composer:prefix-dependency --plugin=GoogleAnalyticsImporter"
         ],
         "post-update-cmd": [
             "Google\\Task\\Composer::cleanup",
-            "@php ../../console composer:prefix-dependency --plugin=GoogleAnalyticsImporter --remove-originals"
+            "@php ../../console composer:prefix-dependency --plugin=GoogleAnalyticsImporter"
         ]
     },
     "extra": {
@@ -27,5 +27,9 @@
             "AnalyticsReporting",
             "Oauth2"
         ]
-    }
+    },
+    "prefixedDependencies": [
+        "google/apiclient",
+        "google/apiclient-services"
+    ]
 }

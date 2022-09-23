@@ -8,9 +8,9 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 
-use Google\ApiCore\GapicClientTrait;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\GapicClientTrait;
 
-class CapturingGoogleAdminServiceClientGA4 extends \Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient
+class CapturingGoogleAdminServiceClientGA4 extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient
 {
     use GapicClientTrait;
 
@@ -25,7 +25,7 @@ class CapturingGoogleAdminServiceClientGA4 extends \Google\Analytics\Admin\V1alp
 
     private function getDefaultOptions()
     {
-        $rc = new \ReflectionClass(\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient::class);
+        $rc = new \ReflectionClass(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient::class);
         $parentDir = dirname($rc->getFileName());
         return [
             'serviceName' => parent::SERVICE_NAME,

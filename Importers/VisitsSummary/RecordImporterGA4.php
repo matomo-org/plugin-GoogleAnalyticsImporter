@@ -10,7 +10,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary;
 
 
-use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsGA4QueryService;

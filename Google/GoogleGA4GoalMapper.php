@@ -27,7 +27,7 @@ class GoogleGA4GoalMapper
         $this->logger = $logger;
     }
 
-    public function mapManualGoal(\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
+    public function mapManualGoal(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
     {
         $result = $this->mapBasicGoalProperties($gaGoal);
         $result['match_attribute'] = 'manually';
@@ -36,7 +36,7 @@ class GoogleGA4GoalMapper
         return $result;
     }
 
-    public function mapEventGoal(\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
+    public function mapEventGoal(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
     {
         $result = $this->mapBasicGoalProperties($gaGoal);
         $result['match_attribute'] = 'event_name';
@@ -45,7 +45,7 @@ class GoogleGA4GoalMapper
         return $result;
     }
 
-    private function mapBasicGoalProperties(\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
+    private function mapBasicGoalProperties(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
     {
         $result = [
             'name' => $gaGoal->getEventName(),
@@ -62,11 +62,11 @@ class GoogleGA4GoalMapper
         return $result;
     }
 
-    private function mapFunnelSteps(\Google\Service\Analytics\Goal $gaGoal, \Google\Service\Analytics\GoalUrlDestinationDetails $urlMatchDetails)
+    private function mapFunnelSteps(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal $gaGoal, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\GoalUrlDestinationDetails $urlMatchDetails)
     {
         $steps = [];
 
-        /** @var \Google\Service\Analytics\GoalUrlDestinationDetailsSteps $step */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\GoalUrlDestinationDetailsSteps $step */
         foreach ($urlMatchDetails->getSteps() as $step) {
             $steps[] = [
                 'name' => $step->getName(),

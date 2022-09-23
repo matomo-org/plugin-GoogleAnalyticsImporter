@@ -8,8 +8,8 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
-use Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
-use Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Piwik\API\Request;
 use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
@@ -242,7 +242,7 @@ class ImporterGA4
 
         $goals = $this->gaAdminClient->listConversionEvents($propertyId);
 
-        /** @var \Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal */
         foreach ($goals->iteratePages() as $page) {
             foreach ($page as $gaGoal) {
                 $gaGoal->id = str_replace($propertyId . '/conversionEvents/', '', $gaGoal->getName());
@@ -295,7 +295,7 @@ class ImporterGA4
         $existingCustomDimensions = \Piwik\Plugins\CustomDimensions\API::getInstance()->getConfiguredCustomDimensions($idSite);
         $customDimensions = $this->gaAdminClient->listCustomDimensions($propertyId);
 
-        /** @var \Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension */
         foreach ($customDimensions->iterateAllElements() as $gaCustomDimension) {
             $gaCustomDimension->id = ($gaCustomDimension->getScope() === 1 ? 'customEvent:' : 'customUser:') . $gaCustomDimension->getParameterName();
             if ($this->customDimensionExists($existingCustomDimensions, $gaCustomDimension)) {
@@ -586,7 +586,7 @@ class ImporterGA4
         Option::set($hadTrafficKey, 1);
     }
 
-    private function goalExists(array $existingGoals, \Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
+    private function goalExists(array $existingGoals, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
     {
         foreach ($existingGoals as $goal) {
             $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal'], $goal['idsite']);
@@ -601,7 +601,7 @@ class ImporterGA4
         return false;
     }
 
-    private function customDimensionExists(array $existingCustomDimensions, \Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension)
+    private function customDimensionExists(array $existingCustomDimensions, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension)
     {
         foreach ($existingCustomDimensions as $customDimension) {
             $customDimensionId = $this->idMapper->getGoogleAnalyticsId('customdimension', $customDimension['idcustomdimension'], $customDimension['idsite']);

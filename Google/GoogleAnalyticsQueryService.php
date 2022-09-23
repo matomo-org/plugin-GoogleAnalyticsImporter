@@ -35,7 +35,7 @@ class GoogleAnalyticsQueryService
     private $maxAttempts = self::DEFAULT_MAX_ATTEMPTS;
 
     /**
-     * @var \Google\Service\Analytics
+     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics
      */
     private $gaService;
 
@@ -76,7 +76,7 @@ class GoogleAnalyticsQueryService
      */
     private $quotaUser;
 
-    public function __construct(\Google\Service\AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite, $quotaUser,
+    public function __construct(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite, $quotaUser,
                                 GoogleQueryObjectFactory $googleQueryObjectFactory, LoggerInterface $logger)
     {
         $this->gaService = $gaService;

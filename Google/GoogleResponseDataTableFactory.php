@@ -50,11 +50,11 @@ class GoogleResponseDataTableFactory
         $this->dataTable = $table;
     }
 
-    public function mergeGaResponse(\Google\Service\AnalyticsReporting\GetReportsResponse $response, array $chunk)
+    public function mergeGaResponse(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\GetReportsResponse $response, array $chunk)
     {
-        /** @var \Google\Service\AnalyticsReporting\Report $gaReport */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\Report $gaReport */
         foreach ($response->getReports() as $gaReport) {
-            /** @var \Google\Service\AnalyticsReporting\ReportRow $gaRow */
+            /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting\ReportRow $gaRow */
             foreach ($gaReport->getData()->getRows() as $gaRow) {
                 $tableRow = clone $this->defaultRow;
 
