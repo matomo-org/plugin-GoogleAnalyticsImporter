@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.3.3
+- Added empty label check for UserCountry Importer GA4
+
 # 4.3.2
 - Fixed redirect uri bug when passing domain in console command
 - Fixed recent dates not importing all dates.
