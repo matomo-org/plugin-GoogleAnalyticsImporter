@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.3.4
+- Fixed code to resume import to import before last_day_imported
+
 # 4.3.3
 - Added empty label check for UserCountry Importer GA4
 
