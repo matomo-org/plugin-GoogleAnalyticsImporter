@@ -14,7 +14,7 @@
         name="startDate"
         v-model="startDate"
         :title="translate('GoogleAnalyticsImporter_StartDate')"
-        :placeholder="translate('GoogleAnalyticsImporter_CreationDate')"
+        :placeholder="`${translate('GoogleAnalyticsImporter_CreationDate')} (YYYY-MM-DD)`"
         :inline-help="translate('GoogleAnalyticsImporter_StartDateHelp')"
       >
       </Field>
