@@ -2,18 +2,18 @@
 <result>
 	<row>
 		<label>SM-N9006</label>
-		<nb_visits>95</nb_visits>
-		<nb_actions>347</nb_actions>
-		<sum_visit_length>2045</sum_visit_length>
+		<nb_visits>93</nb_visits>
+		<nb_actions>339</nb_actions>
+		<sum_visit_length>1997</sum_visit_length>
 		<bounce_count>20</bounce_count>
-		<nb_visits_converted>25</nb_visits_converted>
-		<nb_conversions>58</nb_conversions>
+		<nb_visits_converted>24</nb_visits_converted>
+		<nb_conversions>57</nb_conversions>
 		<revenue>284254</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>12</nb_conversions>
+				<nb_conversions>11</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>11</nb_visits_converted>
+				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>14</nb_conversions>
@@ -41,23 +41,23 @@
 				<items>202</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>66</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>64</sum_daily_nb_uniq_visitors>
 		<segment>deviceBrand==;deviceModel==SM-N9006</segment>
 	</row>
 	<row>
 		<label>Desire</label>
-		<nb_visits>68</nb_visits>
-		<nb_actions>270</nb_actions>
-		<sum_visit_length>5372</sum_visit_length>
+		<nb_visits>67</nb_visits>
+		<nb_actions>268</nb_actions>
+		<sum_visit_length>5371</sum_visit_length>
 		<bounce_count>15</bounce_count>
-		<nb_visits_converted>24</nb_visits_converted>
-		<nb_conversions>48</nb_conversions>
+		<nb_visits_converted>23</nb_visits_converted>
+		<nb_conversions>47</nb_conversions>
 		<revenue>252392</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>13</nb_conversions>
+				<nb_conversions>12</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>11</nb_visits_converted>
+				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>9</nb_conversions>
@@ -85,59 +85,15 @@
 				<items>187</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>55</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>54</sum_daily_nb_uniq_visitors>
 		<segment>deviceBrand==;deviceModel==Desire</segment>
 	</row>
 	<row>
-		<label>SGPT13</label>
-		<nb_visits>66</nb_visits>
-		<nb_actions>220</nb_actions>
-		<sum_visit_length>790</sum_visit_length>
-		<bounce_count>13</bounce_count>
-		<nb_visits_converted>23</nb_visits_converted>
-		<nb_conversions>45</nb_conversions>
-		<revenue>166986</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>12</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>10</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>13</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>12</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>20</nb_conversions>
-				<revenue>166986</revenue>
-				<items>129</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>56</sum_daily_nb_uniq_visitors>
-		<segment>deviceBrand==;deviceModel==SGPT13</segment>
-	</row>
-	<row>
 		<label>Nexus 4</label>
-		<nb_visits>64</nb_visits>
-		<nb_actions>243</nb_actions>
+		<nb_visits>63</nb_visits>
+		<nb_actions>242</nb_actions>
 		<sum_visit_length>2455</sum_visit_length>
-		<bounce_count>13</bounce_count>
+		<bounce_count>12</bounce_count>
 		<nb_visits_converted>19</nb_visits_converted>
 		<nb_conversions>41</nb_conversions>
 		<revenue>187210</revenue>
@@ -173,15 +129,59 @@
 				<items>155</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>49</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>48</sum_daily_nb_uniq_visitors>
 		<segment>deviceBrand==;deviceModel==Nexus+4</segment>
 	</row>
 	<row>
+		<label>SGPT13</label>
+		<nb_visits>63</nb_visits>
+		<nb_actions>204</nb_actions>
+		<sum_visit_length>748</sum_visit_length>
+		<bounce_count>13</bounce_count>
+		<nb_visits_converted>20</nb_visits_converted>
+		<nb_conversions>40</nb_conversions>
+		<revenue>145428</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>12</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>10</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>10</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>9</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>18</nb_conversions>
+				<revenue>145428</revenue>
+				<items>110</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>53</sum_daily_nb_uniq_visitors>
+		<segment>deviceBrand==;deviceModel==SGPT13</segment>
+	</row>
+	<row>
 		<label>iPhone</label>
-		<nb_visits>8</nb_visits>
-		<nb_actions>10</nb_actions>
+		<nb_visits>7</nb_visits>
+		<nb_actions>9</nb_actions>
 		<sum_visit_length>3259</sum_visit_length>
-		<bounce_count>6</bounce_count>
+		<bounce_count>5</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>2</nb_conversions>
 		<revenue>0</revenue>
@@ -217,7 +217,7 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 		<segment>deviceBrand==;deviceModel==iPhone</segment>
 	</row>
 	<row>
@@ -309,94 +309,6 @@
 		<segment>deviceBrand==;deviceModel==iPhone+X</segment>
 	</row>
 	<row>
-		<label>LG-M700</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>1294</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>deviceBrand==;deviceModel==LG-M700</segment>
-	</row>
-	<row>
-		<label>Not set in Google Analytics</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<segment>deviceBrand==;deviceModel==__not_set_in_google_analytics__</segment>
-	</row>
-	<row>
 		<label>SM-A520F</label>
 		<nb_visits>2</nb_visits>
 		<nb_actions>2</nb_actions>
@@ -483,94 +395,6 @@
 		</goals>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<segment>deviceBrand==;deviceModel==SM-J600FN</segment>
-	</row>
-	<row>
-		<label>7 Plus</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>deviceBrand==;deviceModel==7+Plus</segment>
-	</row>
-	<row>
-		<label>ATU-L11</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>deviceBrand==;deviceModel==ATU-L11</segment>
 	</row>
 	<row>
 		<label>COL-L29</label>
@@ -944,50 +768,6 @@
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>deviceBrand==;deviceModel==LYA-L29</segment>
-	</row>
-	<row>
-		<label>M8</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>deviceBrand==;deviceModel==M8</segment>
 	</row>
 	<row>
 		<label>moto E5 play</label>

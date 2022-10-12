@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
-	<Referrers_visitorsFromSearchEngines>44</Referrers_visitorsFromSearchEngines>
-	<Referrers_visitorsFromSocialNetworks>242</Referrers_visitorsFromSocialNetworks>
-	<Referrers_visitorsFromDirectEntry>53</Referrers_visitorsFromDirectEntry>
-	<Referrers_visitorsFromWebsites>370</Referrers_visitorsFromWebsites>
+	<Referrers_visitorsFromSearchEngines>33</Referrers_visitorsFromSearchEngines>
+	<Referrers_visitorsFromSocialNetworks>239</Referrers_visitorsFromSocialNetworks>
+	<Referrers_visitorsFromDirectEntry>50</Referrers_visitorsFromDirectEntry>
+	<Referrers_visitorsFromWebsites>359</Referrers_visitorsFromWebsites>
 	<Referrers_visitorsFromCampaigns>0</Referrers_visitorsFromCampaigns>
 	<Referrers_distinctSearchEngines>1</Referrers_distinctSearchEngines>
 	<Referrers_distinctSocialNetworks>3</Referrers_distinctSocialNetworks>
@@ -12,8 +12,8 @@
 	<Referrers_distinctWebsitesUrls>13</Referrers_distinctWebsitesUrls>
 	<Referrers_distinctCampaigns>0</Referrers_distinctCampaigns>
 	<Referrers_visitorsFromDirectEntry_percent>7%</Referrers_visitorsFromDirectEntry_percent>
-	<Referrers_visitorsFromSearchEngines_percent>6%</Referrers_visitorsFromSearchEngines_percent>
+	<Referrers_visitorsFromSearchEngines_percent>5%</Referrers_visitorsFromSearchEngines_percent>
 	<Referrers_visitorsFromCampaigns_percent>0%</Referrers_visitorsFromCampaigns_percent>
-	<Referrers_visitorsFromSocialNetworks_percent>34%</Referrers_visitorsFromSocialNetworks_percent>
-	<Referrers_visitorsFromWebsites_percent>52%</Referrers_visitorsFromWebsites_percent>
+	<Referrers_visitorsFromSocialNetworks_percent>35%</Referrers_visitorsFromSocialNetworks_percent>
+	<Referrers_visitorsFromWebsites_percent>53%</Referrers_visitorsFromWebsites_percent>
 </result>

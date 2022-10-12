@@ -2,23 +2,23 @@
 <result>
 	<row>
 		<label>1 page</label>
-		<nb_visits>555</nb_visits>
-		<nb_actions>1689</nb_actions>
-		<sum_visit_length>3293</sum_visit_length>
-		<bounce_count>180</bounce_count>
-		<nb_visits_converted>141</nb_visits_converted>
-		<nb_conversions>317</nb_conversions>
-		<revenue>1505425</revenue>
+		<nb_visits>532</nb_visits>
+		<nb_actions>1649</nb_actions>
+		<sum_visit_length>3283</sum_visit_length>
+		<bounce_count>165</bounce_count>
+		<nb_visits_converted>138</nb_visits_converted>
+		<nb_conversions>310</nb_conversions>
+		<revenue>1482985</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>82</nb_conversions>
+				<nb_conversions>80</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>80</nb_visits_converted>
+				<nb_visits_converted>78</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>60</nb_conversions>
+				<nb_conversions>58</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>57</nb_visits_converted>
+				<nb_visits_converted>55</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
@@ -36,12 +36,12 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>174</nb_conversions>
-				<revenue>1505425</revenue>
-				<items>1110</items>
+				<nb_conversions>171</nb_conversions>
+				<revenue>1482985</revenue>
+				<items>1094</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>228</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>205</sum_daily_nb_uniq_visitors>
 		<segment>actions==1</segment>
 	</row>
 	<row>
@@ -51,13 +51,13 @@
 	</row>
 	<row>
 		<label>2 pages</label>
-		<nb_visits>45</nb_visits>
-		<nb_actions>111</nb_actions>
-		<sum_visit_length>10555</sum_visit_length>
+		<nb_visits>41</nb_visits>
+		<nb_actions>99</nb_actions>
+		<sum_visit_length>9220</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>15</nb_visits_converted>
-		<nb_conversions>20</nb_conversions>
-		<revenue>36635</revenue>
+		<nb_visits_converted>11</nb_visits_converted>
+		<nb_conversions>15</nb_conversions>
+		<revenue>31064</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>3</nb_conversions>
@@ -65,14 +65,14 @@
 				<nb_visits_converted>2</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>7</nb_conversions>
+				<nb_conversions>4</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>6</nb_visits_converted>
+				<nb_visits_converted>3</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>6</nb_conversions>
+				<nb_conversions>5</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>5</nb_visits_converted>
+				<nb_visits_converted>4</nb_visits_converted>
 			</row>
 			<row idgoal='4'>
 				<nb_conversions>0</nb_conversions>
@@ -85,12 +85,12 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>4</nb_conversions>
-				<revenue>36635</revenue>
-				<items>29</items>
+				<nb_conversions>3</nb_conversions>
+				<revenue>31064</revenue>
+				<items>21</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>39</sum_daily_nb_uniq_visitors>
 		<segment>actions==2</segment>
 	</row>
 	<row>
@@ -198,18 +198,18 @@
 	</row>
 	<row>
 		<label>5 pages</label>
-		<nb_visits>13</nb_visits>
-		<nb_actions>124</nb_actions>
-		<sum_visit_length>2961</sum_visit_length>
+		<nb_visits>12</nb_visits>
+		<nb_actions>118</nb_actions>
+		<sum_visit_length>2914</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>6</nb_visits_converted>
-		<nb_conversions>15</nb_conversions>
+		<nb_visits_converted>5</nb_visits_converted>
+		<nb_conversions>14</nb_conversions>
 		<revenue>105307</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>4</nb_conversions>
+				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>4</nb_visits_converted>
+				<nb_visits_converted>3</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>2</nb_conversions>
@@ -237,7 +237,7 @@
 				<items>81</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
 		<segment>actions==5</segment>
 	</row>
 	<row>
