@@ -2,18 +2,18 @@
 <result>
 	<row>
 		<label>Android / Android Browser / (not set)</label>
-		<nb_visits>163</nb_visits>
-		<nb_actions>617</nb_actions>
-		<sum_visit_length>7417</sum_visit_length>
+		<nb_visits>160</nb_visits>
+		<nb_actions>607</nb_actions>
+		<sum_visit_length>7368</sum_visit_length>
 		<bounce_count>35</bounce_count>
-		<nb_visits_converted>48</nb_visits_converted>
-		<nb_conversions>106</nb_conversions>
+		<nb_visits_converted>46</nb_visits_converted>
+		<nb_conversions>104</nb_conversions>
 		<revenue>536646</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>25</nb_conversions>
+				<nb_conversions>23</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>23</nb_visits_converted>
+				<nb_visits_converted>21</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>23</nb_conversions>
@@ -41,16 +41,16 @@
 				<items>389</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>91</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>88</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
 		<label>Windows / Internet Explorer / (not set)</label>
-		<nb_visits>152</nb_visits>
-		<nb_actions>610</nb_actions>
-		<sum_visit_length>3858</sum_visit_length>
-		<bounce_count>23</bounce_count>
+		<nb_visits>149</nb_visits>
+		<nb_actions>606</nb_actions>
+		<sum_visit_length>3857</sum_visit_length>
+		<bounce_count>22</bounce_count>
 		<nb_visits_converted>48</nb_visits_converted>
-		<nb_conversions>107</nb_conversions>
+		<nb_conversions>106</nb_conversions>
 		<revenue>538589</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -59,7 +59,7 @@
 				<nb_visits_converted>20</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>27</nb_conversions>
+				<nb_conversions>26</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>25</nb_visits_converted>
 			</row>
@@ -84,17 +84,17 @@
 				<items>405</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>77</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>74</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
 		<label>Android / Chrome / (not set)</label>
-		<nb_visits>130</nb_visits>
-		<nb_actions>463</nb_actions>
-		<sum_visit_length>3245</sum_visit_length>
-		<bounce_count>26</bounce_count>
-		<nb_visits_converted>43</nb_visits_converted>
-		<nb_conversions>86</nb_conversions>
-		<revenue>354196</revenue>
+		<nb_visits>126</nb_visits>
+		<nb_actions>446</nb_actions>
+		<sum_visit_length>3203</sum_visit_length>
+		<bounce_count>25</bounce_count>
+		<nb_visits_converted>40</nb_visits_converted>
+		<nb_conversions>81</nb_conversions>
+		<revenue>332638</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>22</nb_conversions>
@@ -102,9 +102,9 @@
 				<nb_visits_converted>20</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>22</nb_conversions>
+				<nb_conversions>19</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>21</nb_visits_converted>
+				<nb_visits_converted>18</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -122,22 +122,22 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>42</nb_conversions>
-				<revenue>354196</revenue>
-				<items>284</items>
+				<nb_conversions>40</nb_conversions>
+				<revenue>332638</revenue>
+				<items>265</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>80</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>76</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
 		<label>Windows / Chrome / (not set)</label>
-		<nb_visits>94</nb_visits>
-		<nb_actions>321</nb_actions>
-		<sum_visit_length>4263</sum_visit_length>
+		<nb_visits>93</nb_visits>
+		<nb_actions>318</nb_actions>
+		<sum_visit_length>4261</sum_visit_length>
 		<bounce_count>21</bounce_count>
 		<nb_visits_converted>27</nb_visits_converted>
-		<nb_conversions>57</nb_conversions>
-		<revenue>244202</revenue>
+		<nb_conversions>56</nb_conversions>
+		<revenue>242228</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>16</nb_conversions>
@@ -165,30 +165,30 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>29</nb_conversions>
-				<revenue>244202</revenue>
-				<items>186</items>
+				<nb_conversions>28</nb_conversions>
+				<revenue>242228</revenue>
+				<items>184</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>65</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>64</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
 		<label>GNU/Linux / Firefox / (not set)</label>
-		<nb_visits>89</nb_visits>
-		<nb_actions>334</nb_actions>
-		<sum_visit_length>2068</sum_visit_length>
+		<nb_visits>86</nb_visits>
+		<nb_actions>325</nb_actions>
+		<sum_visit_length>2064</sum_visit_length>
 		<bounce_count>13</bounce_count>
-		<nb_visits_converted>30</nb_visits_converted>
-		<nb_conversions>66</nb_conversions>
-		<revenue>281303</revenue>
+		<nb_visits_converted>28</nb_visits_converted>
+		<nb_conversions>63</nb_conversions>
+		<revenue>276824</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>21</nb_conversions>
+				<nb_conversions>20</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>20</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>11</nb_conversions>
+				<nb_conversions>10</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>10</nb_visits_converted>
 			</row>
@@ -208,12 +208,12 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>34</nb_conversions>
-				<revenue>281303</revenue>
-				<items>199</items>
+				<nb_conversions>33</nb_conversions>
+				<revenue>276824</revenue>
+				<items>196</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>68</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>65</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
 		<label>Android / Android Browser / 360x640</label>
@@ -257,178 +257,6 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
-		<label>Android / Chrome / 360x640</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>4</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
-		<label>Android / Chrome / 360x720</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>1294</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
-		<label>Windows / Chrome / 1366x768</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>1193</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
-		<label>Windows / Chrome / 1536x864</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>6</nb_actions>
-		<sum_visit_length>55</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
 		<label>Windows / Chrome / 1920x1080</label>
@@ -517,10 +345,53 @@
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
-		<label>iOS / Safari / 375x667</label>
+		<label>Android / Chrome / 360x640</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+	</row>
+	<row>
+		<label>Windows / Chrome / 1366x768</label>
 		<nb_visits>3</nb_visits>
 		<nb_actions>4</nb_actions>
-		<sum_visit_length>1591</sum_visit_length>
+		<sum_visit_length>1193</sum_visit_length>
 		<bounce_count>2</bounce_count>
 		<nb_visits_converted>1</nb_visits_converted>
 		<nb_conversions>1</nb_conversions>
@@ -540,6 +411,49 @@
 				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+	</row>
+	<row>
+		<label>Windows / Chrome / 1536x864</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>5</nb_actions>
+		<sum_visit_length>55</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='4'>
 				<nb_conversions>0</nb_conversions>
@@ -712,6 +626,49 @@
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+	</row>
+	<row>
+		<label>iOS / Safari / 375x667</label>
+		<nb_visits>2</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>1591</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 			<row idgoal='4'>
 				<nb_conversions>0</nb_conversions>
@@ -1076,6 +1033,49 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
+		<label>Android / Chrome / 360x720</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+	</row>
+	<row>
 		<label>Android / Chrome / 360x740</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>3</nb_actions>
@@ -1119,136 +1119,7 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
-		<label>Android / Chrome / 360x750</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
 		<label>Android / Chrome / 360x760</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
-		<label>Android / Chrome / 360x780</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
-		<label>Android / Chrome / 412x823</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -1635,49 +1506,6 @@
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 	</row>
 	<row>
-		<label>Mac / Safari / 1440x900</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
 		<label>Mac / Safari / 1920x1080</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
@@ -1947,49 +1775,6 @@
 		<sum_daily_nb_users>0</sum_daily_nb_users>
 	</row>
 	<row>
-		<label>Windows / Firefox / 1366x768</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
 		<label>Windows / Firefox / 1920x1080</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -2038,92 +1823,6 @@
 		<nb_actions>2</nb_actions>
 		<sum_visit_length>14</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
-		<label>Windows / Microsoft Edge / 1093x614</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-	</row>
-	<row>
-		<label>Windows / Microsoft Edge / 1188x668</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>

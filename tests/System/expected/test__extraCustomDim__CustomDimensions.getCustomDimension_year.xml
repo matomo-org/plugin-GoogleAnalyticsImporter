@@ -2,13 +2,13 @@
 <result>
 	<row>
 		<label>university of british columbia</label>
-		<nb_visits>174</nb_visits>
-		<nb_actions>665</nb_actions>
-		<sum_visit_length>6429</sum_visit_length>
-		<bounce_count>26</bounce_count>
-		<nb_visits_converted>57</nb_visits_converted>
-		<nb_conversions>123</nb_conversions>
-		<revenue>516971</revenue>
+		<nb_visits>170</nb_visits>
+		<nb_actions>657</nb_actions>
+		<sum_visit_length>6425</sum_visit_length>
+		<bounce_count>25</bounce_count>
+		<nb_visits_converted>55</nb_visits_converted>
+		<nb_conversions>120</nb_conversions>
+		<revenue>514997</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>29</nb_conversions>
@@ -16,9 +16,9 @@
 				<nb_visits_converted>27</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>29</nb_conversions>
+				<nb_conversions>27</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>27</nb_visits_converted>
+				<nb_visits_converted>25</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
@@ -36,27 +36,27 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>64</nb_conversions>
-				<revenue>516971</revenue>
-				<items>407</items>
+				<nb_conversions>63</nb_conversions>
+				<revenue>514997</revenue>
+				<items>405</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>90</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>86</sum_daily_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>37</avg_time_on_site>
+		<avg_time_on_site>38</avg_time_on_site>
 		<bounce_rate>15%</bounce_rate>
-		<nb_actions_per_visit>3.8</nb_actions_per_visit>
+		<nb_actions_per_visit>3.9</nb_actions_per_visit>
 		<segment>dimension7==university+of+british+columbia</segment>
 	</row>
 	<row>
 		<label>Not set in Google Analytics</label>
-		<nb_visits>88</nb_visits>
-		<nb_actions>300</nb_actions>
-		<sum_visit_length>2076</sum_visit_length>
-		<bounce_count>18</bounce_count>
+		<nb_visits>85</nb_visits>
+		<nb_actions>290</nb_actions>
+		<sum_visit_length>2074</sum_visit_length>
+		<bounce_count>17</bounce_count>
 		<nb_visits_converted>27</nb_visits_converted>
-		<nb_conversions>56</nb_conversions>
-		<revenue>254525</revenue>
+		<nb_conversions>54</nb_conversions>
+		<revenue>238538</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>11</nb_conversions>
@@ -64,7 +64,7 @@
 				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>16</nb_conversions>
+				<nb_conversions>15</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>13</nb_visits_converted>
 			</row>
@@ -84,12 +84,12 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>28</nb_conversions>
-				<revenue>254525</revenue>
-				<items>185</items>
+				<nb_conversions>27</nb_conversions>
+				<revenue>238538</revenue>
+				<items>174</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>59</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>56</sum_daily_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_site>24</avg_time_on_site>
 		<bounce_rate>20%</bounce_rate>
@@ -97,24 +97,72 @@
 		<segment>dimension7==__not_set_in_google_analytics__</segment>
 	</row>
 	<row>
+		<label>reseau de l universite de franche-comte</label>
+		<nb_visits>78</nb_visits>
+		<nb_actions>281</nb_actions>
+		<sum_visit_length>3719</sum_visit_length>
+		<bounce_count>15</bounce_count>
+		<nb_visits_converted>21</nb_visits_converted>
+		<nb_conversions>46</nb_conversions>
+		<revenue>207586</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>9</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>8</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>12</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>12</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>24</nb_conversions>
+				<revenue>207586</revenue>
+				<items>156</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>55</sum_daily_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_site>48</avg_time_on_site>
+		<bounce_rate>19%</bounce_rate>
+		<nb_actions_per_visit>3.6</nb_actions_per_visit>
+		<segment>dimension7==reseau+de+l+universite+de+franche-comte</segment>
+	</row>
+	<row>
 		<label>chinanet xizang province network</label>
-		<nb_visits>79</nb_visits>
-		<nb_actions>277</nb_actions>
-		<sum_visit_length>2784</sum_visit_length>
+		<nb_visits>77</nb_visits>
+		<nb_actions>273</nb_actions>
+		<sum_visit_length>2782</sum_visit_length>
 		<bounce_count>20</bounce_count>
-		<nb_visits_converted>22</nb_visits_converted>
-		<nb_conversions>49</nb_conversions>
+		<nb_visits_converted>20</nb_visits_converted>
+		<nb_conversions>47</nb_conversions>
 		<revenue>210422</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>15</nb_conversions>
+				<nb_conversions>14</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>14</nb_visits_converted>
+				<nb_visits_converted>13</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>8</nb_conversions>
+				<nb_conversions>7</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>7</nb_visits_converted>
+				<nb_visits_converted>6</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -137,75 +185,27 @@
 				<items>152</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>60</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>58</sum_daily_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>35</avg_time_on_site>
-		<bounce_rate>25%</bounce_rate>
+		<avg_time_on_site>36</avg_time_on_site>
+		<bounce_rate>26%</bounce_rate>
 		<nb_actions_per_visit>3.5</nb_actions_per_visit>
 		<segment>dimension7==chinanet+xizang+province+network</segment>
 	</row>
 	<row>
-		<label>reseau de l universite de franche-comte</label>
-		<nb_visits>79</nb_visits>
-		<nb_actions>287</nb_actions>
-		<sum_visit_length>3758</sum_visit_length>
-		<bounce_count>15</bounce_count>
-		<nb_visits_converted>22</nb_visits_converted>
-		<nb_conversions>48</nb_conversions>
-		<revenue>213157</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>9</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>8</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>13</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>13</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>25</nb_conversions>
-				<revenue>213157</revenue>
-				<items>164</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>56</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>48</avg_time_on_site>
-		<bounce_rate>19%</bounce_rate>
-		<nb_actions_per_visit>3.6</nb_actions_per_visit>
-		<segment>dimension7==reseau+de+l+universite+de+franche-comte</segment>
-	</row>
-	<row>
 		<label>universitas udayana</label>
-		<nb_visits>76</nb_visits>
-		<nb_actions>325</nb_actions>
-		<sum_visit_length>1950</sum_visit_length>
+		<nb_visits>74</nb_visits>
+		<nb_actions>317</nb_actions>
+		<sum_visit_length>1902</sum_visit_length>
 		<bounce_count>13</bounce_count>
-		<nb_visits_converted>28</nb_visits_converted>
-		<nb_conversions>60</nb_conversions>
+		<nb_visits_converted>27</nb_visits_converted>
+		<nb_conversions>59</nb_conversions>
 		<revenue>301510</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>15</nb_conversions>
+				<nb_conversions>14</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>14</nb_visits_converted>
+				<nb_visits_converted>13</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>13</nb_conversions>
@@ -233,27 +233,27 @@
 				<items>224</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>57</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>55</sum_daily_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_site>26</avg_time_on_site>
-		<bounce_rate>17%</bounce_rate>
+		<bounce_rate>18%</bounce_rate>
 		<nb_actions_per_visit>4.3</nb_actions_per_visit>
 		<segment>dimension7==universitas+udayana</segment>
 	</row>
 	<row>
 		<label>deutsche telekom ag</label>
-		<nb_visits>67</nb_visits>
-		<nb_actions>247</nb_actions>
-		<sum_visit_length>1266</sum_visit_length>
+		<nb_visits>66</nb_visits>
+		<nb_actions>242</nb_actions>
+		<sum_visit_length>1264</sum_visit_length>
 		<bounce_count>17</bounce_count>
-		<nb_visits_converted>22</nb_visits_converted>
-		<nb_conversions>45</nb_conversions>
-		<revenue>235482</revenue>
+		<nb_visits_converted>21</nb_visits_converted>
+		<nb_conversions>43</nb_conversions>
+		<revenue>231003</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>14</nb_conversions>
+				<nb_conversions>13</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>13</nb_visits_converted>
+				<nb_visits_converted>12</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>8</nb_conversions>
@@ -276,23 +276,23 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>23</nb_conversions>
-				<revenue>235482</revenue>
-				<items>179</items>
+				<nb_conversions>22</nb_conversions>
+				<revenue>231003</revenue>
+				<items>176</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>50</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>49</sum_daily_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_site>19</avg_time_on_site>
-		<bounce_rate>25%</bounce_rate>
+		<bounce_rate>26%</bounce_rate>
 		<nb_actions_per_visit>3.7</nb_actions_per_visit>
 		<segment>dimension7==deutsche+telekom+ag</segment>
 	</row>
 	<row>
 		<label>universita degli studi di roma la sapienza</label>
-		<nb_visits>65</nb_visits>
-		<nb_actions>244</nb_actions>
-		<sum_visit_length>2588</sum_visit_length>
+		<nb_visits>64</nb_visits>
+		<nb_actions>242</nb_actions>
+		<sum_visit_length>2587</sum_visit_length>
 		<bounce_count>9</bounce_count>
 		<nb_visits_converted>17</nb_visits_converted>
 		<nb_conversions>41</nb_conversions>
@@ -329,7 +329,7 @@
 				<items>152</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>46</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>45</sum_daily_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_site>40</avg_time_on_site>
 		<bounce_rate>14%</bounce_rate>
@@ -385,54 +385,6 @@
 		<segment>dimension7==orange+s.a.</segment>
 	</row>
 	<row>
-		<label>orange mobile</label>
-		<nb_visits>6</nb_visits>
-		<nb_actions>7</nb_actions>
-		<sum_visit_length>1591</sum_visit_length>
-		<bounce_count>5</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>265</avg_time_on_site>
-		<bounce_rate>83%</bounce_rate>
-		<nb_actions_per_visit>1.2</nb_actions_per_visit>
-		<segment>dimension7==orange+mobile</segment>
-	</row>
-	<row>
 		<label>free mobile sas</label>
 		<nb_visits>5</nb_visits>
 		<nb_actions>7</nb_actions>
@@ -482,10 +434,10 @@
 	</row>
 	<row>
 		<label>free sas</label>
-		<nb_visits>5</nb_visits>
-		<nb_actions>10</nb_actions>
+		<nb_visits>4</nb_visits>
+		<nb_actions>9</nb_actions>
 		<sum_visit_length>888</sum_visit_length>
-		<bounce_count>2</bounce_count>
+		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
@@ -521,11 +473,11 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
 		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>178</avg_time_on_site>
-		<bounce_rate>40%</bounce_rate>
-		<nb_actions_per_visit>2</nb_actions_per_visit>
+		<avg_time_on_site>222</avg_time_on_site>
+		<bounce_rate>25%</bounce_rate>
+		<nb_actions_per_visit>2.3</nb_actions_per_visit>
 		<segment>dimension7==free+sas</segment>
 	</row>
 	<row>
@@ -577,102 +529,6 @@
 		<segment>dimension7==microsoft+corporation</segment>
 	</row>
 	<row>
-		<label>pool for broadband dsl customers</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>5</nb_actions>
-		<sum_visit_length>53</sum_visit_length>
-		<bounce_count>3</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>13</avg_time_on_site>
-		<bounce_rate>75%</bounce_rate>
-		<nb_actions_per_visit>1.3</nb_actions_per_visit>
-		<segment>dimension7==pool+for+broadband+dsl+customers</segment>
-	</row>
-	<row>
-		<label>xdsl pools - dynamic address space</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>4</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>4</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>0</avg_time_on_site>
-		<bounce_rate>100%</bounce_rate>
-		<nb_actions_per_visit>1</nb_actions_per_visit>
-		<segment>dimension7==xdsl+pools+-+dynamic+address+space</segment>
-	</row>
-	<row>
 		<label>bouygues telecom division mobile</label>
 		<nb_visits>3</nb_visits>
 		<nb_actions>3</nb_actions>
@@ -721,6 +577,150 @@
 		<segment>dimension7==bouygues+telecom+division+mobile</segment>
 	</row>
 	<row>
+		<label>orange mobile</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>1591</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_site>530</avg_time_on_site>
+		<bounce_rate>67%</bounce_rate>
+		<nb_actions_per_visit>1.3</nb_actions_per_visit>
+		<segment>dimension7==orange+mobile</segment>
+	</row>
+	<row>
+		<label>pool for broadband dsl customers</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>53</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_site>18</avg_time_on_site>
+		<bounce_rate>67%</bounce_rate>
+		<nb_actions_per_visit>1.3</nb_actions_per_visit>
+		<segment>dimension7==pool+for+broadband+dsl+customers</segment>
+	</row>
+	<row>
+		<label>xdsl pools - dynamic address space</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+		<avg_bandwidth>0</avg_bandwidth>
+		<avg_time_on_site>0</avg_time_on_site>
+		<bounce_rate>100%</bounce_rate>
+		<nb_actions_per_visit>1</nb_actions_per_visit>
+		<segment>dimension7==xdsl+pools+-+dynamic+address+space</segment>
+	</row>
+	<row>
 		<label>dynamic pools</label>
 		<nb_visits>2</nb_visits>
 		<nb_actions>2</nb_actions>
@@ -767,54 +767,6 @@
 		<bounce_rate>100%</bounce_rate>
 		<nb_actions_per_visit>1</nb_actions_per_visit>
 		<segment>dimension7==dynamic+pools</segment>
-	</row>
-	<row>
-		<label>proxad / free sas</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>0</avg_time_on_site>
-		<bounce_rate>100%</bounce_rate>
-		<nb_actions_per_visit>1</nb_actions_per_visit>
-		<segment>dimension7==proxad+%2F+free+sas</segment>
 	</row>
 	<row>
 		<label>tvcablenet</label>
@@ -911,54 +863,6 @@
 		<bounce_rate>100%</bounce_rate>
 		<nb_actions_per_visit>1</nb_actions_per_visit>
 		<segment>dimension7==videotron+ltee</segment>
-	</row>
-	<row>
-		<label>adsl-go-plus</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>0</avg_time_on_site>
-		<bounce_rate>100%</bounce_rate>
-		<nb_actions_per_visit>1</nb_actions_per_visit>
-		<segment>dimension7==adsl-go-plus</segment>
 	</row>
 	<row>
 		<label>bluewin is an lir and isp in switzerland.</label>
@@ -1201,54 +1105,6 @@
 		<segment>dimension7==bstln651+toulon+bloc+1</segment>
 	</row>
 	<row>
-		<label>bstou656 toulouse bloc 2</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>0</avg_time_on_site>
-		<bounce_rate>100%</bounce_rate>
-		<nb_actions_per_visit>1</nb_actions_per_visit>
-		<segment>dimension7==bstou656+toulouse+bloc+2</segment>
-	</row>
-	<row>
 		<label>caisse federale de credit mutuel sa</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
@@ -1487,54 +1343,6 @@
 		<bounce_rate>100%</bounce_rate>
 		<nb_actions_per_visit>1</nb_actions_per_visit>
 		<segment>dimension7==cws-broadband-lite-th-03</segment>
-	</row>
-	<row>
-		<label>dhivehi raajjeyge gulhun (private limited)</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>0</avg_time_on_site>
-		<bounce_rate>100%</bounce_rate>
-		<nb_actions_per_visit>1</nb_actions_per_visit>
-		<segment>dimension7==dhivehi+raajjeyge+gulhun+%28private+limited%29</segment>
 	</row>
 	<row>
 		<label>dsl - end users</label>
@@ -2017,54 +1825,6 @@
 		<segment>dimension7==moov+3g+4g+apn+new+dip</segment>
 	</row>
 	<row>
-		<label>orange</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>2</nb_actions>
-		<sum_visit_length>1294</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>1294</avg_time_on_site>
-		<bounce_rate>0%</bounce_rate>
-		<nb_actions_per_visit>2</nb_actions_per_visit>
-		<segment>dimension7==orange</segment>
-	</row>
-	<row>
 		<label>pool for retail dsl customers</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -2159,54 +1919,6 @@
 		<bounce_rate>100%</bounce_rate>
 		<nb_actions_per_visit>1</nb_actions_per_visit>
 		<segment>dimension7==pop+tou</segment>
-	</row>
-	<row>
-		<label>rabat_3g_maroctelecom</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>0</avg_time_on_site>
-		<bounce_rate>100%</bounce_rate>
-		<nb_actions_per_visit>1</nb_actions_per_visit>
-		<segment>dimension7==rabat_3g_maroctelecom</segment>
 	</row>
 	<row>
 		<label>residentiel</label>
@@ -2495,53 +2207,5 @@
 		<bounce_rate>100%</bounce_rate>
 		<nb_actions_per_visit>1</nb_actions_per_visit>
 		<segment>dimension7==unither-pharmaceuticals</segment>
-	</row>
-	<row>
-		<label>used for mtnci 2g 3g 4g customers</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_time_on_site>0</avg_time_on_site>
-		<bounce_rate>100%</bounce_rate>
-		<nb_actions_per_visit>1</nb_actions_per_visit>
-		<segment>dimension7==used+for+mtnci+2g+3g+4g+customers</segment>
 	</row>
 </result>

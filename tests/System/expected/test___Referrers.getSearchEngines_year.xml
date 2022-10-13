@@ -2,12 +2,12 @@
 <result>
 	<row>
 		<label>Google</label>
-		<nb_visits>44</nb_visits>
-		<nb_actions>71</nb_actions>
-		<sum_visit_length>8936</sum_visit_length>
-		<bounce_count>33</bounce_count>
-		<nb_visits_converted>3</nb_visits_converted>
-		<nb_conversions>5</nb_conversions>
+		<nb_visits>33</nb_visits>
+		<nb_actions>59</nb_actions>
+		<sum_visit_length>7642</sum_visit_length>
+		<bounce_count>23</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -21,9 +21,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>5</nb_conversions>
+				<nb_conversions>4</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>2</nb_visits_converted>
 			</row>
 			<row idgoal='4'>
 				<nb_conversions>0</nb_conversions>
@@ -41,19 +41,19 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>33</sum_daily_nb_uniq_visitors>
 		<segment>referrerType==search;referrerName==Google</segment>
 		<url>http://google.com</url>
 		<logo>plugins/Morpheus/icons/dist/searchEngines/google.com.png</logo>
 		<subtable>
 			<row>
 				<label>(not provided)</label>
-				<nb_visits>44</nb_visits>
-				<nb_actions>71</nb_actions>
-				<sum_visit_length>8936</sum_visit_length>
-				<bounce_count>33</bounce_count>
-				<nb_visits_converted>3</nb_visits_converted>
-				<nb_conversions>5</nb_conversions>
+				<nb_visits>33</nb_visits>
+				<nb_actions>59</nb_actions>
+				<sum_visit_length>7642</sum_visit_length>
+				<bounce_count>23</bounce_count>
+				<nb_visits_converted>2</nb_visits_converted>
+				<nb_conversions>4</nb_conversions>
 				<revenue>0</revenue>
 				<goals>
 					<row idgoal='1'>
@@ -67,9 +67,9 @@
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
 					<row idgoal='3'>
-						<nb_conversions>5</nb_conversions>
+						<nb_conversions>4</nb_conversions>
 						<revenue>0</revenue>
-						<nb_visits_converted>3</nb_visits_converted>
+						<nb_visits_converted>2</nb_visits_converted>
 					</row>
 					<row idgoal='4'>
 						<nb_conversions>0</nb_conversions>
@@ -87,7 +87,7 @@
 						<items>0</items>
 					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>33</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>

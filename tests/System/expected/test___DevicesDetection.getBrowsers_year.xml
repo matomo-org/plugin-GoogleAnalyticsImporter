@@ -2,13 +2,13 @@
 <result>
 	<row>
 		<label>Chrome</label>
-		<nb_visits>257</nb_visits>
-		<nb_actions>826</nb_actions>
-		<sum_visit_length>10889</sum_visit_length>
-		<bounce_count>73</bounce_count>
-		<nb_visits_converted>70</nb_visits_converted>
-		<nb_conversions>145</nb_conversions>
-		<revenue>598398</revenue>
+		<nb_visits>243</nb_visits>
+		<nb_actions>796</nb_actions>
+		<sum_visit_length>9551</sum_visit_length>
+		<bounce_count>64</bounce_count>
+		<nb_visits_converted>67</nb_visits_converted>
+		<nb_conversions>138</nb_conversions>
+		<revenue>574866</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>38</nb_conversions>
@@ -16,12 +16,12 @@
 				<nb_visits_converted>33</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>33</nb_conversions>
+				<nb_conversions>30</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>29</nb_visits_converted>
+				<nb_visits_converted>26</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>2</nb_visits_converted>
 			</row>
@@ -36,29 +36,29 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>71</nb_conversions>
-				<revenue>598398</revenue>
-				<items>470</items>
+				<nb_conversions>68</nb_conversions>
+				<revenue>574866</revenue>
+				<items>449</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>202</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>189</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/browsers/CH.png</logo>
 		<segment>browserCode==CH</segment>
 	</row>
 	<row>
 		<label>Android Browser</label>
-		<nb_visits>175</nb_visits>
-		<nb_actions>631</nb_actions>
-		<sum_visit_length>9195</sum_visit_length>
+		<nb_visits>172</nb_visits>
+		<nb_actions>621</nb_actions>
+		<sum_visit_length>9146</sum_visit_length>
 		<bounce_count>45</bounce_count>
-		<nb_visits_converted>49</nb_visits_converted>
-		<nb_conversions>107</nb_conversions>
+		<nb_visits_converted>47</nb_visits_converted>
+		<nb_conversions>105</nb_conversions>
 		<revenue>536646</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>25</nb_conversions>
+				<nb_conversions>23</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>23</nb_visits_converted>
+				<nb_visits_converted>21</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>23</nb_conversions>
@@ -86,18 +86,18 @@
 				<items>389</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>103</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>100</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/browsers/AN.png</logo>
 		<segment>browserCode==AN</segment>
 	</row>
 	<row>
 		<label>Internet Explorer</label>
-		<nb_visits>154</nb_visits>
-		<nb_actions>612</nb_actions>
-		<sum_visit_length>3858</sum_visit_length>
-		<bounce_count>25</bounce_count>
-		<nb_visits_converted>47</nb_visits_converted>
-		<nb_conversions>107</nb_conversions>
+		<nb_visits>151</nb_visits>
+		<nb_actions>608</nb_actions>
+		<sum_visit_length>3857</sum_visit_length>
+		<bounce_count>24</bounce_count>
+		<nb_visits_converted>46</nb_visits_converted>
+		<nb_conversions>106</nb_conversions>
 		<revenue>538589</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -106,9 +106,9 @@
 				<nb_visits_converted>19</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>27</nb_conversions>
+				<nb_conversions>26</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>24</nb_visits_converted>
+				<nb_visits_converted>23</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -131,27 +131,27 @@
 				<items>405</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>106</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>103</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/browsers/IE.png</logo>
 		<segment>browserCode==IE</segment>
 	</row>
 	<row>
 		<label>Firefox</label>
-		<nb_visits>95</nb_visits>
-		<nb_actions>342</nb_actions>
-		<sum_visit_length>2204</sum_visit_length>
-		<bounce_count>17</bounce_count>
-		<nb_visits_converted>31</nb_visits_converted>
-		<nb_conversions>67</nb_conversions>
-		<revenue>281303</revenue>
+		<nb_visits>91</nb_visits>
+		<nb_actions>332</nb_actions>
+		<sum_visit_length>2200</sum_visit_length>
+		<bounce_count>16</bounce_count>
+		<nb_visits_converted>29</nb_visits_converted>
+		<nb_conversions>64</nb_conversions>
+		<revenue>276824</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>21</nb_conversions>
+				<nb_conversions>20</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>20</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>12</nb_conversions>
+				<nb_conversions>11</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>11</nb_visits_converted>
 			</row>
@@ -171,12 +171,12 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>34</nb_conversions>
-				<revenue>281303</revenue>
-				<items>199</items>
+				<nb_conversions>33</nb_conversions>
+				<revenue>276824</revenue>
+				<items>196</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>74</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>70</sum_daily_nb_uniq_visitors>
 		<max_actions>2</max_actions>
 		<sum_daily_nb_users>0</sum_daily_nb_users>
 		<logo>plugins/Morpheus/icons/dist/browsers/FF.png</logo>
@@ -184,10 +184,10 @@
 	</row>
 	<row>
 		<label>Safari</label>
-		<nb_visits>11</nb_visits>
-		<nb_actions>29</nb_actions>
+		<nb_visits>9</nb_visits>
+		<nb_actions>27</nb_actions>
 		<sum_visit_length>5488</sum_visit_length>
-		<bounce_count>7</bounce_count>
+		<bounce_count>5</bounce_count>
 		<nb_visits_converted>3</nb_visits_converted>
 		<nb_conversions>3</nb_conversions>
 		<revenue>0</revenue>
@@ -223,54 +223,9 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/browsers/SF.png</logo>
 		<segment>browserCode==SF</segment>
-	</row>
-	<row>
-		<label>Microsoft Edge</label>
-		<nb_visits>6</nb_visits>
-		<nb_actions>7</nb_actions>
-		<sum_visit_length>28</sum_visit_length>
-		<bounce_count>5</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
-		<logo>plugins/Morpheus/icons/dist/browsers/PS.png</logo>
-		<segment>browserCode==PS</segment>
 	</row>
 	<row>
 		<label>Mobile Safari</label>
@@ -316,6 +271,51 @@
 		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
 		<logo>plugins/Morpheus/icons/dist/browsers/MF.png</logo>
 		<segment>browserCode==MF</segment>
+	</row>
+	<row>
+		<label>Microsoft Edge</label>
+		<nb_visits>4</nb_visits>
+		<nb_actions>5</nb_actions>
+		<sum_visit_length>28</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<logo>plugins/Morpheus/icons/dist/browsers/PS.png</logo>
+		<segment>browserCode==PS</segment>
 	</row>
 	<row>
 		<label>Samsung Browser</label>

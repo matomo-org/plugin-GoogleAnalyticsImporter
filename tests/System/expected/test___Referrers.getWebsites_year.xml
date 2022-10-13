@@ -2,23 +2,23 @@
 <result>
 	<row>
 		<label>google.com</label>
-		<nb_visits>113</nb_visits>
-		<nb_actions>383</nb_actions>
-		<sum_visit_length>4403</sum_visit_length>
+		<nb_visits>108</nb_visits>
+		<nb_actions>369</nb_actions>
+		<sum_visit_length>4352</sum_visit_length>
 		<bounce_count>17</bounce_count>
-		<nb_visits_converted>43</nb_visits_converted>
-		<nb_conversions>84</nb_conversions>
-		<revenue>278690</revenue>
+		<nb_visits_converted>40</nb_visits_converted>
+		<nb_conversions>80</nb_conversions>
+		<revenue>276716</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>21</nb_conversions>
+				<nb_conversions>20</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>20</nb_visits_converted>
+				<nb_visits_converted>19</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>21</nb_conversions>
+				<nb_conversions>19</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>21</nb_visits_converted>
+				<nb_visits_converted>19</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>2</nb_conversions>
@@ -36,33 +36,33 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>40</nb_conversions>
-				<revenue>278690</revenue>
-				<items>229</items>
+				<nb_conversions>39</nb_conversions>
+				<revenue>276716</revenue>
+				<items>227</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>55</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>50</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==google.com</segment>
 		<subtable>
 			<row>
 				<label>http://google.com/search</label>
-				<nb_visits>113</nb_visits>
-				<nb_actions>383</nb_actions>
-				<sum_visit_length>4403</sum_visit_length>
+				<nb_visits>108</nb_visits>
+				<nb_actions>369</nb_actions>
+				<sum_visit_length>4352</sum_visit_length>
 				<bounce_count>17</bounce_count>
-				<nb_visits_converted>43</nb_visits_converted>
-				<nb_conversions>84</nb_conversions>
-				<revenue>278690</revenue>
+				<nb_visits_converted>40</nb_visits_converted>
+				<nb_conversions>80</nb_conversions>
+				<revenue>276716</revenue>
 				<goals>
 					<row idgoal='1'>
-						<nb_conversions>21</nb_conversions>
+						<nb_conversions>20</nb_conversions>
 						<revenue>0</revenue>
-						<nb_visits_converted>20</nb_visits_converted>
+						<nb_visits_converted>19</nb_visits_converted>
 					</row>
 					<row idgoal='2'>
-						<nb_conversions>21</nb_conversions>
+						<nb_conversions>19</nb_conversions>
 						<revenue>0</revenue>
-						<nb_visits_converted>21</nb_visits_converted>
+						<nb_visits_converted>19</nb_visits_converted>
 					</row>
 					<row idgoal='3'>
 						<nb_conversions>2</nb_conversions>
@@ -80,34 +80,34 @@
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
 					<row idgoal='ecommerceOrder'>
-						<nb_conversions>40</nb_conversions>
-						<revenue>278690</revenue>
-						<items>229</items>
+						<nb_conversions>39</nb_conversions>
+						<revenue>276716</revenue>
+						<items>227</items>
 					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>55</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>50</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>
 	<row>
 		<label>scubadiverlife.com</label>
-		<nb_visits>85</nb_visits>
-		<nb_actions>349</nb_actions>
-		<sum_visit_length>2139</sum_visit_length>
-		<bounce_count>15</bounce_count>
-		<nb_visits_converted>18</nb_visits_converted>
-		<nb_conversions>57</nb_conversions>
-		<revenue>333701</revenue>
+		<nb_visits>82</nb_visits>
+		<nb_actions>337</nb_actions>
+		<sum_visit_length>2098</sum_visit_length>
+		<bounce_count>14</bounce_count>
+		<nb_visits_converted>16</nb_visits_converted>
+		<nb_conversions>53</nb_conversions>
+		<revenue>323651</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>11</nb_conversions>
+				<nb_conversions>10</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>8</nb_visits_converted>
+				<nb_visits_converted>7</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>12</nb_conversions>
+				<nb_conversions>11</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>10</nb_visits_converted>
+				<nb_visits_converted>9</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -125,23 +125,23 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>34</nb_conversions>
-				<revenue>333701</revenue>
-				<items>244</items>
+				<nb_conversions>32</nb_conversions>
+				<revenue>323651</revenue>
+				<items>233</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>65</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>62</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==scubadiverlife.com</segment>
 		<subtable>
 			<row>
 				<label>http://scubadiverlife.com/gear-category/fins-reviews-2</label>
-				<nb_visits>31</nb_visits>
-				<nb_actions>137</nb_actions>
-				<sum_visit_length>381</sum_visit_length>
+				<nb_visits>30</nb_visits>
+				<nb_actions>131</nb_actions>
+				<sum_visit_length>342</sum_visit_length>
 				<bounce_count>6</bounce_count>
-				<nb_visits_converted>5</nb_visits_converted>
-				<nb_conversions>22</nb_conversions>
-				<revenue>167843</revenue>
+				<nb_visits_converted>4</nb_visits_converted>
+				<nb_conversions>20</nb_conversions>
+				<revenue>162272</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>4</nb_conversions>
@@ -149,9 +149,9 @@
 						<nb_visits_converted>3</nb_visits_converted>
 					</row>
 					<row idgoal='2'>
-						<nb_conversions>3</nb_conversions>
+						<nb_conversions>2</nb_conversions>
 						<revenue>0</revenue>
-						<nb_visits_converted>3</nb_visits_converted>
+						<nb_visits_converted>2</nb_visits_converted>
 					</row>
 					<row idgoal='3'>
 						<nb_conversions>0</nb_conversions>
@@ -169,12 +169,12 @@
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
 					<row idgoal='ecommerceOrder'>
-						<nb_conversions>15</nb_conversions>
-						<revenue>167843</revenue>
-						<items>129</items>
+						<nb_conversions>14</nb_conversions>
+						<revenue>162272</revenue>
+						<items>121</items>
 					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>21</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
 			</row>
 			<row>
 				<label>http://scubadiverlife.com/gear-category/bcd</label>
@@ -221,18 +221,18 @@
 			</row>
 			<row>
 				<label>http://scubadiverlife.com/gear-category/exposure-suit</label>
-				<nb_visits>27</nb_visits>
-				<nb_actions>117</nb_actions>
-				<sum_visit_length>674</sum_visit_length>
-				<bounce_count>5</bounce_count>
-				<nb_visits_converted>10</nb_visits_converted>
-				<nb_conversions>22</nb_conversions>
-				<revenue>112529</revenue>
+				<nb_visits>25</nb_visits>
+				<nb_actions>111</nb_actions>
+				<sum_visit_length>672</sum_visit_length>
+				<bounce_count>4</bounce_count>
+				<nb_visits_converted>9</nb_visits_converted>
+				<nb_conversions>20</nb_conversions>
+				<revenue>108050</revenue>
 				<goals>
 					<row idgoal='1'>
-						<nb_conversions>5</nb_conversions>
+						<nb_conversions>4</nb_conversions>
 						<revenue>0</revenue>
-						<nb_visits_converted>4</nb_visits_converted>
+						<nb_visits_converted>3</nb_visits_converted>
 					</row>
 					<row idgoal='2'>
 						<nb_conversions>6</nb_conversions>
@@ -255,12 +255,12 @@
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
 					<row idgoal='ecommerceOrder'>
-						<nb_conversions>11</nb_conversions>
-						<revenue>112529</revenue>
-						<items>79</items>
+						<nb_conversions>10</nb_conversions>
+						<revenue>108050</revenue>
+						<items>76</items>
 					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>22</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>20</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>
@@ -398,23 +398,23 @@
 	</row>
 	<row>
 		<label>divein.com</label>
-		<nb_visits>56</nb_visits>
-		<nb_actions>227</nb_actions>
-		<sum_visit_length>2435</sum_visit_length>
+		<nb_visits>54</nb_visits>
+		<nb_actions>217</nb_actions>
+		<sum_visit_length>2432</sum_visit_length>
 		<bounce_count>8</bounce_count>
-		<nb_visits_converted>26</nb_visits_converted>
-		<nb_conversions>47</nb_conversions>
-		<revenue>181078</revenue>
+		<nb_visits_converted>24</nb_visits_converted>
+		<nb_conversions>44</nb_conversions>
+		<revenue>165091</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>12</nb_conversions>
+				<nb_conversions>11</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>10</nb_visits_converted>
+				<nb_visits_converted>9</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>15</nb_conversions>
+				<nb_conversions>14</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>14</nb_visits_converted>
+				<nb_visits_converted>13</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -432,28 +432,28 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>20</nb_conversions>
-				<revenue>181078</revenue>
-				<items>143</items>
+				<nb_conversions>19</nb_conversions>
+				<revenue>165091</revenue>
+				<items>132</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>41</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==divein.com</segment>
 		<subtable>
 			<row>
 				<label>http://divein.com/guide/how-to-become-a-padi-dive-instructor</label>
-				<nb_visits>33</nb_visits>
-				<nb_actions>152</nb_actions>
-				<sum_visit_length>1113</sum_visit_length>
+				<nb_visits>32</nb_visits>
+				<nb_actions>150</nb_actions>
+				<sum_visit_length>1112</sum_visit_length>
 				<bounce_count>4</bounce_count>
-				<nb_visits_converted>15</nb_visits_converted>
-				<nb_conversions>30</nb_conversions>
+				<nb_visits_converted>14</nb_visits_converted>
+				<nb_conversions>29</nb_conversions>
 				<revenue>145714</revenue>
 				<goals>
 					<row idgoal='1'>
-						<nb_conversions>8</nb_conversions>
+						<nb_conversions>7</nb_conversions>
 						<revenue>0</revenue>
-						<nb_visits_converted>7</nb_visits_converted>
+						<nb_visits_converted>6</nb_visits_converted>
 					</row>
 					<row idgoal='2'>
 						<nb_conversions>8</nb_conversions>
@@ -481,17 +481,17 @@
 						<items>114</items>
 					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>24</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
 			</row>
 			<row>
 				<label>http://divein.com/guide/going-pro-become-a-dive-master</label>
-				<nb_visits>23</nb_visits>
-				<nb_actions>75</nb_actions>
-				<sum_visit_length>1322</sum_visit_length>
+				<nb_visits>22</nb_visits>
+				<nb_actions>67</nb_actions>
+				<sum_visit_length>1320</sum_visit_length>
 				<bounce_count>4</bounce_count>
-				<nb_visits_converted>11</nb_visits_converted>
-				<nb_conversions>17</nb_conversions>
-				<revenue>35364</revenue>
+				<nb_visits_converted>10</nb_visits_converted>
+				<nb_conversions>15</nb_conversions>
+				<revenue>19377</revenue>
 				<goals>
 					<row idgoal='1'>
 						<nb_conversions>4</nb_conversions>
@@ -499,9 +499,9 @@
 						<nb_visits_converted>3</nb_visits_converted>
 					</row>
 					<row idgoal='2'>
-						<nb_conversions>7</nb_conversions>
+						<nb_conversions>6</nb_conversions>
 						<revenue>0</revenue>
-						<nb_visits_converted>6</nb_visits_converted>
+						<nb_visits_converted>5</nb_visits_converted>
 					</row>
 					<row idgoal='3'>
 						<nb_conversions>0</nb_conversions>
@@ -519,12 +519,12 @@
 						<nb_visits_converted>0</nb_visits_converted>
 					</row>
 					<row idgoal='ecommerceOrder'>
-						<nb_conversions>6</nb_conversions>
-						<revenue>35364</revenue>
-						<items>29</items>
+						<nb_conversions>5</nb_conversions>
+						<revenue>19377</revenue>
+						<items>18</items>
 					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>19</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>18</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>
@@ -662,9 +662,9 @@
 	</row>
 	<row>
 		<label>oahuscubadiving.com</label>
-		<nb_visits>17</nb_visits>
-		<nb_actions>62</nb_actions>
-		<sum_visit_length>249</sum_visit_length>
+		<nb_visits>16</nb_visits>
+		<nb_actions>60</nb_actions>
+		<sum_visit_length>248</sum_visit_length>
 		<bounce_count>1</bounce_count>
 		<nb_visits_converted>3</nb_visits_converted>
 		<nb_conversions>10</nb_conversions>
@@ -701,14 +701,14 @@
 				<items>49</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>13</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
 		<segment>referrerName==oahuscubadiving.com</segment>
 		<subtable>
 			<row>
 				<label>http://oahuscubadiving.com/oahu-dive-sites/</label>
-				<nb_visits>17</nb_visits>
-				<nb_actions>62</nb_actions>
-				<sum_visit_length>249</sum_visit_length>
+				<nb_visits>16</nb_visits>
+				<nb_actions>60</nb_actions>
+				<sum_visit_length>248</sum_visit_length>
 				<bounce_count>1</bounce_count>
 				<nb_visits_converted>3</nb_visits_converted>
 				<nb_conversions>10</nb_conversions>
@@ -745,7 +745,7 @@
 						<items>49</items>
 					</row>
 				</goals>
-				<sum_daily_nb_uniq_visitors>13</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
 			</row>
 		</subtable>
 	</row>
