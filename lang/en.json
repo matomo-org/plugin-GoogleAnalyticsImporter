@@ -24,7 +24,7 @@
         "ScheduleAnImportGA4": "Schedule An Import for Google Analytics 4 (GA4)",
         "StartDate": "Start Date",
         "CreationDate": "Web Property Creation Date",
-        "StartDateHelp": "The date to start importing from. By default, this is the day you created your GA web property. (YYYY-MM-DD) ",
+        "StartDateHelp": "The date to start importing from. By default, this is the day you created your GA web property. (YYYY-MM-DD)",
         "IsMobileApp": "Mobile App",
         "ViewId": "Google Analytics View ID",
         "PropertyId": "Google Analytics Property ID",
