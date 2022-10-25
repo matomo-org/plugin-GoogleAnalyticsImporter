@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 4.3.5
+- Fixes for System testcases to work due to recent changes
+- Adding more date format hints to form fields, #286
+
 # 4.3.4
 - Fixed code to resume import to import before last_day_imported
 
