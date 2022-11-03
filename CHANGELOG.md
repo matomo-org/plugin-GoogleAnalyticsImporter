@@ -2,8 +2,30 @@
 ## Changelog
 
 # 5.0.0
+- Remove all use of AngularJS from the plugin.
 
-Remove all use of AngularJS from the plugin.
+# 4.3.5
+- Fixes for System testcases to work due to recent changes
+- Adding more date format hints to form fields, #286
+
+# 4.3.4
+- Fixed code to resume import to import before last_day_imported
+
+# 4.3.3
+- Added empty label check for UserCountry Importer GA4
+
+# 4.3.2
+- Fixed redirect uri bug when passing domain in console command
+- Fixed recent dates not importing all dates.
+
+# 4.3.1
+- Added missing translation key
+
+# 4.3.0
+- Added support to import GA4 data into Matomo
+- Added code to import recent dates first
+- Upgraded guzzleHTTP version to 4.5.0
+
 
 # 4.2.0
 

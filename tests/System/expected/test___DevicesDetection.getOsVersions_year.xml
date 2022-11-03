@@ -1,19 +1,64 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>Windows 8.1</label>
-		<nb_visits>74</nb_visits>
-		<nb_actions>245</nb_actions>
-		<sum_visit_length>3941</sum_visit_length>
-		<bounce_count>17</bounce_count>
+		<label>Android 4.3</label>
+		<nb_visits>93</nb_visits>
+		<nb_actions>339</nb_actions>
+		<sum_visit_length>1997</sum_visit_length>
+		<bounce_count>20</bounce_count>
 		<nb_visits_converted>24</nb_visits_converted>
-		<nb_conversions>49</nb_conversions>
-		<revenue>165836</revenue>
+		<nb_conversions>57</nb_conversions>
+		<revenue>284254</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>13</nb_conversions>
+				<nb_conversions>11</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>12</nb_visits_converted>
+				<nb_visits_converted>10</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>14</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>14</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>32</nb_conversions>
+				<revenue>284254</revenue>
+				<items>202</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>64</sum_daily_nb_uniq_visitors>
+		<segment>operatingSystemCode==AND;operatingSystemVersion==4.3</segment>
+		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
+	</row>
+	<row>
+		<label>Windows 8.1</label>
+		<nb_visits>93</nb_visits>
+		<nb_actions>318</nb_actions>
+		<sum_visit_length>4261</sum_visit_length>
+		<bounce_count>21</bounce_count>
+		<nb_visits_converted>27</nb_visits_converted>
+		<nb_conversions>56</nb_conversions>
+		<revenue>242228</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>16</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>15</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>11</nb_conversions>
@@ -36,79 +81,34 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>24</nb_conversions>
-				<revenue>165836</revenue>
-				<items>129</items>
+				<nb_conversions>28</nb_conversions>
+				<revenue>242228</revenue>
+				<items>184</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>49</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>64</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==WIN;operatingSystemVersion==8.1</segment>
 		<logo>plugins/Morpheus/icons/dist/os/WIN.png</logo>
 	</row>
 	<row>
-		<label>Android 4.3</label>
-		<nb_visits>65</nb_visits>
-		<nb_actions>211</nb_actions>
-		<sum_visit_length>1494</sum_visit_length>
-		<bounce_count>16</bounce_count>
-		<nb_visits_converted>23</nb_visits_converted>
-		<nb_conversions>45</nb_conversions>
-		<revenue>136416</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>12</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>11</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>12</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>12</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>21</nb_conversions>
-				<revenue>136416</revenue>
-				<items>88</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>46</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==AND;operatingSystemVersion==4.3</segment>
-		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
-	</row>
-	<row>
 		<label>GNU/Linux i686</label>
-		<nb_visits>65</nb_visits>
-		<nb_actions>213</nb_actions>
-		<sum_visit_length>1565</sum_visit_length>
-		<bounce_count>11</bounce_count>
-		<nb_visits_converted>26</nb_visits_converted>
-		<nb_conversions>50</nb_conversions>
-		<revenue>145386</revenue>
+		<nb_visits>86</nb_visits>
+		<nb_actions>325</nb_actions>
+		<sum_visit_length>2064</sum_visit_length>
+		<bounce_count>13</bounce_count>
+		<nb_visits_converted>28</nb_visits_converted>
+		<nb_conversions>63</nb_conversions>
+		<revenue>276824</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>17</nb_conversions>
+				<nb_conversions>20</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>16</nb_visits_converted>
+				<nb_visits_converted>20</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>10</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>9</nb_visits_converted>
+				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -126,34 +126,79 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>23</nb_conversions>
-				<revenue>145386</revenue>
-				<items>100</items>
+				<nb_conversions>33</nb_conversions>
+				<revenue>276824</revenue>
+				<items>196</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>50</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>65</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==LIN;operatingSystemVersion==i686</segment>
 		<logo>plugins/Morpheus/icons/dist/os/LIN.png</logo>
 	</row>
 	<row>
-		<label>Windows 7</label>
-		<nb_visits>59</nb_visits>
-		<nb_actions>197</nb_actions>
-		<sum_visit_length>2796</sum_visit_length>
-		<bounce_count>13</bounce_count>
-		<nb_visits_converted>25</nb_visits_converted>
-		<nb_conversions>44</nb_conversions>
-		<revenue>148722</revenue>
+		<label>Windows Vista</label>
+		<nb_visits>78</nb_visits>
+		<nb_actions>305</nb_actions>
+		<sum_visit_length>1780</sum_visit_length>
+		<bounce_count>14</bounce_count>
+		<nb_visits_converted>22</nb_visits_converted>
+		<nb_conversions>53</nb_conversions>
+		<revenue>256463</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>15</nb_conversions>
+				<nb_conversions>8</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>13</nb_visits_converted>
+				<nb_visits_converted>7</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>10</nb_conversions>
+				<nb_conversions>15</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>8</nb_visits_converted>
+				<nb_visits_converted>14</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>30</nb_conversions>
+				<revenue>256463</revenue>
+				<items>199</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>52</sum_daily_nb_uniq_visitors>
+		<segment>operatingSystemCode==WIN;operatingSystemVersion==Vista</segment>
+		<logo>plugins/Morpheus/icons/dist/os/WIN.png</logo>
+	</row>
+	<row>
+		<label>Windows 7</label>
+		<nb_visits>76</nb_visits>
+		<nb_actions>307</nb_actions>
+		<sum_visit_length>3270</sum_visit_length>
+		<bounce_count>12</bounce_count>
+		<nb_visits_converted>28</nb_visits_converted>
+		<nb_conversions>56</nb_conversions>
+		<revenue>282126</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>16</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>14</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>11</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
@@ -171,124 +216,34 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>18</nb_conversions>
-				<revenue>148722</revenue>
-				<items>106</items>
+				<nb_conversions>28</nb_conversions>
+				<revenue>282126</revenue>
+				<items>206</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>54</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==WIN;operatingSystemVersion==7</segment>
 		<logo>plugins/Morpheus/icons/dist/os/WIN.png</logo>
 	</row>
 	<row>
-		<label>Android 4.1.1</label>
-		<nb_visits>55</nb_visits>
-		<nb_actions>173</nb_actions>
-		<sum_visit_length>661</sum_visit_length>
-		<bounce_count>13</bounce_count>
-		<nb_visits_converted>22</nb_visits_converted>
-		<nb_conversions>40</nb_conversions>
-		<revenue>127171</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>10</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>9</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>13</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>12</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>17</nb_conversions>
-				<revenue>127171</revenue>
-				<items>98</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>46</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==AND;operatingSystemVersion==4.1.1</segment>
-		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
-	</row>
-	<row>
-		<label>Windows Vista</label>
-		<nb_visits>50</nb_visits>
-		<nb_actions>185</nb_actions>
-		<sum_visit_length>1390</sum_visit_length>
-		<bounce_count>9</bounce_count>
-		<nb_visits_converted>19</nb_visits_converted>
-		<nb_conversions>40</nb_conversions>
-		<revenue>146517</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>7</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>6</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>13</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>13</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>20</nb_conversions>
-				<revenue>146517</revenue>
-				<items>111</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==WIN;operatingSystemVersion==Vista</segment>
-		<logo>plugins/Morpheus/icons/dist/os/WIN.png</logo>
-	</row>
-	<row>
 		<label>Android 2.3.7</label>
-		<nb_visits>46</nb_visits>
-		<nb_actions>185</nb_actions>
-		<sum_visit_length>5248</sum_visit_length>
-		<bounce_count>13</bounce_count>
-		<nb_visits_converted>21</nb_visits_converted>
-		<nb_conversions>38</nb_conversions>
-		<revenue>167250</revenue>
+		<nb_visits>67</nb_visits>
+		<nb_actions>268</nb_actions>
+		<sum_visit_length>5371</sum_visit_length>
+		<bounce_count>15</bounce_count>
+		<nb_visits_converted>23</nb_visits_converted>
+		<nb_conversions>47</nb_conversions>
+		<revenue>252392</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>12</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>11</nb_visits_converted>
+				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>7</nb_conversions>
+				<nb_conversions>9</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>6</nb_visits_converted>
+				<nb_visits_converted>8</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>2</nb_conversions>
@@ -306,34 +261,34 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>17</nb_conversions>
-				<revenue>167250</revenue>
-				<items>125</items>
+				<nb_conversions>24</nb_conversions>
+				<revenue>252392</revenue>
+				<items>187</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>54</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==AND;operatingSystemVersion==2.3.7</segment>
 		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
 	</row>
 	<row>
-		<label>Android 4.4.2</label>
-		<nb_visits>46</nb_visits>
-		<nb_actions>174</nb_actions>
-		<sum_visit_length>2390</sum_visit_length>
-		<bounce_count>10</bounce_count>
-		<nb_visits_converted>16</nb_visits_converted>
-		<nb_conversions>32</nb_conversions>
-		<revenue>119683</revenue>
+		<label>Android 4.1.1</label>
+		<nb_visits>63</nb_visits>
+		<nb_actions>204</nb_actions>
+		<sum_visit_length>748</sum_visit_length>
+		<bounce_count>13</bounce_count>
+		<nb_visits_converted>20</nb_visits_converted>
+		<nb_conversions>40</nb_conversions>
+		<revenue>145428</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>9</nb_conversions>
+				<nb_conversions>12</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>7</nb_visits_converted>
+				<nb_visits_converted>10</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>7</nb_conversions>
+				<nb_conversions>10</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>7</nb_visits_converted>
+				<nb_visits_converted>9</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -351,21 +306,66 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>16</nb_conversions>
-				<revenue>119683</revenue>
-				<items>101</items>
+				<nb_conversions>18</nb_conversions>
+				<revenue>145428</revenue>
+				<items>110</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>53</sum_daily_nb_uniq_visitors>
+		<segment>operatingSystemCode==AND;operatingSystemVersion==4.1.1</segment>
+		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
+	</row>
+	<row>
+		<label>Android 4.4.2</label>
+		<nb_visits>63</nb_visits>
+		<nb_actions>242</nb_actions>
+		<sum_visit_length>2455</sum_visit_length>
+		<bounce_count>12</bounce_count>
+		<nb_visits_converted>19</nb_visits_converted>
+		<nb_conversions>41</nb_conversions>
+		<revenue>187210</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>10</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>8</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>9</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>8</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>22</nb_conversions>
+				<revenue>187210</revenue>
+				<items>155</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>48</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==AND;operatingSystemVersion==4.4.2</segment>
 		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
 	</row>
 	<row>
 		<label>Windows 10</label>
-		<nb_visits>22</nb_visits>
+		<nb_visits>21</nb_visits>
 		<nb_actions>27</nb_actions>
-		<sum_visit_length>403</sum_visit_length>
-		<bounce_count>18</bounce_count>
+		<sum_visit_length>417</sum_visit_length>
+		<bounce_count>16</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
@@ -401,16 +401,16 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>22</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>21</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==WIN;operatingSystemVersion==10</segment>
 		<logo>plugins/Morpheus/icons/dist/os/WIN.png</logo>
 	</row>
 	<row>
 		<label>Android 8.0.0</label>
-		<nb_visits>7</nb_visits>
-		<nb_actions>7</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>7</bounce_count>
+		<nb_visits>9</nb_visits>
+		<nb_actions>10</nb_actions>
+		<sum_visit_length>44</sum_visit_length>
+		<bounce_count>8</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
@@ -446,16 +446,106 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==AND;operatingSystemVersion==8.0.0</segment>
 		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
 	</row>
 	<row>
+		<label>iOS 12.3.1</label>
+		<nb_visits>7</nb_visits>
+		<nb_actions>24</nb_actions>
+		<sum_visit_length>5418</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>3</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
+		<segment>operatingSystemCode==IOS;operatingSystemVersion==12.3.1</segment>
+		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
+	</row>
+	<row>
 		<label>Android 9</label>
+		<nb_visits>6</nb_visits>
+		<nb_actions>8</nb_actions>
+		<sum_visit_length>475</sum_visit_length>
+		<bounce_count>5</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
+		<segment>operatingSystemCode==AND;operatingSystemVersion==9</segment>
+		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
+	</row>
+	<row>
+		<label>Android 7.0</label>
 		<nb_visits>5</nb_visits>
 		<nb_actions>7</nb_actions>
-		<sum_visit_length>475</sum_visit_length>
-		<bounce_count>4</bounce_count>
+		<sum_visit_length>105</sum_visit_length>
+		<bounce_count>3</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
@@ -492,97 +582,7 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==AND;operatingSystemVersion==9</segment>
-		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
-	</row>
-	<row>
-		<label>Android 7.0</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>53</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==AND;operatingSystemVersion==7.0</segment>
-		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
-	</row>
-	<row>
-		<label>Android 8.1.0</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>1294</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==AND;operatingSystemVersion==8.1.0</segment>
 		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
 	</row>
 	<row>
@@ -631,10 +631,10 @@
 		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
 	</row>
 	<row>
-		<label>Android 5.0.1</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
+		<label>Mac Intel 10.14</label>
+		<nb_visits>2</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>151</sum_visit_length>
 		<bounce_count>1</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
@@ -671,9 +671,9 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==AND;operatingSystemVersion==5.0.1</segment>
-		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<segment>operatingSystemCode==MAC;operatingSystemVersion==Intel+10.14</segment>
+		<logo>plugins/Morpheus/icons/dist/os/MAC.png</logo>
 	</row>
 	<row>
 		<label>Android 5.1</label>
@@ -766,6 +766,51 @@
 		<logo>plugins/Morpheus/icons/dist/os/AND.png</logo>
 	</row>
 	<row>
+		<label>iOS 10.3.3</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>152</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>operatingSystemCode==IOS;operatingSystemVersion==10.3.3</segment>
+		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
+	</row>
+	<row>
 		<label>iOS 11.2.1</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -856,51 +901,6 @@
 		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
 	</row>
 	<row>
-		<label>iOS 11.2.6</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==IOS;operatingSystemVersion==11.2.6</segment>
-		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
-	</row>
-	<row>
 		<label>iOS 12.1.3</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -946,13 +946,13 @@
 		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
 	</row>
 	<row>
-		<label>iOS 12.3.1</label>
+		<label>iOS 12.3</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>16</nb_actions>
-		<sum_visit_length>2078</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -966,9 +966,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='4'>
 				<nb_conversions>0</nb_conversions>
@@ -987,7 +987,7 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==IOS;operatingSystemVersion==12.3.1</segment>
+		<segment>operatingSystemCode==IOS;operatingSystemVersion==12.3</segment>
 		<logo>plugins/Morpheus/icons/dist/os/IOS.png</logo>
 	</row>
 	<row>
@@ -1033,96 +1033,6 @@
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<segment>operatingSystemCode==MAC;operatingSystemVersion==Intel+10.12</segment>
-		<logo>plugins/Morpheus/icons/dist/os/MAC.png</logo>
-	</row>
-	<row>
-		<label>Mac Intel 10.13</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==MAC;operatingSystemVersion==Intel+10.13</segment>
-		<logo>plugins/Morpheus/icons/dist/os/MAC.png</logo>
-	</row>
-	<row>
-		<label>Mac Intel 10.14</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<segment>operatingSystemCode==MAC;operatingSystemVersion==Intel+10.14</segment>
 		<logo>plugins/Morpheus/icons/dist/os/MAC.png</logo>
 	</row>
 	<row>

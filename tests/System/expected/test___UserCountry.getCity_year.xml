@@ -2,23 +2,23 @@
 <result>
 	<row>
 		<label>Unknown, British Columbia, Canada</label>
-		<nb_visits>130</nb_visits>
-		<nb_actions>486</nb_actions>
-		<sum_visit_length>5866</sum_visit_length>
-		<bounce_count>22</bounce_count>
-		<nb_visits_converted>53</nb_visits_converted>
-		<nb_conversions>106</nb_conversions>
-		<revenue>353770</revenue>
+		<nb_visits>170</nb_visits>
+		<nb_actions>657</nb_actions>
+		<sum_visit_length>6425</sum_visit_length>
+		<bounce_count>25</bounce_count>
+		<nb_visits_converted>55</nb_visits_converted>
+		<nb_conversions>120</nb_conversions>
+		<revenue>514997</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>26</nb_conversions>
+				<nb_conversions>29</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>25</nb_visits_converted>
+				<nb_visits_converted>27</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>28</nb_conversions>
+				<nb_conversions>27</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>26</nb_visits_converted>
+				<nb_visits_converted>25</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>1</nb_conversions>
@@ -36,12 +36,12 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>51</nb_conversions>
-				<revenue>353770</revenue>
-				<items>282</items>
+				<nb_conversions>63</nb_conversions>
+				<revenue>514997</revenue>
+				<items>405</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>70</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>86</sum_daily_nb_uniq_visitors>
 		<lat>0</lat>
 		<long>0</long>
 		<segment>city==;regionCode==BC;countryCode==ca</segment>
@@ -54,14 +54,119 @@
 		<logo>plugins/Morpheus/icons/dist/flags/ca.png</logo>
 	</row>
 	<row>
-		<label>Suzhou, Sichuan, China</label>
-		<nb_visits>66</nb_visits>
-		<nb_actions>227</nb_actions>
-		<sum_visit_length>2723</sum_visit_length>
-		<bounce_count>18</bounce_count>
+		<label>Unknown, Unknown</label>
+		<nb_visits>85</nb_visits>
+		<nb_actions>290</nb_actions>
+		<sum_visit_length>2074</sum_visit_length>
+		<bounce_count>17</bounce_count>
+		<nb_visits_converted>27</nb_visits_converted>
+		<nb_conversions>54</nb_conversions>
+		<revenue>238538</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>11</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>10</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>15</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>13</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>27</nb_conversions>
+				<revenue>238538</revenue>
+				<items>174</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>56</sum_daily_nb_uniq_visitors>
+		<lat>0</lat>
+		<long>0</long>
+		<segment>city==;regionCode==;countryCode==zz</segment>
+		<city_name>Unknown</city_name>
+		<city>xx</city>
+		<region>xx</region>
+		<country>zz</country>
+		<country_name>Unknown</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/xx.png</logo>
+	</row>
+	<row>
+		<label>Besancon, Bourgogne-Franche-Comté, France</label>
+		<nb_visits>78</nb_visits>
+		<nb_actions>281</nb_actions>
+		<sum_visit_length>3719</sum_visit_length>
+		<bounce_count>15</bounce_count>
 		<nb_visits_converted>21</nb_visits_converted>
-		<nb_conversions>43</nb_conversions>
-		<revenue>166196</revenue>
+		<nb_conversions>46</nb_conversions>
+		<revenue>207586</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>9</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>8</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>12</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>12</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>24</nb_conversions>
+				<revenue>207586</revenue>
+				<items>156</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>55</sum_daily_nb_uniq_visitors>
+		<lat>47.238</lat>
+		<long>6.024</long>
+		<segment>city==Besancon;regionCode==BFC;countryCode==fr</segment>
+		<city_name>Besancon</city_name>
+		<region>BFC</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Bourgogne-Franche-Comté</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Suzhou, Sichuan, China</label>
+		<nb_visits>77</nb_visits>
+		<nb_actions>273</nb_actions>
+		<sum_visit_length>2782</sum_visit_length>
+		<bounce_count>20</bounce_count>
+		<nb_visits_converted>20</nb_visits_converted>
+		<nb_conversions>47</nb_conversions>
+		<revenue>210422</revenue>
 		<goals>
 			<row idgoal='1'>
 				<nb_conversions>14</nb_conversions>
@@ -70,6 +175,110 @@
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>7</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>6</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>26</nb_conversions>
+				<revenue>210422</revenue>
+				<items>152</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>58</sum_daily_nb_uniq_visitors>
+		<lat>31.299</lat>
+		<long>120.585</long>
+		<segment>city==Suzhou;regionCode==32;countryCode==cn</segment>
+		<city_name>Suzhou</city_name>
+		<region>32</region>
+		<country>cn</country>
+		<country_name>China</country_name>
+		<region_name>Sichuan</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/cn.png</logo>
+	</row>
+	<row>
+		<label>Denpasar, Bali, Indonesia</label>
+		<nb_visits>74</nb_visits>
+		<nb_actions>317</nb_actions>
+		<sum_visit_length>1902</sum_visit_length>
+		<bounce_count>13</bounce_count>
+		<nb_visits_converted>27</nb_visits_converted>
+		<nb_conversions>59</nb_conversions>
+		<revenue>301510</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>14</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>13</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>13</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>13</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>32</nb_conversions>
+				<revenue>301510</revenue>
+				<items>224</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>55</sum_daily_nb_uniq_visitors>
+		<lat>-8.671</lat>
+		<long>115.213</long>
+		<segment>city==Denpasar;regionCode==BA;countryCode==id</segment>
+		<city_name>Denpasar</city_name>
+		<region>BA</region>
+		<country>id</country>
+		<country_name>Indonesia</country_name>
+		<region_name>Bali</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/id.png</logo>
+	</row>
+	<row>
+		<label>Wurzburg, Bayern, Germany</label>
+		<nb_visits>66</nb_visits>
+		<nb_actions>242</nb_actions>
+		<sum_visit_length>1264</sum_visit_length>
+		<bounce_count>17</bounce_count>
+		<nb_visits_converted>21</nb_visits_converted>
+		<nb_conversions>43</nb_conversions>
+		<revenue>231003</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>13</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>12</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>8</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>6</nb_visits_converted>
 			</row>
@@ -90,244 +299,35 @@
 			</row>
 			<row idgoal='ecommerceOrder'>
 				<nb_conversions>22</nb_conversions>
-				<revenue>166196</revenue>
-				<items>115</items>
+				<revenue>231003</revenue>
+				<items>176</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>48</sum_daily_nb_uniq_visitors>
-		<lat>31.299</lat>
-		<long>120.585</long>
-		<segment>city==Suzhou;regionCode==32;countryCode==cn</segment>
-		<city_name>Suzhou</city_name>
-		<region>32</region>
-		<country>cn</country>
-		<country_name>China</country_name>
-		<region_name>Sichuan</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/cn.png</logo>
-	</row>
-	<row>
-		<label>Unknown, Unknown</label>
-		<nb_visits>57</nb_visits>
-		<nb_actions>192</nb_actions>
-		<sum_visit_length>1773</sum_visit_length>
-		<bounce_count>12</bounce_count>
-		<nb_visits_converted>23</nb_visits_converted>
-		<nb_conversions>45</nb_conversions>
-		<revenue>161784</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>9</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>9</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>14</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>12</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>21</nb_conversions>
-				<revenue>161784</revenue>
-				<items>118</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
-		<lat>0</lat>
-		<long>0</long>
-		<segment>city==;regionCode==;countryCode==zz</segment>
-		<city_name>Unknown</city_name>
-		<city>xx</city>
-		<region>xx</region>
-		<country>zz</country>
-		<country_name>Unknown</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/xx.png</logo>
-	</row>
-	<row>
-		<label>Denpasar, Bali, Indonesia</label>
-		<nb_visits>56</nb_visits>
-		<nb_actions>203</nb_actions>
-		<sum_visit_length>1253</sum_visit_length>
-		<bounce_count>11</bounce_count>
-		<nb_visits_converted>25</nb_visits_converted>
-		<nb_conversions>46</nb_conversions>
-		<revenue>160476</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>14</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>13</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>11</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>11</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>21</nb_conversions>
-				<revenue>160476</revenue>
-				<items>116</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>42</sum_daily_nb_uniq_visitors>
-		<lat>-8.671</lat>
-		<long>115.213</long>
-		<segment>city==Denpasar;regionCode==BA;countryCode==id</segment>
-		<city_name>Denpasar</city_name>
-		<region>BA</region>
-		<country>id</country>
-		<country_name>Indonesia</country_name>
-		<region_name>Bali</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/id.png</logo>
-	</row>
-	<row>
-		<label>Besancon, Bourgogne-Franche-Comté, France</label>
-		<nb_visits>53</nb_visits>
-		<nb_actions>166</nb_actions>
-		<sum_visit_length>3520</sum_visit_length>
-		<bounce_count>13</bounce_count>
-		<nb_visits_converted>19</nb_visits_converted>
-		<nb_conversions>34</nb_conversions>
-		<revenue>90576</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>9</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>8</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>10</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>10</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>14</nb_conversions>
-				<revenue>90576</revenue>
-				<items>70</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>39</sum_daily_nb_uniq_visitors>
-		<lat>47.238</lat>
-		<long>6.024</long>
-		<segment>city==Besancon;regionCode==BFC;countryCode==fr</segment>
-		<city_name>Besancon</city_name>
-		<region>BFC</region>
-		<country>fr</country>
-		<country_name>France</country_name>
-		<region_name>Bourgogne-Franche-Comté</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+		<sum_daily_nb_uniq_visitors>49</sum_daily_nb_uniq_visitors>
+		<lat>49.791</lat>
+		<long>9.953</long>
+		<segment>city==Wurzburg;regionCode==BY;countryCode==de</segment>
+		<city_name>Wurzburg</city_name>
+		<region>BY</region>
+		<country>de</country>
+		<country_name>Germany</country_name>
+		<region_name>Bayern</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/de.png</logo>
 	</row>
 	<row>
 		<label>Rome, Lazio, Italy</label>
-		<nb_visits>48</nb_visits>
-		<nb_actions>159</nb_actions>
-		<sum_visit_length>2308</sum_visit_length>
-		<bounce_count>8</bounce_count>
-		<nb_visits_converted>15</nb_visits_converted>
-		<nb_conversions>30</nb_conversions>
-		<revenue>105437</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>11</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>11</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>6</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>5</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>13</nb_conversions>
-				<revenue>105437</revenue>
-				<items>69</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>35</sum_daily_nb_uniq_visitors>
-		<lat>41.903</lat>
-		<long>12.496</long>
-		<segment>city==Rome;regionCode==62;countryCode==it</segment>
-		<city_name>Rome</city_name>
-		<region>62</region>
-		<country>it</country>
-		<country_name>Italy</country_name>
-		<region_name>Lazio</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/it.png</logo>
-	</row>
-	<row>
-		<label>Wurzburg, Bayern, Germany</label>
-		<nb_visits>44</nb_visits>
-		<nb_actions>143</nb_actions>
-		<sum_visit_length>849</sum_visit_length>
-		<bounce_count>13</bounce_count>
+		<nb_visits>64</nb_visits>
+		<nb_actions>242</nb_actions>
+		<sum_visit_length>2587</sum_visit_length>
+		<bounce_count>9</bounce_count>
 		<nb_visits_converted>17</nb_visits_converted>
-		<nb_conversions>31</nb_conversions>
-		<revenue>118742</revenue>
+		<nb_conversions>41</nb_conversions>
+		<revenue>222869</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>10</nb_conversions>
+				<nb_conversions>13</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>10</nb_visits_converted>
+				<nb_visits_converted>13</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
 				<nb_conversions>7</nb_conversions>
@@ -350,30 +350,30 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='ecommerceOrder'>
-				<nb_conversions>14</nb_conversions>
-				<revenue>118742</revenue>
-				<items>88</items>
+				<nb_conversions>21</nb_conversions>
+				<revenue>222869</revenue>
+				<items>152</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>36</sum_daily_nb_uniq_visitors>
-		<lat>49.791</lat>
-		<long>9.953</long>
-		<segment>city==Wurzburg;regionCode==BY;countryCode==de</segment>
-		<city_name>Wurzburg</city_name>
-		<region>BY</region>
-		<country>de</country>
-		<country_name>Germany</country_name>
-		<region_name>Bayern</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/de.png</logo>
+		<sum_daily_nb_uniq_visitors>45</sum_daily_nb_uniq_visitors>
+		<lat>41.903</lat>
+		<long>12.496</long>
+		<segment>city==Rome;regionCode==62;countryCode==it</segment>
+		<city_name>Rome</city_name>
+		<region>62</region>
+		<country>it</country>
+		<country_name>Italy</country_name>
+		<region_name>Lazio</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/it.png</logo>
 	</row>
 	<row>
 		<label>Paris, Île-de-France, France</label>
-		<nb_visits>9</nb_visits>
-		<nb_actions>10</nb_actions>
-		<sum_visit_length>1591</sum_visit_length>
-		<bounce_count>8</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
+		<nb_visits>16</nb_visits>
+		<nb_actions>20</nb_actions>
+		<sum_visit_length>4983</sum_visit_length>
+		<bounce_count>12</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -387,9 +387,9 @@
 				<nb_visits_converted>0</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
+				<nb_conversions>3</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
+				<nb_visits_converted>3</nb_visits_converted>
 			</row>
 			<row idgoal='4'>
 				<nb_conversions>0</nb_conversions>
@@ -407,7 +407,7 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>15</sum_daily_nb_uniq_visitors>
 		<lat>48.857</lat>
 		<long>2.352</long>
 		<segment>city==Paris;regionCode==IDF;countryCode==fr</segment>
@@ -471,11 +471,11 @@
 		<logo>plugins/Morpheus/icons/dist/flags/us.png</logo>
 	</row>
 	<row>
-		<label>Schaerbeek, Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest, Belgium</label>
-		<nb_visits>4</nb_visits>
-		<nb_actions>4</nb_actions>
+		<label>Lyon, Auvergne-Rhône-Alpes, France</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>3</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>4</bounce_count>
+		<bounce_count>3</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
@@ -511,7 +511,59 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+		<lat>45.764</lat>
+		<long>4.836</long>
+		<segment>city==Lyon;regionCode==ARA;countryCode==fr</segment>
+		<city_name>Lyon</city_name>
+		<region>ARA</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Auvergne-Rhône-Alpes</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Schaerbeek, Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest, Belgium</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>3</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<lat>50.867</lat>
 		<long>4.377</long>
 		<segment>city==Schaerbeek;regionCode==BRU;countryCode==be</segment>
@@ -575,58 +627,6 @@
 		<logo>plugins/Morpheus/icons/dist/flags/be.png</logo>
 	</row>
 	<row>
-		<label>Lyon, Auvergne-Rhône-Alpes, France</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>1294</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<lat>45.764</lat>
-		<long>4.836</long>
-		<segment>city==Lyon;regionCode==ARA;countryCode==fr</segment>
-		<city_name>Lyon</city_name>
-		<region>ARA</region>
-		<country>fr</country>
-		<country_name>France</country_name>
-		<region_name>Auvergne-Rhône-Alpes</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
-	</row>
-	<row>
 		<label>Unknown, Bretagne, France</label>
 		<nb_visits>2</nb_visits>
 		<nb_actions>3</nb_actions>
@@ -678,59 +678,6 @@
 		<country_name>France</country_name>
 		<region_name>Bretagne</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
-	</row>
-	<row>
-		<label>Unknown, Côte d’Ivoire</label>
-		<nb_visits>2</nb_visits>
-		<nb_actions>3</nb_actions>
-		<sum_visit_length>1726</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
-		<lat>0</lat>
-		<long>0</long>
-		<segment>city==;regionCode==;countryCode==ci</segment>
-		<city_name>Unknown</city_name>
-		<city>xx</city>
-		<region>xx</region>
-		<country>ci</country>
-		<country_name>Côte d’Ivoire</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/ci.png</logo>
 	</row>
 	<row>
 		<label>Amiens, Hauts-de-France, France</label>
@@ -837,58 +784,6 @@
 		<logo>plugins/Morpheus/icons/dist/flags/be.png</logo>
 	</row>
 	<row>
-		<label>Belfort, Bourgogne-Franche-Comté, France</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>47.64</lat>
-		<long>6.864</long>
-		<segment>city==Belfort;regionCode==BFC;countryCode==fr</segment>
-		<city_name>Belfort</city_name>
-		<region>BFC</region>
-		<country>fr</country>
-		<country_name>France</country_name>
-		<region_name>Bourgogne-Franche-Comté</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
-	</row>
-	<row>
 		<label>Blainville, Quebec, Canada</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -993,58 +888,6 @@
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Caluire-et-Cuire, Auvergne-Rhône-Alpes, France</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>45.797</lat>
-		<long>4.842</long>
-		<segment>city==Caluire-et-Cuire;regionCode==ARA;countryCode==fr</segment>
-		<city_name>Caluire-et-Cuire</city_name>
-		<region>ARA</region>
-		<country>fr</country>
-		<country_name>France</country_name>
-		<region_name>Auvergne-Rhône-Alpes</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
-	</row>
-	<row>
 		<label>Cannes, Provence-Alpes-Côte-d’Azur, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
@@ -1095,58 +938,6 @@
 		<country_name>France</country_name>
 		<region_name>Provence-Alpes-Côte-d’Azur</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
-	</row>
-	<row>
-		<label>Casablanca, Casablanca-Settat, Morocco</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>33.573</lat>
-		<long>-7.59</long>
-		<segment>city==Casablanca;regionCode==06;countryCode==ma</segment>
-		<city_name>Casablanca</city_name>
-		<region>06</region>
-		<country>ma</country>
-		<country_name>Morocco</country_name>
-		<region_name>Casablanca-Settat</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/ma.png</logo>
 	</row>
 	<row>
 		<label>Dourdan, Île-de-France, France</label>
@@ -1357,7 +1148,7 @@
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Liege, wallonne, Région, Belgium</label>
+		<label>Lausanne, Vaud, Switzerland</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -1398,15 +1189,119 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>50.633</lat>
-		<long>5.58</long>
-		<segment>city==Liege;regionCode==WAL;countryCode==be</segment>
-		<city_name>Liege</city_name>
-		<region>WAL</region>
-		<country>be</country>
-		<country_name>Belgium</country_name>
-		<region_name>wallonne, Région</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/be.png</logo>
+		<lat>46.52</lat>
+		<long>6.632</long>
+		<segment>city==Lausanne;regionCode==VD;countryCode==ch</segment>
+		<city_name>Lausanne</city_name>
+		<region>VD</region>
+		<country>ch</country>
+		<country_name>Switzerland</country_name>
+		<region_name>Vaud</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/ch.png</logo>
+	</row>
+	<row>
+		<label>Le Coudray-Montceaux, Île-de-France, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>48.566</lat>
+		<long>2.486</long>
+		<segment>city==Le+Coudray-Montceaux;regionCode==IDF;countryCode==fr</segment>
+		<city_name>Le Coudray-Montceaux</city_name>
+		<region>IDF</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Île-de-France</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Mazeikiai, Telšių Apskritis, Lithuania</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>56.309</lat>
+		<long>22.342</long>
+		<segment>city==Mazeikiai;regionCode==TE;countryCode==lt</segment>
+		<city_name>Mazeikiai</city_name>
+		<region>TE</region>
+		<country>lt</country>
+		<country_name>Lithuania</country_name>
+		<region_name>Telšių Apskritis</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/lt.png</logo>
 	</row>
 	<row>
 		<label>Montreal, Quebec, Canada</label>
@@ -1565,6 +1460,58 @@
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
+		<label>Pelussin, Auvergne-Rhône-Alpes, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>152</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>45.418</lat>
+		<long>4.676</long>
+		<segment>city==Pelussin;regionCode==ARA;countryCode==fr</segment>
+		<city_name>Pelussin</city_name>
+		<region>ARA</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Auvergne-Rhône-Alpes</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
 		<label>Peristeri, Greece</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -1615,6 +1562,58 @@
 		<country_name>Greece</country_name>
 		<region_name>Unknown</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/gr.png</logo>
+	</row>
+	<row>
+		<label>Poissy, Île-de-France, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>48.93</lat>
+		<long>2.047</long>
+		<segment>city==Poissy;regionCode==IDF;countryCode==fr</segment>
+		<city_name>Poissy</city_name>
+		<region>IDF</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Île-de-France</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
 		<label>Reims, Grand-Est, France</label>
@@ -1721,11 +1720,11 @@
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Rouen, Normandie, France</label>
+		<label>Royan, Nouvelle-Aquitaine, France</label>
 		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>14</sum_visit_length>
+		<bounce_count>0</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
@@ -1762,66 +1761,14 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>49.443</lat>
-		<long>1.1</long>
-		<segment>city==Rouen;regionCode==NOR;countryCode==fr</segment>
-		<city_name>Rouen</city_name>
-		<region>NOR</region>
+		<lat>45.623</lat>
+		<long>-1.043</long>
+		<segment>city==Royan;regionCode==NAQ;countryCode==fr</segment>
+		<city_name>Royan</city_name>
+		<region>NAQ</region>
 		<country>fr</country>
 		<country_name>France</country_name>
-		<region_name>Normandie</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
-	</row>
-	<row>
-		<label>Saint-Avertin, Centre-Val de Loire, France</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>47.368</lat>
-		<long>0.727</long>
-		<segment>city==Saint-Avertin;regionCode==CVL;countryCode==fr</segment>
-		<city_name>Saint-Avertin</city_name>
-		<region>CVL</region>
-		<country>fr</country>
-		<country_name>France</country_name>
-		<region_name>Centre-Val de Loire</region_name>
+		<region_name>Nouvelle-Aquitaine</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
@@ -2033,6 +1980,58 @@
 		<logo>plugins/Morpheus/icons/dist/flags/ch.png</logo>
 	</row>
 	<row>
+		<label>Spartanburg, South Carolina, United States</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>44</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>34.95</lat>
+		<long>-81.932</long>
+		<segment>city==Spartanburg;regionCode==SC;countryCode==us</segment>
+		<city_name>Spartanburg</city_name>
+		<region>SC</region>
+		<country>us</country>
+		<country_name>United States</country_name>
+		<region_name>South Carolina</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/us.png</logo>
+	</row>
+	<row>
 		<label>Thonon-les-Bains, Auvergne-Rhône-Alpes, France</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -2085,6 +2084,110 @@
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
+		<label>Toulon, Provence-Alpes-Côte-d’Azur, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>151</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>43.124</lat>
+		<long>5.928</long>
+		<segment>city==Toulon;regionCode==PAC;countryCode==fr</segment>
+		<city_name>Toulon</city_name>
+		<region>PAC</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Provence-Alpes-Côte-d’Azur</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
+		<label>Toulouse, Occitanie, France</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>1</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>43.605</lat>
+		<long>1.444</long>
+		<segment>city==Toulouse;regionCode==OCC;countryCode==fr</segment>
+		<city_name>Toulouse</city_name>
+		<region>OCC</region>
+		<country>fr</country>
+		<country_name>France</country_name>
+		<region_name>Occitanie</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+	</row>
+	<row>
 		<label>Unknown</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
@@ -2110,6 +2213,59 @@
 		<country_name>Unknown</country_name>
 		<region_name>Unknown</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/xx.png</logo>
+	</row>
+	<row>
+		<label>Unknown, Côte d’Ivoire</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>2</nb_actions>
+		<sum_visit_length>1726</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>1</nb_visits_converted>
+		<nb_conversions>1</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<lat>0</lat>
+		<long>0</long>
+		<segment>city==;regionCode==;countryCode==ci</segment>
+		<city_name>Unknown</city_name>
+		<city>xx</city>
+		<region>xx</region>
+		<country>ci</country>
+		<country_name>Côte d’Ivoire</country_name>
+		<region_name>Unknown</region_name>
+		<logo>plugins/Morpheus/icons/dist/flags/ci.png</logo>
 	</row>
 	<row>
 		<label>Unknown, Hong Kong SAR China</label>
@@ -2163,59 +2319,6 @@
 		<country_name>Hong Kong SAR China</country_name>
 		<region_name>Unknown</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/hk.png</logo>
-	</row>
-	<row>
-		<label>Unknown, Maldives</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>1</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>0</nb_visits_converted>
-		<nb_conversions>0</nb_conversions>
-		<revenue>0</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<lat>0</lat>
-		<long>0</long>
-		<segment>city==;regionCode==;countryCode==mv</segment>
-		<city_name>Unknown</city_name>
-		<city>xx</city>
-		<region>xx</region>
-		<country>mv</country>
-		<country_name>Maldives</country_name>
-		<region_name>Unknown</region_name>
-		<logo>plugins/Morpheus/icons/dist/flags/mv.png</logo>
 	</row>
 	<row>
 		<label>Unknown, Nouvelle-Aquitaine, France</label>

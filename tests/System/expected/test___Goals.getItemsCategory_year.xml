@@ -2,68 +2,68 @@
 <result>
 	<row>
 		<label>Helmet</label>
-		<revenue>355374</revenue>
-		<quantity>323</quantity>
-		<orders>182</orders>
+		<revenue>612885</revenue>
+		<quantity>528</quantity>
+		<orders>295</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>182</nb_actions>
-		<avg_price>16.51</avg_price>
+		<nb_actions>295</nb_actions>
+		<avg_price>11.77</avg_price>
 		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Bows</label>
-		<revenue>255603</revenue>
-		<quantity>170</quantity>
-		<orders>99</orders>
+		<revenue>448764</revenue>
+		<quantity>301</quantity>
+		<orders>164</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>99</nb_actions>
-		<avg_price>42.55</avg_price>
-		<avg_quantity>1.7</avg_quantity>
+		<nb_actions>164</nb_actions>
+		<avg_price>27.44</avg_price>
+		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Staff</label>
-		<revenue>155133</revenue>
-		<quantity>99</quantity>
-		<orders>53</orders>
+		<revenue>253854</revenue>
+		<quantity>162</quantity>
+		<orders>86</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>53</nb_actions>
-		<avg_price>88.7</avg_price>
+		<nb_actions>86</nb_actions>
+		<avg_price>54.66</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Axes</label>
-		<revenue>147630</revenue>
-		<quantity>70</quantity>
-		<orders>41</orders>
+		<revenue>253080</revenue>
+		<quantity>120</quantity>
+		<orders>68</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>41</nb_actions>
-		<avg_price>154.32</avg_price>
-		<avg_quantity>1.7</avg_quantity>
+		<nb_actions>68</nb_actions>
+		<avg_price>93.04</avg_price>
+		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Shields</label>
-		<revenue>134500</revenue>
-		<quantity>100</quantity>
-		<orders>58</orders>
+		<revenue>221925</revenue>
+		<quantity>165</quantity>
+		<orders>90</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>58</nb_actions>
-		<avg_price>69.57</avg_price>
-		<avg_quantity>1.7</avg_quantity>
+		<nb_actions>90</nb_actions>
+		<avg_price>44.83</avg_price>
+		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 	<row>
 		<label>Armor</label>
-		<revenue>33408</revenue>
-		<quantity>96</quantity>
-		<orders>56</orders>
+		<revenue>56724</revenue>
+		<quantity>163</quantity>
+		<orders>90</orders>
 		<nb_visits>0</nb_visits>
-		<nb_actions>56</nb_actions>
-		<avg_price>18.64</avg_price>
-		<avg_quantity>1.7</avg_quantity>
+		<nb_actions>90</nb_actions>
+		<avg_price>11.6</avg_price>
+		<avg_quantity>1.8</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
 	</row>
 </result>

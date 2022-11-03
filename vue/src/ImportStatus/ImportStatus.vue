@@ -82,6 +82,7 @@
             name="new-import-end-date"
             uicontrol="text"
             v-model="newImportEndDate"
+            :placeholder="`${translate('GoogleAnalyticsImporter_EndDate')} (YYYY-MM-DD)`"
           >
           </Field>
         </div>

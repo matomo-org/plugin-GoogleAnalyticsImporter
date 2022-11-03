@@ -67,7 +67,7 @@ class ImportedFromGoogleGA4 extends Fixture
         $this->getGoogleAnalyticsParams();
 
         $this->runGoogleImporter($this->importedDateRange1);
-        $this->extendEndDate($idSite = 1, '2022-06-07');
+        $this->extendEndDate($idSite = 1, '2022-06-01', '2022-06-07');
         $this->scheduleReimport($idSite = 1, '2022-06-01', '2022-06-07');
 
         $output = $this->runGoogleImporter($this->importedDateRange2, $idSite = 1);
@@ -262,11 +262,11 @@ class ImportedFromGoogleGA4 extends Fixture
         $importStatus->reImportDateRange($idSite, Date::factory($start), Date::factory($end));
     }
 
-    private function extendEndDate($idSite, $endDate)
+    private function extendEndDate($idSite, $startDate, $endDate)
     {
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
-        $importStatus->setImportDateRange($idSite, null, Date::factory($endDate));
+        $importStatus->setImportDateRange($idSite, Date::factory($startDate), Date::factory($endDate));
     }
 
     private function invalidateAndRearchiveDay()

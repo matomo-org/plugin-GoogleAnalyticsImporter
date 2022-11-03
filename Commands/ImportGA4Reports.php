@@ -221,9 +221,9 @@ class ImportGA4Reports extends ConsoleCommand
                 }
 
                 if (!empty($lastDateImported)
-                    && Date::factory($lastDateImported)->addDay(1)->isLater($startDate)
+                    && Date::factory($lastDateImported)->subDay(1)->isEarlier($endDate)
                 ) {
-                    $startDate = Date::factory($lastDateImported)->addDay(1);
+                    $endDate = Date::factory($lastDateImported)->subDay(1);
                 }
 
                 if (!$this->isValidDate($startDate)

@@ -2,8 +2,8 @@
 <result>
 	<row>
 		<label>winter palace</label>
-		<nb_visits>10</nb_visits>
-		<nb_actions>10</nb_actions>
+		<nb_visits>9</nb_visits>
+		<nb_actions>9</nb_actions>
 		<sum_visit_length>1318</sum_visit_length>
 		<bounce_count>0</bounce_count>
 		<nb_visits_converted>4</nb_visits_converted>
@@ -41,65 +41,19 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<nb_hits>10</nb_hits>
-		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
+		<nb_hits>9</nb_hits>
+		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
 		<segment>siteSearchCategory==winter+palace</segment>
 	</row>
 	<row>
 		<label>haven</label>
-		<nb_visits>9</nb_visits>
-		<nb_actions>9</nb_actions>
-		<sum_visit_length>100</sum_visit_length>
-		<bounce_count>2</bounce_count>
-		<nb_visits_converted>4</nb_visits_converted>
-		<nb_conversions>5</nb_conversions>
-		<revenue>5571</revenue>
-		<goals>
-			<row idgoal='1'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>1</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
-				<nb_conversions>3</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
-			</row>
-			<row idgoal='3'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='4'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='5'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='ecommerceOrder'>
-				<nb_conversions>1</nb_conversions>
-				<revenue>5571</revenue>
-				<items>0</items>
-			</row>
-		</goals>
-		<nb_hits>9</nb_hits>
-		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
-		<nb_pages_per_search>1</nb_pages_per_search>
-		<segment>siteSearchCategory==haven</segment>
-	</row>
-	<row>
-		<label>specializations</label>
 		<nb_visits>8</nb_visits>
 		<nb_actions>8</nb_actions>
-		<sum_visit_length>4</sum_visit_length>
-		<bounce_count>1</bounce_count>
-		<nb_visits_converted>4</nb_visits_converted>
-		<nb_conversions>4</nb_conversions>
+		<sum_visit_length>61</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
@@ -108,9 +62,9 @@
 				<nb_visits_converted>1</nb_visits_converted>
 			</row>
 			<row idgoal='2'>
-				<nb_conversions>3</nb_conversions>
+				<nb_conversions>2</nb_conversions>
 				<revenue>0</revenue>
-				<nb_visits_converted>3</nb_visits_converted>
+				<nb_visits_converted>2</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -136,27 +90,27 @@
 		<nb_hits>8</nb_hits>
 		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
-		<segment>siteSearchCategory==specializations</segment>
+		<segment>siteSearchCategory==haven</segment>
 	</row>
 	<row>
-		<label>inner circle</label>
-		<nb_visits>6</nb_visits>
-		<nb_actions>6</nb_actions>
-		<sum_visit_length>2</sum_visit_length>
-		<bounce_count>0</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<nb_conversions>1</nb_conversions>
+		<label>specializations</label>
+		<nb_visits>7</nb_visits>
+		<nb_actions>7</nb_actions>
+		<sum_visit_length>3</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>3</nb_visits_converted>
+		<nb_conversions>3</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
 			<row idgoal='1'>
-				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<nb_visits_converted>0</nb_visits_converted>
-			</row>
-			<row idgoal='2'>
 				<nb_conversions>1</nb_conversions>
 				<revenue>0</revenue>
 				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
 			</row>
 			<row idgoal='3'>
 				<nb_conversions>0</nb_conversions>
@@ -179,10 +133,10 @@
 				<items>0</items>
 			</row>
 		</goals>
-		<nb_hits>6</nb_hits>
+		<nb_hits>7</nb_hits>
 		<sum_daily_nb_uniq_visitors>6</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
-		<segment>siteSearchCategory==inner+circle</segment>
+		<segment>siteSearchCategory==specializations</segment>
 	</row>
 	<row>
 		<label>inquisitor's path</label>
@@ -275,6 +229,52 @@
 		<sum_daily_nb_uniq_visitors>5</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
 		<segment>siteSearchCategory==lost+temple+of+dirthamen</segment>
+	</row>
+	<row>
+		<label>inner circle</label>
+		<nb_visits>4</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>1</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='1'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='2'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='3'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='4'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='5'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<nb_hits>4</nb_hits>
+		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<nb_pages_per_search>1</nb_pages_per_search>
+		<segment>siteSearchCategory==inner+circle</segment>
 	</row>
 	<row>
 		<label>skyhold</label>

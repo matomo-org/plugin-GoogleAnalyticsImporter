@@ -107,7 +107,7 @@ class ImportStatus
         $status['status'] = self::STATUS_ONGOING;
 
         if (empty($status['last_date_imported'])
-            || !Date::factory($status['last_date_imported'])->isLater($date)
+            || !Date::factory($status['last_date_imported'])->isEarlier($date)
         ) {
             $status['last_date_imported'] = $date->toString();
 
@@ -381,6 +381,11 @@ class ImportStatus
             && !empty($endDate)
         ) {
             $dates[0] = $endDate->toString();
+        } else if (!empty($dates[0])
+            && !empty($endDate)
+            && $endDate->isEarlier(Date::factory($dates[0]))
+        ) {
+            $dates[0] = $endDate->toString();
         }
 
         if (!empty($endDate)
@@ -526,10 +531,10 @@ class ImportStatus
             $mainImportProgress = $status['last_date_imported'];
         }
 
-        if (!empty($status['import_range_end'])
+        if (!empty($status['import_range_start'])
             && !empty($mainImportProgress)
-            && ($mainImportProgress == $status['import_range_end']
-                || Date::factory($mainImportProgress)->isLater(Date::factory($status['import_range_end'])))
+            && ($mainImportProgress == $status['import_range_start']
+                || Date::factory($mainImportProgress)->isEarlier(Date::factory($status['import_range_start'])))
             && empty($status['reimport_ranges'])
         ) {
             $this->finishedImport($idSite);
