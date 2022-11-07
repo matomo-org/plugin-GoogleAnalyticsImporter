@@ -25,6 +25,7 @@ use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
+use Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\CloudApiQuotaExceeded;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleCustomDimensionMapper;
@@ -122,6 +123,11 @@ class Importer
      * @var bool
      */
     private $isMainImport = true;
+
+    /**
+     * @var int
+     */
+    private $maxAvailableQueries = 0;
 
     public function __construct(ReportsProvider $reportsProvider, \Google\Service\Analytics $gaService, \Google\Service\AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
@@ -368,7 +374,7 @@ class Importer
         passthru($command);
     }
 
-    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '')
+    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '', $maxAvailableQueries)
     {
         $date = null;
 
@@ -376,6 +382,7 @@ class Importer
             $this->currentLock = $lock;
             $this->noDataMessageRemoved = false;
             $this->queryCount = 0;
+            $this->maxAvailableQueries = $maxAvailableQueries;
 
             $endPlusOne = $end->addDay(1);
 
@@ -406,7 +413,7 @@ class Importer
             $this->importStatus->finishImportIfNothingLeft($idSite);
 
             unset($recordImporters);
-        } catch (DailyRateLimitReached $ex) {
+        } catch (DailyRateLimitReached  | CloudApiQuotaExceeded $ex) {
             $this->importStatus->rateLimitReached($idSite);
             $this->logger->info($ex->getMessage());
             return true;
@@ -530,6 +537,9 @@ class Importer
             $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
+            if($this->queryCount > $this->maxAvailableQueries){
+                throw new CloudApiQuotaExceeded;
+            }
         });
 
         $instances = [];

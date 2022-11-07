@@ -11,8 +11,10 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
+use Piwik\Piwik;
 use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugin\Manager;
+use Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
@@ -20,6 +22,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\ImportLock;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportWasCancelledException;
 use Piwik\Plugins\GoogleAnalyticsImporter\Logger\LogToSingleFileProcessor;
+use Piwik\Plugins\GoogleAnalyticsImporter\SystemSettings;
 use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Site;
@@ -266,13 +269,13 @@ class ImportReports extends ConsoleCommand
 
                 try {
                     $importer->setIsMainImport($isMainImport);
-                    $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
+                    $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock, '', ApiQuotaHelper::getBalanceApiQuota());
                     if ($aborted) {
                         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Error encountered, aborting.");
                         break;
                     }
                 } finally {
-                    // doing it in the finally since we can get rate limited, which will result in an exception thrown
+                    // doing it in finally since we can get rate limited, which will result in an exception thrown
                     if (!$skipArchiving) {
                         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Running archiving for newly imported data...");
                         $status = $importStatus->getImportStatus($idSite);
