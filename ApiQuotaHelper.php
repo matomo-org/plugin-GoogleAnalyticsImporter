@@ -9,6 +9,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Config;
 use Piwik\Piwik;
+use Piwik\Plugins\SitesManager\API as SitesManagerApi;
 use Piwik\Settings\Storage\Backend\PluginSettingsTable;
 use Piwik\Plugins\Billing\Ecommerce\Customer;
 use Piwik\Plugins\Billing\Dao\Trial;
@@ -56,17 +57,20 @@ class ApiQuotaHelper
             Config::getInstance()->GoogleAnalyticsImporter['quota_api_paid_ratio'] :
             self::getDefaultConfigOptionValue('paid_ratio');
 
+        $allSitesCount = count(SitesManagerApi::getInstance()->getAllSites());
+
         $trial = new Trial();
         $isInTrial = $trial->isInTrial();
         if($isInTrial){
-            return (int)($dailyQuota * (1 - $quotaPaidRatio));
+            return (int)($dailyQuota * (1 - $quotaPaidRatio) / $allSitesCount);
         }
 
         $customer = Customer::get();
         if($customer->getSubscriptionId()){
             //Paying Customer
-            return (int)($dailyQuota * $quotaPaidRatio);
+            return (int)(($dailyQuota * $quotaPaidRatio) / $allSitesCount);
         }
+        
         return 0;
     }
 
