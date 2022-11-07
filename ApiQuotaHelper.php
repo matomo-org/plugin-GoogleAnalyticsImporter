@@ -78,6 +78,10 @@ class ApiQuotaHelper
     public static function getBalanceApiQuota()
     {
         $maxQuota = self::getMaxDailyApiQuota();
+        if($maxQuota === -1){
+            //Not a cloud customer. Return -1 reflect no limit
+            return $maxQuota;
+        }
 
         $pluginSettings = self::getPluginSettingsInstance()->load();
 
@@ -87,7 +91,7 @@ class ApiQuotaHelper
         }
 
         if($pluginSettings['lastImportDate'] == date('Y-m-d')){
-            if(empty($pluginSettings['apiCount'])){
+            if(empty($pluginSettings['importCountForTheDay'])){
                 return $maxQuota;
             } else {
                 return $maxQuota - $pluginSettings['importCountForTheDay'];
@@ -113,7 +117,7 @@ class ApiQuotaHelper
 
         if($pluginSettings['lastImportDate'] == date('Y-m-d')){
             $pluginSettingsInstance->save([
-                'importCountForTheDay' => $numQueries,
+                'importCountForTheDay' => ($pluginSettings['importCountForTheDay'] += $numQueries),
                 'lastImportDate' => date('Y-m-d')
             ]);
         } else {

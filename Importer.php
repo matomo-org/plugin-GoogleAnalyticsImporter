@@ -374,7 +374,7 @@ class Importer
         passthru($command);
     }
 
-    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '', $maxAvailableQueries)
+    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '', $maxAvailableQueries = 0)
     {
         $date = null;
 
@@ -537,7 +537,8 @@ class Importer
             $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
-            if($this->queryCount > $this->maxAvailableQueries){
+            ApiQuotaHelper::saveApiUsed(1);
+            if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
                 throw new CloudApiQuotaExceeded;
             }
         });
