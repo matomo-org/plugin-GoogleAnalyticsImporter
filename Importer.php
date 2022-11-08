@@ -125,13 +125,18 @@ class Importer
     private $isMainImport = true;
 
     /**
+     * @var ApiQuotaHelper
+     */
+    private $apiQuotaHelper;
+
+    /**
      * @var int
      */
     private $maxAvailableQueries = 0;
 
     public function __construct(ReportsProvider $reportsProvider, \Google\Service\Analytics $gaService, \Google\Service\AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
-                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
+                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate, ApiQuotaHelper $apiQuotaHelper)
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = $gaService;
@@ -143,6 +148,7 @@ class Importer
         $this->importStatus = $importStatus;
         $this->invalidator = $invalidator;
         $this->endDate = $endDate;
+        $this->apiQuotaHelper = $apiQuotaHelper;
     }
 
     public function setIsMainImport($isMainImport)
@@ -374,7 +380,7 @@ class Importer
         passthru($command);
     }
 
-    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '', $maxAvailableQueries = 0)
+    public function import($idSite, $viewId, Date $start, Date $end, Lock $lock, $segment = '')
     {
         $date = null;
 
@@ -382,7 +388,7 @@ class Importer
             $this->currentLock = $lock;
             $this->noDataMessageRemoved = false;
             $this->queryCount = 0;
-            $this->maxAvailableQueries = $maxAvailableQueries;
+            $this->maxAvailableQueries = $this->apiQuotaHelper::getBalanceApiQuota();
 
             $endPlusOne = $end->addDay(1);
 
@@ -537,7 +543,7 @@ class Importer
             $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
-            ApiQuotaHelper::saveApiUsed(1);
+            $this->apiQuotaHelper::saveApiUsed(1);
             if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
                 throw new CloudApiQuotaExceeded;
             }

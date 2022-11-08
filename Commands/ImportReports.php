@@ -11,10 +11,10 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
+use Piwik\Option;
 use Piwik\Piwik;
 use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugin\Manager;
-use Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
@@ -269,7 +269,7 @@ class ImportReports extends ConsoleCommand
 
                 try {
                     $importer->setIsMainImport($isMainImport);
-                    $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock, '', ApiQuotaHelper::getBalanceApiQuota());
+                    $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
                     if ($aborted) {
                         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Error encountered, aborting.");
                         break;
