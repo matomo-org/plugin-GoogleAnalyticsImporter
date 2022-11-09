@@ -82,5 +82,5 @@ return [
         \DI\get(\Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredExecutablesCheck::class),
     ]),
 
-    '\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper' => DI\create('Piwik\Plugins\ConnectAccounts\ApiQuotaHelper')
+    '\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper' => DI\create('\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper')
 ];
