@@ -394,7 +394,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             $endDate = Date::factory(Period\Factory::build(Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateEnd());
 
             if(($startDate >= $importStart || $startDate <= $importEnd) || ($endDate >= $importStart || $endDate <= $importEnd)){
-                $notificationMessage = 'Report data includes some Google Analytics historical data and is still being imported. The GA Data import should complete within a few days';
+                if(array_key_exists('isGA4', $status) && $status['isGA4'] === true){
+                    $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGA4ImportReportNotification');
+                } else {
+                    $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGAImportReportNotification');
+                }
                 $notification = new Notification($notificationMessage);
                 $notification->context = Notification::CONTEXT_INFO;
                 $notification->raw = true;
