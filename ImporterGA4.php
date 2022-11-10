@@ -26,6 +26,7 @@ use Piwik\Plugins\Goals\API;
 use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
+use Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\CloudApiQuotaExceeded;
 use Piwik\Segment;
 use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
@@ -120,6 +121,16 @@ class ImporterGA4
     private $endDate;
 
     /**
+     * @var ApiQuotaHelper
+     */
+    private $apiQuotaHelper;
+
+    /**
+     * @var int
+     */
+    private $maxAvailableQueries = 0;
+
+    /**
      * Whether this is the main import date range or for a reimport range.
      * @var bool
      */
@@ -129,7 +140,9 @@ class ImporterGA4
                                 LoggerInterface                $logger,
                                 GoogleGA4GoalMapper            $goalMapper,
                                 GoogleGA4CustomDimensionMapper $customDimensionMapper,
-                                IdMapper                       $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
+                                IdMapper                       $idMapper, ImportStatus $importStatus,
+                                ArchiveInvalidator $invalidator, EndDate $endDate,
+                                ApiQuotaHelper $apiQuotaHelper)
     {
         $this->reportsProvider = $reportsProvider;
         $this->logger = $logger;
@@ -139,6 +152,7 @@ class ImporterGA4
         $this->importStatus = $importStatus;
         $this->invalidator = $invalidator;
         $this->endDate = $endDate;
+        $this->apiQuotaHelper = $apiQuotaHelper;
     }
 
     public function setGAClient(BetaAnalyticsDataClient $client)
@@ -385,6 +399,7 @@ class ImporterGA4
             $this->currentLock = $lock;
             $this->noDataMessageRemoved = false;
             $this->queryCount = 0;
+            $this->maxAvailableQueries = $this->apiQuotaHelper::getBalanceApiQuota();
 
             $endPlusOne = $end->addDay(1);
 
@@ -415,7 +430,12 @@ class ImporterGA4
             $this->importStatus->finishImportIfNothingLeft($idSite);
 
             unset($recordImporters);
-        } catch (DailyRateLimitReached $ex) {
+        } catch (DailyRateLimitReached | CloudApiQuotaExceeded $ex) {
+            if($ex instanceof CloudApiQuotaExceeded){
+                ApiQuotaHelper::trackEvent('Internal Quota Exception Reached','Google_Analytics_Importer');
+            } else {
+                ApiQuotaHelper::trackEvent('Google Quota Exception Reached','Google_Analytics_Importer');
+            }
             $this->importStatus->rateLimitReached($idSite);
             $this->logger->info($ex->getMessage());
             return true;
@@ -519,6 +539,7 @@ class ImporterGA4
      */
     private function getRecordImporters($idSite, $propertyId)
     {
+        ApiQuotaHelper::trackEvent('Import Attempt','Google_Analytics_Importer');
         if (empty($this->recordImporters)) {
             $recordImporters = StaticContainer::get('GoogleAnalyticsGA4Importer.recordImporters');
 
@@ -540,10 +561,17 @@ class ImporterGA4
         $quotaUser = defined('PIWIK_TEST_MODE') ? 'test' : SettingsPiwik::getPiwikUrl();
 
         $gaQuery = new GoogleAnalyticsGA4QueryService(
-            $this->gaClient, $this->gaAdminClient, $propertyId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleGA4QueryObjectFactory::class), $this->logger);
+            $this->gaClient, $this->gaAdminClient, $propertyId, $this->getGoalMapping($idSite), $idSite, $quotaUser,
+            StaticContainer::get(GoogleGA4QueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
+            if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
+                $this->apiQuotaHelper::saveApiUsed($this->maxAvailableQueries);
+                throw new CloudApiQuotaExceeded($this->maxAvailableQueries);
+            }
         });
+        $this->apiQuotaHelper::saveApiUsed($this->queryCount);
+        ApiQuotaHelper::trackEvent('Import Complete','Google_Analytics_Importer');
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {
