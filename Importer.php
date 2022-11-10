@@ -543,11 +543,12 @@ class Importer
             $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
-            $this->apiQuotaHelper::saveApiUsed(1);
             if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
+                $this->apiQuotaHelper::saveApiUsed($this->maxAvailableQueries);
                 throw new CloudApiQuotaExceeded;
             }
         });
+        $this->apiQuotaHelper::saveApiUsed($this->queryCount);
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {
