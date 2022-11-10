@@ -32,4 +32,10 @@ class ApiQuotaHelper
         //No need to save since it's a local installation
         return;
     }
+
+    public static function trackEvent($event, $name)
+    {
+        //DI to takeover on ConnectAccount
+        return;
+    }
 }

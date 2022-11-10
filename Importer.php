@@ -24,7 +24,6 @@ use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
-use Piwik\Plugins\ConnectAccounts\helpers\ConnectHelper;
 use Piwik\Plugins\Goals\API;
 use Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\CloudApiQuotaExceeded;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
@@ -423,9 +422,9 @@ class Importer
 
         } catch (DailyRateLimitReached  | CloudApiQuotaExceeded $ex) {
             if($ex instanceof CloudApiQuotaExceeded){
-                ConnectHelper::trackEvent('Internal Quota Exception Reached','Google_Analytics_Importer');
+                ApiQuotaHelper::trackEvent('Internal Quota Exception Reached','Google_Analytics_Importer');
             } else {
-                ConnectHelper::trackEvent('Google Quota Exception Reached','Google_Analytics_Importer');
+                ApiQuotaHelper::trackEvent('Google Quota Exception Reached','Google_Analytics_Importer');
             }
             $this->importStatus->rateLimitReached($idSite);
             $this->logger->info($ex->getMessage());
@@ -526,7 +525,7 @@ class Importer
      */
     private function getRecordImporters($idSite, $viewId)
     {
-        ConnectHelper::trackEvent('Import Attempt','Google_Analytics_Importer');
+        ApiQuotaHelper::trackEvent('Import Attempt','Google_Analytics_Importer');
         if (empty($this->recordImporters)) {
             $recordImporters = StaticContainer::get('GoogleAnalyticsImporter.recordImporters');
 
@@ -557,7 +556,7 @@ class Importer
             }
         });
         $this->apiQuotaHelper::saveApiUsed($this->queryCount);
-        ConnectHelper::trackEvent('Import Complete','Google_Analytics_Importer');
+        ApiQuotaHelper::trackEvent('Import Complete','Google_Analytics_Importer');
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {
