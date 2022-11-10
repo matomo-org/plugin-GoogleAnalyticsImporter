@@ -14,11 +14,14 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\RawLogDao;
 use Piwik\DataTable;
 use Piwik\Date;
+use Piwik\Notification;
+use Piwik\Period;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
+use Piwik\Notification\Manager as NotificationManager;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
 {
@@ -61,6 +64,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'SitesManager.deleteSite.end'            => 'onSiteDeleted',
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
             'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
+            'Request.dispatch' => 'checkPendingImporters'
         ];
     }
 
@@ -358,5 +362,44 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $date2 = $period->getDateTimeEnd()->setTimezone($timezone);
 
         return [$date1, $date2];
+    }
+
+    public function checkPendingImporters()
+    {
+        $notificationMessage = null;
+        if(!Common::getRequestVar('period', false) ||
+            !Common::getRequestVar('date', false)){
+            return;
+        }
+
+        $currentIdSite = Common::getRequestVar('idSite', -1);
+        if($currentIdSite === -1){
+            return;
+        }
+
+        $pending = false;
+        $instance = new ImportStatus();
+        try{
+            $status = $instance->getImportStatus($currentIdSite);
+            if ($status['status'] == ImportStatus::STATUS_ONGOING) {
+                $pending = true;
+            }
+        } catch (\Exception $exception){
+        }
+
+        if($pending === true){
+            $importStart = Date::factory($status['import_range_start']);
+            $importEnd = Date::factory($status['import_range_end']);
+            $startDate = Date::factory(Period\Factory::build(Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateStart());
+            $endDate = Date::factory(Period\Factory::build(Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateEnd());
+
+            if(($startDate >= $importStart || $startDate <= $importEnd) || ($endDate >= $importStart || $endDate <= $importEnd)){
+                $notificationMessage = 'Report data includes some Google Analytics historical data and is still being imported. The GA Data import should complete within a few days';
+                $notification = new Notification($notificationMessage);
+                $notification->context = Notification::CONTEXT_INFO;
+                $notification->raw = true;
+                NotificationManager::notify('gaImportRunning', $notification);
+            }
+        }
     }
 }
