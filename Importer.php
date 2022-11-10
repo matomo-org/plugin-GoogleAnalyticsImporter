@@ -552,7 +552,7 @@ class Importer
             ++$this->queryCount;
             if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
                 $this->apiQuotaHelper::saveApiUsed($this->maxAvailableQueries);
-                throw new CloudApiQuotaExceeded;
+                throw new CloudApiQuotaExceeded($this->maxAvailableQueries);
             }
         });
         $this->apiQuotaHelper::saveApiUsed($this->queryCount);
