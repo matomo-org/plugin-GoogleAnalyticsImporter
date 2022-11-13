@@ -364,17 +364,22 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         return [$date1, $date2];
     }
 
-    public function checkPendingImporters()
+
+    /**
+     * Check if there are pending imports, and if so, if the report date is in the range of the dates of the import
+     * @return array|false[]
+     * @throws \Exception
+     */
+    public function displayImportPendingNotice(): array
     {
-        $notificationMessage = null;
         if(!Common::getRequestVar('period', false) ||
             !Common::getRequestVar('date', false)){
-            return;
+            return ['display' => false];
         }
 
         $currentIdSite = Common::getRequestVar('idSite', -1);
         if($currentIdSite === -1){
-            return;
+            return ['display' => false];
         }
 
         $pending = false;
@@ -385,25 +390,38 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                 $pending = true;
             }
         } catch (\Exception $exception){
+            return ['display' => false];
         }
 
-        if($pending === true){
+        if($pending === true) {
             $importStart = Date::factory($status['import_range_start']);
             $importEnd = Date::factory($status['import_range_end']);
             $startDate = Date::factory(Period\Factory::build(Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateStart());
             $endDate = Date::factory(Period\Factory::build(Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateEnd());
 
-            if(($startDate >= $importStart || $startDate <= $importEnd) || ($endDate >= $importStart || $endDate <= $importEnd)){
-                if(array_key_exists('isGA4', $status) && $status['isGA4'] === true){
-                    $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGA4ImportReportNotification');
-                } else {
-                    $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGAImportReportNotification');
-                }
-                $notification = new Notification($notificationMessage);
-                $notification->context = Notification::CONTEXT_INFO;
-                $notification->raw = true;
-                NotificationManager::notify('gaImportRunning', $notification);
+            if (($startDate >= $importStart || $startDate <= $importEnd) || ($endDate >= $importStart || $endDate <= $importEnd)) {
+                return ['display' => true, 'isGa4' => $status['isGA4']];
             }
         }
+        return ['display' => false];
+    }
+
+
+    public function checkPendingImporters()
+    {
+        $displayData = $this->displayImportPendingNotice();
+        if($displayData['display'] === false){
+            return;
+        }
+
+        if($displayData['isGA4'] === true){
+            $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGA4ImportReportNotification');
+        } else {
+            $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGAImportReportNotification');
+        }
+        $notification = new Notification($notificationMessage);
+        $notification->context = Notification::CONTEXT_INFO;
+        $notification->raw = true;
+        NotificationManager::notify('gaImportRunning', $notification);
     }
 }
