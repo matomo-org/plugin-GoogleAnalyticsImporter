@@ -16,15 +16,15 @@ class ApiQuotaHelper
      * Calculate the daily maximum api quota available for the instance
      * @return int
      */
-    public static function getMaxDailyApiQuota()
+    public function getMaxDailyApiQuota($setTrial = false)
     {
         //Local installation. No limitations from google applicable
         return -1;
     }
 
-    public static function getBalanceApiQuota()
+    public function getBalanceApiQuota()
     {
-        return self::getMaxDailyApiQuota();
+        return $this->getMaxDailyApiQuota();
     }
 
     public static function saveApiUsed($numQueries)

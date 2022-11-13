@@ -388,7 +388,7 @@ class Importer
             $this->currentLock = $lock;
             $this->noDataMessageRemoved = false;
             $this->queryCount = 0;
-            $this->maxAvailableQueries = $this->apiQuotaHelper::getBalanceApiQuota();
+            $this->maxAvailableQueries = $this->apiQuotaHelper->getBalanceApiQuota();
 
             $endPlusOne = $end->addDay(1);
 
