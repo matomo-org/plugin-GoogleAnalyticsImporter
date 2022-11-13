@@ -374,12 +374,12 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     {
         if(!Common::getRequestVar('period', false) ||
             !Common::getRequestVar('date', false)){
-            return ['display' => false];
+            return false;
         }
 
         $currentIdSite = Common::getRequestVar('idSite', -1);
         if($currentIdSite === -1){
-            return ['display' => false];
+            return false;
         }
 
         $pending = false;
@@ -390,7 +390,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                 $pending = true;
             }
         } catch (\Exception $exception){
-            return ['display' => false];
+            return false;
         }
 
         if($pending === true) {
@@ -400,25 +400,22 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             $endDate = Date::factory(Period\Factory::build(Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateEnd());
 
             if (($startDate >= $importStart || $startDate <= $importEnd) || ($endDate >= $importStart || $endDate <= $importEnd)) {
-                return ['display' => true, 'isGa4' => $status['isGA4']];
+                return true;
             }
         }
-        return ['display' => false];
+        return true;
     }
 
 
     public function checkPendingImporters()
     {
         $displayData = $this->canDisplayImportPendingNotice();
-        if($displayData['display'] === false){
+        if(!$displayData){
             return;
         }
 
-        if($displayData['isGA4'] === true){
-            $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGA4ImportReportNotification');
-        } else {
-            $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGAImportReportNotification');
-        }
+        $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGAImportReportNotification');
+
         $notification = new Notification($notificationMessage);
         $notification->context = Notification::CONTEXT_INFO;
         $notification->raw = true;

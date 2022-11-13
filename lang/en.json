@@ -117,7 +117,6 @@
         "SelectImporterUAInlineHelp": "Choose this if your property ID start with UA and end with a number (UA-XXXXXXXXX-1).",
         "SelectImporterGA4Title": "Google Analytics 4 (GA4)",
         "SelectImporterGA4InlineHelp": "Choose this if your property ID have only numbers (XXXXXXXXX).",
-        "PendingGAImportReportNotification" : "Report data includes some Google Analytics historical data and is still being imported. The GA Data import should complete within a few days",
-        "PendingGA4ImportReportNotification" : "Report data includes some Google Analytics historical data and is still being imported. The GA4 Data import should complete within a few days"
+        "PendingGAImportReportNotification" : "We are still importing from Google Analytics but you should be able to see your most recent data. You will be able to view all your data within a few days."
     }
 }
