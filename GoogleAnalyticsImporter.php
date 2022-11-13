@@ -367,10 +367,10 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
     /**
      * Check if there are pending imports, and if so, if the report date is in the range of the dates of the import
-     * @return array|false[]
+     * @return bool
      * @throws \Exception
      */
-    public function canDisplayImportPendingNotice(): array
+    public function canDisplayImportPendingNotice(): bool
     {
         if(!Common::getRequestVar('period', false) ||
             !Common::getRequestVar('date', false)){
