@@ -370,7 +370,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
      * @return array|false[]
      * @throws \Exception
      */
-    public function displayImportPendingNotice(): array
+    public function canDisplayImportPendingNotice(): array
     {
         if(!Common::getRequestVar('period', false) ||
             !Common::getRequestVar('date', false)){
@@ -409,7 +409,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
 
     public function checkPendingImporters()
     {
-        $displayData = $this->displayImportPendingNotice();
+        $displayData = $this->canDisplayImportPendingNotice();
         if($displayData['display'] === false){
             return;
         }
