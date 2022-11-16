@@ -11,6 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
 use Piwik\CliMulti\CliPhp;
 use Piwik\Config;
+use Piwik\Config\GeneralConfig;
 use Piwik\Container\StaticContainer;
 use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
@@ -84,7 +85,7 @@ class TasksTest extends IntegrationTestCase
         $tasks->resumeScheduledImports();
         $this->assertEquals([
                    // nohup /home/travis/.phpenv/versions/7.2.27/bin/php -q /home/travis/build/matomo-org/plugin-GoogleAnalyticsImporter/matomo/tests/PHPUnit/proxy/console --matomo-domain='localhost' googleanalyticsimporter:import-reports --idsite=1 >> /home/travis/build/matomo-org/plugin-GoogleAnalyticsImporter/matomo/tmp/logs/gaimportlog.1.localhost.log 2>&1 &
-            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 >> " . $this->tmpPath . '/logs/gaimportlog.1.' . escapeshellarg(SettingsPiwik::getPiwikInstanceId()) . '.log 2>&1 &'],
+            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 >> " . $this->tmpPath . '/logs/gaimportlog.1.' . SettingsPiwik::getPiwikInstanceId() . '.log 2>&1 &'],
         ], TasksWithMockExec::$commandsRun);
     }
 
@@ -95,8 +96,36 @@ class TasksTest extends IntegrationTestCase
         $tasks = new TasksWithMockExec();
         $tasks->resumeScheduledImports();
         $this->assertEquals([
-            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > " . $this->tmpPath . '/logs/gaimportlog.1.' . escapeshellarg(SettingsPiwik::getPiwikInstanceId()) . '.log 2>&1 &'],
+            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > " . $this->tmpPath . '/logs/gaimportlog.1.' . SettingsPiwik::getPiwikInstanceId() . '.log 2>&1 &'],
         ], TasksWithMockExec::$commandsRun);
+    }
+
+    public function test_resumeScheduledImports_runAStatusWithVerboseLoggingCorrectlyWithInstanceIdUpdated()
+    {
+        $oldValue = GeneralConfig::getConfigValue('instance_id');
+        GeneralConfig::setConfigValue('instance_id', 'touch /tmp/success');
+        Option::set(ImportStatus::OPTION_NAME_PREFIX . 1, json_encode(['idSite' => 1, 'is_verbose_logging_enabled' => 1, 'status' => ImportStatus::STATUS_STARTED]));
+
+        $tasks = new TasksWithMockExec();
+        $tasks->resumeScheduledImports();
+        $this->assertEquals([
+            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > /dev/null 2>&1 &"],
+        ], TasksWithMockExec::$commandsRun);
+        GeneralConfig::setConfigValue('instance_id', $oldValue);
+    }
+
+    public function test_resumeScheduledImports_runAStatusWithVerboseLoggingCorrectlyWithInstanceIdUpdated_1()
+    {
+        $oldValue = GeneralConfig::getConfigValue('instance_id');
+        GeneralConfig::setConfigValue('instance_id', 'test; rm -rf .');
+        Option::set(ImportStatus::OPTION_NAME_PREFIX . 1, json_encode(['idSite' => 1, 'is_verbose_logging_enabled' => 1, 'status' => ImportStatus::STATUS_STARTED]));
+
+        $tasks = new TasksWithMockExec();
+        $tasks->resumeScheduledImports();
+        $this->assertEquals([
+            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > ". $this->tmpPath . '/logs/gaimportlog.1.test\; rm -rf ..log 2>&1 &'],
+        ], TasksWithMockExec::$commandsRun);
+        GeneralConfig::setConfigValue('instance_id', $oldValue);
     }
 
     public function test_archiveImportedReports_shouldSkipBrokenStatusEntries_ImportsThatHaveNotImportedAnything_OrLastArchivedDateIsEqualOrGreaterToLastImportedDate()
@@ -129,7 +158,7 @@ class TasksTest extends IntegrationTestCase
         $tasks = new TasksWithMockExec();
         $tasks->archiveImportedReports();
         $this->assertEquals([
-            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console' . $this->getCommandHostOption() . ' core:archive --disable-scheduled-tasks --force-idsites=7 --force-periods=week,month,year --force-date-range=2012-02-02,2012-02-02 > ' . PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.7.' . escapeshellarg(SettingsPiwik::getPiwikInstanceId()) . '.log 2>&1 &'],
+            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console' . $this->getCommandHostOption() . ' core:archive --disable-scheduled-tasks --force-idsites=7 --force-periods=week,month,year --force-date-range=2012-02-02,2012-02-02 > ' . PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.archive.7.' . SettingsPiwik::getPiwikInstanceId() . '.log 2>&1 &'],
         ], TasksWithMockExec::$commandsRun);
     }
 
@@ -142,7 +171,7 @@ class TasksTest extends IntegrationTestCase
         $tasks = new TasksWithMockExec();
         $tasks->archiveImportedReports();
         $this->assertEquals([
-            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} core:archive --disable-scheduled-tasks --force-idsites=1 --force-periods=week,month,year --force-date-range=2012-01-14,2012-02-02 > " . $this->tmpPath . '/logs/gaimportlog.archive.1.' . escapeshellarg(SettingsPiwik::getPiwikInstanceId()) . '.log 2>&1 &'],
+            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} core:archive --disable-scheduled-tasks --force-idsites=1 --force-periods=week,month,year --force-date-range=2012-01-14,2012-02-02 > " . $this->tmpPath . '/logs/gaimportlog.archive.1.' . SettingsPiwik::getPiwikInstanceId() . '.log 2>&1 &'],
         ], TasksWithMockExec::$commandsRun);
     }
 
@@ -153,7 +182,7 @@ class TasksTest extends IntegrationTestCase
         $tasks = new TasksWithMockExec();
         $tasks->archiveImportedReports();
         $this->assertEquals([
-            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} core:archive --disable-scheduled-tasks --force-idsites=1 --force-periods=week,month,year --force-date-range=2012-01-02,2012-02-02 > " . $this->tmpPath . '/logs/gaimportlog.archive.1.' . escapeshellarg(SettingsPiwik::getPiwikInstanceId()) . '.log 2>&1 &'],
+            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} core:archive --disable-scheduled-tasks --force-idsites=1 --force-periods=week,month,year --force-date-range=2012-01-02,2012-02-02 > " . $this->tmpPath . '/logs/gaimportlog.archive.1.' . SettingsPiwik::getPiwikInstanceId() . '.log 2>&1 &'],
         ], TasksWithMockExec::$commandsRun);
     }
 
@@ -164,15 +193,15 @@ class TasksTest extends IntegrationTestCase
         $tasks = new TasksWithMockExec();
         $tasks->archiveImportedReports();
         $this->assertEquals([
-            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} core:archive --disable-scheduled-tasks --force-idsites=1 --force-periods=week,month,year --force-date-range=2012-01-20,2012-02-02 > " . $this->tmpPath . '/logs/gaimportlog.archive.1.' . escapeshellarg(SettingsPiwik::getPiwikInstanceId()) . '.log 2>&1 &'],
+            [false, 'MATOMO_GOOGLE_IMPORT_END_DATE_TO_ARCHIVE=2012-02-02 nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} core:archive --disable-scheduled-tasks --force-idsites=1 --force-periods=week,month,year --force-date-range=2012-01-20,2012-02-02 > " . $this->tmpPath . '/logs/gaimportlog.archive.1.' . SettingsPiwik::getPiwikInstanceId() . '.log 2>&1 &'],
         ], TasksWithMockExec::$commandsRun);
     }
 
     private function getCommandHostOption()
     {
-        $host = escapeshellarg(SettingsPiwik::getPiwikInstanceId());
+        $host = SettingsPiwik::getPiwikInstanceId();
         if (!empty($host)) {
-            return " --matomo-domain={$host}";
+            return " --matomo-domain='{$host}'";
         }
         return '';
     }

@@ -103,7 +103,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         $idSite = $status['idSite'];
         $isVerboseLoggingEnabled = !empty($status['is_verbose_logging_enabled']);
 
-        $hostname = escapeshellarg(SettingsPiwik::getPiwikInstanceId());
+        $hostname = SettingsPiwik::getPiwikInstanceId();
 
         $importLogFile = self::getImportLogFile($idSite, $hostname, $logToSingleFile);
         if (!is_writable($importLogFile)
@@ -124,7 +124,7 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         $command = "$nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
-            $command .= '--matomo-domain=' . $hostname . ' ';
+            $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
         $command .= 'googleanalyticsimporter:import-reports --idsite=' . (int)$idSite;
         if ($isVerboseLoggingEnabled) {
@@ -156,7 +156,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         $idSite = $status['idSite'];
         $isVerboseLoggingEnabled = !empty($status['is_verbose_logging_enabled']);
 
-        $hostname = escapeshellarg(SettingsPiwik::getPiwikInstanceId());
+        $hostname = SettingsPiwik::getPiwikInstanceId();
 
         $importLogFile = self::getImportLogFile($idSite, $hostname, $logToSingleFile);
         if (!is_writable($importLogFile)
@@ -177,7 +177,7 @@ class Tasks extends \Piwik\Plugin\Tasks
 
         $command = "$nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
-            $command .= '--matomo-domain=' . $hostname . ' ';
+            $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
         $command .= 'googleanalyticsimporter:import-ga4-reports --idsite=' . (int)$idSite;
         if ($isVerboseLoggingEnabled) {
@@ -253,7 +253,7 @@ class Tasks extends \Piwik\Plugin\Tasks
             }
         }
 
-        $hostname = escapeshellarg(SettingsPiwik::getPiwikInstanceId());
+        $hostname = SettingsPiwik::getPiwikInstanceId();
 
         $logToSingleFile = StaticContainer::get('GoogleAnalyticsImporter.logToSingleFile');
 
@@ -282,7 +282,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         }
         $command .= " $nohup $phpBinary " . PIWIK_INCLUDE_PATH . $pathToConsole . ' ';
         if (!empty($hostname)) {
-            $command .= '--matomo-domain=' . $hostname . ' ';
+            $command .= '--matomo-domain=' . escapeshellarg($hostname) . ' ';
         }
         $command .= 'core:archive --disable-scheduled-tasks --force-idsites=' . $idSite . ' --force-periods=week,month,year --force-date-range=' . $dateRange;
 
@@ -314,7 +314,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         if ($logToSingleFile) {
             return StaticContainer::get('path.tmp') . '/logs/gaimport.log';
         }
-        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.archive.' . $idSite . '.' . $hostname . '.log';
+        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.archive.' . $idSite . '.' . escapeshellcmd($hostname) . '.log';
     }
 
     public static function getImportLogFile($idSite, $hostname, $logToSingleFile)
@@ -322,7 +322,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         if ($logToSingleFile) {
             return StaticContainer::get('path.tmp') . '/logs/gaimport.log';
         }
-        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
+        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.' . $idSite . '.' . escapeshellcmd($hostname) . '.log';
     }
 
     private static function sanitizeArg($gaDimension)
