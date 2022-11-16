@@ -84,6 +84,8 @@ class GoogleAnalyticsGA4QueryService
      */
     private $quotaUser;
 
+    private $skipAttemptForExceptionCodes = [401, 403, 500, 503];
+
     public function __construct(BetaAnalyticsDataClient $gaClient,AnalyticsAdminServiceClient $gaAdminClient, $propertyId, array $goalsMapping, $idSite, $quotaUser,
                                 GoogleGA4QueryObjectFactory $googleGA4QueryObjectFactory, LoggerInterface $logger)
     {
@@ -161,6 +163,7 @@ class GoogleAnalyticsGA4QueryService
         $this->currentBackoffTime = self::DEFAULT_MIN_BACKOFF_TIME;
 
         $attempts = 0;
+        $skipReAttempt = false;
         while ($attempts < $this->maxAttempts) {
             try {
                 $this->issuePointlessMysqlQuery();
@@ -170,7 +173,7 @@ class GoogleAnalyticsGA4QueryService
                 if (empty($result)) {
                     ++$attempts;
 
-                    $this->backOff();
+                    $this->backOff($skipReAttempt);
 
                     $this->logger->info("Google Analytics API returned null for some reason, trying again...");
 
@@ -179,6 +182,7 @@ class GoogleAnalyticsGA4QueryService
 
                 return $result;
             } catch (\Exception $ex) {
+                $skipReAttempt = in_array($ex->getCode(), $this->skipAttemptForExceptionCodes);
                 $this->logger->debug("Google Analytics returned an error: {message}", [
                     'message' => $ex->getMessage(),
                     'errorCode' => $ex->getCode()
@@ -205,7 +209,7 @@ class GoogleAnalyticsGA4QueryService
 
                     $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
 
-                    $this->backOff();
+                    $this->backOff($skipReAttempt);
                 } else if (($ex->getCode() == 8 && stripos($ex->getMessage(), 'Exhausted') !== false) || (method_exists($ex, 'getStatus') && $ex->getStatus() == 'RESOURCE_EXHAUSTED')) {
                     if (stripos($ex->getMessage(), 'daily') !== false || stripos($ex->getMessage(), 'day') !== false) {
                         throw new DailyRateLimitReached();
@@ -217,21 +221,26 @@ class GoogleAnalyticsGA4QueryService
 
                     $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
 
-                    $this->backOff();
+                    $this->backOff($skipReAttempt);
                 } else if ($this->isIgnorableException($ex)) {
                     ++$attempts;
 
                     $this->logger->info("Google Analytics API returned an ignorable or temporary error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
 
-                    $this->backOff();
+                    $this->backOff($skipReAttempt);
                 } else if ($ex->getCode() >= 500) {
                     ++$attempts;
 
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
 
-                    $this->backOff();
+                    $this->backOff($skipReAttempt);
                 } else {
                     throw $ex;
+                }
+
+                if ($skipReAttempt) {
+                    $this->logger->debug("Skipping Reattempt, due to following exception status code " . $ex->getCode());
+                    break;
                 }
             }
         }
@@ -280,8 +289,11 @@ class GoogleAnalyticsGA4QueryService
         }
     }
 
-    private function backOff()
+    private function backOff($isSkipReAttempt = false)
     {
+        if ($isSkipReAttempt) {
+            return;
+        }
         $this->sleep($this->currentBackoffTime);
         $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
     }
