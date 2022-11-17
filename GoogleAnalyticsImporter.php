@@ -14,14 +14,12 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\RawLogDao;
 use Piwik\DataTable;
 use Piwik\Date;
-use Piwik\Notification;
 use Piwik\Period;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
-use Piwik\Notification\Manager as NotificationManager;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
 {
@@ -433,7 +431,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         if(self::datesOverlap($periods)) {
             return true;
         }
-
         return false;
     }
 
