@@ -76,7 +76,8 @@ class GoogleAnalyticsQueryService
      */
     private $quotaUser;
 
-    private $skipAttemptForExceptionCodes = [401, 403, 500, 503];
+    private $skipAttemptForExceptionCodes = [401, 403];
+    private $singleAttemptForExceptionCodes = [500, 503];
 
     public function __construct(\Google\Service\AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite, $quotaUser,
                                 GoogleQueryObjectFactory $googleQueryObjectFactory, LoggerInterface $logger)
@@ -184,6 +185,8 @@ class GoogleAnalyticsQueryService
                 $messageContent = @json_decode($ex->getMessage(), true);
                 if (isset($messageContent['error']['message'])) {
                     $lastGaError = $messageContent['error']['message'];
+                } else {
+                    $lastGaError = $ex->getMessage();
                 }
 
                 /**
@@ -212,19 +215,25 @@ class GoogleAnalyticsQueryService
 
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
 
-                    $this->backOff($skipReAttempt);
+		     $backoff = false;
+                    if (in_array($ex->getCode(), $this->singleAttemptForExceptionCodes)) {
+                        $this->maxAttempts = 2;
+			 $backoff = $attempts === 2;
+                    }
+                    $this->backOff($backoff);
                 } else {
                     throw $ex;
                 }
 
                 if ($skipReAttempt) {
+                    $this->maxAttempts = 1;
                     $this->logger->debug("Skipping Reattempt, due to following exception status code " . $ex->getCode());
                     break;
                 }
             }
         }
 
-        $message = "Failed to reach GA after " . $this->maxAttempts . " attempts. Restart the import later.";
+        $message = "Failed to reach GA after " . $this->maxAttempts . " attempt(s). Restart the import later.";
         if (!empty($lastGaError)) {
             $message .= ' Last GA error message: ' . $lastGaError;
         }
