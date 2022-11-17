@@ -43,6 +43,7 @@ use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
+use Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper;
 
 class Importer
 {
@@ -124,9 +125,6 @@ class Importer
      */
     private $isMainImport = true;
 
-    /**
-     * @var ApiQuotaHelper
-     */
     private $apiQuotaHelper;
 
     /**

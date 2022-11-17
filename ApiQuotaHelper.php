@@ -16,7 +16,7 @@ class ApiQuotaHelper
      * Calculate the daily maximum api quota available for the instance
      * @return int
      */
-    public function getMaxDailyApiQuota($setTrial = false)
+    public function getMaxDailyApiQuota(): int
     {
         //Local installation. No limitations from google applicable
         return -1;

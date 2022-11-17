@@ -595,4 +595,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         }
         return $message;
     }
+
+    public function pendingImports()
+    {
+        $pendingImports = GoogleAnalyticsImporter::canDisplayImportPendingNotice();
+        return json_encode(['displayPending' => $pendingImports]);
+    }
 }

@@ -64,7 +64,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'SitesManager.deleteSite.end'            => 'onSiteDeleted',
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
             'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
-            'Request.dispatch' => 'checkPendingImporters'
+            'AssetManager.getJavaScriptFiles' => 'getJsFiles'
         ];
     }
 
@@ -217,6 +217,12 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_MaxEndDateHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotification';
+    }
+
+    public function getJsFiles(&$files)
+    {
+        $files[] = "plugins/GoogleAnalyticsImporter/javascripts/googleAnalyticsImporter.js";
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)
@@ -364,16 +370,32 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         return [$date1, $date2];
     }
 
+    public static function datesOverlap($periods, $start_time_key = 'start_time', $end_time_key = 'end_time')
+    {
+        // order periods by start_time
+        usort($periods, function ($a, $b) use ($start_time_key, $end_time_key) {
+            return strtotime($a[$start_time_key]) <=> strtotime($b[$end_time_key]);
+        });
+        // check two periods overlap
+        foreach ($periods as $key => $period) {
+            if ($key != 0) {
+                if (strtotime($period[$start_time_key]) < strtotime($periods[$key - 1][$end_time_key])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 
     /**
      * Check if there are pending imports, and if so, if the report date is in the range of the dates of the import
      * @return bool
      * @throws \Exception
      */
-    public function canDisplayImportPendingNotice(): bool
+    public static function canDisplayImportPendingNotice(): bool
     {
-        if(!Common::getRequestVar('period', false) ||
-            !Common::getRequestVar('date', false)){
+        if(!self::hasOverLapCheckParams()){
             return false;
         }
 
@@ -382,43 +404,45 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             return false;
         }
 
-        $pending = false;
         $instance = new ImportStatus();
         try{
             $status = $instance->getImportStatus($currentIdSite);
-            if ($status['status'] == ImportStatus::STATUS_ONGOING) {
-                $pending = true;
+            if ($status['status'] != ImportStatus::STATUS_ONGOING) {
+                return false;
             }
         } catch (\Exception $exception){
             return false;
         }
 
-        if($pending === true) {
-            $importStart = Date::factory($status['import_range_start']);
-            $importEnd = Date::factory($status['import_range_end']);
-            $startDate = Date::factory(Period\Factory::build(Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateStart());
-            $endDate = Date::factory(Period\Factory::build(Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateEnd());
 
-            if (($startDate >= $importStart || $startDate <= $importEnd) || ($endDate >= $importStart || $endDate <= $importEnd)) {
-                return true;
-            }
+        $periods = [
+            //Report Dates
+            [
+                'start_time' => Date::factory(Period\Factory::makePeriodFromQueryParams('',
+                    Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateStart()),
+                'end_time' => Date::factory(Period\Factory::makePeriodFromQueryParams('',
+                    Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateEnd())
+            ],
+            //Import Dates
+            [
+                'start_time' =>Date::factory($status['import_range_start']),
+                'end_time' => Date::factory($status['import_range_end'])
+            ]
+        ];
+
+        if(self::datesOverlap($periods)) {
+            return true;
         }
-        return true;
+
+        return false;
     }
 
-
-    public function checkPendingImporters()
+    public static function hasOverLapCheckParams()
     {
-        $displayData = $this->canDisplayImportPendingNotice();
-        if(!$displayData){
-            return;
+        if(!Common::getRequestVar('period', false) || !Common::getRequestVar('date', false)
+            || !Common::getRequestVar('idSite')){
+            return false;
         }
-
-        $notificationMessage = Piwik::translate('GoogleAnalyticsImporter_PendingGAImportReportNotification');
-
-        $notification = new Notification($notificationMessage);
-        $notification->context = Notification::CONTEXT_INFO;
-        $notification->raw = true;
-        NotificationManager::notify('gaImportRunning', $notification);
+        return true;
     }
 }
