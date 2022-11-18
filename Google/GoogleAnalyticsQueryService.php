@@ -215,10 +215,10 @@ class GoogleAnalyticsQueryService
 
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
 
-		            $backoff = false;
+                    $backoff = false;
                     if (in_array($ex->getCode(), $this->singleAttemptForExceptionCodes)) {
                         $this->maxAttempts = 2;
-			            $backoff = $attempts === 2;
+                        $backoff = $attempts === 2;
                     }
                     $this->backOff($backoff);
                 } else {
