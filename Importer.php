@@ -25,6 +25,7 @@ use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
+use Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\CloudApiQuotaExceeded;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
@@ -43,7 +44,6 @@ use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
-use Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper;
 
 class Importer
 {
@@ -550,6 +550,7 @@ class Importer
             ++$this->queryCount;
             if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
                 $this->apiQuotaHelper::saveApiUsed($this->maxAvailableQueries);
+                ApiQuotaHelper::trackEvent('Import Cloud Quota Exceeded','Google_Analytics_Importer');
                 throw new CloudApiQuotaExceeded($this->maxAvailableQueries);
             }
         });

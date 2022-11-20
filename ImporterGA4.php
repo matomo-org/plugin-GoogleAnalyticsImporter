@@ -567,6 +567,7 @@ class ImporterGA4
             ++$this->queryCount;
             if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
                 $this->apiQuotaHelper::saveApiUsed($this->maxAvailableQueries);
+                ApiQuotaHelper::trackEvent('Import Cloud Quota Exceeded','Google_Analytics_Importer');
                 throw new CloudApiQuotaExceeded($this->maxAvailableQueries);
             }
         });
