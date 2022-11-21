@@ -314,7 +314,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         if ($logToSingleFile) {
             return StaticContainer::get('path.tmp') . '/logs/gaimport.log';
         }
-        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.archive.' . $idSite . '.' . $hostname . '.log';
+        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.archive.' . $idSite . '.' . escapeshellcmd($hostname) . '.log';
     }
 
     public static function getImportLogFile($idSite, $hostname, $logToSingleFile)
@@ -322,7 +322,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         if ($logToSingleFile) {
             return StaticContainer::get('path.tmp') . '/logs/gaimport.log';
         }
-        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.' . $idSite . '.' . $hostname . '.log';
+        return StaticContainer::get('path.tmp') . '/logs/gaimportlog.' . $idSite . '.' . escapeshellcmd($hostname) . '.log';
     }
 
     private static function sanitizeArg($gaDimension)

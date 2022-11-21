@@ -11,6 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Integration;
 
 use Piwik\CliMulti\CliPhp;
 use Piwik\Config;
+use Piwik\Config\GeneralConfig;
 use Piwik\Container\StaticContainer;
 use Piwik\Option;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
@@ -97,6 +98,34 @@ class TasksTest extends IntegrationTestCase
         $this->assertEquals([
             [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > " . $this->tmpPath . '/logs/gaimportlog.1.' . SettingsPiwik::getPiwikInstanceId() . '.log 2>&1 &'],
         ], TasksWithMockExec::$commandsRun);
+    }
+
+    public function test_resumeScheduledImports_runAStatusWithVerboseLoggingCorrectlyWithInstanceIdUpdated()
+    {
+        $oldValue = GeneralConfig::getConfigValue('instance_id');
+        GeneralConfig::setConfigValue('instance_id', 'touch /tmp/success');
+        Option::set(ImportStatus::OPTION_NAME_PREFIX . 1, json_encode(['idSite' => 1, 'is_verbose_logging_enabled' => 1, 'status' => ImportStatus::STATUS_STARTED]));
+
+        $tasks = new TasksWithMockExec();
+        $tasks->resumeScheduledImports();
+        $this->assertEquals([
+            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > /dev/null 2>&1 &"],
+        ], TasksWithMockExec::$commandsRun);
+        GeneralConfig::setConfigValue('instance_id', $oldValue);
+    }
+
+    public function test_resumeScheduledImports_runAStatusWithVerboseLoggingCorrectlyWithInstanceIdUpdated_1()
+    {
+        $oldValue = GeneralConfig::getConfigValue('instance_id');
+        GeneralConfig::setConfigValue('instance_id', 'test; rm -rf .');
+        Option::set(ImportStatus::OPTION_NAME_PREFIX . 1, json_encode(['idSite' => 1, 'is_verbose_logging_enabled' => 1, 'status' => ImportStatus::STATUS_STARTED]));
+
+        $tasks = new TasksWithMockExec();
+        $tasks->resumeScheduledImports();
+        $this->assertEquals([
+            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > ". $this->tmpPath . '/logs/gaimportlog.1.test\; rm -rf ..log 2>&1 &'],
+        ], TasksWithMockExec::$commandsRun);
+        GeneralConfig::setConfigValue('instance_id', $oldValue);
     }
 
     public function test_archiveImportedReports_shouldSkipBrokenStatusEntries_ImportsThatHaveNotImportedAnything_OrLastArchivedDateIsEqualOrGreaterToLastImportedDate()
