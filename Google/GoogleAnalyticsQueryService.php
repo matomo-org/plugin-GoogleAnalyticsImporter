@@ -102,6 +102,11 @@ class GoogleAnalyticsQueryService
         foreach (array_chunk($gaMetricsToQuery, 9) as $chunk) {
             $chunkResponse = $this->gaBatchGet($day, array_values($chunk), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
 
+            if ($this->onQueryMade) {
+                $callable = $this->onQueryMade;
+                $callable();
+            }
+
             // some metric/date combinations seem to cause GA to return absolutely nothing (no rows + NULL row count).
             // in this case we remove the problematic metrics and try again.
             if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
@@ -117,11 +122,6 @@ class GoogleAnalyticsQueryService
                 if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
                     continue;
                 }
-            }
-
-            if ($this->onQueryMade) {
-                $callable = $this->onQueryMade;
-                $callable();
             }
 
             usleep(100 * 1000);
