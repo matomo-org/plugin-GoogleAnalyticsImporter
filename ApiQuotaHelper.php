@@ -27,13 +27,13 @@ class ApiQuotaHelper
         return $this->getMaxDailyApiQuota();
     }
 
-    public static function saveApiUsed($numQueries)
+    public function saveApiUsed($numQueries)
     {
         //No need to save since it's a local installation
         return;
     }
 
-    public static function trackEvent($event, $name)
+    public function trackEvent($event, $name)
     {
         //DI to takeover on ConnectAccount
         return;

@@ -420,9 +420,9 @@ class Importer
 
         } catch (DailyRateLimitReached  | CloudApiQuotaExceeded $ex) {
             if($ex instanceof CloudApiQuotaExceeded){
-                ApiQuotaHelper::trackEvent('Internal Quota Exception Reached','Google_Analytics_Importer');
+                $this->apiQuotaHelper->trackEvent('Internal Quota Exception Reached','Google_Analytics_Importer');
             } else {
-                ApiQuotaHelper::trackEvent('Google Quota Exception Reached','Google_Analytics_Importer');
+                $this->apiQuotaHelper->trackEvent('Google Quota Exception Reached','Google_Analytics_Importer');
             }
             $this->importStatus->rateLimitReached($idSite);
             $this->logger->info($ex->getMessage());
@@ -523,7 +523,7 @@ class Importer
      */
     private function getRecordImporters($idSite, $viewId)
     {
-        ApiQuotaHelper::trackEvent('Import Attempt','Google_Analytics_Importer');
+        $this->apiQuotaHelper->trackEvent('Import Attempt','Google_Analytics_Importer');
         if (empty($this->recordImporters)) {
             $recordImporters = StaticContainer::get('GoogleAnalyticsImporter.recordImporters');
 
@@ -549,13 +549,13 @@ class Importer
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
             if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
-                $this->apiQuotaHelper::saveApiUsed($this->maxAvailableQueries);
-                ApiQuotaHelper::trackEvent('Import Cloud Quota Exceeded','Google_Analytics_Importer');
+                $this->apiQuotaHelper->saveApiUsed($this->maxAvailableQueries);
+                $this->apiQuotaHelper->trackEvent('Import Cloud Quota Exceeded','Google_Analytics_Importer');
                 throw new CloudApiQuotaExceeded($this->maxAvailableQueries);
             }
         });
-        $this->apiQuotaHelper::saveApiUsed($this->queryCount);
-        ApiQuotaHelper::trackEvent('Import Complete','Google_Analytics_Importer');
+        $this->apiQuotaHelper->saveApiUsed($this->queryCount);
+        $this->apiQuotaHelper->trackEvent('Import Complete','Google_Analytics_Importer');
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {
