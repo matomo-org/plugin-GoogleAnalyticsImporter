@@ -433,10 +433,11 @@ class ImporterGA4
         } catch (DailyRateLimitReached | CloudApiQuotaExceeded $ex) {
             if($ex instanceof CloudApiQuotaExceeded){
                 $this->apiQuotaHelper->trackEvent('Internal Quota Exception Reached','Google_Analytics_Importer');
+                $this->importStatus->cloudRateLimitReached($idSite, $ex->getMessage());
             } else {
                 $this->apiQuotaHelper->trackEvent('Google Quota Exception Reached','Google_Analytics_Importer');
+                $this->importStatus->rateLimitReached($idSite);
             }
-            $this->importStatus->rateLimitReached($idSite);
             $this->logger->info($ex->getMessage());
             return true;
         } catch (HourlyRateLimitReached $ex) {

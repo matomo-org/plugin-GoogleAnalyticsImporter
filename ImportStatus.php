@@ -33,6 +33,7 @@ class ImportStatus
     const STATUS_ERRORED = 'errored';
     const STATUS_RATE_LIMITED = 'rate_limited';
     const STATUS_RATE_LIMITED_HOURLY = 'rate_limited_hourly';
+    const STATUS_CLOUD_RATE_LIMITED = 'cloud_rate_limited';
     const STATUS_KILLED = 'killed';
 
     public static function isImportRunning($status)
@@ -204,6 +205,14 @@ class ImportStatus
     {
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_RATE_LIMITED;
+        $this->saveStatus($status);
+    }
+
+    public function cloudRateLimitReached($idSite, $errorMessage)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['status'] = self::STATUS_CLOUD_RATE_LIMITED;
+        $status['error'] = $errorMessage;
         $this->saveStatus($status);
     }
 
