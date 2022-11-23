@@ -815,6 +815,43 @@ class ImportStatusTest extends IntegrationTestCase
         ], $status);
     }
 
+    public function test_internal_rateLimited_workflowGA4()
+    {
+        Date::$now = Date::factory('2015-03-04 00:00:00')->getTimestamp();
+
+        $idSite = 5;
+
+        $status = $this->getImportStatus($idSite);
+
+        $this->instance->startingImport('properties/1234', 'account', '', $idSite, [], 'ga4');
+
+        $this->instance->cloudRateLimitReached($idSite, 'Test Message');
+        $status = $this->getImportStatus($idSite);
+        $this->assertEquals([
+            'status' => ImportStatus::STATUS_CLOUD_RATE_LIMITED,
+            'idSite' => $idSite,
+            'ga' => [
+                'import_type' => 'GA4',
+                'property' => 'properties/1234',
+                'account' => 'account',
+                'view' => '',
+            ],
+            'last_date_imported' => null,
+            'import_start_time' => Date::$now,
+            'import_end_time' => null,
+            'last_job_start_time' => Date::$now,
+            'last_day_archived' => null,
+            'import_range_start' => null,
+            'import_range_end' => null,
+            'extra_custom_dimensions' => [],
+            'days_finished_since_rate_limit' => 0,
+            'reimport_ranges' => [],
+            'main_import_progress' => null,
+            'isGA4' => true,
+            'error' => 'Test Message'
+        ], $status);
+    }
+
     /**
      * @dataProvider getTestDataForGetEstimatedDaysLeftToFinish
      */
