@@ -15,6 +15,7 @@ use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Db;
+use Piwik\Option;
 use Piwik\Piwik;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -26,6 +27,7 @@ class GoogleAnalyticsGA4QueryService
     const MAX_BACKOFF_TIME = 60;
     const PING_MYSQL_EVERY = 25;
     const DEFAULT_MIN_BACKOFF_TIME = 2; // start at 2s since GA seems to have trouble w/ the 10 requests per 100s limit w/ 1
+    const DELAY_OPTION_NAME = 'GoogleAnalyticsImporter_nextAvailableAt';
 
     private static $problematicMetrics = [
         'totalUsers',
@@ -203,8 +205,10 @@ class GoogleAnalyticsGA4QueryService
 
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
                     if (stripos($ex->getMessage(), 'daily') !== false || stripos($ex->getMessage(), 'day') !== false) {
+                        $this->setDbBackOff('D');
                         throw new DailyRateLimitReached();
                     } else if(stripos($ex->getMessage(), 'hour') !== false) {
+                        $this->setDbBackOff();
                         throw new HourlyRateLimitReached();
                     }
 
@@ -215,8 +219,10 @@ class GoogleAnalyticsGA4QueryService
                     $this->backOff($skipReAttempt);
                 } else if (($ex->getCode() == 8 && stripos($ex->getMessage(), 'Exhausted') !== false) || (method_exists($ex, 'getStatus') && $ex->getStatus() == 'RESOURCE_EXHAUSTED')) {
                     if (stripos($ex->getMessage(), 'daily') !== false || stripos($ex->getMessage(), 'day') !== false) {
+                        $this->setDbBackOff('D');
                         throw new DailyRateLimitReached();
                     } else if(stripos($ex->getMessage(), 'hour') !== false) {
+                        $this->setDbBackOff();
                         throw new HourlyRateLimitReached();
                     }
 
@@ -305,6 +311,15 @@ class GoogleAnalyticsGA4QueryService
         }
         $this->sleep($this->currentBackoffTime);
         $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
+    }
+
+    private function setDbBackOff($backoffLength = 'H')
+    {
+        $nextRetry = strotime('+1 hour');
+        if($backoffLength === 'D'){
+            $nextRetry = strtotime('tomorrow');
+        }
+        Option::set(self::DELAY_OPTION_NAME, $nextRetry);
     }
 
     private function isIgnorableException(\Exception $ex)
