@@ -50,8 +50,6 @@ class DbBackOffTest extends \PHPUnit\Framework\TestCase
     {
         $oneHour = Date::factory('+1 hour')->getTimestamp();
 
-        Option::set(GoogleAnalyticsGA4QueryService::DELAY_OPTION_NAME, $oneHour);
-
         $queryService = $this->getMockBuilder(GoogleAnalyticsGA4QueryService::class)
             ->onlyMethods(['setDbBackOff'])
             ->disableOriginalConstructor()
