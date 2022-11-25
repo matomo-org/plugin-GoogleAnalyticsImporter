@@ -309,7 +309,7 @@ class GoogleAnalyticsQueryService
         return false;
     }
 
-    private function setDbBackOff($backoffLength = 'H')
+    public function setDbBackOff($backoffLength = 'H')
     {
         $nextRetry = Date::factory('+1 hour');
         if($backoffLength === 'D'){

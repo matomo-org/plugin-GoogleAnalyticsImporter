@@ -313,7 +313,7 @@ class GoogleAnalyticsGA4QueryService
         $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
     }
 
-    private function setDbBackOff($backoffLength = 'H')
+    public function setDbBackOff($backoffLength = 'H')
     {
         $nextRetry = strotime('+1 hour');
         if($backoffLength === 'D'){
