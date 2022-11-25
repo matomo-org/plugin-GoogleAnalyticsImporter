@@ -315,9 +315,9 @@ class GoogleAnalyticsGA4QueryService
 
     public function setDbBackOff($backoffLength = 'H')
     {
-        $nextRetry = strotime('+1 hour');
+        $nextRetry = Date::factory('+1 hour')->getTimestamp();
         if($backoffLength === 'D'){
-            $nextRetry = strtotime('tomorrow');
+            $nextRetry = Date::factory('tomorrow')->getTimestamp();
         }
         Option::set(self::DELAY_OPTION_NAME, $nextRetry);
     }

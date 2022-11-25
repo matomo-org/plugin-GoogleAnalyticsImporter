@@ -435,7 +435,7 @@ class ImportReports extends ConsoleCommand
             return ['canProcess' => true];
         }
 
-        if(Date::factory('now') >= $nextAvailableAt){
+        if(Date::factory('now')->getTimestamp() >= $nextAvailableAt){
             Option::delete(GoogleAnalyticsQueryService::DELAY_OPTION_NAME);
             return ['canProcess' => true];
         }
