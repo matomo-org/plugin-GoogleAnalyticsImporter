@@ -60,11 +60,11 @@ class DbBackOffTest extends IntegrationTestCase
             StaticContainer::get(GoogleQueryObjectFactory::class), StaticContainer::get(LoggerInterface::class));
         $gaQueryService->setDbBackOff();
 
-        $this->assertEquals($oneHour, Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME));
+        $this->assertLessThan(1, abs($oneHour - Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME)));
 
         $tomorrow = Date::factory('tomorrow')->getTimestamp();
         $gaQueryService->setDbBackOff('D');
-        $this->assertEquals($tomorrow, Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME));
+        $this->assertLessThan(1, abs($tomorrow - Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME)));
     }
 
 }
