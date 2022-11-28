@@ -25,6 +25,8 @@ use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
+use Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper;
+use Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\CloudApiQuotaExceeded;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleCustomDimensionMapper;
@@ -123,9 +125,16 @@ class Importer
      */
     private $isMainImport = true;
 
+    private $apiQuotaHelper;
+
+    /**
+     * @var int
+     */
+    private $maxAvailableQueries = 0;
+
     public function __construct(ReportsProvider $reportsProvider, \Google\Service\Analytics $gaService, \Google\Service\AnalyticsReporting $gaReportingService,
                                 LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper,
-                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
+                                IdMapper $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate, ApiQuotaHelper $apiQuotaHelper)
     {
         $this->reportsProvider = $reportsProvider;
         $this->gaService = $gaService;
@@ -137,6 +146,7 @@ class Importer
         $this->importStatus = $importStatus;
         $this->invalidator = $invalidator;
         $this->endDate = $endDate;
+        $this->apiQuotaHelper = $apiQuotaHelper;
     }
 
     public function setIsMainImport($isMainImport)
@@ -376,6 +386,7 @@ class Importer
             $this->currentLock = $lock;
             $this->noDataMessageRemoved = false;
             $this->queryCount = 0;
+            $this->maxAvailableQueries = $this->apiQuotaHelper->getBalanceApiQuota();
 
             $endPlusOne = $end->addDay(1);
 
@@ -406,8 +417,15 @@ class Importer
             $this->importStatus->finishImportIfNothingLeft($idSite);
 
             unset($recordImporters);
-        } catch (DailyRateLimitReached $ex) {
-            $this->importStatus->rateLimitReached($idSite);
+
+        } catch (DailyRateLimitReached  | CloudApiQuotaExceeded $ex) {
+            if($ex instanceof CloudApiQuotaExceeded){
+                $this->apiQuotaHelper->trackEvent('Internal Quota Exception Reached','Google_Analytics_Importer');
+                $this->importStatus->cloudRateLimitReached($idSite, $ex->getMessage());
+            } else {
+                $this->apiQuotaHelper->trackEvent('Google Quota Exception Reached','Google_Analytics_Importer');
+                $this->importStatus->rateLimitReached($idSite);
+            }
             $this->logger->info($ex->getMessage());
             return true;
         } catch (MaxEndDateReached $ex) {
@@ -506,6 +524,7 @@ class Importer
      */
     private function getRecordImporters($idSite, $viewId)
     {
+        $this->apiQuotaHelper->trackEvent('Import Attempt','Google_Analytics_Importer');
         if (empty($this->recordImporters)) {
             $recordImporters = StaticContainer::get('GoogleAnalyticsImporter.recordImporters');
 
@@ -530,7 +549,14 @@ class Importer
             $this->gaServiceReporting, $viewId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleQueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
+            if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
+                $this->apiQuotaHelper->saveApiUsed($this->maxAvailableQueries);
+                $this->apiQuotaHelper->trackEvent('Import Cloud Quota Exceeded','Google_Analytics_Importer');
+                throw new CloudApiQuotaExceeded($this->maxAvailableQueries);
+            }
         });
+        $this->apiQuotaHelper->saveApiUsed($this->queryCount);
+        $this->apiQuotaHelper->trackEvent('Import Complete','Google_Analytics_Importer');
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {

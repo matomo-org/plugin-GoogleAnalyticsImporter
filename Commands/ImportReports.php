@@ -272,7 +272,7 @@ class ImportReports extends ConsoleCommand
                         break;
                     }
                 } finally {
-                    // doing it in the finally since we can get rate limited, which will result in an exception thrown
+                    // doing it in finally since we can get rate limited, which will result in an exception thrown
                     if (!$skipArchiving) {
                         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Running archiving for newly imported data...");
                         $status = $importStatus->getImportStatus($idSite);

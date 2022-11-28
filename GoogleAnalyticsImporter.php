@@ -14,6 +14,7 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\RawLogDao;
 use Piwik\DataTable;
 use Piwik\Date;
+use Piwik\Period;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
@@ -61,6 +62,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'SitesManager.deleteSite.end'            => 'onSiteDeleted',
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
             'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
+            'AssetManager.getJavaScriptFiles' => 'getJsFiles'
         ];
     }
 
@@ -177,6 +179,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_Troubleshooting';
         $translationKeys[] = 'GoogleAnalyticsImporter_Start';
         $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_CloudRateLimitHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHourlyHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_KilledStatusHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_ResumeDesc';
@@ -213,6 +216,12 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_MaxEndDateHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotification';
+    }
+
+    public function getJsFiles(&$files)
+    {
+        $files[] = "plugins/GoogleAnalyticsImporter/javascripts/googleAnalyticsImporter.js";
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)
@@ -358,5 +367,80 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $date2 = $period->getDateTimeEnd()->setTimezone($timezone);
 
         return [$date1, $date2];
+    }
+
+    public static function datesOverlap($periods, $start_time_key = 'start_time', $end_time_key = 'end_time')
+    {
+        // order periods by start_time
+        usort($periods, function ($a, $b) use ($start_time_key, $end_time_key) {
+            return strtotime($a[$start_time_key]) <=> strtotime($b[$end_time_key]);
+        });
+        // check two periods overlap
+        foreach ($periods as $key => $period) {
+            if ($key != 0) {
+                if (strtotime($period[$start_time_key]) < strtotime($periods[$key - 1][$end_time_key])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * Check if there are pending imports, and if so, if the report date is in the range of the dates of the import
+     * @return bool
+     * @throws \Exception
+     */
+    public static function canDisplayImportPendingNotice(): bool
+    {
+        if(!self::hasOverLapCheckParams()){
+            return false;
+        }
+
+        $currentIdSite = Common::getRequestVar('idSite', -1);
+        if($currentIdSite === -1){
+            return false;
+        }
+
+        $instance = new ImportStatus();
+        try{
+            $status = $instance->getImportStatus($currentIdSite);
+            if ($status['status'] != ImportStatus::STATUS_ONGOING) {
+                return false;
+            }
+        } catch (\Exception $exception){
+            return false;
+        }
+
+
+        $periods = [
+            //Report Dates
+            [
+                'start_time' => Date::factory(Period\Factory::makePeriodFromQueryParams('',
+                    Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateStart()),
+                'end_time' => Date::factory(Period\Factory::makePeriodFromQueryParams('',
+                    Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateEnd())
+            ],
+            //Import Dates
+            [
+                'start_time' =>Date::factory($status['import_range_start']),
+                'end_time' => Date::factory($status['import_range_end'])
+            ]
+        ];
+
+        if(self::datesOverlap($periods)) {
+            return true;
+        }
+        return false;
+    }
+
+    public static function hasOverLapCheckParams()
+    {
+        if(!Common::getRequestVar('period', false) || !Common::getRequestVar('date', false)
+            || !Common::getRequestVar('idSite')){
+            return false;
+        }
+        return true;
     }
 }

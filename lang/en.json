@@ -70,6 +70,7 @@
         "CancelJobConfirm": "Are you sure you want to cancel this ongoing job?",
         "LeaveEmptyToRemove": "Leave this empty to remove the end date and continue the import until manually cancelled.",
         "RateLimitHelp": "Google Analytics by default limits the number of requests you can make to the API for a specific project to 50,000 a day. It looks like this import job has exceeded that limit, so the import cannot continue until tomorrow.",
+        "CloudRateLimitHelp": "Daily cloud rate limit reached, try again tomorrow. (Note: GA by default sets a daily limit on the number of API requests made each day. This has been prorated to %1$s requests to your account. This limit is prorated for each Matomo cloud customer. It looks like you've reached your limit. Continue the import tomorrow.)",
         "RateLimitHourlyHelp": "Google Analytics by default limits the number of requests you can make to the API for a specific project to 5000 per hour. It looks like this import job has exceeded that limit, so the import cannot continue till next hour.",
         "SiteID": "Site ID",
         "SiteDeleted": "Site Deleted",
@@ -116,6 +117,7 @@
         "SelectImporterUATitle": "Google Universal analytics (GA3)",
         "SelectImporterUAInlineHelp": "Choose this if your property ID start with UA and end with a number (UA-XXXXXXXXX-1).",
         "SelectImporterGA4Title": "Google Analytics 4 (GA4)",
-        "SelectImporterGA4InlineHelp": "Choose this if your property ID have only numbers (XXXXXXXXX)."
+        "SelectImporterGA4InlineHelp": "Choose this if your property ID have only numbers (XXXXXXXXX).",
+        "PendingGAImportReportNotification" : "We are still importing from Google Analytics but you should be able to see your most recent data. You will be able to view all your data within a few days."
     }
 }
