@@ -439,6 +439,6 @@ class ImportReports extends ConsoleCommand
             Option::delete(GoogleAnalyticsQueryService::DELAY_OPTION_NAME);
             return ['canProcess' => true];
         }
-        return ['canProcess' => false, 'nextAvailableAt' => strtotime('Y-m-d', $nextAvailableAt)];
+        return ['canProcess' => false, 'nextAvailableAt' => date('Y-m-d', $nextAvailableAt)];
     }
 }
