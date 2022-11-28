@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 4.4.0
+- Added rate limiting for Analytics Importer for Matomo cloud customers
+- Added code to skip retry for certain exceptions
+
 # 4.3.6
 - Added escaping for shell args
 
