@@ -599,6 +599,6 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     public function pendingImports()
     {
         $pendingImports = GoogleAnalyticsImporter::canDisplayImportPendingNotice();
-        return json_encode(['displayPending' => $pendingImports]);
+        return json_encode($pendingImports);
     }
 }

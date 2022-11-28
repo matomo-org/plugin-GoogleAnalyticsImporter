@@ -216,7 +216,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_MaxEndDateHelp';
-        $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotification';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationNoData';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationSomeData';
     }
 
     public function getJsFiles(&$files)
@@ -392,25 +393,25 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
      * @return bool
      * @throws \Exception
      */
-    public static function canDisplayImportPendingNotice(): bool
+    public static function canDisplayImportPendingNotice(): array
     {
         if(!self::hasOverLapCheckParams()){
-            return false;
+            return ['displayPending' => false];
         }
 
         $currentIdSite = Common::getRequestVar('idSite', -1);
         if($currentIdSite === -1){
-            return false;
+            return ['displayPending' => false];
         }
 
         $instance = new ImportStatus();
         try{
             $status = $instance->getImportStatus($currentIdSite);
             if ($status['status'] != ImportStatus::STATUS_ONGOING) {
-                return false;
+                return ['displayPending' => false];
             }
         } catch (\Exception $exception){
-            return false;
+            return ['displayPending' => false];
         }
 
 
@@ -430,9 +431,13 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         ];
 
         if(self::datesOverlap($periods)) {
-            return true;
+            $importedRange = $instance->getImportedDateRange($currentIdSite);
+            return [
+                'displayPending' => true,
+                'availableDate' => $importedRange[0]
+            ];
         }
-        return false;
+        return ['displayPending' => false];
     }
 
     public static function hasOverLapCheckParams()
