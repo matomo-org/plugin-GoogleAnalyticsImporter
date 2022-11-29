@@ -233,7 +233,7 @@ class GoogleAnalyticsQueryService
             }
         }
 
-        $message = "Failed to reach GA after " . $this->maxAttempts . " attempt(s). Restart the import later.";
+        $message = "Failed to reach GA after " . $this->maxAttempts . " attempt(s). The import will automatically restart later and you don't need to do anything.";
         if (!empty($lastGaError)) {
             $message .= ' Last GA error message: ' . $lastGaError;
         }
