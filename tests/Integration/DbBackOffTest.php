@@ -43,7 +43,6 @@ class DbBackOffTest extends IntegrationTestCase
 
     public function testQueryService()
     {
-        $oneHour = Date::factory('+1 hour')->getTimestamp();
         API::getInstance()->addSite("site1", ["http://piwik.net", "http://piwik.com/test/"]);
 
         $client = new \Google\Client();
@@ -60,11 +59,12 @@ class DbBackOffTest extends IntegrationTestCase
             StaticContainer::get(GoogleQueryObjectFactory::class), StaticContainer::get(LoggerInterface::class));
         $gaQueryService->setDbBackOff();
 
-        $this->assertLessThan(1, abs($oneHour - Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME)));
+        $this->assertSame(Date::factory('+1 hour')->toString('Y-m-d H:i'),
+            Date::factory(Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME))->toString('Y-m-d H:i'));
 
-        $tomorrow = Date::factory('tomorrow')->getTimestamp();
         $gaQueryService->setDbBackOff('D');
-        $this->assertLessThan(1, abs($tomorrow - Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME)));
+        $this->assertSame(Date::factory('tomorrow')->toString('Y-m-d H:i'),
+            Date::factory(Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME))->toString('Y-m-d H:i'));
     }
 
 }

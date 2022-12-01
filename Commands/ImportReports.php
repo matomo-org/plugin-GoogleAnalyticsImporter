@@ -85,7 +85,7 @@ class ImportReports extends ConsoleCommand
 
         $canProcessNow = $this->checkIfCanProcess();
         if($canProcessNow['canProcess'] === false){
-            $exceededMessage = 'You have exceeded your available quota. Please retry at ' . $canProcessNow['nextAvailableAt'];
+            $exceededMessage = 'The import will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
             $output->writeln($exceededMessage);
             throw new \Exception($exceededMessage);
         }
@@ -439,6 +439,6 @@ class ImportReports extends ConsoleCommand
             Option::delete(GoogleAnalyticsQueryService::DELAY_OPTION_NAME);
             return ['canProcess' => true];
         }
-        return ['canProcess' => false, 'nextAvailableAt' => date('Y-m-d h:i a', $nextAvailableAt)];
+        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a')];
     }
 }
