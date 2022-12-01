@@ -32,7 +32,6 @@ class AuthorizationGA4
         return $client;
     }
 
-
     public function getAdminClient()
     {
         $klass = StaticContainer::get('GoogleAnalyticsImporter.googleAnalyticsAdminServiceClientClass');
@@ -47,35 +46,8 @@ class AuthorizationGA4
 
     public function getClientConfiguration()
     {
-        $value = Option::get(self::CLIENT_CONFIG_OPTION_NAME);
-        $value = @json_decode($value, true);
+        $clientConfig = StaticContainer::get('GoogleAnalyticsGA4Importer.clientConfiguration');
 
-        if (empty($value['web']['client_id']) || empty($value['web']['client_secret'])) {
-            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
-        }
-
-        return [
-            'type' => 'authorized_user',
-            'client_id' => $value['web']['client_id'],
-            'client_secret' => $value['web']['client_secret'],
-            'refresh_token' => $this->getRefreshToken()
-        ];
-    }
-
-    private function getAccessToken()
-    {
-        $value = Option::get(self::ACCESS_TOKEN_OPTION_NAME);
-
-        return $value;
-    }
-
-    private function getRefreshToken()
-    {
-        $accessToken = @json_decode($this->getAccessToken(), true);
-        if (empty($accessToken['refresh_token'])) {
-            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
-        }
-
-        return $accessToken['refresh_token'];
+        return $clientConfig;
     }
 }
