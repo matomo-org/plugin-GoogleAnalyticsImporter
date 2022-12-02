@@ -1,7 +1,6 @@
 <?php
 
 use Piwik\Option;
-use Piwik\Piwik;
 use Piwik\Url;
 use Psr\Container\ContainerInterface;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
@@ -62,23 +61,15 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency\RecordImporter::class,
     ],
     'GoogleAnalyticsGA4Importer.clientConfiguration' => function (\Psr\Container\ContainerInterface $c) {
-        $config = Option::get(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME);
-        $config = @json_decode($config, true);
-
-        if (empty($config['web']['client_id']) || empty($config['web']['client_secret'])) {
-            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
-        }
+        $config = @json_decode(Option::get(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME), true);
 
         $accessToken = @json_decode(Option::get(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME), true);
-        if (empty($accessToken['refresh_token'])) {
-            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
-        }
 
         return [
             'type' => 'authorized_user',
-            'client_id' => $config['web']['client_id'],
-            'client_secret' => $config['web']['client_secret'],
-            'refresh_token' => $accessToken['refresh_token']
+            'client_id' => (!empty($config['web']['client_id']) ? $config['web']['client_id'] : ''),
+            'client_secret' => (!empty($config['web']['client_secret']) ? $config['web']['client_secret'] : ''),
+            'refresh_token' => (!empty($accessToken['refresh_token']) ? $accessToken['refresh_token'] : '')
         ];
     },
     'GoogleAnalyticsGA4Importer.recordImporters' => [

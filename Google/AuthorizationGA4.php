@@ -48,6 +48,14 @@ class AuthorizationGA4
     {
         $clientConfig = StaticContainer::get('GoogleAnalyticsGA4Importer.clientConfiguration');
 
+        if (empty($clientConfig['client_id']) || empty($clientConfig['client_secret'])) {
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
+        }
+
+        if (empty($clientConfig['refresh_token'])) {
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
+        }
+
         return $clientConfig;
     }
 }
