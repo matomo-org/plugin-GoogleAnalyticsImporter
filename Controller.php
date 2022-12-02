@@ -581,7 +581,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
     private function logException(\Throwable $ex, $functionName)
     {
-        StaticContainer::get(LoggerInterface::class)->error('Encountered exception in GoogleAnalyticsImporter.{function} controller method: {exception}', [
+        StaticContainer::get(LoggerInterface::class)->debug('Encountered exception in GoogleAnalyticsImporter.{function} controller method: {exception}', [
             'exception' => $ex,
             'function' => $functionName,
         ]);
@@ -590,8 +590,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     private function getNotificationExceptionText(\Exception $e)
     {
         $message = $e->getMessage();
+        $messageContent = @json_decode($message, true);
         if (\Piwik_ShouldPrintBackTraceWithMessage()) {
             $message .= "\n" . $e->getTraceAsString();
+        } else if (isset($messageContent['error']['message'])) {
+            $message = $messageContent['error']['message'];
         }
         return $message;
     }
