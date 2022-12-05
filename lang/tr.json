@@ -70,6 +70,8 @@
         "NotSetInGA": "Google Analytics üzerinde ayarlanmamış",
         "Optional": "İsteğe bağlı",
         "PendingGAImportReportNotification": "Google Analytics aktarımı sürüyor ancak son verilerinizi görebilmeniz gerekir. Birkaç gün içinde tüm verilerinizi görebileceksiniz.",
+        "PendingGAImportReportNotificationNoData": "Google Analytics aktarımı sürüyor ancak son verilerinizi görebilmeniz gerekir. Birkaç gün içinde tüm verilerinizi görebileceksiniz.",
+        "PendingGAImportReportNotificationSomeData": "Google Analytics aktarımı sürüyor ancak son verilerinizi görebilmeniz gerekir. %1$s tarihine kadar olan veriler şu ana kadar içe aktarıldı. Bu tarihten itibaren içe aktarılan verilerinizi görebilmeniz gerekir.",
         "PhpExecutableMissing": "Matomo, PHP yürütülebilir dosyasını bulamadı. Google Analytics içe aktarıcı, verileri içe aktarmak için komut satırından PHP işleyiciyi çağırır. İçe aktarma özelliğinin kullanılabilmesi için bu yürütülebilir dosya var ve PHP tarafından erişilebilir olmalıdır.",
         "PropertyId": "Google Analytics mülk kimliği",
         "PropertyIdGA4": "GA4 Mülk Kimliği",
