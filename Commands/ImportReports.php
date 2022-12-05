@@ -11,9 +11,11 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
+use Piwik\Option;
 use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugin\Manager;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportLock;
@@ -80,6 +82,13 @@ class ImportReports extends ConsoleCommand
 
         $idSite = $this->getIdSite($input);
         LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite, $output);
+
+        $canProcessNow = $this->checkIfCanProcess();
+        if($canProcessNow['canProcess'] === false){
+            $exceededMessage = 'The import will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
+            $output->writeln($exceededMessage);
+            throw new \Exception($exceededMessage);
+        }
 
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
@@ -417,5 +426,19 @@ class ImportReports extends ConsoleCommand
         } catch (\Exception $ex) {
             return false;
         }
+    }
+
+    public function checkIfCanProcess()
+    {
+        $nextAvailableAt = Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME);
+        if ($nextAvailableAt === false) {
+            return ['canProcess' => true];
+        }
+
+        if(Date::factory('now')->getTimestamp() >= $nextAvailableAt){
+            Option::delete(GoogleAnalyticsQueryService::DELAY_OPTION_NAME);
+            return ['canProcess' => true];
+        }
+        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a')];
     }
 }

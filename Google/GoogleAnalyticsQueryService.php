@@ -13,6 +13,8 @@ use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Db;
+use Piwik\Exception\Exception;
+use Piwik\Option;
 use Piwik\Piwik;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -23,6 +25,7 @@ class GoogleAnalyticsQueryService
     const MAX_BACKOFF_TIME = 60;
     const PING_MYSQL_EVERY = 25;
     const DEFAULT_MIN_BACKOFF_TIME = 2; // start at 2s since GA seems to have trouble w/ the 10 requests per 100s limit w/ 1
+    const DELAY_OPTION_NAME = 'GoogleAnalyticsImporter_nextAvailableAt';
 
     private static $problematicMetrics = [
         'ga:users',
@@ -196,7 +199,10 @@ class GoogleAnalyticsQueryService
 
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
                     if (strpos($ex->getMessage(), 'daily') !== false) {
+                        $this->setDbBackOff('D');
                         throw new DailyRateLimitReached();
+                    } else if(stripos($ex->getMessage(), 'hour') !== false) {
+                        $this->setDbBackOff();
                     }
 
                     ++$attempts;
@@ -302,5 +308,14 @@ class GoogleAnalyticsQueryService
         }
 
         return false;
+    }
+
+    public function setDbBackOff($backoffLength = 'H')
+    {
+        $nextRetry = Date::factory('+1 hour')->getTimestamp();
+        if($backoffLength === 'D'){
+            $nextRetry = Date::factory('tomorrow')->getTimestamp();
+        }
+        Option::set(self::DELAY_OPTION_NAME, $nextRetry);
     }
 }
