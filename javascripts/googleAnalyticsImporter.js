@@ -24,7 +24,7 @@
       const response = await fetch('/index.php?' + new URLSearchParams(searchParams));
       const data = await response.json();
       if (data.displayPending){
-        displayPendingNotification();
+        displayPendingNotification(data.availableDate);
       } else {
         hidePendingNotification();
       }
@@ -39,15 +39,24 @@ function hidePendingNotification(){
 }
 
 
-function displayPendingNotification(){
+function displayPendingNotification(availableDate){
   var UI = require('piwik/UI');
   var notification = new UI.Notification();
-  notification.show(_pk_translate("GoogleAnalyticsImporter_PendingGAImportReportNotification"), {
-    context: 'info',
-    noclear: false,
-    type: 'toast',
-    id: 'GoogleAnalyticsImporterPendingImportNotice'
-  });
+  if(availableDate !== ''){
+    notification.show(_pk_translate("GoogleAnalyticsImporter_PendingGAImportReportNotificationSomeData",[availableDate]), {
+      context: 'info',
+      noclear: false,
+      type: 'toast',
+      id: 'GoogleAnalyticsImporterPendingImportNotice'
+    });
+  } else {
+    notification.show(_pk_translate("GoogleAnalyticsImporter_PendingGAImportReportNotificationNoData"), {
+      context: 'info',
+      noclear: false,
+      type: 'toast',
+      id: 'GoogleAnalyticsImporterPendingImportNotice'
+    });
+  }
 }
 
 function getAllUrlParams(url) {
