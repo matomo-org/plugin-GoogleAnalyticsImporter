@@ -3,6 +3,8 @@
 
 # 4.4.1
 - Handled exception being thrown on screen due to log level
+- Notification message updated to show last import date
+- Stop import process for specified time when quota is exceeded instead of retrying
 
 # 4.4.0
 - Added rate limiting for Analytics Importer for Matomo cloud customers
