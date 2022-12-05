@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.4.1
+- Handled exception being thrown on screen due to log level
+
 # 4.4.0
 - Added rate limiting for Analytics Importer for Matomo cloud customers
 - Added code to skip retry for certain exceptions
