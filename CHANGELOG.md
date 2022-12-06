@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.4.2
+- Fixed regression due to string value being passed for date
+
 # 4.4.1
 - Handled exception being thrown on screen due to log level
 - Notification message updated to show last import date
