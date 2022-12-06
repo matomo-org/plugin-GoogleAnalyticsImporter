@@ -380,8 +380,8 @@ class ImportGA4Reports extends ConsoleCommand
 
     public function checkIfCanProcess()
     {
-        $nextAvailableAt = Option::get(GoogleAnalyticsGA4QueryService::DELAY_OPTION_NAME);
-        if ($nextAvailableAt === false) {
+        $nextAvailableAt = (int) (Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME));
+        if (!$nextAvailableAt) {
             return ['canProcess' => true];
         }
 
