@@ -14,6 +14,7 @@ use Piwik\Date;
 use Piwik\Option;
 use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugin\Manager;
+use Piwik\Plugins\GoogleAnalyticsImporter\CannotProcessImportException;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
@@ -60,6 +61,8 @@ class ImportReports extends ConsoleCommand
             return $this->executeImpl($input, $output);
         } catch (ImportWasCancelledException $ex) {
             $output->writeln("Import was cancelled, aborting.");
+        } catch (CannotProcessImportException $ex) {
+            $output->writeln($ex->getMessage());
         }
     }
 
@@ -87,7 +90,7 @@ class ImportReports extends ConsoleCommand
         if($canProcessNow['canProcess'] === false){
             $exceededMessage = 'The import will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
             $output->writeln($exceededMessage);
-            throw new \Exception($exceededMessage);
+            throw new CannotProcessImportException($exceededMessage);
         }
 
         /** @var ImportStatus $importStatus */

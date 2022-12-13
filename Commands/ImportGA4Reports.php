@@ -14,9 +14,9 @@ use Piwik\Date;
 use Piwik\Option;
 use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugin\Manager;
+use Piwik\Plugins\GoogleAnalyticsImporter\CannotProcessImportException;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsGA4QueryService;
-use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Site;
 use Piwik\Timer;
 use Symfony\Component\Console\Input\InputInterface;
@@ -57,6 +57,8 @@ class ImportGA4Reports extends ConsoleCommand
             return $this->executeImpl($input, $output);
         } catch (ImportWasCancelledException $ex) {
             $output->writeln("Import was cancelled, aborting.");
+        } catch (CannotProcessImportException $ex) {
+            $output->writeln($ex->getMessage());
         }
     }
 
@@ -83,7 +85,7 @@ class ImportGA4Reports extends ConsoleCommand
         if($canProcessNow['canProcess'] === false){
             $exceededMessage = 'The import will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
             $output->writeln($exceededMessage);
-            throw new \Exception($exceededMessage);
+            throw new CannotProcessImportException($exceededMessage);
         }
 
         /** @var ImportStatus $importStatus */
