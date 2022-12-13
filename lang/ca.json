@@ -70,6 +70,8 @@
         "NotSetInGA": "No definit a Google Analytics",
         "Optional": "Opcional",
         "PendingGAImportReportNotification": "Encara estem important des de Google Analytics, però hauríeu de poder veure les vostres dades més recents. Podreu veure totes les vostres dades en pocs dies.",
+        "PendingGAImportReportNotificationNoData": "Encara estem important des de Google Analytics, però hauríeu de poder veure les vostres dades més recents. Podreu veure totes les vostres dades en pocs dies.",
+        "PendingGAImportReportNotificationSomeData": "Encara estem important des de Google Analytics, però hauríeu de poder veure les vostres dades més recents. Fins ara s'han importat dades fins a %1$s. Hauríeu de poder veure les dades de l'importador des d'aquesta data.",
         "PhpExecutableMissing": "Matomo no pot trobar l'executable PHP. L'importador de Google Analytics invoca PHP des de la línia d'ordres per importar dades. Aquest executable ha d'estar present i accessible des de PHP perquè l'importador funcioni.",
         "PropertyId": "Identificador de la propietat de Google Analytics",
         "PropertyIdGA4": "Identificador de la propietat GA4",
