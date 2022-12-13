@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.4.3
+- Started catching cannot process exception to not throw uncaught exception.
+
 # 4.4.2
 - Fixed regression due to string value being passed for date
 
