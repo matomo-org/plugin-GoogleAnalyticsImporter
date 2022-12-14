@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ca30a399c0a5a7a8e7eb62820d8f5c15d0527d6f',
+        'reference' => 'fa633cc6bd4c5059507024bcf307a93628ea16b8',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ca30a399c0a5a7a8e7eb62820d8f5c15d0527d6f',
+            'reference' => 'fa633cc6bd4c5059507024bcf307a93628ea16b8',
             'dev_requirement' => false,
         ),
         'firebase/php-jwt' => array(
@@ -167,6 +167,15 @@
             'install_path' => __DIR__ . '/../paragonie/random_compat',
             'aliases' => array(),
             'reference' => '996434e5492cb4c3edcb9168db6fbb1359ef965a',
+            'dev_requirement' => false,
+        ),
+        'phpseclib/bcmath_compat' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpseclib/bcmath_compat',
+            'aliases' => array(),
+            'reference' => '2ffea8bfe1702b4535a7b3c2649c4301968e9a3c',
             'dev_requirement' => false,
         ),
         'phpseclib/phpseclib' => array(
