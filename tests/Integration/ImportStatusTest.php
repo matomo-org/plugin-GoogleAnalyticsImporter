@@ -1761,6 +1761,25 @@ View: view',
         $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
     }
 
+    public function test_getTotalImportStatusCount_shouldReturnZero()
+    {
+        $this->assertEquals(0, $this->instance->getTotalImportStatusCount());
+    }
+
+    public function test_getTotalImportStatusCount_shouldReturnAllImports()
+    {
+        $status = $this->instance->startingImport('properties/p', 'a', '', $idSite = 1, [], 'ga4');
+        $this->assertEquals(ImportStatus::STATUS_STARTED, $status['status']);
+
+        $status['import_range_end'] = '2012-03-04';
+        $status['main_import_progress'] = '2012-03-02';
+        $status['reimport_ranges'] = [];
+        $this->instance->saveStatus($status);
+        $this->instance->finishedImport($idSite);
+        $this->assertEquals(1, $this->instance->getTotalImportStatusCount());
+        $this->assertEquals(0, $this->instance->getTotalImportStatusCount(true));
+    }
+
     private function getImportStatus($idSite)
     {
         $optionName = ImportStatus::OPTION_NAME_PREFIX . $idSite;

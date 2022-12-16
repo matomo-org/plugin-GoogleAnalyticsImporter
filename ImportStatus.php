@@ -549,4 +549,18 @@ class ImportStatus
             $this->finishedImport($idSite);
         }
     }
+
+    public function getTotalImportStatusCount($skipFinishedStatus = false)
+    {
+        $count = 0;
+        $statuses = $this->getAllImportStatuses();
+        foreach ($statuses as $status) {
+            if ($skipFinishedStatus && $status['status'] === ImportStatus::STATUS_FINISHED) {
+                continue;
+            }
+            $count++;
+        }
+
+        return $count;
+    }
 }
