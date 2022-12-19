@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 4.4.4
+- Added new method to get count of imports scheduled.
+- Started using polyfill for bcmath to work instead of asking users to install one.
+
 # 4.4.3
 - Started catching cannot process exception to not throw uncaught exception.
 
