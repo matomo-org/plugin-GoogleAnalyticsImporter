@@ -62,7 +62,8 @@
         <span
           class="icon icon-help"
           :title="translate('GoogleAnalyticsImporter_KilledStatusHelp')"
-        />
+        /><br>
+        {{ translate('GoogleAnalyticsImporter_ErrorMessage') }}: {{ status.error || 'no message' }}
       </div>
     </td>
     <td class="last-date-imported">

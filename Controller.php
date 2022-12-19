@@ -60,9 +60,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             $authUrl = $googleClient->createAuthUrl();
 
-            $nonce = Nonce::getNonce('GoogleAnalyticsImporter.deleteGoogleClientConfig');
+            $nonce = Nonce::getNonce('GoogleAnalyticsImporter.deleteGoogleClientConfig', 1200);
         } else {
-            $nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig');
+            $nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig', 1200);
         }
 
         $importStatus = StaticContainer::get(ImportStatus::class);
@@ -76,11 +76,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             }
         }
 
-        $stopImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.stopImportNonce');
-        $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce');
-        $changeImportEndDateNonce = Nonce::getNonce('GoogleAnalyticsImporter.changeImportEndDateNonce');
-        $resumeImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.resumeImportNonce');
-        $scheduleReImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.scheduleReImport');
+        $stopImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.stopImportNonce', 1200);
+        $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce', 1200);
+        $changeImportEndDateNonce = Nonce::getNonce('GoogleAnalyticsImporter.changeImportEndDateNonce', 1200);
+        $resumeImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.resumeImportNonce', 1200);
+        $scheduleReImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.scheduleReImport', 1200);
 
         $maxEndDateDesc = null;
 
@@ -98,7 +98,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         return $this->renderTemplate('index', [
             'isClientConfigurable' => $isClientConfigurable,
             'isConfigured' => $authorization->hasAccessToken(),
-            'auth_nonce' => Nonce::getNonce('gaimport.auth'),
+            'auth_nonce' => Nonce::getNonce('gaimport.auth', 1200),
             'hasClientConfiguration' => $hasClientConfiguration,
             'nonce' => $nonce,
             'statuses' => $statuses,
