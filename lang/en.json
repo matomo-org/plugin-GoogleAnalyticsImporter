@@ -119,6 +119,8 @@
         "SelectImporterGA4Title": "Google Analytics 4 (GA4)",
         "SelectImporterGA4InlineHelp": "Choose this if your property ID have only numbers (XXXXXXXXX).",
         "PendingGAImportReportNotificationNoData" : "We are still importing from Google Analytics but you should be able to see your most recent data. You will be able to view all your data within a few days.",
-        "PendingGAImportReportNotificationSomeData" : "We are still importing from Google Analytics but you should be able to see your most recent data. Data until %1$s has been imported so far. You should be able to see your importer data since this date."
+        "PendingGAImportReportNotificationSomeData" : "We are still importing from Google Analytics but you should be able to see your most recent data. Data until %1$s has been imported so far. You should be able to see your importer data since this date.",
+        "NoDateSuccessImportMessageLine1": "Your Google Analytics properties were imported successfully",
+        "NoDateSuccessImportMessageLine2": "Historical reports for these properties will be imported in the background. Please be patient as this will take a few days to complete. It's now time to set up the tracking of new data (see instructions below)."
     }
 }

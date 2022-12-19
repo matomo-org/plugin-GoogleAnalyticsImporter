@@ -218,6 +218,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_MaxEndDateHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationNoData';
         $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationSomeData';
+        $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine1';
+        $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine2';
     }
 
     public function getJsFiles(&$files)
@@ -395,23 +397,27 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
      */
     public static function canDisplayImportPendingNotice(): array
     {
-        if(!self::hasOverLapCheckParams()){
-            return ['displayPending' => false];
-        }
-
-        $currentIdSite = Common::getRequestVar('idSite', -1);
-        if($currentIdSite === -1){
-            return ['displayPending' => false];
-        }
-
+        $isGASite = false;
         $instance = new ImportStatus();
-        try{
+        $currentIdSite = Common::getRequestVar('idSite', -1);
+        try {
             $status = $instance->getImportStatus($currentIdSite);
-            if ($status['status'] != ImportStatus::STATUS_ONGOING) {
-                return ['displayPending' => false];
-            }
-        } catch (\Exception $exception){
-            return ['displayPending' => false];
+            $isGASite = !empty($status);
+        } catch (\Exception $exception) {
+            return ['displayPending' => false, 'isGASite' => $isGASite];
+        }
+
+        if(!self::hasOverLapCheckParams()){
+            return ['displayPending' => false, 'isGASite' => $isGASite];
+        }
+
+
+        if ($currentIdSite === -1) {
+            return ['displayPending' => false, 'isGASite' => $isGASite];
+        }
+
+        if ($status['status'] != ImportStatus::STATUS_ONGOING) {
+            return ['displayPending' => false, 'isGASite' => $isGASite];
         }
 
 
@@ -434,10 +440,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             $importedRange = $instance->getImportedDateRange($currentIdSite);
             return [
                 'displayPending' => true,
-                'availableDate' => $importedRange[0]
+                'availableDate' => $importedRange[0],
+                'isGASite' => $isGASite
             ];
         }
-        return ['displayPending' => false];
+        return ['displayPending' => false, 'isGASite' => $isGASite];
     }
 
     public static function hasOverLapCheckParams()
