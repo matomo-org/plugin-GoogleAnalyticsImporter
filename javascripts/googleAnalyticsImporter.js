@@ -25,7 +25,7 @@
       const data = await response.json();
       if ($('.site-without-data').length && data.isGASite) {
         displayPendingNotification('', 'successMessage');
-      } else if (data.displayPending, '') {
+      } else if (data.displayPending) {
         displayPendingNotification(data.availableDate, 'infoMessage');
       } else {
         hidePendingNotification();
@@ -42,6 +42,7 @@ function hidePendingNotification(){
 
 
 function displayPendingNotification(availableDate, messageType) {
+  // the notification container div was missing in siteWithoutData till Matomo 4.13.0, to make it compatible we have added the below check
   if (!$('#notificationContainer').length) {
     $('#root .pageWrap').prepend('<div id="notificationContainer"></div>')
   }
