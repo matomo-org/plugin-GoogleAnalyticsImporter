@@ -38,4 +38,10 @@ class ApiQuotaHelper
         //DI to takeover on ConnectAccount
         return;
     }
+
+    public function getImportCountForTheDay()
+    {
+        //Local installation. No limitations from google applicable
+        return -1;
+    }
 }
