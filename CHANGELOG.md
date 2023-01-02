@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.4.5
+- Added success notification screen after selecting GA properties
+
 # 4.4.4
 - Added new method to get count of imports scheduled.
 - Started using polyfill for bcmath to work instead of asking users to install one.
