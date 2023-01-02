@@ -65,6 +65,8 @@
         "MatomoSite": "Lloc de Matomo",
         "MaxEndDateHelp": "La data de finalització màxima permesa en aquesta instal·lació de Matomo és %1$s. Si introduïu una data més enllà, es canviarà per aquesta data.",
         "MissingClientConfiguration": "Falta la configuració del client o no és vàlida, torneu a carregar-la.",
+        "NoDateSuccessImportMessageLine1": "Les vostres propietats de Google Analytics s'han importat correctament",
+        "NoDateSuccessImportMessageLine2": "Els informes històrics d'aquestes propietats s'importaran en segon pla. Si us plau tingueu paciència, ja que trigarà uns quants dies a completar-se. Ara és el moment de configurar el seguiment de dades noves (vegeu les instruccions a continuació).",
         "NohupExecutableMissing": "Matomo no pot trobar l'executable nohup. L'importador de Google Analytics utilitza nohup per executar el procés d'importació, de manera que continuarà pel seu compte un cop finalitzi una sol·licitud web. Aquest executable ha d'estar present i accessible des de PHP perquè l'importador funcioni.",
         "None": "Cap",
         "NotSetInGA": "No definit a Google Analytics",
