@@ -86,7 +86,7 @@
         "RequiredExecutablesCheck": "Erforderliche Executables",
         "RequiredFunctionsCheck": "Benötigte PHP Funktionen",
         "RequiredFunctionsMissing": "Matomo kann die %1$s PHP Funktionen nicht finden, Ihr Host hat sie vermutlich deaktiviert. Der Google Analytics Importer verwendet diese Funktionen um Daten im Hintergrund zu importieren. Ohne sie kann der Importer nicht funktionieren.",
-        "ResumeDesc": "Fortfachen. Hinweis: Wenn Ihr Import fehlgeschlagen ist, wird das Fortfahren sehr wahrscheinlich zum selben Fehler führen, außer Sie haben das Plugin mit einem Fix aktualisiert. Im Fall einer Datenbegrenzung wird sehr wahrscheinlich zu demselben Fehler führen, aber möglicherweise am nächsten Tag wenn das Datenlimit aufgehoben ist automatisch neu starten.",
+        "ResumeDesc": "Fortfahren. Hinweis: Wenn Ihr Import fehlgeschlagen ist, wird das Fortfahren sehr wahrscheinlich zum selben Fehler führen, außer Sie haben das Plugin mit einem Fix aktualisiert. Im Fall einer Datenbegrenzung wird sehr wahrscheinlich zu demselben Fehler führen, aber möglicherweise am nächsten Tag wenn das Datenlimit aufgehoben ist automatisch neu starten.",
         "Schedule": "Zeitplan",
         "ScheduleAnImport": "Einen Import aus Google Universal Analytics (GA3) planen",
         "ScheduleAnImportGA4": "Einen Import aus Google Analytics 4 (GA4) planen",
