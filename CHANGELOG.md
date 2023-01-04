@@ -4,6 +4,9 @@
 # 5.0.0
 - Remove all use of AngularJS from the plugin.
 
+# 4.3.6
+- Added escaping for shell args
+
 # 4.3.5
 - Fixes for System testcases to work due to recent changes
 - Adding more date format hints to form fields, #286
