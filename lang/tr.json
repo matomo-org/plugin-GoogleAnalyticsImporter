@@ -65,6 +65,8 @@
         "MatomoSite": "Matomo sitesi",
         "MaxEndDateHelp": "Bu Matomo kurulumu için en son bitiş tarihi %1$s olabilir. Yazılabilecek daha ileri tarihler bu tarih ile değiştirilir.",
         "MissingClientConfiguration": "İstemci yapılandırması eksik ya da geçersiz. Lütfen yeniden yükleyin.",
+        "NoDateSuccessImportMessageLine1": "Google Analytics mülkleriniz içe aktarıldı",
+        "NoDateSuccessImportMessageLine2": "Bu mülkler için geçmiş raporları arka planda içe aktarılacak. Bu işlemin tamamlanması birkaç gün alacağından lütfen sabırlı olun. Şimdi yeni verilerin izlenmesini ayarlayabilirsiniz (aşağıdaki yönergelere bakın).",
         "NohupExecutableMissing": "Matomo, nohup yürütülebilir dosyasını bulamadı. Google Analytics içe aktarıcı, verileri içe aktarırken web isteği tamamlandıktan sonra da işlemi sürdürebilmek için nohup kullanır. İçe aktarma özelliğinin kullanılabilmesi için bu yürütülebilir dosya var ve PHP tarafından erişilebilir olmalıdır.",
         "None": "Yok",
         "NotSetInGA": "Google Analytics üzerinde ayarlanmamış",
