@@ -489,18 +489,9 @@
 		<nb_visits>1</nb_visits>
 		<nb_actions>2</nb_actions>
 		<max_actions>2</max_actions>
-		<sum_visit_length>122</sum_visit_length>
+		<sum_visit_length>121</sum_visit_length>
 		<bounce_count>0</bounce_count>
-		<nb_visits_converted>1</nb_visits_converted>
-		<goals>
-			<row idgoal='2'>
-				<nb_conversions>1</nb_conversions>
-				<nb_visits_converted>1</nb_visits_converted>
-				<revenue>0</revenue>
-			</row>
-		</goals>
-		<nb_conversions>1</nb_conversions>
-		<revenue>0</revenue>
+		<nb_visits_converted>0</nb_visits_converted>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<sum_daily_nb_users>0</sum_daily_nb_users>
 		<segment>deviceBrand==Unknown;deviceModel==generic+desktop</segment>
