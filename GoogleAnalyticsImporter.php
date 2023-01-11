@@ -220,6 +220,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationSomeData';
         $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine1';
         $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine2';
+        $translationKeys[] = 'GoogleAnalyticsImporter_OauthFailedMessage';
     }
 
     public function getJsFiles(&$files)

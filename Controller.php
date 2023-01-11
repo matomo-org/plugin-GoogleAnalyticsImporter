@@ -36,6 +36,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $errorMessage = $errorMessage ?: Common::getRequestVar('error', '');
         if (!empty($errorMessage)) {
+            if ($errorMessage === 'access_denied') {
+                $errorMessage = Piwik::translate('GoogleAnalyticsImporter_OauthFailedMessage');
+            }
             $notification = new Notification($errorMessage);
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->type = Notification::TYPE_TRANSIENT;
