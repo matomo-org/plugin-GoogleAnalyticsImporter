@@ -266,13 +266,6 @@ export default defineComponent({
   computed: {
     tooltipContent() {
       return function tooltipContent(this: HTMLElement) {
-        const $this = $(this);
-
-        if ($this.attr('piwik-field') === '') {
-          // do not show it for form fields
-          return '';
-        }
-
         const title = $(this).attr('title') || '';
         return window.vueSanitize(title.replace(/\n/g, '<br />'));
       };

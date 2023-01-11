@@ -20,6 +20,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
 use Piwik\SettingsPiwik;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
+use Piwik\Version;
 
 class TasksWithMockExec extends Tasks
 {
@@ -108,8 +109,13 @@ class TasksTest extends IntegrationTestCase
 
         $tasks = new TasksWithMockExec();
         $tasks->resumeScheduledImports();
+        $expected = 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > /dev/null 2>&1 &";
+        //since instance id is now sanitized in Matomo 5.x
+        if (version_compare(Version::VERSION, '5.0.0-b1', '>=')) {
+            $expected = 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > ".PIWIK_INCLUDE_PATH . '/tmp/logs/gaimportlog.1.touchtmpsuccess.log'." 2>&1 &";
+        }
         $this->assertEquals([
-            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > /dev/null 2>&1 &"],
+            [false, $expected],
         ], TasksWithMockExec::$commandsRun);
         GeneralConfig::setConfigValue('instance_id', $oldValue);
     }
@@ -122,8 +128,13 @@ class TasksTest extends IntegrationTestCase
 
         $tasks = new TasksWithMockExec();
         $tasks->resumeScheduledImports();
+        $expected = 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > ". $this->tmpPath . '/logs/gaimportlog.1.test\; rm -rf ..log 2>&1 &';
+        //since instance id is now sanitized in Matomo 5.x
+        if (version_compare(Version::VERSION, '5.0.0-b1', '>=')) {
+            $expected = 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > ". $this->tmpPath . '/logs/gaimportlog.1.testrm-rf..log 2>&1 &';
+        }
         $this->assertEquals([
-            [false, 'nohup ' . $this->getPhpBinary() . ' ' . PIWIK_INCLUDE_PATH . "/tests/PHPUnit/proxy/console{$this->getCommandHostOption()} googleanalyticsimporter:import-reports --idsite=1 -vvv > ". $this->tmpPath . '/logs/gaimportlog.1.test\; rm -rf ..log 2>&1 &'],
+            [false, $expected],
         ], TasksWithMockExec::$commandsRun);
         GeneralConfig::setConfigValue('instance_id', $oldValue);
     }

@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 5.0.0
+- Remove all use of AngularJS from the plugin.
+
 # 4.3.6
 - Added escaping for shell args
 
@@ -25,6 +28,7 @@
 - Added support to import GA4 data into Matomo
 - Added code to import recent dates first
 - Upgraded guzzleHTTP version to 4.5.0
+
 
 # 4.2.0
 

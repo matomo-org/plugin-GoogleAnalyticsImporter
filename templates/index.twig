@@ -3,172 +3,24 @@
 {% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
 
 {% block content %}
-    <style>
-        .hide-import-main-div {
-            display: none;
-        }
-    </style>
     {{ postEvent('Template.beforeGoogleAnalyticsImporterHeader') }}
-    {% if isClientConfigurable %}
-    <div piwik-notification notification-id="ga-importer-help" context="info" type="transient" noclear="1" notification-title="{{ 'GoogleAnalyticsImporter_SettingUp'|translate }}">
-        {{ 'GoogleAnalyticsImporter_ImporterHelp1'|translate }}
-        {{ 'GoogleAnalyticsImporter_ImporterHelp2'|translate('<a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noreferrer noopener">', '</a>')|raw }}
-        {{ 'GoogleAnalyticsImporter_ImporterHelp3'|translate('<br><br><strong>', '</strong>')|raw }}
-    </div>
-    <div piwik-content-block
-         content-title="{{ title }}"
-    >
-        {% if hasClientConfiguration %}
-            <form method="post" action="{{ {action: 'forwardToAuth'}|urlRewriteWithParameters|e('html_attr') }}" id="clientauthform">
-                <input type="hidden" name="auth_nonce" value="{{ auth_nonce|e('html_attr') }}" />
-                {% if isConfigured %}
-                <p>{{ 'GoogleAnalyticsImporter_ImporterIsConfigured'|translate }}</p>
-                <button type="submit" class="btn">{{ 'GoogleAnalyticsImporter_ReAuthorize'|translate }}</button>
-                {% else %}
-                <p>{{ 'GoogleAnalyticsImporter_ClientConfigSuccessfullyUpdated'|translate }}</p>
-                <button type="submit" class="btn">{{ 'GoogleAnalyticsImporter_Authorize'|translate }}</button>
-                {% endif %}
-            </form>
-        {% else %}
-            <form action="{{ linkTo({'action': 'configureClient'}) }}" method="POST" enctype="multipart/form-data">
-                <p>{{ 'GoogleAnalyticsImporter_ConfigureClientDesc1'|translate }}</p>
-                <p>{{ 'GoogleAnalyticsImporter_ConfigureClientDesc2'|translate('<a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noopener noreferrer">', '</a>')|raw }}</p>
 
-                <div piwik-field uicontrol="file" name="clientfile"
-                     title="{{ 'GoogleAnalyticsImporter_ConfigurationFile'|translate }}">
-                </div>
-
-                <div piwik-field uicontrol="textarea" name="client"
-                     title="{{ 'GoogleAnalyticsImporter_ConfigurationText'|translate }}">
-                </div>
-
-                <input type="hidden" name="config_nonce" value="{{ nonce }}" />
-
-                <button type="submit" class="btn">{{ 'General_Save'|translate }}</button>
-
-            </form>
-        {% endif %}
-    </div>
-
-    {% if hasClientConfiguration %}
     <div
-        piwik-content-block
-        content-title="{{ 'GoogleAnalyticsImporter_RemoveClientConfiguration'|translate }}"
-    >
-        <form action="{{ linkTo({'action': 'deleteClientCredentials'}) }}" method="POST" enctype="multipart/form-data" id="removeConfigForm">
-            <p>{{ 'GoogleAnalyticsImporter_DeleteUploadedClientConfig'|translate }}:</p>
-
-            <input type="hidden" name="config_nonce" value="{{ nonce }}" />
-
-            <button type="submit" class="btn">{{ 'General_Remove'|translate }}</button>
-        </form>
-    </div>
-    {% endif %}
-
-    {% endif %}
-
-    {% if hasClientConfiguration and isConfigured %}
-        <div
-            piwik-content-block
-            content-title="{{ 'GoogleAnalyticsImporter_SelectImporter'|translate }}"
-        >
-
-            <p>{{ 'GoogleAnalyticsImporter_SelectImporterSelection'|translate }}</p>
-            <div
-             vue-entry="GoogleAnalyticsImporter.ImportSelector"
-             import-options-ua="{{ importOptionsUA|default(null)|json_encode|e('html_attr') }}"
-             import-options-ga4="{{ importOptionsGA4|default(null)|json_encode|e('html_attr') }}"
-             >
-            </div>
-
-            <div
-            class="hide-import-main-div ga-import-main-div ua-main-div"
-            >
-                <h3>{{ 'GoogleAnalyticsImporter_ScheduleAnImport'|translate }}</h3>
-                <div
-                        vue-entry="GoogleAnalyticsImporter.ImportScheduler"
-                        has-client-configuration="{{ hasClientConfiguration|default(null)|json_encode|e('html_attr') }}"
-                        is-configured="{{ isConfigured|default(null)|json_encode|e('html_attr') }}"
-                        start-import-nonce="{{ startImportNonce|default(null)|json_encode|e('html_attr') }}"
-                        max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode|e('html_attr') }}"
-                        extra-custom-dimensions-field="{{ extraCustomDimensionsField|default(null)|json_encode|e('html_attr') }}"
-                        statuses="{{ statuses|default(null)|json_encode|e('html_attr') }}"
-                        stop-import-nonce="{{ stopImportNonce|default(null)|json_encode|e('html_attr') }}"
-                        change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode|e('html_attr') }}"
-                        resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode|e('html_attr') }}"
-                        schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode|e('html_attr') }}"
-                        period="{{ period|default(null)|json_encode|e('html_attr') }}"
-                        date="{{ date|default(null)|json_encode|e('html_attr') }}"
-                        none-text="{{ noneText|default(null)|json_encode|e('html_attr') }}"
-                        website-creation-time="{{ websiteCreationTime|default(null)|json_encode|e('html_attr') }}"
-                        is-done="{{ isDone|default(null)|json_encode|e('html_attr') }}"
-                ></div>
-            </div>
-
-            <div
-            class="hide-import-main-div ga-import-main-div ga4-main-div"
-            >
-                <h3>{{ 'GoogleAnalyticsImporter_ScheduleAnImportGA4'|translate }}</h3>
-                <div
-                        vue-entry="GoogleAnalyticsImporter.ImportSchedulerGA4"
-                        has-client-configuration="{{ hasClientConfiguration|default(null)|json_encode|e('html_attr') }}"
-                        is-configured="{{ isConfigured|default(null)|json_encode|e('html_attr') }}"
-                        start-import-nonce="{{ startImportNonce|default(null)|json_encode|e('html_attr') }}"
-                        max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode|e('html_attr') }}"
-                        extra-custom-dimensions-field="{{ extraCustomDimensionsFieldGA4|default(null)|json_encode|e('html_attr') }}"
-                        statuses="{{ statuses|default(null)|json_encode|e('html_attr') }}"
-                        stop-import-nonce="{{ stopImportNonce|default(null)|json_encode|e('html_attr') }}"
-                        change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode|e('html_attr') }}"
-                        resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode|e('html_attr') }}"
-                        schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode|e('html_attr') }}"
-                        period="{{ period|default(null)|json_encode|e('html_attr') }}"
-                        date="{{ date|default(null)|json_encode|e('html_attr') }}"
-                        none-text="{{ noneText|default(null)|json_encode|e('html_attr') }}"
-                        website-creation-time="{{ websiteCreationTime|default(null)|json_encode|e('html_attr') }}"
-                        is-done="{{ isDone|default(null)|json_encode|e('html_attr') }}"
-                ></div>
-            </div>
-        </div>
-    <div
-        id="importStatusContainer"
-        piwik-content-block
-        content-title="{{ 'GoogleAnalyticsImporter_ImportJobs'|translate }}"
-    >
-        {% if statuses is empty %}
-        <p>{{ 'GoogleAnalyticsImporter_ThereAreNoImportJobs'|translate }}</p>
-        {% else %}
-        <div
-          vue-entry="GoogleAnalyticsImporter.ImportStatus"
-          has-client-configuration="{{ hasClientConfiguration|default(null)|json_encode|e('html_attr') }}"
-          is-configured="{{ isConfigured|default(null)|json_encode|e('html_attr') }}"
-          start-import-nonce="{{ startImportNonce|default(null)|json_encode|e('html_attr') }}"
-          max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode|e('html_attr') }}"
-          extra-custom-dimensions-field="{{ extraCustomDimensionsField|default(null)|json_encode|e('html_attr') }}"
-          statuses="{{ statuses|default(null)|json_encode|e('html_attr') }}"
-          stop-import-nonce="{{ stopImportNonce|default(null)|json_encode|e('html_attr') }}"
-          change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode|e('html_attr') }}"
-          resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode|e('html_attr') }}"
-          schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode|e('html_attr') }}"
-          period="{{ period|default(null)|json_encode|e('html_attr') }}"
-          date="{{ date|default(null)|json_encode|e('html_attr') }}"
-          none-text="{{ noneText|default(null)|json_encode|e('html_attr') }}"
-          website-creation-time="{{ websiteCreationTime|default(null)|json_encode|e('html_attr') }}"
-          is-done="{{ isDone|default(null)|json_encode|e('html_attr') }}"
-        ></div>
-        {% endif %}
-    </div>
-
-    <div class="ui-confirm" id="confirmCancelJob">
-        <h2>{{ 'GoogleAnalyticsImporter_CancelJobConfirm'|translate }}</h2>
-        <input role="yes" type="button" value="{{ 'General_Yes'|translate }}"/>
-        <input role="no" type="button" value="{{ 'General_No'|translate }}"/>
-    </div>
-    {% endif %}
-    <script>
-        $('body').on('change', '#selectedImporterua, #selectedImporterga4', function(){
-            var value = $(this).val();
-            $('.ga-import-main-div').hide();
-            $('.' + value+ '-main-div').show();
-        });
-    </script>
+        vue-entry="GoogleAnalyticsImporter.AdminPage"
+        has-client-configuration="{{ hasClientConfiguration|json_encode }}"
+        is-configured="{{ isConfigured|json_encode }}"
+        auth-nonce="{{ auth_nonce|json_encode }}"
+        config-nonce="{{ nonce|json_encode }}"
+        start-import-nonce="{{ startImportNonce|default(null)|json_encode }}"
+        max-end-date-desc="{{ maxEndDateDesc|default(null)|json_encode }}"
+        extra-custom-dimensions-field="{{ extraCustomDimensionsField|default(null)|json_encode }}"
+        extra-custom-dimensions-field-ga4="{{ extraCustomDimensionsFieldGA4|default(null)|json_encode }}"
+        statuses="{{ statuses|default([])|json_encode }}"
+        stop-import-nonce="{{ stopImportNonce|default(null)|json_encode }}"
+        change-import-end-date-nonce="{{ changeImportEndDateNonce|default(null)|json_encode }}"
+        resume-import-nonce="{{ resumeImportNonce|default(null)|json_encode }}"
+        schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode }}"
+        import-options-ua="{{ importOptionsUA|default(null)|json_encode }}"
+        import-options-ga4="{{ importOptionsGA4|default(null)|json_encode }}"
+    ></div>
 {% endblock %}

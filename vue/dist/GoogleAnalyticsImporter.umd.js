@@ -129,6 +129,8 @@ __webpack_require__.d(__webpack_exports__, "ImportScheduler", function() { retur
 __webpack_require__.d(__webpack_exports__, "ImportSchedulerGA4", function() { return /* reexport */ ImportSchedulerGA4; });
 __webpack_require__.d(__webpack_exports__, "ImportSelector", function() { return /* reexport */ ImportSelector; });
 __webpack_require__.d(__webpack_exports__, "ImportStatus", function() { return /* reexport */ ImportStatus; });
+__webpack_require__.d(__webpack_exports__, "ClientConfig", function() { return /* reexport */ ClientConfig; });
+__webpack_require__.d(__webpack_exports__, "AdminPage", function() { return /* reexport */ AdminPage; });
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/setPublicPath.js
 // This file is imported into lib/wc client bundles.
@@ -678,9 +680,9 @@ function ImportSchedulerGA4vue_type_template_id_29c1829b_render(_ctx, _cache, $p
 ImportSchedulerGA4vue_type_script_lang_ts.render = ImportSchedulerGA4vue_type_template_id_29c1829b_render
 
 /* harmony default export */ var ImportSchedulerGA4 = (ImportSchedulerGA4vue_type_script_lang_ts);
-// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=template&id=8e03632a
+// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=template&id=0d85075d
 
-function ImportSelectorvue_type_template_id_8e03632a_render(_ctx, _cache, $props, $setup, $data, $options) {
+function ImportSelectorvue_type_template_id_0d85075d_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Field = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("Field");
 
   var _directive_form = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDirective"])("form");
@@ -697,15 +699,15 @@ function ImportSelectorvue_type_template_id_8e03632a_render(_ctx, _cache, $props
   }, null, 8, ["modelValue", "options", "inline-help"]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
     uicontrol: "radio",
     name: "selectedImporter",
-    modelValue: _ctx.selectedImporterGA4,
+    modelValue: _ctx.selectedImporter,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.selectedImporterGA4 = $event;
+      return _ctx.selectedImporter = $event;
     }),
     options: _ctx.importOptionsGa4,
     "inline-help": _ctx.translate('GoogleAnalyticsImporter_SelectImporterGA4InlineHelp')
   }, null, 8, ["modelValue", "options", "inline-help"])])], 512)), [[_directive_form]]);
 }
-// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=template&id=8e03632a
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=template&id=0d85075d
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-typescript/node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/babel-loader/lib!./node_modules/@vue/cli-plugin-typescript/node_modules/ts-loader??ref--14-2!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportScheduler/ImportSelector.vue?vue&type=script&lang=ts
 
@@ -727,10 +729,15 @@ function ImportSelectorvue_type_template_id_8e03632a_render(_ctx, _cache, $props
   directives: {
     Form: external_CorePluginsAdmin_["Form"]
   },
+  emits: ['update:selectedImporter'],
+  watch: {
+    selectedImporter: function selectedImporter(newVal) {
+      this.$emit('update:selectedImporter', newVal);
+    }
+  },
   data: function data() {
     return {
-      selectedImporter: '',
-      selectedImporterGA4: ''
+      selectedImporter: ''
     };
   }
 }));
@@ -740,45 +747,45 @@ function ImportSelectorvue_type_template_id_8e03632a_render(_ctx, _cache, $props
 
 
 
-ImportSelectorvue_type_script_lang_ts.render = ImportSelectorvue_type_template_id_8e03632a_render
+ImportSelectorvue_type_script_lang_ts.render = ImportSelectorvue_type_template_id_0d85075d_render
 
 /* harmony default export */ var ImportSelector = (ImportSelectorvue_type_script_lang_ts);
-// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.vue?vue&type=template&id=041bd7a0
+// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.vue?vue&type=template&id=985a7fca
 
-var ImportStatusvue_type_template_id_041bd7a0_hoisted_1 = {
+var ImportStatusvue_type_template_id_985a7fca_hoisted_1 = {
   ref: "root"
 };
-var ImportStatusvue_type_template_id_041bd7a0_hoisted_2 = {
+var ImportStatusvue_type_template_id_985a7fca_hoisted_2 = {
   class: "entityTable importStatusesTable"
 };
-var ImportStatusvue_type_template_id_041bd7a0_hoisted_3 = {
+var ImportStatusvue_type_template_id_985a7fca_hoisted_3 = {
   class: "modal",
   id: "openScheduleReimportModal"
 };
-var ImportStatusvue_type_template_id_041bd7a0_hoisted_4 = {
+var ImportStatusvue_type_template_id_985a7fca_hoisted_4 = {
   class: "modal-content"
 };
-var ImportStatusvue_type_template_id_041bd7a0_hoisted_5 = {
+var ImportStatusvue_type_template_id_985a7fca_hoisted_5 = {
   class: "modal-footer"
 };
-var ImportStatusvue_type_template_id_041bd7a0_hoisted_6 = {
+var ImportStatusvue_type_template_id_985a7fca_hoisted_6 = {
   class: "modal",
   id: "editImportEndDate"
 };
-var ImportStatusvue_type_template_id_041bd7a0_hoisted_7 = {
+var ImportStatusvue_type_template_id_985a7fca_hoisted_7 = {
   class: "modal-content"
 };
-var ImportStatusvue_type_template_id_041bd7a0_hoisted_8 = {
+var ImportStatusvue_type_template_id_985a7fca_hoisted_8 = {
   class: "modal-footer"
 };
-function ImportStatusvue_type_template_id_041bd7a0_render(_ctx, _cache, $props, $setup, $data, $options) {
+function ImportStatusvue_type_template_id_985a7fca_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ImportStatusRow = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("ImportStatusRow");
 
   var _component_Field = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("Field");
 
   var _directive_tooltips = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveDirective"])("tooltips");
 
-  return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])((Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", ImportStatusvue_type_template_id_041bd7a0_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("table", ImportStatusvue_type_template_id_041bd7a0_hoisted_2, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("thead", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("tr", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_MatomoSite')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_GoogleAnalyticsInfo')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_Status')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_LatestDayProcessed')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ScheduledReImports')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_StartFinishTimes')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_Actions')), 1)])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("tbody", null, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderList"])(_ctx.statuses, function (status, index) {
+  return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])((Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", ImportStatusvue_type_template_id_985a7fca_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("table", ImportStatusvue_type_template_id_985a7fca_hoisted_2, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("thead", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("tr", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_MatomoSite')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_GoogleAnalyticsInfo')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_Status')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_LatestDayProcessed')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ScheduledReImports')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_StartFinishTimes')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("th", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_Actions')), 1)])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("tbody", null, [(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(true), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["renderList"])(_ctx.statuses, function (status, index) {
     return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(_component_ImportStatusRow, {
       status: status,
       key: index,
@@ -795,7 +802,7 @@ function ImportStatusvue_type_template_id_041bd7a0_render(_ctx, _cache, $props, 
         return _ctx.manuallyResume(status.idSite, status.isGA4);
       }
     }, null, 8, ["status", "onEndImport", "onReimport", "onDelete", "onManuallyResume"]);
-  }), 128))])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_041bd7a0_hoisted_3, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_041bd7a0_hoisted_4, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h3", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_EnterImportDateRange')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
+  }), 128))])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_985a7fca_hoisted_3, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_985a7fca_hoisted_4, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h3", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_EnterImportDateRange')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
     name: "re-import-start-date",
     uicontrol: "text",
     modelValue: _ctx.reimportStartDate,
@@ -811,7 +818,7 @@ function ImportStatusvue_type_template_id_041bd7a0_render(_ctx, _cache, $props, 
       return _ctx.reimportEndDate = $event;
     }),
     placeholder: "".concat(_ctx.translate('GoogleAnalyticsImporter_EndDate'), " (YYYY-MM-DD)")
-  }, null, 8, ["modelValue", "placeholder"])])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_041bd7a0_hoisted_5, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("a", {
+  }, null, 8, ["modelValue", "placeholder"])])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_985a7fca_hoisted_5, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("a", {
     id: "scheduleReimportSubmit",
     href: "",
     class: "modal-action modal-close btn",
@@ -825,7 +832,7 @@ function ImportStatusvue_type_template_id_041bd7a0_render(_ctx, _cache, $props, 
     href: "",
     class: "modal-action modal-close modal-no",
     onClick: _cache[3] || (_cache[3] = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withModifiers"])(function () {}, ["prevent"]))
-  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('General_Cancel')), 1)])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_041bd7a0_hoisted_6, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_041bd7a0_hoisted_7, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h3", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_EnterImportEndDate')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("p", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("em", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_LeaveEmptyToRemove')), 1)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
+  }, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('General_Cancel')), 1)])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_985a7fca_hoisted_6, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_985a7fca_hoisted_7, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h3", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_EnterImportEndDate')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("p", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("em", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_LeaveEmptyToRemove')), 1)]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
     name: "new-import-end-date",
     uicontrol: "text",
     modelValue: _ctx.newImportEndDate,
@@ -833,7 +840,7 @@ function ImportStatusvue_type_template_id_041bd7a0_render(_ctx, _cache, $props, 
       return _ctx.newImportEndDate = $event;
     }),
     placeholder: "".concat(_ctx.translate('GoogleAnalyticsImporter_EndDate'), " (YYYY-MM-DD)")
-  }, null, 8, ["modelValue", "placeholder"])])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_041bd7a0_hoisted_8, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("a", {
+  }, null, 8, ["modelValue", "placeholder"])])]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", ImportStatusvue_type_template_id_985a7fca_hoisted_8, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("a", {
     href: "",
     class: "modal-action modal-close btn",
     onClick: _cache[5] || (_cache[5] = function ($event) {
@@ -854,7 +861,7 @@ function ImportStatusvue_type_template_id_041bd7a0_render(_ctx, _cache, $props, 
     duration: 200
   }]]);
 }
-// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.vue?vue&type=template&id=041bd7a0
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.vue?vue&type=template&id=985a7fca
 
 // CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatusRow.vue?vue&type=template&id=af14206c
 
@@ -1210,13 +1217,6 @@ var ImportStatusvue_type_script_lang_ts_window = window,
   computed: {
     tooltipContent: function tooltipContent() {
       return function tooltipContent() {
-        var $this = ImportStatusvue_type_script_lang_ts_$(this);
-
-        if ($this.attr('piwik-field') === '') {
-          // do not show it for form fields
-          return '';
-        }
-
         var title = ImportStatusvue_type_script_lang_ts_$(this).attr('title') || '';
         return window.vueSanitize(title.replace(/\n/g, '<br />'));
       };
@@ -1229,9 +1229,360 @@ var ImportStatusvue_type_script_lang_ts_window = window,
 
 
 
-ImportStatusvue_type_script_lang_ts.render = ImportStatusvue_type_template_id_041bd7a0_render
+ImportStatusvue_type_script_lang_ts.render = ImportStatusvue_type_template_id_985a7fca_render
 
 /* harmony default export */ var ImportStatus = (ImportStatusvue_type_script_lang_ts);
+// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ClientConfig/ClientConfig.vue?vue&type=template&id=071cd3e6
+
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_1 = ["action"];
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_2 = ["value"];
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_3 = {
+  key: 0
+};
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_4 = {
+  type: "submit",
+  class: "btn"
+};
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_5 = {
+  key: 1
+};
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_6 = {
+  type: "submit",
+  class: "btn"
+};
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_7 = ["action"];
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_8 = ["innerHTML"];
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_9 = ["value"];
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_10 = {
+  type: "submit",
+  class: "btn"
+};
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_11 = ["action"];
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_12 = ["value"];
+var ClientConfigvue_type_template_id_071cd3e6_hoisted_13 = {
+  type: "submit",
+  class: "btn"
+};
+function ClientConfigvue_type_template_id_071cd3e6_render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Field = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("Field");
+
+  var _component_ContentBlock = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("ContentBlock");
+
+  return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_ContentBlock, {
+    "content-title": _ctx.translate('GoogleAnalyticsImporter_ConfigureTheImporter')
+  }, {
+    default: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withCtx"])(function () {
+      return [_ctx.hasClientConfiguration ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("form", {
+        key: 0,
+        method: "post",
+        action: _ctx.forwardToAuthUrl,
+        id: "clientauthform"
+      }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("input", {
+        type: "hidden",
+        name: "auth_nonce",
+        value: _ctx.authNonce
+      }, null, 8, ClientConfigvue_type_template_id_071cd3e6_hoisted_2), _ctx.isConfigured ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", ClientConfigvue_type_template_id_071cd3e6_hoisted_3, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("p", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ImporterIsConfigured')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", ClientConfigvue_type_template_id_071cd3e6_hoisted_4, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ReAuthorize')), 1)])) : (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("span", ClientConfigvue_type_template_id_071cd3e6_hoisted_5, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("p", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ClientConfigSuccessfullyUpdated')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", ClientConfigvue_type_template_id_071cd3e6_hoisted_6, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_Authorize')), 1)]))], 8, ClientConfigvue_type_template_id_071cd3e6_hoisted_1)) : (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("form", {
+        key: 1,
+        action: _ctx.configureClientLink,
+        method: "POST",
+        enctype: "multipart/form-data"
+      }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("p", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ConfigureClientDesc1')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("p", {
+        innerHTML: _ctx.$sanitize(_ctx.configureClientDesc2)
+      }, null, 8, ClientConfigvue_type_template_id_071cd3e6_hoisted_8), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
+        uicontrol: "file",
+        name: "clientfile",
+        modelValue: _ctx.clientFileToSet,
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+          return _ctx.clientFileToSet = $event;
+        }),
+        title: _ctx.translate('GoogleAnalyticsImporter_ConfigurationFile')
+      }, null, 8, ["modelValue", "title"]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Field, {
+        uicontrol: "textarea",
+        name: "client",
+        modelValue: _ctx.clientConfigTextToSet,
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return _ctx.clientConfigTextToSet = $event;
+        }),
+        title: _ctx.translate('GoogleAnalyticsImporter_ConfigurationText')
+      }, null, 8, ["modelValue", "title"]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("input", {
+        type: "hidden",
+        name: "config_nonce",
+        value: _ctx.configNonce
+      }, null, 8, ClientConfigvue_type_template_id_071cd3e6_hoisted_9), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", ClientConfigvue_type_template_id_071cd3e6_hoisted_10, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('General_Save')), 1)], 8, ClientConfigvue_type_template_id_071cd3e6_hoisted_7))];
+    }),
+    _: 1
+  }, 8, ["content-title"]), _ctx.hasClientConfiguration ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(_component_ContentBlock, {
+    key: 0,
+    "content-title": _ctx.translate('GoogleAnalyticsImporter_RemoveClientConfiguration')
+  }, {
+    default: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withCtx"])(function () {
+      return [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("form", {
+        action: _ctx.deleteClientCredentialsLink,
+        method: "POST",
+        enctype: "multipart/form-data",
+        id: "removeConfigForm"
+      }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("p", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_DeleteUploadedClientConfig')) + ":", 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("input", {
+        type: "hidden",
+        name: "config_nonce",
+        value: _ctx.configNonce
+      }, null, 8, ClientConfigvue_type_template_id_071cd3e6_hoisted_12), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("button", ClientConfigvue_type_template_id_071cd3e6_hoisted_13, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('General_Remove')), 1)], 8, ClientConfigvue_type_template_id_071cd3e6_hoisted_11)];
+    }),
+    _: 1
+  }, 8, ["content-title"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)]);
+}
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ClientConfig/ClientConfig.vue?vue&type=template&id=071cd3e6
+
+// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-typescript/node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/babel-loader/lib!./node_modules/@vue/cli-plugin-typescript/node_modules/ts-loader??ref--14-2!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/ClientConfig/ClientConfig.vue?vue&type=script&lang=ts
+
+
+
+/* harmony default export */ var ClientConfigvue_type_script_lang_ts = (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["defineComponent"])({
+  props: {
+    hasClientConfiguration: Boolean,
+    isConfigured: Boolean,
+    authNonce: String,
+    configNonce: String
+  },
+  components: {
+    ContentBlock: external_CoreHome_["ContentBlock"],
+    Field: external_CorePluginsAdmin_["Field"]
+  },
+  data: function data() {
+    return {
+      clientFileToSet: null,
+      clientConfigTextToSet: ''
+    };
+  },
+  computed: {
+    forwardToAuthUrl: function forwardToAuthUrl() {
+      return "?".concat(external_CoreHome_["MatomoUrl"].stringify(Object.assign(Object.assign({}, external_CoreHome_["MatomoUrl"].urlParsed.value), {}, {
+        action: 'forwardToAuth'
+      })));
+    },
+    configureClientLink: function configureClientLink() {
+      return "?".concat(external_CoreHome_["MatomoUrl"].stringify(Object.assign(Object.assign({}, external_CoreHome_["MatomoUrl"].urlParsed.value), {}, {
+        action: 'configureClient'
+      })));
+    },
+    configureClientDesc2: function configureClientDesc2() {
+      var link = 'https://matomo.org/docs/google-analytics-importer/';
+      return Object(external_CoreHome_["translate"])('GoogleAnalyticsImporter_ConfigureClientDesc2', "<a href=\"".concat(link, "\" target=\"_blank\" rel=\"noopener noreferrer\">"), '</a>');
+    },
+    deleteClientCredentialsLink: function deleteClientCredentialsLink() {
+      return "?".concat(external_CoreHome_["MatomoUrl"].stringify(Object.assign(Object.assign({}, external_CoreHome_["MatomoUrl"].urlParsed.value), {}, {
+        action: 'deleteClientCredentials'
+      })));
+    }
+  }
+}));
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ClientConfig/ClientConfig.vue?vue&type=script&lang=ts
+ 
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/ClientConfig/ClientConfig.vue
+
+
+
+ClientConfigvue_type_script_lang_ts.render = ClientConfigvue_type_template_id_071cd3e6_render
+
+/* harmony default export */ var ClientConfig = (ClientConfigvue_type_script_lang_ts);
+// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-babel/node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/@vue/cli-plugin-babel/node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/AdminPage/AdminPage.vue?vue&type=template&id=ece2c060
+
+var AdminPagevue_type_template_id_ece2c060_hoisted_1 = ["innerHTML"];
+var AdminPagevue_type_template_id_ece2c060_hoisted_2 = ["innerHTML"];
+var AdminPagevue_type_template_id_ece2c060_hoisted_3 = {
+  class: "hide-import-main-div ga-import-main-div ua-main-div"
+};
+var AdminPagevue_type_template_id_ece2c060_hoisted_4 = {
+  class: "hide-import-main-div ga-import-main-div ga4-main-div"
+};
+var AdminPagevue_type_template_id_ece2c060_hoisted_5 = {
+  key: 0
+};
+var AdminPagevue_type_template_id_ece2c060_hoisted_6 = {
+  key: 2,
+  class: "ui-confirm",
+  id: "confirmCancelJob"
+};
+var AdminPagevue_type_template_id_ece2c060_hoisted_7 = ["value"];
+var AdminPagevue_type_template_id_ece2c060_hoisted_8 = ["value"];
+function AdminPagevue_type_template_id_ece2c060_render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_Notification = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("Notification");
+
+  var _component_ClientConfig = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("ClientConfig");
+
+  var _component_ImportSelector = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("ImportSelector");
+
+  var _component_ImportScheduler = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("ImportScheduler");
+
+  var _component_ImportSchedulerGA4 = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("ImportSchedulerGA4");
+
+  var _component_ContentBlock = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("ContentBlock");
+
+  var _component_ImportStatus = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("ImportStatus");
+
+  return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", null, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_Notification, {
+    "notification-id": "ga-importer-help",
+    context: "info",
+    type: "transient",
+    noclear: true,
+    title: _ctx.translate('GoogleAnalyticsImporter_SettingUp')
+  }, {
+    default: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withCtx"])(function () {
+      return [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ImporterHelp1')) + " ", 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("span", {
+        innerHTML: _ctx.$sanitize(_ctx.importerHelp2Text)
+      }, null, 8, AdminPagevue_type_template_id_ece2c060_hoisted_1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("span", {
+        innerHTML: _ctx.$sanitize(_ctx.importerHelp3Text)
+      }, null, 8, AdminPagevue_type_template_id_ece2c060_hoisted_2)];
+    }),
+    _: 1
+  }, 8, ["title"]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_ClientConfig, {
+    "has-client-configuration": _ctx.hasClientConfiguration,
+    "is-configured": _ctx.isConfigured,
+    "auth-nonce": _ctx.authNonce,
+    "config-nonce": _ctx.configNonce
+  }, null, 8, ["has-client-configuration", "is-configured", "auth-nonce", "config-nonce"]), _ctx.hasClientConfiguration && _ctx.isConfigured ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(_component_ContentBlock, {
+    key: 0,
+    "content-title": _ctx.translate('GoogleAnalyticsImporter_SelectImporter')
+  }, {
+    default: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withCtx"])(function () {
+      return [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("p", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_SelectImporterSelection')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_ImportSelector, {
+        "import-options-ua": _ctx.importOptionsUa,
+        "import-options-ga4": _ctx.importOptionsGa4,
+        "onUpdate:selectedImporter": _cache[0] || (_cache[0] = function ($event) {
+          return _ctx.selectedImporter = $event;
+        })
+      }, null, 8, ["import-options-ua", "import-options-ga4"]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", AdminPagevue_type_template_id_ece2c060_hoisted_3, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h3", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ScheduleAnImport')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_ImportScheduler, {
+        "vue-entry": "GoogleAnalyticsImporter.ImportScheduler",
+        "has-client-configuration": _ctx.hasClientConfiguration,
+        "is-configured": _ctx.isConfigured,
+        "start-import-nonce": _ctx.startImportNonce,
+        "max-end-date-desc": _ctx.maxEndDateDesc,
+        "extra-custom-dimensions-field": _ctx.extraCustomDimensionsField
+      }, null, 8, ["has-client-configuration", "is-configured", "start-import-nonce", "max-end-date-desc", "extra-custom-dimensions-field"])], 512), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.selectedImporter === 'ua']]), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withDirectives"])(Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("div", AdminPagevue_type_template_id_ece2c060_hoisted_4, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h3", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ScheduleAnImportGA4')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_ImportSchedulerGA4, {
+        "start-import-nonce": _ctx.startImportNonce,
+        "max-end-date-desc": _ctx.maxEndDateDesc,
+        "extra-custom-dimensions-field": _ctx.extraCustomDimensionsFieldGa4
+      }, null, 8, ["start-import-nonce", "max-end-date-desc", "extra-custom-dimensions-field"])], 512), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], _ctx.selectedImporter === 'ga4']])];
+    }),
+    _: 1
+  }, 8, ["content-title"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.hasClientConfiguration && _ctx.isConfigured ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(_component_ContentBlock, {
+    key: 1,
+    id: "importStatusContainer",
+    "content-title": _ctx.translate('GoogleAnalyticsImporter_ImportJobs')
+  }, {
+    default: Object(external_commonjs_vue_commonjs2_vue_root_Vue_["withCtx"])(function () {
+      var _ctx$statuses, _ctx$statuses2;
+
+      return [!((_ctx$statuses = _ctx.statuses) !== null && _ctx$statuses !== void 0 && _ctx$statuses.length) ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("p", AdminPagevue_type_template_id_ece2c060_hoisted_5, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_ThereAreNoImportJobs')), 1)) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), (_ctx$statuses2 = _ctx.statuses) !== null && _ctx$statuses2 !== void 0 && _ctx$statuses2.length ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(_component_ImportStatus, {
+        key: 1,
+        statuses: _ctx.statuses,
+        "stop-import-nonce": _ctx.stopImportNonce,
+        "change-import-end-date-nonce": _ctx.changeImportEndDateNonce,
+        "resume-import-nonce": _ctx.resumeImportNonce,
+        "schedule-re-import-nonce": _ctx.scheduleReImportNonce
+      }, null, 8, ["statuses", "stop-import-nonce", "change-import-end-date-nonce", "resume-import-nonce", "schedule-re-import-nonce"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
+    }),
+    _: 1
+  }, 8, ["content-title"])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true), _ctx.hasClientConfiguration && _ctx.isConfigured ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementBlock"])("div", AdminPagevue_type_template_id_ece2c060_hoisted_6, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("h2", null, Object(external_commonjs_vue_commonjs2_vue_root_Vue_["toDisplayString"])(_ctx.translate('GoogleAnalyticsImporter_CancelJobConfirm')), 1), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("input", {
+    role: "yes",
+    type: "button",
+    value: _ctx.translate('General_Yes')
+  }, null, 8, AdminPagevue_type_template_id_ece2c060_hoisted_7), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createElementVNode"])("input", {
+    role: "no",
+    type: "button",
+    value: _ctx.translate('General_No')
+  }, null, 8, AdminPagevue_type_template_id_ece2c060_hoisted_8)])) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)]);
+}
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/AdminPage/AdminPage.vue?vue&type=template&id=ece2c060
+
+// CONCATENATED MODULE: ./node_modules/@vue/cli-plugin-typescript/node_modules/cache-loader/dist/cjs.js??ref--14-0!./node_modules/babel-loader/lib!./node_modules/@vue/cli-plugin-typescript/node_modules/ts-loader??ref--14-2!./node_modules/@vue/cli-service/node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./plugins/GoogleAnalyticsImporter/vue/src/AdminPage/AdminPage.vue?vue&type=script&lang=ts
+
+
+
+
+
+
+
+/* harmony default export */ var AdminPagevue_type_script_lang_ts = (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["defineComponent"])({
+  props: {
+    hasClientConfiguration: Boolean,
+    isConfigured: Boolean,
+    authNonce: String,
+    configNonce: String,
+    startImportNonce: {
+      type: String,
+      required: true
+    },
+    maxEndDateDesc: String,
+    extraCustomDimensionsField: {
+      type: Object,
+      required: true
+    },
+    extraCustomDimensionsFieldGa4: {
+      type: Object,
+      required: true
+    },
+    statuses: {
+      type: Array,
+      required: true
+    },
+    stopImportNonce: {
+      type: String,
+      required: true
+    },
+    changeImportEndDateNonce: {
+      type: String,
+      required: true
+    },
+    resumeImportNonce: {
+      type: String,
+      required: true
+    },
+    scheduleReImportNonce: {
+      type: String,
+      required: true
+    },
+    importOptionsUa: {
+      type: Object,
+      required: true
+    },
+    importOptionsGa4: {
+      type: Object,
+      required: true
+    }
+  },
+  components: {
+    ImportSchedulerGA4: ImportSchedulerGA4,
+    Notification: external_CoreHome_["Notification"],
+    ContentBlock: external_CoreHome_["ContentBlock"],
+    ClientConfig: ClientConfig,
+    ImportScheduler: ImportScheduler,
+    ImportStatus: ImportStatus,
+    ImportSelector: ImportSelector
+  },
+  data: function data() {
+    return {
+      selectedImporter: ''
+    };
+  },
+  computed: {
+    importerHelp2Text: function importerHelp2Text() {
+      var link = 'https://matomo.org/docs/google-analytics-importer/';
+      return Object(external_CoreHome_["translate"])('GoogleAnalyticsImporter_ImporterHelp2', "<a href=\"".concat(link, "\" target=\"_blank\" rel=\"noreferrer noopener\">"), '</a>');
+    },
+    importerHelp3Text: function importerHelp3Text() {
+      return Object(external_CoreHome_["translate"])('GoogleAnalyticsImporter_ImporterHelp3', '<br><br><strong>', '</strong>');
+    }
+  }
+}));
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/AdminPage/AdminPage.vue?vue&type=script&lang=ts
+ 
+// CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/AdminPage/AdminPage.vue
+
+
+
+AdminPagevue_type_script_lang_ts.render = AdminPagevue_type_template_id_ece2c060_render
+
+/* harmony default export */ var AdminPage = (AdminPagevue_type_script_lang_ts);
 // CONCATENATED MODULE: ./plugins/GoogleAnalyticsImporter/vue/src/index.ts
 /*!
  * Matomo - free/libre analytics platform
@@ -1239,6 +1590,8 @@ ImportStatusvue_type_script_lang_ts.render = ImportStatusvue_type_template_id_04
  * @link https://matomo.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
+
+
 
 
 

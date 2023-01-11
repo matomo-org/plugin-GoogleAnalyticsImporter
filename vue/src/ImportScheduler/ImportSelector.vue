@@ -12,7 +12,7 @@
       <Field
         uicontrol="radio"
         name="selectedImporter"
-        v-model="selectedImporterGA4"
+        v-model="selectedImporter"
         :options="importOptionsGa4"
         :inline-help="translate('GoogleAnalyticsImporter_SelectImporterGA4InlineHelp')"
       >
@@ -25,8 +25,7 @@ import { defineComponent } from 'vue';
 import { Form, Field } from 'CorePluginsAdmin';
 
 interface ImportSelector {
-  selectedImporter: string,
-  selectedImporterGA4: string,
+  selectedImporter: string;
 }
 
 export default defineComponent({
@@ -46,10 +45,15 @@ export default defineComponent({
   directives: {
     Form,
   },
-  data() : ImportSelector {
+  emits: ['update:selectedImporter'],
+  watch: {
+    selectedImporter(newVal) {
+      this.$emit('update:selectedImporter', newVal);
+    },
+  },
+  data(): ImportSelector {
     return {
       selectedImporter: '',
-      selectedImporterGA4: '',
     };
   },
 });
