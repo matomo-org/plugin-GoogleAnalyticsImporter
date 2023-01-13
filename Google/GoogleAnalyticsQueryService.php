@@ -153,6 +153,10 @@ class GoogleAnalyticsQueryService
             ];
         }
 
+        if (!isset($options['pageSize'])) {
+          $options['pageSize'] = 100000; // 100,000 max supported instead of 1k default
+        }
+
         $request = $this->googleQueryObjectFactory->make($this->viewId, $date, $metricNamesChunk, $options);
 
         $lastGaError = null;
@@ -167,6 +171,11 @@ class GoogleAnalyticsQueryService
                 $result = $this->gaService->reports->batchGet($request, [
                     'quotaUser' => $this->quotaUser,
                 ]);
+
+                // @TODO if result->reports[0]->nextPageToken returns a value
+                //       then there is more data and the request must be made
+                //       made again with a an added parameter pageToken=nextPageToken
+                //       result->reports[0]->data->rowCount contains the totals
 
                 if (empty($result)) {
                     ++$attempts;

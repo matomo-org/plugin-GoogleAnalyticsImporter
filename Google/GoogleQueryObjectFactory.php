@@ -57,6 +57,10 @@ class GoogleQueryObjectFactory
         $request->setSegments($segments);
         $request->setMetrics($metrics);
 
+        if (!empty($options['pageSize'])) {
+          $request->setPageSize($options['pageSize']);
+        }
+
         if (!empty($options['orderBys'])) {
             $this->checkOrderBys($options['orderBys'], $metricNames, $dimensionNames);
 
