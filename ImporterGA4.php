@@ -49,6 +49,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\HourlyRateLimitReached;
 class ImporterGA4
 {
     const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
+    const PAGE_SIZE = 100000;
 
     /**
      * @var BetaAnalyticsDataClient

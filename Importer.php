@@ -48,6 +48,7 @@ use Psr\Log\LoggerInterface;
 class Importer
 {
     const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
+    const PAGE_SIZE = 100000;
 
     /**
      * @var ReportsProvider
