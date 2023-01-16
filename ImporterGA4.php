@@ -189,7 +189,7 @@ class ImporterGA4
                         'siteName' => $webProperty->getDisplayName(),
                         'urls' => $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webProperty->getDisplayName()],
                         'ecommerce' => 1,
-                        'siteSearch' => false,
+                        'siteSearch' => 0,
                         'searchKeywordParameters' => '',
                         'searchCategoryParameters' => '',
                         'excludedQueryParameters' => '',

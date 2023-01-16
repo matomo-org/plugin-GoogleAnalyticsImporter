@@ -174,7 +174,7 @@ class Importer
                     'siteName' => $webproperty->getName(),
                     'urls' => $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
                     'ecommerce' => $view->eCommerceTracking ? 1 : 0,
-                    'siteSearch' => !empty($view->siteSearchQueryParameters),
+                    'siteSearch' => (int) !empty($view->siteSearchQueryParameters),
                     'searchKeywordParameters' => $view->siteSearchQueryParameters,
                     'searchCategoryParameters' => $view->siteSearchCategoryParameters,
                     'excludedQueryParameters' => $view->excludeQueryParameters,
