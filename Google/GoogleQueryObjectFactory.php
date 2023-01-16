@@ -8,7 +8,9 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
+use Piwik\Config;
 use Piwik\Date;
+use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Psr\Log\LoggerInterface;
 
 class GoogleQueryObjectFactory
@@ -56,6 +58,11 @@ class GoogleQueryObjectFactory
         $request->setDimensions($dimensions);
         $request->setSegments($segments);
         $request->setMetrics($metrics);
+
+        //no need to set any limit since for tests a smaller data is sufficient
+        if (!defined('PIWIK_TEST_MODE')) {
+            $request->setPageSize(Importer::PAGE_SIZE);
+        }
 
         if (!empty($options['orderBys'])) {
             $this->checkOrderBys($options['orderBys'], $metricNames, $dimensionNames);
