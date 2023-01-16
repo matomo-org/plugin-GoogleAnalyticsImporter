@@ -170,22 +170,18 @@ class Importer
 
             $startDate = Date::factory($webproperty->getCreated())->toString();
             if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
-                $idSite = SitesManagerAPI::getInstance()->addSite(
-                    $siteName = $webproperty->getName(),
-                    $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
-                    $ecommerce = $view->eCommerceTracking ? 1 : 0,
-                    $siteSearch = !empty($view->siteSearchQueryParameters),
-                    $searchKeywordParams = $view->siteSearchQueryParameters,
-                    $searchCategoryParams = $view->siteSearchCategoryParameters,
-                    $excludedIps = null,
-                    $excludedParams = $view->excludeQueryParameters,
-                    $timezone = empty($timezone) ? $view->timezone : $timezone,
-                    $currency = $view->currency,
-                    $group = null,
-                    $startDate,
-                    $excludedUserAgents = null,
-                    $keepURLFragments = null,
-                    $type
+                $idSite = Request::processRequest('SitesManager.addSite', [
+                    'siteName' => $webproperty->getName(),
+                    'urls' => $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
+                    'ecommerce' => $view->eCommerceTracking ? 1 : 0,
+                    'siteSearch' => !empty($view->siteSearchQueryParameters),
+                    'searchKeywordParameters' => $view->siteSearchQueryParameters,
+                    'searchCategoryParameters' => $view->siteSearchCategoryParameters,
+                    'excludedQueryParameters' => $view->excludeQueryParameters,
+                    'timezone' => empty($timezone) ? $view->timezone : $timezone,
+                    'currency' => $view->currency,
+                    'startDate' => $startDate,
+                    'type' => $type]
                 );
             } else { // matomo for wordpress
                 $site = new \WpMatomo\Site();
