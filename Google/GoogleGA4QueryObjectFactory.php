@@ -84,10 +84,9 @@ class GoogleGA4QueryObjectFactory
             $body['dimensionFilter'] = $dimensionFilter;
         }
 
-        $pageSize = !empty(Config::getInstance()->GoogleAnalyticsImporter['pageSize']) ? Config::getInstance()->GoogleAnalyticsImporter['pageSize'] : ImporterGA4::PAGE_SIZE;
         //no need to set any limit since for tests a smaller data is sufficient
         if (!defined('PIWIK_TEST_MODE')) {
-            $body['limit'] = (string) $pageSize;
+            $body['limit'] = (string) ImporterGA4::PAGE_SIZE;
         }
 
         return $body;

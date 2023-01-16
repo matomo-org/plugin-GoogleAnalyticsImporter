@@ -59,10 +59,9 @@ class GoogleQueryObjectFactory
         $request->setSegments($segments);
         $request->setMetrics($metrics);
 
-        $pageSize = !empty(Config::getInstance()->GoogleAnalyticsImporter['pageSize']) ? Config::getInstance()->GoogleAnalyticsImporter['pageSize'] : Importer::PAGE_SIZE;
         //no need to set any limit since for tests a smaller data is sufficient
         if (!defined('PIWIK_TEST_MODE')) {
-            $request->setPageSize($pageSize);
+            $request->setPageSize(Importer::PAGE_SIZE);
         }
 
         if (!empty($options['orderBys'])) {
