@@ -55,7 +55,7 @@ class MockResponseClient extends \Google\Client
         if (!self::$isForSystemTest) {
             if (!$this->hasErroredOnce()
                 && Common::isPhpCliMode()
-                && strpos($request->getBody()->getContents(), '2019-06-28') === false
+                && strpos($request->getBody()->getContents(), '2019-07-02') === false
             ) {
                 sleep(10); // wait 10s to make sure UI test reloads w/ 'ongoing' status
                 $this->setErroredOnce();

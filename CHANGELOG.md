@@ -1,6 +1,12 @@
 
 ## Changelog
 
+# 4.4.6
+- Fix to log the allowed API requests correctly for cloud.
+- Updating error message when a use cancels auth to be more helpful.
+- Try/catch block for extraCustomDimensions added to ensure import continues even after slot limit is reached.
+- Started calling addSite API through processRequest method to ensure events are triggered.
+
 # 4.4.5
 - Added success notification screen after selecting GA properties
 
