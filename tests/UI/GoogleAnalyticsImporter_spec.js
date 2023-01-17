@@ -43,8 +43,8 @@ describe("GoogleAnalyticsImporter", function () {
     });
 
     it("should start an import properly", async function () {
-        await page.type('input#startDate', '2019-06-28');
-        await page.type('input#endDate', '2019-06-28');
+        await page.type('input#startDate', '2019-06-27');
+        await page.type('input#endDate', '2019-07-02');
         await page.type('input#propertyId', 'UA-12345-6  '); // whitespace on purpose to test trim
         await page.type('input#accountId', '  12345'); // whitespace on purpose to test trim
         await page.type('input#viewId', '1234567');
