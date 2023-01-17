@@ -338,8 +338,15 @@ class Importer
                 continue;
             }
 
-            $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
-                $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = true);
+            try {
+                $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+                    $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = true);
+            } catch (\Exception $ex) {
+                if (strpos($ex->getMessage(), 'All Custom Dimensions for website') === 0) {
+                    $this->logger->warning("Cannot map custom dimension {$customDimension['name']}: " . $ex->getMessage());
+                    continue;
+                }
+            }
 
             $this->logger->info("Created Matomo dimension for extra dimension {gaDim} as dimension{id} with scope '{scope}'.", [
                 'gaDim' => $extraEntry['gaDimension'],
