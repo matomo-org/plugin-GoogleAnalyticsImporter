@@ -70,6 +70,7 @@
         "NohupExecutableMissing": "Matomo, nohup yürütülebilir dosyasını bulamadı. Google Analytics içe aktarıcı, verileri içe aktarırken web isteği tamamlandıktan sonra da işlemi sürdürebilmek için nohup kullanır. İçe aktarma özelliğinin kullanılabilmesi için bu yürütülebilir dosya var ve PHP tarafından erişilebilir olmalıdır.",
         "None": "Yok",
         "NotSetInGA": "Google Analytics üzerinde ayarlanmamış",
+        "OauthFailedMessage": "GA raporlarınızı içe aktarmak için kimlik doğrulama sırasında bir sorunla karşılaştık. Lütfen yeniden denemek için aşağıdaki düğmeye tıklayın. Sorun sürerse, yardım almak için destek ekibimizle görüşün. Ekibimiz sorunu çözmenize ve geçmiş GA verilerinizi içe aktarmanıza yardımcı olur.",
         "Optional": "İsteğe bağlı",
         "PendingGAImportReportNotification": "Google Analytics aktarımı sürüyor ancak son verilerinizi görebilmeniz gerekir. Birkaç gün içinde tüm verilerinizi görebileceksiniz.",
         "PendingGAImportReportNotificationNoData": "Google Analytics aktarımı sürüyor ancak son verilerinizi görebilmeniz gerekir. Birkaç gün içinde tüm verilerinizi görebileceksiniz.",
