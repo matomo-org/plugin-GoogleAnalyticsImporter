@@ -153,10 +153,6 @@ class GoogleAnalyticsQueryService
             ];
         }
 
-        if (!isset($options['pageSize'])) {
-          $options['pageSize'] = 100000; // 100,000 max supported instead of 1k default
-        }
-
         $request = $this->googleQueryObjectFactory->make($this->viewId, $date, $metricNamesChunk, $options);
 
         $lastGaError = null;
