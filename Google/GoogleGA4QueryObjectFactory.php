@@ -8,7 +8,9 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
+use Piwik\Config;
 use Piwik\Date;
+use Piwik\Plugins\GoogleAnalyticsImporter\ImporterGA4;
 use Psr\Log\LoggerInterface;
 
 class GoogleGA4QueryObjectFactory
@@ -80,6 +82,11 @@ class GoogleGA4QueryObjectFactory
 
         if (!empty($dimensionFilter)) {
             $body['dimensionFilter'] = $dimensionFilter;
+        }
+
+        //no need to set any limit since for tests a smaller data is sufficient
+        if (!defined('PIWIK_TEST_MODE')) {
+            $body['limit'] = (string) ImporterGA4::PAGE_SIZE;
         }
 
         return $body;

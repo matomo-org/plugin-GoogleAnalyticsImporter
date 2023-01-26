@@ -49,6 +49,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\HourlyRateLimitReached;
 class ImporterGA4
 {
     const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
+    const PAGE_SIZE = 100000;
 
     /**
      * @var BetaAnalyticsDataClient
@@ -184,22 +185,18 @@ class ImporterGA4
 
             $startDate = Date::factory($webProperty->getCreateTime()->toDateTime()->getTimestamp())->toString();
             if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
-                $idSite = SitesManagerAPI::getInstance()->addSite(
-                    $siteName = $webProperty->getDisplayName(),
-                    $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webProperty->getDisplayName()],
-                    $ecommerce = 1,
-                    $siteSearch = false,
-                    $searchKeywordParams = '',
-                    $searchCategoryParams = '',
-                    $excludedIps = null,
-                    $excludedParams = '',
-                    $timezone = empty($timezone) ? $webProperty->getTimeZone() : $timezone,
-                    $currency = $webProperty->getCurrencyCode(),
-                    $group = null,
-                    $startDate,
-                    $excludedUserAgents = null,
-                    $keepURLFragments = null,
-                    $type
+                $idSite = Request::processRequest('SitesManager.addSite', [
+                        'siteName' => $webProperty->getDisplayName(),
+                        'urls' => $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webProperty->getDisplayName()],
+                        'ecommerce' => 1,
+                        'siteSearch' => 0,
+                        'searchKeywordParameters' => '',
+                        'searchCategoryParameters' => '',
+                        'excludedQueryParameters' => '',
+                        'timezone' => empty($timezone) ? $webProperty->getTimeZone() : $timezone,
+                        'currency' => $webProperty->getCurrencyCode(),
+                        'startDate' => $startDate,
+                        'type' => $type]
                 );
             } else { // matomo for wordpress
                 $site = new \WpMatomo\Site();
@@ -354,8 +351,15 @@ class ImporterGA4
                 continue;
             }
 
-            $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
-                $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = true);
+            try {
+                $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+                    $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = true);
+            } catch (\Exception $ex) {
+                if (strpos($ex->getMessage(), 'All Custom Dimensions for website') === 0) {
+                    $this->logger->warning("Cannot map custom dimension {$customDimension['name']}: " . $ex->getMessage());
+                    continue;
+                }
+            }
 
             $this->logger->info("Created Matomo dimension for extra dimension {gaDim} as dimension{id} with scope '{scope}'.", [
                 'gaDim' => $extraEntry['gaDimension'],
