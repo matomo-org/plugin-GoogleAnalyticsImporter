@@ -168,6 +168,11 @@ class GoogleAnalyticsQueryService
                     'quotaUser' => $this->quotaUser,
                 ]);
 
+                // @TODO if result->reports[0]->nextPageToken returns a value
+                //       then there is more data and the request must be made
+                //       made again with a an added parameter pageToken=nextPageToken
+                //       result->reports[0]->data->rowCount contains the totals
+
                 if (empty($result)) {
                     ++$attempts;
 
