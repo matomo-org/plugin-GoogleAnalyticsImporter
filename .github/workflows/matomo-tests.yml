@@ -1,7 +1,7 @@
 # Action for running tests
 # This file has been automatically created.
 # To recreate it you can run this command
-# ./console generate:test-action --plugin="GoogleAnalyticsImporter" --php-versions="7.2,8.1" --protect-artifacts
+# ./console generate:test-action --plugin="GoogleAnalyticsImporter" --php-versions="7.2,8.1" --dependent-plugins="matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels"
 
 name: Plugin GoogleAnalyticsImporter Tests
 
@@ -51,7 +51,8 @@ jobs:
           matomo-test-branch: ${{ matrix.target }}
           artifacts-pass: ${{ secrets.ARTIFACTS_PASS }}
           upload-artifacts: ${{ matrix.php == '7.2' && matrix.target == 'maximum_supported_matomo' }}
-          artifacts-protected: true
+          dependent-plugins: 'matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels'
+          github-token: ${{ secrets.TESTS_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
   UI:
     runs-on: ubuntu-20.04
     steps:
@@ -69,4 +70,5 @@ jobs:
           node-version: '16'
           artifacts-pass: ${{ secrets.ARTIFACTS_PASS }}
           upload-artifacts: true
-          artifacts-protected: true
+          dependent-plugins: 'matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels'
+          github-token: ${{ secrets.TESTS_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
