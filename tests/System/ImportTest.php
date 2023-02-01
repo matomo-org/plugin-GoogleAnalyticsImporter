@@ -98,16 +98,25 @@ class ImportTest extends SystemTestCase
         if (
             version_compare(Version::VERSION, '4.13.0') < 0
         ) {
-            $skipApis = ['CustomDimensions.getCustomDimension', 'DevicesDetection.getType', 'Actions.getPageUrls', 'VisitsSummary.get', 'Goals.getGoals', 'Referrers.getReferrerType'];
-            $apisToSearch = is_string($api) ? [$api] : $api;
+            $skipApis = ['Actions', 'DevicesDetection', 'VisitsSummary', 'Goals','CustomDimensions.getCustomDimension', 'DevicesDetection.getType', 'Actions.getPageUrls', 'VisitsSummary.get', 'Referrers.getReferrerType'];
 
-            foreach ($apisToSearch as $apiToSearch) {
-                $key = array_search($apiToSearch, $skipApis);
-                if ($key !== false) {
-                    unset($api[$key]);
+            foreach ($api as $key=>$value) {
+                if (!empty($value[0])) {
+                    if (is_string($value[0]) && in_array($value[0], $skipApis)) {
+                        unset($api[$key]);
+                    } else if (is_array($value[0])){
+                        foreach ($value[0] as $apiKey=>$apiName) {
+                            if (in_array($apiName, $skipApis)) {
+                                unset($api[$key][0][$apiKey]);
+                                $api[$key][0][$apiKey] = array_values($api[$key][0][$apiKey]);
+                            }
+                        }
+                    }
+
+
                 }
             }
-            $api = array_values($api);
+
             if (empty($api)) {
                 $this->markTestSkipped('No tests left to run');
             }
@@ -123,13 +132,7 @@ class ImportTest extends SystemTestCase
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
         foreach ($recordImporterClasses as $class) {
-            if (
-                $class::PLUGIN_NAME == 'MarketingCampaignsReporting' ||
-                (
-                    version_compare(Version::VERSION, '4.13.0') < 0 &&
-                    in_array($class::PLUGIN_NAME, ['Actions', 'DevicesDetection', 'VisitsSummary', 'Goals'])
-                )
-            ) {
+            if ($class::PLUGIN_NAME == 'MarketingCampaignsReporting') {
                 continue;
             }
 
