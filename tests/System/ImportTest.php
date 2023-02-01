@@ -98,7 +98,7 @@ class ImportTest extends SystemTestCase
         if (
             version_compare(Version::VERSION, '4.13.0') < 0
         ) {
-            $skipApis = ['CustomDimensions.getCustomDimension', 'DevicesDetection.getType', 'Actions.getPageUrls', 'VisitsSummary.get'];
+            $skipApis = ['CustomDimensions.getCustomDimension', 'DevicesDetection.getType', 'Actions.getPageUrls', 'VisitsSummary.get', 'Goals.getGoals'];
             $apisToSearch = is_string($api) ? [$api] : $api;
 
             foreach ($apisToSearch as $apiToSearch) {
@@ -127,7 +127,7 @@ class ImportTest extends SystemTestCase
                 $class::PLUGIN_NAME == 'MarketingCampaignsReporting' ||
                 (
                     version_compare(Version::VERSION, '4.13.0') < 0 &&
-                    in_array($class::PLUGIN_NAME, ['Actions', 'DevicesDetection', 'VisitsSummary'])
+                    in_array($class::PLUGIN_NAME, ['Actions', 'DevicesDetection', 'VisitsSummary', 'Goals'])
                 )
             ) {
                 continue;
