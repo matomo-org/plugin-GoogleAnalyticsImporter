@@ -20,9 +20,9 @@ describe("GoogleAnalyticsImporterGA4", function () {
 
     async function updateStatusToStartedIfOnGoing() {
         await page.evaluate(() => {
-            var status = $('td.status');
-            if (status && status.length && status[0].includes('ongoing')) {
-                $('td.status').html('started')
+            var status = $('.importStatusesTable tbody td.status:first').text();
+            if (status && status.trim() === 'ongoing') {
+                $('.importStatusesTable tbody td.status:first').html('started');
             }
         });
     }
