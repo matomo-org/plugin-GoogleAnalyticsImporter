@@ -31,10 +31,6 @@ class MockApiResponsesGA4 extends Fixture
             self::createWebsite('2012-02-02 00:00:00');
         }
 
-        if (!empty($this->extraDiEnvironments[0]) && $this->extraDiEnvironments[0] == 'ui-test') {
-            define('GA_UI_TEST', 1);
-        }
-
         Option::set(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME, json_encode([
             'access_token' => 'test12345',
             'refresh_token' => '123456'

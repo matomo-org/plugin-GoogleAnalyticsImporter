@@ -185,19 +185,22 @@ class ImporterGA4
 
             $startDate = Date::factory($webProperty->getCreateTime()->toDateTime()->getTimestamp())->toString();
             if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
-                $idSite = Request::processRequest('SitesManager.addSite', [
-                        'siteName' => $webProperty->getDisplayName(),
-                        'urls' => $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webProperty->getDisplayName()],
-                        'ecommerce' => 1,
-                        'siteSearch' => 0,
-                        'searchKeywordParameters' => '',
-                        'searchCategoryParameters' => '',
-                        'excludedQueryParameters' => '',
-                        'timezone' => empty($timezone) ? $webProperty->getTimeZone() : $timezone,
-                        'currency' => $webProperty->getCurrencyCode(),
-                        'startDate' => $startDate,
-                        'type' => $type]
-                );
+                $siteOptions = [
+                    'siteName' => $webProperty->getDisplayName(),
+                    'urls' => [$webProperty->getDisplayName()],
+                    'ecommerce' => 1,
+                    'siteSearch' => 0,
+                    'searchKeywordParameters' => '',
+                    'searchCategoryParameters' => '',
+                    'excludedQueryParameters' => '',
+                    'timezone' => empty($timezone) ? $webProperty->getTimeZone() : $timezone,
+                    'currency' => $webProperty->getCurrencyCode(),
+                    'startDate' => $startDate,
+                    'type' => $type];
+                if ($type === \Piwik\Plugins\MobileAppMeasurable\Type::ID) {
+                    unset($siteOptions['urls']);
+                }
+                $idSite = Request::processRequest('SitesManager.addSite', $siteOptions);
             } else { // matomo for wordpress
                 $site = new \WpMatomo\Site();
                 $idSite = $site->get_current_matomo_site_id();

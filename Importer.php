@@ -170,9 +170,9 @@ class Importer
 
             $startDate = Date::factory($webproperty->getCreated())->toString();
             if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
-                $idSite = Request::processRequest('SitesManager.addSite', [
+                $siteOptions = [
                     'siteName' => $webproperty->getName(),
-                    'urls' => $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webproperty->getWebsiteUrl()],
+                    'urls' => [$webproperty->getWebsiteUrl()],
                     'ecommerce' => $view->eCommerceTracking ? 1 : 0,
                     'siteSearch' => (int) !empty($view->siteSearchQueryParameters),
                     'searchKeywordParameters' => $view->siteSearchQueryParameters,
@@ -181,8 +181,12 @@ class Importer
                     'timezone' => empty($timezone) ? $view->timezone : $timezone,
                     'currency' => $view->currency,
                     'startDate' => $startDate,
-                    'type' => $type]
-                );
+                    'type' => $type
+                ];
+                if ($type === \Piwik\Plugins\MobileAppMeasurable\Type::ID) {
+                    unset($siteOptions['urls']);
+                }
+                $idSite = Request::processRequest('SitesManager.addSite', $siteOptions);
             } else { // matomo for wordpress
                 $site = new \WpMatomo\Site();
                 $idSite = $site->get_current_matomo_site_id();
