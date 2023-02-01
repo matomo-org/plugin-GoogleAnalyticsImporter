@@ -95,6 +95,23 @@ class ImportTest extends SystemTestCase
      */
     public function testApi($api, $params)
     {
+        if (
+            version_compare(Version::VERSION, '4.13.0') < 0
+        ) {
+            $skipApis = ['CustomDimensions.getCustomDimension', 'DevicesDetection.getType', 'Actions.getPageUrls', 'VisitsSummary.get'];
+            $apisToSearch = is_string($api) ? [$api] : $api;
+
+            foreach ($apisToSearch as $apiToSearch) {
+                $key = array_search($apiToSearch, $skipApis);
+                if ($key !== false) {
+                    unset($api[$key]);
+                }
+            }
+            $api = array_values($api);
+            if (empty($api)) {
+                $this->markTestSkipped('No tests left to run');
+            }
+        }
         $this->runApiTests($api, $params);
     }
 
@@ -106,13 +123,7 @@ class ImportTest extends SystemTestCase
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
         foreach ($recordImporterClasses as $class) {
-            if (
-                $class::PLUGIN_NAME == 'MarketingCampaignsReporting' ||
-                (
-                    version_compare(Version::VERSION, '4.13.0', '<') &&
-                    in_array($class::PLUGIN_NAME, ['Actions', 'CustomDimensions', 'VisitsSummary'])
-                )
-            ) {
+            if ($class::PLUGIN_NAME == 'MarketingCampaignsReporting') {
                 continue;
             }
 
