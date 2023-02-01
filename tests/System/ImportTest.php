@@ -95,6 +95,9 @@ class ImportTest extends SystemTestCase
      */
     public function testApi($api, $params)
     {
+        if (version_compare(Version::VERSION, '4.10.0') <= 0) {
+            $this->markTestSkipped('Skipping tests for lower version');
+        }
         $this->runApiTests($api, $params);
     }
 
