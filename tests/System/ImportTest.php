@@ -95,31 +95,8 @@ class ImportTest extends SystemTestCase
      */
     public function testApi($api, $params)
     {
-        if (
-            version_compare(Version::VERSION, '4.13.0') < 0
-        ) {
-            $skipApis = ['Actions', 'DevicesDetection', 'VisitsSummary', 'Goals','CustomDimensions.getCustomDimension', 'DevicesDetection.getType', 'Actions.getPageUrls', 'VisitsSummary.get', 'Referrers.getReferrerType'];
-
-            foreach ($api as $key=>$value) {
-                if (!empty($value[0])) {
-                    if (is_string($value[0]) && in_array($value[0], $skipApis)) {
-                        unset($api[$key]);
-                    } else if (is_array($value[0])){
-                        foreach ($value[0] as $apiKey=>$apiName) {
-                            if (in_array($apiName, $skipApis)) {
-                                unset($api[$key][0][$apiKey]);
-                                $api[$key][0][$apiKey] = array_values($api[$key][0][$apiKey]);
-                            }
-                        }
-                    }
-
-
-                }
-            }
-
-            if (empty($api)) {
-                $this->markTestSkipped('No tests left to run');
-            }
+        if (version_compare(Version::VERSION, '4.10.0-b1') < 0) {
+            $this->markTestSkipped('Skipping tests for lower version');
         }
         $this->runApiTests($api, $params);
     }
