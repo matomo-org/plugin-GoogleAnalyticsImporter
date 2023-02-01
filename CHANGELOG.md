@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.4.7
+- Fixed mobile app import not working due to recent change in site creation.
+
 # 4.4.6
 - Fix to log the allowed API requests correctly for cloud.
 - Updating error message when a use cancels auth to be more helpful.
