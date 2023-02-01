@@ -106,7 +106,13 @@ class ImportTest extends SystemTestCase
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
         foreach ($recordImporterClasses as $class) {
-            if ($class::PLUGIN_NAME == 'MarketingCampaignsReporting') {
+            if (
+                $class::PLUGIN_NAME == 'MarketingCampaignsReporting' ||
+                (
+                    version_compare(Version::VERSION, '4.6.0', '<') &&
+                    in_array($class::PLUGIN_NAME, ['Actions', 'CustomDimensions', 'VisitsSummary'])
+                )
+            ) {
                 continue;
             }
 
@@ -115,12 +121,6 @@ class ImportTest extends SystemTestCase
 
         if (version_compare(Version::VERSION, '4.6.0', '<')) {
             $apiNotToTest[] = 'DevicesDetection.getBrowserEngines';
-        }
-
-        if (version_compare(Version::VERSION, '4.4.0-b1', '<')) {
-            $apiNotToTest[] = 'Actions.getPageUrls';
-            $apiNotToTest[] = 'CustomDimensions.getCustomDimension';
-            $apiNotToTest[] = 'VisitsSummary.get';
         }
 
         return [
