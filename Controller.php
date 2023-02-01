@@ -560,9 +560,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
+            $status = $importStatus->getImportStatus($idSite);
 
             //For UI test to work properly after an error
-            if ($isGA4 && defined('GA_UI_TEST')) {
+            if ($isGA4 && defined('PIWIK_TEST_MODE') && $status['import_range_end'] === '2019-07-02') {
                 $importStatus->setImportDateRange($idSite, $startDate, $endDate);
             }
 
