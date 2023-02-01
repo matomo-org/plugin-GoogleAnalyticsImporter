@@ -109,7 +109,7 @@ class ImportTest extends SystemTestCase
             if (
                 $class::PLUGIN_NAME == 'MarketingCampaignsReporting' ||
                 (
-                    version_compare(Version::VERSION, '4.6.0', '<') &&
+                    version_compare(Version::VERSION, '4.13.0', '<') &&
                     in_array($class::PLUGIN_NAME, ['Actions', 'CustomDimensions', 'VisitsSummary'])
                 )
             ) {
