@@ -123,7 +123,13 @@ class ImportTest extends SystemTestCase
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
         foreach ($recordImporterClasses as $class) {
-            if ($class::PLUGIN_NAME == 'MarketingCampaignsReporting') {
+            if (
+                $class::PLUGIN_NAME == 'MarketingCampaignsReporting' ||
+                (
+                    version_compare(Version::VERSION, '4.13.0') < 0 &&
+                    $class::PLUGIN_NAME == 'Actions'
+                )
+            ) {
                 continue;
             }
 
