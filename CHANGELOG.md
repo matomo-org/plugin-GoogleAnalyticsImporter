@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.4.8
+- GA4 - Removed itemRevenue and itemsPurchased metrics due to incompatibility
+
 # 4.4.7
 - Fixed mobile app import not working due to recent change in site creation.
 
