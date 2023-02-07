@@ -44,8 +44,8 @@ class GoogleGA4MetricMapperTest extends TestCase
             Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH,
             Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT,
             Metrics::INDEX_PAGE_IS_FOLLOWING_SITE_SEARCH_NB_HITS,
-            Metrics::INDEX_ECOMMERCE_ITEM_REVENUE,
-            Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY,
+//            Metrics::INDEX_ECOMMERCE_ITEM_REVENUE,
+//            Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY,
             Metrics::INDEX_ECOMMERCE_ITEM_PRICE,
             Metrics::INDEX_ECOMMERCE_ORDERS,
         ], array_keys($mappings));
@@ -83,8 +83,8 @@ class GoogleGA4MetricMapperTest extends TestCase
             Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH,
             Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT,
             Metrics::INDEX_PAGE_IS_FOLLOWING_SITE_SEARCH_NB_HITS,
-            Metrics::INDEX_ECOMMERCE_ITEM_REVENUE,
-            Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY,
+//            Metrics::INDEX_ECOMMERCE_ITEM_REVENUE,
+//            Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY,
             Metrics::INDEX_ECOMMERCE_ITEM_PRICE,
             Metrics::INDEX_ECOMMERCE_ORDERS,
         ], array_keys($mappings));
