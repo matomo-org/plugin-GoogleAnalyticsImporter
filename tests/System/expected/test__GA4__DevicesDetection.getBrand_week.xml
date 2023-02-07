@@ -1,2 +1,93 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<result />
+<result>
+	<row>
+		<label>Apple</label>
+		<nb_visits>4</nb_visits>
+		<nb_actions>15</nb_actions>
+		<sum_visit_length>14</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<logo>plugins/Morpheus/icons/dist/brand/Apple.png</logo>
+		<segment>deviceBrand==Apple</segment>
+	</row>
+	<row>
+		<label>Google</label>
+		<nb_visits>4</nb_visits>
+		<nb_actions>20</nb_actions>
+		<sum_visit_length>780</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<logo>plugins/Morpheus/icons/dist/brand/Google.png</logo>
+		<segment>deviceBrand==Google</segment>
+	</row>
+	<row>
+		<label>Unknown</label>
+		<nb_visits>4</nb_visits>
+		<nb_actions>17</nb_actions>
+		<sum_visit_length>9</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<logo>plugins/Morpheus/icons/dist/brand/unk.png</logo>
+		<segment>deviceBrand==Unknown</segment>
+	</row>
+	<row>
+		<label>Microsoft</label>
+		<nb_visits>2</nb_visits>
+		<nb_actions>8</nb_actions>
+		<sum_visit_length>8</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<logo>plugins/Morpheus/icons/dist/brand/Microsoft.png</logo>
+		<segment>deviceBrand==Microsoft</segment>
+	</row>
+	<row>
+		<label>Xiaomi</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>1</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<logo>plugins/Morpheus/icons/dist/brand/Xiaomi.png</logo>
+		<segment>deviceBrand==Xiaomi</segment>
+	</row>
+</result>

@@ -2,45 +2,41 @@
 <result>
 	<row>
 		<label>__not_set_in_google_analytics_4__</label>
-		<nb_visits>0</nb_visits>
-		<nb_actions>0</nb_actions>
-		<sum_visit_length>0</sum_visit_length>
-		<bounce_count>0</bounce_count>
+		<nb_visits>57</nb_visits>
+		<nb_actions>64</nb_actions>
+		<sum_visit_length>812</sum_visit_length>
+		<bounce_count>48</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
 		<nb_conversions>0</nb_conversions>
 		<revenue>0</revenue>
 		<goals>
 			<row idgoal='ecommerceOrder'>
 				<nb_conversions>0</nb_conversions>
-				<revenue>0</revenue>
-				<items>0</items>
 			</row>
 		</goals>
-		<nb_events>0</nb_events>
+		<nb_events>64</nb_events>
 		<sum_event_value>0</sum_event_value>
-		<sum_daily_nb_uniq_visitors>0</sum_daily_nb_uniq_visitors>
+		<sum_daily_nb_uniq_visitors>52</sum_daily_nb_uniq_visitors>
 		<avg_event_value>0</avg_event_value>
 		<segment>eventCategory==__not_set_in_google_analytics_4__</segment>
 		<subtable>
 			<row>
 				<label>__not_set_in_google_analytics_4__</label>
-				<nb_visits>0</nb_visits>
-				<nb_actions>0</nb_actions>
-				<sum_visit_length>0</sum_visit_length>
-				<bounce_count>0</bounce_count>
+				<nb_visits>57</nb_visits>
+				<nb_actions>64</nb_actions>
+				<sum_visit_length>812</sum_visit_length>
+				<bounce_count>48</bounce_count>
 				<nb_visits_converted>0</nb_visits_converted>
 				<nb_conversions>0</nb_conversions>
 				<revenue>0</revenue>
 				<goals>
 					<row idgoal='ecommerceOrder'>
 						<nb_conversions>0</nb_conversions>
-						<revenue>0</revenue>
-						<items>0</items>
 					</row>
 				</goals>
-				<nb_events>0</nb_events>
+				<nb_events>64</nb_events>
 				<sum_event_value>0</sum_event_value>
-				<sum_daily_nb_uniq_visitors>0</sum_daily_nb_uniq_visitors>
+				<sum_daily_nb_uniq_visitors>52</sum_daily_nb_uniq_visitors>
 				<avg_event_value>0</avg_event_value>
 			</row>
 		</subtable>

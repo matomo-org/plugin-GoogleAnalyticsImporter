@@ -1,2 +1,105 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<result />
+<result>
+	<row>
+		<label>google - organic</label>
+		<nb_visits>8</nb_visits>
+		<nb_actions>31</nb_actions>
+		<sum_visit_length>728</sum_visit_length>
+		<bounce_count>4</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
+		<subtable>
+			<row>
+				<label>(organic)</label>
+				<nb_visits>8</nb_visits>
+				<nb_actions>31</nb_actions>
+				<sum_visit_length>728</sum_visit_length>
+				<bounce_count>4</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>0</nb_conversions>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>(direct) - (none)</label>
+		<nb_visits>7</nb_visits>
+		<nb_actions>31</nb_actions>
+		<sum_visit_length>108</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+		<subtable>
+			<row>
+				<label>(direct)</label>
+				<nb_visits>7</nb_visits>
+				<nb_actions>31</nb_actions>
+				<sum_visit_length>108</sum_visit_length>
+				<bounce_count>2</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>0</nb_conversions>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>bing - organic</label>
+		<nb_visits>3</nb_visits>
+		<nb_actions>11</nb_actions>
+		<sum_visit_length>8</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+		<subtable>
+			<row>
+				<label>(organic)</label>
+				<nb_visits>3</nb_visits>
+				<nb_actions>11</nb_actions>
+				<sum_visit_length>8</sum_visit_length>
+				<bounce_count>2</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>0</nb_conversions>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
+			</row>
+		</subtable>
+	</row>
+</result>

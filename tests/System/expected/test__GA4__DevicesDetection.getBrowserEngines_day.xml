@@ -1,2 +1,54 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<result />
+<result>
+	<row>
+		<label>Gecko (Firefox)</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>3</nb_visits>
+		<nb_actions>14</nb_actions>
+		<sum_visit_length>9</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<segment>browserEngine==Gecko</segment>
+	</row>
+	<row>
+		<label>WebKit (Safari)</label>
+		<nb_uniq_visitors>2</nb_uniq_visitors>
+		<nb_visits>2</nb_visits>
+		<nb_actions>7</nb_actions>
+		<sum_visit_length>9</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<segment>browserEngine==WebKit</segment>
+	</row>
+	<row>
+		<label>Edge</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>5</nb_actions>
+		<sum_visit_length>8</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<segment>browserEngine==Edge</segment>
+	</row>
+</result>
