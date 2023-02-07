@@ -91,8 +91,8 @@ class GoogleGA4MetricMapperTest extends TestCase
 
         $this->assertEquals([
             'transactions',
-            'itemRevenue',
-            'itemPurchaseQuantity',
+//            'itemRevenue',
+//            'itemsPurchased',
             'sessions',
         ], $mappings[Metrics::INDEX_GOALS]['metric']);
     }
@@ -140,8 +140,8 @@ class GoogleGA4MetricMapperTest extends TestCase
             'ga4:someOtherMetric',
             'conversions',
             'transactions',
-            'itemRevenue',
-            'itemPurchaseQuantity',
+//            'itemRevenue',
+//            'itemsPurchased',
             'sessions',
         ], $metrics);
     }

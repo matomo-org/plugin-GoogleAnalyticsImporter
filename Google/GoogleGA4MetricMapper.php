@@ -176,8 +176,8 @@ class GoogleGA4MetricMapper
 //            Metrics::INDEX_PAGE_NB_HITS_WITH_TIME_GENERATION => 'ga:pageLoadSample', Not available in GA4
 
             // ecommerce item metrics (requires correct dimensions)
-            Metrics::INDEX_ECOMMERCE_ITEM_REVENUE => 'itemRevenue',
-            Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY => 'itemPurchaseQuantity',
+//            Metrics::INDEX_ECOMMERCE_ITEM_REVENUE => 'itemRevenue',
+//            Metrics::INDEX_ECOMMERCE_ITEM_QUANTITY => 'itemsPurchased',
             Metrics::INDEX_ECOMMERCE_ITEM_PRICE => 'averagePurchaseRevenue',
             Metrics::INDEX_ECOMMERCE_ORDERS => 'ecommercePurchases',
         ];
@@ -226,10 +226,10 @@ class GoogleGA4MetricMapper
     public function getEcommerceMetricIndicesToGaMetrics()
     {
         return [
-            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SUBTOTAL => 'itemRevenue',
+//            Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SUBTOTAL => 'itemRevenue',
             Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_TAX => 'taxAmount',
             Metrics::INDEX_GOAL_ECOMMERCE_REVENUE_SHIPPING => 'shippingAmount',
-            Metrics::INDEX_GOAL_ECOMMERCE_ITEMS => 'itemPurchaseQuantity',
+//           Metrics::INDEX_GOAL_ECOMMERCE_ITEMS => 'itemsPurchased',
         ];
     }
 
@@ -249,8 +249,8 @@ class GoogleGA4MetricMapper
     {
         return [
             Metrics::INDEX_GOAL_NB_CONVERSIONS => 'transactions',
-            Metrics::INDEX_GOAL_REVENUE => 'itemRevenue',
-            Metrics::INDEX_GOAL_ECOMMERCE_ITEMS => 'itemPurchaseQuantity',
+//            Metrics::INDEX_GOAL_REVENUE => 'itemRevenue',
+//            Metrics::INDEX_GOAL_ECOMMERCE_ITEMS => 'itemsPurchased',
         ];
     }
 
