@@ -1,2 +1,83 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<result />
+<result>
+	<row>
+		<label>New Zealand</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>3</nb_visits>
+		<nb_actions>14</nb_actions>
+		<sum_visit_length>9</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<code>nz</code>
+		<logo>plugins/Morpheus/icons/dist/flags/nz.png</logo>
+		<segment>countryCode==nz</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>Belgium</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>5</nb_actions>
+		<sum_visit_length>8</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<code>be</code>
+		<logo>plugins/Morpheus/icons/dist/flags/be.png</logo>
+		<segment>countryCode==be</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>France</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<code>fr</code>
+		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
+		<segment>countryCode==fr</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+	<row>
+		<label>Switzerland</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>1</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>9</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<code>ch</code>
+		<logo>plugins/Morpheus/icons/dist/flags/ch.png</logo>
+		<segment>countryCode==ch</segment>
+		<logoHeight>16</logoHeight>
+	</row>
+</result>

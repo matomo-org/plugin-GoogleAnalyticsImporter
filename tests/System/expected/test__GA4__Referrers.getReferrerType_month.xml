@@ -1,16 +1,111 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <result>
 	<row>
-		<label>Direct Entry</label>
-		<nb_visits>1</nb_visits>
-		<nb_actions>2</nb_actions>
-		<max_actions>2</max_actions>
-		<sum_visit_length>121</sum_visit_length>
-		<bounce_count>0</bounce_count>
+		<label>Campaigns</label>
+		<nb_visits>18</nb_visits>
+		<nb_actions>73</nb_actions>
+		<sum_visit_length>844</sum_visit_length>
+		<bounce_count>8</bounce_count>
 		<nb_visits_converted>0</nb_visits_converted>
-		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>18</sum_daily_nb_uniq_visitors>
+		<segment>referrerType==campaign</segment>
+		<referrer_type>6</referrer_type>
+		<subtable>
+			<row>
+				<label>(direct)</label>
+				<nb_visits>7</nb_visits>
+				<nb_actions>31</nb_actions>
+				<sum_visit_length>108</sum_visit_length>
+				<bounce_count>2</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>0</nb_conversions>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+			</row>
+			<row>
+				<label>(organic)</label>
+				<nb_visits>11</nb_visits>
+				<nb_actions>42</nb_actions>
+				<sum_visit_length>736</sum_visit_length>
+				<bounce_count>6</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>0</nb_conversions>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>11</sum_daily_nb_uniq_visitors>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>Direct Entry</label>
+		<nb_visits>8</nb_visits>
+		<nb_actions>33</nb_actions>
+		<sum_visit_length>229</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
+		<max_actions>2</max_actions>
 		<sum_daily_nb_users>0</sum_daily_nb_users>
 		<segment>referrerType==direct</segment>
 		<referrer_type>1</referrer_type>
+	</row>
+	<row>
+		<label>Websites</label>
+		<nb_visits>2</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>1</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>referrerType==website</segment>
+		<referrer_type>3</referrer_type>
+		<subtable>
+			<row>
+				<label>https</label>
+				<nb_visits>2</nb_visits>
+				<nb_actions>4</nb_actions>
+				<sum_visit_length>1</sum_visit_length>
+				<bounce_count>2</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal='ecommerceOrder'>
+						<nb_conversions>0</nb_conversions>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+			</row>
+		</subtable>
 	</row>
 </result>
