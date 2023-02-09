@@ -34,6 +34,19 @@
           ) }}
         </span>
       </div>
+      <div v-if="status.status === 'cloud_rate_limited'">
+        <span
+          class="icon icon-help"
+          :title="status.error"
+        />
+        <br />
+        <span v-if="status.days_finished_since_rate_limit">
+        {{ translate(
+          'GoogleAnalyticsImporter_FinishedImportingDaysWaiting',
+          status.days_finished_since_rate_limit,
+        ) }}
+        </span>
+      </div>
       <div v-if="status.status === 'rate_limited_hourly'">
         <span
           class="icon icon-help"
@@ -49,7 +62,8 @@
         <span
           class="icon icon-help"
           :title="translate('GoogleAnalyticsImporter_KilledStatusHelp')"
-        />
+        /><br>
+        {{ translate('GoogleAnalyticsImporter_ErrorMessage') }}: {{ status.error || 'no message' }}
       </div>
     </td>
     <td class="last-date-imported">

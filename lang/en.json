@@ -16,7 +16,7 @@
         "ConfigureClientDesc2": "%1$sTo start follow our instructions to retrieve your OAuth Client configuration.%2$s Then either upload this client configuration or paste it into the field below.",
         "ConfigurationFile": "Configuration File",
         "ConfigurationText": "Configuration Text",
-        "InvalidRedirectUriInClientConfiguration": "Invalid redirect_uris, atleast 1 uri should match the uri \"%1$s\" in the uploaded configuration file",
+        "InvalidRedirectUriInClientConfiguration": "Invalid redirect_uris, at least 1 uri should match the uri \"%1$s\" in the uploaded configuration file",
         "RemoveClientConfiguration": "Remove Client Configuration",
         "DeleteUploadedClientConfig": "If you'd like to remove the uploaded client configuration, click below",
         "ImportJobs": "Import Jobs",
@@ -70,6 +70,7 @@
         "CancelJobConfirm": "Are you sure you want to cancel this ongoing job?",
         "LeaveEmptyToRemove": "Leave this empty to remove the end date and continue the import until manually cancelled.",
         "RateLimitHelp": "Google Analytics by default limits the number of requests you can make to the API for a specific project to 50,000 a day. It looks like this import job has exceeded that limit, so the import cannot continue until tomorrow.",
+        "CloudRateLimitHelp": "Daily cloud rate limit reached, try again tomorrow. (Note: GA by default sets a daily limit on the number of API requests made each day. This has been prorated to %1$s requests to your account. This limit is prorated for each Matomo cloud customer. It looks like you've reached your limit. Continue the import tomorrow.)",
         "RateLimitHourlyHelp": "Google Analytics by default limits the number of requests you can make to the API for a specific project to 5000 per hour. It looks like this import job has exceeded that limit, so the import cannot continue till next hour.",
         "SiteID": "Site ID",
         "SiteDeleted": "Site Deleted",
@@ -116,6 +117,11 @@
         "SelectImporterUATitle": "Google Universal analytics (GA3)",
         "SelectImporterUAInlineHelp": "Choose this if your property ID start with UA and end with a number (UA-XXXXXXXXX-1).",
         "SelectImporterGA4Title": "Google Analytics 4 (GA4)",
-        "SelectImporterGA4InlineHelp": "Choose this if your property ID have only numbers (XXXXXXXXX)."
+        "SelectImporterGA4InlineHelp": "Choose this if your property ID have only numbers (XXXXXXXXX).",
+        "PendingGAImportReportNotificationNoData" : "We are still importing from Google Analytics but you should be able to see your most recent data. You will be able to view all your data within a few days.",
+        "PendingGAImportReportNotificationSomeData" : "We are still importing from Google Analytics but you should be able to see your most recent data. Data until %1$s has been imported so far. You should be able to see your importer data since this date.",
+        "NoDateSuccessImportMessageLine1": "Your Google Analytics properties were imported successfully",
+        "NoDateSuccessImportMessageLine2": "Historical reports for these properties will be imported in the background. Please be patient as this will take a few days to complete. It's now time to set up the tracking of new data (see instructions below).",
+        "OauthFailedMessage": "We encountered an issue during the authorization process for importing your GA reports. To try again, please click the button below. If the problem persists, please contact our support team for assistance. They will assist you in resolving the issue and getting your historical GA data imported."
     }
 }

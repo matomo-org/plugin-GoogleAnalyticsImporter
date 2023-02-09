@@ -11,9 +11,12 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Commands;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
+use Piwik\Option;
 use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugin\Manager;
+use Piwik\Plugins\GoogleAnalyticsImporter\CannotProcessImportException;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsGA4QueryService;
 use Piwik\Site;
 use Piwik\Timer;
 use Symfony\Component\Console\Input\InputInterface;
@@ -54,6 +57,8 @@ class ImportGA4Reports extends ConsoleCommand
             return $this->executeImpl($input, $output);
         } catch (ImportWasCancelledException $ex) {
             $output->writeln("Import was cancelled, aborting.");
+        } catch (CannotProcessImportException $ex) {
+            $output->writeln($ex->getMessage());
         }
     }
 
@@ -75,6 +80,14 @@ class ImportGA4Reports extends ConsoleCommand
 
         $idSite = $this->getIdSite($input);
         LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite, $output);
+
+        $canProcessNow = $this->checkIfCanProcess();
+        if($canProcessNow['canProcess'] === false){
+            $exceededMessage = 'The import will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
+            $output->writeln($exceededMessage);
+            throw new CannotProcessImportException($exceededMessage);
+        }
+
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
 
@@ -365,6 +378,20 @@ class ImportGA4Reports extends ConsoleCommand
         if (!preg_match('/^properties\/[^\/]+$/', $propertyId, $matches)) {
             throw new \Exception("Invalid property ID, required format properties/{propertyID}");
         }
+    }
+
+    public function checkIfCanProcess()
+    {
+        $nextAvailableAt = (int) (Option::get(GoogleAnalyticsGA4QueryService::DELAY_OPTION_NAME));
+        if (!$nextAvailableAt) {
+            return ['canProcess' => true];
+        }
+
+        if(Date::factory('now')->getTimestamp() >= $nextAvailableAt){
+            Option::delete(GoogleAnalyticsGA4QueryService::DELAY_OPTION_NAME);
+            return ['canProcess' => true];
+        }
+        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a')];
     }
 
 }

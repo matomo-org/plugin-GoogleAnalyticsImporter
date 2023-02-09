@@ -1,2 +1,88 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<result />
+<result>
+	<row>
+		<label>WebKit (Safari)</label>
+		<nb_visits>8</nb_visits>
+		<nb_actions>35</nb_actions>
+		<sum_visit_length>794</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>8</sum_daily_nb_uniq_visitors>
+		<segment>browserEngine==WebKit</segment>
+	</row>
+	<row>
+		<label>Gecko (Firefox)</label>
+		<nb_visits>4</nb_visits>
+		<nb_actions>17</nb_actions>
+		<sum_visit_length>9</sum_visit_length>
+		<bounce_count>2</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
+		<segment>browserEngine==Gecko</segment>
+	</row>
+	<row>
+		<label>Android Webview</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>4</nb_actions>
+		<sum_visit_length>1</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>browserEngine==Android+Webview</segment>
+	</row>
+	<row>
+		<label>Edge</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>5</nb_actions>
+		<sum_visit_length>8</sum_visit_length>
+		<bounce_count>0</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>browserEngine==Edge</segment>
+	</row>
+	<row>
+		<label>Trident (IE)</label>
+		<nb_visits>1</nb_visits>
+		<nb_actions>3</nb_actions>
+		<sum_visit_length>0</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>browserEngine==Trident</segment>
+	</row>
+</result>

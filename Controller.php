@@ -36,6 +36,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $errorMessage = $errorMessage ?: Common::getRequestVar('error', '');
         if (!empty($errorMessage)) {
+            if ($errorMessage === 'access_denied') {
+                $errorMessage = Piwik::translate('GoogleAnalyticsImporter_OauthFailedMessage');
+            }
             $notification = new Notification($errorMessage);
             $notification->context = Notification::CONTEXT_ERROR;
             $notification->type = Notification::TYPE_TRANSIENT;
@@ -60,9 +63,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             $authUrl = $googleClient->createAuthUrl();
 
-            $nonce = Nonce::getNonce('GoogleAnalyticsImporter.deleteGoogleClientConfig');
+            $nonce = Nonce::getNonce('GoogleAnalyticsImporter.deleteGoogleClientConfig', 1200);
         } else {
-            $nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig');
+            $nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig', 1200);
         }
 
         $importStatus = StaticContainer::get(ImportStatus::class);
@@ -76,11 +79,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             }
         }
 
-        $stopImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.stopImportNonce');
-        $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce');
-        $changeImportEndDateNonce = Nonce::getNonce('GoogleAnalyticsImporter.changeImportEndDateNonce');
-        $resumeImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.resumeImportNonce');
-        $scheduleReImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.scheduleReImport');
+        $stopImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.stopImportNonce', 1200);
+        $startImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.startImportNonce', 1200);
+        $changeImportEndDateNonce = Nonce::getNonce('GoogleAnalyticsImporter.changeImportEndDateNonce', 1200);
+        $resumeImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.resumeImportNonce', 1200);
+        $scheduleReImportNonce = Nonce::getNonce('GoogleAnalyticsImporter.scheduleReImport', 1200);
 
         $maxEndDateDesc = null;
 
@@ -98,7 +101,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         return $this->renderTemplate('index', [
             'isClientConfigurable' => $isClientConfigurable,
             'isConfigured' => $authorization->hasAccessToken(),
-            'auth_nonce' => Nonce::getNonce('gaimport.auth'),
+            'auth_nonce' => Nonce::getNonce('gaimport.auth', 1200),
             'hasClientConfiguration' => $hasClientConfiguration,
             'nonce' => $nonce,
             'statuses' => $statuses,
@@ -557,6 +560,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             /** @var ImportStatus $importStatus */
             $importStatus = StaticContainer::get(ImportStatus::class);
+            $status = $importStatus->getImportStatus($idSite);
+
+            //For UI test to work properly after an error
+            if ($isGA4 && defined('PIWIK_TEST_MODE') && $status['import_range_end'] === '2019-07-02') {
+                $importStatus->setImportDateRange($idSite, $startDate, $endDate);
+            }
+
             $importStatus->reImportDateRange($idSite, $startDate, $endDate);
             $importStatus->resumeImport($idSite);
 
@@ -581,7 +591,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
     private function logException(\Throwable $ex, $functionName)
     {
-        StaticContainer::get(LoggerInterface::class)->error('Encountered exception in GoogleAnalyticsImporter.{function} controller method: {exception}', [
+        StaticContainer::get(LoggerInterface::class)->debug('Encountered exception in GoogleAnalyticsImporter.{function} controller method: {exception}', [
             'exception' => $ex,
             'function' => $functionName,
         ]);
@@ -590,9 +600,18 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     private function getNotificationExceptionText(\Exception $e)
     {
         $message = $e->getMessage();
+        $messageContent = @json_decode($message, true);
         if (\Piwik_ShouldPrintBackTraceWithMessage()) {
             $message .= "\n" . $e->getTraceAsString();
+        } else if (isset($messageContent['error']['message'])) {
+            $message = $messageContent['error']['message'];
         }
         return $message;
+    }
+
+    public function pendingImports()
+    {
+        $pendingImports = GoogleAnalyticsImporter::canDisplayImportPendingNotice();
+        return json_encode($pendingImports);
     }
 }

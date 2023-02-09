@@ -1,7 +1,9 @@
 <?php
 
+use Piwik\Option;
 use Piwik\Url;
 use Psr\Container\ContainerInterface;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
@@ -58,6 +60,18 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitTime\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency\RecordImporter::class,
     ],
+    'GoogleAnalyticsGA4Importer.clientConfiguration' => function (\Psr\Container\ContainerInterface $c) {
+        $config = @json_decode(Option::get(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME), true);
+
+        $accessToken = @json_decode(Option::get(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME), true);
+
+        return [
+            'type' => 'authorized_user',
+            'client_id' => (!empty($config['web']['client_id']) ? $config['web']['client_id'] : ''),
+            'client_secret' => (!empty($config['web']['client_secret']) ? $config['web']['client_secret'] : ''),
+            'refresh_token' => (!empty($accessToken['refresh_token']) ? $accessToken['refresh_token'] : '')
+        ];
+    },
     'GoogleAnalyticsGA4Importer.recordImporters' => [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporterGA4::class, // must be first
 
@@ -81,4 +95,6 @@ return [
         \DI\get(\Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredFunctionsCheck::class),
         \DI\get(\Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredExecutablesCheck::class),
     ]),
+
+    '\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper' => DI\create('\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper')
 ];

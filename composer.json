@@ -6,7 +6,8 @@
         "guzzlehttp/guzzle": "^7.0",
         "guzzlehttp/promises": "1.5.1",
         "google/analytics-data": "^0.8.1",
-        "google/analytics-admin": "^0.5.1"
+        "google/analytics-admin": "^0.5.1",
+        "phpseclib/bcmath_compat": "^2.0"
     },
     "replace": {
         "monolog/monolog": "*"

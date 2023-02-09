@@ -1,2 +1,37 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<result />
+<result>
+	<row>
+		<label>Europe</label>
+		<nb_uniq_visitors>3</nb_uniq_visitors>
+		<nb_visits>3</nb_visits>
+		<nb_actions>12</nb_actions>
+		<sum_visit_length>17</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<code>Europe</code>
+	</row>
+	<row>
+		<label>Oceania</label>
+		<nb_uniq_visitors>1</nb_uniq_visitors>
+		<nb_visits>3</nb_visits>
+		<nb_actions>14</nb_actions>
+		<sum_visit_length>9</sum_visit_length>
+		<bounce_count>1</bounce_count>
+		<nb_visits_converted>0</nb_visits_converted>
+		<nb_conversions>0</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal='ecommerceOrder'>
+				<nb_conversions>0</nb_conversions>
+			</row>
+		</goals>
+		<code>Oceania</code>
+	</row>
+</result>

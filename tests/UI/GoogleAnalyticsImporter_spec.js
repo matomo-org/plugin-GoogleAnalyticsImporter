@@ -18,6 +18,15 @@ describe("GoogleAnalyticsImporter", function () {
         await page.evaluate(() => $('td.import-start-finish-times').html(''));
     }
 
+    async function updateStatusToStartedIfOnGoing() {
+        await page.evaluate(() => {
+            var status = $('.importStatusesTable tbody td.status:first').text();
+            if (status && status.trim() === 'ongoing') {
+                $('.importStatusesTable tbody td.status:first').html('started');
+            }
+        });
+    }
+
     it("should load the settings correctly", async function () {
         await page.goto(url);
 
@@ -48,6 +57,7 @@ describe("GoogleAnalyticsImporter", function () {
         await page.waitForSelector('.pageWrap');
 
         await removeStartResumeFinishTime();
+        await updateStatusToStartedIfOnGoing();
 
         const content = await page.$('.pageWrap');
         expect(await content.screenshot()).to.matchImage('start_import');

@@ -14,6 +14,7 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\RawLogDao;
 use Piwik\DataTable;
 use Piwik\Date;
+use Piwik\Period;
 use Piwik\Piwik;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
@@ -61,6 +62,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'SitesManager.deleteSite.end'            => 'onSiteDeleted',
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
             'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
+            'AssetManager.getJavaScriptFiles' => 'getJsFiles'
         ];
     }
 
@@ -177,6 +179,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_Troubleshooting';
         $translationKeys[] = 'GoogleAnalyticsImporter_Start';
         $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_CloudRateLimitHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_RateLimitHourlyHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_KilledStatusHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_ResumeDesc';
@@ -239,6 +242,16 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterSelection';
         $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleAnImportGA4';
         $translationKeys[] = 'GoogleAnalyticsImporter_MaxEndDateHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationNoData';
+        $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationSomeData';
+        $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine1';
+        $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine2';
+        $translationKeys[] = 'GoogleAnalyticsImporter_OauthFailedMessage';
+    }
+
+    public function getJsFiles(&$files)
+    {
+        $files[] = "plugins/GoogleAnalyticsImporter/javascripts/googleAnalyticsImporter.js";
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)
@@ -384,5 +397,89 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $date2 = $period->getDateTimeEnd()->setTimezone($timezone);
 
         return [$date1, $date2];
+    }
+
+    public static function datesOverlap($periods, $start_time_key = 'start_time', $end_time_key = 'end_time')
+    {
+        // order periods by start_time
+        usort($periods, function ($a, $b) use ($start_time_key, $end_time_key) {
+            return strtotime($a[$start_time_key]) <=> strtotime($b[$end_time_key]);
+        });
+        // check two periods overlap
+        foreach ($periods as $key => $period) {
+            if ($key != 0) {
+                if (strtotime($period[$start_time_key]) < strtotime($periods[$key - 1][$end_time_key])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * Check if there are pending imports, and if so, if the report date is in the range of the dates of the import
+     * @return bool
+     * @throws \Exception
+     */
+    public static function canDisplayImportPendingNotice(): array
+    {
+        $isGASite = false;
+        $instance = new ImportStatus();
+        $currentIdSite = Common::getRequestVar('idSite', -1);
+        try {
+            $status = $instance->getImportStatus($currentIdSite);
+            $isGASite = !empty($status);
+        } catch (\Exception $exception) {
+            return ['displayPending' => false, 'isGASite' => $isGASite];
+        }
+
+        if(!self::hasOverLapCheckParams()){
+            return ['displayPending' => false, 'isGASite' => $isGASite];
+        }
+
+
+        if ($currentIdSite === -1) {
+            return ['displayPending' => false, 'isGASite' => $isGASite];
+        }
+
+        if ($status['status'] != ImportStatus::STATUS_ONGOING) {
+            return ['displayPending' => false, 'isGASite' => $isGASite];
+        }
+
+
+        $periods = [
+            //Report Dates
+            [
+                'start_time' => Date::factory(Period\Factory::makePeriodFromQueryParams('',
+                    Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateStart()),
+                'end_time' => Date::factory(Period\Factory::makePeriodFromQueryParams('',
+                    Common::getRequestVar('period'), Common::getRequestVar('date'))->getDateEnd())
+            ],
+            //Import Dates
+            [
+                'start_time' =>Date::factory($status['import_range_start']),
+                'end_time' => Date::factory($status['import_range_end'])
+            ]
+        ];
+
+        if(self::datesOverlap($periods)) {
+            $importedRange = $instance->getImportedDateRange($currentIdSite);
+            return [
+                'displayPending' => true,
+                'availableDate' => $importedRange[0],
+                'isGASite' => $isGASite
+            ];
+        }
+        return ['displayPending' => false, 'isGASite' => $isGASite];
+    }
+
+    public static function hasOverLapCheckParams()
+    {
+        if(!Common::getRequestVar('period', false) || !Common::getRequestVar('date', false)
+            || !Common::getRequestVar('idSite')){
+            return false;
+        }
+        return true;
     }
 }

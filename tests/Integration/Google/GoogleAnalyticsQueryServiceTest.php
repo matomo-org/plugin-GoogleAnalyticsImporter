@@ -28,18 +28,33 @@ class GoogleAnalyticsQueryServiceTest extends IntegrationTestCase
                 'error' => [
                     'message' => 'this is a test exception',
                 ],
-            ]), 503), 'Failed to reach GA after 2 attempts. Restart the import later. Last GA error message: this is a test exception'],
+            ]), 503), 'Failed to reach GA after 2 attempt(s). The import will automatically restart later and you don\'t need to do anything. Last GA error message: this is a test exception'],
             [new \Exception(json_encode([
                 'error' => [
                 ],
-            ]), 503), 'Failed to reach GA after 2 attempts. Restart the import later.'],
-            [new \Exception('lakjdsflsdj', 503), 'Failed to reach GA after 2 attempts. Restart the import later.'],
+            ]), 503), 'Failed to reach GA after 2 attempt(s). The import will automatically restart later and you don\'t need to do anything.'],
+            [new \Exception('lakjdsflsdj', 503), 'Failed to reach GA after 2 attempt(s). The import will automatically restart later and you don\'t need to do anything.'],
 
             [new \Exception(json_encode([
                 'error' => [
                     'message' => 'Unknown metric(s): blah, blah and blah',
                 ],
-            ]), 400), 'Failed to reach GA after 2 attempts. Restart the import later. Last GA error message: this is a test exception'],
+            ]), 400), 'Failed to reach GA after 2 attempt(s). The import will automatically restart later and you don\'t need to do anything. Last GA error message: Unknown metric(s): blah, blah and blah'],
+            [new \Exception(json_encode([
+                'error' => [
+                    'message' => 'this is a test 400 exception',
+                ],
+            ]), 401), '{"error":{"message":"this is a test 400 exception"}}'],
+            [new \Exception(json_encode([
+                'error' => [
+                    'message' => 'this is a test 403 exception',
+                ],
+            ]), 403), 'Failed to reach GA after 1 attempt(s). The import will automatically restart later and you don\'t need to do anything. Last GA error message: this is a test 403 exception'],
+            [new \Exception(json_encode([
+                'error' => [
+                    'message' => 'this is a test 500 exception',
+                ],
+            ]), 500), 'Failed to reach GA after 2 attempt(s). The import will automatically restart later and you don\'t need to do anything. Last GA error message: this is a test 500 exception'],
         ];
     }
 
@@ -63,7 +78,10 @@ class GoogleAnalyticsQueryServiceTest extends IntegrationTestCase
         $this->getMockBuilder(\Google\Service\AnalyticsReporting::class);
         $gaQueryService = new GoogleAnalyticsQueryService($mockReportingService, 'testviewid', [], 1, 'testuser',
             StaticContainer::get(GoogleQueryObjectFactory::class), StaticContainer::get(LoggerInterface::class));
-        $gaQueryService->setMaxAttempts(2);
+
+        if ($testEx->getCode() === 400) {
+            $gaQueryService->setMaxAttempts(2);
+        }
 
         $this->expectException(\Exception::class);
         $this->expectExceptionMessage($expectedMessage);

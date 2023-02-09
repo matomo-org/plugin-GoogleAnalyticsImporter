@@ -29,7 +29,6 @@
 - Added code to import recent dates first
 - Upgraded guzzleHTTP version to 4.5.0
 
-
 # 4.2.0
 
 Migrate AngularJS code to Vue.

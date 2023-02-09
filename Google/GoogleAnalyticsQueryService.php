@@ -13,6 +13,8 @@ use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Db;
+use Piwik\Exception\Exception;
+use Piwik\Option;
 use Piwik\Piwik;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -23,6 +25,7 @@ class GoogleAnalyticsQueryService
     const MAX_BACKOFF_TIME = 60;
     const PING_MYSQL_EVERY = 25;
     const DEFAULT_MIN_BACKOFF_TIME = 2; // start at 2s since GA seems to have trouble w/ the 10 requests per 100s limit w/ 1
+    const DELAY_OPTION_NAME = 'GoogleAnalyticsImporter_nextAvailableAt';
 
     private static $problematicMetrics = [
         'ga:users',
@@ -76,6 +79,9 @@ class GoogleAnalyticsQueryService
      */
     private $quotaUser;
 
+    private $skipAttemptForExceptionCodes = [401, 403];
+    private $singleAttemptForExceptionCodes = [500, 503];
+
     public function __construct(\Google\Service\AnalyticsReporting $gaService, $viewId, array $goalsMapping, $idSite, $quotaUser,
                                 GoogleQueryObjectFactory $googleQueryObjectFactory, LoggerInterface $logger)
     {
@@ -102,6 +108,11 @@ class GoogleAnalyticsQueryService
         foreach (array_chunk($gaMetricsToQuery, 9) as $chunk) {
             $chunkResponse = $this->gaBatchGet($day, array_values($chunk), array_merge(['dimensions' => $dimensions], $options), $orderByMetric);
 
+            if ($this->onQueryMade) {
+                $callable = $this->onQueryMade;
+                $callable();
+            }
+
             // some metric/date combinations seem to cause GA to return absolutely nothing (no rows + NULL row count).
             // in this case we remove the problematic metrics and try again.
             if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
@@ -117,11 +128,6 @@ class GoogleAnalyticsQueryService
                 if ($chunkResponse->getReports()[0]->getData()->getRowCount() === null) {
                     continue;
                 }
-            }
-
-            if ($this->onQueryMade) {
-                $callable = $this->onQueryMade;
-                $callable();
             }
 
             usleep(100 * 1000);
@@ -153,6 +159,7 @@ class GoogleAnalyticsQueryService
         $this->currentBackoffTime = self::DEFAULT_MIN_BACKOFF_TIME;
 
         $attempts = 0;
+        $skipReAttempt = false;
         while ($attempts < $this->maxAttempts) {
             try {
                 $this->issuePointlessMysqlQuery();
@@ -161,10 +168,15 @@ class GoogleAnalyticsQueryService
                     'quotaUser' => $this->quotaUser,
                 ]);
 
+                // @TODO if result->reports[0]->nextPageToken returns a value
+                //       then there is more data and the request must be made
+                //       made again with a an added parameter pageToken=nextPageToken
+                //       result->reports[0]->data->rowCount contains the totals
+
                 if (empty($result)) {
                     ++$attempts;
 
-                    $this->backOff();
+                    $this->backOff($skipReAttempt);
 
                     $this->logger->info("Google Analytics API returned null for some reason, trying again...");
 
@@ -173,6 +185,7 @@ class GoogleAnalyticsQueryService
 
                 return $result;
             } catch (\Exception $ex) {
+                $skipReAttempt = in_array($ex->getCode(), $this->skipAttemptForExceptionCodes);
                 $this->logger->debug("Google Analytics returned an error: {message}", [
                     'message' => $ex->getMessage(),
                 ]);
@@ -180,6 +193,8 @@ class GoogleAnalyticsQueryService
                 $messageContent = @json_decode($ex->getMessage(), true);
                 if (isset($messageContent['error']['message'])) {
                     $lastGaError = $messageContent['error']['message'];
+                } else {
+                    $lastGaError = $ex->getMessage();
                 }
 
                 /**
@@ -189,33 +204,47 @@ class GoogleAnalyticsQueryService
 
                 if ($ex->getCode() == 403 || $ex->getCode() == 429) {
                     if (strpos($ex->getMessage(), 'daily') !== false) {
+                        $this->setDbBackOff('D');
                         throw new DailyRateLimitReached();
+                    } else if(stripos($ex->getMessage(), 'hour') !== false) {
+                        $this->setDbBackOff();
                     }
 
                     ++$attempts;
 
                     $this->logger->debug("Waiting {$this->currentBackoffTime}s before trying again...");
 
-                    $this->backOff();
+                    $this->backOff($skipReAttempt);
                 } else if ($this->isIgnorableException($ex)) {
                     ++$attempts;
 
                     $this->logger->info("Google Analytics API returned an ignorable or temporary error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
 
-                    $this->backOff();
+                    $this->backOff($skipReAttempt);
                 } else if ($ex->getCode() >= 500) {
                     ++$attempts;
 
                     $this->logger->info("Google Analytics API returned error: {$ex->getMessage()}. Waiting {$this->currentBackoffTime}s before trying again...");
 
-                    $this->backOff();
+                    $backoff = false;
+                    if (in_array($ex->getCode(), $this->singleAttemptForExceptionCodes)) {
+                        $this->maxAttempts = 2;
+                        $backoff = $attempts === 2;
+                    }
+                    $this->backOff($backoff);
                 } else {
                     throw $ex;
+                }
+
+                if ($skipReAttempt) {
+                    $this->maxAttempts = 1;
+                    $this->logger->debug("Skipping Reattempt, due to following exception status code " . $ex->getCode());
+                    break;
                 }
             }
         }
 
-        $message = "Failed to reach GA after " . $this->maxAttempts . " attempts. Restart the import later.";
+        $message = "Failed to reach GA after " . $this->maxAttempts . " attempt(s). The import will automatically restart later and you don't need to do anything.";
         if (!empty($lastGaError)) {
             $message .= ' Last GA error message: ' . $lastGaError;
         }
@@ -259,8 +288,11 @@ class GoogleAnalyticsQueryService
         }
     }
 
-    private function backOff()
+    private function backOff($isSkipReAttempt = false)
     {
+        if ($isSkipReAttempt) {
+            return;
+        }
         $this->sleep($this->currentBackoffTime);
         $this->currentBackoffTime = min(self::MAX_BACKOFF_TIME, $this->currentBackoffTime * 2);
     }
@@ -281,5 +313,14 @@ class GoogleAnalyticsQueryService
         }
 
         return false;
+    }
+
+    public function setDbBackOff($backoffLength = 'H')
+    {
+        $nextRetry = Date::factory('+1 hour')->getTimestamp();
+        if($backoffLength === 'D'){
+            $nextRetry = Date::factory('tomorrow')->getTimestamp();
+        }
+        Option::set(self::DELAY_OPTION_NAME, $nextRetry);
     }
 }
