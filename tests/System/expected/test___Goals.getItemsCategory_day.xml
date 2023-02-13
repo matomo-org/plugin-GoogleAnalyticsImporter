@@ -10,6 +10,7 @@
 		<avg_price>16.69</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productCategory==Helmet</segment>
 	</row>
 	<row>
 		<label>Bows</label>
@@ -21,6 +22,7 @@
 		<avg_price>38.23</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productCategory==Bows</segment>
 	</row>
 	<row>
 		<label>Staff</label>
@@ -32,6 +34,7 @@
 		<avg_price>65.29</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productCategory==Staff</segment>
 	</row>
 	<row>
 		<label>Shields</label>
@@ -43,6 +46,7 @@
 		<avg_price>46.38</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productCategory==Shields</segment>
 	</row>
 	<row>
 		<label>Axes</label>
@@ -54,6 +58,7 @@
 		<avg_price>124.06</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productCategory==Axes</segment>
 	</row>
 	<row>
 		<label>Armor</label>
@@ -65,5 +70,6 @@
 		<avg_price>12.89</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productCategory==Armor</segment>
 	</row>
 </result>
