@@ -26,6 +26,7 @@ use Piwik\Plugins\Goals\API;
 use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ReportsProvider;
+use Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\CloudApiQuotaExceeded;
 use Piwik\Segment;
 use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
@@ -48,6 +49,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\HourlyRateLimitReached;
 class ImporterGA4
 {
     const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
+    const PAGE_SIZE = 100000;
 
     /**
      * @var BetaAnalyticsDataClient
@@ -120,6 +122,16 @@ class ImporterGA4
     private $endDate;
 
     /**
+     * @var ApiQuotaHelper
+     */
+    private $apiQuotaHelper;
+
+    /**
+     * @var int
+     */
+    private $maxAvailableQueries = 0;
+
+    /**
      * Whether this is the main import date range or for a reimport range.
      * @var bool
      */
@@ -129,7 +141,9 @@ class ImporterGA4
                                 LoggerInterface                $logger,
                                 GoogleGA4GoalMapper            $goalMapper,
                                 GoogleGA4CustomDimensionMapper $customDimensionMapper,
-                                IdMapper                       $idMapper, ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate)
+                                IdMapper                       $idMapper, ImportStatus $importStatus,
+                                ArchiveInvalidator $invalidator, EndDate $endDate,
+                                ApiQuotaHelper $apiQuotaHelper)
     {
         $this->reportsProvider = $reportsProvider;
         $this->logger = $logger;
@@ -139,6 +153,7 @@ class ImporterGA4
         $this->importStatus = $importStatus;
         $this->invalidator = $invalidator;
         $this->endDate = $endDate;
+        $this->apiQuotaHelper = $apiQuotaHelper;
     }
 
     public function setGAClient(BetaAnalyticsDataClient $client)
@@ -170,23 +185,22 @@ class ImporterGA4
 
             $startDate = Date::factory($webProperty->getCreateTime()->toDateTime()->getTimestamp())->toString();
             if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
-                $idSite = SitesManagerAPI::getInstance()->addSite(
-                    $siteName = $webProperty->getDisplayName(),
-                    $urls = $type === \Piwik\Plugins\MobileAppMeasurable\Type::ID ? null : [$webProperty->getDisplayName()],
-                    $ecommerce = 1,
-                    $siteSearch = false,
-                    $searchKeywordParams = '',
-                    $searchCategoryParams = '',
-                    $excludedIps = null,
-                    $excludedParams = '',
-                    $timezone = empty($timezone) ? $webProperty->getTimeZone() : $timezone,
-                    $currency = $webProperty->getCurrencyCode(),
-                    $group = null,
-                    $startDate,
-                    $excludedUserAgents = null,
-                    $keepURLFragments = null,
-                    $type
-                );
+                $siteOptions = [
+                    'siteName' => $webProperty->getDisplayName(),
+                    'urls' => [$webProperty->getDisplayName()],
+                    'ecommerce' => 1,
+                    'siteSearch' => 0,
+                    'searchKeywordParameters' => '',
+                    'searchCategoryParameters' => '',
+                    'excludedQueryParameters' => '',
+                    'timezone' => empty($timezone) ? $webProperty->getTimeZone() : $timezone,
+                    'currency' => $webProperty->getCurrencyCode(),
+                    'startDate' => $startDate,
+                    'type' => $type];
+                if ($type === \Piwik\Plugins\MobileAppMeasurable\Type::ID) {
+                    unset($siteOptions['urls']);
+                }
+                $idSite = Request::processRequest('SitesManager.addSite', $siteOptions);
             } else { // matomo for wordpress
                 $site = new \WpMatomo\Site();
                 $idSite = $site->get_current_matomo_site_id();
@@ -340,8 +354,15 @@ class ImporterGA4
                 continue;
             }
 
-            $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
-                $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = true);
+            try {
+                $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension(
+                    $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = true);
+            } catch (\Exception $ex) {
+                if (strpos($ex->getMessage(), 'All Custom Dimensions for website') === 0) {
+                    $this->logger->warning("Cannot map custom dimension {$customDimension['name']}: " . $ex->getMessage());
+                    continue;
+                }
+            }
 
             $this->logger->info("Created Matomo dimension for extra dimension {gaDim} as dimension{id} with scope '{scope}'.", [
                 'gaDim' => $extraEntry['gaDimension'],
@@ -385,6 +406,7 @@ class ImporterGA4
             $this->currentLock = $lock;
             $this->noDataMessageRemoved = false;
             $this->queryCount = 0;
+            $this->maxAvailableQueries = $this->apiQuotaHelper->getBalanceApiQuota();
 
             $endPlusOne = $end->addDay(1);
 
@@ -415,8 +437,14 @@ class ImporterGA4
             $this->importStatus->finishImportIfNothingLeft($idSite);
 
             unset($recordImporters);
-        } catch (DailyRateLimitReached $ex) {
-            $this->importStatus->rateLimitReached($idSite);
+        } catch (DailyRateLimitReached | CloudApiQuotaExceeded $ex) {
+            if($ex instanceof CloudApiQuotaExceeded){
+                $this->apiQuotaHelper->trackEvent('Internal Quota Exception Reached','Google_Analytics_Importer');
+                $this->importStatus->cloudRateLimitReached($idSite, $ex->getMessage());
+            } else {
+                $this->apiQuotaHelper->trackEvent('Google Quota Exception Reached','Google_Analytics_Importer');
+                $this->importStatus->rateLimitReached($idSite);
+            }
             $this->logger->info($ex->getMessage());
             return true;
         } catch (HourlyRateLimitReached $ex) {
@@ -519,6 +547,7 @@ class ImporterGA4
      */
     private function getRecordImporters($idSite, $propertyId)
     {
+        $this->apiQuotaHelper->trackEvent('Import Attempt','Google_Analytics_Importer');
         if (empty($this->recordImporters)) {
             $recordImporters = StaticContainer::get('GoogleAnalyticsGA4Importer.recordImporters');
 
@@ -540,10 +569,24 @@ class ImporterGA4
         $quotaUser = defined('PIWIK_TEST_MODE') ? 'test' : SettingsPiwik::getPiwikUrl();
 
         $gaQuery = new GoogleAnalyticsGA4QueryService(
-            $this->gaClient, $this->gaAdminClient, $propertyId, $this->getGoalMapping($idSite), $idSite, $quotaUser, StaticContainer::get(GoogleGA4QueryObjectFactory::class), $this->logger);
+            $this->gaClient, $this->gaAdminClient, $propertyId, $this->getGoalMapping($idSite), $idSite, $quotaUser,
+            StaticContainer::get(GoogleGA4QueryObjectFactory::class), $this->logger);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
+            if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){
+                $this->apiQuotaHelper->saveApiUsed($this->maxAvailableQueries);
+                $this->apiQuotaHelper->trackEvent('Import Cloud Quota Exceeded','Google_Analytics_Importer');
+                $importCountForTheDay = $this->apiQuotaHelper->getImportCountForTheDay();
+                $quotaCount = $this->maxAvailableQueries;
+                //if the importer runs again after throwing CloudApiQuotaExceeded, {maxAvailableQueries} will be set as 0 and wrong count in the error message will be recorded
+                if ($quotaCount < 1 && $importCountForTheDay > 0) {
+                    $quotaCount = $importCountForTheDay;
+                }
+                throw new CloudApiQuotaExceeded($quotaCount);
+            }
         });
+        $this->apiQuotaHelper->saveApiUsed($this->queryCount);
+        $this->apiQuotaHelper->trackEvent('Import Complete','Google_Analytics_Importer');
 
         $instances = [];
         foreach ($this->recordImporters as $pluginName => $className) {

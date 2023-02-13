@@ -4,6 +4,40 @@
 # 5.0.0
 - Remove all use of AngularJS from the plugin.
 
+# 4.4.8
+- GA4 - Removed itemRevenue and itemsPurchased metrics due to incompatibility
+
+# 4.4.7
+- Fixed mobile app import not working due to recent change in site creation.
+
+# 4.4.6
+- Fix to log the allowed API requests correctly for cloud.
+- Updating error message when a use cancels auth to be more helpful.
+- Try/catch block for extraCustomDimensions added to ensure import continues even after slot limit is reached.
+- Started calling addSite API through processRequest method to ensure events are triggered.
+
+# 4.4.5
+- Added success notification screen after selecting GA properties
+
+# 4.4.4
+- Added new method to get count of imports scheduled.
+- Started using polyfill for bcmath to work instead of asking users to install one.
+
+# 4.4.3
+- Started catching cannot process exception to not throw uncaught exception.
+
+# 4.4.2
+- Fixed regression due to string value being passed for date
+
+# 4.4.1
+- Handled exception being thrown on screen due to log level
+- Notification message updated to show last import date
+- Stop import process for specified time when quota is exceeded instead of retrying
+
+# 4.4.0
+- Added rate limiting for Analytics Importer for Matomo cloud customers
+- Added code to skip retry for certain exceptions
+
 # 4.3.6
 - Added escaping for shell args
 
@@ -28,7 +62,6 @@
 - Added support to import GA4 data into Matomo
 - Added code to import recent dates first
 - Upgraded guzzleHTTP version to 4.5.0
-
 
 # 4.2.0
 

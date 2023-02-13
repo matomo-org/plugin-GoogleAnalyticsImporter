@@ -1,0 +1,2 @@
+tests/resources/capturedresponses-ga4.log filter=lfs diff=lfs merge=lfs -text
+tests/resources/capturedresponses.log filter=lfs diff=lfs merge=lfs -text

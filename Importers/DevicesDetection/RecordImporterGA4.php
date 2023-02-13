@@ -287,6 +287,8 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
             $result['opera'] = 'xx';
             $result['mobiwire'] = 'xx';
             $result['creative'] = 'xx';
+            $result['Mozilla'] = 'xx';
+            $result['mozilla'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;

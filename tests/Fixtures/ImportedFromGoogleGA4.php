@@ -28,6 +28,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\MockResponseClientGA4;
 use Piwik\Plugins\VisitsSummary\API;
 use Piwik\SettingsPiwik;
 use Piwik\Tests\Framework\Fixture;
+use Piwik\Tests\Framework\TestCase\SystemTestCase;
 use Piwik\Timer;
 use Symfony\Bridge\Monolog\Handler\ConsoleHandler;
 
@@ -59,7 +60,7 @@ class ImportedFromGoogleGA4 extends Fixture
     {
         parent::setUp();
 
-        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+        if (SystemTestCase::isTravisCI()) {
             $mockResponses = new MockApiResponsesGA4($createSite = false);
             $mockResponses->setUp();
         }
@@ -127,7 +128,7 @@ class ImportedFromGoogleGA4 extends Fixture
 
     private function getGoogleAnalyticsParams()
     {
-        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+        if (SystemTestCase::isTravisCI()) {
             $this->clientConfig = Option::get(Authorization::CLIENT_CONFIG_OPTION_NAME);
             $this->accessToken = Option::get(Authorization::ACCESS_TOKEN_OPTION_NAME);
         } else {
@@ -158,7 +159,7 @@ class ImportedFromGoogleGA4 extends Fixture
     {
         $domain = SettingsPiwik::getPiwikInstanceId();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
-        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+        if (SystemTestCase::isTravisCI()) {
             $property = 'properties/12345';
         } else {
             $property = $this->getEnvVar('GA4_PROPERTY_ID');
@@ -208,7 +209,7 @@ class ImportedFromGoogleGA4 extends Fixture
             ],
         ];
 
-        if (getenv('MATOMO_USE_MOCK_RESPONSE')) {
+        if (SystemTestCase::isTravisCI()) {
             MockResponseClientGA4::$isForSystemTest = true;
             $result['GoogleAnalyticsImporter.googleAnalyticsDataClientClass'] = MockResponseClientGA4::class;
             $result['GoogleAnalyticsImporter.googleAnalyticsAdminServiceClientClass'] = MockResponseAdminServiceClientGA4::class;

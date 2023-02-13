@@ -14,12 +14,17 @@ class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
         'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '1f87db08236948d07391152dccb70f04' => __DIR__ . '/..' . '/google/apiclient-services/autoload.php',
         'a8d3953fd9959404dd22d3dfcd0a79f0' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
+        '56823cacd97af379eceaf82ad00b928f' => __DIR__ . '/..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
     );
 
     public static $prefixLengthsPsr4 = array (
         'p' => 
         array (
             'phpseclib3\\' => 11,
+        ),
+        'b' => 
+        array (
+            'bcmath_compat\\' => 14,
         ),
         'P' => 
         array (
@@ -58,6 +63,10 @@ class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
         'phpseclib3\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
+        ),
+        'bcmath_compat\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpseclib/bcmath_compat/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
