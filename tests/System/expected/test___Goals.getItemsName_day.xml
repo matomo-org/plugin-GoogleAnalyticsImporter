@@ -10,6 +10,7 @@
 		<avg_price>72.08</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==The+Fowl+Wind</segment>
 	</row>
 	<row>
 		<label>Mask of the Grand Duchess</label>
@@ -21,6 +22,7 @@
 		<avg_price>133.11</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==Mask+of+the+Grand+Duchess</segment>
 	</row>
 	<row>
 		<label>Earnest Reprisal</label>
@@ -32,6 +34,7 @@
 		<avg_price>65.29</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==Earnest+Reprisal</segment>
 	</row>
 	<row>
 		<label>Path to Glory</label>
@@ -43,6 +46,7 @@
 		<avg_price>46.38</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==Path+to+Glory</segment>
 	</row>
 	<row>
 		<label>Misfortune's Bite</label>
@@ -54,6 +58,7 @@
 		<avg_price>124.06</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==Misfortune%27s+Bite</segment>
 	</row>
 	<row>
 		<label>Curse of Morrac</label>
@@ -65,6 +70,7 @@
 		<avg_price>64.7</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==Curse+of+Morrac</segment>
 	</row>
 	<row>
 		<label>Helm of Drasca</label>
@@ -76,6 +82,7 @@
 		<avg_price>34.04</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==Helm+of+Drasca</segment>
 	</row>
 	<row>
 		<label>The Last Word</label>
@@ -87,6 +94,7 @@
 		<avg_price>65.8</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==The+Last+Word</segment>
 	</row>
 	<row>
 		<label>Masterwork Prowler Armor</label>
@@ -98,6 +106,7 @@
 		<avg_price>12.89</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==Masterwork+Prowler+Armor</segment>
 	</row>
 	<row>
 		<label>Keen Wyvern Vitaar</label>
@@ -109,5 +118,6 @@
 		<avg_price>0.91</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productName==Keen+Wyvern+Vitaar</segment>
 	</row>
 </result>
