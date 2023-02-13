@@ -176,7 +176,7 @@ class ImportTest extends SystemTestCase
                 ],
             ]],
 
-            ['MarketingCampaignsReporting', [
+            ['MarketingCampaignsReporting.getKeyword', [
                 'idSite' => self::$fixture->campaignIdSite,
                 'date' => self::$fixture->campaignDataDateTime,
                 'periods' => ['day', 'week', 'month', 'year'],
