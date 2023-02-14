@@ -87,14 +87,19 @@ class ImportReports extends ConsoleCommand
         LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite, $output);
 
         $canProcessNow = $this->checkIfCanProcess();
+        /** @var ImportStatus $importStatus */
+        $importStatus = StaticContainer::get(ImportStatus::class);
         if($canProcessNow['canProcess'] === false){
-            $exceededMessage = 'The import will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
+            $exceededMessage = 'The import was rate limited and will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
             $output->writeln($exceededMessage);
+            if (!empty($canProcessNow['rateLimitType']) && $canProcessNow['rateLimitType'] === 'hourly') {
+                $importStatus->rateLimitReachedHourly($idSite);
+            } else {
+                $importStatus->rateLimitReached($idSite);
+            }
             throw new CannotProcessImportException($exceededMessage);
         }
 
-        /** @var ImportStatus $importStatus */
-        $importStatus = StaticContainer::get(ImportStatus::class);
 
         $googleAuth = StaticContainer::get(Authorization::class);
         try {
@@ -442,6 +447,7 @@ class ImportReports extends ConsoleCommand
             Option::delete(GoogleAnalyticsQueryService::DELAY_OPTION_NAME);
             return ['canProcess' => true];
         }
-        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a')];
+        $rateLimitType = (Date::factory('+1 hour')->getTimestamp() > $nextAvailableAt) ? 'hourly' : 'daily';
+        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a'), 'rateLimitType' => $rateLimitType];
     }
 }

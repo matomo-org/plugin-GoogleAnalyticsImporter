@@ -89,6 +89,8 @@ class GoogleGA4QueryObjectFactory
             $body['limit'] = (string) ImporterGA4::PAGE_SIZE;
         }
 
+        $body['keepEmptyRows'] = true;
+
         return $body;
     }
 

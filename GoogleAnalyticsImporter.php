@@ -432,8 +432,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             ],
             //Import Dates
             [
-                'start_time' =>Date::factory($status['import_range_start']),
-                'end_time' => Date::factory($status['import_range_end'])
+                'start_time' =>Date::factory($status['import_range_start'] ?? 'now'), //due to null it sets an error, can be an edge case where someone requests a report before setImportedDateRange is called but import is created
+                'end_time' => Date::factory($status['import_range_end'] ?? 'now') //due to null it sets an error, can be an edge case where someone requests a report before setImportedDateRange is called but import is created
             ]
         ];
 
