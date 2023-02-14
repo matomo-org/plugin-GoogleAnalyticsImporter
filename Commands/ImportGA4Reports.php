@@ -88,9 +88,9 @@ class ImportGA4Reports extends ConsoleCommand
         if($canProcessNow['canProcess'] === false){
             $exceededMessage = 'The import was rate limited and will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
             if (!empty($canProcessNow['rateLimitType']) && $canProcessNow['rateLimitType'] === 'hourly') {
-                $importStatus->rateLimitReachedHourly($idSite);
+                $importStatus->rateLimitReachedHourly($idSite); //set the error as rate limited, else it leads to error with no message
             } else {
-                $importStatus->rateLimitReached($idSite);
+                $importStatus->rateLimitReached($idSite); //set the error as rate limited, else it leads to error with no message
             }
             $output->writeln($exceededMessage);
             throw new CannotProcessImportException($exceededMessage);
