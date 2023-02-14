@@ -60,7 +60,7 @@ class ImportedFromGoogleGA4 extends Fixture
     {
         parent::setUp();
 
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             $mockResponses = new MockApiResponsesGA4($createSite = false);
             $mockResponses->setUp();
         }
@@ -128,7 +128,7 @@ class ImportedFromGoogleGA4 extends Fixture
 
     private function getGoogleAnalyticsParams()
     {
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             $this->clientConfig = Option::get(Authorization::CLIENT_CONFIG_OPTION_NAME);
             $this->accessToken = Option::get(Authorization::ACCESS_TOKEN_OPTION_NAME);
         } else {
@@ -159,7 +159,7 @@ class ImportedFromGoogleGA4 extends Fixture
     {
         $domain = SettingsPiwik::getPiwikInstanceId();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             $property = 'properties/12345';
         } else {
             $property = $this->getEnvVar('GA4_PROPERTY_ID');
@@ -209,7 +209,7 @@ class ImportedFromGoogleGA4 extends Fixture
             ],
         ];
 
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             MockResponseClientGA4::$isForSystemTest = true;
             $result['GoogleAnalyticsImporter.googleAnalyticsDataClientClass'] = MockResponseClientGA4::class;
             $result['GoogleAnalyticsImporter.googleAnalyticsAdminServiceClientClass'] = MockResponseAdminServiceClientGA4::class;

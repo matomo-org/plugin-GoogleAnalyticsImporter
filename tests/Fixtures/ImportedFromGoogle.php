@@ -56,7 +56,7 @@ class ImportedFromGoogle extends Fixture
     {
         parent::setUp();
 
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             $mockResponses = new MockApiResponses($createSite = false);
             $mockResponses->setUp();
         }
@@ -124,7 +124,7 @@ class ImportedFromGoogle extends Fixture
 
     private function getGoogleAnalyticsParams()
     {
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             $this->viewId = 1234567;
             $this->clientConfig = Option::get(Authorization::CLIENT_CONFIG_OPTION_NAME);
             $this->accessToken = Option::get(Authorization::ACCESS_TOKEN_OPTION_NAME);
@@ -158,7 +158,7 @@ class ImportedFromGoogle extends Fixture
     {
         $domain = SettingsPiwik::getPiwikInstanceId();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             $property = 'UA-12345-6';
         } else {
             $property = $this->getEnvVar('GA_PROPERTY_ID');
@@ -209,7 +209,7 @@ class ImportedFromGoogle extends Fixture
             ],
         ];
 
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             MockResponseClient::$isForSystemTest = true;
             $result['GoogleAnalyticsImporter.googleClientClass'] = MockResponseClient::class;
         }

@@ -10,6 +10,7 @@
 		<avg_price>72.08</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI2784</segment>
 	</row>
 	<row>
 		<label>DAI0285</label>
@@ -21,6 +22,7 @@
 		<avg_price>133.11</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI0285</segment>
 	</row>
 	<row>
 		<label>DAI7456</label>
@@ -32,6 +34,7 @@
 		<avg_price>65.29</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI7456</segment>
 	</row>
 	<row>
 		<label>DAI0663</label>
@@ -43,6 +46,7 @@
 		<avg_price>46.38</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI0663</segment>
 	</row>
 	<row>
 		<label>DAI6503</label>
@@ -54,6 +58,7 @@
 		<avg_price>124.06</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI6503</segment>
 	</row>
 	<row>
 		<label>DAI8832</label>
@@ -65,6 +70,7 @@
 		<avg_price>64.7</avg_price>
 		<avg_quantity>2</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI8832</segment>
 	</row>
 	<row>
 		<label>DAI7474</label>
@@ -76,6 +82,7 @@
 		<avg_price>34.04</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI7474</segment>
 	</row>
 	<row>
 		<label>DAI6406</label>
@@ -87,6 +94,7 @@
 		<avg_price>65.8</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI6406</segment>
 	</row>
 	<row>
 		<label>DAI4293</label>
@@ -98,6 +106,7 @@
 		<avg_price>12.89</avg_price>
 		<avg_quantity>2.1</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI4293</segment>
 	</row>
 	<row>
 		<label>DAI0921</label>
@@ -109,5 +118,6 @@
 		<avg_price>0.91</avg_price>
 		<avg_quantity>1.9</avg_quantity>
 		<conversion_rate>0%</conversion_rate>
+		<segment>productSku==DAI0921</segment>
 	</row>
 </result>
