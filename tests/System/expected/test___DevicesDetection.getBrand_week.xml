@@ -406,7 +406,7 @@
 		<segment>deviceBrand==Motorola</segment>
 	</row>
 	<row>
-		<label>Ouki</label>
+		<label>Oukitel</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -447,8 +447,8 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
-		<logo>plugins/Morpheus/icons/dist/brand/unk.png</logo>
-		<segment>deviceBrand==Ouki</segment>
+		<logo>plugins/Morpheus/icons/dist/brand/Oukitel.png</logo>
+		<segment>deviceBrand==Oukitel</segment>
 	</row>
 	<row>
 		<label>Xiaomi</label>
