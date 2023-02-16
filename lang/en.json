@@ -122,6 +122,7 @@
         "PendingGAImportReportNotificationSomeData" : "We are still importing from Google Analytics but you should be able to see your most recent data. Data until %1$s has been imported so far. You should be able to see your importer data since this date.",
         "NoDateSuccessImportMessageLine1": "Your Google Analytics properties were imported successfully",
         "NoDateSuccessImportMessageLine2": "Historical reports for these properties will be imported in the background. Please be patient as this will take a few days to complete. It's now time to set up the tracking of new data (see instructions below).",
-        "OauthFailedMessage": "We encountered an issue during the authorization process for importing your GA reports. To try again, please click the button below. If the problem persists, please contact our support team for assistance. They will assist you in resolving the issue and getting your historical GA data imported."
+        "OauthFailedMessage": "We encountered an issue during the authorization process for importing your GA reports. To try again, please click the button below. If the problem persists, please contact our support team for assistance. They will assist you in resolving the issue and getting your historical GA data imported.",
+        "ConfigureImportNotificationMessage": "Don't miss out on your valuable historical insights! %1$sImport your Google Analytics data for %2$s%3$s into your Matomo platform now."
     }
 }

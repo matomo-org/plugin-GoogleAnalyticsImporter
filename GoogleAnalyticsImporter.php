@@ -221,11 +221,13 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine1';
         $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine2';
         $translationKeys[] = 'GoogleAnalyticsImporter_OauthFailedMessage';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureImportNotificationMessage';
     }
 
     public function getJsFiles(&$files)
     {
         $files[] = "plugins/GoogleAnalyticsImporter/javascripts/googleAnalyticsImporter.js";
+        $files[] = "plugins/GoogleAnalyticsImporter/javascripts/configureImportNotification.js";
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)

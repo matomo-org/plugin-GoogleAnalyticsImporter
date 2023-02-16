@@ -23,12 +23,24 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
+use Piwik\SiteContentDetector;
+use Piwik\SettingsPiwik;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
+use Piwik\Plugins\SitesManager\SitesManager;
 
 class Controller extends \Piwik\Plugin\ControllerAdmin
 {
     const OAUTH_STATE_NONCE_NAME = 'GoogleAnalyticsImporter.oauthStateNonce';
+
+    /** @var SiteContentDetector */
+    private $siteContentDetector;
+
+    public function __construct(SiteContentDetector $siteContentDetector)
+    {
+        parent::__construct();
+        $this->siteContentDetector = $siteContentDetector;
+    }
 
     public function index($errorMessage = false)
     {
@@ -613,5 +625,40 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     {
         $pendingImports = GoogleAnalyticsImporter::canDisplayImportPendingNotice();
         return json_encode($pendingImports);
+    }
+
+    /**
+     * Helps to determine whether to show notification to configure GA import
+     * To show a notification, User should be admin and some data should have tracked and no import has configured as well as GA has been detected on the site
+     * @return Json
+     */
+    public function displayConfigureImportNotification()
+    {
+        $showNotification = false;
+        $settingsUrl = '';
+        $currentIdSite = Common::getRequestVar('idSite', -1);
+        if (Piwik::hasUserSuperUserAccess() && SitesManager::hasTrackedAnyTraffic($currentIdSite)) {
+            $importStatus = new ImportStatus();
+
+            try {
+                $status = $importStatus->getAllImportStatuses();
+            } catch (\Exception $exception) {
+                $status = []; //No Import is configured
+            }
+
+            if (empty($status)) {
+                $this->siteContentDetector->detectContent();
+                if ($this->siteContentDetector->ga3 || $this->siteContentDetector->ga4) {
+                    $showNotification = true;
+                    $settingsUrl = SettingsPiwik::getPiwikUrl() . 'index.php?' . Url::getQueryStringFromParameters([
+                            'idSite' => $currentIdSite,
+                            'module' => 'GoogleAnalyticsImporter',
+                            'action' => 'index',
+                        ]);
+                }
+            }
+
+        }
+        return json_encode(['showNotification' => $showNotification, 'configureURL' => $settingsUrl]);
     }
 }
