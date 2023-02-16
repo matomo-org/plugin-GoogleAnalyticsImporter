@@ -2,12 +2,9 @@
 <result>
 	<row>
 		<label>blog</label>
-		<nb_visits>23</nb_visits>
-		<nb_hits>24</nb_hits>
+		<nb_visits>1</nb_visits>
+		<nb_hits>1</nb_hits>
 		<sum_time_spent>0</sum_time_spent>
-		<entry_nb_actions>78</entry_nb_actions>
-		<entry_sum_visit_length>846</entry_sum_visit_length>
-		<entry_bounce_count>8</entry_bounce_count>
 		<sum_bandwidth>0</sum_bandwidth>
 		<nb_hits_with_bandwidth>0</nb_hits_with_bandwidth>
 		<min_bandwidth />
@@ -17,8 +14,8 @@
 		<avg_page_load_time>0</avg_page_load_time>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
-		<exit_rate>4%</exit_rate>
-		<segment>pageUrl=^blog</segment>
+		<exit_rate>100%</exit_rate>
+		<segment>pageUrl=^http%253A%252F%252FGA4%2B%2528matthieu.net%252Fblog%2529%252Fblog</segment>
 		<subtable>
 			<row>
 				<label>inde-par-region-et-ville</label>

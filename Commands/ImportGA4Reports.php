@@ -81,15 +81,20 @@ class ImportGA4Reports extends ConsoleCommand
         $idSite = $this->getIdSite($input);
         LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite, $output);
 
+        /** @var ImportStatus $importStatus */
+        $importStatus = StaticContainer::get(ImportStatus::class);
+
         $canProcessNow = $this->checkIfCanProcess();
         if($canProcessNow['canProcess'] === false){
-            $exceededMessage = 'The import will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
+            $exceededMessage = 'The import was rate limited and will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
+            if (!empty($canProcessNow['rateLimitType']) && $canProcessNow['rateLimitType'] === 'hourly') {
+                $importStatus->rateLimitReachedHourly($idSite); //set the error as rate limited, else it leads to error with no message
+            } else {
+                $importStatus->rateLimitReached($idSite); //set the error as rate limited, else it leads to error with no message
+            }
             $output->writeln($exceededMessage);
             throw new CannotProcessImportException($exceededMessage);
         }
-
-        /** @var ImportStatus $importStatus */
-        $importStatus = StaticContainer::get(ImportStatus::class);
 
         $googleAuth = StaticContainer::get(AuthorizationGA4::class);
 
@@ -391,7 +396,8 @@ class ImportGA4Reports extends ConsoleCommand
             Option::delete(GoogleAnalyticsGA4QueryService::DELAY_OPTION_NAME);
             return ['canProcess' => true];
         }
-        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a')];
+        $rateLimitType = (Date::factory('+1 hour')->getTimestamp() > $nextAvailableAt) ? 'hourly' : 'daily';
+        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a'), 'rateLimitType' => $rateLimitType];
     }
 
 }
