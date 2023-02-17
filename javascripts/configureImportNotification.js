@@ -1,5 +1,5 @@
 (function () {
-  var notificationID = 'C=configureGAImportNotification';
+  var notificationID = 'ConfigureGAImportNotification';
   document.addEventListener("DOMContentLoaded", function (event) {
     window.CoreHome.Matomo.on("matomoPageChange", showNotification);
     window.CoreHome.Matomo.on("piwikPageChange", showNotification);
