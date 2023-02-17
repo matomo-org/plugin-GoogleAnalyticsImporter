@@ -7,11 +7,9 @@
   checkForConfigureImporterDisplay();
 
   function checkForConfigureImporterDisplay() {
-    console.log('calling..');
     if (!piwik.idSite) {
       return;
     }
-    console.log('calling1..');
     let searchParams = {
       idSite: piwik.idSite,
       module: "GoogleAnalyticsImporter",
@@ -26,7 +24,6 @@
       } else {
         hideNotification();
       }
-      console.log(data, 'data returned');
     })();
   }
 
