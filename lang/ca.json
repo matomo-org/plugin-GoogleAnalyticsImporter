@@ -15,6 +15,7 @@
         "ConfigurationText": "Text de configuració",
         "ConfigureClientDesc1": "Per importar les vostres dades de Google Analytics, Matomo necessita accedir-hi.",
         "ConfigureClientDesc2": "%1$sPer començar, seguiu les nostres instruccions per recuperar la configuració del vostre client OAuth.%2$s A continuació, carregueu aquesta configuració de client o enganxeu-la al camp següent.",
+        "ConfigureImportNotificationMessage": "No perdeu les vostres valuoses dades històriques! %1$sImporteu ara les vostres dades de Google Analytics per a %2$s%3$s a la vostra plataforma Matomo.",
         "ConfigureTheImporter": "Configurar l'importador",
         "CreationDate": "Data de creació del lloc web",
         "DeleteUploadedClientConfig": "Si voleu eliminar la configuració del client carregada, feu clic a continuació",
