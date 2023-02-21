@@ -652,7 +652,7 @@ class ImporterGA4
                 continue;
             }
 
-            if ('ga:dimension' . $customDimensionId == $gaCustomDimension->id) {
+            if ($customDimensionId == $gaCustomDimension->id) {
                 return true;
             }
         }
