@@ -42,12 +42,15 @@ class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
             'Grpc\\' => 5,
             'Google\\Service\\' => 15,
             'Google\\Protobuf\\' => 16,
+            'Google\\LongRunning\\' => 19,
             'Google\\Auth\\' => 12,
+            'Google\\ApiCore\\LongRunning\\' => 27,
             'Google\\ApiCore\\' => 15,
             'Google\\Analytics\\Data\\' => 22,
             'Google\\Analytics\\Admin\\' => 23,
             'Google\\' => 7,
             'GPBMetadata\\Google\\Protobuf\\' => 28,
+            'GPBMetadata\\Google\\Longrunning\\' => 31,
             'GPBMetadata\\Google\\Analytics\\Data\\' => 34,
             'GPBMetadata\\Google\\Analytics\\Admin\\' => 35,
             'GPBMetadata\\Google\\' => 19,
@@ -113,9 +116,17 @@ class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
         array (
             0 => __DIR__ . '/..' . '/google/protobuf/src/Google/Protobuf',
         ),
+        'Google\\LongRunning\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/longrunning/src/LongRunning',
+        ),
         'Google\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/auth/src',
+        ),
+        'Google\\ApiCore\\LongRunning\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/longrunning/src/ApiCore/LongRunning',
         ),
         'Google\\ApiCore\\' => 
         array (
@@ -137,6 +148,10 @@ class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
         'GPBMetadata\\Google\\Protobuf\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/protobuf/src/GPBMetadata/Google/Protobuf',
+        ),
+        'GPBMetadata\\Google\\Longrunning\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/google/longrunning/metadata/Longrunning',
         ),
         'GPBMetadata\\Google\\Analytics\\Data\\' => 
         array (
