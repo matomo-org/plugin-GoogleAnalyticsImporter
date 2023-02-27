@@ -1,6 +1,13 @@
 
 ## Changelog
 
+# 4.5.0
+- Added some brand mappings.
+- Fixed status setting after rate limit and started pulling empty rows for GA4.
+- Added code to display import notification if site has GA detected.
+- Fixed duplication of Custom Dimensions.
+- Fixes deprecation warnings for PHP 8.1
+
 # 4.4.8
 - GA4 - Removed itemRevenue and itemsPurchased metrics due to incompatibility
 
