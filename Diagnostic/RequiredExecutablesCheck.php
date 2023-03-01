@@ -65,6 +65,6 @@ class RequiredExecutablesCheck implements Diagnostic
 
     private function isNohupPresent()
     {
-        return (bool) @shell_exec('which nohup');
+        return !empty(@shell_exec('nohup --version'));
     }
 }

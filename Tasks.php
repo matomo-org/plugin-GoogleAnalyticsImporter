@@ -344,7 +344,11 @@ class Tasks extends \Piwik\Plugin\Tasks
         if (SettingsServer::isWindows()) {
             return '';
         }
-
-        return 'nohup';
+        
+        if (!empty(@shell_exec('nohup --version'))) {
+          return 'nohup';
+        } else {
+          return '';
+        }
     }
 }
