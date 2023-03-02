@@ -17,6 +17,7 @@ use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
+use Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredExecutablesCheck;
 
 class Tasks extends \Piwik\Plugin\Tasks
 {
@@ -344,7 +345,12 @@ class Tasks extends \Piwik\Plugin\Tasks
         if (SettingsServer::isWindows()) {
             return '';
         }
-
-        return 'nohup';
+        
+        $requiredExecutablesCheck = StaticContainer::get(RequiredExecutablesCheck::class);
+        if ($requiredExecutablesCheck->isNohupPresent()) {
+            return 'nohup';
+        } else {
+            return '';
+        }
     }
 }
