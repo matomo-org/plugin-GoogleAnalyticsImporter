@@ -345,7 +345,13 @@ class Tasks extends \Piwik\Plugin\Tasks
             return '';
         }
         
-        if (!empty(@shell_exec('nohup --version'))) {
+$requiredExecutablesCheck = StaticContainer::get(RequiredExecutablesCheck::class);
+
+        if ($requiredExecutablesCheck->isNohupPresent()) {
+            return 'nohup';
+        } else {
+            return '';
+        }
           return 'nohup';
         } else {
           return '';
