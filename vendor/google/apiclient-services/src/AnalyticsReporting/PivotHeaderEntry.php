@@ -23,13 +23,14 @@ class PivotHeaderEntry extends \Google\Collection
   /**
    * @var string[]
    */
-  public $dimensionNames;
+  public $dimensionNames = [];
   /**
    * @var string[]
    */
-  public $dimensionValues;
+  public $dimensionValues = [];
   protected $metricType = MetricHeaderEntry::class;
   protected $metricDataType = '';
+  public $metric;
 
   /**
    * @param string[]
