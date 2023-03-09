@@ -45,34 +45,31 @@ class GoogleQueryObjectFactoryTest extends TestCase
         $actual = json_encode($request, JSON_PRETTY_PRINT);
         $expected = <<<END
 {
-    "useResourceQuotas": null,
     "reportRequests": [
         {
-            "filtersExpression": null,
-            "hideTotals": null,
-            "hideValueRanges": null,
-            "includeEmptyRows": null,
-            "pageSize": null,
-            "pageToken": null,
-            "samplingLevel": null,
-            "viewId": "testviewid",
+            "cohortGroup": null,
             "dateRanges": [
                 {
                     "endDate": "2015-02-04",
                     "startDate": "2015-02-04"
                 }
             ],
+            "dimensionFilterClauses": [],
             "dimensions": [
                 {
-                    "histogramBuckets": null,
+                    "histogramBuckets": [],
                     "name": "ga:someDim"
                 },
                 {
-                    "histogramBuckets": null,
+                    "histogramBuckets": [],
                     "name": "ga:someOtherDim"
                 }
             ],
-            "segments": [],
+            "filtersExpression": null,
+            "hideTotals": null,
+            "hideValueRanges": null,
+            "includeEmptyRows": null,
+            "metricFilterClauses": [],
             "metrics": [
                 {
                     "alias": null,
@@ -89,9 +86,17 @@ class GoogleQueryObjectFactoryTest extends TestCase
                     "expression": "ga:thirdmetric",
                     "formattingType": null
                 }
-            ]
+            ],
+            "orderBys": [],
+            "pageSize": null,
+            "pageToken": null,
+            "pivots": [],
+            "samplingLevel": null,
+            "segments": [],
+            "viewId": "testviewid"
         }
-    ]
+    ],
+    "useResourceQuotas": null
 }
 END;
 
@@ -114,34 +119,31 @@ END;
         $actual = json_encode($request, JSON_PRETTY_PRINT);
         $expected = <<<END
 {
-    "useResourceQuotas": null,
     "reportRequests": [
         {
-            "filtersExpression": null,
-            "hideTotals": null,
-            "hideValueRanges": null,
-            "includeEmptyRows": null,
-            "pageSize": null,
-            "pageToken": null,
-            "samplingLevel": null,
-            "viewId": "testviewid",
+            "cohortGroup": null,
             "dateRanges": [
                 {
                     "endDate": "2015-02-04",
                     "startDate": "2015-02-04"
                 }
             ],
+            "dimensionFilterClauses": [],
             "dimensions": [
                 {
-                    "histogramBuckets": null,
+                    "histogramBuckets": [],
                     "name": "ga:someDim"
                 },
                 {
-                    "histogramBuckets": null,
+                    "histogramBuckets": [],
                     "name": "ga:someOtherDim"
                 }
             ],
-            "segments": [],
+            "filtersExpression": null,
+            "hideTotals": null,
+            "hideValueRanges": null,
+            "includeEmptyRows": null,
+            "metricFilterClauses": [],
             "metrics": [
                 {
                     "alias": null,
@@ -160,9 +162,16 @@ END;
                     "orderType": "VALUE",
                     "sortOrder": "ASCENDING"
                 }
-            ]
+            ],
+            "pageSize": null,
+            "pageToken": null,
+            "pivots": [],
+            "samplingLevel": null,
+            "segments": [],
+            "viewId": "testviewid"
         }
-    ]
+    ],
+    "useResourceQuotas": null
 }
 END;
 
@@ -185,34 +194,31 @@ END;
         $actual = json_encode($request, JSON_PRETTY_PRINT);
         $expected = <<<END
 {
-    "useResourceQuotas": null,
     "reportRequests": [
         {
-            "filtersExpression": null,
-            "hideTotals": null,
-            "hideValueRanges": null,
-            "includeEmptyRows": null,
-            "pageSize": null,
-            "pageToken": null,
-            "samplingLevel": null,
-            "viewId": "testviewid",
+            "cohortGroup": null,
             "dateRanges": [
                 {
                     "endDate": "2015-02-04",
                     "startDate": "2015-02-04"
                 }
             ],
+            "dimensionFilterClauses": [],
             "dimensions": [
                 {
-                    "histogramBuckets": null,
+                    "histogramBuckets": [],
                     "name": "ga:someDim"
                 },
                 {
-                    "histogramBuckets": null,
+                    "histogramBuckets": [],
                     "name": "ga:someOtherDim"
                 }
             ],
-            "segments": [],
+            "filtersExpression": null,
+            "hideTotals": null,
+            "hideValueRanges": null,
+            "includeEmptyRows": null,
+            "metricFilterClauses": [],
             "metrics": [
                 {
                     "alias": null,
@@ -231,9 +237,16 @@ END;
                     "orderType": "VALUE",
                     "sortOrder": "ASCENDING"
                 }
-            ]
+            ],
+            "pageSize": null,
+            "pageToken": null,
+            "pivots": [],
+            "samplingLevel": null,
+            "segments": [],
+            "viewId": "testviewid"
         }
-    ]
+    ],
+    "useResourceQuotas": null
 }
 END;
 
