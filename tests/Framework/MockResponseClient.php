@@ -10,6 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework;
 
 use Piwik\Common;
 use Piwik\Option;
+use Piwik\Plugins\Marketplace\Api\Exception;
 use Psr\Http\Message\RequestInterface;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
@@ -27,7 +28,7 @@ class MockResponseClient extends \Google\Client
         foreach (new \SplFileObject($path) as $line) {
             $decoded = json_decode($line, $isAssoc = true);
             if (empty($decoded)) {
-                continue;
+                throw new \Exception('Unable to decode request line: ' . $line);
             }
 
             $key = isset($decoded[0]) ? md5(json_encode($decoded[0])) : '';

@@ -158,7 +158,7 @@ class ImportedFromGoogle extends Fixture
     {
         $domain = SettingsPiwik::getPiwikInstanceId();
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
-        if (SystemTestCase::isTravisCI()) {
+        if (SystemTestCase::isCIEnvironment()) {
             $property = 'UA-12345-6';
         } else {
             $property = $this->getEnvVar('GA_PROPERTY_ID');
