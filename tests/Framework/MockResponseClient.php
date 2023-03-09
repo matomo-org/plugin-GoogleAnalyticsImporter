@@ -26,9 +26,12 @@ class MockResponseClient extends \Google\Client
         $path = PIWIK_INCLUDE_PATH . CapturingGoogleClient::PATH_TO_CAPTURED_DATA_FILE;
         foreach (new \SplFileObject($path) as $line) {
             $decoded = json_decode($line, $isAssoc = true);
+            if (empty($decoded)) {
+                continue;
+            }
 
-            $key = md5(json_encode($decoded[0]));
-            $value = unserialize($decoded[1]);
+            $key = isset($decoded[0]) ? md5(json_encode($decoded[0])) : '';
+            $value = isset($decoded[1]) ? unserialize($decoded[1]) : '';
             $this->mockResponses[$key] = $value;
         }
     }
