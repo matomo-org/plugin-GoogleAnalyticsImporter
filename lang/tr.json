@@ -15,6 +15,7 @@
         "ConfigurationText": "Yapılandırma metni",
         "ConfigureClientDesc1": "Google Analytics verilerini içe aktarmak için bu verilere Matomo tarafından erişilebilmesi gerekiyor.",
         "ConfigureClientDesc2": "%1$sİlk adımda OAuth İstemcisi yapılandırmanızı almak için yönergeleri izleyin.%2$s Ardından istemci yapılandırmasını yükleyin ya da aşağıdaki alana yapıştırın.",
+        "ConfigureImportNotificationMessage": "Değerli geçmiş içgörülerinizi unutmayın! %1$s %2$s%3$s için Google Analytics verilerinizi şimdi Matomo platformunuza aktarın.",
         "ConfigureTheImporter": "İçe aktarma yapılandırması",
         "CreationDate": "Web mülkü oluşturulma tarihi",
         "DeleteUploadedClientConfig": "Yüklenmiş istemci yapılandırmasını silmek isterseniz aşağıya tıklayın",
