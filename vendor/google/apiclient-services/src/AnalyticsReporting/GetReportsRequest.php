@@ -22,6 +22,10 @@ class GetReportsRequest extends \Google\Collection
   protected $collection_key = 'reportRequests';
   protected $reportRequestsType = ReportRequest::class;
   protected $reportRequestsDataType = 'array';
+  public $reportRequests = [];
+  /**
+   * @var bool
+   */
   public $useResourceQuotas;
 
   /**
@@ -38,10 +42,16 @@ class GetReportsRequest extends \Google\Collection
   {
     return $this->reportRequests;
   }
+  /**
+   * @param bool
+   */
   public function setUseResourceQuotas($useResourceQuotas)
   {
     $this->useResourceQuotas = $useResourceQuotas;
   }
+  /**
+   * @return bool
+   */
   public function getUseResourceQuotas()
   {
     return $this->useResourceQuotas;

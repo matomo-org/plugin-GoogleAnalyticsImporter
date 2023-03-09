@@ -20,14 +20,24 @@ namespace Google\Service\AnalyticsReporting;
 class SegmentSequenceStep extends \Google\Collection
 {
   protected $collection_key = 'orFiltersForSegment';
+  /**
+   * @var string
+   */
   public $matchType;
   protected $orFiltersForSegmentType = OrFiltersForSegment::class;
   protected $orFiltersForSegmentDataType = 'array';
+  public $orFiltersForSegment = [];
 
+  /**
+   * @param string
+   */
   public function setMatchType($matchType)
   {
     $this->matchType = $matchType;
   }
+  /**
+   * @return string
+   */
   public function getMatchType()
   {
     return $this->matchType;

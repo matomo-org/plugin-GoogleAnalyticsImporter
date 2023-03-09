@@ -19,50 +19,112 @@ namespace Google\Service\Analytics;
 
 class Goal extends \Google\Model
 {
+  /**
+   * @var string
+   */
   public $accountId;
+  /**
+   * @var bool
+   */
   public $active;
+  /**
+   * @var string
+   */
   public $created;
   protected $eventDetailsType = GoalEventDetails::class;
   protected $eventDetailsDataType = '';
+  public $eventDetails;
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var string
+   */
   public $internalWebPropertyId;
+  /**
+   * @var string
+   */
   public $kind;
+  /**
+   * @var string
+   */
   public $name;
   protected $parentLinkType = GoalParentLink::class;
   protected $parentLinkDataType = '';
+  public $parentLink;
+  /**
+   * @var string
+   */
   public $profileId;
+  /**
+   * @var string
+   */
   public $selfLink;
+  /**
+   * @var string
+   */
   public $type;
+  /**
+   * @var string
+   */
   public $updated;
   protected $urlDestinationDetailsType = GoalUrlDestinationDetails::class;
   protected $urlDestinationDetailsDataType = '';
+  public $urlDestinationDetails;
+  /**
+   * @var float
+   */
   public $value;
   protected $visitNumPagesDetailsType = GoalVisitNumPagesDetails::class;
   protected $visitNumPagesDetailsDataType = '';
+  public $visitNumPagesDetails;
   protected $visitTimeOnSiteDetailsType = GoalVisitTimeOnSiteDetails::class;
   protected $visitTimeOnSiteDetailsDataType = '';
+  public $visitTimeOnSiteDetails;
+  /**
+   * @var string
+   */
   public $webPropertyId;
 
+  /**
+   * @param string
+   */
   public function setAccountId($accountId)
   {
     $this->accountId = $accountId;
   }
+  /**
+   * @return string
+   */
   public function getAccountId()
   {
     return $this->accountId;
   }
+  /**
+   * @param bool
+   */
   public function setActive($active)
   {
     $this->active = $active;
   }
+  /**
+   * @return bool
+   */
   public function getActive()
   {
     return $this->active;
   }
+  /**
+   * @param string
+   */
   public function setCreated($created)
   {
     $this->created = $created;
   }
+  /**
+   * @return string
+   */
   public function getCreated()
   {
     return $this->created;
@@ -81,34 +143,58 @@ class Goal extends \Google\Model
   {
     return $this->eventDetails;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param string
+   */
   public function setInternalWebPropertyId($internalWebPropertyId)
   {
     $this->internalWebPropertyId = $internalWebPropertyId;
   }
+  /**
+   * @return string
+   */
   public function getInternalWebPropertyId()
   {
     return $this->internalWebPropertyId;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
   }
+  /**
+   * @param string
+   */
   public function setName($name)
   {
     $this->name = $name;
   }
+  /**
+   * @return string
+   */
   public function getName()
   {
     return $this->name;
@@ -127,34 +213,58 @@ class Goal extends \Google\Model
   {
     return $this->parentLink;
   }
+  /**
+   * @param string
+   */
   public function setProfileId($profileId)
   {
     $this->profileId = $profileId;
   }
+  /**
+   * @return string
+   */
   public function getProfileId()
   {
     return $this->profileId;
   }
+  /**
+   * @param string
+   */
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
   }
+  /**
+   * @return string
+   */
   public function getSelfLink()
   {
     return $this->selfLink;
   }
+  /**
+   * @param string
+   */
   public function setType($type)
   {
     $this->type = $type;
   }
+  /**
+   * @return string
+   */
   public function getType()
   {
     return $this->type;
   }
+  /**
+   * @param string
+   */
   public function setUpdated($updated)
   {
     $this->updated = $updated;
   }
+  /**
+   * @return string
+   */
   public function getUpdated()
   {
     return $this->updated;
@@ -173,10 +283,16 @@ class Goal extends \Google\Model
   {
     return $this->urlDestinationDetails;
   }
+  /**
+   * @param float
+   */
   public function setValue($value)
   {
     $this->value = $value;
   }
+  /**
+   * @return float
+   */
   public function getValue()
   {
     return $this->value;
@@ -209,10 +325,16 @@ class Goal extends \Google\Model
   {
     return $this->visitTimeOnSiteDetails;
   }
+  /**
+   * @param string
+   */
   public function setWebPropertyId($webPropertyId)
   {
     $this->webPropertyId = $webPropertyId;
   }
+  /**
+   * @return string
+   */
   public function getWebPropertyId()
   {
     return $this->webPropertyId;

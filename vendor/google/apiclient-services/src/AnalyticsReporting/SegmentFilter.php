@@ -19,16 +19,27 @@ namespace Google\Service\AnalyticsReporting;
 
 class SegmentFilter extends \Google\Model
 {
+  /**
+   * @var bool
+   */
   public $not;
   protected $sequenceSegmentType = SequenceSegment::class;
   protected $sequenceSegmentDataType = '';
+  public $sequenceSegment;
   protected $simpleSegmentType = SimpleSegment::class;
   protected $simpleSegmentDataType = '';
+  public $simpleSegment;
 
+  /**
+   * @param bool
+   */
   public function setNot($not)
   {
     $this->not = $not;
   }
+  /**
+   * @return bool
+   */
   public function getNot()
   {
     return $this->not;

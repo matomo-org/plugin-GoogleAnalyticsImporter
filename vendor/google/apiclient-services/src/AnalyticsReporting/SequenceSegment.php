@@ -20,14 +20,24 @@ namespace Google\Service\AnalyticsReporting;
 class SequenceSegment extends \Google\Collection
 {
   protected $collection_key = 'segmentSequenceSteps';
+  /**
+   * @var bool
+   */
   public $firstStepShouldMatchFirstHit;
   protected $segmentSequenceStepsType = SegmentSequenceStep::class;
   protected $segmentSequenceStepsDataType = 'array';
+  public $segmentSequenceSteps = [];
 
+  /**
+   * @param bool
+   */
   public function setFirstStepShouldMatchFirstHit($firstStepShouldMatchFirstHit)
   {
     $this->firstStepShouldMatchFirstHit = $firstStepShouldMatchFirstHit;
   }
+  /**
+   * @return bool
+   */
   public function getFirstStepShouldMatchFirstHit()
   {
     return $this->firstStepShouldMatchFirstHit;

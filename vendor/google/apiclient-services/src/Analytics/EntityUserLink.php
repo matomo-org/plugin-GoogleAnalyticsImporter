@@ -21,13 +21,25 @@ class EntityUserLink extends \Google\Model
 {
   protected $entityType = EntityUserLinkEntity::class;
   protected $entityDataType = '';
+  public $entity;
+  /**
+   * @var string
+   */
   public $id;
+  /**
+   * @var string
+   */
   public $kind;
   protected $permissionsType = EntityUserLinkPermissions::class;
   protected $permissionsDataType = '';
+  public $permissions;
+  /**
+   * @var string
+   */
   public $selfLink;
   protected $userRefType = UserRef::class;
   protected $userRefDataType = '';
+  public $userRef;
 
   /**
    * @param EntityUserLinkEntity
@@ -43,18 +55,30 @@ class EntityUserLink extends \Google\Model
   {
     return $this->entity;
   }
+  /**
+   * @param string
+   */
   public function setId($id)
   {
     $this->id = $id;
   }
+  /**
+   * @return string
+   */
   public function getId()
   {
     return $this->id;
   }
+  /**
+   * @param string
+   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
+  /**
+   * @return string
+   */
   public function getKind()
   {
     return $this->kind;
@@ -73,10 +97,16 @@ class EntityUserLink extends \Google\Model
   {
     return $this->permissions;
   }
+  /**
+   * @param string
+   */
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
   }
+  /**
+   * @return string
+   */
   public function getSelfLink()
   {
     return $this->selfLink;
