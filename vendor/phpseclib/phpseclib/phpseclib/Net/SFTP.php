@@ -25,6 +25,8 @@
  * ?>
  * </code>
  *
+ * @category  Net
+ * @package   SFTP
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2009 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -39,7 +41,9 @@ use phpseclib3\Exception\FileNotFoundException;
 /**
  * Pure-PHP implementations of SFTP.
  *
+ * @package SFTP
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 class SFTP extends SSH2
 {
@@ -50,18 +54,21 @@ class SFTP extends SSH2
      *
      * @see \phpseclib3\Net\SSH2::send_channel_packet()
      * @see \phpseclib3\Net\SSH2::get_channel_packet()
+     * @access private
      */
     const CHANNEL = 0x100;
 
     /**
      * Reads data from a local file.
      *
+     * @access public
      * @see \phpseclib3\Net\SFTP::put()
      */
     const SOURCE_LOCAL_FILE = 1;
     /**
      * Reads data from a string.
      *
+     * @access public
      * @see \phpseclib3\Net\SFTP::put()
      */
     // this value isn't really used anymore but i'm keeping it reserved for historical reasons
@@ -70,18 +77,21 @@ class SFTP extends SSH2
      * Reads data from callback:
      * function callback($length) returns string to proceed, null for EOF
      *
+     * @access public
      * @see \phpseclib3\Net\SFTP::put()
      */
     const SOURCE_CALLBACK = 16;
     /**
      * Resumes an upload
      *
+     * @access public
      * @see \phpseclib3\Net\SFTP::put()
      */
     const RESUME = 4;
     /**
      * Append a local file to an already existing remote file
      *
+     * @access public
      * @see \phpseclib3\Net\SFTP::put()
      */
     const RESUME_START = 8;
@@ -124,6 +134,7 @@ class SFTP extends SSH2
      *
      * @var boolean
      * @see self::_send_sftp_packet()
+     * @access private
      */
     private $use_request_id = false;
 
@@ -135,6 +146,7 @@ class SFTP extends SSH2
      *
      * @var int
      * @see self::_get_sftp_packet()
+     * @access private
      */
     private $packet_type = -1;
 
@@ -143,6 +155,7 @@ class SFTP extends SSH2
      *
      * @var string
      * @see self::_get_sftp_packet()
+     * @access private
      */
     private $packet_buffer = '';
 
@@ -151,6 +164,7 @@ class SFTP extends SSH2
      *
      * @var array
      * @see self::_initChannel()
+     * @access private
      */
     private $extensions = [];
 
@@ -159,6 +173,7 @@ class SFTP extends SSH2
      *
      * @var int
      * @see self::_initChannel()
+     * @access private
      */
     private $version;
 
@@ -167,6 +182,7 @@ class SFTP extends SSH2
      *
      * @var int
      * @see self::_initChannel()
+     * @access private
      */
     private $defaultVersion;
 
@@ -175,6 +191,7 @@ class SFTP extends SSH2
      *
      * @var int
      * @see self::_initChannel()
+     * @access private
      */
     private $preferredVersion = 3;
 
@@ -184,6 +201,7 @@ class SFTP extends SSH2
      * @var string|bool
      * @see self::realpath()
      * @see self::chdir()
+     * @access private
      */
     private $pwd = false;
 
@@ -192,6 +210,7 @@ class SFTP extends SSH2
      *
      * @see self::getLog()
      * @var array
+     * @access private
      */
     private $packet_type_log = [];
 
@@ -200,41 +219,9 @@ class SFTP extends SSH2
      *
      * @see self::getLog()
      * @var array
+     * @access private
      */
     private $packet_log = [];
-
-    /**
-     * Real-time log file pointer
-     *
-     * @see self::_append_log()
-     * @var resource|closed-resource
-     */
-    private $realtime_log_file;
-
-    /**
-     * Real-time log file size
-     *
-     * @see self::_append_log()
-     * @var int
-     */
-    private $realtime_log_size;
-
-    /**
-     * Real-time log file wrap boolean
-     *
-     * @see self::_append_log()
-     * @var bool
-     */
-    private $realtime_log_wrap;
-
-    /**
-     * Current log size
-     *
-     * Should never exceed self::LOG_MAX_SIZE
-     *
-     * @var int
-     */
-    private $log_size;
 
     /**
      * Error information
@@ -242,6 +229,7 @@ class SFTP extends SSH2
      * @see self::getSFTPErrors()
      * @see self::getLastSFTPError()
      * @var array
+     * @access private
      */
     private $sftp_errors = [];
 
@@ -255,6 +243,7 @@ class SFTP extends SSH2
      * @see self::_remove_from_stat_cache()
      * @see self::_query_stat_cache()
      * @var array
+     * @access private
      */
     private $stat_cache = [];
 
@@ -264,6 +253,7 @@ class SFTP extends SSH2
      * @see self::__construct()
      * @see self::get()
      * @var int
+     * @access private
      */
     private $max_sftp_packet;
 
@@ -273,6 +263,7 @@ class SFTP extends SSH2
      * @see self::disableStatCache()
      * @see self::enableStatCache()
      * @var bool
+     * @access private
      */
     private $use_stat_cache = true;
 
@@ -282,6 +273,7 @@ class SFTP extends SSH2
      * @see self::_comparator()
      * @see self::setListOrder()
      * @var array
+     * @access private
      */
     protected $sortOptions = [];
 
@@ -295,6 +287,7 @@ class SFTP extends SSH2
      * @see self::disablePathCanonicalization()
      * @see self::realpath()
      * @var bool
+     * @access private
      */
     private $canonicalize_paths = true;
 
@@ -303,6 +296,7 @@ class SFTP extends SSH2
      *
      * @see self::_get_sftp_packet()
      * @var array
+     * @access private
      */
     private $requestBuffer = [];
 
@@ -312,6 +306,7 @@ class SFTP extends SSH2
      * @see self::get()
      * @see self::put()
      * @var bool
+     * @access private
      */
     private $preserveTime = false;
 
@@ -326,6 +321,7 @@ class SFTP extends SSH2
      * @see self::enableArbitraryLengthPackets()
      * @see self::_get_sftp_packet()
      * @var bool
+     * @access private
      */
     private $allow_arbitrary_length_packets = false;
 
@@ -335,6 +331,7 @@ class SFTP extends SSH2
      * @see self::get()
      * @see self::get_sftp_packet()
      * @var bool
+     * @access private
      */
     private $channel_close = false;
 
@@ -342,6 +339,7 @@ class SFTP extends SSH2
      * Has the SFTP channel been partially negotiated?
      *
      * @var bool
+     * @access private
      */
     private $partial_init = false;
 
@@ -353,6 +351,7 @@ class SFTP extends SSH2
      * @param string $host
      * @param int $port
      * @param int $timeout
+     * @access public
      */
     public function __construct($host, $port = 22, $timeout = 10)
     {
@@ -447,7 +446,7 @@ class SFTP extends SSH2
             // yields inconsistent behavior depending on how php is compiled.  so we left shift -1 (which, in
             // two's compliment, consists of all 1 bits) by 31.  on 64-bit systems this'll yield 0xFFFFFFFF80000000.
             // that's not a problem, however, and 'anded' and a 32-bit number, as all the leading 1 bits are ignored.
-            (PHP_INT_SIZE == 4 ? -1 : 0xFFFFFFFF) => 'NET_SFTP_ATTR_EXTENDED'
+            (-1 << 31) & 0xFFFFFFFF => 'NET_SFTP_ATTR_EXTENDED'
         ];
         // http://tools.ietf.org/html/draft-ietf-secsh-filexfer-04#section-6.3
         // the flag definitions change somewhat in SFTPv5+.  if SFTPv5+ support is added to this library, maybe name
@@ -521,6 +520,7 @@ class SFTP extends SSH2
      * Check a few things before SFTP functions are called
      *
      * @return bool
+     * @access public
      */
     private function precheck()
     {
@@ -540,6 +540,7 @@ class SFTP extends SSH2
      *
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return bool
+     * @access public
      */
     private function partial_init_sftp_connection()
     {
@@ -629,6 +630,7 @@ class SFTP extends SSH2
      * (Re)initializes the SFTP channel
      *
      * @return bool
+     * @access private
      */
     private function init_sftp_connection()
     {
@@ -709,15 +711,7 @@ class SFTP extends SSH2
         }
 
         $this->pwd = true;
-        try {
-            $this->pwd = $this->realpath('.');
-        } catch (\UnexpectedValueException $e) {
-            if (!$this->canonicalize_paths) {
-                throw $e;
-            }
-            $this->canonicalize_paths = false;
-            $this->reset_connection(NET_SSH2_DISCONNECT_CONNECTION_LOST);
-        }
+        $this->pwd = $this->realpath('.');
 
         $this->update_stat_cache($this->pwd, []);
 
@@ -727,6 +721,7 @@ class SFTP extends SSH2
     /**
      * Disable the stat cache
      *
+     * @access public
      */
     public function disableStatCache()
     {
@@ -736,6 +731,7 @@ class SFTP extends SSH2
     /**
      * Enable the stat cache
      *
+     * @access public
      */
     public function enableStatCache()
     {
@@ -745,6 +741,7 @@ class SFTP extends SSH2
     /**
      * Clear the stat cache
      *
+     * @access public
      */
     public function clearStatCache()
     {
@@ -754,6 +751,7 @@ class SFTP extends SSH2
     /**
      * Enable path canonicalization
      *
+     * @access public
      */
     public function enablePathCanonicalization()
     {
@@ -761,10 +759,9 @@ class SFTP extends SSH2
     }
 
     /**
-     * Disable path canonicalization
+     * Enable path canonicalization
      *
-     * If this is enabled then $sftp->pwd() will not return the canonicalized absolute path
-     *
+     * @access public
      */
     public function disablePathCanonicalization()
     {
@@ -774,6 +771,7 @@ class SFTP extends SSH2
     /**
      * Enable arbitrary length packets
      *
+     * @access public
      */
     public function enableArbitraryLengthPackets()
     {
@@ -783,6 +781,7 @@ class SFTP extends SSH2
     /**
      * Disable arbitrary length packets
      *
+     * @access public
      */
     public function disableArbitraryLengthPackets()
     {
@@ -793,6 +792,7 @@ class SFTP extends SSH2
      * Returns the current directory name
      *
      * @return string|bool
+     * @access public
      */
     public function pwd()
     {
@@ -808,6 +808,7 @@ class SFTP extends SSH2
      *
      * @param string $response
      * @param int $status
+     * @access private
      */
     private function logError($response, $status = -1)
     {
@@ -838,6 +839,7 @@ class SFTP extends SSH2
      * @param string $path
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return mixed
+     * @access public
      */
     public function realpath($path)
     {
@@ -846,32 +848,7 @@ class SFTP extends SSH2
         }
 
         if (!$this->canonicalize_paths) {
-            if ($this->pwd === true) {
-                return '.';
-            }
-            if (!strlen($path) || $path[0] != '/') {
-                $path = $this->pwd . '/' . $path;
-            }
-            $parts = explode('/', $path);
-            $afterPWD = $beforePWD = [];
-            foreach ($parts as $part) {
-                switch ($part) {
-                    //case '': // some SFTP servers /require/ double /'s. see https://github.com/phpseclib/phpseclib/pull/1137
-                    case '.':
-                        break;
-                    case '..':
-                        if (!empty($afterPWD)) {
-                            array_pop($afterPWD);
-                        } else {
-                            $beforePWD[] = '..';
-                        }
-                        break;
-                    default:
-                        $afterPWD[] = $part;
-                }
-            }
-            $beforePWD = count($beforePWD) ? implode('/', $beforePWD) : '.';
-            return $beforePWD . '/' . implode('/', $afterPWD);
+            return $path;
         }
 
         if ($this->pwd === true) {
@@ -925,6 +902,7 @@ class SFTP extends SSH2
      * @param string $dir
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return bool
+     * @access public
      */
     public function chdir($dir)
     {
@@ -985,6 +963,7 @@ class SFTP extends SSH2
      * @param string $dir
      * @param bool $recursive
      * @return array|false
+     * @access public
      */
     public function nlist($dir = '.', $recursive = false)
     {
@@ -998,16 +977,11 @@ class SFTP extends SSH2
      * @param bool $recursive
      * @param string $relativeDir
      * @return array|false
+     * @access private
      */
     private function nlist_helper($dir, $recursive, $relativeDir)
     {
         $files = $this->readlist($dir, false);
-
-        // If we get an int back, then that is an "unexpected" status.
-        // We do not have a file list, so return false.
-        if (is_int($files)) {
-            return false;
-        }
 
         if (!$recursive || $files === false) {
             return $files;
@@ -1037,17 +1011,11 @@ class SFTP extends SSH2
      * @param string $dir
      * @param bool $recursive
      * @return array|false
+     * @access public
      */
     public function rawlist($dir = '.', $recursive = false)
     {
         $files = $this->readlist($dir, true);
-
-        // If we get an int back, then that is an "unexpected" status.
-        // We do not have a file list, so return false.
-        if (is_int($files)) {
-            return false;
-        }
-
         if (!$recursive || $files === false) {
             return $files;
         }
@@ -1088,6 +1056,7 @@ class SFTP extends SSH2
      * @param bool $raw
      * @return array|false
      * @throws \UnexpectedValueException on receipt of unexpected packets
+     * @access private
      */
     private function readlist($dir, $raw = true)
     {
@@ -1113,9 +1082,8 @@ class SFTP extends SSH2
                 break;
             case NET_SFTP_STATUS:
                 // presumably SSH_FX_NO_SUCH_FILE or SSH_FX_PERMISSION_DENIED
-                list($status) = Strings::unpackSSH2('N', $response);
-                $this->logError($response, $status);
-                return $status;
+                $this->logError($response);
+                return false;
             default:
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS. '
                                                   . 'Got packet type: ' . $this->packet_type);
@@ -1168,7 +1136,7 @@ class SFTP extends SSH2
                     list($status) = Strings::unpackSSH2('N', $response);
                     if ($status != NET_SFTP_STATUS_EOF) {
                         $this->logError($response, $status);
-                        return $status;
+                        return false;
                     }
                     break 2;
                 default:
@@ -1196,8 +1164,9 @@ class SFTP extends SSH2
      * @param array $a
      * @param array $b
      * @return int
+     * @access private
      */
-    private function comparator(array $a, array $b)
+    private function comparator($a, $b)
     {
         switch (true) {
             case $a['filename'] === '.' || $b['filename'] === '.':
@@ -1270,6 +1239,7 @@ class SFTP extends SSH2
      *    Don't do any sort of sorting
      *
      * @param string ...$args
+     * @access public
      */
     public function setListOrder(...$args)
     {
@@ -1291,6 +1261,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @param mixed $value
+     * @access private
      */
     private function update_stat_cache($path, $value)
     {
@@ -1334,6 +1305,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return bool
+     * @access private
      */
     private function remove_from_stat_cache($path)
     {
@@ -1363,6 +1335,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return mixed
+     * @access private
      */
     private function query_stat_cache($path)
     {
@@ -1388,6 +1361,7 @@ class SFTP extends SSH2
      *
      * @param string $filename
      * @return array|false
+     * @access public
      */
     public function stat($filename)
     {
@@ -1444,6 +1418,7 @@ class SFTP extends SSH2
      *
      * @param string $filename
      * @return array|false
+     * @access public
      */
     public function lstat($filename)
     {
@@ -1511,6 +1486,7 @@ class SFTP extends SSH2
      * @param int $type
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return array|false
+     * @access private
      */
     private function stat_helper($filename, $type)
     {
@@ -1537,6 +1513,7 @@ class SFTP extends SSH2
      * @param string $filename
      * @param int $new_size
      * @return bool
+     * @access public
      */
     public function truncate($filename, $new_size)
     {
@@ -1555,6 +1532,7 @@ class SFTP extends SSH2
      * @param int $atime
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return bool
+     * @access public
      */
     public function touch($filename, $time = null, $atime = null)
     {
@@ -1615,6 +1593,7 @@ class SFTP extends SSH2
      * @param int|string $uid
      * @param bool $recursive
      * @return bool
+     * @access public
      */
     public function chown($filename, $uid, $recursive = false)
     {
@@ -1662,6 +1641,7 @@ class SFTP extends SSH2
      * @param int|string $gid
      * @param bool $recursive
      * @return bool
+     * @access public
      */
     public function chgrp($filename, $gid, $recursive = false)
     {
@@ -1683,6 +1663,7 @@ class SFTP extends SSH2
      * @param bool $recursive
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return mixed
+     * @access public
      */
     public function chmod($mode, $filename, $recursive = false)
     {
@@ -1729,6 +1710,7 @@ class SFTP extends SSH2
      * @param bool $recursive
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return bool
+     * @access private
      */
     private function setstat($filename, $attr, $recursive)
     {
@@ -1787,6 +1769,7 @@ class SFTP extends SSH2
      * @param string $attr
      * @param int $i
      * @return bool
+     * @access private
      */
     private function setstat_recursive($path, $attr, &$i)
     {
@@ -1796,7 +1779,7 @@ class SFTP extends SSH2
         $i = 0;
         $entries = $this->readlist($path, true);
 
-        if ($entries === false || is_int($entries)) {
+        if ($entries === false) {
             return $this->setstat($path, $attr, false);
         }
 
@@ -1859,6 +1842,7 @@ class SFTP extends SSH2
      * @param string $link
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return mixed
+     * @access public
      */
     public function readlink($link)
     {
@@ -1902,6 +1886,7 @@ class SFTP extends SSH2
      * @param string $link
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return bool
+     * @access public
      */
     public function symlink($target, $link)
     {
@@ -1966,6 +1951,7 @@ class SFTP extends SSH2
      * @param int $mode
      * @param bool $recursive
      * @return bool
+     * @access public
      */
     public function mkdir($dir, $mode = -1, $recursive = false)
     {
@@ -1998,6 +1984,7 @@ class SFTP extends SSH2
      * @param string $dir
      * @param int $mode
      * @return bool
+     * @access private
      */
     private function mkdir_helper($dir, $mode)
     {
@@ -2029,6 +2016,7 @@ class SFTP extends SSH2
      * @param string $dir
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return bool
+     * @access public
      */
     public function rmdir($dir)
     {
@@ -2113,6 +2101,7 @@ class SFTP extends SSH2
      * @throws \BadFunctionCallException if you're uploading via a callback and the callback function is invalid
      * @throws \phpseclib3\Exception\FileNotFoundException if you're uploading via a file and the file doesn't exist
      * @return bool
+     * @access public
      */
     public function put($remote_file, $data, $mode = self::SOURCE_STRING, $start = -1, $local_start = -1, $progressCallback = null)
     {
@@ -2185,7 +2174,7 @@ class SFTP extends SSH2
             case is_resource($data):
                 $mode = $mode & ~self::SOURCE_LOCAL_FILE;
                 $info = stream_get_meta_data($data);
-                if (isset($info['wrapper_type']) && $info['wrapper_type'] == 'PHP' && $info['stream_type'] == 'Input') {
+                if ($info['wrapper_type'] == 'PHP' && $info['stream_type'] == 'Input') {
                     $fp = fopen('php://memory', 'w+');
                     stream_copy_to_stream($data, $fp);
                     rewind($fp);
@@ -2281,8 +2270,8 @@ class SFTP extends SSH2
             if ($this->preserveTime) {
                 $stat = stat($data);
                 $attr = $this->version < 4 ?
-                    pack('N3', NET_SFTP_ATTR_ACCESSTIME, $stat['atime'], $stat['mtime']) :
-                    Strings::packSSH2('NQ2', NET_SFTP_ATTR_ACCESSTIME | NET_SFTP_ATTR_MODIFYTIME, $stat['atime'], $stat['mtime']);
+                    pack('N3', NET_SFTP_ATTR_ACCESSTIME, $stat['atime'], $stat['time']) :
+                    Strings::packSSH2('NQ2', NET_SFTP_ATTR_ACCESSTIME | NET_SFTP_ATTR_MODIFYTIME, $stat['atime'], $stat['time']);
                 if (!$this->setstat($remote_file, $attr, false)) {
                     throw new \RuntimeException('Error setting file time');
                 }
@@ -2301,6 +2290,7 @@ class SFTP extends SSH2
      * @param int $i
      * @return bool
      * @throws \UnexpectedValueException on receipt of unexpected packets
+     * @access private
      */
     private function read_put_responses($i)
     {
@@ -2327,6 +2317,7 @@ class SFTP extends SSH2
      * @param string $handle
      * @return bool
      * @throws \UnexpectedValueException on receipt of unexpected packets
+     * @access private
      */
     private function close_handle($handle)
     {
@@ -2364,7 +2355,8 @@ class SFTP extends SSH2
      * @param int $length
      * @param callable|null $progressCallback
      * @throws \UnexpectedValueException on receipt of unexpected packets
-     * @return string|bool
+     * @return string|false
+     * @access public
      */
     public function get($remote_file, $local_file = false, $offset = 0, $length = -1, $progressCallback = null)
     {
@@ -2529,6 +2521,7 @@ class SFTP extends SSH2
      * @param bool $recursive
      * @return bool
      * @throws \UnexpectedValueException on receipt of unexpected packets
+     * @access public
      */
     public function delete($path, $recursive = true)
     {
@@ -2586,6 +2579,7 @@ class SFTP extends SSH2
      * @param string $path
      * @param int $i
      * @return bool
+     * @access private
      */
     private function delete_recursive($path, &$i)
     {
@@ -2595,15 +2589,10 @@ class SFTP extends SSH2
         $i = 0;
         $entries = $this->readlist($path, true);
 
-        // The folder does not exist at all, so we cannot delete it.
-        if ($entries === NET_SFTP_STATUS_NO_SUCH_FILE) {
+        // normally $entries would have at least . and .. but it might not if the directories
+        // permissions didn't allow reading
+        if (empty($entries)) {
             return false;
-        }
-
-        // Normally $entries would have at least . and .. but it might not if the directories
-        // permissions didn't allow reading. If this happens then default to an empty list of files.
-        if ($entries === false || is_int($entries)) {
-            $entries = [];
         }
 
         unset($entries['.'], $entries['..']);
@@ -2652,6 +2641,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return bool
+     * @access public
      */
     public function file_exists($path)
     {
@@ -2678,6 +2668,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return bool
+     * @access public
      */
     public function is_dir($path)
     {
@@ -2693,6 +2684,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return bool
+     * @access public
      */
     public function is_file($path)
     {
@@ -2708,6 +2700,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return bool
+     * @access public
      */
     public function is_link($path)
     {
@@ -2723,6 +2716,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return bool
+     * @access public
      */
     public function is_readable($path)
     {
@@ -2750,6 +2744,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return bool
+     * @access public
      */
     public function is_writable($path)
     {
@@ -2779,6 +2774,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return bool
+     * @access public
      */
     public function is_writeable($path)
     {
@@ -2790,6 +2786,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return mixed
+     * @access public
      */
     public function fileatime($path)
     {
@@ -2801,6 +2798,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return mixed
+     * @access public
      */
     public function filemtime($path)
     {
@@ -2812,6 +2810,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return mixed
+     * @access public
      */
     public function fileperms($path)
     {
@@ -2823,6 +2822,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return mixed
+     * @access public
      */
     public function fileowner($path)
     {
@@ -2834,6 +2834,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return mixed
+     * @access public
      */
     public function filegroup($path)
     {
@@ -2845,6 +2846,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return mixed
+     * @access public
      */
     public function filesize($path)
     {
@@ -2856,6 +2858,7 @@ class SFTP extends SSH2
      *
      * @param string $path
      * @return string|false
+     * @access public
      */
     public function filetype($path)
     {
@@ -2890,6 +2893,7 @@ class SFTP extends SSH2
      * @param string $path
      * @param string $prop
      * @return mixed
+     * @access private
      */
     private function get_stat_cache_prop($path, $prop)
     {
@@ -2904,6 +2908,7 @@ class SFTP extends SSH2
      * @param string $path
      * @param string $prop
      * @return mixed
+     * @access private
      */
     private function get_lstat_cache_prop($path, $prop)
     {
@@ -2919,6 +2924,7 @@ class SFTP extends SSH2
      * @param string $prop
      * @param string $type
      * @return mixed
+     * @access private
      */
     private function get_xstat_cache_prop($path, $prop, $type)
     {
@@ -2954,6 +2960,7 @@ class SFTP extends SSH2
      * @param string $newname
      * @return bool
      * @throws \UnexpectedValueException on receipt of unexpected packets
+     * @access public
      */
     public function rename($oldname, $newname)
     {
@@ -3014,6 +3021,7 @@ class SFTP extends SSH2
      * @param int $flags
      * @param string $response
      * @return array
+     * @access private
      */
     private function parseTime($key, $flags, &$response)
     {
@@ -3032,6 +3040,7 @@ class SFTP extends SSH2
      *
      * @param string $response
      * @return array
+     * @access private
      */
     protected function parseAttributes(&$response)
     {
@@ -3178,6 +3187,7 @@ class SFTP extends SSH2
      *
      * @param int $mode
      * @return int
+     * @access private
      */
     private function parseMode($mode)
     {
@@ -3224,6 +3234,7 @@ class SFTP extends SSH2
      *
      * @param string $longname
      * @return mixed
+     * @access private
      */
     private function parseLongname($longname)
     {
@@ -3256,6 +3267,7 @@ class SFTP extends SSH2
      * @see self::_get_sftp_packet()
      * @see self::send_channel_packet()
      * @return void
+     * @access private
      */
     private function send_sftp_packet($type, $data, $request_id = 1)
     {
@@ -3274,7 +3286,24 @@ class SFTP extends SSH2
         if (defined('NET_SFTP_LOGGING')) {
             $packet_type = '-> ' . $this->packet_types[$type] .
                            ' (' . round($stop - $start, 4) . 's)';
-            $this->append_log($packet_type, $data);
+            if (NET_SFTP_LOGGING == self::LOG_REALTIME) {
+                switch (PHP_SAPI) {
+                    case 'cli':
+                        $start = $stop = "\r\n";
+                        break;
+                    default:
+                        $start = '<pre>';
+                        $stop = '</pre>';
+                }
+                echo $start . $this->format_log([$data], [$packet_type]) . $stop;
+                @flush();
+                @ob_flush();
+            } else {
+                $this->packet_type_log[] = $packet_type;
+                if (NET_SFTP_LOGGING == self::LOG_COMPLEX) {
+                    $this->packet_log[] = $data;
+                }
+            }
         }
     }
 
@@ -3282,6 +3311,7 @@ class SFTP extends SSH2
      * Resets a connection for re-use
      *
      * @param int $reason
+     * @access private
      */
     protected function reset_connection($reason)
     {
@@ -3302,6 +3332,7 @@ class SFTP extends SSH2
      *
      * @see self::_send_sftp_packet()
      * @return string
+     * @access private
      */
     private function get_sftp_packet($request_id = null)
     {
@@ -3350,10 +3381,7 @@ class SFTP extends SSH2
         // SFTP packet type and data payload
         while ($tempLength > 0) {
             $temp = $this->get_channel_packet(self::CHANNEL, true);
-            if ($temp === true) {
-                if ($this->channel_status[self::CHANNEL] === NET_SSH2_MSG_CHANNEL_CLOSE) {
-                    $this->channel_close = true;
-                }
+            if (is_bool($temp)) {
                 $this->packet_type = false;
                 $this->packet_buffer = '';
                 return false;
@@ -3378,7 +3406,24 @@ class SFTP extends SSH2
         if (defined('NET_SFTP_LOGGING')) {
             $packet_type = '<- ' . $this->packet_types[$this->packet_type] .
                            ' (' . round($stop - $start, 4) . 's)';
-            $this->append_log($packet_type, $packet);
+            if (NET_SFTP_LOGGING == self::LOG_REALTIME) {
+                switch (PHP_SAPI) {
+                    case 'cli':
+                        $start = $stop = "\r\n";
+                        break;
+                    default:
+                        $start = '<pre>';
+                        $stop = '</pre>';
+                }
+                echo $start . $this->format_log([$packet], [$packet_type]) . $stop;
+                @flush();
+                @ob_flush();
+            } else {
+                $this->packet_type_log[] = $packet_type;
+                if (NET_SFTP_LOGGING == self::LOG_COMPLEX) {
+                    $this->packet_log[] = $packet;
+                }
+            }
         }
 
         if (isset($request_id) && $this->use_request_id && $packet_id != $request_id) {
@@ -3393,33 +3438,11 @@ class SFTP extends SSH2
     }
 
     /**
-     * Logs data packets
-     *
-     * Makes sure that only the last 1MB worth of packets will be logged
-     *
-     * @param string $message_number
-     * @param string $message
-     */
-    private function append_log($message_number, $message)
-    {
-        $this->append_log_helper(
-            NET_SFTP_LOGGING,
-            $message_number,
-            $message,
-            $this->packet_type_log,
-            $this->packet_log,
-            $this->log_size,
-            $this->realtime_log_file,
-            $this->realtime_log_wrap,
-            $this->realtime_log_size
-        );
-    }
-
-    /**
      * Returns a log of the packets that have been sent and received.
      *
      * Returns a string if NET_SFTP_LOGGING == self::LOG_COMPLEX, an array if NET_SFTP_LOGGING == self::LOG_SIMPLE and false if !defined('NET_SFTP_LOGGING')
      *
+     * @access public
      * @return array|string
      */
     public function getSFTPLog()
@@ -3442,6 +3465,7 @@ class SFTP extends SSH2
      * Returns all errors
      *
      * @return array
+     * @access public
      */
     public function getSFTPErrors()
     {
@@ -3452,6 +3476,7 @@ class SFTP extends SSH2
      * Returns the last error
      *
      * @return string
+     * @access public
      */
     public function getLastSFTPError()
     {
@@ -3462,6 +3487,7 @@ class SFTP extends SSH2
      * Get supported SFTP versions
      *
      * @return array
+     * @access public
      */
     public function getSupportedVersions()
     {
@@ -3484,6 +3510,7 @@ class SFTP extends SSH2
      * Get supported SFTP versions
      *
      * @return int|false
+     * @access public
      */
     public function getNegotiatedVersion()
     {
@@ -3502,6 +3529,7 @@ class SFTP extends SSH2
      * unset the preferred version
      *
      * @param int $version
+     * @access public
      */
     public function setPreferredVersion($version)
     {
@@ -3513,6 +3541,7 @@ class SFTP extends SSH2
      *
      * @param int $reason
      * @return false
+     * @access protected
      */
     protected function disconnect_helper($reason)
     {
@@ -3523,6 +3552,7 @@ class SFTP extends SSH2
     /**
      * Enable Date Preservation
      *
+     * @access public
      */
     public function enableDatePreservation()
     {
@@ -3532,6 +3562,7 @@ class SFTP extends SSH2
     /**
      * Disable Date Preservation
      *
+     * @access public
      */
     public function disableDatePreservation()
     {

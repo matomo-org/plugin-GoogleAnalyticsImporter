@@ -24,7 +24,7 @@ use Google\Service\Analytics\CustomDataSources;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $customDataSources = $analyticsService->management_customDataSources;
+ *   $customDataSources = $analyticsService->customDataSources;
  *  </code>
  */
 class ManagementCustomDataSources extends \Google\Service\Resource

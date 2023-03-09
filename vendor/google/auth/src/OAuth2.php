@@ -47,24 +47,24 @@ class OAuth2 implements FetchAuthTokenInterface
      *
      * @var array<string>
      */
-    public static $knownSigningAlgorithms = [
+    public static $knownSigningAlgorithms = array(
         'HS256',
         'HS512',
         'HS384',
         'RS256',
-    ];
+    );
 
     /**
      * The well known grant types.
      *
      * @var array<string>
      */
-    public static $knownGrantTypes = [
+    public static $knownGrantTypes = array(
         'authorization_code',
         'refresh_token',
         'password',
         'client_credentials',
-    ];
+    );
 
     /**
      * - authorizationUri
@@ -398,7 +398,7 @@ class OAuth2 implements FetchAuthTokenInterface
      * @throws \Firebase\JWT\ExpiredException If the token has expired.
      * @return null|object
      */
-    public function verifyIdToken($publicKey = null, $allowed_algs = [])
+    public function verifyIdToken($publicKey = null, $allowed_algs = array())
     {
         $idToken = $this->getIdToken();
         if (is_null($idToken)) {
@@ -484,7 +484,7 @@ class OAuth2 implements FetchAuthTokenInterface
         }
 
         $grantType = $this->getGrantType();
-        $params = ['grant_type' => $grantType];
+        $params = array('grant_type' => $grantType);
         switch ($grantType) {
             case 'authorization_code':
                 $params['code'] = $this->getCode();
@@ -582,7 +582,7 @@ class OAuth2 implements FetchAuthTokenInterface
         if ($resp->hasHeader('Content-Type') &&
             $resp->getHeaderLine('Content-Type') == 'application/x-www-form-urlencoded'
         ) {
-            $res = [];
+            $res = array();
             parse_str($body, $res);
 
             return $res;

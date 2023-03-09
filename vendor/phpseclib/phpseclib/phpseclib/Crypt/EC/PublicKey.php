@@ -3,6 +3,8 @@
 /**
  * EC Public Key
  *
+ * @category  Crypt
+ * @package   EC
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2015 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -26,9 +28,11 @@ use phpseclib3\Math\BigInteger;
 /**
  * EC Public Key
  *
+ * @package EC
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
-final class PublicKey extends EC implements Common\PublicKey
+class PublicKey extends EC implements Common\PublicKey
 {
     use Common\Traits\Fingerprint;
 
@@ -36,6 +40,7 @@ final class PublicKey extends EC implements Common\PublicKey
      * Verify a signature
      *
      * @see self::verify()
+     * @access public
      * @param string $message
      * @param string $signature
      * @return mixed

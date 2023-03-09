@@ -26,6 +26,8 @@
  * ?>
  * </code>
  *
+ * @category  Crypt
+ * @package   Twofish
  * @author    Jim Wigginton <terrafrost@php.net>
  * @author    Hans-Juergen Petrich <petrich@tronic-media.com>
  * @copyright 2007 Jim Wigginton
@@ -41,8 +43,10 @@ use phpseclib3\Exception\BadModeException;
 /**
  * Pure-PHP implementation of Twofish.
  *
+ * @package Twofish
  * @author  Jim Wigginton <terrafrost@php.net>
  * @author  Hans-Juergen Petrich <petrich@tronic-media.com>
+ * @access  public
  */
 class Twofish extends BlockCipher
 {
@@ -51,6 +55,7 @@ class Twofish extends BlockCipher
      *
      * @see \phpseclib3\Crypt\Common\SymmetricKey::cipher_name_mcrypt
      * @var string
+     * @access private
      */
     protected $cipher_name_mcrypt = 'twofish';
 
@@ -59,6 +64,7 @@ class Twofish extends BlockCipher
      *
      * @see \phpseclib3\Crypt\Common\SymmetricKey::cfb_init_len
      * @var int
+     * @access private
      */
     protected $cfb_init_len = 800;
 
@@ -66,6 +72,7 @@ class Twofish extends BlockCipher
      * Q-Table
      *
      * @var array
+     * @access private
      */
     private static $q0 = [
         0xA9, 0x67, 0xB3, 0xE8, 0x04, 0xFD, 0xA3, 0x76,
@@ -106,6 +113,7 @@ class Twofish extends BlockCipher
      * Q-Table
      *
      * @var array
+     * @access private
      */
     private static $q1 = [
         0x75, 0xF3, 0xC6, 0xF4, 0xDB, 0x7B, 0xFB, 0xC8,
@@ -146,6 +154,7 @@ class Twofish extends BlockCipher
      * M-Table
      *
      * @var array
+     * @access private
      */
     private static $m0 = [
         0xBCBC3275, 0xECEC21F3, 0x202043C6, 0xB3B3C9F4, 0xDADA03DB, 0x02028B7B, 0xE2E22BFB, 0x9E9EFAC8,
@@ -186,6 +195,7 @@ class Twofish extends BlockCipher
      * M-Table
      *
      * @var array
+     * @access private
      */
     private static $m1 = [
         0xA9D93939, 0x67901717, 0xB3719C9C, 0xE8D2A6A6, 0x04050707, 0xFD985252, 0xA3658080, 0x76DFE4E4,
@@ -226,6 +236,7 @@ class Twofish extends BlockCipher
      * M-Table
      *
      * @var array
+     * @access private
      */
     private static $m2 = [
         0xBC75BC32, 0xECF3EC21, 0x20C62043, 0xB3F4B3C9, 0xDADBDA03, 0x027B028B, 0xE2FBE22B, 0x9EC89EFA,
@@ -266,6 +277,7 @@ class Twofish extends BlockCipher
      * M-Table
      *
      * @var array
+     * @access private
      */
     private static $m3 = [
         0xD939A9D9, 0x90176790, 0x719CB371, 0xD2A6E8D2, 0x05070405, 0x9852FD98, 0x6580A365, 0xDFE476DF,
@@ -306,6 +318,7 @@ class Twofish extends BlockCipher
      * The Key Schedule Array
      *
      * @var array
+     * @access private
      */
     private $K = [];
 
@@ -313,6 +326,7 @@ class Twofish extends BlockCipher
      * The Key depended S-Table 0
      *
      * @var array
+     * @access private
      */
     private $S0 = [];
 
@@ -320,6 +334,7 @@ class Twofish extends BlockCipher
      * The Key depended S-Table 1
      *
      * @var array
+     * @access private
      */
     private $S1 = [];
 
@@ -327,6 +342,7 @@ class Twofish extends BlockCipher
      * The Key depended S-Table 2
      *
      * @var array
+     * @access private
      */
     private $S2 = [];
 
@@ -334,6 +350,7 @@ class Twofish extends BlockCipher
      * The Key depended S-Table 3
      *
      * @var array
+     * @access private
      */
     private $S3 = [];
 
@@ -341,6 +358,7 @@ class Twofish extends BlockCipher
      * Holds the last used key
      *
      * @var array
+     * @access private
      */
     private $kl;
 
@@ -349,6 +367,7 @@ class Twofish extends BlockCipher
      *
      * @see Crypt_Twofish::setKeyLength()
      * @var int
+     * @access private
      */
     protected $key_length = 16;
 
@@ -356,6 +375,7 @@ class Twofish extends BlockCipher
      * Default Constructor.
      *
      * @param string $mode
+     * @access public
      * @throws BadModeException if an invalid / unsupported mode is provided
      */
     public function __construct($mode)
@@ -368,27 +388,11 @@ class Twofish extends BlockCipher
     }
 
     /**
-     * Initialize Static Variables
-     */
-    protected static function initialize_static_variables()
-    {
-        if (is_float(self::$m3[0])) {
-            self::$m0 = array_map('intval', self::$m0);
-            self::$m1 = array_map('intval', self::$m1);
-            self::$m2 = array_map('intval', self::$m2);
-            self::$m3 = array_map('intval', self::$m3);
-            self::$q0 = array_map('intval', self::$q0);
-            self::$q1 = array_map('intval', self::$q1);
-        }
-
-        parent::initialize_static_variables();
-    }
-
-    /**
      * Sets the key length.
      *
      * Valid key lengths are 128, 192 or 256 bits
      *
+     * @access public
      * @param int $length
      */
     public function setKeyLength($length)
@@ -411,6 +415,7 @@ class Twofish extends BlockCipher
      * Rijndael supports five different key lengths
      *
      * @see setKeyLength()
+     * @access public
      * @param string $key
      * @throws \LengthException if the key length isn't supported
      */
@@ -432,6 +437,7 @@ class Twofish extends BlockCipher
      * Setup the key (expansion)
      *
      * @see \phpseclib3\Crypt\Common\SymmetricKey::_setupKey()
+     * @access private
      */
     protected function setupKey()
     {
@@ -543,6 +549,7 @@ class Twofish extends BlockCipher
     /**
      * _mdsrem function using by the twofish cipher algorithm
      *
+     * @access private
      * @param string $A
      * @param string $B
      * @return array
@@ -590,6 +597,7 @@ class Twofish extends BlockCipher
     /**
      * Encrypts a block
      *
+     * @access private
      * @param string $in
      * @return string
      */
@@ -645,6 +653,7 @@ class Twofish extends BlockCipher
     /**
      * Decrypts a block
      *
+     * @access private
      * @param string $in
      * @return string
      */
@@ -701,6 +710,7 @@ class Twofish extends BlockCipher
      * Setup the performance-optimized function for de/encrypt()
      *
      * @see \phpseclib3\Crypt\Common\SymmetricKey::_setupInlineCrypt()
+     * @access private
      */
     protected function setupInlineCrypt()
     {

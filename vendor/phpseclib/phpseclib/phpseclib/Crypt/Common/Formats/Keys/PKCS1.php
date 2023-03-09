@@ -5,6 +5,8 @@
  *
  * PHP version 5
  *
+ * @category  Crypt
+ * @package   Common
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2015 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -13,6 +15,8 @@
 
 namespace phpseclib3\Crypt\Common\Formats\Keys;
 
+use ParagonIE\ConstantTime\Base64;
+use ParagonIE\ConstantTime\Hex;
 use phpseclib3\Common\Functions\Strings;
 use phpseclib3\Crypt\AES;
 use phpseclib3\Crypt\DES;
@@ -24,7 +28,9 @@ use phpseclib3\File\ASN1;
 /**
  * PKCS1 Formatted Key Handler
  *
+ * @package RSA
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 abstract class PKCS1 extends PKCS
 {
@@ -32,12 +38,14 @@ abstract class PKCS1 extends PKCS
      * Default encryption algorithm
      *
      * @var string
+     * @access private
      */
     private static $defaultEncryptionAlgorithm = 'AES-128-CBC';
 
     /**
      * Sets the default encryption algorithm
      *
+     * @access public
      * @param string $algo
      */
     public static function setEncryptionAlgorithm($algo)
@@ -48,6 +56,7 @@ abstract class PKCS1 extends PKCS
     /**
      * Returns the mode constant corresponding to the mode string
      *
+     * @access public
      * @param string $mode
      * @return int
      * @throws \UnexpectedValueException if the block cipher mode is unsupported
@@ -68,6 +77,7 @@ abstract class PKCS1 extends PKCS
     /**
      * Returns a cipher object corresponding to a string
      *
+     * @access public
      * @param string $algo
      * @return string
      * @throws \UnexpectedValueException if the encryption algorithm is unsupported
@@ -92,6 +102,7 @@ abstract class PKCS1 extends PKCS
     /**
      * Generate a symmetric key for PKCS#1 keys
      *
+     * @access private
      * @param string $password
      * @param string $iv
      * @param int $length
@@ -110,6 +121,7 @@ abstract class PKCS1 extends PKCS
     /**
      * Break a public or private key down into its constituent components
      *
+     * @access public
      * @param string $key
      * @param string $password optional
      * @return array
@@ -136,7 +148,7 @@ abstract class PKCS1 extends PKCS
 
            * OpenSSL is the de facto standard.  It's utilized by OpenSSH and other projects */
         if (preg_match('#DEK-Info: (.+),(.+)#', $key, $matches)) {
-            $iv = Strings::hex2bin(trim($matches[2]));
+            $iv = Hex::decode(trim($matches[2]));
             // remove the Proc-Type / DEK-Info sections as they're no longer needed
             $key = preg_replace('#^(?:Proc-Type|DEK-Info): .*#m', '', $key);
             $ciphertext = ASN1::extractBER($key);
@@ -164,6 +176,7 @@ abstract class PKCS1 extends PKCS
     /**
      * Wrap a private key appropriately
      *
+     * @access public
      * @param string $key
      * @param string $type
      * @param string $password
@@ -174,7 +187,7 @@ abstract class PKCS1 extends PKCS
     {
         if (empty($password) || !is_string($password)) {
             return "-----BEGIN $type PRIVATE KEY-----\r\n" .
-                   chunk_split(Strings::base64_encode($key), 64) .
+                   chunk_split(Base64::encode($key), 64) .
                    "-----END $type PRIVATE KEY-----";
         }
 
@@ -184,18 +197,19 @@ abstract class PKCS1 extends PKCS
         $iv = Random::string($cipher->getBlockLength() >> 3);
         $cipher->setKey(self::generateSymmetricKey($password, $iv, $cipher->getKeyLength() >> 3));
         $cipher->setIV($iv);
-        $iv = strtoupper(Strings::bin2hex($iv));
+        $iv = strtoupper(Hex::encode($iv));
         return "-----BEGIN $type PRIVATE KEY-----\r\n" .
                "Proc-Type: 4,ENCRYPTED\r\n" .
                "DEK-Info: " . $encryptionAlgorithm . ",$iv\r\n" .
                "\r\n" .
-               chunk_split(Strings::base64_encode($cipher->encrypt($key)), 64) .
+               chunk_split(Base64::encode($cipher->encrypt($key)), 64) .
                "-----END $type PRIVATE KEY-----";
     }
 
     /**
      * Wrap a public key appropriately
      *
+     * @access public
      * @param string $key
      * @param string $type
      * @return string
@@ -203,7 +217,7 @@ abstract class PKCS1 extends PKCS
     protected static function wrapPublicKey($key, $type)
     {
         return "-----BEGIN $type PUBLIC KEY-----\r\n" .
-               chunk_split(Strings::base64_encode($key), 64) .
+               chunk_split(Base64::encode($key), 64) .
                "-----END $type PUBLIC KEY-----";
     }
 }

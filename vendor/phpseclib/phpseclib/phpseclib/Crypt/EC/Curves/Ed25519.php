@@ -5,6 +5,8 @@
  *
  * PHP version 5 and 7
  *
+ * @category  Crypt
+ * @package   EC
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2017 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -156,7 +158,7 @@ class Ed25519 extends TwistedEdwards
      * Used by the various key handlers
      *
      * @param string $str
-     * @return array
+     * @return \phpseclib3\Math\PrimeField\Integer
      */
     public function extractSecret($str)
     {
@@ -179,10 +181,8 @@ class Ed25519 extends TwistedEdwards
         //     secret scalar s.
         $dA = new BigInteger($h, 256);
 
-        return [
-            'dA' => $dA,
-            'secret' => $str
-        ];
+        $dA->secret = $str;
+        return $dA;
     }
 
     /**
@@ -211,7 +211,7 @@ class Ed25519 extends TwistedEdwards
      */
     public function createRandomMultiplier()
     {
-        return $this->extractSecret(Random::string(32))['dA'];
+        return $this->extractSecret(Random::string(32));
     }
 
     /**

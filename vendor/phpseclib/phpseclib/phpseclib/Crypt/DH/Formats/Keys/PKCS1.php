@@ -13,6 +13,8 @@
  * DSA, whose format isn't really formally described anywhere, so might as well
  * use it to describe this, too.
  *
+ * @category  Crypt
+ * @package   DH
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2015 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -29,13 +31,16 @@ use phpseclib3\Math\BigInteger;
 /**
  * "PKCS1" Formatted DH Key Handler
  *
+ * @package DH
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 abstract class PKCS1 extends Progenitor
 {
     /**
      * Break a public or private key down into its constituent components
      *
+     * @access public
      * @param string $key
      * @param string $password optional
      * @return array
@@ -45,7 +50,7 @@ abstract class PKCS1 extends Progenitor
         $key = parent::load($key, $password);
 
         $decoded = ASN1::decodeBER($key);
-        if (!$decoded) {
+        if (empty($decoded)) {
             throw new \RuntimeException('Unable to decode BER');
         }
 
@@ -60,6 +65,7 @@ abstract class PKCS1 extends Progenitor
     /**
      * Convert EC parameters to the appropriate format
      *
+     * @access public
      * @return string
      */
     public static function saveParameters(BigInteger $prime, BigInteger $base, array $options = [])

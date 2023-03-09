@@ -5,6 +5,8 @@
  *
  * PHP version 5 and 7
  *
+ * @category  Math
+ * @package   BigInteger
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2017 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -12,14 +14,16 @@
 
 namespace phpseclib3\Math\PrimeField;
 
-use phpseclib3\Common\Functions\Strings;
+use ParagonIE\ConstantTime\Hex;
 use phpseclib3\Math\BigInteger;
 use phpseclib3\Math\Common\FiniteField\Integer as Base;
 
 /**
  * Prime Finite Fields
  *
+ * @package Math
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 class Integer extends Base
 {
@@ -263,13 +267,13 @@ class Integer extends Base
         $r = $this->value->powMod($temp, static::$modulo[$this->instanceID]);
 
         while (!$t->equals($one)) {
-            for ($i == clone $one; $i->compare($m) < 0; $i = $i->add($one)) {
-                if ($t->powMod($two->pow($i), static::$modulo[$this->instanceID])->equals($one)) {
-                    break;
-                }
+            $i = clone $one;
+
+            while (!$t->powMod($two->pow($i), static::$modulo[$this->instanceID])->equals($one)) {
+                $i = $i->add($one);
             }
 
-            if ($i->compare($m) == 0) {
+            if ($i->compare($m) >= 0) {
                 return false;
             }
             $b = $c->powMod($two->pow($m->subtract($i)->subtract($one)), static::$modulo[$this->instanceID]);
@@ -323,7 +327,7 @@ class Integer extends Base
      */
     public function toHex()
     {
-        return Strings::bin2hex($this->toBytes());
+        return Hex::encode($this->toBytes());
     }
 
     /**
@@ -397,6 +401,7 @@ class Integer extends Base
     /**
      *  __toString() magic method
      *
+     * @access public
      * @return string
      */
     public function __toString()
@@ -407,6 +412,7 @@ class Integer extends Base
     /**
      *  __debugInfo() magic method
      *
+     * @access public
      * @return array
      */
     public function __debugInfo()

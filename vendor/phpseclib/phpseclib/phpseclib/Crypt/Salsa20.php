@@ -5,6 +5,8 @@
  *
  * PHP version 5
  *
+ * @category  Crypt
+ * @package   Salsa20
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2019 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -21,7 +23,9 @@ use phpseclib3\Exception\InsufficientSetupException;
 /**
  * Pure-PHP implementation of Salsa20.
  *
+ * @package Salsa20
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 class Salsa20 extends StreamCipher
 {
@@ -47,11 +51,13 @@ class Salsa20 extends StreamCipher
     protected $key_length = 32; // = 256 bits
 
     /**
+     * @access private
      * @see \phpseclib3\Crypt\Salsa20::crypt()
      */
     const ENCRYPT = 0;
 
     /**
+     * @access private
      * @see \phpseclib3\Crypt\Salsa20::crypt()
      */
     const DECRYPT = 1;
@@ -404,13 +410,11 @@ class Salsa20 extends StreamCipher
      */
     protected static function leftRotate($x, $n)
     {
+        $r1 = $x << $n;
         if (PHP_INT_SIZE == 8) {
-            $r1 = $x << $n;
             $r1 &= 0xFFFFFFFF;
             $r2 = ($x & 0xFFFFFFFF) >> (32 - $n);
         } else {
-            $x = (int) $x;
-            $r1 = $x << $n;
             $r2 = $x >> (32 - $n);
             $r2 &= (1 << $n) - 1;
         }
@@ -491,6 +495,7 @@ class Salsa20 extends StreamCipher
      *
      * @see self::decrypt()
      * @see self::encrypt()
+     * @access private
      * @param string $ciphertext
      * @return string
      */

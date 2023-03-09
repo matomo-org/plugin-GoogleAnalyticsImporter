@@ -21,25 +21,11 @@ class ProfileFilterLink extends \Google\Model
 {
   protected $filterRefType = FilterRef::class;
   protected $filterRefDataType = '';
-  public $filterRef;
-  /**
-   * @var string
-   */
   public $id;
-  /**
-   * @var string
-   */
   public $kind;
   protected $profileRefType = ProfileRef::class;
   protected $profileRefDataType = '';
-  public $profileRef;
-  /**
-   * @var int
-   */
   public $rank;
-  /**
-   * @var string
-   */
   public $selfLink;
 
   /**
@@ -56,30 +42,18 @@ class ProfileFilterLink extends \Google\Model
   {
     return $this->filterRef;
   }
-  /**
-   * @param string
-   */
   public function setId($id)
   {
     $this->id = $id;
   }
-  /**
-   * @return string
-   */
   public function getId()
   {
     return $this->id;
   }
-  /**
-   * @param string
-   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
-  /**
-   * @return string
-   */
   public function getKind()
   {
     return $this->kind;
@@ -98,30 +72,18 @@ class ProfileFilterLink extends \Google\Model
   {
     return $this->profileRef;
   }
-  /**
-   * @param int
-   */
   public function setRank($rank)
   {
     $this->rank = $rank;
   }
-  /**
-   * @return int
-   */
   public function getRank()
   {
     return $this->rank;
   }
-  /**
-   * @param string
-   */
   public function setSelfLink($selfLink)
   {
     $this->selfLink = $selfLink;
   }
-  /**
-   * @return string
-   */
   public function getSelfLink()
   {
     return $this->selfLink;

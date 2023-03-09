@@ -21,10 +21,6 @@ class Segment extends \Google\Model
 {
   protected $dynamicSegmentType = DynamicSegment::class;
   protected $dynamicSegmentDataType = '';
-  public $dynamicSegment;
-  /**
-   * @var string
-   */
   public $segmentId;
 
   /**
@@ -41,16 +37,10 @@ class Segment extends \Google\Model
   {
     return $this->dynamicSegment;
   }
-  /**
-   * @param string
-   */
   public function setSegmentId($segmentId)
   {
     $this->segmentId = $segmentId;
   }
-  /**
-   * @return string
-   */
   public function getSegmentId()
   {
     return $this->segmentId;

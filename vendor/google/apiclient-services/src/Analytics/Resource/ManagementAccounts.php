@@ -24,7 +24,7 @@ use Google\Service\Analytics\Accounts;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $accounts = $analyticsService->management_accounts;
+ *   $accounts = $analyticsService->accounts;
  *  </code>
  */
 class ManagementAccounts extends \Google\Service\Resource

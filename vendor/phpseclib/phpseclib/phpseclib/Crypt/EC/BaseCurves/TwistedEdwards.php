@@ -18,6 +18,8 @@
  *
  * PHP version 5 and 7
  *
+ * @category  Crypt
+ * @package   EC
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2017 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -33,7 +35,9 @@ use phpseclib3\Math\PrimeField\Integer as PrimeInteger;
 /**
  * Curves over a*x^2 + y^2 = 1 + d*x^2*y^2
  *
+ * @package Prime
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 class TwistedEdwards extends Base
 {

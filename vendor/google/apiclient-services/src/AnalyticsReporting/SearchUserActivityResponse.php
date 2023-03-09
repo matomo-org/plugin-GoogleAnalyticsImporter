@@ -20,29 +20,16 @@ namespace Google\Service\AnalyticsReporting;
 class SearchUserActivityResponse extends \Google\Collection
 {
   protected $collection_key = 'sessions';
-  /**
-   * @var string
-   */
   public $nextPageToken;
   public $sampleRate;
   protected $sessionsType = UserActivitySession::class;
   protected $sessionsDataType = 'array';
-  public $sessions = [];
-  /**
-   * @var int
-   */
   public $totalRows;
 
-  /**
-   * @param string
-   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
-  /**
-   * @return string
-   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;
@@ -69,16 +56,10 @@ class SearchUserActivityResponse extends \Google\Collection
   {
     return $this->sessions;
   }
-  /**
-   * @param int
-   */
   public function setTotalRows($totalRows)
   {
     $this->totalRows = $totalRows;
   }
-  /**
-   * @return int
-   */
   public function getTotalRows()
   {
     return $this->totalRows;

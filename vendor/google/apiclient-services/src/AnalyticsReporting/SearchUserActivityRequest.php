@@ -20,39 +20,19 @@ namespace Google\Service\AnalyticsReporting;
 class SearchUserActivityRequest extends \Google\Collection
 {
   protected $collection_key = 'activityTypes';
-  /**
-   * @var string[]
-   */
-  public $activityTypes = [];
+  public $activityTypes;
   protected $dateRangeType = DateRange::class;
   protected $dateRangeDataType = '';
-  public $dateRange;
-  /**
-   * @var int
-   */
   public $pageSize;
-  /**
-   * @var string
-   */
   public $pageToken;
   protected $userType = User::class;
   protected $userDataType = '';
-  public $user;
-  /**
-   * @var string
-   */
   public $viewId;
 
-  /**
-   * @param string[]
-   */
   public function setActivityTypes($activityTypes)
   {
     $this->activityTypes = $activityTypes;
   }
-  /**
-   * @return string[]
-   */
   public function getActivityTypes()
   {
     return $this->activityTypes;
@@ -71,30 +51,18 @@ class SearchUserActivityRequest extends \Google\Collection
   {
     return $this->dateRange;
   }
-  /**
-   * @param int
-   */
   public function setPageSize($pageSize)
   {
     $this->pageSize = $pageSize;
   }
-  /**
-   * @return int
-   */
   public function getPageSize()
   {
     return $this->pageSize;
   }
-  /**
-   * @param string
-   */
   public function setPageToken($pageToken)
   {
     $this->pageToken = $pageToken;
   }
-  /**
-   * @return string
-   */
   public function getPageToken()
   {
     return $this->pageToken;
@@ -113,16 +81,10 @@ class SearchUserActivityRequest extends \Google\Collection
   {
     return $this->user;
   }
-  /**
-   * @param string
-   */
   public function setViewId($viewId)
   {
     $this->viewId = $viewId;
   }
-  /**
-   * @return string
-   */
   public function getViewId()
   {
     return $this->viewId;

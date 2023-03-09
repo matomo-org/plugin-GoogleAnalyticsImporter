@@ -5,6 +5,8 @@
  *
  * PHP version 5 and 7
  *
+ * @category  Math
+ * @package   BigInteger
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2017 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -18,7 +20,9 @@ use phpseclib3\Exception\BadConfigurationException;
 /**
  * GMP Engine.
  *
+ * @package GMP
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 class GMP extends Engine
 {
@@ -27,6 +31,7 @@ class GMP extends Engine
      *
      * @see parent::bitwise_leftRotate()
      * @see parent::bitwise_rightRotate()
+     * @access protected
      */
     const FAST_BITWISE = true;
 
@@ -34,6 +39,7 @@ class GMP extends Engine
      * Engine Directory
      *
      * @see parent::setModExpEngine
+     * @access protected
      */
     const ENGINE_DIR = 'GMP';
 
@@ -240,6 +246,7 @@ class GMP extends Engine
      *
      * @param GMP $y
      * @return int in case < 0 if $this is less than $y; > 0 if $this is greater than $y, and 0 if they are equal.
+     * @access public
      * @see self::equals()
      */
     public function compare(GMP $y)
@@ -323,6 +330,7 @@ class GMP extends Engine
      * Absolute value.
      *
      * @return GMP
+     * @access public
      */
     public function abs()
     {

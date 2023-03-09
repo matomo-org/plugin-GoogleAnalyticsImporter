@@ -63,7 +63,7 @@ class IAMCredentials
      */
     public function getUpdateMetadataFunc()
     {
-        return [$this, 'updateMetadata'];
+        return array($this, 'updateMetadata');
     }
 
     /**

@@ -25,7 +25,7 @@ use Google\Service\Analytics\ProfileFilterLinks;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $profileFilterLinks = $analyticsService->management_profileFilterLinks;
+ *   $profileFilterLinks = $analyticsService->profileFilterLinks;
  *  </code>
  */
 class ManagementProfileFilterLinks extends \Google\Service\Resource

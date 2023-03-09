@@ -13,6 +13,8 @@
  *
  * PHP version 5 and 7
  *
+ * @category  Crypt
+ * @package   EC
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2017 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -30,7 +32,9 @@ use phpseclib3\Math\PrimeField\Integer as PrimeInteger;
 /**
  * Curves over y^2 = x^3 + a*x + b
  *
+ * @package Prime
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 class Prime extends Base
 {
@@ -513,8 +517,7 @@ class Prime extends Base
     /**
      * Multiply and Add Points
      *
-     * Adapted from:
-     * https://github.com/indutny/elliptic/blob/725bd91/lib/elliptic/curve/base.js#L125
+     * Adapted from https://git.io/vxPUH
      *
      * @return int[]
      */
@@ -640,12 +643,11 @@ class Prime extends Base
     /**
      * Precomputes NAF points
      *
-     * Adapted from:
-     * https://github.com/indutny/elliptic/blob/725bd91/lib/elliptic/curve/base.js#L351
+     * Adapted from https://git.io/vxY1f
      *
      * @return int[]
      */
-    private function getNAFPoints(array $point, $wnd)
+    private function getNAFPoints($point, $wnd)
     {
         if (isset($point['naf'])) {
             return $point['naf'];
@@ -677,8 +679,7 @@ class Prime extends Base
     /**
      * Precomputes points in Joint Sparse Form
      *
-     * Adapted from:
-     * https://github.com/indutny/elliptic/blob/725bd91/lib/elliptic/utils.js#L96
+     * Adapted from https://git.io/vxrpD
      *
      * @return int[]
      */

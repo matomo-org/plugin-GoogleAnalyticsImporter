@@ -22,10 +22,6 @@ class DimensionFilterClause extends \Google\Collection
   protected $collection_key = 'filters';
   protected $filtersType = DimensionFilter::class;
   protected $filtersDataType = 'array';
-  public $filters = [];
-  /**
-   * @var string
-   */
   public $operator;
 
   /**
@@ -42,16 +38,10 @@ class DimensionFilterClause extends \Google\Collection
   {
     return $this->filters;
   }
-  /**
-   * @param string
-   */
   public function setOperator($operator)
   {
     $this->operator = $operator;
   }
-  /**
-   * @return string
-   */
   public function getOperator()
   {
     return $this->operator;

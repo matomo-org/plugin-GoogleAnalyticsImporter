@@ -21,13 +21,8 @@ class Report extends \Google\Model
 {
   protected $columnHeaderType = ColumnHeader::class;
   protected $columnHeaderDataType = '';
-  public $columnHeader;
   protected $dataType = ReportData::class;
   protected $dataDataType = '';
-  public $data;
-  /**
-   * @var string
-   */
   public $nextPageToken;
 
   /**
@@ -58,16 +53,10 @@ class Report extends \Google\Model
   {
     return $this->data;
   }
-  /**
-   * @param string
-   */
   public function setNextPageToken($nextPageToken)
   {
     $this->nextPageToken = $nextPageToken;
   }
-  /**
-   * @return string
-   */
   public function getNextPageToken()
   {
     return $this->nextPageToken;

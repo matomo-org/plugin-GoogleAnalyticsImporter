@@ -20,24 +20,14 @@ namespace Google\Service\AnalyticsReporting;
 class ReportRow extends \Google\Collection
 {
   protected $collection_key = 'metrics';
-  /**
-   * @var string[]
-   */
-  public $dimensions = [];
+  public $dimensions;
   protected $metricsType = DateRangeValues::class;
   protected $metricsDataType = 'array';
-  public $metrics = [];
 
-  /**
-   * @param string[]
-   */
   public function setDimensions($dimensions)
   {
     $this->dimensions = $dimensions;
   }
-  /**
-   * @return string[]
-   */
   public function getDimensions()
   {
     return $this->dimensions;

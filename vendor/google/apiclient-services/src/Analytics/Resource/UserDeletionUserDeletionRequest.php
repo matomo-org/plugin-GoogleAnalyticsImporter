@@ -24,7 +24,7 @@ use Google\Service\Analytics\UserDeletionRequest;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $userDeletionRequest = $analyticsService->userDeletion_userDeletionRequest;
+ *   $userDeletionRequest = $analyticsService->userDeletionRequest;
  *  </code>
  */
 class UserDeletionUserDeletionRequest extends \Google\Service\Resource

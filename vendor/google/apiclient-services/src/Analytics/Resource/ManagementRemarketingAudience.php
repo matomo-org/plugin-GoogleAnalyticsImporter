@@ -25,7 +25,7 @@ use Google\Service\Analytics\RemarketingAudiences;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $remarketingAudience = $analyticsService->management_remarketingAudience;
+ *   $remarketingAudience = $analyticsService->remarketingAudience;
  *  </code>
  */
 class ManagementRemarketingAudience extends \Google\Service\Resource

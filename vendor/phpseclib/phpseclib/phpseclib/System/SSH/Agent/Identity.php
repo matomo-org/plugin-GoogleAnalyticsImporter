@@ -7,6 +7,8 @@
  *
  * PHP version 5
  *
+ * @category  System
+ * @package   SSH\Agent
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2009 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -23,7 +25,6 @@ use phpseclib3\Crypt\EC;
 use phpseclib3\Crypt\RSA;
 use phpseclib3\Exception\UnsupportedAlgorithmException;
 use phpseclib3\System\SSH\Agent;
-use phpseclib3\System\SSH\Common\Traits\ReadBytes;
 
 /**
  * Pure-PHP ssh-agent client identity object
@@ -34,12 +35,13 @@ use phpseclib3\System\SSH\Common\Traits\ReadBytes;
  * The methods in this interface would be getPublicKey and sign since those are the
  * methods phpseclib looks for to perform public key authentication.
  *
+ * @package SSH\Agent
  * @author  Jim Wigginton <terrafrost@php.net>
- * @internal
+ * @access  internal
  */
 class Identity implements PrivateKey
 {
-    use ReadBytes;
+    use \phpseclib3\System\SSH\Common\Traits\ReadBytes;
 
     // Signature Flags
     // See https://tools.ietf.org/html/draft-miller-ssh-agent-00#section-5.3
@@ -50,6 +52,7 @@ class Identity implements PrivateKey
      * Key Object
      *
      * @var PublicKey
+     * @access private
      * @see self::getPublicKey()
      */
     private $key;
@@ -58,6 +61,7 @@ class Identity implements PrivateKey
      * Key Blob
      *
      * @var string
+     * @access private
      * @see self::sign()
      */
     private $key_blob;
@@ -66,6 +70,7 @@ class Identity implements PrivateKey
      * Socket Resource
      *
      * @var resource
+     * @access private
      * @see self::sign()
      */
     private $fsock;
@@ -74,6 +79,7 @@ class Identity implements PrivateKey
      * Signature flags
      *
      * @var int
+     * @access private
      * @see self::sign()
      * @see self::setHash()
      */
@@ -83,6 +89,7 @@ class Identity implements PrivateKey
      * Curve Aliases
      *
      * @var array
+     * @access private
      */
     private static $curveAliases = [
         'secp256r1' => 'nistp256',
@@ -95,6 +102,7 @@ class Identity implements PrivateKey
      * Default Constructor.
      *
      * @param resource $fsock
+     * @access private
      */
     public function __construct($fsock)
     {
@@ -107,8 +115,9 @@ class Identity implements PrivateKey
      * Called by \phpseclib3\System\SSH\Agent::requestIdentities()
      *
      * @param \phpseclib3\Crypt\Common\PublicKey $key
+     * @access private
      */
-    public function withPublicKey(PublicKey $key)
+    public function withPublicKey($key)
     {
         if ($key instanceof EC) {
             if (is_array($key->getCurve()) || !isset(self::$curveAliases[$key->getCurve()])) {
@@ -128,6 +137,7 @@ class Identity implements PrivateKey
      * but this saves a small amount of computation.
      *
      * @param string $key_blob
+     * @access private
      */
     public function withPublicKeyBlob($key_blob)
     {
@@ -143,6 +153,7 @@ class Identity implements PrivateKey
      *
      * @param string $type optional
      * @return mixed
+     * @access public
      */
     public function getPublicKey($type = 'PKCS8')
     {
@@ -153,6 +164,7 @@ class Identity implements PrivateKey
      * Sets the hash
      *
      * @param string $hash
+     * @access public
      */
     public function withHash($hash)
     {
@@ -206,6 +218,7 @@ class Identity implements PrivateKey
      * Only PKCS1 padding is supported
      *
      * @param string $padding
+     * @access public
      */
     public function withPadding($padding)
     {
@@ -223,6 +236,7 @@ class Identity implements PrivateKey
      *
      * Valid values are: ASN1, SSH2, Raw
      *
+     * @access public
      * @param string $format
      */
     public function withSignatureFormat($format)
@@ -242,6 +256,7 @@ class Identity implements PrivateKey
      *
      * Returns a string if it's a named curve, an array if not
      *
+     * @access public
      * @return string|array
      */
     public function getCurve()
@@ -262,6 +277,7 @@ class Identity implements PrivateKey
      * @return string
      * @throws \RuntimeException on connection errors
      * @throws \phpseclib3\Exception\UnsupportedAlgorithmException if the algorithm is unsupported
+     * @access public
      */
     public function sign($message)
     {
@@ -310,6 +326,7 @@ class Identity implements PrivateKey
     /**
      * Sets the password
      *
+     * @access public
      * @param string|bool $password
      * @return never
      */

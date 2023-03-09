@@ -5,6 +5,8 @@
  *
  * PHP version 5
  *
+ * @category  System
+ * @package   SSH
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2015 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -16,7 +18,9 @@ namespace phpseclib3\System\SSH\Common\Traits;
 /**
  * ReadBytes trait
  *
+ * @package SSH
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 trait ReadBytes
 {
@@ -25,6 +29,7 @@ trait ReadBytes
      *
      * @param int $length
      * @throws \RuntimeException on connection errors
+     * @access public
      */
     public function readBytes($length)
     {

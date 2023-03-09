@@ -3,6 +3,8 @@
 /**
  * EC Parameters
  *
+ * @category  Crypt
+ * @package   EC
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2015 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -16,9 +18,11 @@ use phpseclib3\Crypt\EC;
 /**
  * EC Parameters
  *
+ * @package EC
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
-final class Parameters extends EC
+class Parameters extends EC
 {
     /**
      * Returns the parameters

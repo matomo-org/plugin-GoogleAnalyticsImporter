@@ -25,7 +25,7 @@ use Google\Service\Analytics\Webproperty;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $webproperties = $analyticsService->management_webproperties;
+ *   $webproperties = $analyticsService->webproperties;
  *  </code>
  */
 class ManagementWebproperties extends \Google\Service\Resource

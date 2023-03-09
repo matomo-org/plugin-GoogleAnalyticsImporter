@@ -7,6 +7,8 @@
  *
  * PHP version 5
  *
+ * @category  Net
+ * @package   SFTP
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2013 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -22,7 +24,9 @@ use phpseclib3\Net\SSH2;
 /**
  * SFTP Stream Wrapper
  *
+ * @package SFTP
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
 class Stream
 {
@@ -39,6 +43,7 @@ class Stream
      * SFTP instance
      *
      * @var object
+     * @access private
      */
     private $sftp;
 
@@ -46,6 +51,7 @@ class Stream
      * Path
      *
      * @var string
+     * @access private
      */
     private $path;
 
@@ -53,6 +59,7 @@ class Stream
      * Mode
      *
      * @var string
+     * @access private
      */
     private $mode;
 
@@ -60,6 +67,7 @@ class Stream
      * Position
      *
      * @var int
+     * @access private
      */
     private $pos;
 
@@ -67,6 +75,7 @@ class Stream
      * Size
      *
      * @var int
+     * @access private
      */
     private $size;
 
@@ -74,6 +83,7 @@ class Stream
      * Directory entries
      *
      * @var array
+     * @access private
      */
     private $entries;
 
@@ -81,6 +91,7 @@ class Stream
      * EOF flag
      *
      * @var bool
+     * @access private
      */
     private $eof;
 
@@ -90,6 +101,7 @@ class Stream
      * Technically this needs to be publicly accessible so PHP can set it directly
      *
      * @var resource
+     * @access public
      */
     public $context;
 
@@ -97,6 +109,7 @@ class Stream
      * Notification callback function
      *
      * @var callable
+     * @access public
      */
     private $notification;
 
@@ -105,6 +118,7 @@ class Stream
      *
      * @param string $protocol The wrapper name to be registered.
      * @return bool True on success, false otherwise.
+     * @access public
      */
     public static function register($protocol = 'sftp')
     {
@@ -117,6 +131,7 @@ class Stream
     /**
      * The Constructor
      *
+     * @access public
      */
     public function __construct()
     {
@@ -135,6 +150,7 @@ class Stream
      *
      * @param string $path
      * @return string
+     * @access private
      */
     protected function parse_path($path)
     {
@@ -239,6 +255,7 @@ class Stream
      * @param int $options
      * @param string $opened_path
      * @return bool
+     * @access public
      */
     private function _stream_open($path, $mode, $options, &$opened_path)
     {
@@ -280,6 +297,7 @@ class Stream
      *
      * @param int $count
      * @return mixed
+     * @access public
      */
     private function _stream_read($count)
     {
@@ -321,6 +339,7 @@ class Stream
      *
      * @param string $data
      * @return int|false
+     * @access public
      */
     private function _stream_write($data)
     {
@@ -354,6 +373,7 @@ class Stream
      * Retrieve the current position of a stream
      *
      * @return int
+     * @access public
      */
     private function _stream_tell()
     {
@@ -371,6 +391,7 @@ class Stream
      * will return false. do fread($fp, 1) and feof() will then return true.
      *
      * @return bool
+     * @access public
      */
     private function _stream_eof()
     {
@@ -383,6 +404,7 @@ class Stream
      * @param int $offset
      * @param int $whence
      * @return bool
+     * @access public
      */
     private function _stream_seek($offset, $whence)
     {
@@ -411,6 +433,7 @@ class Stream
      * @param int $option
      * @param mixed $var
      * @return bool
+     * @access public
      */
     private function _stream_metadata($path, $option, $var)
     {
@@ -444,6 +467,7 @@ class Stream
      *
      * @param int $cast_as
      * @return resource
+     * @access public
      */
     private function _stream_cast($cast_as)
     {
@@ -455,6 +479,7 @@ class Stream
      *
      * @param int $operation
      * @return bool
+     * @access public
      */
     private function _stream_lock($operation)
     {
@@ -471,6 +496,7 @@ class Stream
      * @param string $path_from
      * @param string $path_to
      * @return bool
+     * @access public
      */
     private function _rename($path_from, $path_to)
     {
@@ -522,6 +548,7 @@ class Stream
      * @param string $path
      * @param int $options
      * @return bool
+     * @access public
      */
     private function _dir_opendir($path, $options)
     {
@@ -538,6 +565,7 @@ class Stream
      * Read entry from directory handle
      *
      * @return mixed
+     * @access public
      */
     private function _dir_readdir()
     {
@@ -551,6 +579,7 @@ class Stream
      * Rewind directory handle
      *
      * @return bool
+     * @access public
      */
     private function _dir_rewinddir()
     {
@@ -562,6 +591,7 @@ class Stream
      * Close directory handle
      *
      * @return bool
+     * @access public
      */
     private function _dir_closedir()
     {
@@ -577,6 +607,7 @@ class Stream
      * @param int $mode
      * @param int $options
      * @return bool
+     * @access public
      */
     private function _mkdir($path, $mode, $options)
     {
@@ -599,6 +630,7 @@ class Stream
      * @param string $path
      * @param int $options
      * @return bool
+     * @access public
      */
     private function _rmdir($path, $options)
     {
@@ -616,6 +648,7 @@ class Stream
      * See <http://php.net/fflush>. Always returns true because \phpseclib3\Net\SFTP doesn't cache stuff before writing
      *
      * @return bool
+     * @access public
      */
     private function _stream_flush()
     {
@@ -626,6 +659,7 @@ class Stream
      * Retrieve information about a file resource
      *
      * @return mixed
+     * @access public
      */
     private function _stream_stat()
     {
@@ -641,6 +675,7 @@ class Stream
      *
      * @param string $path
      * @return bool
+     * @access public
      */
     private function _unlink($path)
     {
@@ -662,6 +697,7 @@ class Stream
      * @param string $path
      * @param int $flags
      * @return mixed
+     * @access public
      */
     private function _url_stat($path, $flags)
     {
@@ -683,6 +719,7 @@ class Stream
      *
      * @param int $new_size
      * @return bool
+     * @access public
      */
     private function _stream_truncate($new_size)
     {
@@ -706,6 +743,7 @@ class Stream
      * @param int $arg1
      * @param int $arg2
      * @return bool
+     * @access public
      */
     private function _stream_set_option($option, $arg1, $arg2)
     {
@@ -715,6 +753,7 @@ class Stream
     /**
      * Close an resource
      *
+     * @access public
      */
     private function _stream_close()
     {
@@ -733,8 +772,9 @@ class Stream
      * @param string $name
      * @param array $arguments
      * @return mixed
+     * @access public
      */
-    public function __call($name, array $arguments)
+    public function __call($name, $arguments)
     {
         if (defined('NET_SFTP_STREAM_LOGGING')) {
             echo $name . '(';

@@ -16,11 +16,8 @@
  */
 namespace Google\Auth\HttpHandler;
 
-use GuzzleHttp\BodySummarizer;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Middleware;
 
 class HttpHandlerFactory
 {
@@ -33,22 +30,13 @@ class HttpHandlerFactory
      */
     public static function build(ClientInterface $client = null)
     {
-        if (is_null($client)) {
-            $stack = null;
-            if (class_exists(BodySummarizer::class)) {
-                // double the # of characters before truncation by default
-                $bodySummarizer = new BodySummarizer(240);
-                $stack = HandlerStack::create();
-                $stack->remove('http_errors');
-                $stack->unshift(Middleware::httpErrors($bodySummarizer), 'http_errors');
-            }
-            $client = new Client(['handler' => $stack]);
-        }
+        $client = $client ?: new Client();
 
         $version = null;
         if (defined('GuzzleHttp\ClientInterface::MAJOR_VERSION')) {
             $version = ClientInterface::MAJOR_VERSION;
         } elseif (defined('GuzzleHttp\ClientInterface::VERSION')) {
+            /** @phpstan-ignore-next-line */
             $version = (int) substr(ClientInterface::VERSION, 0, 1);
         }
 

@@ -21,7 +21,6 @@ use DateTime;
 use Exception;
 use Firebase\JWT\ExpiredException;
 use Firebase\JWT\JWT;
-use Firebase\JWT\Key;
 use Firebase\JWT\SignatureInvalidException;
 use Google\Auth\Cache\MemoryCacheItemPool;
 use Google\Auth\HttpHandler\HttpClientCache;
@@ -140,6 +139,7 @@ class AccessToken
         } catch (ExpiredException $e) {  // firebase/php-jwt 5+
         } catch (SignatureInvalidException $e) {  // firebase/php-jwt 5+
         } catch (InvalidTokenException $e) { // simplejwt
+        } catch (DomainException $e) { // @phpstan-ignore-line
         } catch (InvalidArgumentException $e) {
         } catch (UnexpectedValueException $e) {
         }
@@ -257,12 +257,13 @@ class AccessToken
             ]);
 
             // create an array of key IDs to certs for the JWT library
-            $keys[$cert['kid']] = new Key($rsa->getPublicKey(), 'RS256');
+            $keys[$cert['kid']] =  $rsa->getPublicKey();
         }
 
         $payload = $this->callJwtStatic('decode', [
             $token,
             $keys,
+            ['RS256']
         ]);
 
         if ($audience) {

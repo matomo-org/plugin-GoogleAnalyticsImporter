@@ -21,17 +21,11 @@ class AccountTreeResponse extends \Google\Model
 {
   protected $accountType = Account::class;
   protected $accountDataType = '';
-  public $account;
-  /**
-   * @var string
-   */
   public $kind;
   protected $profileType = Profile::class;
   protected $profileDataType = '';
-  public $profile;
   protected $webpropertyType = Webproperty::class;
   protected $webpropertyDataType = '';
-  public $webproperty;
 
   /**
    * @param Account
@@ -47,16 +41,10 @@ class AccountTreeResponse extends \Google\Model
   {
     return $this->account;
   }
-  /**
-   * @param string
-   */
   public function setKind($kind)
   {
     $this->kind = $kind;
   }
-  /**
-   * @return string
-   */
   public function getKind()
   {
     return $this->kind;

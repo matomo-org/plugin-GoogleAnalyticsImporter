@@ -25,7 +25,7 @@ use Google\Service\Analytics\Filters;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $filters = $analyticsService->management_filters;
+ *   $filters = $analyticsService->filters;
  *  </code>
  */
 class ManagementFilters extends \Google\Service\Resource

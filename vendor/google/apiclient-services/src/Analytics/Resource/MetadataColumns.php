@@ -24,7 +24,7 @@ use Google\Service\Analytics\Columns;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $columns = $analyticsService->metadata_columns;
+ *   $columns = $analyticsService->columns;
  *  </code>
  */
 class MetadataColumns extends \Google\Service\Resource

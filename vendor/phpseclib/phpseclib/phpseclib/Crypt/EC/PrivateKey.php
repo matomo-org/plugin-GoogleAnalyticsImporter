@@ -3,6 +3,8 @@
 /**
  * EC Private Key
  *
+ * @category  Crypt
+ * @package   EC
  * @author    Jim Wigginton <terrafrost@php.net>
  * @copyright 2015 Jim Wigginton
  * @license   http://www.opensource.org/licenses/mit-license.html  MIT License
@@ -27,9 +29,11 @@ use phpseclib3\Math\BigInteger;
 /**
  * EC Private Key
  *
+ * @package EC
  * @author  Jim Wigginton <terrafrost@php.net>
+ * @access  public
  */
-final class PrivateKey extends EC implements Common\PrivateKey
+class PrivateKey extends EC implements Common\PrivateKey
 {
     use Common\Traits\PasswordProtected;
 
@@ -43,11 +47,6 @@ final class PrivateKey extends EC implements Common\PrivateKey
      * @var object
      */
     protected $dA;
-
-    /**
-     * @var string
-     */
-    protected $secret;
 
     /**
      * Multiplies an encoded point by the private key
@@ -86,6 +85,7 @@ final class PrivateKey extends EC implements Common\PrivateKey
      * Create a signature
      *
      * @see self::verify()
+     * @access public
      * @param string $message
      * @return mixed
      */
@@ -117,7 +117,7 @@ final class PrivateKey extends EC implements Common\PrivateKey
             $curve = $this->curve;
             $hash = new Hash($curve::HASH);
 
-            $secret = substr($hash->hash($this->secret), $curve::SIZE);
+            $secret = substr($hash->hash($this->dA->secret), $curve::SIZE);
 
             if ($curve instanceof Ed25519) {
                 $dom = !isset($this->context) ? '' :
@@ -222,13 +222,14 @@ final class PrivateKey extends EC implements Common\PrivateKey
     {
         $type = self::validatePlugin('Keys', $type, 'savePrivateKey');
 
-        return $type::savePrivateKey($this->dA, $this->curve, $this->QA, $this->secret, $this->password, $options);
+        return $type::savePrivateKey($this->dA, $this->curve, $this->QA, $this->password, $options);
     }
 
     /**
      * Returns the public key
      *
      * @see self::getPrivateKey()
+     * @access public
      * @return mixed
      */
     public function getPublicKey()

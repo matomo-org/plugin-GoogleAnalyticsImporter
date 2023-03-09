@@ -2,11 +2,8 @@
 declare(strict_types=1);
 namespace ParagonIE\ConstantTime;
 
-use RangeException;
-use TypeError;
-
 /**
- *  Copyright (c) 2016 - 2022 Paragon Initiative Enterprises.
+ *  Copyright (c) 2016 - 2018 Paragon Initiative Enterprises.
  *  Copyright (c) 2014 Steve "Sc00bz" Thomas (steve at tobtu dot com)
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -40,7 +37,7 @@ abstract class Hex implements EncoderInterface
      *
      * @param string $binString (raw binary)
      * @return string
-     * @throws TypeError
+     * @throws \TypeError
      */
     public static function encode(string $binString): string
     {
@@ -48,11 +45,11 @@ abstract class Hex implements EncoderInterface
         $len = Binary::safeStrlen($binString);
         for ($i = 0; $i < $len; ++$i) {
             /** @var array<int, int> $chunk */
-            $chunk = \unpack('C', $binString[$i]);
+            $chunk = \unpack('C', Binary::safeSubstr($binString, $i, 1));
             $c = $chunk[1] & 0xf;
             $b = $chunk[1] >> 4;
 
-            $hex .= \pack(
+            $hex .= pack(
                 'CC',
                 (87 + $b + ((($b - 10) >> 8) & ~38)),
                 (87 + $c + ((($c - 10) >> 8) & ~38))
@@ -67,7 +64,7 @@ abstract class Hex implements EncoderInterface
      *
      * @param string $binString (raw binary)
      * @return string
-     * @throws TypeError
+     * @throws \TypeError
      */
     public static function encodeUpper(string $binString): string
     {
@@ -76,11 +73,11 @@ abstract class Hex implements EncoderInterface
 
         for ($i = 0; $i < $len; ++$i) {
             /** @var array<int, int> $chunk */
-            $chunk = \unpack('C', $binString[$i]);
+            $chunk = \unpack('C', Binary::safeSubstr($binString, $i, 2));
             $c = $chunk[1] & 0xf;
             $b = $chunk[1] >> 4;
 
-            $hex .= \pack(
+            $hex .= pack(
                 'CC',
                 (55 + $b + ((($b - 10) >> 8) & ~6)),
                 (55 + $c + ((($c - 10) >> 8) & ~6))
@@ -96,12 +93,10 @@ abstract class Hex implements EncoderInterface
      * @param string $encodedString
      * @param bool $strictPadding
      * @return string (raw binary)
-     * @throws RangeException
+     * @throws \RangeException
      */
-    public static function decode(
-        string $encodedString,
-        bool $strictPadding = false
-    ): string {
+    public static function decode(string $encodedString, bool $strictPadding = false): string
+    {
         $hex_pos = 0;
         $bin = '';
         $c_acc = 0;
@@ -109,7 +104,7 @@ abstract class Hex implements EncoderInterface
         $state = 0;
         if (($hex_len & 1) !== 0) {
             if ($strictPadding) {
-                throw new RangeException(
+                throw new \RangeException(
                     'Expected an even number of hexadecimal characters'
                 );
             } else {
@@ -129,7 +124,7 @@ abstract class Hex implements EncoderInterface
             $c_alpha0 = (($c_alpha - 10) ^ ($c_alpha - 16)) >> 8;
 
             if (($c_num0 | $c_alpha0) === 0) {
-                throw new RangeException(
+                throw new \RangeException(
                     'Expected hexadecimal character'
                 );
             }

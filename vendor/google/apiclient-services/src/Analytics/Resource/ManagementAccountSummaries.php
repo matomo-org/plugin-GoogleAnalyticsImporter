@@ -24,7 +24,7 @@ use Google\Service\Analytics\AccountSummaries;
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $accountSummaries = $analyticsService->management_accountSummaries;
+ *   $accountSummaries = $analyticsService->accountSummaries;
  *  </code>
  */
 class ManagementAccountSummaries extends \Google\Service\Resource
