@@ -23,9 +23,6 @@ class SegmentFilterClause extends \Google\Model
   protected $dimensionFilterDataType = '';
   protected $metricFilterType = SegmentMetricFilter::class;
   protected $metricFilterDataType = '';
-  /**
-   * @var bool
-   */
   public $not;
 
   /**
@@ -56,16 +53,10 @@ class SegmentFilterClause extends \Google\Model
   {
     return $this->metricFilter;
   }
-  /**
-   * @param bool
-   */
   public function setNot($not)
   {
     $this->not = $not;
   }
-  /**
-   * @return bool
-   */
   public function getNot()
   {
     return $this->not;

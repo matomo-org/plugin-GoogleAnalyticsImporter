@@ -2,7 +2,7 @@
     "require": {
         "php": ">=7.2.5",
         "google/apiclient": "^2.11",
-        "google/apiclient-services": "^0.266.0",
+        "google/apiclient-services": "^0.221",
         "guzzlehttp/guzzle": "^7.0",
         "guzzlehttp/promises": "1.5.1",
         "google/analytics-data": "^0.8.1",
