@@ -11,8 +11,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 class CannotImportGoalException extends \Exception
 {
-    protected $gaGoal;
-    protected $reason;
 
     /**
      * CannotImportGoalException constructor.

@@ -293,8 +293,6 @@ class MockGoogleServiceAnalytics extends \Google\Service\Analytics
 
 class MockGaManagementGoals
 {
-    protected $test;
-
     public function __construct(ImporterTest $test)
     {
         $this->test = $test;
@@ -310,8 +308,6 @@ class MockGaManagementGoals
 
 class MockGaCustomDimensions
 {
-    protected $test;
-
     public function __construct(ImporterTest $test)
     {
         $this->test = $test;
