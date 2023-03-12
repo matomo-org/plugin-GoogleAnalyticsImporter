@@ -200,6 +200,11 @@ class ImporterTestGA4 extends IntegrationTestCase
 
 class MockGoogleServiceAnalytics extends \Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient
 {
+    /**
+     * @var ImporterTest
+     */
+    protected $test;
+
     public function __construct(ImporterTestGA4 $test)
     {
         $this->test = $test;
@@ -220,6 +225,11 @@ class MockGoogleServiceAnalytics extends \Google\Analytics\Admin\V1alpha\Analyti
 
 class MockGaManagementGoals
 {
+    /**
+     * @var ImporterTest
+     */
+    protected $test;
+
     public function __construct(ImporterTestGA4 $test)
     {
         $this->test = $test;
@@ -233,6 +243,11 @@ class MockGaManagementGoals
 
 class MockGaCustomDimensions
 {
+    /**
+     * @var ImporterTest
+     */
+    protected $test;
+
     public function __construct(ImporterTestGA4 $test)
     {
         $this->test = $test;
