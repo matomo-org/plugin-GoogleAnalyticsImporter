@@ -440,7 +440,7 @@ class GenerateGaTestData extends ConsoleCommand
             $this->trackVisit($accountId);
 
             $secs = $this->getRandomVisitWait();
-            $output->writeln("Waiting ${secs}s...");
+            $output->writeln("Waiting {$secs}s...");
             sleep($secs);
         }
     }

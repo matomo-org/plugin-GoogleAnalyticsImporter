@@ -59,7 +59,7 @@ class GoogleGA4MetricMapper
         $mappedMetricsInfo = [];
         foreach ($metrics as $index) {
             if (!isset($mappings[$index])) {
-                throw new \Exception("Don't know how to map metric index ${index} to GA metric.");
+                throw new \Exception("Don't know how to map metric index {$index} to GA metric.");
             }
 
             $gaMetric = $mappings[$index];
