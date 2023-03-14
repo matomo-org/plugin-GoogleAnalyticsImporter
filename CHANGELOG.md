@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.5.1
+- Improved check to determine nohup support exist
+
 # 4.5.0
 - Added some brand mappings.
 - Fixed status setting after rate limit and started pulling empty rows for GA4.
