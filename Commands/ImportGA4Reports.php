@@ -54,7 +54,7 @@ class ImportGA4Reports extends ConsoleCommand
     /**
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @return void|int
+     * @return int
      */
 
     protected function execute(InputInterface $input, OutputInterface $output)
