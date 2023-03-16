@@ -27,6 +27,12 @@ class ArchiveImportedData extends ConsoleCommand
         $this->addOption('idSite', null, InputOption::VALUE_REQUIRED, 'The ID of the imported site to initiate archiving for.');
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $idSite = (int) $input->getOption('idSite');
@@ -39,7 +45,7 @@ class ArchiveImportedData extends ConsoleCommand
             $status = $importStatus->getImportStatus($idSite);
         } catch (\Exception $ex) {
             $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "No import found for site ID = $idSite.");
-            return;
+            return self::FAILURE;
         }
 
         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Starting core:archive for site ID = $idSite.");
@@ -47,5 +53,7 @@ class ArchiveImportedData extends ConsoleCommand
         Tasks::startArchive($status, $wait = true);
 
         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Done.");
+
+        return self::SUCCESS;
     }
 }

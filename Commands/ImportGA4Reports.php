@@ -51,15 +51,29 @@ class ImportGA4Reports extends ConsoleCommand
         $this->addOption('extra-custom-dimension', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Map extra google analytics dimensions as matomo dimensions. This can be used to import dimensions like age & gender. Values should be like "gaDimension,dimensionScope", for example "userAgeBracket,visit".', []);
     }
 
+    /**
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     * @return int
+     */
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         try {
-            return $this->executeImpl($input, $output);
+            $output = $this->executeImpl($input, $output);
         } catch (ImportWasCancelledException $ex) {
             $output->writeln("Import was cancelled, aborting.");
+            return self::FAILURE;
         } catch (CannotProcessImportException $ex) {
             $output->writeln($ex->getMessage());
+            return self::FAILURE;
         }
+
+        if (!$output) {
+            return self::FAILURE;
+        }
+
+        return self::SUCCESS;
     }
 
     protected function executeImpl(InputInterface $input, OutputInterface $output)
@@ -284,6 +298,8 @@ class ImportGA4Reports extends ConsoleCommand
 
         $queryCount = $importer->getQueryCount();
         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Done in $timer. [$queryCount API requests made to GA]");
+
+        return true;
     }
 
     private function getExtraCustomDimensions(InputInterface $input)
