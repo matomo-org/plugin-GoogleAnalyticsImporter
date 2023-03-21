@@ -1,10 +1,11 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "行動應用程式",
-        "Optional": "選擇性",
-        "None": "無",
+        "Actions": "進站活動",
+        "AdminMenuTitle": "導入Google分析",
         "Change": "變更",
-        "Status": "狀態",
-        "Actions": "進站活動"
+        "IsMobileApp": "行動應用程式",
+        "None": "無",
+        "Optional": "選擇性",
+        "Status": "狀態"
     }
 }
