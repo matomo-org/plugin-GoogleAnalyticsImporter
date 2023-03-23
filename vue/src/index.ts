@@ -11,3 +11,4 @@ export { default as ImportScheduler } from './ImportScheduler/ImportScheduler.vu
 export { default as ImportSchedulerGA4 } from './ImportScheduler/ImportSchedulerGA4.vue';
 export { default as ImportSelector } from './ImportScheduler/ImportSelector.vue';
 export { default as ImportStatus } from './ImportStatus/ImportStatus.vue';
+export { default as ConfigureConnection } from './Configure/ConfigureConnection.vue';
