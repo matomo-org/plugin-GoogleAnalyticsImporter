@@ -30,7 +30,7 @@
         <input type="hidden" name="config_nonce" :value="configNonce" />
 
         <button type="button" class="btn" @click="selectConfigFile()" >
-          {{ translate('General_Upload') }}</button>
+          <span class="icon-upload"></span> {{ translate('General_Upload') }}</button>
       </form>
     </div>
   </div>

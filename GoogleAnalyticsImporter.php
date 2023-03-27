@@ -16,6 +16,7 @@ use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Period;
 use Piwik\Piwik;
+use Piwik\Plugin\Manager;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
@@ -141,6 +142,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     {
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.less";
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/stylesheets/styles.less";
+        if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
+            $stylesheets[] = "plugins/ConnectAccounts/vue/src/Configure/ConfigureConnection.less";
+        } else {
+            $stylesheets[] = "plugins/GoogleAnalyticsImporter/vue/src/Configure/ConfigureConnection.less";
+        }
     }
 
     public function getClientSideTranslationKeys(&$translationKeys)
@@ -227,6 +233,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel2';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel3';
         $translationKeys[] = 'General_Upload';
+
+        if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
+            $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";
+            $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp2";
+        }
     }
 
     public function getJsFiles(&$files)

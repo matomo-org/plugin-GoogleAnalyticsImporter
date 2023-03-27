@@ -1,6 +1,10 @@
 {% extends 'admin.twig' %}
 
-{% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
+{% if isClientConfigurable and not hasClientConfiguration %}
+    {% set title %}{{ 'GoogleAnalyticsImporter_AdminMenuTitle'|translate }}{% endset %}
+{% else %}
+    {% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
+{% endif %}
 
 {% block content %}
     <style>
@@ -30,8 +34,19 @@
                 {% endif %}
             </form>
         {% else %}
-            <div vue-entry="GoogleAnalyticsImporter.ConfigureConnection" config-nonce="{{ nonce }}"
-                 action-url="{{ linkTo({'action': 'configureClient'}) }}"></div>
+            {% if isConnectAccountsActivated %}
+                <div vue-entry="ConnectAccounts.ConfigureConnection" manual-config-nonce="{{ nonce }}"
+                     manual-action-url="{{ linkTo({'action': 'configureClient'}) }}"
+                     primary-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterLabel1'|translate }}"
+                     radio-options="{{ radioOptions|json_encode|e('html_attr') }}"
+                     manual-config-text="{{ manualUploadText|e('html_attr') }}"
+                     connect-accounts-url="{{googleAuthUrl|e('html_attr')}}"
+                     connect-accounts-btn-text="{{ 'ConnectAccounts_GaImportBtn' |translate}}"
+                     additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}"></div>
+            {% else %}
+                <div vue-entry="GoogleAnalyticsImporter.ConfigureConnection" config-nonce="{{ nonce }}"
+                     action-url="{{ linkTo({'action': 'configureClient'}) }}"></div>
+            {% endif %}
         {% endif %}
     </div>
 
