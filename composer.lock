@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e65cf92a1be81c18bbbf28a52b79e3a3",
+    "content-hash": "510d06ce275fba076d7301417c4680f2",
     "packages": [
         {
             "name": "firebase/php-jwt",
@@ -70,25 +70,24 @@
         },
         {
             "name": "google/analytics-admin",
-            "version": "v0.5.1",
+            "version": "v0.10.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/php-analytics-admin.git",
-                "reference": "aca093d647a61c545c7d576227f4a0b56f81bfdf"
+                "reference": "7f8af98407f00236c76ef51b6b6adb7a251edbe6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/php-analytics-admin/zipball/aca093d647a61c545c7d576227f4a0b56f81bfdf",
-                "reference": "aca093d647a61c545c7d576227f4a0b56f81bfdf",
+                "url": "https://api.github.com/repos/googleapis/php-analytics-admin/zipball/7f8af98407f00236c76ef51b6b6adb7a251edbe6",
+                "reference": "7f8af98407f00236c76ef51b6b6adb7a251edbe6",
                 "shasum": ""
             },
             "require": {
                 "google/gax": "^1.6.0"
             },
             "require-dev": {
-                "google/cloud-core": "^1.31",
-                "phpdocumentor/reflection": "^3.0",
-                "phpunit/phpunit": "^4.8|^5.0"
+                "phpunit/phpunit": "^4.8|^5.0|^8.0",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "suggest": {
                 "ext-grpc": "Enables use of gRPC, a universal high-performance RPC framework created by Google.",
@@ -115,30 +114,28 @@
             ],
             "description": "Google Analytics Admin Client for PHP",
             "support": {
-                "issues": "https://github.com/googleapis/php-analytics-admin/issues",
-                "source": "https://github.com/googleapis/php-analytics-admin/tree/v0.5.1"
+                "source": "https://github.com/googleapis/php-analytics-admin/tree/v0.10.0"
             },
-            "time": "2022-03-30T03:18:53+00:00"
+            "time": "2023-02-25T13:06:03+00:00"
         },
         {
             "name": "google/analytics-data",
-            "version": "v0.8.3",
+            "version": "v0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/php-analytics-data.git",
-                "reference": "33e17607fe28d577e0a02baade019707f1f30f5d"
+                "reference": "f1da5ed9be985794d7738cfe3f3a3db59e6ce511"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/php-analytics-data/zipball/33e17607fe28d577e0a02baade019707f1f30f5d",
-                "reference": "33e17607fe28d577e0a02baade019707f1f30f5d",
+                "url": "https://api.github.com/repos/googleapis/php-analytics-data/zipball/f1da5ed9be985794d7738cfe3f3a3db59e6ce511",
+                "reference": "f1da5ed9be985794d7738cfe3f3a3db59e6ce511",
                 "shasum": ""
             },
             "require": {
                 "google/gax": "^1.6.0"
             },
             "require-dev": {
-                "phpdocumentor/reflection": "^3.0",
                 "phpunit/phpunit": "^4.8|^5.0|^8.0",
                 "yoast/phpunit-polyfills": "^1.0"
             },
@@ -167,9 +164,9 @@
             ],
             "description": "Google Analytics Data Client for PHP",
             "support": {
-                "source": "https://github.com/googleapis/php-analytics-data/tree/v0.8.3"
+                "source": "https://github.com/googleapis/php-analytics-data/tree/v0.9.4"
             },
-            "time": "2022-05-13T22:51:50+00:00"
+            "time": "2023-02-10T16:10:50+00:00"
         },
         {
             "name": "google/apiclient",
@@ -532,16 +529,16 @@
         },
         {
             "name": "google/protobuf",
-            "version": "v3.20.1",
+            "version": "v3.22.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "5537a424882b2cbce891330d3e4bdfe363694975"
+                "reference": "ff28a64946708e13f2be627b5e5561f247ecf95c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/5537a424882b2cbce891330d3e4bdfe363694975",
-                "reference": "5537a424882b2cbce891330d3e4bdfe363694975",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/ff28a64946708e13f2be627b5e5561f247ecf95c",
+                "reference": "ff28a64946708e13f2be627b5e5561f247ecf95c",
                 "shasum": ""
             },
             "require": {
@@ -570,10 +567,9 @@
                 "proto"
             ],
             "support": {
-                "issues": "https://github.com/protocolbuffers/protobuf-php/issues",
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.20.1"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.22.2"
             },
-            "time": "2022-04-22T01:22:58+00:00"
+            "time": "2023-03-10T17:52:03+00:00"
         },
         {
             "name": "grpc/grpc",

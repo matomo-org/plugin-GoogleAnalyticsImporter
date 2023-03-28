@@ -26,61 +26,85 @@
 
 namespace Google\Analytics\Admin\V1alpha\Gapic;
 
+use Google\Analytics\Admin\V1alpha\AccessBinding;
+use Google\Analytics\Admin\V1alpha\AccessDateRange;
+use Google\Analytics\Admin\V1alpha\AccessDimension;
+use Google\Analytics\Admin\V1alpha\AccessFilterExpression;
+use Google\Analytics\Admin\V1alpha\AccessMetric;
+use Google\Analytics\Admin\V1alpha\AccessOrderBy;
 use Google\Analytics\Admin\V1alpha\Account;
 use Google\Analytics\Admin\V1alpha\AcknowledgeUserDataCollectionRequest;
 use Google\Analytics\Admin\V1alpha\AcknowledgeUserDataCollectionResponse;
-
-use Google\Analytics\Admin\V1alpha\AndroidAppDataStream;
 use Google\Analytics\Admin\V1alpha\ApproveDisplayVideo360AdvertiserLinkProposalRequest;
 use Google\Analytics\Admin\V1alpha\ApproveDisplayVideo360AdvertiserLinkProposalResponse;
+use Google\Analytics\Admin\V1alpha\ArchiveAudienceRequest;
 use Google\Analytics\Admin\V1alpha\ArchiveCustomDimensionRequest;
 use Google\Analytics\Admin\V1alpha\ArchiveCustomMetricRequest;
+use Google\Analytics\Admin\V1alpha\AttributionSettings;
+use Google\Analytics\Admin\V1alpha\Audience;
 use Google\Analytics\Admin\V1alpha\AuditUserLinksRequest;
 use Google\Analytics\Admin\V1alpha\AuditUserLinksResponse;
+use Google\Analytics\Admin\V1alpha\BatchCreateAccessBindingsRequest;
+use Google\Analytics\Admin\V1alpha\BatchCreateAccessBindingsResponse;
 use Google\Analytics\Admin\V1alpha\BatchCreateUserLinksRequest;
 use Google\Analytics\Admin\V1alpha\BatchCreateUserLinksResponse;
+use Google\Analytics\Admin\V1alpha\BatchDeleteAccessBindingsRequest;
 use Google\Analytics\Admin\V1alpha\BatchDeleteUserLinksRequest;
+use Google\Analytics\Admin\V1alpha\BatchGetAccessBindingsRequest;
+use Google\Analytics\Admin\V1alpha\BatchGetAccessBindingsResponse;
 use Google\Analytics\Admin\V1alpha\BatchGetUserLinksRequest;
 use Google\Analytics\Admin\V1alpha\BatchGetUserLinksResponse;
+use Google\Analytics\Admin\V1alpha\BatchUpdateAccessBindingsRequest;
+use Google\Analytics\Admin\V1alpha\BatchUpdateAccessBindingsResponse;
 use Google\Analytics\Admin\V1alpha\BatchUpdateUserLinksRequest;
 use Google\Analytics\Admin\V1alpha\BatchUpdateUserLinksResponse;
+use Google\Analytics\Admin\V1alpha\BigQueryLink;
 use Google\Analytics\Admin\V1alpha\CancelDisplayVideo360AdvertiserLinkProposalRequest;
 use Google\Analytics\Admin\V1alpha\ConversionEvent;
+use Google\Analytics\Admin\V1alpha\CreateAccessBindingRequest;
+use Google\Analytics\Admin\V1alpha\CreateAudienceRequest;
 use Google\Analytics\Admin\V1alpha\CreateConversionEventRequest;
 use Google\Analytics\Admin\V1alpha\CreateCustomDimensionRequest;
 use Google\Analytics\Admin\V1alpha\CreateCustomMetricRequest;
 use Google\Analytics\Admin\V1alpha\CreateDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\CreateDisplayVideo360AdvertiserLinkProposalRequest;
 use Google\Analytics\Admin\V1alpha\CreateDisplayVideo360AdvertiserLinkRequest;
+use Google\Analytics\Admin\V1alpha\CreateExpandedDataSetRequest;
 use Google\Analytics\Admin\V1alpha\CreateFirebaseLinkRequest;
 use Google\Analytics\Admin\V1alpha\CreateGoogleAdsLinkRequest;
 use Google\Analytics\Admin\V1alpha\CreateMeasurementProtocolSecretRequest;
 use Google\Analytics\Admin\V1alpha\CreatePropertyRequest;
+use Google\Analytics\Admin\V1alpha\CreateSearchAds360LinkRequest;
 use Google\Analytics\Admin\V1alpha\CreateUserLinkRequest;
-use Google\Analytics\Admin\V1alpha\CreateWebDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\CustomDimension;
 use Google\Analytics\Admin\V1alpha\CustomMetric;
 use Google\Analytics\Admin\V1alpha\DataRetentionSettings;
 use Google\Analytics\Admin\V1alpha\DataSharingSettings;
 use Google\Analytics\Admin\V1alpha\DataStream;
+use Google\Analytics\Admin\V1alpha\DeleteAccessBindingRequest;
 use Google\Analytics\Admin\V1alpha\DeleteAccountRequest;
-use Google\Analytics\Admin\V1alpha\DeleteAndroidAppDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\DeleteConversionEventRequest;
 use Google\Analytics\Admin\V1alpha\DeleteDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\DeleteDisplayVideo360AdvertiserLinkProposalRequest;
 use Google\Analytics\Admin\V1alpha\DeleteDisplayVideo360AdvertiserLinkRequest;
+use Google\Analytics\Admin\V1alpha\DeleteExpandedDataSetRequest;
 use Google\Analytics\Admin\V1alpha\DeleteFirebaseLinkRequest;
 use Google\Analytics\Admin\V1alpha\DeleteGoogleAdsLinkRequest;
-use Google\Analytics\Admin\V1alpha\DeleteIosAppDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\DeleteMeasurementProtocolSecretRequest;
 use Google\Analytics\Admin\V1alpha\DeletePropertyRequest;
+use Google\Analytics\Admin\V1alpha\DeleteSearchAds360LinkRequest;
 use Google\Analytics\Admin\V1alpha\DeleteUserLinkRequest;
-use Google\Analytics\Admin\V1alpha\DeleteWebDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\DisplayVideo360AdvertiserLink;
 use Google\Analytics\Admin\V1alpha\DisplayVideo360AdvertiserLinkProposal;
+use Google\Analytics\Admin\V1alpha\ExpandedDataSet;
+use Google\Analytics\Admin\V1alpha\FetchAutomatedGa4ConfigurationOptOutRequest;
+use Google\Analytics\Admin\V1alpha\FetchAutomatedGa4ConfigurationOptOutResponse;
 use Google\Analytics\Admin\V1alpha\FirebaseLink;
+use Google\Analytics\Admin\V1alpha\GetAccessBindingRequest;
 use Google\Analytics\Admin\V1alpha\GetAccountRequest;
-use Google\Analytics\Admin\V1alpha\GetAndroidAppDataStreamRequest;
+use Google\Analytics\Admin\V1alpha\GetAttributionSettingsRequest;
+use Google\Analytics\Admin\V1alpha\GetAudienceRequest;
+use Google\Analytics\Admin\V1alpha\GetBigQueryLinkRequest;
 use Google\Analytics\Admin\V1alpha\GetConversionEventRequest;
 use Google\Analytics\Admin\V1alpha\GetCustomDimensionRequest;
 use Google\Analytics\Admin\V1alpha\GetCustomMetricRequest;
@@ -89,24 +113,26 @@ use Google\Analytics\Admin\V1alpha\GetDataSharingSettingsRequest;
 use Google\Analytics\Admin\V1alpha\GetDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\GetDisplayVideo360AdvertiserLinkProposalRequest;
 use Google\Analytics\Admin\V1alpha\GetDisplayVideo360AdvertiserLinkRequest;
+use Google\Analytics\Admin\V1alpha\GetExpandedDataSetRequest;
 use Google\Analytics\Admin\V1alpha\GetGlobalSiteTagRequest;
 use Google\Analytics\Admin\V1alpha\GetGoogleSignalsSettingsRequest;
-use Google\Analytics\Admin\V1alpha\GetIosAppDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\GetMeasurementProtocolSecretRequest;
 use Google\Analytics\Admin\V1alpha\GetPropertyRequest;
+use Google\Analytics\Admin\V1alpha\GetSearchAds360LinkRequest;
 use Google\Analytics\Admin\V1alpha\GetUserLinkRequest;
-use Google\Analytics\Admin\V1alpha\GetWebDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\GlobalSiteTag;
 use Google\Analytics\Admin\V1alpha\GoogleAdsLink;
 use Google\Analytics\Admin\V1alpha\GoogleSignalsSettings;
-use Google\Analytics\Admin\V1alpha\IosAppDataStream;
-use Google\Analytics\Admin\V1alpha\ListAccountsRequest;
-
-use Google\Analytics\Admin\V1alpha\ListAccountsResponse;
+use Google\Analytics\Admin\V1alpha\ListAccessBindingsRequest;
+use Google\Analytics\Admin\V1alpha\ListAccessBindingsResponse;
 use Google\Analytics\Admin\V1alpha\ListAccountSummariesRequest;
 use Google\Analytics\Admin\V1alpha\ListAccountSummariesResponse;
-use Google\Analytics\Admin\V1alpha\ListAndroidAppDataStreamsRequest;
-use Google\Analytics\Admin\V1alpha\ListAndroidAppDataStreamsResponse;
+use Google\Analytics\Admin\V1alpha\ListAccountsRequest;
+use Google\Analytics\Admin\V1alpha\ListAccountsResponse;
+use Google\Analytics\Admin\V1alpha\ListAudiencesRequest;
+use Google\Analytics\Admin\V1alpha\ListAudiencesResponse;
+use Google\Analytics\Admin\V1alpha\ListBigQueryLinksRequest;
+use Google\Analytics\Admin\V1alpha\ListBigQueryLinksResponse;
 use Google\Analytics\Admin\V1alpha\ListConversionEventsRequest;
 use Google\Analytics\Admin\V1alpha\ListConversionEventsResponse;
 use Google\Analytics\Admin\V1alpha\ListCustomDimensionsRequest;
@@ -119,42 +145,48 @@ use Google\Analytics\Admin\V1alpha\ListDisplayVideo360AdvertiserLinkProposalsReq
 use Google\Analytics\Admin\V1alpha\ListDisplayVideo360AdvertiserLinkProposalsResponse;
 use Google\Analytics\Admin\V1alpha\ListDisplayVideo360AdvertiserLinksRequest;
 use Google\Analytics\Admin\V1alpha\ListDisplayVideo360AdvertiserLinksResponse;
+use Google\Analytics\Admin\V1alpha\ListExpandedDataSetsRequest;
+use Google\Analytics\Admin\V1alpha\ListExpandedDataSetsResponse;
 use Google\Analytics\Admin\V1alpha\ListFirebaseLinksRequest;
 use Google\Analytics\Admin\V1alpha\ListFirebaseLinksResponse;
 use Google\Analytics\Admin\V1alpha\ListGoogleAdsLinksRequest;
 use Google\Analytics\Admin\V1alpha\ListGoogleAdsLinksResponse;
-use Google\Analytics\Admin\V1alpha\ListIosAppDataStreamsRequest;
-use Google\Analytics\Admin\V1alpha\ListIosAppDataStreamsResponse;
 use Google\Analytics\Admin\V1alpha\ListMeasurementProtocolSecretsRequest;
 use Google\Analytics\Admin\V1alpha\ListMeasurementProtocolSecretsResponse;
 use Google\Analytics\Admin\V1alpha\ListPropertiesRequest;
 use Google\Analytics\Admin\V1alpha\ListPropertiesResponse;
+use Google\Analytics\Admin\V1alpha\ListSearchAds360LinksRequest;
+use Google\Analytics\Admin\V1alpha\ListSearchAds360LinksResponse;
 use Google\Analytics\Admin\V1alpha\ListUserLinksRequest;
 use Google\Analytics\Admin\V1alpha\ListUserLinksResponse;
-use Google\Analytics\Admin\V1alpha\ListWebDataStreamsRequest;
-use Google\Analytics\Admin\V1alpha\ListWebDataStreamsResponse;
 use Google\Analytics\Admin\V1alpha\MeasurementProtocolSecret;
 use Google\Analytics\Admin\V1alpha\Property;
 use Google\Analytics\Admin\V1alpha\ProvisionAccountTicketRequest;
 use Google\Analytics\Admin\V1alpha\ProvisionAccountTicketResponse;
+use Google\Analytics\Admin\V1alpha\RunAccessReportRequest;
+use Google\Analytics\Admin\V1alpha\RunAccessReportResponse;
+use Google\Analytics\Admin\V1alpha\SearchAds360Link;
 use Google\Analytics\Admin\V1alpha\SearchChangeHistoryEventsRequest;
 use Google\Analytics\Admin\V1alpha\SearchChangeHistoryEventsResponse;
+use Google\Analytics\Admin\V1alpha\SetAutomatedGa4ConfigurationOptOutRequest;
+use Google\Analytics\Admin\V1alpha\SetAutomatedGa4ConfigurationOptOutResponse;
+use Google\Analytics\Admin\V1alpha\UpdateAccessBindingRequest;
 use Google\Analytics\Admin\V1alpha\UpdateAccountRequest;
-use Google\Analytics\Admin\V1alpha\UpdateAndroidAppDataStreamRequest;
+use Google\Analytics\Admin\V1alpha\UpdateAttributionSettingsRequest;
+use Google\Analytics\Admin\V1alpha\UpdateAudienceRequest;
 use Google\Analytics\Admin\V1alpha\UpdateCustomDimensionRequest;
 use Google\Analytics\Admin\V1alpha\UpdateCustomMetricRequest;
 use Google\Analytics\Admin\V1alpha\UpdateDataRetentionSettingsRequest;
 use Google\Analytics\Admin\V1alpha\UpdateDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\UpdateDisplayVideo360AdvertiserLinkRequest;
+use Google\Analytics\Admin\V1alpha\UpdateExpandedDataSetRequest;
 use Google\Analytics\Admin\V1alpha\UpdateGoogleAdsLinkRequest;
 use Google\Analytics\Admin\V1alpha\UpdateGoogleSignalsSettingsRequest;
-use Google\Analytics\Admin\V1alpha\UpdateIosAppDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\UpdateMeasurementProtocolSecretRequest;
 use Google\Analytics\Admin\V1alpha\UpdatePropertyRequest;
+use Google\Analytics\Admin\V1alpha\UpdateSearchAds360LinkRequest;
 use Google\Analytics\Admin\V1alpha\UpdateUserLinkRequest;
-use Google\Analytics\Admin\V1alpha\UpdateWebDataStreamRequest;
 use Google\Analytics\Admin\V1alpha\UserLink;
-use Google\Analytics\Admin\V1alpha\WebDataStream;
 use Google\ApiCore\ApiException;
 use Google\ApiCore\CredentialsWrapper;
 use Google\ApiCore\GapicClientTrait;
@@ -196,29 +228,19 @@ class AnalyticsAdminServiceGapicClient
 {
     use GapicClientTrait;
 
-    /**
-     * The name of the service.
-     */
+    /** The name of the service. */
     const SERVICE_NAME = 'google.analytics.admin.v1alpha.AnalyticsAdminService';
 
-    /**
-     * The default address of the service.
-     */
+    /** The default address of the service. */
     const SERVICE_ADDRESS = 'analyticsadmin.googleapis.com';
 
-    /**
-     * The default port of the service.
-     */
+    /** The default port of the service. */
     const DEFAULT_SERVICE_PORT = 443;
 
-    /**
-     * The name of the code generator, to be included in the agent header.
-     */
+    /** The name of the code generator, to be included in the agent header. */
     const CODEGEN_NAME = 'gapic';
 
-    /**
-     * The default scopes required by the service.
-     */
+    /** The default scopes required by the service. */
     public static $serviceScopes = [
         'https://www.googleapis.com/auth/analytics.edit',
         'https://www.googleapis.com/auth/analytics.manage.users',
@@ -226,11 +248,19 @@ class AnalyticsAdminServiceGapicClient
         'https://www.googleapis.com/auth/analytics.readonly',
     ];
 
+    private static $accessBindingNameTemplate;
+
     private static $accountNameTemplate;
+
+    private static $accountAccessBindingNameTemplate;
 
     private static $accountUserLinkNameTemplate;
 
-    private static $androidAppDataStreamNameTemplate;
+    private static $attributionSettingsNameTemplate;
+
+    private static $audienceNameTemplate;
+
+    private static $bigQueryLinkNameTemplate;
 
     private static $conversionEventNameTemplate;
 
@@ -248,6 +278,8 @@ class AnalyticsAdminServiceGapicClient
 
     private static $displayVideo360AdvertiserLinkProposalNameTemplate;
 
+    private static $expandedDataSetNameTemplate;
+
     private static $firebaseLinkNameTemplate;
 
     private static $globalSiteTagNameTemplate;
@@ -256,17 +288,17 @@ class AnalyticsAdminServiceGapicClient
 
     private static $googleSignalsSettingsNameTemplate;
 
-    private static $iosAppDataStreamNameTemplate;
-
     private static $measurementProtocolSecretNameTemplate;
 
     private static $propertyNameTemplate;
 
+    private static $propertyAccessBindingNameTemplate;
+
     private static $propertyUserLinkNameTemplate;
 
-    private static $userLinkNameTemplate;
+    private static $searchAds360LinkNameTemplate;
 
-    private static $webDataStreamNameTemplate;
+    private static $userLinkNameTemplate;
 
     private static $pathTemplateMap;
 
@@ -289,6 +321,15 @@ class AnalyticsAdminServiceGapicClient
         ];
     }
 
+    private static function getAccessBindingNameTemplate()
+    {
+        if (self::$accessBindingNameTemplate == null) {
+            self::$accessBindingNameTemplate = new PathTemplate('accounts/{account}/accessBindings/{access_binding}');
+        }
+
+        return self::$accessBindingNameTemplate;
+    }
+
     private static function getAccountNameTemplate()
     {
         if (self::$accountNameTemplate == null) {
@@ -296,6 +337,15 @@ class AnalyticsAdminServiceGapicClient
         }
 
         return self::$accountNameTemplate;
+    }
+
+    private static function getAccountAccessBindingNameTemplate()
+    {
+        if (self::$accountAccessBindingNameTemplate == null) {
+            self::$accountAccessBindingNameTemplate = new PathTemplate('accounts/{account}/accessBindings/{access_binding}');
+        }
+
+        return self::$accountAccessBindingNameTemplate;
     }
 
     private static function getAccountUserLinkNameTemplate()
@@ -307,13 +357,31 @@ class AnalyticsAdminServiceGapicClient
         return self::$accountUserLinkNameTemplate;
     }
 
-    private static function getAndroidAppDataStreamNameTemplate()
+    private static function getAttributionSettingsNameTemplate()
     {
-        if (self::$androidAppDataStreamNameTemplate == null) {
-            self::$androidAppDataStreamNameTemplate = new PathTemplate('properties/{property}/androidAppDataStreams/{android_app_data_stream}');
+        if (self::$attributionSettingsNameTemplate == null) {
+            self::$attributionSettingsNameTemplate = new PathTemplate('properties/{property}/attributionSettings');
         }
 
-        return self::$androidAppDataStreamNameTemplate;
+        return self::$attributionSettingsNameTemplate;
+    }
+
+    private static function getAudienceNameTemplate()
+    {
+        if (self::$audienceNameTemplate == null) {
+            self::$audienceNameTemplate = new PathTemplate('properties/{property}/audiences/{audience}');
+        }
+
+        return self::$audienceNameTemplate;
+    }
+
+    private static function getBigQueryLinkNameTemplate()
+    {
+        if (self::$bigQueryLinkNameTemplate == null) {
+            self::$bigQueryLinkNameTemplate = new PathTemplate('properties/{property}/bigQueryLinks/{bigquery_link}');
+        }
+
+        return self::$bigQueryLinkNameTemplate;
     }
 
     private static function getConversionEventNameTemplate()
@@ -328,7 +396,7 @@ class AnalyticsAdminServiceGapicClient
     private static function getCustomDimensionNameTemplate()
     {
         if (self::$customDimensionNameTemplate == null) {
-            self::$customDimensionNameTemplate = new PathTemplate('properties/{property}/customDimensions');
+            self::$customDimensionNameTemplate = new PathTemplate('properties/{property}/customDimensions/{custom_dimension}');
         }
 
         return self::$customDimensionNameTemplate;
@@ -337,7 +405,7 @@ class AnalyticsAdminServiceGapicClient
     private static function getCustomMetricNameTemplate()
     {
         if (self::$customMetricNameTemplate == null) {
-            self::$customMetricNameTemplate = new PathTemplate('properties/{property}/customMetrics');
+            self::$customMetricNameTemplate = new PathTemplate('properties/{property}/customMetrics/{custom_metric}');
         }
 
         return self::$customMetricNameTemplate;
@@ -388,6 +456,15 @@ class AnalyticsAdminServiceGapicClient
         return self::$displayVideo360AdvertiserLinkProposalNameTemplate;
     }
 
+    private static function getExpandedDataSetNameTemplate()
+    {
+        if (self::$expandedDataSetNameTemplate == null) {
+            self::$expandedDataSetNameTemplate = new PathTemplate('properties/{property}/expandedDataSets/{expanded_data_set}');
+        }
+
+        return self::$expandedDataSetNameTemplate;
+    }
+
     private static function getFirebaseLinkNameTemplate()
     {
         if (self::$firebaseLinkNameTemplate == null) {
@@ -400,7 +477,7 @@ class AnalyticsAdminServiceGapicClient
     private static function getGlobalSiteTagNameTemplate()
     {
         if (self::$globalSiteTagNameTemplate == null) {
-            self::$globalSiteTagNameTemplate = new PathTemplate('properties/{property}/globalSiteTag');
+            self::$globalSiteTagNameTemplate = new PathTemplate('properties/{property}/dataStreams/{data_stream}/globalSiteTag');
         }
 
         return self::$globalSiteTagNameTemplate;
@@ -424,19 +501,10 @@ class AnalyticsAdminServiceGapicClient
         return self::$googleSignalsSettingsNameTemplate;
     }
 
-    private static function getIosAppDataStreamNameTemplate()
-    {
-        if (self::$iosAppDataStreamNameTemplate == null) {
-            self::$iosAppDataStreamNameTemplate = new PathTemplate('properties/{property}/iosAppDataStreams/{ios_app_data_stream}');
-        }
-
-        return self::$iosAppDataStreamNameTemplate;
-    }
-
     private static function getMeasurementProtocolSecretNameTemplate()
     {
         if (self::$measurementProtocolSecretNameTemplate == null) {
-            self::$measurementProtocolSecretNameTemplate = new PathTemplate('properties/{property}/webDataStreams/{web_data_stream}/measurementProtocolSecrets/{measurement_protocol_secret}');
+            self::$measurementProtocolSecretNameTemplate = new PathTemplate('properties/{property}/dataStreams/{data_stream}/measurementProtocolSecrets/{measurement_protocol_secret}');
         }
 
         return self::$measurementProtocolSecretNameTemplate;
@@ -451,6 +519,15 @@ class AnalyticsAdminServiceGapicClient
         return self::$propertyNameTemplate;
     }
 
+    private static function getPropertyAccessBindingNameTemplate()
+    {
+        if (self::$propertyAccessBindingNameTemplate == null) {
+            self::$propertyAccessBindingNameTemplate = new PathTemplate('properties/{property}/accessBindings/{access_binding}');
+        }
+
+        return self::$propertyAccessBindingNameTemplate;
+    }
+
     private static function getPropertyUserLinkNameTemplate()
     {
         if (self::$propertyUserLinkNameTemplate == null) {
@@ -458,6 +535,15 @@ class AnalyticsAdminServiceGapicClient
         }
 
         return self::$propertyUserLinkNameTemplate;
+    }
+
+    private static function getSearchAds360LinkNameTemplate()
+    {
+        if (self::$searchAds360LinkNameTemplate == null) {
+            self::$searchAds360LinkNameTemplate = new PathTemplate('properties/{property}/searchAds360Links/{search_ads_360_link}');
+        }
+
+        return self::$searchAds360LinkNameTemplate;
     }
 
     private static function getUserLinkNameTemplate()
@@ -469,22 +555,17 @@ class AnalyticsAdminServiceGapicClient
         return self::$userLinkNameTemplate;
     }
 
-    private static function getWebDataStreamNameTemplate()
-    {
-        if (self::$webDataStreamNameTemplate == null) {
-            self::$webDataStreamNameTemplate = new PathTemplate('properties/{property}/webDataStreams/{web_data_stream}');
-        }
-
-        return self::$webDataStreamNameTemplate;
-    }
-
     private static function getPathTemplateMap()
     {
         if (self::$pathTemplateMap == null) {
             self::$pathTemplateMap = [
+                'accessBinding' => self::getAccessBindingNameTemplate(),
                 'account' => self::getAccountNameTemplate(),
+                'accountAccessBinding' => self::getAccountAccessBindingNameTemplate(),
                 'accountUserLink' => self::getAccountUserLinkNameTemplate(),
-                'androidAppDataStream' => self::getAndroidAppDataStreamNameTemplate(),
+                'attributionSettings' => self::getAttributionSettingsNameTemplate(),
+                'audience' => self::getAudienceNameTemplate(),
+                'bigQueryLink' => self::getBigQueryLinkNameTemplate(),
                 'conversionEvent' => self::getConversionEventNameTemplate(),
                 'customDimension' => self::getCustomDimensionNameTemplate(),
                 'customMetric' => self::getCustomMetricNameTemplate(),
@@ -493,20 +574,40 @@ class AnalyticsAdminServiceGapicClient
                 'dataStream' => self::getDataStreamNameTemplate(),
                 'displayVideo360AdvertiserLink' => self::getDisplayVideo360AdvertiserLinkNameTemplate(),
                 'displayVideo360AdvertiserLinkProposal' => self::getDisplayVideo360AdvertiserLinkProposalNameTemplate(),
+                'expandedDataSet' => self::getExpandedDataSetNameTemplate(),
                 'firebaseLink' => self::getFirebaseLinkNameTemplate(),
                 'globalSiteTag' => self::getGlobalSiteTagNameTemplate(),
                 'googleAdsLink' => self::getGoogleAdsLinkNameTemplate(),
                 'googleSignalsSettings' => self::getGoogleSignalsSettingsNameTemplate(),
-                'iosAppDataStream' => self::getIosAppDataStreamNameTemplate(),
                 'measurementProtocolSecret' => self::getMeasurementProtocolSecretNameTemplate(),
                 'property' => self::getPropertyNameTemplate(),
+                'propertyAccessBinding' => self::getPropertyAccessBindingNameTemplate(),
                 'propertyUserLink' => self::getPropertyUserLinkNameTemplate(),
+                'searchAds360Link' => self::getSearchAds360LinkNameTemplate(),
                 'userLink' => self::getUserLinkNameTemplate(),
-                'webDataStream' => self::getWebDataStreamNameTemplate(),
             ];
         }
 
         return self::$pathTemplateMap;
+    }
+
+    /**
+     * Formats a string containing the fully-qualified path to represent a
+     * access_binding resource.
+     *
+     * @param string $account
+     * @param string $accessBinding
+     *
+     * @return string The formatted access_binding resource.
+     *
+     * @experimental
+     */
+    public static function accessBindingName($account, $accessBinding)
+    {
+        return self::getAccessBindingNameTemplate()->render([
+            'account' => $account,
+            'access_binding' => $accessBinding,
+        ]);
     }
 
     /**
@@ -523,6 +624,25 @@ class AnalyticsAdminServiceGapicClient
     {
         return self::getAccountNameTemplate()->render([
             'account' => $account,
+        ]);
+    }
+
+    /**
+     * Formats a string containing the fully-qualified path to represent a
+     * account_access_binding resource.
+     *
+     * @param string $account
+     * @param string $accessBinding
+     *
+     * @return string The formatted account_access_binding resource.
+     *
+     * @experimental
+     */
+    public static function accountAccessBindingName($account, $accessBinding)
+    {
+        return self::getAccountAccessBindingNameTemplate()->render([
+            'account' => $account,
+            'access_binding' => $accessBinding,
         ]);
     }
 
@@ -547,20 +667,56 @@ class AnalyticsAdminServiceGapicClient
 
     /**
      * Formats a string containing the fully-qualified path to represent a
-     * android_app_data_stream resource.
+     * attribution_settings resource.
      *
      * @param string $property
-     * @param string $androidAppDataStream
      *
-     * @return string The formatted android_app_data_stream resource.
+     * @return string The formatted attribution_settings resource.
      *
      * @experimental
      */
-    public static function androidAppDataStreamName($property, $androidAppDataStream)
+    public static function attributionSettingsName($property)
     {
-        return self::getAndroidAppDataStreamNameTemplate()->render([
+        return self::getAttributionSettingsNameTemplate()->render([
             'property' => $property,
-            'android_app_data_stream' => $androidAppDataStream,
+        ]);
+    }
+
+    /**
+     * Formats a string containing the fully-qualified path to represent a audience
+     * resource.
+     *
+     * @param string $property
+     * @param string $audience
+     *
+     * @return string The formatted audience resource.
+     *
+     * @experimental
+     */
+    public static function audienceName($property, $audience)
+    {
+        return self::getAudienceNameTemplate()->render([
+            'property' => $property,
+            'audience' => $audience,
+        ]);
+    }
+
+    /**
+     * Formats a string containing the fully-qualified path to represent a
+     * big_query_link resource.
+     *
+     * @param string $property
+     * @param string $bigqueryLink
+     *
+     * @return string The formatted big_query_link resource.
+     *
+     * @experimental
+     */
+    public static function bigQueryLinkName($property, $bigqueryLink)
+    {
+        return self::getBigQueryLinkNameTemplate()->render([
+            'property' => $property,
+            'bigquery_link' => $bigqueryLink,
         ]);
     }
 
@@ -588,15 +744,17 @@ class AnalyticsAdminServiceGapicClient
      * custom_dimension resource.
      *
      * @param string $property
+     * @param string $customDimension
      *
      * @return string The formatted custom_dimension resource.
      *
      * @experimental
      */
-    public static function customDimensionName($property)
+    public static function customDimensionName($property, $customDimension)
     {
         return self::getCustomDimensionNameTemplate()->render([
             'property' => $property,
+            'custom_dimension' => $customDimension,
         ]);
     }
 
@@ -605,15 +763,17 @@ class AnalyticsAdminServiceGapicClient
      * custom_metric resource.
      *
      * @param string $property
+     * @param string $customMetric
      *
      * @return string The formatted custom_metric resource.
      *
      * @experimental
      */
-    public static function customMetricName($property)
+    public static function customMetricName($property, $customMetric)
     {
         return self::getCustomMetricNameTemplate()->render([
             'property' => $property,
+            'custom_metric' => $customMetric,
         ]);
     }
 
@@ -710,6 +870,25 @@ class AnalyticsAdminServiceGapicClient
 
     /**
      * Formats a string containing the fully-qualified path to represent a
+     * expanded_data_set resource.
+     *
+     * @param string $property
+     * @param string $expandedDataSet
+     *
+     * @return string The formatted expanded_data_set resource.
+     *
+     * @experimental
+     */
+    public static function expandedDataSetName($property, $expandedDataSet)
+    {
+        return self::getExpandedDataSetNameTemplate()->render([
+            'property' => $property,
+            'expanded_data_set' => $expandedDataSet,
+        ]);
+    }
+
+    /**
+     * Formats a string containing the fully-qualified path to represent a
      * firebase_link resource.
      *
      * @param string $property
@@ -732,15 +911,17 @@ class AnalyticsAdminServiceGapicClient
      * global_site_tag resource.
      *
      * @param string $property
+     * @param string $dataStream
      *
      * @return string The formatted global_site_tag resource.
      *
      * @experimental
      */
-    public static function globalSiteTagName($property)
+    public static function globalSiteTagName($property, $dataStream)
     {
         return self::getGlobalSiteTagNameTemplate()->render([
             'property' => $property,
+            'data_stream' => $dataStream,
         ]);
     }
 
@@ -782,40 +963,21 @@ class AnalyticsAdminServiceGapicClient
 
     /**
      * Formats a string containing the fully-qualified path to represent a
-     * ios_app_data_stream resource.
-     *
-     * @param string $property
-     * @param string $iosAppDataStream
-     *
-     * @return string The formatted ios_app_data_stream resource.
-     *
-     * @experimental
-     */
-    public static function iosAppDataStreamName($property, $iosAppDataStream)
-    {
-        return self::getIosAppDataStreamNameTemplate()->render([
-            'property' => $property,
-            'ios_app_data_stream' => $iosAppDataStream,
-        ]);
-    }
-
-    /**
-     * Formats a string containing the fully-qualified path to represent a
      * measurement_protocol_secret resource.
      *
      * @param string $property
-     * @param string $webDataStream
+     * @param string $dataStream
      * @param string $measurementProtocolSecret
      *
      * @return string The formatted measurement_protocol_secret resource.
      *
      * @experimental
      */
-    public static function measurementProtocolSecretName($property, $webDataStream, $measurementProtocolSecret)
+    public static function measurementProtocolSecretName($property, $dataStream, $measurementProtocolSecret)
     {
         return self::getMeasurementProtocolSecretNameTemplate()->render([
             'property' => $property,
-            'web_data_stream' => $webDataStream,
+            'data_stream' => $dataStream,
             'measurement_protocol_secret' => $measurementProtocolSecret,
         ]);
     }
@@ -839,6 +1001,25 @@ class AnalyticsAdminServiceGapicClient
 
     /**
      * Formats a string containing the fully-qualified path to represent a
+     * property_access_binding resource.
+     *
+     * @param string $property
+     * @param string $accessBinding
+     *
+     * @return string The formatted property_access_binding resource.
+     *
+     * @experimental
+     */
+    public static function propertyAccessBindingName($property, $accessBinding)
+    {
+        return self::getPropertyAccessBindingNameTemplate()->render([
+            'property' => $property,
+            'access_binding' => $accessBinding,
+        ]);
+    }
+
+    /**
+     * Formats a string containing the fully-qualified path to represent a
      * property_user_link resource.
      *
      * @param string $property
@@ -853,6 +1034,25 @@ class AnalyticsAdminServiceGapicClient
         return self::getPropertyUserLinkNameTemplate()->render([
             'property' => $property,
             'user_link' => $userLink,
+        ]);
+    }
+
+    /**
+     * Formats a string containing the fully-qualified path to represent a
+     * search_ads360_link resource.
+     *
+     * @param string $property
+     * @param string $searchAds360Link
+     *
+     * @return string The formatted search_ads360_link resource.
+     *
+     * @experimental
+     */
+    public static function searchAds360LinkName($property, $searchAds360Link)
+    {
+        return self::getSearchAds360LinkNameTemplate()->render([
+            'property' => $property,
+            'search_ads_360_link' => $searchAds360Link,
         ]);
     }
 
@@ -876,49 +1076,35 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Formats a string containing the fully-qualified path to represent a
-     * web_data_stream resource.
-     *
-     * @param string $property
-     * @param string $webDataStream
-     *
-     * @return string The formatted web_data_stream resource.
-     *
-     * @experimental
-     */
-    public static function webDataStreamName($property, $webDataStream)
-    {
-        return self::getWebDataStreamNameTemplate()->render([
-            'property' => $property,
-            'web_data_stream' => $webDataStream,
-        ]);
-    }
-
-    /**
      * Parses a formatted name string and returns an associative array of the components in the name.
      * The following name formats are supported:
      * Template: Pattern
+     * - accessBinding: accounts/{account}/accessBindings/{access_binding}
      * - account: accounts/{account}
+     * - accountAccessBinding: accounts/{account}/accessBindings/{access_binding}
      * - accountUserLink: accounts/{account}/userLinks/{user_link}
-     * - androidAppDataStream: properties/{property}/androidAppDataStreams/{android_app_data_stream}
+     * - attributionSettings: properties/{property}/attributionSettings
+     * - audience: properties/{property}/audiences/{audience}
+     * - bigQueryLink: properties/{property}/bigQueryLinks/{bigquery_link}
      * - conversionEvent: properties/{property}/conversionEvents/{conversion_event}
-     * - customDimension: properties/{property}/customDimensions
-     * - customMetric: properties/{property}/customMetrics
+     * - customDimension: properties/{property}/customDimensions/{custom_dimension}
+     * - customMetric: properties/{property}/customMetrics/{custom_metric}
      * - dataRetentionSettings: properties/{property}/dataRetentionSettings
      * - dataSharingSettings: accounts/{account}/dataSharingSettings
      * - dataStream: properties/{property}/dataStreams/{data_stream}
      * - displayVideo360AdvertiserLink: properties/{property}/displayVideo360AdvertiserLinks/{display_video_360_advertiser_link}
      * - displayVideo360AdvertiserLinkProposal: properties/{property}/displayVideo360AdvertiserLinkProposals/{display_video_360_advertiser_link_proposal}
+     * - expandedDataSet: properties/{property}/expandedDataSets/{expanded_data_set}
      * - firebaseLink: properties/{property}/firebaseLinks/{firebase_link}
-     * - globalSiteTag: properties/{property}/globalSiteTag
+     * - globalSiteTag: properties/{property}/dataStreams/{data_stream}/globalSiteTag
      * - googleAdsLink: properties/{property}/googleAdsLinks/{google_ads_link}
      * - googleSignalsSettings: properties/{property}/googleSignalsSettings
-     * - iosAppDataStream: properties/{property}/iosAppDataStreams/{ios_app_data_stream}
-     * - measurementProtocolSecret: properties/{property}/webDataStreams/{web_data_stream}/measurementProtocolSecrets/{measurement_protocol_secret}
+     * - measurementProtocolSecret: properties/{property}/dataStreams/{data_stream}/measurementProtocolSecrets/{measurement_protocol_secret}
      * - property: properties/{property}
+     * - propertyAccessBinding: properties/{property}/accessBindings/{access_binding}
      * - propertyUserLink: properties/{property}/userLinks/{user_link}
+     * - searchAds360Link: properties/{property}/searchAds360Links/{search_ads_360_link}
      * - userLink: accounts/{account}/userLinks/{user_link}
-     * - webDataStream: properties/{property}/webDataStreams/{web_data_stream}
      *
      * The optional $template argument can be supplied to specify a particular pattern,
      * and must match one of the templates listed above. If no $template argument is
@@ -963,9 +1149,6 @@ class AnalyticsAdminServiceGapicClient
      * @param array $options {
      *     Optional. Options for configuring the service API wrapper.
      *
-     *     @type string $serviceAddress
-     *           **Deprecated**. This option will be removed in a future major release. Please
-     *           utilize the `$apiEndpoint` option instead.
      *     @type string $apiEndpoint
      *           The address of the API remote host. May optionally include the port, formatted
      *           as "<uri>:<port>". Default 'analyticsadmin.googleapis.com:443'.
@@ -995,7 +1178,7 @@ class AnalyticsAdminServiceGapicClient
      *           *Advanced usage*: Additionally, it is possible to pass in an already
      *           instantiated {@see \Google\ApiCore\Transport\TransportInterface} object. Note
      *           that when this object is provided, any settings in $transportConfig, and any
-     *           $serviceAddress setting, will be ignored.
+     *           $apiEndpoint setting, will be ignored.
      *     @type array $transportConfig
      *           Configuration options that will be used to construct the transport. Options for
      *           each supported transport type should be passed in a key for that transport. For
@@ -1026,7 +1209,8 @@ class AnalyticsAdminServiceGapicClient
      * Acknowledges the terms of user data collection for the specified property.
      *
      * This acknowledgement must be completed (either in the Google Analytics UI
-     * or via this API) before MeasurementProtocolSecret resources may be created.
+     * or through this API) before MeasurementProtocolSecret resources may be
+     * created.
      *
      * Sample code:
      * ```
@@ -1041,8 +1225,8 @@ class AnalyticsAdminServiceGapicClient
      * ```
      *
      * @param string $property        Required. The property for which to acknowledge user data collection.
-     * @param string $acknowledgement Required. An acknowledgement that the caller of this method understands the terms
-     *                                of user data collection.
+     * @param string $acknowledgement Required. An acknowledgement that the caller of this method understands the
+     *                                terms of user data collection.
      *
      *                                This field must contain the exact value:
      *                                "I acknowledge that I have the necessary privacy disclosures and rights
@@ -1053,10 +1237,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\AcknowledgeUserDataCollectionResponse
@@ -1099,10 +1282,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\ApproveDisplayVideo360AdvertiserLinkProposalResponse
@@ -1123,13 +1305,52 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
+     * Archives an Audience on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedName = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
+     *     $analyticsAdminServiceClient->archiveAudience($formattedName);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $name         Required. Example format: properties/1234/audiences/5678
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function archiveAudience($name, array $optionalArgs = [])
+    {
+        $request = new ArchiveAudienceRequest();
+        $requestParamHeaders = [];
+        $request->setName($name);
+        $requestParamHeaders['name'] = $name;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('ArchiveAudience', GPBEmpty::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
      * Archives a CustomDimension on a property.
      *
      * Sample code:
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->customDimensionName('[PROPERTY]');
+     *     $formattedName = $analyticsAdminServiceClient->customDimensionName('[PROPERTY]', '[CUSTOM_DIMENSION]');
      *     $analyticsAdminServiceClient->archiveCustomDimension($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
@@ -1142,10 +1363,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -1170,7 +1390,7 @@ class AnalyticsAdminServiceGapicClient
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->customMetricName('[PROPERTY]');
+     *     $formattedName = $analyticsAdminServiceClient->customMetricName('[PROPERTY]', '[CUSTOM_METRIC]');
      *     $analyticsAdminServiceClient->archiveCustomMetric($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
@@ -1183,10 +1403,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -1252,10 +1471,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -1284,6 +1502,59 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
+     * Creates information about multiple access bindings to an account or
+     * property.
+     *
+     * This method is transactional. If any AccessBinding cannot be created, none
+     * of the AccessBindings will be created.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->accountName('[ACCOUNT]');
+     *     $requests = [];
+     *     $response = $analyticsAdminServiceClient->batchCreateAccessBindings($formattedParent, $requests);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string                       $parent       Required. The account or property that owns the access bindings. The parent
+     *                                                   field in the CreateAccessBindingRequest messages must either be empty or
+     *                                                   match this field. Formats:
+     *                                                   - accounts/{account}
+     *                                                   - properties/{property}
+     * @param CreateAccessBindingRequest[] $requests     Required. The requests specifying the access bindings to create.
+     *                                                   A maximum of 1000 access bindings can be created in a batch.
+     * @param array                        $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\BatchCreateAccessBindingsResponse
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function batchCreateAccessBindings($parent, $requests, array $optionalArgs = [])
+    {
+        $request = new BatchCreateAccessBindingsRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $request->setRequests($requests);
+        $requestParamHeaders['parent'] = $parent;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('BatchCreateAccessBindings', BatchCreateAccessBindingsResponse::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
      * Creates information about multiple users' links to an account or property.
      *
      * This method is transactional. If any UserLink cannot be created, none of
@@ -1301,8 +1572,8 @@ class AnalyticsAdminServiceGapicClient
      * }
      * ```
      *
-     * @param string                  $parent       Required. The account or property that all user links in the request are for.
-     *                                              This field is required. The parent field in the CreateUserLinkRequest
+     * @param string                  $parent       Required. The account or property that all user links in the request are
+     *                                              for. This field is required. The parent field in the CreateUserLinkRequest
      *                                              messages must either be empty or match this field.
      *                                              Example format: accounts/1234
      * @param CreateUserLinkRequest[] $requests     Required. The requests specifying the user links to create.
@@ -1311,14 +1582,13 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type bool $notifyNewUsers
-     *           Optional. If set, then email the new users notifying them that they've been granted
-     *           permissions to the resource. Regardless of whether this is set or not,
-     *           notify_new_user field inside each individual request is ignored.
+     *           Optional. If set, then email the new users notifying them that they've been
+     *           granted permissions to the resource. Regardless of whether this is set or
+     *           not, notify_new_user field inside each individual request is ignored.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\BatchCreateUserLinksResponse
@@ -1352,6 +1622,53 @@ class AnalyticsAdminServiceGapicClient
      * try {
      *     $formattedParent = $analyticsAdminServiceClient->accountName('[ACCOUNT]');
      *     $requests = [];
+     *     $analyticsAdminServiceClient->batchDeleteAccessBindings($formattedParent, $requests);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string                       $parent       Required. The account or property that owns the access bindings. The parent
+     *                                                   field in the DeleteAccessBindingRequest messages must either be empty or
+     *                                                   match this field. Formats:
+     *                                                   - accounts/{account}
+     *                                                   - properties/{property}
+     * @param DeleteAccessBindingRequest[] $requests     Required. The requests specifying the access bindings to delete.
+     *                                                   A maximum of 1000 access bindings can be deleted in a batch.
+     * @param array                        $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function batchDeleteAccessBindings($parent, $requests, array $optionalArgs = [])
+    {
+        $request = new BatchDeleteAccessBindingsRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $request->setRequests($requests);
+        $requestParamHeaders['parent'] = $parent;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('BatchDeleteAccessBindings', GPBEmpty::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Deletes information about multiple users' links to an account or property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->accountName('[ACCOUNT]');
+     *     $requests = [];
      *     $analyticsAdminServiceClient->batchDeleteUserLinks($formattedParent, $requests);
      * } finally {
      *     $analyticsAdminServiceClient->close();
@@ -1368,10 +1685,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -1388,6 +1704,60 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('BatchDeleteUserLinks', GPBEmpty::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Gets information about multiple access bindings to an account or property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->accountName('[ACCOUNT]');
+     *     $formattedNames = [
+     *         $analyticsAdminServiceClient->accessBindingName('[ACCOUNT]', '[ACCESS_BINDING]'),
+     *     ];
+     *     $response = $analyticsAdminServiceClient->batchGetAccessBindings($formattedParent, $formattedNames);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string   $parent       Required. The account or property that owns the access bindings. The parent
+     *                               of all provided values for the 'names' field must match this field.
+     *                               Formats:
+     *                               - accounts/{account}
+     *                               - properties/{property}
+     * @param string[] $names        Required. The names of the access bindings to retrieve.
+     *                               A maximum of 1000 access bindings can be retrieved in a batch.
+     *                               Formats:
+     *                               - accounts/{account}/accessBindings/{accessBinding}
+     *                               - properties/{property}/accessBindings/{accessBinding}
+     * @param array    $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\BatchGetAccessBindingsResponse
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function batchGetAccessBindings($parent, $names, array $optionalArgs = [])
+    {
+        $request = new BatchGetAccessBindingsRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $request->setNames($names);
+        $requestParamHeaders['parent'] = $parent;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('BatchGetAccessBindings', BatchGetAccessBindingsResponse::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -1418,10 +1788,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\BatchGetUserLinksResponse
@@ -1440,6 +1809,56 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('BatchGetUserLinks', BatchGetUserLinksResponse::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Updates information about multiple access bindings to an account or
+     * property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->accountName('[ACCOUNT]');
+     *     $requests = [];
+     *     $response = $analyticsAdminServiceClient->batchUpdateAccessBindings($formattedParent, $requests);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string                       $parent       Required. The account or property that owns the access bindings. The parent
+     *                                                   field in the UpdateAccessBindingRequest messages must either be empty or
+     *                                                   match this field. Formats:
+     *                                                   - accounts/{account}
+     *                                                   - properties/{property}
+     * @param UpdateAccessBindingRequest[] $requests     Required. The requests specifying the access bindings to update.
+     *                                                   A maximum of 1000 access bindings can be updated in a batch.
+     * @param array                        $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\BatchUpdateAccessBindingsResponse
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function batchUpdateAccessBindings($parent, $requests, array $optionalArgs = [])
+    {
+        $request = new BatchUpdateAccessBindingsRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $request->setRequests($requests);
+        $requestParamHeaders['parent'] = $parent;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('BatchUpdateAccessBindings', BatchUpdateAccessBindingsResponse::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -1467,10 +1886,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\BatchUpdateUserLinksResponse
@@ -1515,10 +1933,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DisplayVideo360AdvertiserLinkProposal
@@ -1539,6 +1956,96 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
+     * Creates an access binding on an account or property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->accountName('[ACCOUNT]');
+     *     $accessBinding = new AccessBinding();
+     *     $response = $analyticsAdminServiceClient->createAccessBinding($formattedParent, $accessBinding);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string        $parent        Required. Formats:
+     *                                     - accounts/{account}
+     *                                     - properties/{property}
+     * @param AccessBinding $accessBinding Required. The access binding to create.
+     * @param array         $optionalArgs  {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\AccessBinding
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function createAccessBinding($parent, $accessBinding, array $optionalArgs = [])
+    {
+        $request = new CreateAccessBindingRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $request->setAccessBinding($accessBinding);
+        $requestParamHeaders['parent'] = $parent;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('CreateAccessBinding', AccessBinding::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Creates an Audience.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
+     *     $audience = new Audience();
+     *     $response = $analyticsAdminServiceClient->createAudience($formattedParent, $audience);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string   $parent       Required. Example format: properties/1234
+     * @param Audience $audience     Required. The audience to create.
+     * @param array    $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\Audience
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function createAudience($parent, $audience, array $optionalArgs = [])
+    {
+        $request = new CreateAudienceRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $request->setAudience($audience);
+        $requestParamHeaders['parent'] = $parent;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('CreateAudience', Audience::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
      * Creates a conversion event with the specified attributes.
      *
      * Sample code:
@@ -1554,16 +2061,15 @@ class AnalyticsAdminServiceGapicClient
      * ```
      *
      * @param ConversionEvent $conversionEvent Required. The conversion event to create.
-     * @param string          $parent          Required. The resource name of the parent property where this conversion event will
-     *                                         be created. Format: properties/123
+     * @param string          $parent          Required. The resource name of the parent property where this conversion
+     *                                         event will be created. Format: properties/123
      * @param array           $optionalArgs    {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\ConversionEvent
@@ -1605,10 +2111,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\CustomDimension
@@ -1650,10 +2155,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\CustomMetric
@@ -1695,10 +2199,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DataStream
@@ -1744,10 +2247,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DisplayVideo360AdvertiserLink
@@ -1789,10 +2291,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DisplayVideo360AdvertiserLinkProposal
@@ -1811,6 +2312,50 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('CreateDisplayVideo360AdvertiserLinkProposal', DisplayVideo360AdvertiserLinkProposal::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Creates a ExpandedDataSet.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
+     *     $expandedDataSet = new ExpandedDataSet();
+     *     $response = $analyticsAdminServiceClient->createExpandedDataSet($formattedParent, $expandedDataSet);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string          $parent          Required. Example format: properties/1234
+     * @param ExpandedDataSet $expandedDataSet Required. The ExpandedDataSet to create.
+     * @param array           $optionalArgs    {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\ExpandedDataSet
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function createExpandedDataSet($parent, $expandedDataSet, array $optionalArgs = [])
+    {
+        $request = new CreateExpandedDataSetRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $request->setExpandedDataSet($expandedDataSet);
+        $requestParamHeaders['parent'] = $parent;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('CreateExpandedDataSet', ExpandedDataSet::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -1837,10 +2382,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\FirebaseLink
@@ -1882,10 +2426,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\GoogleAdsLink
@@ -1913,7 +2456,7 @@ class AnalyticsAdminServiceGapicClient
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedParent = $analyticsAdminServiceClient->webDataStreamName('[PROPERTY]', '[WEB_DATA_STREAM]');
+     *     $formattedParent = $analyticsAdminServiceClient->dataStreamName('[PROPERTY]', '[DATA_STREAM]');
      *     $measurementProtocolSecret = new MeasurementProtocolSecret();
      *     $response = $analyticsAdminServiceClient->createMeasurementProtocolSecret($formattedParent, $measurementProtocolSecret);
      * } finally {
@@ -1922,18 +2465,15 @@ class AnalyticsAdminServiceGapicClient
      * ```
      *
      * @param string                    $parent                    Required. The parent resource where this secret will be created.
-     *                                                             Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
-     *                                                             may be a parent.
-     *                                                             Format: properties/{property}/webDataStreams/{webDataStream}
+     *                                                             Format: properties/{property}/dataStreams/{dataStream}
      * @param MeasurementProtocolSecret $measurementProtocolSecret Required. The measurement protocol secret to create.
      * @param array                     $optionalArgs              {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\MeasurementProtocolSecret
@@ -1974,10 +2514,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\Property
@@ -1991,6 +2530,50 @@ class AnalyticsAdminServiceGapicClient
         $request = new CreatePropertyRequest();
         $request->setProperty($property);
         return $this->startCall('CreateProperty', Property::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Creates a SearchAds360Link.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
+     *     $searchAds360Link = new SearchAds360Link();
+     *     $response = $analyticsAdminServiceClient->createSearchAds360Link($formattedParent, $searchAds360Link);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string           $parent           Required. Example format: properties/1234
+     * @param SearchAds360Link $searchAds360Link Required. The SearchAds360Link to create.
+     * @param array            $optionalArgs     {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\SearchAds360Link
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function createSearchAds360Link($parent, $searchAds360Link, array $optionalArgs = [])
+    {
+        $request = new CreateSearchAds360LinkRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $request->setSearchAds360Link($searchAds360Link);
+        $requestParamHeaders['parent'] = $parent;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('CreateSearchAds360Link', SearchAds360Link::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -2018,13 +2601,12 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type bool $notifyNewUser
-     *           Optional. If set, then email the new user notifying them that they've been granted
-     *           permissions to the resource.
+     *           Optional. If set, then email the new user notifying them that they've been
+     *           granted permissions to the resource.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\UserLink
@@ -2050,49 +2632,44 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Creates a web stream with the specified location and attributes.
+     * Deletes an access binding on an account or property.
      *
      * Sample code:
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $webDataStream = new WebDataStream();
-     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
-     *     $response = $analyticsAdminServiceClient->createWebDataStream($webDataStream, $formattedParent);
+     *     $formattedName = $analyticsAdminServiceClient->accessBindingName('[ACCOUNT]', '[ACCESS_BINDING]');
+     *     $analyticsAdminServiceClient->deleteAccessBinding($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
      * }
      * ```
      *
-     * @param WebDataStream $webDataStream Required. The web stream to create.
-     * @param string        $parent        Required. The parent resource where this web data stream will be created.
-     *                                     Format: properties/123
-     * @param array         $optionalArgs  {
+     * @param string $name         Required. Formats:
+     *                             - accounts/{account}/accessBindings/{accessBinding}
+     *                             - properties/{property}/accessBindings/{accessBinding}
+     * @param array  $optionalArgs {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
-     *
-     * @return \Google\Analytics\Admin\V1alpha\WebDataStream
      *
      * @throws ApiException if the remote call fails
      *
      * @experimental
      */
-    public function createWebDataStream($webDataStream, $parent, array $optionalArgs = [])
+    public function deleteAccessBinding($name, array $optionalArgs = [])
     {
-        $request = new CreateWebDataStreamRequest();
+        $request = new DeleteAccessBindingRequest();
         $requestParamHeaders = [];
-        $request->setWebDataStream($webDataStream);
-        $request->setParent($parent);
-        $requestParamHeaders['parent'] = $parent;
+        $request->setName($name);
+        $requestParamHeaders['name'] = $name;
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('CreateWebDataStream', WebDataStream::class, $optionalArgs, $request)->wait();
+        return $this->startCall('DeleteAccessBinding', GPBEmpty::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -2126,10 +2703,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2145,48 +2721,6 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('DeleteAccount', GPBEmpty::class, $optionalArgs, $request)->wait();
-    }
-
-    /**
-     * Deletes an android app stream on a property.
-     *
-     * Sample code:
-     * ```
-     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
-     * try {
-     *     $formattedName = $analyticsAdminServiceClient->androidAppDataStreamName('[PROPERTY]', '[ANDROID_APP_DATA_STREAM]');
-     *     $analyticsAdminServiceClient->deleteAndroidAppDataStream($formattedName);
-     * } finally {
-     *     $analyticsAdminServiceClient->close();
-     * }
-     * ```
-     *
-     * @param string $name         Required. The name of the android app data stream to delete.
-     *                             Format: properties/{property_id}/androidAppDataStreams/{stream_id}
-     *                             Example: "properties/123/androidAppDataStreams/456"
-     * @param array  $optionalArgs {
-     *     Optional.
-     *
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
-     * }
-     *
-     * @throws ApiException if the remote call fails
-     *
-     * @experimental
-     */
-    public function deleteAndroidAppDataStream($name, array $optionalArgs = [])
-    {
-        $request = new DeleteAndroidAppDataStreamRequest();
-        $requestParamHeaders = [];
-        $request->setName($name);
-        $requestParamHeaders['name'] = $name;
-        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
-        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('DeleteAndroidAppDataStream', GPBEmpty::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -2210,10 +2744,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2251,10 +2784,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2292,10 +2824,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2334,10 +2865,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2353,6 +2883,45 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('DeleteDisplayVideo360AdvertiserLinkProposal', GPBEmpty::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Deletes a ExpandedDataSet on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedName = $analyticsAdminServiceClient->expandedDataSetName('[PROPERTY]', '[EXPANDED_DATA_SET]');
+     *     $analyticsAdminServiceClient->deleteExpandedDataSet($formattedName);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $name         Required. Example format: properties/1234/expandedDataSets/5678
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function deleteExpandedDataSet($name, array $optionalArgs = [])
+    {
+        $request = new DeleteExpandedDataSetRequest();
+        $requestParamHeaders = [];
+        $request->setName($name);
+        $requestParamHeaders['name'] = $name;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('DeleteExpandedDataSet', GPBEmpty::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -2375,10 +2944,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2415,10 +2983,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2437,55 +3004,13 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Deletes an iOS app stream on a property.
-     *
-     * Sample code:
-     * ```
-     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
-     * try {
-     *     $formattedName = $analyticsAdminServiceClient->iosAppDataStreamName('[PROPERTY]', '[IOS_APP_DATA_STREAM]');
-     *     $analyticsAdminServiceClient->deleteIosAppDataStream($formattedName);
-     * } finally {
-     *     $analyticsAdminServiceClient->close();
-     * }
-     * ```
-     *
-     * @param string $name         Required. The name of the iOS app data stream to delete.
-     *                             Format: properties/{property_id}/iosAppDataStreams/{stream_id}
-     *                             Example: "properties/123/iosAppDataStreams/456"
-     * @param array  $optionalArgs {
-     *     Optional.
-     *
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
-     * }
-     *
-     * @throws ApiException if the remote call fails
-     *
-     * @experimental
-     */
-    public function deleteIosAppDataStream($name, array $optionalArgs = [])
-    {
-        $request = new DeleteIosAppDataStreamRequest();
-        $requestParamHeaders = [];
-        $request->setName($name);
-        $requestParamHeaders['name'] = $name;
-        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
-        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('DeleteIosAppDataStream', GPBEmpty::class, $optionalArgs, $request)->wait();
-    }
-
-    /**
      * Deletes target MeasurementProtocolSecret.
      *
      * Sample code:
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->measurementProtocolSecretName('[PROPERTY]', '[WEB_DATA_STREAM]', '[MEASUREMENT_PROTOCOL_SECRET]');
+     *     $formattedName = $analyticsAdminServiceClient->measurementProtocolSecretName('[PROPERTY]', '[DATA_STREAM]', '[MEASUREMENT_PROTOCOL_SECRET]');
      *     $analyticsAdminServiceClient->deleteMeasurementProtocolSecret($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
@@ -2494,17 +3019,14 @@ class AnalyticsAdminServiceGapicClient
      *
      * @param string $name         Required. The name of the MeasurementProtocolSecret to delete.
      *                             Format:
-     *                             properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-     *                             Note: Any type of stream (WebDataStream, IosAppDataStream,
-     *                             AndroidAppDataStream) may be a parent.
+     *                             properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
      * @param array  $optionalArgs {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2533,7 +3055,7 @@ class AnalyticsAdminServiceGapicClient
      * will be permanently purged.
      * https://support.google.com/analytics/answer/6154772
      *
-     * Returns an error if the target is not found, or is not an GA4 Property.
+     * Returns an error if the target is not found, or is not a GA4 Property.
      *
      * Sample code:
      * ```
@@ -2553,10 +3075,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\Property
@@ -2574,6 +3095,46 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('DeleteProperty', Property::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Deletes a SearchAds360Link on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedName = $analyticsAdminServiceClient->searchAds360LinkName('[PROPERTY]', '[SEARCH_ADS_360_LINK]');
+     *     $analyticsAdminServiceClient->deleteSearchAds360Link($formattedName);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $name         Required. The name of the SearchAds360Link to delete.
+     *                             Example format: properties/1234/SearchAds360Links/5678
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function deleteSearchAds360Link($name, array $optionalArgs = [])
+    {
+        $request = new DeleteSearchAds360LinkRequest();
+        $requestParamHeaders = [];
+        $request->setName($name);
+        $requestParamHeaders['name'] = $name;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('DeleteSearchAds360Link', GPBEmpty::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -2595,10 +3156,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @throws ApiException if the remote call fails
@@ -2617,45 +3177,89 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Deletes a web stream on a property.
+     * Fetches the opt out status for the automated GA4 setup process for a UA
+     * property.
+     * Note: this has no effect on GA4 property.
      *
      * Sample code:
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->webDataStreamName('[PROPERTY]', '[WEB_DATA_STREAM]');
-     *     $analyticsAdminServiceClient->deleteWebDataStream($formattedName);
+     *     $property = 'property';
+     *     $response = $analyticsAdminServiceClient->fetchAutomatedGa4ConfigurationOptOut($property);
      * } finally {
      *     $analyticsAdminServiceClient->close();
      * }
      * ```
      *
-     * @param string $name         Required. The name of the web data stream to delete.
-     *                             Format: properties/{property_id}/webDataStreams/{stream_id}
-     *                             Example: "properties/123/webDataStreams/456"
+     * @param string $property     Required. The UA property to get the opt out status. Note this request uses
+     *                             the internal property ID, not the tracking ID of the form UA-XXXXXX-YY.
+     *                             Format: properties/{internalWebPropertyId}
+     *                             Example: properties/1234
      * @param array  $optionalArgs {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\FetchAutomatedGa4ConfigurationOptOutResponse
      *
      * @throws ApiException if the remote call fails
      *
      * @experimental
      */
-    public function deleteWebDataStream($name, array $optionalArgs = [])
+    public function fetchAutomatedGa4ConfigurationOptOut($property, array $optionalArgs = [])
     {
-        $request = new DeleteWebDataStreamRequest();
+        $request = new FetchAutomatedGa4ConfigurationOptOutRequest();
+        $request->setProperty($property);
+        return $this->startCall('FetchAutomatedGa4ConfigurationOptOut', FetchAutomatedGa4ConfigurationOptOutResponse::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Gets information about an access binding.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedName = $analyticsAdminServiceClient->accessBindingName('[ACCOUNT]', '[ACCESS_BINDING]');
+     *     $response = $analyticsAdminServiceClient->getAccessBinding($formattedName);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $name         Required. The name of the access binding to retrieve.
+     *                             Formats:
+     *                             - accounts/{account}/accessBindings/{accessBinding}
+     *                             - properties/{property}/accessBindings/{accessBinding}
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\AccessBinding
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function getAccessBinding($name, array $optionalArgs = [])
+    {
+        $request = new GetAccessBindingRequest();
         $requestParamHeaders = [];
         $request->setName($name);
         $requestParamHeaders['name'] = $name;
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('DeleteWebDataStream', GPBEmpty::class, $optionalArgs, $request)->wait();
+        return $this->startCall('GetAccessBinding', AccessBinding::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -2679,10 +3283,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\Account
@@ -2703,47 +3306,132 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Lookup for a single AndroidAppDataStream
+     * Lookup for a AttributionSettings singleton.
      *
      * Sample code:
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->androidAppDataStreamName('[PROPERTY]', '[ANDROID_APP_DATA_STREAM]');
-     *     $response = $analyticsAdminServiceClient->getAndroidAppDataStream($formattedName);
+     *     $formattedName = $analyticsAdminServiceClient->attributionSettingsName('[PROPERTY]');
+     *     $response = $analyticsAdminServiceClient->getAttributionSettings($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
      * }
      * ```
      *
-     * @param string $name         Required. The name of the android app data stream to lookup.
-     *                             Format: properties/{property_id}/androidAppDataStreams/{stream_id}
-     *                             Example: "properties/123/androidAppDataStreams/456"
+     * @param string $name         Required. The name of the attribution settings to retrieve.
+     *                             Format: properties/{property}/attributionSettings
      * @param array  $optionalArgs {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
-     * @return \Google\Analytics\Admin\V1alpha\AndroidAppDataStream
+     * @return \Google\Analytics\Admin\V1alpha\AttributionSettings
      *
      * @throws ApiException if the remote call fails
      *
      * @experimental
      */
-    public function getAndroidAppDataStream($name, array $optionalArgs = [])
+    public function getAttributionSettings($name, array $optionalArgs = [])
     {
-        $request = new GetAndroidAppDataStreamRequest();
+        $request = new GetAttributionSettingsRequest();
         $requestParamHeaders = [];
         $request->setName($name);
         $requestParamHeaders['name'] = $name;
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('GetAndroidAppDataStream', AndroidAppDataStream::class, $optionalArgs, $request)->wait();
+        return $this->startCall('GetAttributionSettings', AttributionSettings::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Lookup for a single Audience.
+     * Audiences created before 2020 may not be supported.
+     * Default audiences will not show filter definitions.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedName = $analyticsAdminServiceClient->audienceName('[PROPERTY]', '[AUDIENCE]');
+     *     $response = $analyticsAdminServiceClient->getAudience($formattedName);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $name         Required. The name of the Audience to get.
+     *                             Example format: properties/1234/audiences/5678
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\Audience
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function getAudience($name, array $optionalArgs = [])
+    {
+        $request = new GetAudienceRequest();
+        $requestParamHeaders = [];
+        $request->setName($name);
+        $requestParamHeaders['name'] = $name;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('GetAudience', Audience::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Lookup for a single BigQuery Link.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedName = $analyticsAdminServiceClient->bigQueryLinkName('[PROPERTY]', '[BIGQUERY_LINK]');
+     *     $response = $analyticsAdminServiceClient->getBigQueryLink($formattedName);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $name         Required. The name of the BigQuery link to lookup.
+     *                             Format: properties/{property_id}/bigQueryLinks/{bigquery_link_id}
+     *                             Example: properties/123/bigQueryLinks/456
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\BigQueryLink
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function getBigQueryLink($name, array $optionalArgs = [])
+    {
+        $request = new GetBigQueryLinkRequest();
+        $requestParamHeaders = [];
+        $request->setName($name);
+        $requestParamHeaders['name'] = $name;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('GetBigQueryLink', BigQueryLink::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -2767,10 +3455,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\ConversionEvent
@@ -2797,7 +3484,7 @@ class AnalyticsAdminServiceGapicClient
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->customDimensionName('[PROPERTY]');
+     *     $formattedName = $analyticsAdminServiceClient->customDimensionName('[PROPERTY]', '[CUSTOM_DIMENSION]');
      *     $response = $analyticsAdminServiceClient->getCustomDimension($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
@@ -2810,10 +3497,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\CustomDimension
@@ -2840,7 +3526,7 @@ class AnalyticsAdminServiceGapicClient
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->customMetricName('[PROPERTY]');
+     *     $formattedName = $analyticsAdminServiceClient->customMetricName('[PROPERTY]', '[CUSTOM_METRIC]');
      *     $response = $analyticsAdminServiceClient->getCustomMetric($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
@@ -2853,10 +3539,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\CustomMetric
@@ -2898,10 +3583,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DataRetentionSettings
@@ -2943,10 +3627,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DataSharingSettings
@@ -2986,10 +3669,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DataStream
@@ -3029,10 +3711,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DisplayVideo360AdvertiserLink
@@ -3072,10 +3753,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DisplayVideo360AdvertiserLinkProposal
@@ -3096,6 +3776,48 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
+     * Lookup for a single ExpandedDataSet.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedName = $analyticsAdminServiceClient->expandedDataSetName('[PROPERTY]', '[EXPANDED_DATA_SET]');
+     *     $response = $analyticsAdminServiceClient->getExpandedDataSet($formattedName);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $name         Required. The name of the Audience to get.
+     *                             Example format: properties/1234/expandedDataSets/5678
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\ExpandedDataSet
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function getExpandedDataSet($name, array $optionalArgs = [])
+    {
+        $request = new GetExpandedDataSetRequest();
+        $requestParamHeaders = [];
+        $request->setName($name);
+        $requestParamHeaders['name'] = $name;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('GetExpandedDataSet', ExpandedDataSet::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
      * Returns the Site Tag for the specified web stream.
      * Site Tags are immutable singletons.
      *
@@ -3103,7 +3825,7 @@ class AnalyticsAdminServiceGapicClient
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->globalSiteTagName('[PROPERTY]');
+     *     $formattedName = $analyticsAdminServiceClient->globalSiteTagName('[PROPERTY]', '[DATA_STREAM]');
      *     $response = $analyticsAdminServiceClient->getGlobalSiteTag($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
@@ -3112,16 +3834,15 @@ class AnalyticsAdminServiceGapicClient
      *
      * @param string $name         Required. The name of the site tag to lookup.
      *                             Note that site tags are singletons and do not have unique IDs.
-     *                             Format: properties/{property_id}/webDataStreams/{stream_id}/globalSiteTag
-     *                             Example: "properties/123/webDataStreams/456/globalSiteTag"
+     *                             Format: properties/{property_id}/dataStreams/{stream_id}/globalSiteTag
+     *                             Example: "properties/123/dataStreams/456/globalSiteTag"
      * @param array  $optionalArgs {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\GlobalSiteTag
@@ -3161,10 +3882,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\GoogleSignalsSettings
@@ -3185,57 +3905,13 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Lookup for a single IosAppDataStream
-     *
-     * Sample code:
-     * ```
-     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
-     * try {
-     *     $formattedName = $analyticsAdminServiceClient->iosAppDataStreamName('[PROPERTY]', '[IOS_APP_DATA_STREAM]');
-     *     $response = $analyticsAdminServiceClient->getIosAppDataStream($formattedName);
-     * } finally {
-     *     $analyticsAdminServiceClient->close();
-     * }
-     * ```
-     *
-     * @param string $name         Required. The name of the iOS app data stream to lookup.
-     *                             Format: properties/{property_id}/iosAppDataStreams/{stream_id}
-     *                             Example: "properties/123/iosAppDataStreams/456"
-     * @param array  $optionalArgs {
-     *     Optional.
-     *
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
-     * }
-     *
-     * @return \Google\Analytics\Admin\V1alpha\IosAppDataStream
-     *
-     * @throws ApiException if the remote call fails
-     *
-     * @experimental
-     */
-    public function getIosAppDataStream($name, array $optionalArgs = [])
-    {
-        $request = new GetIosAppDataStreamRequest();
-        $requestParamHeaders = [];
-        $request->setName($name);
-        $requestParamHeaders['name'] = $name;
-        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
-        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('GetIosAppDataStream', IosAppDataStream::class, $optionalArgs, $request)->wait();
-    }
-
-    /**
      * Lookup for a single "GA4" MeasurementProtocolSecret.
      *
      * Sample code:
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->measurementProtocolSecretName('[PROPERTY]', '[WEB_DATA_STREAM]', '[MEASUREMENT_PROTOCOL_SECRET]');
+     *     $formattedName = $analyticsAdminServiceClient->measurementProtocolSecretName('[PROPERTY]', '[DATA_STREAM]', '[MEASUREMENT_PROTOCOL_SECRET]');
      *     $response = $analyticsAdminServiceClient->getMeasurementProtocolSecret($formattedName);
      * } finally {
      *     $analyticsAdminServiceClient->close();
@@ -3244,17 +3920,14 @@ class AnalyticsAdminServiceGapicClient
      *
      * @param string $name         Required. The name of the measurement protocol secret to lookup.
      *                             Format:
-     *                             properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
-     *                             Note: Any type of stream (WebDataStream, IosAppDataStream,
-     *                             AndroidAppDataStream) may be a parent.
+     *                             properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret}
      * @param array  $optionalArgs {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\MeasurementProtocolSecret
@@ -3295,10 +3968,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\Property
@@ -3316,6 +3988,48 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('GetProperty', Property::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Look up a single SearchAds360Link
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedName = $analyticsAdminServiceClient->searchAds360LinkName('[PROPERTY]', '[SEARCH_ADS_360_LINK]');
+     *     $response = $analyticsAdminServiceClient->getSearchAds360Link($formattedName);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $name         Required. The name of the SearchAds360Link to get.
+     *                             Example format: properties/1234/SearchAds360Link/5678
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\SearchAds360Link
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function getSearchAds360Link($name, array $optionalArgs = [])
+    {
+        $request = new GetSearchAds360LinkRequest();
+        $requestParamHeaders = [];
+        $request->setName($name);
+        $requestParamHeaders['name'] = $name;
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('GetSearchAds360Link', SearchAds360Link::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -3337,10 +4051,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\UserLink
@@ -3361,47 +4074,75 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Lookup for a single WebDataStream
+     * Lists all access bindings on an account or property.
      *
      * Sample code:
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedName = $analyticsAdminServiceClient->webDataStreamName('[PROPERTY]', '[WEB_DATA_STREAM]');
-     *     $response = $analyticsAdminServiceClient->getWebDataStream($formattedName);
+     *     $formattedParent = $analyticsAdminServiceClient->accountName('[ACCOUNT]');
+     *     // Iterate over pages of elements
+     *     $pagedResponse = $analyticsAdminServiceClient->listAccessBindings($formattedParent);
+     *     foreach ($pagedResponse->iteratePages() as $page) {
+     *         foreach ($page as $element) {
+     *             // doSomethingWith($element);
+     *         }
+     *     }
+     *     // Alternatively:
+     *     // Iterate through all elements
+     *     $pagedResponse = $analyticsAdminServiceClient->listAccessBindings($formattedParent);
+     *     foreach ($pagedResponse->iterateAllElements() as $element) {
+     *         // doSomethingWith($element);
+     *     }
      * } finally {
      *     $analyticsAdminServiceClient->close();
      * }
      * ```
      *
-     * @param string $name         Required. The name of the web data stream to lookup.
-     *                             Format: properties/{property_id}/webDataStreams/{stream_id}
-     *                             Example: "properties/123/webDataStreams/456"
+     * @param string $parent       Required. Formats:
+     *                             - accounts/{account}
+     *                             - properties/{property}
      * @param array  $optionalArgs {
      *     Optional.
      *
+     *     @type int $pageSize
+     *           The maximum number of resources contained in the underlying API
+     *           response. The API may return fewer values in a page, even if
+     *           there are additional values to be retrieved.
+     *     @type string $pageToken
+     *           A page token is used to specify a page of values to be returned.
+     *           If no page token is specified (the default), the first page
+     *           of values will be returned. Any page token used here must have
+     *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
-     * @return \Google\Analytics\Admin\V1alpha\WebDataStream
+     * @return \Google\ApiCore\PagedListResponse
      *
      * @throws ApiException if the remote call fails
      *
      * @experimental
      */
-    public function getWebDataStream($name, array $optionalArgs = [])
+    public function listAccessBindings($parent, array $optionalArgs = [])
     {
-        $request = new GetWebDataStreamRequest();
+        $request = new ListAccessBindingsRequest();
         $requestParamHeaders = [];
-        $request->setName($name);
-        $requestParamHeaders['name'] = $name;
+        $request->setParent($parent);
+        $requestParamHeaders['parent'] = $parent;
+        if (isset($optionalArgs['pageSize'])) {
+            $request->setPageSize($optionalArgs['pageSize']);
+        }
+
+        if (isset($optionalArgs['pageToken'])) {
+            $request->setPageToken($optionalArgs['pageToken']);
+        }
+
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('GetWebDataStream', WebDataStream::class, $optionalArgs, $request)->wait();
+        return $this->getPagedListResponse('ListAccessBindings', $optionalArgs, ListAccessBindingsResponse::class, $request);
     }
 
     /**
@@ -3442,10 +4183,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -3514,10 +4254,9 @@ class AnalyticsAdminServiceGapicClient
      *           results. Accounts can be inspected to determine whether they are deleted or
      *           not.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -3545,10 +4284,9 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Returns child android app streams under the specified parent property.
-     *
-     * Android app streams will be excluded if the caller does not have access.
-     * Returns an empty list if no relevant android app streams are found.
+     * Lists Audiences on a property.
+     * Audiences created before 2020 may not be supported.
+     * Default audiences will not show filter definitions.
      *
      * Sample code:
      * ```
@@ -3556,7 +4294,7 @@ class AnalyticsAdminServiceGapicClient
      * try {
      *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
      *     // Iterate over pages of elements
-     *     $pagedResponse = $analyticsAdminServiceClient->listAndroidAppDataStreams($formattedParent);
+     *     $pagedResponse = $analyticsAdminServiceClient->listAudiences($formattedParent);
      *     foreach ($pagedResponse->iteratePages() as $page) {
      *         foreach ($page as $element) {
      *             // doSomethingWith($element);
@@ -3564,7 +4302,7 @@ class AnalyticsAdminServiceGapicClient
      *     }
      *     // Alternatively:
      *     // Iterate through all elements
-     *     $pagedResponse = $analyticsAdminServiceClient->listAndroidAppDataStreams($formattedParent);
+     *     $pagedResponse = $analyticsAdminServiceClient->listAudiences($formattedParent);
      *     foreach ($pagedResponse->iterateAllElements() as $element) {
      *         // doSomethingWith($element);
      *     }
@@ -3573,9 +4311,7 @@ class AnalyticsAdminServiceGapicClient
      * }
      * ```
      *
-     * @param string $parent       Required. The name of the parent property.
-     *                             For example, to limit results to app streams under the property with Id
-     *                             123: "properties/123"
+     * @param string $parent       Required. Example format: properties/1234
      * @param array  $optionalArgs {
      *     Optional.
      *
@@ -3589,10 +4325,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -3601,9 +4336,9 @@ class AnalyticsAdminServiceGapicClient
      *
      * @experimental
      */
-    public function listAndroidAppDataStreams($parent, array $optionalArgs = [])
+    public function listAudiences($parent, array $optionalArgs = [])
     {
-        $request = new ListAndroidAppDataStreamsRequest();
+        $request = new ListAudiencesRequest();
         $requestParamHeaders = [];
         $request->setParent($parent);
         $requestParamHeaders['parent'] = $parent;
@@ -3617,7 +4352,79 @@ class AnalyticsAdminServiceGapicClient
 
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->getPagedListResponse('ListAndroidAppDataStreams', $optionalArgs, ListAndroidAppDataStreamsResponse::class, $request);
+        return $this->getPagedListResponse('ListAudiences', $optionalArgs, ListAudiencesResponse::class, $request);
+    }
+
+    /**
+     * Lists BigQuery Links on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
+     *     // Iterate over pages of elements
+     *     $pagedResponse = $analyticsAdminServiceClient->listBigQueryLinks($formattedParent);
+     *     foreach ($pagedResponse->iteratePages() as $page) {
+     *         foreach ($page as $element) {
+     *             // doSomethingWith($element);
+     *         }
+     *     }
+     *     // Alternatively:
+     *     // Iterate through all elements
+     *     $pagedResponse = $analyticsAdminServiceClient->listBigQueryLinks($formattedParent);
+     *     foreach ($pagedResponse->iterateAllElements() as $element) {
+     *         // doSomethingWith($element);
+     *     }
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $parent       Required. The name of the property to list BigQuery links under.
+     *                             Format: properties/{property_id}
+     *                             Example: properties/1234
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type int $pageSize
+     *           The maximum number of resources contained in the underlying API
+     *           response. The API may return fewer values in a page, even if
+     *           there are additional values to be retrieved.
+     *     @type string $pageToken
+     *           A page token is used to specify a page of values to be returned.
+     *           If no page token is specified (the default), the first page
+     *           of values will be returned. Any page token used here must have
+     *           been generated by a previous call to the API.
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\ApiCore\PagedListResponse
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function listBigQueryLinks($parent, array $optionalArgs = [])
+    {
+        $request = new ListBigQueryLinksRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $requestParamHeaders['parent'] = $parent;
+        if (isset($optionalArgs['pageSize'])) {
+            $request->setPageSize($optionalArgs['pageSize']);
+        }
+
+        if (isset($optionalArgs['pageToken'])) {
+            $request->setPageToken($optionalArgs['pageToken']);
+        }
+
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->getPagedListResponse('ListBigQueryLinks', $optionalArgs, ListBigQueryLinksResponse::class, $request);
     }
 
     /**
@@ -3663,10 +4470,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -3734,10 +4540,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -3805,10 +4610,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -3876,10 +4680,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -3947,10 +4750,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -4018,10 +4820,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -4047,6 +4848,76 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->getPagedListResponse('ListDisplayVideo360AdvertiserLinks', $optionalArgs, ListDisplayVideo360AdvertiserLinksResponse::class, $request);
+    }
+
+    /**
+     * Lists ExpandedDataSets on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
+     *     // Iterate over pages of elements
+     *     $pagedResponse = $analyticsAdminServiceClient->listExpandedDataSets($formattedParent);
+     *     foreach ($pagedResponse->iteratePages() as $page) {
+     *         foreach ($page as $element) {
+     *             // doSomethingWith($element);
+     *         }
+     *     }
+     *     // Alternatively:
+     *     // Iterate through all elements
+     *     $pagedResponse = $analyticsAdminServiceClient->listExpandedDataSets($formattedParent);
+     *     foreach ($pagedResponse->iterateAllElements() as $element) {
+     *         // doSomethingWith($element);
+     *     }
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $parent       Required. Example format: properties/1234
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type int $pageSize
+     *           The maximum number of resources contained in the underlying API
+     *           response. The API may return fewer values in a page, even if
+     *           there are additional values to be retrieved.
+     *     @type string $pageToken
+     *           A page token is used to specify a page of values to be returned.
+     *           If no page token is specified (the default), the first page
+     *           of values will be returned. Any page token used here must have
+     *           been generated by a previous call to the API.
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\ApiCore\PagedListResponse
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function listExpandedDataSets($parent, array $optionalArgs = [])
+    {
+        $request = new ListExpandedDataSetsRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $requestParamHeaders['parent'] = $parent;
+        if (isset($optionalArgs['pageSize'])) {
+            $request->setPageSize($optionalArgs['pageSize']);
+        }
+
+        if (isset($optionalArgs['pageToken'])) {
+            $request->setPageToken($optionalArgs['pageToken']);
+        }
+
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->getPagedListResponse('ListExpandedDataSets', $optionalArgs, ListExpandedDataSetsResponse::class, $request);
     }
 
     /**
@@ -4091,10 +4962,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -4162,10 +5032,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -4194,82 +5063,6 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Returns child iOS app data streams under the specified parent property.
-     *
-     * iOS app data streams will be excluded if the caller does not have access.
-     * Returns an empty list if no relevant iOS app data streams are found.
-     *
-     * Sample code:
-     * ```
-     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
-     * try {
-     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
-     *     // Iterate over pages of elements
-     *     $pagedResponse = $analyticsAdminServiceClient->listIosAppDataStreams($formattedParent);
-     *     foreach ($pagedResponse->iteratePages() as $page) {
-     *         foreach ($page as $element) {
-     *             // doSomethingWith($element);
-     *         }
-     *     }
-     *     // Alternatively:
-     *     // Iterate through all elements
-     *     $pagedResponse = $analyticsAdminServiceClient->listIosAppDataStreams($formattedParent);
-     *     foreach ($pagedResponse->iterateAllElements() as $element) {
-     *         // doSomethingWith($element);
-     *     }
-     * } finally {
-     *     $analyticsAdminServiceClient->close();
-     * }
-     * ```
-     *
-     * @param string $parent       Required. The name of the parent property.
-     *                             For example, to list results of app streams under the property with Id
-     *                             123: "properties/123"
-     * @param array  $optionalArgs {
-     *     Optional.
-     *
-     *     @type int $pageSize
-     *           The maximum number of resources contained in the underlying API
-     *           response. The API may return fewer values in a page, even if
-     *           there are additional values to be retrieved.
-     *     @type string $pageToken
-     *           A page token is used to specify a page of values to be returned.
-     *           If no page token is specified (the default), the first page
-     *           of values will be returned. Any page token used here must have
-     *           been generated by a previous call to the API.
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
-     * }
-     *
-     * @return \Google\ApiCore\PagedListResponse
-     *
-     * @throws ApiException if the remote call fails
-     *
-     * @experimental
-     */
-    public function listIosAppDataStreams($parent, array $optionalArgs = [])
-    {
-        $request = new ListIosAppDataStreamsRequest();
-        $requestParamHeaders = [];
-        $request->setParent($parent);
-        $requestParamHeaders['parent'] = $parent;
-        if (isset($optionalArgs['pageSize'])) {
-            $request->setPageSize($optionalArgs['pageSize']);
-        }
-
-        if (isset($optionalArgs['pageToken'])) {
-            $request->setPageToken($optionalArgs['pageToken']);
-        }
-
-        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
-        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->getPagedListResponse('ListIosAppDataStreams', $optionalArgs, ListIosAppDataStreamsResponse::class, $request);
-    }
-
-    /**
      * Returns child MeasurementProtocolSecrets under the specified parent
      * Property.
      *
@@ -4277,7 +5070,7 @@ class AnalyticsAdminServiceGapicClient
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $formattedParent = $analyticsAdminServiceClient->webDataStreamName('[PROPERTY]', '[WEB_DATA_STREAM]');
+     *     $formattedParent = $analyticsAdminServiceClient->dataStreamName('[PROPERTY]', '[DATA_STREAM]');
      *     // Iterate over pages of elements
      *     $pagedResponse = $analyticsAdminServiceClient->listMeasurementProtocolSecrets($formattedParent);
      *     foreach ($pagedResponse->iteratePages() as $page) {
@@ -4297,10 +5090,8 @@ class AnalyticsAdminServiceGapicClient
      * ```
      *
      * @param string $parent       Required. The resource name of the parent stream.
-     *                             Any type of stream (WebDataStream, IosAppDataStream, AndroidAppDataStream)
-     *                             may be a parent.
      *                             Format:
-     *                             properties/{property}/webDataStreams/{webDataStream}/measurementProtocolSecrets
+     *                             properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets
      * @param array  $optionalArgs {
      *     Optional.
      *
@@ -4314,10 +5105,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -4378,14 +5168,17 @@ class AnalyticsAdminServiceGapicClient
      *
      * @param string $filter       Required. An expression for filtering the results of the request.
      *                             Fields eligible for filtering are:
-     *                             `parent:`(The resource name of the parent account) or
+     *                             `parent:`(The resource name of the parent account/property) or
+     *                             `ancestor:`(The resource name of the parent account) or
      *                             `firebase_project:`(The id or number of the linked firebase project).
      *                             Some examples of filters:
      *
      *                             ```
      *                             | Filter                      | Description                               |
      *                             |-----------------------------|-------------------------------------------|
-     *                             | parent:accounts/123         | The account with account id: 123.         |
+     *                             | parent:accounts/123         | The account with account id: 123.       |
+     *                             | parent:properties/123       | The property with property id: 123.       |
+     *                             | ancestor:accounts/123       | The account with account id: 123.         |
      *                             | firebase_project:project-id | The firebase project with id: project-id. |
      *                             | firebase_project:123        | The firebase project with number: 123.    |
      *                             ```
@@ -4406,10 +5199,9 @@ class AnalyticsAdminServiceGapicClient
      *           results. Properties can be inspected to determine whether they are deleted
      *           or not.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -4435,6 +5227,76 @@ class AnalyticsAdminServiceGapicClient
         }
 
         return $this->getPagedListResponse('ListProperties', $optionalArgs, ListPropertiesResponse::class, $request);
+    }
+
+    /**
+     * Lists all SearchAds360Links on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
+     *     // Iterate over pages of elements
+     *     $pagedResponse = $analyticsAdminServiceClient->listSearchAds360Links($formattedParent);
+     *     foreach ($pagedResponse->iteratePages() as $page) {
+     *         foreach ($page as $element) {
+     *             // doSomethingWith($element);
+     *         }
+     *     }
+     *     // Alternatively:
+     *     // Iterate through all elements
+     *     $pagedResponse = $analyticsAdminServiceClient->listSearchAds360Links($formattedParent);
+     *     foreach ($pagedResponse->iterateAllElements() as $element) {
+     *         // doSomethingWith($element);
+     *     }
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $parent       Required. Example format: properties/1234
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type int $pageSize
+     *           The maximum number of resources contained in the underlying API
+     *           response. The API may return fewer values in a page, even if
+     *           there are additional values to be retrieved.
+     *     @type string $pageToken
+     *           A page token is used to specify a page of values to be returned.
+     *           If no page token is specified (the default), the first page
+     *           of values will be returned. Any page token used here must have
+     *           been generated by a previous call to the API.
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\ApiCore\PagedListResponse
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function listSearchAds360Links($parent, array $optionalArgs = [])
+    {
+        $request = new ListSearchAds360LinksRequest();
+        $requestParamHeaders = [];
+        $request->setParent($parent);
+        $requestParamHeaders['parent'] = $parent;
+        if (isset($optionalArgs['pageSize'])) {
+            $request->setPageSize($optionalArgs['pageSize']);
+        }
+
+        if (isset($optionalArgs['pageToken'])) {
+            $request->setPageToken($optionalArgs['pageToken']);
+        }
+
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->getPagedListResponse('ListSearchAds360Links', $optionalArgs, ListSearchAds360LinksResponse::class, $request);
     }
 
     /**
@@ -4477,10 +5339,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -4509,82 +5370,6 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Returns child web data streams under the specified parent property.
-     *
-     * Web data streams will be excluded if the caller does not have access.
-     * Returns an empty list if no relevant web data streams are found.
-     *
-     * Sample code:
-     * ```
-     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
-     * try {
-     *     $formattedParent = $analyticsAdminServiceClient->propertyName('[PROPERTY]');
-     *     // Iterate over pages of elements
-     *     $pagedResponse = $analyticsAdminServiceClient->listWebDataStreams($formattedParent);
-     *     foreach ($pagedResponse->iteratePages() as $page) {
-     *         foreach ($page as $element) {
-     *             // doSomethingWith($element);
-     *         }
-     *     }
-     *     // Alternatively:
-     *     // Iterate through all elements
-     *     $pagedResponse = $analyticsAdminServiceClient->listWebDataStreams($formattedParent);
-     *     foreach ($pagedResponse->iterateAllElements() as $element) {
-     *         // doSomethingWith($element);
-     *     }
-     * } finally {
-     *     $analyticsAdminServiceClient->close();
-     * }
-     * ```
-     *
-     * @param string $parent       Required. The name of the parent property.
-     *                             For example, to list results of web streams under the property with Id
-     *                             123: "properties/123"
-     * @param array  $optionalArgs {
-     *     Optional.
-     *
-     *     @type int $pageSize
-     *           The maximum number of resources contained in the underlying API
-     *           response. The API may return fewer values in a page, even if
-     *           there are additional values to be retrieved.
-     *     @type string $pageToken
-     *           A page token is used to specify a page of values to be returned.
-     *           If no page token is specified (the default), the first page
-     *           of values will be returned. Any page token used here must have
-     *           been generated by a previous call to the API.
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
-     * }
-     *
-     * @return \Google\ApiCore\PagedListResponse
-     *
-     * @throws ApiException if the remote call fails
-     *
-     * @experimental
-     */
-    public function listWebDataStreams($parent, array $optionalArgs = [])
-    {
-        $request = new ListWebDataStreamsRequest();
-        $requestParamHeaders = [];
-        $request->setParent($parent);
-        $requestParamHeaders['parent'] = $parent;
-        if (isset($optionalArgs['pageSize'])) {
-            $request->setPageSize($optionalArgs['pageSize']);
-        }
-
-        if (isset($optionalArgs['pageToken'])) {
-            $request->setPageToken($optionalArgs['pageToken']);
-        }
-
-        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
-        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->getPagedListResponse('ListWebDataStreams', $optionalArgs, ListWebDataStreamsResponse::class, $request);
-    }
-
-    /**
      * Requests a ticket for creating an account.
      *
      * Sample code:
@@ -4604,12 +5389,11 @@ class AnalyticsAdminServiceGapicClient
      *           The account to create.
      *     @type string $redirectUri
      *           Redirect URI where the user will be sent after accepting Terms of Service.
-     *           Must be configured in Developers Console as a Redirect URI
+     *           Must be configured in Developers Console as a Redirect URI.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\ProvisionAccountTicketResponse
@@ -4630,6 +5414,160 @@ class AnalyticsAdminServiceGapicClient
         }
 
         return $this->startCall('ProvisionAccountTicket', ProvisionAccountTicketResponse::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Returns a customized report of data access records. The report provides
+     * records of each time a user reads Google Analytics reporting data. Access
+     * records are retained for up to 2 years.
+     *
+     * Data Access Reports can be requested for a property. The property must be
+     * in Google Analytics 360. This method is only available to Administrators.
+     *
+     * These data access records include GA4 UI Reporting, GA4 UI Explorations,
+     * GA4 Data API, and other products like Firebase & Admob that can retrieve
+     * data from Google Analytics through a linkage. These records don't include
+     * property configuration changes like adding a stream or changing a
+     * property's time zone. For configuration change history, see
+     * [searchChangeHistoryEvents](https://developers.google.com/analytics/devguides/config/admin/v1/rest/v1alpha/accounts/searchChangeHistoryEvents).
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $response = $analyticsAdminServiceClient->runAccessReport();
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param array $optionalArgs {
+     *     Optional.
+     *
+     *     @type string $entity
+     *           The Data Access Report is requested for this property.
+     *           For example if "123" is your GA4 property ID, then entity should be
+     *           "properties/123".
+     *     @type AccessDimension[] $dimensions
+     *           The dimensions requested and displayed in the response. Requests are
+     *           allowed up to 9 dimensions.
+     *     @type AccessMetric[] $metrics
+     *           The metrics requested and displayed in the response. Requests are allowed
+     *           up to 10 metrics.
+     *     @type AccessDateRange[] $dateRanges
+     *           Date ranges of access records to read. If multiple date ranges are
+     *           requested, each response row will contain a zero based date range index. If
+     *           two date ranges overlap, the access records for the overlapping days is
+     *           included in the response rows for both date ranges. Requests are allowed up
+     *           to 2 date ranges.
+     *     @type AccessFilterExpression $dimensionFilter
+     *           Dimension filters let you restrict report response to specific
+     *           dimension values which match the filter. For example, filtering on access
+     *           records of a single user. To learn more, see [Fundamentals of Dimension
+     *           Filters](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#dimension_filters)
+     *           for examples. Metrics cannot be used in this filter.
+     *     @type AccessFilterExpression $metricFilter
+     *           Metric filters allow you to restrict report response to specific metric
+     *           values which match the filter. Metric filters are applied after aggregating
+     *           the report's rows, similar to SQL having-clause. Dimensions cannot be used
+     *           in this filter.
+     *     @type int $offset
+     *           The row count of the start row. The first row is counted as row 0. If
+     *           offset is unspecified, it is treated as 0. If offset is zero, then this
+     *           method will return the first page of results with `limit` entries.
+     *
+     *           To learn more about this pagination parameter, see
+     *           [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+     *     @type int $limit
+     *           The number of rows to return. If unspecified, 10,000 rows are returned. The
+     *           API returns a maximum of 100,000 rows per request, no matter how many you
+     *           ask for. `limit` must be positive.
+     *
+     *           The API may return fewer rows than the requested `limit`, if there aren't
+     *           as many remaining rows as the `limit`. For instance, there are fewer than
+     *           300 possible values for the dimension `country`, so when reporting on only
+     *           `country`, you can't get more than 300 rows, even if you set `limit` to a
+     *           higher value.
+     *
+     *           To learn more about this pagination parameter, see
+     *           [Pagination](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#pagination).
+     *     @type string $timeZone
+     *           This request's time zone if specified. If unspecified, the property's time
+     *           zone is used. The request's time zone is used to interpret the start & end
+     *           dates of the report.
+     *
+     *           Formatted as strings from the IANA Time Zone database
+     *           (https://www.iana.org/time-zones); for example "America/New_York" or
+     *           "Asia/Tokyo".
+     *     @type AccessOrderBy[] $orderBys
+     *           Specifies how rows are ordered in the response.
+     *     @type bool $returnEntityQuota
+     *           Toggles whether to return the current state of this Analytics Property's
+     *           quota. Quota is returned in [AccessQuota](#AccessQuota).
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\RunAccessReportResponse
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function runAccessReport(array $optionalArgs = [])
+    {
+        $request = new RunAccessReportRequest();
+        $requestParamHeaders = [];
+        if (isset($optionalArgs['entity'])) {
+            $request->setEntity($optionalArgs['entity']);
+            $requestParamHeaders['entity'] = $optionalArgs['entity'];
+        }
+
+        if (isset($optionalArgs['dimensions'])) {
+            $request->setDimensions($optionalArgs['dimensions']);
+        }
+
+        if (isset($optionalArgs['metrics'])) {
+            $request->setMetrics($optionalArgs['metrics']);
+        }
+
+        if (isset($optionalArgs['dateRanges'])) {
+            $request->setDateRanges($optionalArgs['dateRanges']);
+        }
+
+        if (isset($optionalArgs['dimensionFilter'])) {
+            $request->setDimensionFilter($optionalArgs['dimensionFilter']);
+        }
+
+        if (isset($optionalArgs['metricFilter'])) {
+            $request->setMetricFilter($optionalArgs['metricFilter']);
+        }
+
+        if (isset($optionalArgs['offset'])) {
+            $request->setOffset($optionalArgs['offset']);
+        }
+
+        if (isset($optionalArgs['limit'])) {
+            $request->setLimit($optionalArgs['limit']);
+        }
+
+        if (isset($optionalArgs['timeZone'])) {
+            $request->setTimeZone($optionalArgs['timeZone']);
+        }
+
+        if (isset($optionalArgs['orderBys'])) {
+            $request->setOrderBys($optionalArgs['orderBys']);
+        }
+
+        if (isset($optionalArgs['returnEntityQuota'])) {
+            $request->setReturnEntityQuota($optionalArgs['returnEntityQuota']);
+        }
+
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('RunAccessReport', RunAccessReportResponse::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -4659,7 +5597,8 @@ class AnalyticsAdminServiceGapicClient
      * }
      * ```
      *
-     * @param string $account      Required. The account resource for which to return change history resources.
+     * @param string $account      Required. The account resource for which to return change history
+     *                             resources.
      * @param array  $optionalArgs {
      *     Optional.
      *
@@ -4667,15 +5606,16 @@ class AnalyticsAdminServiceGapicClient
      *           Optional. Resource name for a child property. If set, only return changes
      *           made to this property or its child resources.
      *     @type int[] $resourceType
-     *           Optional. If set, only return changes if they are for a resource that matches at
-     *           least one of these types.
+     *           Optional. If set, only return changes if they are for a resource that
+     *           matches at least one of these types.
      *           For allowed values, use constants defined on {@see \Google\Analytics\Admin\V1alpha\ChangeHistoryResourceType}
      *     @type int[] $action
-     *           Optional. If set, only return changes that match one or more of these types of
-     *           actions.
+     *           Optional. If set, only return changes that match one or more of these types
+     *           of actions.
      *           For allowed values, use constants defined on {@see \Google\Analytics\Admin\V1alpha\ActionType}
      *     @type string[] $actorEmail
-     *           Optional. If set, only return changes if they are made by a user in this list.
+     *           Optional. If set, only return changes if they are made by a user in this
+     *           list.
      *     @type Timestamp $earliestChangeTime
      *           Optional. If set, only return changes made after this time (inclusive).
      *     @type Timestamp $latestChangeTime
@@ -4690,10 +5630,9 @@ class AnalyticsAdminServiceGapicClient
      *           of values will be returned. Any page token used here must have
      *           been generated by a previous call to the API.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\ApiCore\PagedListResponse
@@ -4746,6 +5685,95 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
+     * Sets the opt out status for the automated GA4 setup process for a UA
+     * property.
+     * Note: this has no effect on GA4 property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $property = 'property';
+     *     $response = $analyticsAdminServiceClient->setAutomatedGa4ConfigurationOptOut($property);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param string $property     Required. The UA property to set the opt out status. Note this request uses
+     *                             the internal property ID, not the tracking ID of the form UA-XXXXXX-YY.
+     *                             Format: properties/{internalWebPropertyId}
+     *                             Example: properties/1234
+     * @param array  $optionalArgs {
+     *     Optional.
+     *
+     *     @type bool $optOut
+     *           The status to set.
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\SetAutomatedGa4ConfigurationOptOutResponse
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function setAutomatedGa4ConfigurationOptOut($property, array $optionalArgs = [])
+    {
+        $request = new SetAutomatedGa4ConfigurationOptOutRequest();
+        $request->setProperty($property);
+        if (isset($optionalArgs['optOut'])) {
+            $request->setOptOut($optionalArgs['optOut']);
+        }
+
+        return $this->startCall('SetAutomatedGa4ConfigurationOptOut', SetAutomatedGa4ConfigurationOptOutResponse::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Updates an access binding on an account or property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $accessBinding = new AccessBinding();
+     *     $response = $analyticsAdminServiceClient->updateAccessBinding($accessBinding);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param AccessBinding $accessBinding Required. The access binding to update.
+     * @param array         $optionalArgs  {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\AccessBinding
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function updateAccessBinding($accessBinding, array $optionalArgs = [])
+    {
+        $request = new UpdateAccessBindingRequest();
+        $requestParamHeaders = [];
+        $request->setAccessBinding($accessBinding);
+        $requestParamHeaders['access_binding.name'] = $accessBinding->getName();
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('UpdateAccessBinding', AccessBinding::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
      * Updates an account.
      *
      * Sample code:
@@ -4762,17 +5790,17 @@ class AnalyticsAdminServiceGapicClient
      *
      * @param Account   $account      Required. The account to update.
      *                                The account's `name` field is used to identify the account.
-     * @param FieldMask $updateMask   Required. The list of fields to be updated. Field names must be in snake case
-     *                                (e.g., "field_to_update"). Omitted fields will not be updated. To replace
-     *                                the entire entity, use one path with the string "*" to match all fields.
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Field names must be in snake
+     *                                case (for example, "field_to_update"). Omitted fields will not be updated.
+     *                                To replace the entire entity, use one path with the string "*" to match all
+     *                                fields.
      * @param array     $optionalArgs {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\Account
@@ -4794,51 +5822,99 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
-     * Updates an android app stream on a property.
+     * Updates attribution settings on a property.
      *
      * Sample code:
      * ```
      * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
      * try {
-     *     $androidAppDataStream = new AndroidAppDataStream();
+     *     $attributionSettings = new AttributionSettings();
      *     $updateMask = new FieldMask();
-     *     $response = $analyticsAdminServiceClient->updateAndroidAppDataStream($androidAppDataStream, $updateMask);
+     *     $response = $analyticsAdminServiceClient->updateAttributionSettings($attributionSettings, $updateMask);
      * } finally {
      *     $analyticsAdminServiceClient->close();
      * }
      * ```
      *
-     * @param AndroidAppDataStream $androidAppDataStream Required. The android app stream to update.
-     *                                                   The `name` field is used to identify the android app stream to be updated.
-     * @param FieldMask            $updateMask           Required. The list of fields to be updated. Field names must be in snake case
-     *                                                   (e.g., "field_to_update"). Omitted fields will not be updated. To replace
-     *                                                   the entire entity, use one path with the string "*" to match all fields.
-     * @param array                $optionalArgs         {
+     * @param AttributionSettings $attributionSettings Required. The attribution settings to update.
+     *                                                 The `name` field is used to identify the settings to be updated.
+     * @param FieldMask           $updateMask          Required. The list of fields to be updated. Field names must be in snake
+     *                                                 case (e.g., "field_to_update"). Omitted fields will not be updated. To
+     *                                                 replace the entire entity, use one path with the string "*" to match all
+     *                                                 fields.
+     * @param array               $optionalArgs        {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
-     * @return \Google\Analytics\Admin\V1alpha\AndroidAppDataStream
+     * @return \Google\Analytics\Admin\V1alpha\AttributionSettings
      *
      * @throws ApiException if the remote call fails
      *
      * @experimental
      */
-    public function updateAndroidAppDataStream($androidAppDataStream, $updateMask, array $optionalArgs = [])
+    public function updateAttributionSettings($attributionSettings, $updateMask, array $optionalArgs = [])
     {
-        $request = new UpdateAndroidAppDataStreamRequest();
+        $request = new UpdateAttributionSettingsRequest();
         $requestParamHeaders = [];
-        $request->setAndroidAppDataStream($androidAppDataStream);
+        $request->setAttributionSettings($attributionSettings);
         $request->setUpdateMask($updateMask);
-        $requestParamHeaders['android_app_data_stream.name'] = $androidAppDataStream->getName();
+        $requestParamHeaders['attribution_settings.name'] = $attributionSettings->getName();
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('UpdateAndroidAppDataStream', AndroidAppDataStream::class, $optionalArgs, $request)->wait();
+        return $this->startCall('UpdateAttributionSettings', AttributionSettings::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
+     * Updates an Audience on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $audience = new Audience();
+     *     $updateMask = new FieldMask();
+     *     $response = $analyticsAdminServiceClient->updateAudience($audience, $updateMask);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param Audience  $audience     Required. The audience to update.
+     *                                The audience's `name` field is used to identify the audience to be updated.
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Field names must be in snake
+     *                                case (e.g., "field_to_update"). Omitted fields will not be updated. To
+     *                                replace the entire entity, use one path with the string "*" to match all
+     *                                fields.
+     * @param array     $optionalArgs {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\Audience
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function updateAudience($audience, $updateMask, array $optionalArgs = [])
+    {
+        $request = new UpdateAudienceRequest();
+        $requestParamHeaders = [];
+        $request->setAudience($audience);
+        $request->setUpdateMask($updateMask);
+        $requestParamHeaders['audience.name'] = $audience->getName();
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('UpdateAudience', Audience::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -4855,19 +5931,18 @@ class AnalyticsAdminServiceGapicClient
      * }
      * ```
      *
-     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be updated.
-     *                                To replace the entire entity, use one path with the string "*" to match
-     *                                all fields.
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be
+     *                                updated. To replace the entire entity, use one path with the string "*" to
+     *                                match all fields.
      * @param array     $optionalArgs {
      *     Optional.
      *
      *     @type CustomDimension $customDimension
      *           The CustomDimension to update
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\CustomDimension
@@ -4904,19 +5979,18 @@ class AnalyticsAdminServiceGapicClient
      * }
      * ```
      *
-     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be updated.
-     *                                To replace the entire entity, use one path with the string "*" to match
-     *                                all fields.
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be
+     *                                updated. To replace the entire entity, use one path with the string "*" to
+     *                                match all fields.
      * @param array     $optionalArgs {
      *     Optional.
      *
      *     @type CustomMetric $customMetric
      *           The CustomMetric to update
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\CustomMetric
@@ -4956,17 +6030,17 @@ class AnalyticsAdminServiceGapicClient
      *
      * @param DataRetentionSettings $dataRetentionSettings Required. The settings to update.
      *                                                     The `name` field is used to identify the settings to be updated.
-     * @param FieldMask             $updateMask            Required. The list of fields to be updated. Field names must be in snake case
-     *                                                     (e.g., "field_to_update"). Omitted fields will not be updated. To replace
-     *                                                     the entire entity, use one path with the string "*" to match all fields.
+     * @param FieldMask             $updateMask            Required. The list of fields to be updated. Field names must be in snake
+     *                                                     case (e.g., "field_to_update"). Omitted fields will not be updated. To
+     *                                                     replace the entire entity, use one path with the string "*" to match all
+     *                                                     fields.
      * @param array                 $optionalArgs          {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DataRetentionSettings
@@ -5001,19 +6075,18 @@ class AnalyticsAdminServiceGapicClient
      * }
      * ```
      *
-     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be updated.
-     *                                To replace the entire entity, use one path with the string "*" to match
-     *                                all fields.
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be
+     *                                updated. To replace the entire entity, use one path with the string "*" to
+     *                                match all fields.
      * @param array     $optionalArgs {
      *     Optional.
      *
      *     @type DataStream $dataStream
      *           The DataStream to update
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DataStream
@@ -5050,19 +6123,18 @@ class AnalyticsAdminServiceGapicClient
      * }
      * ```
      *
-     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be updated.
-     *                                To replace the entire entity, use one path with the string "*" to match
-     *                                all fields.
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be
+     *                                updated. To replace the entire entity, use one path with the string "*" to
+     *                                match all fields.
      * @param array     $optionalArgs {
      *     Optional.
      *
      *     @type DisplayVideo360AdvertiserLink $displayVideo360AdvertiserLink
      *           The DisplayVideo360AdvertiserLink to update
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\DisplayVideo360AdvertiserLink
@@ -5086,6 +6158,55 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
+     * Updates a ExpandedDataSet on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $expandedDataSet = new ExpandedDataSet();
+     *     $updateMask = new FieldMask();
+     *     $response = $analyticsAdminServiceClient->updateExpandedDataSet($expandedDataSet, $updateMask);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param ExpandedDataSet $expandedDataSet Required. The ExpandedDataSet to update.
+     *                                         The resource's `name` field is used to identify the ExpandedDataSet to be
+     *                                         updated.
+     * @param FieldMask       $updateMask      Required. The list of fields to be updated. Field names must be in snake
+     *                                         case (e.g., "field_to_update"). Omitted fields will not be updated. To
+     *                                         replace the entire entity, use one path with the string "*" to match all
+     *                                         fields.
+     * @param array           $optionalArgs    {
+     *     Optional.
+     *
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\ExpandedDataSet
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function updateExpandedDataSet($expandedDataSet, $updateMask, array $optionalArgs = [])
+    {
+        $request = new UpdateExpandedDataSetRequest();
+        $requestParamHeaders = [];
+        $request->setExpandedDataSet($expandedDataSet);
+        $request->setUpdateMask($updateMask);
+        $requestParamHeaders['expanded_data_set.name'] = $expandedDataSet->getName();
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('UpdateExpandedDataSet', ExpandedDataSet::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
      * Updates a GoogleAdsLink on a property
      *
      * Sample code:
@@ -5099,19 +6220,19 @@ class AnalyticsAdminServiceGapicClient
      * }
      * ```
      *
-     * @param FieldMask $updateMask   Required. The list of fields to be updated. Field names must be in snake case
-     *                                (e.g., "field_to_update"). Omitted fields will not be updated. To replace
-     *                                the entire entity, use one path with the string "*" to match all fields.
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Field names must be in snake
+     *                                case (e.g., "field_to_update"). Omitted fields will not be updated. To
+     *                                replace the entire entity, use one path with the string "*" to match all
+     *                                fields.
      * @param array     $optionalArgs {
      *     Optional.
      *
      *     @type GoogleAdsLink $googleAdsLink
      *           The GoogleAdsLink to update
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\GoogleAdsLink
@@ -5151,17 +6272,17 @@ class AnalyticsAdminServiceGapicClient
      *
      * @param GoogleSignalsSettings $googleSignalsSettings Required. The settings to update.
      *                                                     The `name` field is used to identify the settings to be updated.
-     * @param FieldMask             $updateMask            Required. The list of fields to be updated. Field names must be in snake case
-     *                                                     (e.g., "field_to_update"). Omitted fields will not be updated. To replace
-     *                                                     the entire entity, use one path with the string "*" to match all fields.
+     * @param FieldMask             $updateMask            Required. The list of fields to be updated. Field names must be in snake
+     *                                                     case (e.g., "field_to_update"). Omitted fields will not be updated. To
+     *                                                     replace the entire entity, use one path with the string "*" to match all
+     *                                                     fields.
      * @param array                 $optionalArgs          {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\GoogleSignalsSettings
@@ -5180,54 +6301,6 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('UpdateGoogleSignalsSettings', GoogleSignalsSettings::class, $optionalArgs, $request)->wait();
-    }
-
-    /**
-     * Updates an iOS app stream on a property.
-     *
-     * Sample code:
-     * ```
-     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
-     * try {
-     *     $iosAppDataStream = new IosAppDataStream();
-     *     $updateMask = new FieldMask();
-     *     $response = $analyticsAdminServiceClient->updateIosAppDataStream($iosAppDataStream, $updateMask);
-     * } finally {
-     *     $analyticsAdminServiceClient->close();
-     * }
-     * ```
-     *
-     * @param IosAppDataStream $iosAppDataStream Required. The iOS app stream to update.
-     *                                           The `name` field is used to identify the iOS app stream to be updated.
-     * @param FieldMask        $updateMask       Required. The list of fields to be updated. Field names must be in snake case
-     *                                           (e.g., "field_to_update"). Omitted fields will not be updated. To replace
-     *                                           the entire entity, use one path with the string "*" to match all fields.
-     * @param array            $optionalArgs     {
-     *     Optional.
-     *
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
-     * }
-     *
-     * @return \Google\Analytics\Admin\V1alpha\IosAppDataStream
-     *
-     * @throws ApiException if the remote call fails
-     *
-     * @experimental
-     */
-    public function updateIosAppDataStream($iosAppDataStream, $updateMask, array $optionalArgs = [])
-    {
-        $request = new UpdateIosAppDataStreamRequest();
-        $requestParamHeaders = [];
-        $request->setIosAppDataStream($iosAppDataStream);
-        $request->setUpdateMask($updateMask);
-        $requestParamHeaders['ios_app_data_stream.name'] = $iosAppDataStream->getName();
-        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
-        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('UpdateIosAppDataStream', IosAppDataStream::class, $optionalArgs, $request)->wait();
     }
 
     /**
@@ -5251,10 +6324,9 @@ class AnalyticsAdminServiceGapicClient
      *     @type FieldMask $updateMask
      *           The list of fields to be updated. Omitted fields will not be updated.
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\MeasurementProtocolSecret
@@ -5296,17 +6368,17 @@ class AnalyticsAdminServiceGapicClient
      * @param Property  $property     Required. The property to update.
      *                                The property's `name` field is used to identify the property to be
      *                                updated.
-     * @param FieldMask $updateMask   Required. The list of fields to be updated. Field names must be in snake case
-     *                                (e.g., "field_to_update"). Omitted fields will not be updated. To replace
-     *                                the entire entity, use one path with the string "*" to match all fields.
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Field names must be in snake
+     *                                case (e.g., "field_to_update"). Omitted fields will not be updated. To
+     *                                replace the entire entity, use one path with the string "*" to match all
+     *                                fields.
      * @param array     $optionalArgs {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\Property
@@ -5328,6 +6400,54 @@ class AnalyticsAdminServiceGapicClient
     }
 
     /**
+     * Updates a SearchAds360Link on a property.
+     *
+     * Sample code:
+     * ```
+     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
+     * try {
+     *     $updateMask = new FieldMask();
+     *     $response = $analyticsAdminServiceClient->updateSearchAds360Link($updateMask);
+     * } finally {
+     *     $analyticsAdminServiceClient->close();
+     * }
+     * ```
+     *
+     * @param FieldMask $updateMask   Required. The list of fields to be updated. Omitted fields will not be
+     *                                updated. To replace the entire entity, use one path with the string "*" to
+     *                                match all fields.
+     * @param array     $optionalArgs {
+     *     Optional.
+     *
+     *     @type SearchAds360Link $searchAds360Link
+     *           The SearchAds360Link to update
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\Analytics\Admin\V1alpha\SearchAds360Link
+     *
+     * @throws ApiException if the remote call fails
+     *
+     * @experimental
+     */
+    public function updateSearchAds360Link($updateMask, array $optionalArgs = [])
+    {
+        $request = new UpdateSearchAds360LinkRequest();
+        $requestParamHeaders = [];
+        $request->setUpdateMask($updateMask);
+        if (isset($optionalArgs['searchAds360Link'])) {
+            $request->setSearchAds360Link($optionalArgs['searchAds360Link']);
+        }
+
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startCall('UpdateSearchAds360Link', SearchAds360Link::class, $optionalArgs, $request)->wait();
+    }
+
+    /**
      * Updates a user link on an account or property.
      *
      * Sample code:
@@ -5346,10 +6466,9 @@ class AnalyticsAdminServiceGapicClient
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
+     *           associative array of retry settings parameters. See the documentation on
+     *           {@see RetrySettings} for example usage.
      * }
      *
      * @return \Google\Analytics\Admin\V1alpha\UserLink
@@ -5367,53 +6486,5 @@ class AnalyticsAdminServiceGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->startCall('UpdateUserLink', UserLink::class, $optionalArgs, $request)->wait();
-    }
-
-    /**
-     * Updates a web stream on a property.
-     *
-     * Sample code:
-     * ```
-     * $analyticsAdminServiceClient = new AnalyticsAdminServiceClient();
-     * try {
-     *     $webDataStream = new WebDataStream();
-     *     $updateMask = new FieldMask();
-     *     $response = $analyticsAdminServiceClient->updateWebDataStream($webDataStream, $updateMask);
-     * } finally {
-     *     $analyticsAdminServiceClient->close();
-     * }
-     * ```
-     *
-     * @param WebDataStream $webDataStream Required. The web stream to update.
-     *                                     The `name` field is used to identify the web stream to be updated.
-     * @param FieldMask     $updateMask    Required. The list of fields to be updated. Field names must be in snake case
-     *                                     (e.g., "field_to_update"). Omitted fields will not be updated. To replace
-     *                                     the entire entity, use one path with the string "*" to match all fields.
-     * @param array         $optionalArgs  {
-     *     Optional.
-     *
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a
-     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
-     *           settings parameters. See the documentation on
-     *           {@see Google\ApiCore\RetrySettings} for example usage.
-     * }
-     *
-     * @return \Google\Analytics\Admin\V1alpha\WebDataStream
-     *
-     * @throws ApiException if the remote call fails
-     *
-     * @experimental
-     */
-    public function updateWebDataStream($webDataStream, $updateMask, array $optionalArgs = [])
-    {
-        $request = new UpdateWebDataStreamRequest();
-        $requestParamHeaders = [];
-        $request->setWebDataStream($webDataStream);
-        $request->setUpdateMask($updateMask);
-        $requestParamHeaders['web_data_stream.name'] = $webDataStream->getName();
-        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
-        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
-        return $this->startCall('UpdateWebDataStream', WebDataStream::class, $optionalArgs, $request)->wait();
     }
 }

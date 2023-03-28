@@ -24,6 +24,15 @@ class Property extends \Google\Protobuf\Internal\Message
      */
     private $name = '';
     /**
+     * Immutable. The property type for this Property resource. When creating a
+     * property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then
+     * "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
+     * types cannot yet be created via Google Analytics Admin API.
+     *
+     * Generated from protobuf field <code>.google.analytics.admin.v1alpha.PropertyType property_type = 14 [(.google.api.field_behavior) = IMMUTABLE];</code>
+     */
+    private $property_type = 0;
+    /**
      * Output only. Time when the entity was originally created.
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp create_time = 3 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
@@ -38,8 +47,8 @@ class Property extends \Google\Protobuf\Internal\Message
     /**
      * Immutable. Resource name of this property's logical parent.
      * Note: The Property-Moving UI can be used to change the parent.
-     * Format: accounts/{account}
-     * Example: "accounts/100"
+     * Format: accounts/{account}, properties/{property}
+     * Example: "accounts/100", "properties/101"
      *
      * Generated from protobuf field <code>string parent = 2 [(.google.api.field_behavior) = IMMUTABLE];</code>
      */
@@ -59,9 +68,9 @@ class Property extends \Google\Protobuf\Internal\Message
      */
     private $industry_category = 0;
     /**
-     * Required. Reporting Time Zone, used as the day boundary for reports, regardless of
-     * where the data originates. If the time zone honors DST, Analytics will
-     * automatically adjust for the changes.
+     * Required. Reporting Time Zone, used as the day boundary for reports,
+     * regardless of where the data originates. If the time zone honors DST,
+     * Analytics will automatically adjust for the changes.
      * NOTE: Changing the time zone only affects data going forward, and is not
      * applied retroactively.
      * Format: https://www.iana.org/time-zones
@@ -79,22 +88,23 @@ class Property extends \Google\Protobuf\Internal\Message
      */
     private $currency_code = '';
     /**
-     * Output only. The Google Analytics service level that applies to this property.
+     * Output only. The Google Analytics service level that applies to this
+     * property.
      *
      * Generated from protobuf field <code>.google.analytics.admin.v1alpha.ServiceLevel service_level = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     private $service_level = 0;
     /**
-     * Output only. If set, the time at which this property was trashed. If not set, then this
-     * property is not currently in the trash can.
+     * Output only. If set, the time at which this property was trashed. If not
+     * set, then this property is not currently in the trash can.
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp delete_time = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
     private $delete_time = null;
     /**
-     * Output only. If set, the time at which this trashed property will be permanently
-     * deleted. If not set, then this property is not currently in the trash can
-     * and is not slated to be deleted.
+     * Output only. If set, the time at which this trashed property will be
+     * permanently deleted. If not set, then this property is not currently in the
+     * trash can and is not slated to be deleted.
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp expire_time = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      */
@@ -118,6 +128,11 @@ class Property extends \Google\Protobuf\Internal\Message
      *           Output only. Resource name of this property.
      *           Format: properties/{property_id}
      *           Example: "properties/1000"
+     *     @type int $property_type
+     *           Immutable. The property type for this Property resource. When creating a
+     *           property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then
+     *           "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
+     *           types cannot yet be created via Google Analytics Admin API.
      *     @type \Google\Protobuf\Timestamp $create_time
      *           Output only. Time when the entity was originally created.
      *     @type \Google\Protobuf\Timestamp $update_time
@@ -125,8 +140,8 @@ class Property extends \Google\Protobuf\Internal\Message
      *     @type string $parent
      *           Immutable. Resource name of this property's logical parent.
      *           Note: The Property-Moving UI can be used to change the parent.
-     *           Format: accounts/{account}
-     *           Example: "accounts/100"
+     *           Format: accounts/{account}, properties/{property}
+     *           Example: "accounts/100", "properties/101"
      *     @type string $display_name
      *           Required. Human-readable display name for this property.
      *           The max allowed display name length is 100 UTF-16 code units.
@@ -134,9 +149,9 @@ class Property extends \Google\Protobuf\Internal\Message
      *           Industry associated with this property
      *           Example: AUTOMOTIVE, FOOD_AND_DRINK
      *     @type string $time_zone
-     *           Required. Reporting Time Zone, used as the day boundary for reports, regardless of
-     *           where the data originates. If the time zone honors DST, Analytics will
-     *           automatically adjust for the changes.
+     *           Required. Reporting Time Zone, used as the day boundary for reports,
+     *           regardless of where the data originates. If the time zone honors DST,
+     *           Analytics will automatically adjust for the changes.
      *           NOTE: Changing the time zone only affects data going forward, and is not
      *           applied retroactively.
      *           Format: https://www.iana.org/time-zones
@@ -146,14 +161,15 @@ class Property extends \Google\Protobuf\Internal\Message
      *           Format: https://en.wikipedia.org/wiki/ISO_4217
      *           Examples: "USD", "EUR", "JPY"
      *     @type int $service_level
-     *           Output only. The Google Analytics service level that applies to this property.
+     *           Output only. The Google Analytics service level that applies to this
+     *           property.
      *     @type \Google\Protobuf\Timestamp $delete_time
-     *           Output only. If set, the time at which this property was trashed. If not set, then this
-     *           property is not currently in the trash can.
+     *           Output only. If set, the time at which this property was trashed. If not
+     *           set, then this property is not currently in the trash can.
      *     @type \Google\Protobuf\Timestamp $expire_time
-     *           Output only. If set, the time at which this trashed property will be permanently
-     *           deleted. If not set, then this property is not currently in the trash can
-     *           and is not slated to be deleted.
+     *           Output only. If set, the time at which this trashed property will be
+     *           permanently deleted. If not set, then this property is not currently in the
+     *           trash can and is not slated to be deleted.
      *     @type string $account
      *           Immutable. The resource name of the parent account
      *           Format: accounts/{account_id}
@@ -191,6 +207,38 @@ class Property extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkString($var, True);
         $this->name = $var;
+
+        return $this;
+    }
+
+    /**
+     * Immutable. The property type for this Property resource. When creating a
+     * property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then
+     * "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
+     * types cannot yet be created via Google Analytics Admin API.
+     *
+     * Generated from protobuf field <code>.google.analytics.admin.v1alpha.PropertyType property_type = 14 [(.google.api.field_behavior) = IMMUTABLE];</code>
+     * @return int
+     */
+    public function getPropertyType()
+    {
+        return $this->property_type;
+    }
+
+    /**
+     * Immutable. The property type for this Property resource. When creating a
+     * property, if the type is "PROPERTY_TYPE_UNSPECIFIED", then
+     * "ORDINARY_PROPERTY" will be implied. "SUBPROPERTY" and "ROLLUP_PROPERTY"
+     * types cannot yet be created via Google Analytics Admin API.
+     *
+     * Generated from protobuf field <code>.google.analytics.admin.v1alpha.PropertyType property_type = 14 [(.google.api.field_behavior) = IMMUTABLE];</code>
+     * @param int $var
+     * @return $this
+     */
+    public function setPropertyType($var)
+    {
+        GPBUtil::checkEnum($var, \Google\Analytics\Admin\V1alpha\PropertyType::class);
+        $this->property_type = $var;
 
         return $this;
     }
@@ -270,8 +318,8 @@ class Property extends \Google\Protobuf\Internal\Message
     /**
      * Immutable. Resource name of this property's logical parent.
      * Note: The Property-Moving UI can be used to change the parent.
-     * Format: accounts/{account}
-     * Example: "accounts/100"
+     * Format: accounts/{account}, properties/{property}
+     * Example: "accounts/100", "properties/101"
      *
      * Generated from protobuf field <code>string parent = 2 [(.google.api.field_behavior) = IMMUTABLE];</code>
      * @return string
@@ -284,8 +332,8 @@ class Property extends \Google\Protobuf\Internal\Message
     /**
      * Immutable. Resource name of this property's logical parent.
      * Note: The Property-Moving UI can be used to change the parent.
-     * Format: accounts/{account}
-     * Example: "accounts/100"
+     * Format: accounts/{account}, properties/{property}
+     * Example: "accounts/100", "properties/101"
      *
      * Generated from protobuf field <code>string parent = 2 [(.google.api.field_behavior) = IMMUTABLE];</code>
      * @param string $var
@@ -356,9 +404,9 @@ class Property extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Required. Reporting Time Zone, used as the day boundary for reports, regardless of
-     * where the data originates. If the time zone honors DST, Analytics will
-     * automatically adjust for the changes.
+     * Required. Reporting Time Zone, used as the day boundary for reports,
+     * regardless of where the data originates. If the time zone honors DST,
+     * Analytics will automatically adjust for the changes.
      * NOTE: Changing the time zone only affects data going forward, and is not
      * applied retroactively.
      * Format: https://www.iana.org/time-zones
@@ -373,9 +421,9 @@ class Property extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Required. Reporting Time Zone, used as the day boundary for reports, regardless of
-     * where the data originates. If the time zone honors DST, Analytics will
-     * automatically adjust for the changes.
+     * Required. Reporting Time Zone, used as the day boundary for reports,
+     * regardless of where the data originates. If the time zone honors DST,
+     * Analytics will automatically adjust for the changes.
      * NOTE: Changing the time zone only affects data going forward, and is not
      * applied retroactively.
      * Format: https://www.iana.org/time-zones
@@ -424,7 +472,8 @@ class Property extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Output only. The Google Analytics service level that applies to this property.
+     * Output only. The Google Analytics service level that applies to this
+     * property.
      *
      * Generated from protobuf field <code>.google.analytics.admin.v1alpha.ServiceLevel service_level = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return int
@@ -435,7 +484,8 @@ class Property extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Output only. The Google Analytics service level that applies to this property.
+     * Output only. The Google Analytics service level that applies to this
+     * property.
      *
      * Generated from protobuf field <code>.google.analytics.admin.v1alpha.ServiceLevel service_level = 10 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param int $var
@@ -450,8 +500,8 @@ class Property extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Output only. If set, the time at which this property was trashed. If not set, then this
-     * property is not currently in the trash can.
+     * Output only. If set, the time at which this property was trashed. If not
+     * set, then this property is not currently in the trash can.
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp delete_time = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return \Google\Protobuf\Timestamp|null
@@ -472,8 +522,8 @@ class Property extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Output only. If set, the time at which this property was trashed. If not set, then this
-     * property is not currently in the trash can.
+     * Output only. If set, the time at which this property was trashed. If not
+     * set, then this property is not currently in the trash can.
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp delete_time = 11 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param \Google\Protobuf\Timestamp $var
@@ -488,9 +538,9 @@ class Property extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Output only. If set, the time at which this trashed property will be permanently
-     * deleted. If not set, then this property is not currently in the trash can
-     * and is not slated to be deleted.
+     * Output only. If set, the time at which this trashed property will be
+     * permanently deleted. If not set, then this property is not currently in the
+     * trash can and is not slated to be deleted.
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp expire_time = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @return \Google\Protobuf\Timestamp|null
@@ -511,9 +561,9 @@ class Property extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Output only. If set, the time at which this trashed property will be permanently
-     * deleted. If not set, then this property is not currently in the trash can
-     * and is not slated to be deleted.
+     * Output only. If set, the time at which this trashed property will be
+     * permanently deleted. If not set, then this property is not currently in the
+     * trash can and is not slated to be deleted.
      *
      * Generated from protobuf field <code>.google.protobuf.Timestamp expire_time = 12 [(.google.api.field_behavior) = OUTPUT_ONLY];</code>
      * @param \Google\Protobuf\Timestamp $var

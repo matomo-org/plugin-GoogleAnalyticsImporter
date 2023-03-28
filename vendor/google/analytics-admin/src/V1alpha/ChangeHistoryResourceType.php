@@ -32,24 +32,6 @@ class ChangeHistoryResourceType
      */
     const PROPERTY = 2;
     /**
-     * WebDataStream resource
-     *
-     * Generated from protobuf enum <code>WEB_DATA_STREAM = 3;</code>
-     */
-    const WEB_DATA_STREAM = 3;
-    /**
-     * AndroidAppDataStream resource
-     *
-     * Generated from protobuf enum <code>ANDROID_APP_DATA_STREAM = 4;</code>
-     */
-    const ANDROID_APP_DATA_STREAM = 4;
-    /**
-     * IosAppDataStream resource
-     *
-     * Generated from protobuf enum <code>IOS_APP_DATA_STREAM = 5;</code>
-     */
-    const IOS_APP_DATA_STREAM = 5;
-    /**
      * FirebaseLink resource
      *
      * Generated from protobuf enum <code>FIREBASE_LINK = 6;</code>
@@ -109,14 +91,41 @@ class ChangeHistoryResourceType
      * Generated from protobuf enum <code>DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL = 15;</code>
      */
     const DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL = 15;
+    /**
+     * SearchAds360Link resource
+     *
+     * Generated from protobuf enum <code>SEARCH_ADS_360_LINK = 16;</code>
+     */
+    const SEARCH_ADS_360_LINK = 16;
+    /**
+     * DataStream resource
+     *
+     * Generated from protobuf enum <code>DATA_STREAM = 18;</code>
+     */
+    const DATA_STREAM = 18;
+    /**
+     * AttributionSettings resource
+     *
+     * Generated from protobuf enum <code>ATTRIBUTION_SETTINGS = 20;</code>
+     */
+    const ATTRIBUTION_SETTINGS = 20;
+    /**
+     * ExpandedDataSet resource
+     *
+     * Generated from protobuf enum <code>EXPANDED_DATA_SET = 21;</code>
+     */
+    const EXPANDED_DATA_SET = 21;
+    /**
+     * ChannelGroup resource
+     *
+     * Generated from protobuf enum <code>CHANNEL_GROUP = 22;</code>
+     */
+    const CHANNEL_GROUP = 22;
 
     private static $valueToName = [
         self::CHANGE_HISTORY_RESOURCE_TYPE_UNSPECIFIED => 'CHANGE_HISTORY_RESOURCE_TYPE_UNSPECIFIED',
         self::ACCOUNT => 'ACCOUNT',
         self::PROPERTY => 'PROPERTY',
-        self::WEB_DATA_STREAM => 'WEB_DATA_STREAM',
-        self::ANDROID_APP_DATA_STREAM => 'ANDROID_APP_DATA_STREAM',
-        self::IOS_APP_DATA_STREAM => 'IOS_APP_DATA_STREAM',
         self::FIREBASE_LINK => 'FIREBASE_LINK',
         self::GOOGLE_ADS_LINK => 'GOOGLE_ADS_LINK',
         self::GOOGLE_SIGNALS_SETTINGS => 'GOOGLE_SIGNALS_SETTINGS',
@@ -127,6 +136,11 @@ class ChangeHistoryResourceType
         self::DATA_RETENTION_SETTINGS => 'DATA_RETENTION_SETTINGS',
         self::DISPLAY_VIDEO_360_ADVERTISER_LINK => 'DISPLAY_VIDEO_360_ADVERTISER_LINK',
         self::DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL => 'DISPLAY_VIDEO_360_ADVERTISER_LINK_PROPOSAL',
+        self::SEARCH_ADS_360_LINK => 'SEARCH_ADS_360_LINK',
+        self::DATA_STREAM => 'DATA_STREAM',
+        self::ATTRIBUTION_SETTINGS => 'ATTRIBUTION_SETTINGS',
+        self::EXPANDED_DATA_SET => 'EXPANDED_DATA_SET',
+        self::CHANNEL_GROUP => 'CHANNEL_GROUP',
     ];
 
     public static function name($value)
