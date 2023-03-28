@@ -227,7 +227,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $authorization->deleteClientConfiguration();
 
-        return $this->index();
+        // Redirect to index so that will be the URL and not the delete URL
+        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
+                'action' => 'index',
+                'code'   => null,
+                'scope'   => null,
+                'state'   => null
+            ]));
     }
 
     /**
