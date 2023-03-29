@@ -233,6 +233,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel2';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel3';
         $translationKeys[] = 'General_Upload';
+        $translationKeys[] = 'General_Loading';
 
         if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";

@@ -29,8 +29,13 @@
 
         <input type="hidden" name="config_nonce" :value="configNonce" />
 
-        <button type="button" class="btn" @click="selectConfigFile()" >
-          <span class="icon-upload"></span> {{ translate('General_Upload') }}</button>
+        <button type="button" class="btn" @click="selectConfigFile()"
+                :disabled="isUploadButtonDisabled">
+          <span v-show="!isUploadButtonDisabled">
+            <span class="icon-upload"></span> {{ translate('General_Upload') }}</span>
+          <span v-show="isUploadButtonDisabled">
+            <span class="icon-upload"></span> {{ translate('General_Loading') }}</span>
+        </button>
       </form>
     </div>
   </div>
@@ -44,7 +49,10 @@ import {
 
 export default defineComponent({
   data() {
-    return {};
+    return {
+      isSelectingFile: false,
+      isUploading: false,
+    };
   },
   props: {
     actionUrl: {
@@ -58,6 +66,7 @@ export default defineComponent({
   },
   methods: {
     selectConfigFile() {
+      this.isSelectingFile = true;
       const fileInput = document.getElementById('clientfile');
       if (fileInput) {
         fileInput.click();
@@ -67,7 +76,20 @@ export default defineComponent({
       const fileInput = document.getElementById('clientfile') as HTMLInputElement;
       const configFileUploadForm = document.getElementById('configFileUploadForm') as HTMLFormElement;
       if (fileInput && fileInput.value && configFileUploadForm) {
+        this.isUploading = true;
         configFileUploadForm.submit();
+      }
+    },
+    checkForCancel() {
+      // If we're not in currently selecting a file or if we're uploading, there's no point checking
+      if (!this.isSelectingFile || this.isUploading) {
+        return;
+      }
+
+      // Check if the file is empty and change back from selecting status
+      const fileInput = document.getElementById('clientfile') as HTMLInputElement;
+      if (fileInput && !fileInput.value) {
+        this.isSelectingFile = false;
       }
     },
   },
@@ -80,6 +102,12 @@ export default defineComponent({
         '</a>',
       );
     },
+    isUploadButtonDisabled() {
+      return this.isSelectingFile || this.isUploading;
+    },
+  },
+  mounted() {
+    document.body.onfocus = this.checkForCancel;
   },
 });
 </script>
