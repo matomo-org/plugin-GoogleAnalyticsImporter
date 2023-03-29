@@ -18,6 +18,7 @@ use Piwik\Nonce;
 use Piwik\Notification;
 use Piwik\Piwik;
 use Piwik\Plugin\Manager;
+use Piwik\Plugins\ConnectAccounts\ConnectAccounts;
 use Piwik\Plugins\ConnectAccounts\helpers\ConnectHelper;
 use Piwik\Plugins\ConnectAccounts\Strategy\Google\GoogleConnect;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportGA4Reports;
@@ -118,7 +119,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $jwt = Common::getRequestVar('state', '', 'string');
         if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
             // verify an existing user by supplying a jwt too
-            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId());
+            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId(),
+                ConnectAccounts::INITIATED_BY_GA);
         }
         $googleAuthUrl = '';
         if($isConnectAccountsActivated) {
