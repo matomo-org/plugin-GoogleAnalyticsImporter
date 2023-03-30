@@ -51,6 +51,7 @@
         "ThisReportWasImportedFromGoogleMultiPeriod": "This period includes dates that have data imported from Google Analytics. Some data may be missing or be reported as Unknown\/not-set due to incompatibilities between Matomo and Google Analytics.",
         "LiveDataUnavailableForImported": "The report data for this time period were imported from Google Analytics, but raw visits log data cannot be imported from Google Analytics, and so is not available for this period.",
         "UnsupportedReportInImportRange": "The report data for this time period were imported from Google Analytics, but this report does not exist in Google Analytics, so there is nothing to display here.",
+        "Uploading": "Uploading...",
         "NotSetInGA": "Not set in Google Analytics",
         "LogDataRequiredForReport": "The report data for this time period were imported from Google Analytics, but this report requires raw visits log data, which cannot imported. So this report may not display data.",
         "ExtraCustomDimensions": "Extra Custom Dimension Mappings",

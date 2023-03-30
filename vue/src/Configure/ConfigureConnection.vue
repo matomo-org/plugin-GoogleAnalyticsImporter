@@ -34,7 +34,8 @@
           <span v-show="!isUploadButtonDisabled">
             <span class="icon-upload"></span> {{ translate('General_Upload') }}</span>
           <span v-show="isUploadButtonDisabled">
-            <span class="icon-upload"></span> {{ translate('General_Loading') }}</span>
+            <span class="icon-upload"></span> {{ translate('GoogleAnalyticsImporter_Uploading') }}
+          </span>
         </button>
       </form>
     </div>
