@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.5.2
+- Improved check to determine nohup support exist or not
+
 # 4.5.1
 - Improved check to determine nohup support exist
 

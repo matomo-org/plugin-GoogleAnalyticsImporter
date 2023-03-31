@@ -67,32 +67,31 @@
         },
         {
             "name": "google/analytics-admin",
-            "version": "v0.5.1",
-            "version_normalized": "0.5.1.0",
+            "version": "v0.10.0",
+            "version_normalized": "0.10.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/php-analytics-admin.git",
-                "reference": "aca093d647a61c545c7d576227f4a0b56f81bfdf"
+                "reference": "7f8af98407f00236c76ef51b6b6adb7a251edbe6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/php-analytics-admin/zipball/aca093d647a61c545c7d576227f4a0b56f81bfdf",
-                "reference": "aca093d647a61c545c7d576227f4a0b56f81bfdf",
+                "url": "https://api.github.com/repos/googleapis/php-analytics-admin/zipball/7f8af98407f00236c76ef51b6b6adb7a251edbe6",
+                "reference": "7f8af98407f00236c76ef51b6b6adb7a251edbe6",
                 "shasum": ""
             },
             "require": {
                 "google/gax": "^1.6.0"
             },
             "require-dev": {
-                "google/cloud-core": "^1.31",
-                "phpdocumentor/reflection": "^3.0",
-                "phpunit/phpunit": "^4.8|^5.0"
+                "phpunit/phpunit": "^4.8|^5.0|^8.0",
+                "yoast/phpunit-polyfills": "^1.0"
             },
             "suggest": {
                 "ext-grpc": "Enables use of gRPC, a universal high-performance RPC framework created by Google.",
                 "ext-protobuf": "Provides a significant increase in throughput over the pure PHP protobuf implementation. See https://cloud.google.com/php/grpc for installation instructions."
             },
-            "time": "2022-03-30T03:18:53+00:00",
+            "time": "2023-02-25T13:06:03+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -115,31 +114,29 @@
             ],
             "description": "Google Analytics Admin Client for PHP",
             "support": {
-                "issues": "https://github.com/googleapis/php-analytics-admin/issues",
-                "source": "https://github.com/googleapis/php-analytics-admin/tree/v0.5.1"
+                "source": "https://github.com/googleapis/php-analytics-admin/tree/v0.10.0"
             },
             "install-path": "../google/analytics-admin"
         },
         {
             "name": "google/analytics-data",
-            "version": "v0.8.3",
-            "version_normalized": "0.8.3.0",
+            "version": "v0.9.4",
+            "version_normalized": "0.9.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/php-analytics-data.git",
-                "reference": "33e17607fe28d577e0a02baade019707f1f30f5d"
+                "reference": "f1da5ed9be985794d7738cfe3f3a3db59e6ce511"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/php-analytics-data/zipball/33e17607fe28d577e0a02baade019707f1f30f5d",
-                "reference": "33e17607fe28d577e0a02baade019707f1f30f5d",
+                "url": "https://api.github.com/repos/googleapis/php-analytics-data/zipball/f1da5ed9be985794d7738cfe3f3a3db59e6ce511",
+                "reference": "f1da5ed9be985794d7738cfe3f3a3db59e6ce511",
                 "shasum": ""
             },
             "require": {
                 "google/gax": "^1.6.0"
             },
             "require-dev": {
-                "phpdocumentor/reflection": "^3.0",
                 "phpunit/phpunit": "^4.8|^5.0|^8.0",
                 "yoast/phpunit-polyfills": "^1.0"
             },
@@ -147,7 +144,7 @@
                 "ext-grpc": "Enables use of gRPC, a universal high-performance RPC framework created by Google.",
                 "ext-protobuf": "Provides a significant increase in throughput over the pure PHP protobuf implementation. See https://cloud.google.com/php/grpc for installation instructions."
             },
-            "time": "2022-05-13T22:51:50+00:00",
+            "time": "2023-02-10T16:10:50+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -170,23 +167,23 @@
             ],
             "description": "Google Analytics Data Client for PHP",
             "support": {
-                "source": "https://github.com/googleapis/php-analytics-data/tree/v0.8.3"
+                "source": "https://github.com/googleapis/php-analytics-data/tree/v0.9.4"
             },
             "install-path": "../google/analytics-data"
         },
         {
             "name": "google/apiclient",
-            "version": "v2.12.4",
-            "version_normalized": "2.12.4.0",
+            "version": "v2.13.1",
+            "version_normalized": "2.13.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client.git",
-                "reference": "702eed9ae7022ba20dc7118c8161060cb50ee9f8"
+                "reference": "895749dd4f14c349ca0b4aad020ff973f961e519"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/702eed9ae7022ba20dc7118c8161060cb50ee9f8",
-                "reference": "702eed9ae7022ba20dc7118c8161060cb50ee9f8",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client/zipball/895749dd4f14c349ca0b4aad020ff973f961e519",
+                "reference": "895749dd4f14c349ca0b4aad020ff973f961e519",
                 "shasum": ""
             },
             "require": {
@@ -195,18 +192,17 @@
                 "google/auth": "^1.10",
                 "guzzlehttp/guzzle": "~5.3.3||~6.0||~7.0",
                 "guzzlehttp/psr7": "^1.8.4||^2.2.1",
-                "monolog/monolog": "^1.17||^2.0",
+                "monolog/monolog": "^1.17||^2.0||^3.0",
                 "php": "^5.6|^7.0|^8.0",
                 "phpseclib/phpseclib": "~2.0||^3.0.2"
             },
             "require-dev": {
                 "cache/filesystem-adapter": "^0.3.2|^1.1",
                 "composer/composer": "^1.10.22",
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
                 "phpcompatibility/php-compatibility": "^9.2",
                 "phpspec/prophecy-phpunit": "^1.1||^2.0",
                 "phpunit/phpunit": "^5.7.21 || ^6.0 || ^7.0 || ^8.0 || ^9.0",
-                "squizlabs/php_codesniffer": "~2.3",
+                "squizlabs/php_codesniffer": "^3.0",
                 "symfony/css-selector": "~2.1",
                 "symfony/dom-crawler": "~2.1",
                 "yoast/phpunit-polyfills": "^1.0"
@@ -214,7 +210,7 @@
             "suggest": {
                 "cache/filesystem-adapter": "For caching certs and tokens (using Google\\Client::setCache)"
             },
-            "time": "2022-04-20T16:44:03+00:00",
+            "time": "2023-03-13T20:38:21+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -244,7 +240,7 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client/issues",
-                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.12.4"
+                "source": "https://github.com/googleapis/google-api-php-client/tree/v2.13.1"
             },
             "install-path": "../google/apiclient"
         },
@@ -557,17 +553,17 @@
         },
         {
             "name": "google/protobuf",
-            "version": "v3.20.1",
-            "version_normalized": "3.20.1.0",
+            "version": "v3.22.2",
+            "version_normalized": "3.22.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/protocolbuffers/protobuf-php.git",
-                "reference": "5537a424882b2cbce891330d3e4bdfe363694975"
+                "reference": "ff28a64946708e13f2be627b5e5561f247ecf95c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/5537a424882b2cbce891330d3e4bdfe363694975",
-                "reference": "5537a424882b2cbce891330d3e4bdfe363694975",
+                "url": "https://api.github.com/repos/protocolbuffers/protobuf-php/zipball/ff28a64946708e13f2be627b5e5561f247ecf95c",
+                "reference": "ff28a64946708e13f2be627b5e5561f247ecf95c",
                 "shasum": ""
             },
             "require": {
@@ -579,7 +575,7 @@
             "suggest": {
                 "ext-bcmath": "Need to support JSON deserialization"
             },
-            "time": "2022-04-22T01:22:58+00:00",
+            "time": "2023-03-10T17:52:03+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -598,8 +594,7 @@
                 "proto"
             ],
             "support": {
-                "issues": "https://github.com/protocolbuffers/protobuf-php/issues",
-                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.20.1"
+                "source": "https://github.com/protocolbuffers/protobuf-php/tree/v3.22.2"
             },
             "install-path": "../google/protobuf"
         },
@@ -1180,17 +1175,17 @@
         },
         {
             "name": "phpseclib/phpseclib",
-            "version": "3.0.14",
-            "version_normalized": "3.0.14.0",
+            "version": "3.0.19",
+            "version_normalized": "3.0.19.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpseclib/phpseclib.git",
-                "reference": "2f0b7af658cbea265cbb4a791d6c29a6613f98ef"
+                "reference": "cc181005cf548bfd8a4896383bb825d859259f95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/2f0b7af658cbea265cbb4a791d6c29a6613f98ef",
-                "reference": "2f0b7af658cbea265cbb4a791d6c29a6613f98ef",
+                "url": "https://api.github.com/repos/phpseclib/phpseclib/zipball/cc181005cf548bfd8a4896383bb825d859259f95",
+                "reference": "cc181005cf548bfd8a4896383bb825d859259f95",
                 "shasum": ""
             },
             "require": {
@@ -1202,12 +1197,13 @@
                 "phpunit/phpunit": "*"
             },
             "suggest": {
+                "ext-dom": "Install the DOM extension to load XML formatted public keys.",
                 "ext-gmp": "Install the GMP (GNU Multiple Precision) extension in order to speed up arbitrary precision integer arithmetic operations.",
                 "ext-libsodium": "SSH2/SFTP can make use of some algorithms provided by the libsodium-php extension.",
                 "ext-mcrypt": "Install the Mcrypt extension in order to speed up a few other cryptographic operations.",
                 "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
             },
-            "time": "2022-04-04T05:15:45+00:00",
+            "time": "2023-03-05T17:13:09+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1272,7 +1268,7 @@
             ],
             "support": {
                 "issues": "https://github.com/phpseclib/phpseclib/issues",
-                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.14"
+                "source": "https://github.com/phpseclib/phpseclib/tree/3.0.19"
             },
             "funding": [
                 {
