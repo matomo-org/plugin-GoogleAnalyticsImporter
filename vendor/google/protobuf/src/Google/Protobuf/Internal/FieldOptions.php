@@ -74,10 +74,8 @@ class FieldOptions extends \Google\Protobuf\Internal\Message
      * implementation must either *always* check its required fields, or *never*
      * check its required fields, regardless of whether or not the message has
      * been parsed.
-     * As of 2021, lazy does no correctness checks on the byte stream during
-     * parsing.  This may lead to crashes if and when an invalid byte stream is
-     * finally parsed upon access.
-     * TODO(b/211906113):  Enable validation on lazy fields.
+     * As of May 2022, lazy verifies the contents of the byte stream during
+     * parsing.  An invalid byte stream will cause the overall parsing to fail.
      *
      * Generated from protobuf field <code>optional bool lazy = 5 [default = false];</code>
      */
@@ -165,10 +163,8 @@ class FieldOptions extends \Google\Protobuf\Internal\Message
      *           implementation must either *always* check its required fields, or *never*
      *           check its required fields, regardless of whether or not the message has
      *           been parsed.
-     *           As of 2021, lazy does no correctness checks on the byte stream during
-     *           parsing.  This may lead to crashes if and when an invalid byte stream is
-     *           finally parsed upon access.
-     *           TODO(b/211906113):  Enable validation on lazy fields.
+     *           As of May 2022, lazy verifies the contents of the byte stream during
+     *           parsing.  An invalid byte stream will cause the overall parsing to fail.
      *     @type bool $unverified_lazy
      *           unverified_lazy does no correctness checks on the byte stream. This should
      *           only be used where lazy with verification is prohibitive for performance
@@ -180,7 +176,7 @@ class FieldOptions extends \Google\Protobuf\Internal\Message
      *           is a formalization for deprecating fields.
      *     @type bool $weak
      *           For Google-internal migration only. Do not use.
-     *     @type \Google\Protobuf\Internal\UninterpretedOption[]|\Google\Protobuf\Internal\RepeatedField $uninterpreted_option
+     *     @type array<\Google\Protobuf\Internal\UninterpretedOption>|\Google\Protobuf\Internal\RepeatedField $uninterpreted_option
      *           The parser stores options it doesn't recognize here. See above.
      * }
      */
@@ -354,10 +350,8 @@ class FieldOptions extends \Google\Protobuf\Internal\Message
      * implementation must either *always* check its required fields, or *never*
      * check its required fields, regardless of whether or not the message has
      * been parsed.
-     * As of 2021, lazy does no correctness checks on the byte stream during
-     * parsing.  This may lead to crashes if and when an invalid byte stream is
-     * finally parsed upon access.
-     * TODO(b/211906113):  Enable validation on lazy fields.
+     * As of May 2022, lazy verifies the contents of the byte stream during
+     * parsing.  An invalid byte stream will cause the overall parsing to fail.
      *
      * Generated from protobuf field <code>optional bool lazy = 5 [default = false];</code>
      * @return bool
@@ -402,10 +396,8 @@ class FieldOptions extends \Google\Protobuf\Internal\Message
      * implementation must either *always* check its required fields, or *never*
      * check its required fields, regardless of whether or not the message has
      * been parsed.
-     * As of 2021, lazy does no correctness checks on the byte stream during
-     * parsing.  This may lead to crashes if and when an invalid byte stream is
-     * finally parsed upon access.
-     * TODO(b/211906113):  Enable validation on lazy fields.
+     * As of May 2022, lazy verifies the contents of the byte stream during
+     * parsing.  An invalid byte stream will cause the overall parsing to fail.
      *
      * Generated from protobuf field <code>optional bool lazy = 5 [default = false];</code>
      * @param bool $var
@@ -552,7 +544,7 @@ class FieldOptions extends \Google\Protobuf\Internal\Message
      * The parser stores options it doesn't recognize here. See above.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.UninterpretedOption uninterpreted_option = 999;</code>
-     * @param \Google\Protobuf\Internal\UninterpretedOption[]|\Google\Protobuf\Internal\RepeatedField $var
+     * @param array<\Google\Protobuf\Internal\UninterpretedOption>|\Google\Protobuf\Internal\RepeatedField $var
      * @return $this
      */
     public function setUninterpretedOption($var)
