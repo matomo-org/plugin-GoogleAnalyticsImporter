@@ -187,9 +187,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                 ],
             ],
             'isConnectAccountsActivated' => $isConnectAccountsActivated,
-            'radioOptions' => [
-                'connectAccounts' => 'Quick connect with Google Analytics (recommended)',
-                'manual' => 'Advanced Google OAuth client configuration',
+            'radioOptions' => !$isConnectAccountsActivated ? [] : [
+                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
+                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
             ],
             'googleAuthUrl' => $googleAuthUrl,
             'manualUploadText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')

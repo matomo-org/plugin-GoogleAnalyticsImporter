@@ -238,6 +238,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp2";
+            $translationKeys[] = "ConnectAccounts_OptionQuickConnectWithGa";
+            $translationKeys[] = "ConnectAccounts_OptionAdvancedConnectWithGa";
         }
     }
 
