@@ -2,6 +2,10 @@
     "GoogleAnalyticsImporter": {
         "AdminMenuTitle": "Google Analytics Import",
         "ConfigureTheImporter": "Configure the Importer",
+        "ConfigureTheImporterHelp": "%1$sNote:%2$s If you don't import your data, your Google Analytics 3 data will be permanently lost after December 31st, 2023.",
+        "ConfigureTheImporterLabel1": "Import your Google Analytics properties and reporting data to create a backup and analyse them using Matomo’s powerful analytics tools. Once you connect the importer, select which Google Analytics properties to import and Matomo will automatically create a new website for each one.",
+        "ConfigureTheImporterLabel2": "In order to import your data from Google Analytics, Matomo need access to this data.",
+        "ConfigureTheImporterLabel3": "To start, %1$sfollow our instructions to retrieve your OAuth Client configuration%2$s. Then upload the client configuration file using the button below.",
         "InvalidClientJson": "Invalid JSON in credentials file, try re-downloading the file from the Google API Console.",
         "MissingClientConfiguration": "Missing or invalid client configuration, please reupload.",
         "SettingUp": "Setting Up",
@@ -47,6 +51,7 @@
         "ThisReportWasImportedFromGoogleMultiPeriod": "This period includes dates that have data imported from Google Analytics. Some data may be missing or be reported as Unknown\/not-set due to incompatibilities between Matomo and Google Analytics.",
         "LiveDataUnavailableForImported": "The report data for this time period were imported from Google Analytics, but raw visits log data cannot be imported from Google Analytics, and so is not available for this period.",
         "UnsupportedReportInImportRange": "The report data for this time period were imported from Google Analytics, but this report does not exist in Google Analytics, so there is nothing to display here.",
+        "Uploading": "Uploading...",
         "NotSetInGA": "Not set in Google Analytics",
         "LogDataRequiredForReport": "The report data for this time period were imported from Google Analytics, but this report requires raw visits log data, which cannot imported. So this report may not display data.",
         "ExtraCustomDimensions": "Extra Custom Dimension Mappings",

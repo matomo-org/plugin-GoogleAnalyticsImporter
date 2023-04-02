@@ -1,6 +1,10 @@
 {% extends 'admin.twig' %}
 
-{% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
+{% if isClientConfigurable and not hasClientConfiguration %}
+    {% set title %}{{ 'GoogleAnalyticsImporter_AdminMenuTitle'|translate }}{% endset %}
+{% else %}
+    {% set title %}{{ 'GoogleAnalyticsImporter_ConfigureTheImporter'|translate }}{% endset %}
+{% endif %}
 
 {% block content %}
     <style>
@@ -10,11 +14,6 @@
     </style>
     {{ postEvent('Template.beforeGoogleAnalyticsImporterHeader') }}
     {% if isClientConfigurable %}
-    <div piwik-notification notification-id="ga-importer-help" context="info" type="transient" noclear="1" notification-title="{{ 'GoogleAnalyticsImporter_SettingUp'|translate }}">
-        {{ 'GoogleAnalyticsImporter_ImporterHelp1'|translate }}
-        {{ 'GoogleAnalyticsImporter_ImporterHelp2'|translate('<a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noreferrer noopener">', '</a>')|raw }}
-        {{ 'GoogleAnalyticsImporter_ImporterHelp3'|translate('<br><br><strong>', '</strong>')|raw }}
-    </div>
     <div piwik-content-block
          content-title="{{ title }}"
     >
@@ -30,23 +29,19 @@
                 {% endif %}
             </form>
         {% else %}
-            <form action="{{ linkTo({'action': 'configureClient'}) }}" method="POST" enctype="multipart/form-data">
-                <p>{{ 'GoogleAnalyticsImporter_ConfigureClientDesc1'|translate }}</p>
-                <p>{{ 'GoogleAnalyticsImporter_ConfigureClientDesc2'|translate('<a href="https://matomo.org/docs/google-analytics-importer/" target="_blank" rel="noopener noreferrer">', '</a>')|raw }}</p>
-
-                <div piwik-field uicontrol="file" name="clientfile"
-                     title="{{ 'GoogleAnalyticsImporter_ConfigurationFile'|translate }}">
-                </div>
-
-                <div piwik-field uicontrol="textarea" name="client"
-                     title="{{ 'GoogleAnalyticsImporter_ConfigurationText'|translate }}">
-                </div>
-
-                <input type="hidden" name="config_nonce" value="{{ nonce }}" />
-
-                <button type="submit" class="btn">{{ 'General_Save'|translate }}</button>
-
-            </form>
+            {% if isConnectAccountsActivated %}
+                <div vue-entry="ConnectAccounts.ConfigureConnection" manual-config-nonce="{{ nonce }}"
+                     manual-action-url="{{ linkTo({'action': 'configureClient'}) }}"
+                     primary-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterLabel1'|translate }}"
+                     radio-options="{{ radioOptions|json_encode|e('html_attr') }}"
+                     manual-config-text="{{ manualUploadText|e('html_attr') }}"
+                     connect-accounts-url="{{googleAuthUrl|e('html_attr')}}"
+                     connect-accounts-btn-text="{{ 'ConnectAccounts_GaImportBtn' |translate}}"
+                     additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}"></div>
+            {% else %}
+                <div vue-entry="GoogleAnalyticsImporter.ConfigureConnection" config-nonce="{{ nonce }}"
+                     action-url="{{ linkTo({'action': 'configureClient'}) }}"></div>
+            {% endif %}
         {% endif %}
     </div>
 

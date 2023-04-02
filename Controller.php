@@ -13,9 +13,14 @@ use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\DataTable\Renderer\Json;
 use Piwik\Date;
+use Piwik\Http;
 use Piwik\Nonce;
 use Piwik\Notification;
 use Piwik\Piwik;
+use Piwik\Plugin\Manager;
+use Piwik\Plugins\ConnectAccounts\ConnectAccounts;
+use Piwik\Plugins\ConnectAccounts\helpers\ConnectHelper;
+use Piwik\Plugins\ConnectAccounts\Strategy\Google\GoogleConnect;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportGA4Reports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
@@ -109,6 +114,24 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $maxEndDateDesc = Date::factory($maxEndDate)->toString();
         }
 
+        $isConnectAccountsActivated = Manager::getInstance()->isPluginActivated('ConnectAccounts');
+        $authBaseUrl = $isConnectAccountsActivated ? "https://" . StaticContainer::get('CloudAccountsInstanceId') . '/index.php?' : '';
+        $jwt = Common::getRequestVar('state', '', 'string');
+        if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
+            // verify an existing user by supplying a jwt too
+            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId(),
+                ConnectAccounts::INITIATED_BY_GA);
+        }
+        $googleAuthUrl = '';
+        if($isConnectAccountsActivated) {
+            $googleAuthUrl = $authBaseUrl . Http::buildQuery([
+                'module' => 'ConnectAccounts',
+                'action' => 'initiateOauth',
+                'state' => $jwt,
+                'strategy' => GoogleConnect::getStrategyName()
+            ]);
+        }
+
         $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
         return $this->renderTemplate('index', [
             'isClientConfigurable' => $isClientConfigurable,
@@ -163,6 +186,17 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                     ],
                 ],
             ],
+            'isConnectAccountsActivated' => $isConnectAccountsActivated,
+            'radioOptions' => !$isConnectAccountsActivated ? [] : [
+                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
+                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
+            ],
+            'googleAuthUrl' => $googleAuthUrl,
+            'manualUploadText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
+                . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
+                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
+                    '</a>',
+                ]),
         ]);
     }
 
@@ -195,7 +229,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $authorization->deleteClientConfiguration();
 
-        return $this->index();
+        // Redirect to index so that will be the URL and not the delete URL
+        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
+                'action' => 'index',
+                'code'   => null,
+                'scope'   => null,
+                'state'   => null
+            ]));
     }
 
     /**
