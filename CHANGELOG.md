@@ -1,6 +1,11 @@
 
 ## Changelog
 
+# 4.6.0
+- Updated dependencies to improve PHP 8.2 compatability
+- Redesigned UI to simplify connecting to Google Analytics
+- Updated language translations
+
 # 4.5.2
 - Improved check to determine nohup support exist or not
 
