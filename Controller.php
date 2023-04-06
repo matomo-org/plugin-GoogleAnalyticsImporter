@@ -55,6 +55,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         if (!empty($errorMessage)) {
             if ($errorMessage === 'access_denied') {
                 $errorMessage = Piwik::translate('GoogleAnalyticsImporter_OauthFailedMessage');
+            } elseif ($errorMessage === 'jwt_validation_error') {
+                $errorMessage = Piwik::translate('General_ExceptionSecurityCheckFailed');
             }
             $notification = new Notification($errorMessage);
             $notification->context = Notification::CONTEXT_ERROR;
