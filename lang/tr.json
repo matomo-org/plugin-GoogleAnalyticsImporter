@@ -17,6 +17,10 @@
         "ConfigureClientDesc2": "%1$sİlk adımda OAuth İstemcisi yapılandırmanızı almak için yönergeleri izleyin.%2$s Ardından istemci yapılandırmasını yükleyin ya da aşağıdaki alana yapıştırın.",
         "ConfigureImportNotificationMessage": "Değerli geçmiş içgörülerinizi unutmayın! %1$s %2$s%3$s için Google Analytics verilerinizi şimdi Matomo platformunuza aktarın.",
         "ConfigureTheImporter": "İçe aktarma yapılandırması",
+        "ConfigureTheImporterHelp": "%1$sNot:%2$s Verilerinizi içe aktarmazsanız, Google Analytics 3 verileriniz 31 Aralık 2023 tarihinden sonra kalıcı olarak kaybolacak.",
+        "ConfigureTheImporterLabel1": "Bir yedek oluşturmak ve bunları güçlü Matomo analiz araçlarını kullanarak incelemek için Google Analytics mülklerinizi ve raporlama verilerinizi içe aktarın. İçe aktarıcı bağlantısını kurduktan sonra hangi Google Analytics mülklerinin içe aktarılacağını seçin. Matomo her biri için otomatik olarak yeni bir web sitesi oluşturur.",
+        "ConfigureTheImporterLabel2": "Verilerinizi Google Analytics üzerinden içe aktarmak için Matomo bu verilere erişmelidir.",
+        "ConfigureTheImporterLabel3": "Başlamak için, %1$sOAuth İstemci yapılandırmanızı alma yönergelerini izleyin%2$s. Ardından, aşağıdaki düğmeyi kullanarak istemci yapılandırma dosyasını yükleyin.",
         "CreationDate": "İnternet mülkü oluşturulma tarihi",
         "DeleteUploadedClientConfig": "Yüklenmiş istemci yapılandırmasını silmek isterseniz aşağıya tıklayın",
         "DimensionScope": "Boyut kapsamı",
@@ -122,6 +126,7 @@
         "TodaysDate": "bugünün tarihi",
         "Troubleshooting": "Sorun çözme",
         "UnsupportedReportInImportRange": "Bu dönem için Google Analytics üzerinden yalnızca rapor verileri içe aktarılmış. Ancak bu rapor Google Analytics üzerinde bulunamadığından burada bir şey görüntülenemiyor.",
+        "Uploading": "Yükleniyor...",
         "ViewId": "Google Analytics görüntüleme kimliği",
         "ViewIdHelp": "İçe aktarılacak görünümün kimliği. 3450293 gibi büyük bir sayıdır.",
         "YesterdaysDate": "dünün tarihi"
