@@ -252,8 +252,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $error     = Common::getRequestVar('error', '');
         $oauthCode = Common::getRequestVar('code', '');
+        $state = Common::getRequestVar('state');
+        if ($state && !empty($_SERVER['HTTP_REFERER']) && stripos($_SERVER['HTTP_REFERER'], 'https://accounts.google.') !== False) {
+            //We need to update this, else it will fail for referer like https://accounts.google.co.in
+            $_SERVER['HTTP_REFERER'] = 'https://accounts.google.com';
+        }
 
-        Nonce::checkNonce(self::OAUTH_STATE_NONCE_NAME, Common::getRequestVar('state'), 'google.com');
+        Nonce::checkNonce(self::OAUTH_STATE_NONCE_NAME, $state, 'google.com');
 
         if ($error) {
             return $this->index($error);
