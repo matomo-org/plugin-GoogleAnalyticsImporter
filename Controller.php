@@ -216,6 +216,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $state = Nonce::getNonce(self::OAUTH_STATE_NONCE_NAME, 900);
         $client->setState($state);
+        $client->setPrompt('consent');
 
         Url::redirectToUrl($client->createAuthUrl());
     }
@@ -253,7 +254,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $error     = Common::getRequestVar('error', '');
         $oauthCode = Common::getRequestVar('code', '');
         $state = Common::getRequestVar('state');
-        if ($state && !empty($_SERVER['HTTP_REFERER']) && stripos($_SERVER['HTTP_REFERER'], 'https://accounts.google.') !== False) {
+        if ($state && !empty($_SERVER['HTTP_REFERER']) && stripos($_SERVER['HTTP_REFERER'], 'https://accounts.google.') === 0) {
             //We need to update this, else it will fail for referer like https://accounts.google.co.in
             $_SERVER['HTTP_REFERER'] = 'https://accounts.google.com';
         }
