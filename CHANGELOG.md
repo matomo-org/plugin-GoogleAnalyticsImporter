@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 4.6.1
+- Added the ability to show a security error
+- Improved nonce check after authorization
+
 # 4.6.0
 - Updated dependencies to improve PHP 8.2 compatability
 - Redesigned UI to simplify connecting to Google Analytics
