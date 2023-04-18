@@ -138,6 +138,9 @@ class ImportReports extends ConsoleCommand
 
         $lock = null;
 
+        $shouldFinishImportIfNothingLeft = true;
+        $isFutureDateImport = false;
+
         $createdSiteInCommand = false;
         if (empty($idSite)
             && !empty($property)
@@ -156,6 +159,7 @@ class ImportReports extends ConsoleCommand
             $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Created new site with ID = $idSite.");
         } else {
             $status = $importStatus->getImportStatus($idSite);
+            $isFutureDateImport = (!empty($status['status']) && $status['status'] == ImportStatus::STATUS_FUTURE_DATE_IMPORT_PENDING);
             if (empty($status)) {
                 throw new \Exception("There is no ongoing import for site with ID = {$idSite}. Please start a new import.");
             }
@@ -259,7 +263,9 @@ class ImportReports extends ConsoleCommand
                     $lastDateImported = !empty($status['last_date_imported']) ? $status['last_date_imported'] : null;
                 }
 
-                if (!empty($lastDateImported)
+                if (!empty($lastDateImported) && $isFutureDateImport) {
+                    $startDate = Date::factory($status['future_resume_date'] );
+                } else if (!empty($lastDateImported)
                     && Date::factory($lastDateImported)->subDay(1)->isEarlier($endDate)
                 ) {
                     $endDate = Date::factory($lastDateImported)->subDay(1);
@@ -284,6 +290,9 @@ class ImportReports extends ConsoleCommand
                 try {
                     $importer->setIsMainImport($isMainImport);
                     $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
+                    if ($aborted == -1) {
+                        $shouldFinishImportIfNothingLeft = false;
+                    }
                     if ($aborted) {
                         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Error encountered, aborting.");
                         break;
@@ -303,7 +312,9 @@ class ImportReports extends ConsoleCommand
                 }
             }
         } finally {
-            $importStatus->finishImportIfNothingLeft($idSite);
+            if ($shouldFinishImportIfNothingLeft) {
+                $importStatus->finishImportIfNothingLeft($idSite);
+            }
 
             $lock->unlock();
         }

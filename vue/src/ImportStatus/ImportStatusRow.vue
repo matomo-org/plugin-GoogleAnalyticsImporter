@@ -53,6 +53,12 @@
           :title="translate('GoogleAnalyticsImporter_RateLimitHourlyHelp')"
         />
       </div>
+      <div v-if="status.status === 'future_date_import_pending'">
+        <span
+          class="icon icon-help"
+          :title="translate('GoogleAnalyticsImporter_FutureDateHelp', status.future_resume_date)"
+        />
+      </div>
       <div v-else-if="status.status === 'errored'">
         {{ translate('GoogleAnalyticsImporter_ErrorMessage') }}: {{ status.error || 'no message' }}
         <br />
