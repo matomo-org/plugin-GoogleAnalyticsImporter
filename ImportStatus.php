@@ -555,7 +555,11 @@ class ImportStatus
 
         if (!empty($status['import_range_start'])
             && !empty($mainImportProgress)
-            && ($mainImportProgress == $status['import_range_start']
+            && (
+                (
+                    $mainImportProgress == $status['import_range_start'] ||
+                    (!empty($status['future_resume_date']) && $mainImportProgress == $status['import_range_end']) //If import includes future dates, consider import_range_end as the import will start forward once all backwards date are completed
+                )
                 || Date::factory($mainImportProgress)->isEarlier(Date::factory($status['import_range_start'])))
             && empty($status['reimport_ranges'])
         ) {
