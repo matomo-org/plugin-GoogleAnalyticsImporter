@@ -47,6 +47,7 @@
         "None": "None",
         "EndDate": "End Date",
         "EndDateHelp": "The date to end importing at. By default, it will run every day until you decide to cancel it. (YYYY-MM-DD)",
+        "EndDateHelpText": "The date to end importing at. If no end date is supplied, the import will continue until you manually cancel it. (YYYY-MM-DD)",
         "ThisReportWasImportedFromGoogle": "This report was imported from Google Analytics. Some data may be missing or be reported as Unknown\/not-set due to incompatibilities between Matomo and Google Analytics.",
         "ThisReportWasImportedFromGoogleMultiPeriod": "This period includes dates that have data imported from Google Analytics. Some data may be missing or be reported as Unknown\/not-set due to incompatibilities between Matomo and Google Analytics.",
         "LiveDataUnavailableForImported": "The report data for this time period were imported from Google Analytics, but raw visits log data cannot be imported from Google Analytics, and so is not available for this period.",
@@ -101,6 +102,7 @@
         "ThereAreNoImportJobs": "There are no import jobs to display.",
         "ScheduleImportDesc1": "Schedule a new import below. It will be run once a day until the entire date range is imported. Note: we run it daily since there is a daily API request limit that Google enforces. Once it is reached, we can't continue importing until the next day. (This is generally hit after importing 4 months of data).",
         "ScheduleImportDesc2": "If no end date is supplied, the import will continue until you manually cancel it below.",
+        "ScheduleImportDescription": "Schedule a new import below. It will be run once a day until the entire date range is imported. The importer starts by importing recent data and works back towards the specified start date, before importing future data as it becomes available. We run the import daily, since there is a daily API request limit that Google enforces. Once the limit is reached, we can't continue importing until the next day (on average this is hit after importing 4 months of data).",
         "ResumeDesc": "Resume. Note: if your import has errored, resuming it will most likely result in the same error unless you have updated the plugin with a fix. If it has been rate limited, resuming will most likely result in the same rate limiting error, but it will automatically restart the next day when the rate limit wears off.",
         "KilledStatusHelp": "It looks like the import job was terminated. If you didn't do this yourself, then your host probably does not like long-running PHP processes. The import job will start again within the next hour so the import will still continue. If the import speed is still slow overall (check back in a day to see), then view the user guide for more information and workarounds.",
         "ReimportDate": "Re-import date range",
@@ -121,14 +123,16 @@
         "SelectImporterSelection": "Which Google Analytics version do you want to import data from?",
         "SelectImporterUATitle": "Google Universal analytics (GA3)",
         "SelectImporterUAInlineHelp": "Choose this if your property ID start with UA and end with a number (UA-XXXXXXXXX-1).",
+        "SelectImporterUAInlineHelpText": "Choose this if your property ID starts with UA and ends with a number (UA-XXXXXXX-1).",
         "SelectImporterGA4Title": "Google Analytics 4 (GA4)",
         "SelectImporterGA4InlineHelp": "Choose this if your property ID have only numbers (XXXXXXXXX).",
+        "SelectImporterGA4InlineHelpText": "Choose this if your property ID has only numbers (XXXXXXXXX).",
         "PendingGAImportReportNotificationNoData" : "We are still importing from Google Analytics but you should be able to see your most recent data. You will be able to view all your data within a few days.",
         "PendingGAImportReportNotificationSomeData" : "We are still importing from Google Analytics but you should be able to see your most recent data. Data until %1$s has been imported so far. You should be able to see your importer data since this date.",
         "NoDateSuccessImportMessageLine1": "Your Google Analytics properties were imported successfully",
         "NoDateSuccessImportMessageLine2": "Historical reports for these properties will be imported in the background. Please be patient as this will take a few days to complete. It's now time to set up the tracking of new data (see instructions below).",
         "OauthFailedMessage": "We encountered an issue during the authorization process for importing your GA reports. To try again, please click the button below. If the problem persists, please contact our support team for assistance. They will assist you in resolving the issue and getting your historical GA data imported.",
         "ConfigureImportNotificationMessage": "Don't miss out on your valuable historical insights! %1$sImport your Google Analytics data for %2$s%3$s into your Matomo platform now.",
-        "FutureDateHelp": "The import process has been stopped because it attempted to import data for a future or present date (%1$s). The importer will automatically retry the import tomorrow for dates older than today to ensure that correct and complete data is imported. "
+        "FutureDateHelp": "The import process has been stopped because it attempted to import data for a future or present date (%1$s). The importer will automatically retry the import tomorrow to ensure that correct and complete data is imported. "
     }
 }
