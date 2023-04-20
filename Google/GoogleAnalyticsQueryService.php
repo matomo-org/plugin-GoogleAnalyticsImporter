@@ -17,7 +17,7 @@ use Piwik\Exception\Exception;
 use Piwik\Option;
 use Piwik\Piwik;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 class GoogleAnalyticsQueryService
 {

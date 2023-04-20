@@ -21,7 +21,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\SearchEngineMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\Referrers\Archiver;
 use Piwik\Plugins\Referrers\Social;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {

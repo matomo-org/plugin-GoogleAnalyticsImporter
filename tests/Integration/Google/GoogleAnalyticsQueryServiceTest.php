@@ -17,7 +17,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 class GoogleAnalyticsQueryServiceTest extends IntegrationTestCase
 {

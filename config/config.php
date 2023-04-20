@@ -2,7 +2,7 @@
 
 use Piwik\Option;
 use Piwik\Url;
-use Psr\Container\ContainerInterface;
+use \Piwik\Container\Container;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 
 require_once __DIR__ . '/../vendor/autoload.php';
@@ -13,7 +13,7 @@ return [
     'GoogleAnalyticsImporter.logToSingleFile' => false,
     'GoogleAnalyticsImporter.isClientConfigurable' => true,
 
-    'log.processors' => \DI\decorate(function ($previous, ContainerInterface $container) {
+    'log.processors' => \Piwik\DI::decorate(function ($previous, Container $container) {
         $idSite = (int) getenv('MATOMO_GA_IMPORTER_LOG_TO_SINGLE_FILE');
         if (!empty($idSite)) {
             $previous[] = new \Piwik\Plugins\GoogleAnalyticsImporter\Logger\LogToSingleFileProcessor($idSite);
@@ -22,7 +22,7 @@ return [
     }),
 
     'GoogleAnalyticsImporter.googleClientClass' => '\Google\Client',
-    'GoogleAnalyticsImporter.googleClient' => function (\Psr\Container\ContainerInterface $c) {
+    'GoogleAnalyticsImporter.googleClient' => function (Container $c) {
         $klass = $c->get('GoogleAnalyticsImporter.googleClientClass');
 
         /** @var \Google\Client $googleClient */
@@ -36,8 +36,8 @@ return [
         return $googleClient;
     },
 
-    \Google\Service\Analytics::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
-    \Google\Service\AnalyticsReporting::class => \DI\autowire()->constructor(\DI\get('GoogleAnalyticsImporter.googleClient')),
+    \Google\Service\Analytics::class => \Piwik\DI::autowire()->constructor(\Piwik\DI::get('GoogleAnalyticsImporter.googleClient')),
+    \Google\Service\AnalyticsReporting::class => \Piwik\DI::autowire()->constructor(\Piwik\DI::get('GoogleAnalyticsImporter.googleClient')),
 
     'GoogleAnalyticsImporter.googleAnalyticsDataClientClass' => '\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient',
     'GoogleAnalyticsImporter.googleAnalyticsAdminServiceClientClass' => '\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient',
@@ -60,7 +60,7 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitTime\RecordImporter::class,
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency\RecordImporter::class,
     ],
-    'GoogleAnalyticsGA4Importer.clientConfiguration' => function (\Psr\Container\ContainerInterface $c) {
+    'GoogleAnalyticsGA4Importer.clientConfiguration' => function (Container $c) {
         $config = @json_decode(Option::get(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME), true);
 
         $accessToken = @json_decode(Option::get(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME), true);
@@ -91,9 +91,9 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency\RecordImporterGA4::class,
     ],
 
-    'diagnostics.optional' => \DI\add([
-        \DI\get(\Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredFunctionsCheck::class),
-        \DI\get(\Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredExecutablesCheck::class),
+    'diagnostics.optional' => \Piwik\DI::add([
+        \Piwik\DI::get(\Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredFunctionsCheck::class),
+        \Piwik\DI::get(\Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredExecutablesCheck::class),
     ]),
 
     '\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper' => DI\create('\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper')

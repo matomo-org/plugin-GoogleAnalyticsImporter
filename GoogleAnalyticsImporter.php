@@ -21,7 +21,7 @@ use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 class GoogleAnalyticsImporter extends \Piwik\Plugin
 {

@@ -19,9 +19,6 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsGA4QueryService;
 use Piwik\Site;
 use Piwik\Timer;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImporterGA4;
@@ -40,47 +37,40 @@ class ImportGA4Reports extends ConsoleCommand
     {
         $this->setName('googleanalyticsimporter:import-ga4-reports');
         $this->setDescription('Import GA4 reports from one or more google analytics properties into Matomo sites.');
-        $this->addOption('property', null, InputOption::VALUE_REQUIRED, 'The GA properties to import.');
-        $this->addOption('dates', null, InputOption::VALUE_REQUIRED, 'The dates to import, eg, 2015-03-04,2015-04-12.');
-        $this->addOption('idsite', null, InputOption::VALUE_REQUIRED, 'The site to import into. This will attempt to continue an existing import.');
-        $this->addOption('cvar-count', null, InputOption::VALUE_REQUIRED, 'The number of custom variables to support (if not supplied defaults to however many are currently available). '
+        $this->addRequiredValueOption('property', null, 'The GA properties to import.');
+        $this->addRequiredValueOption('dates', null, 'The dates to import, eg, 2015-03-04,2015-04-12.');
+        $this->addRequiredValueOption('idsite', null, 'The site to import into. This will attempt to continue an existing import.');
+        $this->addRequiredValueOption('cvar-count', null, 'The number of custom variables to support (if not supplied defaults to however many are currently available). '
             . 'NOTE: This option will attempt to set the number of custom variable slots which should be done with care on an existing system.');
-        $this->addOption('skip-archiving', null, InputOption::VALUE_NONE, 'Skips launching archiving at the end of an import. Use this only if executing PHP from the command line results in an error on your system.');
-        $this->addOption('mobile-app', null, InputOption::VALUE_NONE, 'If this option is used, the Matomo measurable that is created will be a mobile app. Requires the MobileAppMeasurable be activated.');
-        $this->addOption('timezone', null, InputOption::VALUE_REQUIRED, 'If your GA property\'s timezone is set to a value that is not a timezone recognized by PHP, you can specify a valid timezone manually with this option.');
-        $this->addOption('extra-custom-dimension', null, InputOption::VALUE_REQUIRED | InputOption::VALUE_IS_ARRAY, 'Map extra google analytics dimensions as matomo dimensions. This can be used to import dimensions like age & gender. Values should be like "gaDimension,dimensionScope", for example "userAgeBracket,visit".', []);
+        $this->addNoValueOption('skip-archiving', null, 'Skips launching archiving at the end of an import. Use this only if executing PHP from the command line results in an error on your system.');
+        $this->addNoValueOption('mobile-app', null, 'If this option is used, the Matomo measurable that is created will be a mobile app. Requires the MobileAppMeasurable be activated.');
+        $this->addRequiredValueOption('timezone', null, 'If your GA property\'s timezone is set to a value that is not a timezone recognized by PHP, you can specify a valid timezone manually with this option.');
+        $this->addRequiredValueOption('extra-custom-dimension', null, 'Map extra google analytics dimensions as matomo dimensions. This can be used to import dimensions like age & gender. Values should be like "gaDimension,dimensionScope", for example "userAgeBracket,visit".', [], true);
     }
 
     /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
      * @return int
      */
-
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function doExecute(): int
     {
         try {
-            $output = $this->executeImpl($input, $output);
+            return $this->executeImpl();
         } catch (ImportWasCancelledException $ex) {
-            $output->writeln("Import was cancelled, aborting.");
+            $this->getOutput()->writeln("Import was cancelled, aborting.");
             return self::FAILURE;
         } catch (CannotProcessImportException $ex) {
-            $output->writeln($ex->getMessage());
+            $this->getOutput()->writeln($ex->getMessage());
             return self::FAILURE;
         }
-
-        if (!$output) {
-            return self::FAILURE;
-        }
-
-        return self::SUCCESS;
     }
 
-    protected function executeImpl(InputInterface $input, OutputInterface $output)
+    protected function executeImpl(): int
     {
+        $input = $this->getInput();
+        $output = $this->getOutput();
         $skipArchiving = $input->getOption('skip-archiving');
         $timezone = $input->getOption('timezone');
-        $extraCustomDimensions = $this->getExtraCustomDimensions($input);
+        $extraCustomDimensions = $this->getExtraCustomDimensions();
         $property = $input->getOption('property');
 
         $isMobileApp = $input->getOption('mobile-app');
@@ -92,7 +82,7 @@ class ImportGA4Reports extends ConsoleCommand
 
         $type = $isMobileApp ? \Piwik\Plugins\MobileAppMeasurable\Type::ID : Type::ID;
 
-        $idSite = $this->getIdSite($input);
+        $idSite = $this->getIdSite();
         LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite, $output);
 
         /** @var ImportStatus $importStatus */
@@ -120,14 +110,14 @@ class ImportGA4Reports extends ConsoleCommand
             if (!empty($idSite)) {
                 $importStatus->erroredImport($idSite, $ex->getMessage());
             }
-            return;
+            return self::FAILURE;
         }
 
         LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite);
 
         /** @var ImportConfiguration $importerConfiguration */
         $importerConfiguration = StaticContainer::get(ImportConfiguration::class);
-        $this->setImportRunConfiguration($importerConfiguration, $input);
+        $this->setImportRunConfiguration($importerConfiguration);
 
         /** @var ImporterGA4 $importer */
         $importer = StaticContainer::get(ImporterGA4::class);
@@ -178,14 +168,14 @@ class ImportGA4Reports extends ConsoleCommand
         if (empty($success)) {
             $n = ceil(ImportLock::getLockTtlConfig(StaticContainer::get(Config::class)) / 60);
             $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "<error>An import is currently in progress. (If the other import has failed, you should be able to try again in about $n minutes.)</error>");
-            return;
+            return self::FAILURE;
         }
 
         $timer = new Timer();
 
         try {
             $importStatus->resumeImport($idSite);
-            $dates = $this->getDatesToImport($input);
+            $dates = $this->getDatesToImport();
             if (empty($dates) && (empty($status['import_end_time']) || $isFutureDateImport)) {
                 if (!empty($status['import_range_start'])) {
                     $startDate = Date::factory($status['import_range_start']);
@@ -210,7 +200,7 @@ class ImportGA4Reports extends ConsoleCommand
             $abort = $importer->importEntities($idSite, $property);
             if ($abort) {
                 $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Failed to import property entities, aborting.");
-                return;
+                return self::FAILURE;
             }
 
             $dateRangesToReImport = empty($status['reimport_ranges']) ? [] : $status['reimport_ranges'];
@@ -247,7 +237,7 @@ class ImportGA4Reports extends ConsoleCommand
 
                 $isMainImport = !empty($dates) && empty($status['import_end_time']) && $index == count($dateRangesToImport) - 1; // last is always the main import, if one exists
 
-                list($startDate, $endDate) = $datesToImport;
+                [$startDate, $endDate] = $datesToImport;
 
                 if ($isMainImport) {
                     $lastDateImported = !empty($status['main_import_progress']) ? $status['main_import_progress'] : null;
@@ -315,12 +305,12 @@ class ImportGA4Reports extends ConsoleCommand
         $queryCount = $importer->getQueryCount();
         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Done in $timer. [$queryCount API requests made to GA]");
 
-        return true;
+        return self::SUCCESS;
     }
 
-    private function getExtraCustomDimensions(InputInterface $input)
+    private function getExtraCustomDimensions()
     {
-        $dimensions = $input->getOption('extra-custom-dimension');
+        $dimensions = $this->getInput()->getOption('extra-custom-dimension');
         $dimensions = array_map(function ($value) {
             $parts = explode(',', $value);
             if (count($parts) !== 2) {
@@ -333,9 +323,9 @@ class ImportGA4Reports extends ConsoleCommand
         return $dimensions;
     }
 
-    private function getIdSite(InputInterface $input)
+    private function getIdSite()
     {
-        $idSite = $input->getOption('idsite');
+        $idSite = $this->getInput()->getOption('idsite');
         if (!empty($idSite)) {
             if (!is_numeric($idSite)) {
                 throw new \Exception("Invalid --idsite value provided, must be an integer.");
@@ -350,9 +340,9 @@ class ImportGA4Reports extends ConsoleCommand
         return $idSite;
     }
 
-    private function setImportRunConfiguration(ImportConfiguration $importerConfiguration, InputInterface $input)
+    private function setImportRunConfiguration(ImportConfiguration $importerConfiguration)
     {
-        $cvarCount = (int) $input->getOption('cvar-count');
+        $cvarCount = (int) $this->getInput()->getOption('cvar-count');
         $importerConfiguration->setNumCustomVariables($cvarCount);
     }
 
@@ -361,9 +351,9 @@ class ImportGA4Reports extends ConsoleCommand
         return new ImportLock(StaticContainer::get(Config::class));
     }
 
-    private function getDatesToImport(InputInterface $input)
+    private function getDatesToImport()
     {
-        $dates = $input->getOption('dates');
+        $dates = $this->getInput()->getOption('dates');
         if (empty($dates)) {
             return null;
         }

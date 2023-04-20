@@ -8,7 +8,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
-use DI\NotFoundException;
+use Piwik\Exception\DI\NotFoundException;
 use Piwik\CliMulti\CliPhp;
 use Piwik\Config;
 use Piwik\Container\StaticContainer;
@@ -16,7 +16,7 @@ use Piwik\Date;
 use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 use Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredExecutablesCheck;
 
 class Tasks extends \Piwik\Plugin\Tasks
@@ -349,7 +349,7 @@ class Tasks extends \Piwik\Plugin\Tasks
         if (SettingsServer::isWindows()) {
             return '';
         }
-        
+
         $requiredExecutablesCheck = StaticContainer::get(RequiredExecutablesCheck::class);
         if ($requiredExecutablesCheck->isNohupPresent()) {
             return 'nohup';

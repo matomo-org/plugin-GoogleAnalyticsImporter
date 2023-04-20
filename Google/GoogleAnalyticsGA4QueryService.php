@@ -18,7 +18,7 @@ use Piwik\Db;
 use Piwik\Option;
 use Piwik\Piwik;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGA4MetricMapper;
 
 class GoogleAnalyticsGA4QueryService

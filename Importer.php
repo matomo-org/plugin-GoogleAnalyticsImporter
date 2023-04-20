@@ -43,7 +43,7 @@ use Piwik\Segment;
 use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 class Importer
 {
@@ -536,7 +536,7 @@ class Importer
      * @param $idSite
      * @param $viewId
      * @return RecordImporter[]
-     * @throws \DI\NotFoundException
+     * @throws \Piwik\Exception\DI\NotFoundException
      */
     private function getRecordImporters($idSite, $viewId)
     {

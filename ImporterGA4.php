@@ -31,7 +31,7 @@ use Piwik\Segment;
 use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Plugins\TagManager\TagManager;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
@@ -551,7 +551,7 @@ class ImporterGA4
      * @param $idSite
      * @param $propertyId
      * @return RecordImporterGA4[]
-     * @throws \DI\NotFoundException
+     * @throws \Piwik\Exception\DI\NotFoundException
      */
     private function getRecordImporters($idSite, $propertyId)
     {
