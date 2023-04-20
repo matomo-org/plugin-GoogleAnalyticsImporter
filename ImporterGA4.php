@@ -419,6 +419,14 @@ class ImporterGA4
             $site = new Site($idSite);
             $dates = $this->getRecentDatesToImport($start, $endPlusOne, Date::today()->getTimestamp());
             foreach ($dates as $date) {
+                if ($date->isToday() || $date->isLater(Date::yesterday())) {
+                    $this->logger->info("Encountered Future Date while Importing data for GA4 Property {propertyID} for date {date}, the import would be stopped", [
+                        'viewId' => $propertyId,
+                        'date' => $date->toString(),
+                    ]);
+                    $this->importStatus->futureDateImportDetected($idSite, $date->toString());
+                    return -1;
+                }
                 $this->logger->info("Importing data for GA Property {propertyID} for date {date}...", [
                     'propertyID' => $propertyId,
                     'date' => $date->toString(),
@@ -542,7 +550,7 @@ class ImporterGA4
     /**
      * @param $idSite
      * @param $propertyId
-     * @return RecordImporter[]
+     * @return RecordImporterGA4[]
      * @throws \DI\NotFoundException
      */
     private function getRecordImporters($idSite, $propertyId)

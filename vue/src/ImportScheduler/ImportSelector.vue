@@ -6,7 +6,7 @@
         name="selectedImporter"
         v-model="selectedImporter"
         :options="importOptionsUa"
-        :inline-help="translate('GoogleAnalyticsImporter_SelectImporterUAInlineHelp')"
+        :inline-help="translate('GoogleAnalyticsImporter_SelectImporterUAInlineHelpText')"
       >
       </Field>
       <Field
@@ -14,7 +14,7 @@
         name="selectedImporter"
         v-model="selectedImporterGA4"
         :options="importOptionsGa4"
-        :inline-help="translate('GoogleAnalyticsImporter_SelectImporterGA4InlineHelp')"
+        :inline-help="translate('GoogleAnalyticsImporter_SelectImporterGA4InlineHelpText')"
       >
       </Field>
     </div>

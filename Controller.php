@@ -574,7 +574,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                 throw new \Exception("This import cannot be resumed since it is finished.");
             }
 
-            $importStatus->resumeImport($idSite);
+            if ($status['status'] != ImportStatus::STATUS_FUTURE_DATE_IMPORT_PENDING) { // If we do not check this, future import dates will not be processed, and it will be marked as finished
+                $importStatus->resumeImport($idSite);
+            }
 
             if ($isGA4) {
                 Tasks::startImportGA4($status);

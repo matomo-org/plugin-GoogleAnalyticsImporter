@@ -6,8 +6,7 @@
 
 <template>
   <div>
-    <p>{{ translate('GoogleAnalyticsImporter_ScheduleImportDesc1') }}</p>
-    <p>{{ translate('GoogleAnalyticsImporter_ScheduleImportDesc2') }}</p>
+    <p>{{ translate('GoogleAnalyticsImporter_ScheduleImportDescription') }}</p>
     <div name="startDateGA4">
       <Field
         uicontrol="text"
@@ -210,7 +209,7 @@ export default defineComponent({
   },
   computed: {
     endDateHelp() {
-      const endDateHelp = translate('GoogleAnalyticsImporter_EndDateHelp');
+      const endDateHelp = translate('GoogleAnalyticsImporter_EndDateHelpText');
       const maxEndDateDesc = this.maxEndDateDesc
         && translate('<br/><br/>GoogleAnalyticsImporter_MaxEndDateHelp', this.maxEndDateDesc);
       return `${endDateHelp} ${maxEndDateDesc || ''}`;

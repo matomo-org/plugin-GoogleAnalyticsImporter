@@ -220,7 +220,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_LeaveEmptyToRemove';
         $translationKeys[] = 'GoogleAnalyticsImporter_Change';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelpText';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelpText';
         $translationKeys[] = 'GoogleAnalyticsImporter_MaxEndDateHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationNoData';
         $translationKeys[] = 'GoogleAnalyticsImporter_PendingGAImportReportNotificationSomeData';
@@ -234,6 +236,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel3';
         $translationKeys[] = 'General_Upload';
         $translationKeys[] = 'GoogleAnalyticsImporter_Uploading';
+        $translationKeys[] = 'GoogleAnalyticsImporter_FutureDateHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDescription';
+        $translationKeys[] = 'GoogleAnalyticsImporter_EndDateHelpText';
 
         if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";

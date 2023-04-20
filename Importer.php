@@ -407,6 +407,14 @@ class Importer
             $site = new Site($idSite);
             $dates = $this->getRecentDatesToImport($start, $endPlusOne, Date::today()->getTimestamp());
             foreach ($dates as $date) {
+                if ($date->isToday() || $date->isLater(Date::yesterday())) {
+                    $this->logger->info("Encountered Future Date while Importing data for GA View {viewId} for date {date}, the import would be stopped", [
+                        'viewId' => $viewId,
+                        'date' => $date->toString(),
+                    ]);
+                    $this->importStatus->futureDateImportDetected($idSite, $date->toString());
+                    return -1;
+                }
                 $this->logger->info("Importing data for GA View {viewId} for date {date}...", [
                     'viewId' => $viewId,
                     'date' => $date->toString(),
