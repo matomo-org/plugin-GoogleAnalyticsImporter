@@ -193,7 +193,7 @@ class ImportReports extends ConsoleCommand
             $importStatus->resumeImport($idSite);
 
             $dates = $this->getDatesToImport($input);
-            if (empty($dates) && empty($status['import_end_time'])) {
+            if (empty($dates) && (empty($status['import_end_time']) || $isFutureDateImport)) {
                 if (!empty($status['import_range_start'])) {
                     $startDate = Date::factory($status['import_range_start']);
                 } else {
