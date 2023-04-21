@@ -508,9 +508,9 @@ class ImporterGA4
                 /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporterGA4 $visitsSummaryRecordImporter */
                 $visitsSummaryRecordImporter = $recordImporter;
 
-                $sessions = $visitsSummaryRecordImporter->getSessions();
-                if ($sessions <= 0) {
-                    $this->logger->info("Found 0 sessions for {$date} [segment = $segment], skipping rest of plugins for this day/segment.");
+                $hasAnyVisitSummaryData = $visitsSummaryRecordImporter->hasSomeNumericData();
+                if (!$hasAnyVisitSummaryData) {
+                    $this->logger->info("No Visit Summary Data found for {$date} [segment = $segment], skipping rest of plugins for this day/segment.");
                     break;
                 }
             }
