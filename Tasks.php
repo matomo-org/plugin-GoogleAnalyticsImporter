@@ -17,6 +17,7 @@ use Piwik\SettingsPiwik;
 use Piwik\SettingsServer;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
+use Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredExecutablesCheck;
 
 class Tasks extends \Piwik\Plugin\Tasks
 {
@@ -58,6 +59,10 @@ class Tasks extends \Piwik\Plugin\Tasks
 
             if ($status['status'] == ImportStatus::STATUS_ERRORED) {
                 $logger->info('Google Analytics import into site with ID = {idSite} encountered an unexpected error last time, attempting to resume.', [
+                    'idSite' => $status['idSite'],
+                ]);
+            } else if ($status['status'] == ImportStatus::STATUS_FUTURE_DATE_IMPORT_PENDING) {
+                $logger->info('Google Analytics import into site with ID = {idSite} importing future date', [
                     'idSite' => $status['idSite'],
                 ]);
             } else {
@@ -344,7 +349,12 @@ class Tasks extends \Piwik\Plugin\Tasks
         if (SettingsServer::isWindows()) {
             return '';
         }
-
-        return 'nohup';
+        
+        $requiredExecutablesCheck = StaticContainer::get(RequiredExecutablesCheck::class);
+        if ($requiredExecutablesCheck->isNohupPresent()) {
+            return 'nohup';
+        } else {
+            return '';
+        }
     }
 }

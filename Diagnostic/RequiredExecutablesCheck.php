@@ -63,8 +63,8 @@ class RequiredExecutablesCheck implements Diagnostic
         return $results;
     }
 
-    private function isNohupPresent()
+    public function isNohupPresent()
     {
-        return (bool) @shell_exec('which nohup');
+        return !empty(@shell_exec('command -v nohup'));
     }
 }

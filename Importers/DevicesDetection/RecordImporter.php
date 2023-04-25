@@ -280,11 +280,18 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $result = $this->cache->fetch($cacheKey);
         if (empty($result)) {
             $result = $this->buildValueMapping(DeviceParser::$deviceBrands);
-            $result['oukitel'] = $result['ouki'];
+            $result['honor'] = $result['huawei'];
+            $result['caterpillar'] = $result['cat'];
+            $result['tp-link'] = $result['neffos'];
+            $result['nothing'] = $result['nothing phone'];
+            $result['coby'] = $result['coby kyros'];
+            $result['kruger&matz'] = $result['krüger&matz'];
             $result['blackberry'] = $result['rim'];
             $result['tecno'] = $result['tecno mobile'];
             $result['sonyericsson'] = $result['sony ericsson'];
-            $result['opera'] = 'xx';
+            $result['mozilla'] = 'xx'; // browser, not a brand
+            $result['feiteng'] = 'xx'; // Feiteng is a processor type, to a brand
+            $result['opera'] = 'xx'; // browser, not a brand
             $result['mobiwire'] = 'xx';
             $result['creative'] = 'xx';
             $this->cache->save($cacheKey, $result);

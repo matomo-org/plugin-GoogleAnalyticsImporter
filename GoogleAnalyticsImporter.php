@@ -16,6 +16,7 @@ use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Period;
 use Piwik\Piwik;
+use Piwik\Plugin\Manager;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
@@ -141,6 +142,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     {
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.less";
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/stylesheets/styles.less";
+        if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
+            $stylesheets[] = "plugins/ConnectAccounts/vue/src/Configure/ConfigureConnection.less";
+        } else {
+            $stylesheets[] = "plugins/GoogleAnalyticsImporter/vue/src/Configure/ConfigureConnection.less";
+        }
     }
 
     public function getClientSideTranslationKeys(&$translationKeys)
@@ -237,7 +243,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'General_Yes';
         $translationKeys[] = 'General_No';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterUAInlineHelpText';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterGA4InlineHelpText';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporter';
         $translationKeys[] = 'GoogleAnalyticsImporter_SelectImporterSelection';
         $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleAnImportGA4';
@@ -247,11 +255,29 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine1';
         $translationKeys[] = 'GoogleAnalyticsImporter_NoDateSuccessImportMessageLine2';
         $translationKeys[] = 'GoogleAnalyticsImporter_OauthFailedMessage';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureImportNotificationMessage';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel1';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel2';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel3';
+        $translationKeys[] = 'General_Upload';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Uploading';
+        $translationKeys[] = 'GoogleAnalyticsImporter_FutureDateHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDescription';
+        $translationKeys[] = 'GoogleAnalyticsImporter_EndDateHelpText';
+
+        if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
+            $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";
+            $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp2";
+            $translationKeys[] = "ConnectAccounts_OptionQuickConnectWithGa";
+            $translationKeys[] = "ConnectAccounts_OptionAdvancedConnectWithGa";
+        }
     }
 
     public function getJsFiles(&$files)
     {
         $files[] = "plugins/GoogleAnalyticsImporter/javascripts/googleAnalyticsImporter.js";
+        $files[] = "plugins/GoogleAnalyticsImporter/javascripts/configureImportNotification.js";
     }
 
     public function translateNotSetLabels(&$returnedValue, $params)
@@ -458,8 +484,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             ],
             //Import Dates
             [
-                'start_time' =>Date::factory($status['import_range_start']),
-                'end_time' => Date::factory($status['import_range_end'])
+                'start_time' =>Date::factory($status['import_range_start'] ?? 'now'), //due to null it sets an error, can be an edge case where someone requests a report before setImportedDateRange is called but import is created
+                'end_time' => Date::factory($status['import_range_end'] ?? 'now') //due to null it sets an error, can be an edge case where someone requests a report before setImportedDateRange is called but import is created
             ]
         ];
 

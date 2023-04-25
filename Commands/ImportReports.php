@@ -101,14 +101,19 @@ class ImportReports extends ConsoleCommand
         LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite, $output);
 
         $canProcessNow = $this->checkIfCanProcess();
+        /** @var ImportStatus $importStatus */
+        $importStatus = StaticContainer::get(ImportStatus::class);
         if($canProcessNow['canProcess'] === false){
-            $exceededMessage = 'The import will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
+            $exceededMessage = 'The import was rate limited and will be restarted automatically at ' . $canProcessNow['nextAvailableAt'];
             $output->writeln($exceededMessage);
+            if (!empty($canProcessNow['rateLimitType']) && $canProcessNow['rateLimitType'] === 'hourly') {
+                $importStatus->rateLimitReachedHourly($idSite); //set the error as rate limited, else it leads to error with no message
+            } else {
+                $importStatus->rateLimitReached($idSite); //set the error as rate limited, else it leads to error with no message
+            }
             throw new CannotProcessImportException($exceededMessage);
         }
 
-        /** @var ImportStatus $importStatus */
-        $importStatus = StaticContainer::get(ImportStatus::class);
 
         $googleAuth = StaticContainer::get(Authorization::class);
         try {
@@ -147,6 +152,9 @@ class ImportReports extends ConsoleCommand
 
         $lock = null;
 
+        $shouldFinishImportIfNothingLeft = true;
+        $isFutureDateImport = false;
+
         $createdSiteInCommand = false;
         if (empty($idSite)
             && !empty($property)
@@ -165,6 +173,7 @@ class ImportReports extends ConsoleCommand
             $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Created new site with ID = $idSite.");
         } else {
             $status = $importStatus->getImportStatus($idSite);
+            $isFutureDateImport = (!empty($status['status']) && $status['status'] == ImportStatus::STATUS_FUTURE_DATE_IMPORT_PENDING);
             if (empty($status)) {
                 throw new \Exception("There is no ongoing import for site with ID = {$idSite}. Please start a new import.");
             }
@@ -198,7 +207,7 @@ class ImportReports extends ConsoleCommand
             $importStatus->resumeImport($idSite);
 
             $dates = $this->getDatesToImport($input);
-            if (empty($dates) && empty($status['import_end_time'])) {
+            if (empty($dates) && (empty($status['import_end_time']) || $isFutureDateImport)) {
                 if (!empty($status['import_range_start'])) {
                     $startDate = Date::factory($status['import_range_start']);
                 } else {
@@ -209,7 +218,7 @@ class ImportReports extends ConsoleCommand
                 if (!empty($status['import_range_end'])) {
                     $endDate = Date::factory($status['import_range_end']);
                 } else {
-                    $endDate = Date::factory('yesterday'); // we don't want to import today since it's not complete yet
+                    $endDate = Date::factory('today'); // to ensure continuous import works when no end_date is supplied
                 }
 
                 $dates = [$startDate, $endDate];
@@ -268,7 +277,9 @@ class ImportReports extends ConsoleCommand
                     $lastDateImported = !empty($status['last_date_imported']) ? $status['last_date_imported'] : null;
                 }
 
-                if (!empty($lastDateImported)
+                if (!empty($lastDateImported) && $isFutureDateImport) {
+                    $startDate = Date::factory($status['future_resume_date'] );
+                } else if (!empty($lastDateImported)
                     && Date::factory($lastDateImported)->subDay(1)->isEarlier($endDate)
                 ) {
                     $endDate = Date::factory($lastDateImported)->subDay(1);
@@ -293,6 +304,9 @@ class ImportReports extends ConsoleCommand
                 try {
                     $importer->setIsMainImport($isMainImport);
                     $aborted = $importer->import($idSite, $viewId, $startDate, $endDate, $lock);
+                    if ($aborted == -1) {
+                        $shouldFinishImportIfNothingLeft = false;
+                    }
                     if ($aborted) {
                         $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Error encountered, aborting.");
                         break;
@@ -312,7 +326,9 @@ class ImportReports extends ConsoleCommand
                 }
             }
         } finally {
-            $importStatus->finishImportIfNothingLeft($idSite);
+            if ($shouldFinishImportIfNothingLeft) {
+                $importStatus->finishImportIfNothingLeft($idSite);
+            }
 
             $lock->unlock();
         }
@@ -458,6 +474,7 @@ class ImportReports extends ConsoleCommand
             Option::delete(GoogleAnalyticsQueryService::DELAY_OPTION_NAME);
             return ['canProcess' => true];
         }
-        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a')];
+        $rateLimitType = (Date::factory('+1 hour')->getTimestamp() > $nextAvailableAt) ? 'hourly' : 'daily';
+        return ['canProcess' => false, 'nextAvailableAt' => Date::factory($nextAvailableAt)->toString('Y-m-d h:i a'), 'rateLimitType' => $rateLimitType];
     }
 }

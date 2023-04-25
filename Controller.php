@@ -13,9 +13,14 @@ use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\DataTable\Renderer\Json;
 use Piwik\Date;
+use Piwik\Http;
 use Piwik\Nonce;
 use Piwik\Notification;
 use Piwik\Piwik;
+use Piwik\Plugin\Manager;
+use Piwik\Plugins\ConnectAccounts\ConnectAccounts;
+use Piwik\Plugins\ConnectAccounts\helpers\ConnectHelper;
+use Piwik\Plugins\ConnectAccounts\Strategy\Google\GoogleConnect;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportGA4Reports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
@@ -23,12 +28,24 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
+use Piwik\SiteContentDetector;
+use Piwik\SettingsPiwik;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
+use Piwik\Plugins\SitesManager\SitesManager;
 
 class Controller extends \Piwik\Plugin\ControllerAdmin
 {
     const OAUTH_STATE_NONCE_NAME = 'GoogleAnalyticsImporter.oauthStateNonce';
+
+    /** @var SiteContentDetector */
+    private $siteContentDetector;
+
+    public function __construct(SiteContentDetector $siteContentDetector)
+    {
+        parent::__construct();
+        $this->siteContentDetector = $siteContentDetector;
+    }
 
     public function index($errorMessage = false)
     {
@@ -38,6 +55,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         if (!empty($errorMessage)) {
             if ($errorMessage === 'access_denied') {
                 $errorMessage = Piwik::translate('GoogleAnalyticsImporter_OauthFailedMessage');
+            } elseif ($errorMessage === 'jwt_validation_error') {
+                $errorMessage = Piwik::translate('General_ExceptionSecurityCheckFailed');
             }
             $notification = new Notification($errorMessage);
             $notification->context = Notification::CONTEXT_ERROR;
@@ -97,6 +116,24 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $maxEndDateDesc = Date::factory($maxEndDate)->toString();
         }
 
+        $isConnectAccountsActivated = Manager::getInstance()->isPluginActivated('ConnectAccounts');
+        $authBaseUrl = $isConnectAccountsActivated ? "https://" . StaticContainer::get('CloudAccountsInstanceId') . '/index.php?' : '';
+        $jwt = Common::getRequestVar('state', '', 'string');
+        if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
+            // verify an existing user by supplying a jwt too
+            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId(),
+                ConnectAccounts::INITIATED_BY_GA);
+        }
+        $googleAuthUrl = '';
+        if($isConnectAccountsActivated) {
+            $googleAuthUrl = $authBaseUrl . Http::buildQuery([
+                'module' => 'ConnectAccounts',
+                'action' => 'initiateOauth',
+                'state' => $jwt,
+                'strategy' => GoogleConnect::getStrategyName()
+            ]);
+        }
+
         $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
         return $this->renderTemplate('index', [
             'isClientConfigurable' => $isClientConfigurable,
@@ -151,6 +188,17 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                     ],
                 ],
             ],
+            'isConnectAccountsActivated' => $isConnectAccountsActivated,
+            'radioOptions' => !$isConnectAccountsActivated ? [] : [
+                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
+                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
+            ],
+            'googleAuthUrl' => $googleAuthUrl,
+            'manualUploadText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
+                . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
+                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
+                    '</a>',
+                ]),
         ]);
     }
 
@@ -168,6 +216,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $state = Nonce::getNonce(self::OAUTH_STATE_NONCE_NAME, 900);
         $client->setState($state);
+        $client->setPrompt('consent');
 
         Url::redirectToUrl($client->createAuthUrl());
     }
@@ -183,7 +232,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $authorization->deleteClientConfiguration();
 
-        return $this->index();
+        // Redirect to index so that will be the URL and not the delete URL
+        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
+                'action' => 'index',
+                'code'   => null,
+                'scope'   => null,
+                'state'   => null
+            ]));
     }
 
     /**
@@ -198,8 +253,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         $error     = Common::getRequestVar('error', '');
         $oauthCode = Common::getRequestVar('code', '');
+        $state = Common::getRequestVar('state');
+        if ($state && !empty($_SERVER['HTTP_REFERER']) && stripos($_SERVER['HTTP_REFERER'], 'https://accounts.google.') === 0) {
+            //We need to update this, else it will fail for referer like https://accounts.google.co.in
+            $_SERVER['HTTP_REFERER'] = 'https://accounts.google.com';
+        }
 
-        Nonce::checkNonce(self::OAUTH_STATE_NONCE_NAME, Common::getRequestVar('state'), 'google.com');
+        Nonce::checkNonce(self::OAUTH_STATE_NONCE_NAME, $state, 'google.com');
 
         if ($error) {
             return $this->index($error);
@@ -514,7 +574,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                 throw new \Exception("This import cannot be resumed since it is finished.");
             }
 
-            $importStatus->resumeImport($idSite);
+            if ($status['status'] != ImportStatus::STATUS_FUTURE_DATE_IMPORT_PENDING) { // If we do not check this, future import dates will not be processed, and it will be marked as finished
+                $importStatus->resumeImport($idSite);
+            }
 
             if ($isGA4) {
                 Tasks::startImportGA4($status);
@@ -613,5 +675,40 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     {
         $pendingImports = GoogleAnalyticsImporter::canDisplayImportPendingNotice();
         return json_encode($pendingImports);
+    }
+
+    /**
+     * Helps to determine whether to show notification to configure GA import
+     * To show a notification, User should be admin and some data should have tracked and no import has configured as well as GA has been detected on the site
+     * @return Json
+     */
+    public function displayConfigureImportNotification()
+    {
+        $showNotification = false;
+        $settingsUrl = '';
+        $currentIdSite = Common::getRequestVar('idSite', -1);
+        if (Piwik::hasUserSuperUserAccess() && SitesManager::hasTrackedAnyTraffic($currentIdSite)) {
+            $importStatus = new ImportStatus();
+
+            try {
+                $status = $importStatus->getAllImportStatuses();
+            } catch (\Exception $exception) {
+                $status = []; //No Import is configured
+            }
+
+            if (empty($status)) {
+                $this->siteContentDetector->detectContent();
+                if ($this->siteContentDetector->ga3 || $this->siteContentDetector->ga4) {
+                    $showNotification = true;
+                    $settingsUrl = SettingsPiwik::getPiwikUrl() . 'index.php?' . Url::getQueryStringFromParameters([
+                            'idSite' => $currentIdSite,
+                            'module' => 'GoogleAnalyticsImporter',
+                            'action' => 'index',
+                        ]);
+                }
+            }
+
+        }
+        return json_encode(['showNotification' => $showNotification, 'configureURL' => $settingsUrl]);
     }
 }

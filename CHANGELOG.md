@@ -4,6 +4,31 @@
 # 5.0.0
 - Remove all use of AngularJS from the plugin.
 
+# 4.6.2
+- Improved check to ensure future and present dates are not processed today.
+
+# 4.6.1
+- Added the ability to show a security error
+- Improved nonce check after authorization
+
+# 4.6.0
+- Updated dependencies to improve PHP 8.2 compatability
+- Redesigned UI to simplify connecting to Google Analytics
+- Updated language translations
+
+# 4.5.2
+- Improved check to determine nohup support exist or not
+
+# 4.5.1
+- Improved check to determine nohup support exist
+
+# 4.5.0
+- Added some brand mappings.
+- Fixed status setting after rate limit and started pulling empty rows for GA4.
+- Added code to display import notification if site has GA detected.
+- Fixed duplication of Custom Dimensions.
+- Fixes deprecation warnings for PHP 8.1
+
 # 4.4.8
 - GA4 - Removed itemRevenue and itemsPurchased metrics due to incompatibility
 
