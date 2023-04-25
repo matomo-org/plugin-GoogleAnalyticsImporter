@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.6.2
+- Improved check to ensure future and present dates are not processed today.
+
 # 4.6.1
 - Added the ability to show a security error
 - Improved nonce check after authorization
