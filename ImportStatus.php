@@ -32,6 +32,7 @@ class ImportStatus
     const STATUS_FINISHED = 'finished';
     const STATUS_ERRORED = 'errored';
     const STATUS_RATE_LIMITED = 'rate_limited';
+    const STATUS_FUTURE_DATE_IMPORT_PENDING = 'future_date_import_pending';
     const STATUS_RATE_LIMITED_HOURLY = 'rate_limited_hourly';
     const STATUS_CLOUD_RATE_LIMITED = 'cloud_rate_limited';
     const STATUS_KILLED = 'killed';
@@ -109,6 +110,10 @@ class ImportStatus
 
         if (empty($status['last_date_imported'])
             || !Date::factory($status['last_date_imported'])->isEarlier($date)
+            || (
+                !empty($status['future_resume_date']) &&
+                Date::factory($status['last_date_imported'])->isEarlier($date)
+            )
         ) {
             $status['last_date_imported'] = $date->toString();
 
@@ -205,6 +210,14 @@ class ImportStatus
     {
         $status = $this->getImportStatus($idSite);
         $status['status'] = self::STATUS_RATE_LIMITED;
+        $this->saveStatus($status);
+    }
+
+    public function futureDateImportDetected($idSite, $date)
+    {
+        $status = $this->getImportStatus($idSite);
+        $status['status'] = self::STATUS_FUTURE_DATE_IMPORT_PENDING;
+        $status['future_resume_date'] = $date;
         $this->saveStatus($status);
     }
 
@@ -542,7 +555,11 @@ class ImportStatus
 
         if (!empty($status['import_range_start'])
             && !empty($mainImportProgress)
-            && ($mainImportProgress == $status['import_range_start']
+            && (
+                (
+                    $mainImportProgress == $status['import_range_start'] ||
+                    (!empty($status['future_resume_date']) && $mainImportProgress == $status['import_range_end']) //If import includes future dates, consider import_range_end as the import will start forward once all backwards date are completed
+                )
                 || Date::factory($mainImportProgress)->isEarlier(Date::factory($status['import_range_start'])))
             && empty($status['reimport_ranges'])
         ) {

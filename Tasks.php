@@ -61,6 +61,10 @@ class Tasks extends \Piwik\Plugin\Tasks
                 $logger->info('Google Analytics import into site with ID = {idSite} encountered an unexpected error last time, attempting to resume.', [
                     'idSite' => $status['idSite'],
                 ]);
+            } else if ($status['status'] == ImportStatus::STATUS_FUTURE_DATE_IMPORT_PENDING) {
+                $logger->info('Google Analytics import into site with ID = {idSite} importing future date', [
+                    'idSite' => $status['idSite'],
+                ]);
             } else {
                 $logger->info('Resuming import into site with ID = {idSite}.', [
                     'idSite' => $status['idSite'],
