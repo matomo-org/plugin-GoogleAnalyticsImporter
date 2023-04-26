@@ -87,6 +87,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>21</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==divebums.com</segment>
 			</row>
 			<row>
 				<label>divein.com</label>
@@ -130,6 +131,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>24</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==divein.com</segment>
 			</row>
 			<row>
 				<label>emperordivers.com</label>
@@ -173,6 +175,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>31</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==emperordivers.com</segment>
 			</row>
 			<row>
 				<label>google.com</label>
@@ -216,6 +219,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>23</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==google.com</segment>
 			</row>
 			<row>
 				<label>oahuscubadiving.com</label>
@@ -259,6 +263,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>7</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==oahuscubadiving.com</segment>
 			</row>
 			<row>
 				<label>phpmyvisites.net</label>
@@ -302,6 +307,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==phpmyvisites.net</segment>
 			</row>
 			<row>
 				<label>qwant.com</label>
@@ -345,6 +351,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==qwant.com</segment>
 			</row>
 			<row>
 				<label>scubadiverlife.com</label>
@@ -388,6 +395,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>43</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==scubadiverlife.com</segment>
 			</row>
 		</subtable>
 	</row>
@@ -480,6 +488,7 @@
 				<sum_daily_nb_uniq_visitors>45</sum_daily_nb_uniq_visitors>
 				<url>facebook.com</url>
 				<logo>plugins/Morpheus/icons/dist/socials/facebook.com.png</logo>
+				<segment>referrerType==social;referrerName==Facebook</segment>
 			</row>
 			<row>
 				<label>reddit</label>
@@ -525,6 +534,7 @@
 				<sum_daily_nb_uniq_visitors>52</sum_daily_nb_uniq_visitors>
 				<url>reddit.com</url>
 				<logo>plugins/Morpheus/icons/dist/socials/reddit.com.png</logo>
+				<segment>referrerType==social;referrerName==reddit</segment>
 			</row>
 			<row>
 				<label>Twitter</label>
@@ -570,6 +580,7 @@
 				<sum_daily_nb_uniq_visitors>29</sum_daily_nb_uniq_visitors>
 				<url>twitter.com</url>
 				<logo>plugins/Morpheus/icons/dist/socials/twitter.com.png</logo>
+				<segment>referrerType==social;referrerName==Twitter</segment>
 			</row>
 		</subtable>
 	</row>
@@ -705,6 +716,7 @@
 					</row>
 				</goals>
 				<sum_daily_nb_uniq_visitors>28</sum_daily_nb_uniq_visitors>
+				<segment>referrerType==search;referrerKeyword==%28not+provided%29</segment>
 			</row>
 		</subtable>
 	</row>
