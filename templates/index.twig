@@ -7,6 +7,7 @@
 
     <div
         vue-entry="GoogleAnalyticsImporter.AdminPage"
+        is-client-configurable="{{ isClientConfigurable|json_encode }}"
         has-client-configuration="{{ hasClientConfiguration|json_encode }}"
         is-configured="{{ isConfigured|json_encode }}"
         auth-nonce="{{ auth_nonce|json_encode }}"
@@ -22,5 +23,7 @@
         schedule-re-import-nonce="{{ scheduleReImportNonce|default(null)|json_encode }}"
         import-options-ua="{{ importOptionsUA|default(null)|json_encode }}"
         import-options-ga4="{{ importOptionsGA4|default(null)|json_encode }}"
+        configure-connection-props="{{ configureConnectionProps|json_encode }}"
+        extensions="{{ extensions|json_encode }}"
     ></div>
 {% endblock %}

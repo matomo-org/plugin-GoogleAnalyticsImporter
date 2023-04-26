@@ -44,6 +44,7 @@
 		</goals>
 		<url>reddit.com</url>
 		<logo>plugins/Morpheus/icons/dist/socials/reddit.com.png</logo>
+		<segment>referrerType==social;referrerName==reddit</segment>
 		<subtable>
 			<row>
 				<label>http://reddit.com/r/scuba/comments/8mrd88/snapped_this_pic_on_my_first_dive_post_cert/</label>
@@ -220,6 +221,7 @@
 		</goals>
 		<url>twitter.com</url>
 		<logo>plugins/Morpheus/icons/dist/socials/twitter.com.png</logo>
+		<segment>referrerType==social;referrerName==Twitter</segment>
 		<subtable>
 			<row>
 				<label>http://twitter.com/Divezone</label>
@@ -310,6 +312,7 @@
 		</goals>
 		<url>facebook.com</url>
 		<logo>plugins/Morpheus/icons/dist/socials/facebook.com.png</logo>
+		<segment>referrerType==social;referrerName==Facebook</segment>
 		<subtable>
 			<row>
 				<label>http://facebook.com/Divezone.net</label>

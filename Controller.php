@@ -134,6 +134,32 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             ]);
         }
 
+        $configureConnectionProps = [
+            'isConnectAccountsActivated' => $isConnectAccountsActivated,
+            'primaryText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel1'),
+            'radioOptions' => !$isConnectAccountsActivated ? [] : [
+                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
+                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
+            ],
+            'googleAuthUrl' => $googleAuthUrl,
+            'manualConfigText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
+                . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
+                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
+                    '</a>',
+                ]),
+            'manualConfigNonce' => $nonce,
+            'manualActionUrl' => Url::getCurrentUrlWithoutQueryString() . '?' . Http::buildQuery([
+                    'module' => 'GoogleAnalyticsImporter',
+                    'action' => 'configureClient',
+                ]),
+            'connectAccountsUrl' => $googleAuthUrl,
+            'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_GaImportBtn'),
+            'additionalHelpText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterHelp', [
+                '<strong>',
+                '</strong>'
+            ])
+        ];
+
         $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
         return $this->renderTemplate('index', [
             'isClientConfigurable' => $isClientConfigurable,
@@ -188,17 +214,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                     ],
                 ],
             ],
-            'isConnectAccountsActivated' => $isConnectAccountsActivated,
-            'radioOptions' => !$isConnectAccountsActivated ? [] : [
-                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
-                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
-            ],
-            'googleAuthUrl' => $googleAuthUrl,
-            'manualUploadText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
-                . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
-                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
-                    '</a>',
-                ]),
+            'extensions' => self::getComponentExtensions(),
+            'configureConnectionProps' => $configureConnectionProps,
         ]);
     }
 
@@ -710,5 +727,23 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         }
         return json_encode(['showNotification' => $showNotification, 'configureURL' => $settingsUrl]);
+    }
+
+    /**
+     * Get the map of component extensions to be passed into the Vue template. This allows other plugins to provide
+     * content to display in the template. In this case this plugin will display one component, but that can be
+     * overridden by the ConnectAccounts plugin to display a somewhat different component. This is doing something
+     * similar to what we use {{ postEvent('MyPlugin.MyEventInATemplate) }} for in Twig templates.
+     *
+     * @return array Map of component extensions. Like [ [ 'plugin' => 'PluginName', 'component' => 'ComponentName' ] ]
+     * See {@link https://developer.matomo.org/guides/in-depth-vue#allowing-plugins-to-add-content-to-your-vue-components the developer documentation} for more information.
+     */
+    public static function getComponentExtensions(): array
+    {
+        $componentExtensions = [];
+        Piwik::postEvent('GoogleAnalyticsImporter.getGoogleConfigComponentExtensions', [
+            &$componentExtensions
+        ]);
+        return $componentExtensions;
     }
 }

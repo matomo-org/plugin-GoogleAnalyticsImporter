@@ -8,9 +8,9 @@
   <div>
     <ContentBlock
       :content-title="translate('GoogleAnalyticsImporter_ConfigureTheImporter')"
+      v-if="hasClientConfiguration"
     >
       <form
-        v-if="hasClientConfiguration"
         method="post"
         :action="forwardToAuthUrl"
         id="clientauthform"
@@ -28,33 +28,6 @@
             {{ translate('GoogleAnalyticsImporter_Authorize') }}
           </button>
         </span>
-      </form>
-      <form
-        v-else
-        :action="configureClientLink"
-        method="POST"
-        enctype="multipart/form-data"
-      >
-        <p>{{ translate('GoogleAnalyticsImporter_ConfigureClientDesc1') }}</p>
-        <p v-html="$sanitize(configureClientDesc2)"></p>
-
-        <Field
-          uicontrol="file"
-          name="clientfile"
-          v-model="clientFileToSet"
-          :title="translate('GoogleAnalyticsImporter_ConfigurationFile')"
-        />
-
-        <Field
-          uicontrol="textarea"
-          name="client"
-          v-model="clientConfigTextToSet"
-          :title="translate('GoogleAnalyticsImporter_ConfigurationText')"
-        />
-
-        <input type="hidden" name="config_nonce" :value="configNonce" />
-
-        <button type="submit" class="btn">{{ translate('General_Save') }}</button>
       </form>
     </ContentBlock>
 
@@ -85,7 +58,6 @@ import {
   MatomoUrl,
   translate,
 } from 'CoreHome';
-import { Field } from 'CorePluginsAdmin';
 
 interface ClientConfigState {
   clientFileToSet: unknown;
@@ -101,7 +73,6 @@ export default defineComponent({
   },
   components: {
     ContentBlock,
-    Field,
   },
   data(): ClientConfigState {
     return {

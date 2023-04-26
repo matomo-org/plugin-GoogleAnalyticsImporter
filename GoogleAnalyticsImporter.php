@@ -18,6 +18,7 @@ use Piwik\Period;
 use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ViewDataTable;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
@@ -63,7 +64,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'SitesManager.deleteSite.end'            => 'onSiteDeleted',
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
             'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
-            'AssetManager.getJavaScriptFiles' => 'getJsFiles'
+            'AssetManager.getJavaScriptFiles' => 'getJsFiles',
+            'GoogleAnalyticsImporter.getGoogleConfigComponentExtensions' => 'getGoogleConfigComponent'
         ];
     }
 
@@ -265,6 +267,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_FutureDateHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDescription';
         $translationKeys[] = 'GoogleAnalyticsImporter_EndDateHelpText';
+        $translationKeys[] = 'GoogleAnalyticsImporter_AdminMenuTitle';
 
         if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";
@@ -507,5 +510,19 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             return false;
         }
         return true;
+    }
+
+    public function getGoogleConfigComponent(&$componentExtensions)
+    {
+        $authorization = StaticContainer::get(Authorization::class);
+        if (!$authorization->hasClientConfiguration()) {
+            // Only set index 0 if it hasn't already been set, since we want ConnectAccounts to take precedence
+            $componentExtensions[0] = $componentExtensions[0] ?? [
+                'plugin' => 'GoogleAnalyticsImporter',
+                'component' => 'ConfigureConnection'
+            ];
+        }
+
+        return $componentExtensions;
     }
 }

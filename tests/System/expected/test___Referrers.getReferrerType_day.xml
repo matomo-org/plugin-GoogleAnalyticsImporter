@@ -87,6 +87,7 @@
 						<items>17</items>
 					</row>
 				</goals>
+				<segment>referrerName==divebums.com</segment>
 			</row>
 			<row>
 				<label>divein.com</label>
@@ -130,6 +131,7 @@
 						<items>34</items>
 					</row>
 				</goals>
+				<segment>referrerName==divein.com</segment>
 			</row>
 			<row>
 				<label>emperordivers.com</label>
@@ -173,6 +175,7 @@
 						<items>45</items>
 					</row>
 				</goals>
+				<segment>referrerName==emperordivers.com</segment>
 			</row>
 			<row>
 				<label>google.com</label>
@@ -216,6 +219,7 @@
 						<items>96</items>
 					</row>
 				</goals>
+				<segment>referrerName==google.com</segment>
 			</row>
 			<row>
 				<label>oahuscubadiving.com</label>
@@ -259,6 +263,7 @@
 						<items>11</items>
 					</row>
 				</goals>
+				<segment>referrerName==oahuscubadiving.com</segment>
 			</row>
 			<row>
 				<label>scubadiverlife.com</label>
@@ -302,6 +307,7 @@
 						<items>41</items>
 					</row>
 				</goals>
+				<segment>referrerName==scubadiverlife.com</segment>
 			</row>
 		</subtable>
 	</row>
@@ -394,6 +400,7 @@
 				</goals>
 				<url>facebook.com</url>
 				<logo>plugins/Morpheus/icons/dist/socials/facebook.com.png</logo>
+				<segment>referrerType==social;referrerName==Facebook</segment>
 			</row>
 			<row>
 				<label>reddit</label>
@@ -439,6 +446,7 @@
 				</goals>
 				<url>reddit.com</url>
 				<logo>plugins/Morpheus/icons/dist/socials/reddit.com.png</logo>
+				<segment>referrerType==social;referrerName==reddit</segment>
 			</row>
 			<row>
 				<label>Twitter</label>
@@ -484,6 +492,7 @@
 				</goals>
 				<url>twitter.com</url>
 				<logo>plugins/Morpheus/icons/dist/socials/twitter.com.png</logo>
+				<segment>referrerType==social;referrerName==Twitter</segment>
 			</row>
 		</subtable>
 	</row>
@@ -619,6 +628,7 @@
 						<items>0</items>
 					</row>
 				</goals>
+				<segment>referrerType==search;referrerKeyword==%28not+provided%29</segment>
 			</row>
 		</subtable>
 	</row>

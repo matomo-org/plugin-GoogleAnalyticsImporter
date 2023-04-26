@@ -6,23 +6,35 @@
 
 <template>
   <div>
-    <Notification
-      notification-id="ga-importer-help"
-      context="info"
-      type="transient"
-      :noclear="true"
-      :title="translate('GoogleAnalyticsImporter_SettingUp')"
-    >
-      {{ translate('GoogleAnalyticsImporter_ImporterHelp1') }}
-      <span v-html="$sanitize(importerHelp2Text)"></span>
-      <span v-html="$sanitize(importerHelp3Text)"></span>
-    </Notification>
+    <div v-for="(refComponent, index) in componentExtensions" :key="index">
+      <ContentBlock
+        :content-title="translate('GoogleAnalyticsImporter_AdminMenuTitle')"
+      >
+      <component
+        :is="refComponent"
+        :manual-config-nonce="configConnectProps.manualConfigNonce"
+        :base-domain="configConnectProps.baseDomain"
+        :base-url="configConnectProps.baseUrl"
+        :manual-action-url="configConnectProps.manualActionUrl"
+        :primary-text="configConnectProps.primaryText"
+        :radio-options="configConnectProps.radioOptions"
+        :manual-config-text="configConnectProps.manualConfigText"
+        :connect-accounts-url="configConnectProps.connectAccountsUrl"
+        :connect-accounts-btn-text="configConnectProps.connectAccountsBtnText"
+        :auth-url="configConnectProps.authUrl"
+        :unlink-url="configConnectProps.unlinkUrl"
+        :strategy="configConnectProps.strategy"
+        :connected-with="configConnectProps.connectedWith"
+        :additional-help-text="configConnectProps.additionalHelpText"/>
+      </ContentBlock>
+    </div>
 
     <ClientConfig
       :has-client-configuration="hasClientConfiguration"
       :is-configured="isConfigured"
       :auth-nonce="authNonce"
       :config-nonce="configNonce"
+      v-if="isClientConfigurable"
     />
 
     <ContentBlock
@@ -96,8 +108,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import { Notification, ContentBlock, translate } from 'CoreHome';
+import {
+  defineComponent,
+  markRaw,
+} from 'vue';
+import {
+  Notification,
+  ContentBlock,
+  translate,
+  useExternalPluginComponent,
+} from 'CoreHome';
 import ClientConfig from '../ClientConfig/ClientConfig.vue';
 import ImportScheduler from '../ImportScheduler/ImportScheduler.vue';
 import ImportStatus from '../ImportStatus/ImportStatus.vue';
@@ -108,10 +128,38 @@ interface AdminPageState {
   selectedImporter: string;
 }
 
+interface ComponentExtension {
+  plugin: string;
+  component: string;
+}
+
+interface ConfigureConnectionRadioOption {
+  connectAccounts: string;
+  manual: string;
+}
+
+interface ConfigureConnectionProps {
+  baseDomain: string;
+  baseUrl: string;
+  manualConfigNonce: string;
+  manualActionUrl: string;
+  primaryText: string;
+  radioOptions: ConfigureConnectionRadioOption[];
+  manualConfigText: string;
+  connectAccountsUrl: string;
+  connectAccountsBtnText: string;
+  authUrl: string;
+  unlinkUrl: string;
+  strategy: string;
+  connectedWith: string;
+  additionalHelpText: string;
+}
+
 export default defineComponent({
   props: {
     hasClientConfiguration: Boolean,
     isConfigured: Boolean,
+    isClientConfigurable: Boolean,
     authNonce: String,
     configNonce: String,
     startImportNonce: {
@@ -155,6 +203,11 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    extensions: Array,
+    configureConnectionProps: {
+      type: Object,
+      required: true,
+    },
   },
   components: {
     ImportSchedulerGA4,
@@ -185,6 +238,15 @@ export default defineComponent({
         '<br><br><strong>',
         '</strong>',
       );
+    },
+    componentExtensions() {
+      const entries = this.extensions as Array<ComponentExtension>;
+
+      return markRaw(entries.map((ref) => useExternalPluginComponent(ref.plugin,
+        ref.component)));
+    },
+    configConnectProps() {
+      return this.configureConnectionProps as ConfigureConnectionProps;
     },
   },
 });
