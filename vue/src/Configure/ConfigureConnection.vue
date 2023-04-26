@@ -22,12 +22,12 @@
   </div>
   <div class="form-group row">
     <div class="col s12 m6">
-      <form id="configFileUploadForm" :action="actionUrl" method="POST"
+      <form id="configFileUploadForm" :action="manualActionUrl" method="POST"
             enctype="multipart/form-data">
         <input type="file" id="clientfile" name="clientfile" accept=".json"
                v-on:change="processFileChange" style="display:none"/>
 
-        <input type="hidden" name="config_nonce" :value="configNonce" />
+        <input type="hidden" name="config_nonce" :value="manualConfigNonce" />
 
         <button type="button" class="btn" @click="selectConfigFile()"
                 :disabled="isUploadButtonDisabled">
@@ -56,11 +56,11 @@ export default defineComponent({
     };
   },
   props: {
-    actionUrl: {
+    manualConfigNonce: {
       type: String,
       required: true,
     },
-    configNonce: {
+    manualActionUrl: {
       type: String,
       required: true,
     },
