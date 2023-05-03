@@ -340,7 +340,9 @@ class ImporterGA4
                 }
             }
 
-            $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension, $idSite);
+            if (!empty($idDimension)) {
+                $this->idMapper->mapEntityId('customdimension', $gaId, $idDimension, $idSite);
+            }
         }
 
         // create extra custom dimensions
@@ -359,7 +361,7 @@ class ImporterGA4
                     $idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = true);
             } catch (\Exception $ex) {
                 if (strpos($ex->getMessage(), 'All Custom Dimensions for website') === 0) {
-                    $this->logger->warning("Cannot map custom dimension {$customDimension['name']}: " . $ex->getMessage());
+                    $this->logger->warning("Cannot map custom dimension {$extraEntry['gaDimension']}: " . $ex->getMessage());
                     continue;
                 }
             }
