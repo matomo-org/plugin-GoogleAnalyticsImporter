@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.6.3
+- Fixed warnings for PHP 8.1 
+
 # 4.6.2
 - Improved check to ensure future and present dates are not processed today.
 
