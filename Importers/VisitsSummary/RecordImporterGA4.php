@@ -76,4 +76,15 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
     {
         return empty($this->numericRecords[Metrics::INDEX_NB_VISITS]) ? 0 : $this->numericRecords[Metrics::INDEX_NB_VISITS];
     }
+
+    public function hasSomeNumericData()
+    {
+        foreach ($this->numericRecords as $key => $value) {
+            if (is_int($key) && !empty($value)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
