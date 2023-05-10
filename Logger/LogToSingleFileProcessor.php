@@ -9,7 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Logger;
 
 
-use Monolog\Logger;
+use Piwik\Log\Logger;
 use Piwik\Container\StaticContainer;
 
 class LogToSingleFileProcessor

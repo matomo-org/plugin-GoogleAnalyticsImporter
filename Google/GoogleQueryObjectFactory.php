@@ -10,7 +10,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 class GoogleQueryObjectFactory
 {

@@ -13,10 +13,7 @@ use Piwik\Container\StaticContainer;
 use Piwik\Development;
 use Piwik\Http;
 use Piwik\Plugin\ConsoleCommand;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
+use Piwik\Log\LoggerInterface;
 
 class GenerateGaTestData extends ConsoleCommand
 {
@@ -416,7 +413,7 @@ class GenerateGaTestData extends ConsoleCommand
     {
         $this->setName('googleanalyticsimporter:generate-ga-test-data');
         $this->setDescription('Tracks some fake test data to Google Analytics.');
-        $this->addOption('account-id', null, InputOption::VALUE_REQUIRED, 'The UA-... account ID.');
+        $this->addRequiredValueOption('account-id', null, 'The UA-... account ID.');
     }
 
     public function isEnabled()
@@ -424,8 +421,10 @@ class GenerateGaTestData extends ConsoleCommand
         return Development::isEnabled();
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function doExecute(): int
     {
+        $input = $this->getInput();
+        $output = $this->getOutput();
         $this->logger = StaticContainer::get(LoggerInterface::class);
 
         $accountId = $input->getOption('account-id');

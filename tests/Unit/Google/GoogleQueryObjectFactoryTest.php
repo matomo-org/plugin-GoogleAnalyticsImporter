@@ -11,7 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Unit\Google;
 use PHPUnit\Framework\TestCase;
 use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
-use Psr\Log\NullLogger;
+use Piwik\Log\NullLogger;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 

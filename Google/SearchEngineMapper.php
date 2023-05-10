@@ -11,7 +11,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 
 use Piwik\Plugins\Referrers\SearchEngine;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 class SearchEngineMapper
 {

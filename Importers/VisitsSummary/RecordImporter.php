@@ -13,7 +13,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {

@@ -16,6 +16,8 @@ use Piwik\DataAccess\ArchiveTableCreator;
 use Piwik\Db;
 use Piwik\DbHelper;
 use Piwik\Ini\IniReader;
+use Piwik\Log\Logger;
+use Piwik\Log\LoggerInterface;
 use Piwik\Option;
 use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
@@ -203,9 +205,9 @@ class ImportedFromGoogle extends Fixture
     public function provideContainerConfig()
     {
         $result = [
-            'Psr\Log\LoggerInterface' => \DI\get('Monolog\Logger'),
+            LoggerInterface::class => \Piwik\DI::get(Logger::class),
             'log.handlers' => [
-                \DI\get(ConsoleHandler::class),
+                \Piwik\DI::get(ConsoleHandler::class),
             ],
         ];
 

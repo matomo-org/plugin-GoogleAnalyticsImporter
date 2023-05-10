@@ -13,9 +13,6 @@ use Piwik\Plugin\ConsoleCommand;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\Logger\LogToSingleFileProcessor;
 use Piwik\Plugins\GoogleAnalyticsImporter\Tasks;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
 
 class ArchiveImportedData extends ConsoleCommand
 {
@@ -24,17 +21,16 @@ class ArchiveImportedData extends ConsoleCommand
         $this->setName('googleanalyticsimporter:archive-imported-data');
         $this->setDescription('Initiates core:archive for an imported site. This is run automatically every day, but can be run manually if needed.'
             . ' All it really does is call core:archive w/ a few custom parameters so data from years back gets archived.');
-        $this->addOption('idSite', null, InputOption::VALUE_REQUIRED, 'The ID of the imported site to initiate archiving for.');
+        $this->addRequiredValueOption('idSite', null, 'The ID of the imported site to initiate archiving for.');
     }
 
     /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
      * @return int
      */
-
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function doExecute(): int
     {
+        $input = $this->getInput();
+        $output = $this->getOutput();
         $idSite = (int) $input->getOption('idSite');
 
         LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite);

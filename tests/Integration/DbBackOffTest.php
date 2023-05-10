@@ -17,7 +17,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
 use Piwik\Plugins\SitesManager\API;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 
 /**
  * @group GoogleAnalyticsImporter

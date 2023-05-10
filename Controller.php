@@ -31,7 +31,7 @@ use Piwik\Site;
 use Piwik\SiteContentDetector;
 use Piwik\SettingsPiwik;
 use Piwik\Url;
-use Psr\Log\LoggerInterface;
+use Piwik\Log\LoggerInterface;
 use Piwik\Plugins\SitesManager\SitesManager;
 
 class Controller extends \Piwik\Plugin\ControllerAdmin
