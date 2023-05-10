@@ -116,7 +116,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $maxEndDateDesc = Date::factory($maxEndDate)->toString();
         }
 
-        $isConnectAccountsActivated = Manager::getInstance()->isPluginActivated('ConnectAccounts');
+        $isConnectAccountsActivated = Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled();
         $authBaseUrl = $isConnectAccountsActivated ? "https://" . StaticContainer::get('CloudAccountsInstanceId') . '/index.php?' : '';
         $jwt = Common::getRequestVar('state', '', 'string');
         if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
