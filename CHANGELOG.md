@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.6.4
+- Changes to support Matomo Oauth disable on cloud
+
 # 4.6.3
 - Fixed warnings for PHP 8.1 
 
