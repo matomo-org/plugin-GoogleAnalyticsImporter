@@ -28,7 +28,6 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
 use Piwik\Site;
-use Piwik\SiteContentDetector;
 use Piwik\SettingsPiwik;
 use Piwik\Url;
 use Psr\Log\LoggerInterface;
@@ -37,15 +36,6 @@ use Piwik\Plugins\SitesManager\SitesManager;
 class Controller extends \Piwik\Plugin\ControllerAdmin
 {
     const OAUTH_STATE_NONCE_NAME = 'GoogleAnalyticsImporter.oauthStateNonce';
-
-    /** @var SiteContentDetector */
-    private $siteContentDetector;
-
-    public function __construct(SiteContentDetector $siteContentDetector)
-    {
-        parent::__construct();
-        $this->siteContentDetector = $siteContentDetector;
-    }
 
     public function index($errorMessage = false)
     {
@@ -687,7 +677,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $showNotification = false;
         $settingsUrl = '';
         $currentIdSite = Common::getRequestVar('idSite', -1);
-        if (Piwik::hasUserSuperUserAccess() && SitesManager::hasTrackedAnyTraffic($currentIdSite)) {
+        if (Piwik::hasUserSuperUserAccess() && SitesManager::hasTrackedAnyTraffic($currentIdSite) && class_exists(\Piwik\SiteContentDetector::class)) {
             $importStatus = new ImportStatus();
 
             try {
@@ -696,9 +686,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                 $status = []; //No Import is configured
             }
 
-            if (empty($status)) {
-                $this->siteContentDetector->detectContent();
-                if ($this->siteContentDetector->ga3 || $this->siteContentDetector->ga4) {
+            if (empty($status) || 1) {
+                $siteContentDetector = new \Piwik\SiteContentDetector();
+                $siteContentDetector->detectContent();
+                if ($siteContentDetector->ga3 || $siteContentDetector->ga4) {
                     $showNotification = true;
                     $settingsUrl = SettingsPiwik::getPiwikUrl() . 'index.php?' . Url::getQueryStringFromParameters([
                             'idSite' => $currentIdSite,
