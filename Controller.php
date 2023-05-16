@@ -686,7 +686,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                 $status = []; //No Import is configured
             }
 
-            if (empty($status) || 1) {
+            if (empty($status)) {
                 $siteContentDetector = new \Piwik\SiteContentDetector();
                 $siteContentDetector->detectContent();
                 if ($siteContentDetector->ga3 || $siteContentDetector->ga4) {
