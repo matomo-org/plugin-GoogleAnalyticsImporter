@@ -19,6 +19,7 @@ use Piwik\Piwik;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
+use Piwik\Plugins\ConnectAccounts\ConnectAccounts;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Site;
 use Piwik\Log\LoggerInterface;
@@ -144,7 +145,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     {
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/vue/src/ImportStatus/ImportStatus.less";
         $stylesheets[] = "plugins/GoogleAnalyticsImporter/stylesheets/styles.less";
-        if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
+        if (Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled()) {
             $stylesheets[] = "plugins/ConnectAccounts/vue/src/Configure/ConfigureConnection.less";
         } else {
             $stylesheets[] = "plugins/GoogleAnalyticsImporter/vue/src/Configure/ConfigureConnection.less";
@@ -269,7 +270,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_EndDateHelpText';
         $translationKeys[] = 'GoogleAnalyticsImporter_AdminMenuTitle';
 
-        if (Manager::getInstance()->isPluginActivated('ConnectAccounts')) {
+        if (Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled()) {
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp2";
             $translationKeys[] = "ConnectAccounts_OptionQuickConnectWithGa";

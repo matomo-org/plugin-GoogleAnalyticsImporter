@@ -1,10 +1,11 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "Мобильное приложение",
-        "Optional": "Необязательно",
-        "None": "Нет",
+        "Actions": "Действия",
+        "AdminMenuTitle": "Импорт Google Analytic",
         "Change": "Изменить",
-        "Status": "Статус",
-        "Actions": "Действия"
+        "IsMobileApp": "Мобильное приложение",
+        "None": "Нет",
+        "Optional": "Необязательно",
+        "Status": "Статус"
     }
 }
