@@ -1,6 +1,11 @@
 
 ## Changelog
 
+# 4.6.5
+- Fixed SiteContentDetector usage for lower Matomo versions
+- Added mapping for YaBrowser
+- Added mappings for search engine
+
 # 4.6.4
 - Changes to support Matomo Oauth disable on cloud
 
