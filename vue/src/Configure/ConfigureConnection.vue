@@ -10,13 +10,15 @@
       <p>{{ translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel1') }}</p>
       <p>
         {{ translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2') }}<br />
-        <span v-html="setupGoogleAnalyticsImportFaq"></span>
+        <span v-html="$sanitize(setupGoogleAnalyticsImportFaq)"></span>
       </p>
     </div>
     <div class="col s12 m6">
       <div class="form-help"
-           v-html="translate('GoogleAnalyticsImporter_ConfigureTheImporterHelp',
-           '<strong>', '</strong>')">
+           v-html="$sanitize(translate(
+             'GoogleAnalyticsImporter_ConfigureTheImporterHelp',
+             '<strong>',
+             '</strong>'))">
       </div>
     </div>
   </div>
