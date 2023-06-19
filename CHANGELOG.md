@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.6.6
+- Started using ga:adwordsCampaignID dimension instead of ga:campaignCode to import data
+
 # 4.6.5
 - Fixed SiteContentDetector usage for lower Matomo versions
 - Added mapping for YaBrowser
