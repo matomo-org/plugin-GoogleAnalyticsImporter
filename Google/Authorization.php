@@ -10,6 +10,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 
+use Piwik\ArchiveProcessor\PluginsArchiver;
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Option;
