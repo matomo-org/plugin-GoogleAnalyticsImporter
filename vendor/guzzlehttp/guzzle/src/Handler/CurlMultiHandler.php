@@ -19,7 +19,6 @@ use Psr\Http\Message\RequestInterface;
  *
  * @final
  */
-#[\AllowDynamicProperties]
 class CurlMultiHandler
 {
     /**
@@ -33,9 +32,9 @@ class CurlMultiHandler
     private $selectTimeout;
 
     /**
-     * @var int Will be higher than 0 when `curl_multi_exec` is still running.
+     * @var resource|\CurlMultiHandle|null the currently executing resource in `curl_multi_exec`.
      */
-    private $active = 0;
+    private $active;
 
     /**
      * @var array Request entry handles, indexed by handle id in `addRequest`.
@@ -164,8 +163,7 @@ class CurlMultiHandler
             \usleep(250);
         }
 
-        while (\curl_multi_exec($this->_mh, $this->active) === \CURLM_CALL_MULTI_PERFORM) {
-        }
+        while (\curl_multi_exec($this->_mh, $this->active) === \CURLM_CALL_MULTI_PERFORM);
 
         $this->processMessages();
     }
@@ -207,10 +205,6 @@ class CurlMultiHandler
      */
     private function cancel($id): bool
     {
-        if (!is_int($id)) {
-            trigger_deprecation('guzzlehttp/guzzle', '7.4', 'Not passing an integer to %s::%s() is deprecated and will cause an error in 8.0.', __CLASS__, __FUNCTION__);
-        }
-
         // Cannot cancel if it has been processed.
         if (!isset($this->handles[$id])) {
             return false;
@@ -227,10 +221,6 @@ class CurlMultiHandler
     private function processMessages(): void
     {
         while ($done = \curl_multi_info_read($this->_mh)) {
-            if ($done['msg'] !== \CURLMSG_DONE) {
-                // if it's not done, then it would be premature to remove the handle. ref https://github.com/guzzle/guzzle/pull/2892#issuecomment-945150216
-                continue;
-            }
             $id = (int) $done['handle'];
             \curl_multi_remove_handle($this->_mh, $done['handle']);
 

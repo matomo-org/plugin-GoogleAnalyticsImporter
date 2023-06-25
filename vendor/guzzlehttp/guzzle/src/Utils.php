@@ -23,9 +23,9 @@ final class Utils
     {
         switch (\gettype($input)) {
             case 'object':
-                return 'object('.\get_class($input).')';
+                return 'object(' . \get_class($input) . ')';
             case 'array':
-                return 'array('.\count($input).')';
+                return 'array(' . \count($input) . ')';
             default:
                 \ob_start();
                 \var_dump($input);
@@ -79,22 +79,19 @@ final class Utils
      *
      * The returned handler is not wrapped by any default middlewares.
      *
-     * @return callable(\Psr\Http\Message\RequestInterface, array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system.
-     *
      * @throws \RuntimeException if no viable Handler is available.
+     *
+     * @return callable(\Psr\Http\Message\RequestInterface, array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system.
      */
     public static function chooseHandler(): callable
     {
         $handler = null;
-
-        if (\defined('CURLOPT_CUSTOMREQUEST')) {
-            if (\function_exists('curl_multi_exec') && \function_exists('curl_exec')) {
-                $handler = Proxy::wrapSync(new CurlMultiHandler(), new CurlHandler());
-            } elseif (\function_exists('curl_exec')) {
-                $handler = new CurlHandler();
-            } elseif (\function_exists('curl_multi_exec')) {
-                $handler = new CurlMultiHandler();
-            }
+        if (\function_exists('curl_multi_exec') && \function_exists('curl_exec')) {
+            $handler = Proxy::wrapSync(new CurlMultiHandler(), new CurlHandler());
+        } elseif (\function_exists('curl_exec')) {
+            $handler = new CurlHandler();
+        } elseif (\function_exists('curl_multi_exec')) {
+            $handler = new CurlMultiHandler();
         }
 
         if (\ini_get('allow_url_fopen')) {
@@ -228,27 +225,27 @@ EOT
         }
 
         // Strip port if present.
-        [$host] = \explode(':', $host, 2);
+        if (\strpos($host, ':')) {
+            /** @var string[] $hostParts will never be false because of the checks above */
+            $hostParts = \explode(':', $host, 2);
+            $host = $hostParts[0];
+        }
 
         foreach ($noProxyArray as $area) {
             // Always match on wildcards.
             if ($area === '*') {
                 return true;
-            }
-
-            if (empty($area)) {
+            } elseif (empty($area)) {
                 // Don't match on empty values.
                 continue;
-            }
-
-            if ($area === $host) {
+            } elseif ($area === $host) {
                 // Exact matches.
                 return true;
             }
             // Special match if the area when prefixed with ".". Remove any
             // existing leading "." and add a new leading ".".
-            $area = '.'.\ltrim($area, '.');
-            if (\substr($host, -\strlen($area)) === $area) {
+            $area = '.' . \ltrim($area, '.');
+            if (\substr($host, -(\strlen($area))) === $area) {
                 return true;
             }
         }
@@ -269,13 +266,13 @@ EOT
      *
      * @throws InvalidArgumentException if the JSON cannot be decoded.
      *
-     * @see https://www.php.net/manual/en/function.json-decode.php
+     * @link https://www.php.net/manual/en/function.json-decode.php
      */
     public static function jsonDecode(string $json, bool $assoc = false, int $depth = 512, int $options = 0)
     {
         $data = \json_decode($json, $assoc, $depth, $options);
         if (\JSON_ERROR_NONE !== \json_last_error()) {
-            throw new InvalidArgumentException('json_decode error: '.\json_last_error_msg());
+            throw new InvalidArgumentException('json_decode error: ' . \json_last_error_msg());
         }
 
         return $data;
@@ -290,13 +287,13 @@ EOT
      *
      * @throws InvalidArgumentException if the JSON cannot be encoded.
      *
-     * @see https://www.php.net/manual/en/function.json-encode.php
+     * @link https://www.php.net/manual/en/function.json-encode.php
      */
     public static function jsonEncode($value, int $options = 0, int $depth = 512): string
     {
         $json = \json_encode($value, $options, $depth);
         if (\JSON_ERROR_NONE !== \json_last_error()) {
-            throw new InvalidArgumentException('json_encode error: '.\json_last_error_msg());
+            throw new InvalidArgumentException('json_encode error: ' . \json_last_error_msg());
         }
 
         /** @var string */
@@ -328,7 +325,7 @@ EOT
             if ($asciiHost === false) {
                 $errorBitSet = $info['errors'] ?? 0;
 
-                $errorConstants = array_filter(array_keys(get_defined_constants()), static function (string $name): bool {
+                $errorConstants = array_filter(array_keys(get_defined_constants()), static function ($name) {
                     return substr($name, 0, 11) === 'IDNA_ERROR_';
                 });
 
@@ -341,7 +338,7 @@ EOT
 
                 $errorMessage = 'IDN conversion failed';
                 if ($errors) {
-                    $errorMessage .= ' (errors: '.implode(', ', $errors).')';
+                    $errorMessage .= ' (errors: ' . implode(', ', $errors) . ')';
                 }
 
                 throw new InvalidArgumentException($errorMessage);
