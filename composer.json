@@ -3,12 +3,11 @@
         "php": ">=7.2.5",
         "google/apiclient": "^2.13.1",
         "google/apiclient-services": "^0.221",
-        "guzzlehttp/guzzle": "^7.0",
-        "guzzlehttp/promises": "1.5.1",
         "google/analytics-data": "^0.9.4",
         "google/analytics-admin": "^0.10.0",
         "phpseclib/phpseclib": "^3.0.19",
-        "phpseclib/bcmath_compat": "^2.0"
+        "phpseclib/bcmath_compat": "^2.0",
+        "guzzlehttp/guzzle": "^7.7"
     },
     "replace": {
         "monolog/monolog": "*"
