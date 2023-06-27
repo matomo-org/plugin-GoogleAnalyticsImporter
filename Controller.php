@@ -106,49 +106,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $maxEndDateDesc = Date::factory($maxEndDate)->toString();
         }
 
-        $isConnectAccountsActivated = Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled();
-        $authBaseUrl = $isConnectAccountsActivated ? "https://" . StaticContainer::get('CloudAccountsInstanceId') . '/index.php?' : '';
-        $jwt = Common::getRequestVar('state', '', 'string');
-        if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
-            // verify an existing user by supplying a jwt too
-            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId(),
-                ConnectAccounts::INITIATED_BY_GA);
-        }
-        $googleAuthUrl = '';
-        if($isConnectAccountsActivated) {
-            $googleAuthUrl = $authBaseUrl . Http::buildQuery([
-                'module' => 'ConnectAccounts',
-                'action' => 'initiateOauth',
-                'state' => $jwt,
-                'strategy' => GoogleConnect::getStrategyName()
-            ]);
-        }
-
-        $configureConnectionProps = [
-            'isConnectAccountsActivated' => $isConnectAccountsActivated,
-            'primaryText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel1'),
-            'radioOptions' => !$isConnectAccountsActivated ? [] : [
-                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
-                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
-            ],
-            'googleAuthUrl' => $googleAuthUrl,
-            'manualConfigText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
-                . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
-                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
-                    '</a>',
-                ]),
-            'manualConfigNonce' => $nonce,
-            'manualActionUrl' => Url::getCurrentUrlWithoutQueryString() . '?' . Http::buildQuery([
-                    'module' => 'GoogleAnalyticsImporter',
-                    'action' => 'configureClient',
-                ]),
-            'connectAccountsUrl' => $googleAuthUrl,
-            'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_GaImportBtn'),
-            'additionalHelpText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterHelp', [
-                '<strong>',
-                '</strong>'
-            ])
-        ];
+        $configureConnectionProps = self::getConfigureConnectProps($nonce);
 
         $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
         return $this->renderTemplate('index', [
@@ -326,11 +284,16 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $errorMessage = $this->getNotificationExceptionText($ex);
             $errorMessage = substr($errorMessage, 0, 1024);
         }
-
-        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
+        $idSite = Common::getRequestVar('idSite', null, 'int');
+        $parameters = [
             'action' => 'index',
             'error' => $errorMessage,
-        ]));
+        ];
+        if ($idSite) {
+            $parameters['idSite'] = $idSite;
+        }
+
+        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified($parameters));
     }
 
     public function deleteImportStatus()
@@ -736,5 +699,51 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             &$componentExtensions
         ]);
         return $componentExtensions;
+    }
+
+    public static function getConfigureConnectProps($nonce)
+    {
+        $isConnectAccountsActivated = Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled();
+        $authBaseUrl = $isConnectAccountsActivated ? "https://" . StaticContainer::get('CloudAccountsInstanceId') . '/index.php?' : '';
+        $jwt = Common::getRequestVar('state', '', 'string');
+        if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
+            // verify an existing user by supplying a jwt too
+            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId(),
+                ConnectAccounts::INITIATED_BY_GA);
+        }
+        $googleAuthUrl = '';
+        if($isConnectAccountsActivated) {
+            $googleAuthUrl = $authBaseUrl . Http::buildQuery([
+                    'module' => 'ConnectAccounts',
+                    'action' => 'initiateOauth',
+                    'state' => $jwt,
+                    'strategy' => GoogleConnect::getStrategyName()
+                ]);
+        }
+        return  [
+            'isConnectAccountsActivated' => $isConnectAccountsActivated,
+            'primaryText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel1'),
+            'radioOptions' => !$isConnectAccountsActivated ? [] : [
+                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
+                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
+            ],
+            'googleAuthUrl' => $googleAuthUrl,
+            'manualConfigText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
+                . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
+                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
+                    '</a>',
+                ]),
+            'manualConfigNonce' => $nonce,
+            'manualActionUrl' => Url::getCurrentUrlWithoutQueryString() . '?' . Http::buildQuery([
+                    'module' => 'GoogleAnalyticsImporter',
+                    'action' => 'configureClient',
+                ]),
+            'connectAccountsUrl' => $googleAuthUrl,
+            'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_GaImportBtn'),
+            'additionalHelpText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterHelp', [
+                '<strong>',
+                '</strong>'
+            ])
+        ];
     }
 }

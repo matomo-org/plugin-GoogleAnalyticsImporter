@@ -1,0 +1,9 @@
+{% if hasClientConfiguration != true %}
+<div
+        vue-entry="GoogleAnalyticsImporter.Connect"
+        extensions="{{ extensions|json_encode }}"
+        configure-connection-props="{{ configureConnectionProps|json_encode }}"
+        hide-content-block="true"
+>
+</div>
+{% endif %}

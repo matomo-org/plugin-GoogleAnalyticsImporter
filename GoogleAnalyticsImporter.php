@@ -14,8 +14,10 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\RawLogDao;
 use Piwik\DataTable;
 use Piwik\Date;
+use Piwik\Nonce;
 use Piwik\Period;
 use Piwik\Piwik;
+use Piwik\View;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
@@ -66,7 +68,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
             'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
             'AssetManager.getJavaScriptFiles' => 'getJsFiles',
-            'GoogleAnalyticsImporter.getGoogleConfigComponentExtensions' => 'getGoogleConfigComponent'
+            'GoogleAnalyticsImporter.getGoogleConfigComponentExtensions' => 'getGoogleConfigComponent',
+            'Template.embedGAImport' => 'embedGAImport'
         ];
     }
 
@@ -525,5 +528,18 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         }
 
         return $componentExtensions;
+    }
+
+    public function embedGAImport(&$out)
+    {
+        Piwik::checkUserHasSomeViewAccess();
+        $nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig', 1200);
+        /** @var Authorization $authorization */
+        $authorization = StaticContainer::get(Authorization::class);
+        $view = new View("@GoogleAnalyticsImporter/oauthUpload");
+        $view->configureConnectionProps = Controller::getConfigureConnectProps($nonce);
+        $view->extensions = Controller::getComponentExtensions();
+        $view->hasClientConfiguration = $authorization->hasClientConfiguration();
+        $out .= $view->render();
     }
 }
