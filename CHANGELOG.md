@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.6.7
+- Added additional check for redirect URL
+
 # 4.6.6
 - Started using ga:adwordsCampaignID dimension instead of ga:campaignCode to import data
 
