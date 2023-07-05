@@ -124,8 +124,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             ]);
         }
 
+        $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
         if ($isConnectAccountsActivated) {
-            $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
             $notification = new Notification(Piwik::translate('GoogleAnalyticsImporter_GoogleOauthCompleteWarning', ['<strong>', '</strong>']));
             $notification->context = Notification::CONTEXT_WARNING;
             $notification->raw = true;
