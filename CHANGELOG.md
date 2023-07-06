@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.6.8
+- Added OAuth complete warning when configuring/authorizing GA OAuth.
+
 # 4.6.7
 - Added additional check for redirect URL
 
