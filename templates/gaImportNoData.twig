@@ -1,6 +1,7 @@
 {% if isGA3 %}
-<div class="ga-import-warning" piwik-alert="warning">
+<div class="ga-import-warning" piwik-alert="warning" id="ga3WarningNotification">
     {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}
+    <button type="button" class="close" data-dismiss="alert"> × </button>
 </div>
 {% endif %}
 
@@ -15,6 +16,7 @@
          manual-forward-to-auth-nonce="{{ auth_nonce }}"
          manual-action-url="{{ linkTo({'action': 'configureClient', 'module': 'GoogleAnalyticsImporter'}) }}"
          manual-authorize-url="{{ linkTo({'action': 'forwardToAuth', 'module': 'GoogleAnalyticsImporter'}) }}"
+         manual-is-configured="{{ isConfigured|json_encode }}"
          index-action-url="{{ linkTo({'action': 'index', 'module': 'GoogleAnalyticsImporter'}) }}"
          primary-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterLabel1'|translate }}"
          radio-options="{{ radioOptions|json_encode|e('html_attr') }}"
@@ -24,6 +26,7 @@
          has-client-configuration="{{ hasClientConfiguration|json_encode }}"
          connect-accounts-btn-text="{{ 'ConnectAccounts_GaImportBtn' |translate}}"
          selected-config-option="{{ selectedConfigOption|json_encode}}"
+         strategy="{{ strategy|json_encode }}"
          additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}"></div>
     </ul>
 {% else %}
@@ -31,12 +34,19 @@
     <ul class="list-style-decimal" id="manual-option">
     <div vue-entry="GoogleAnalyticsImporter.ConfigureConnection" config-nonce="{{ nonce }}"
          is-no-data-page="true"
+         is-configured="{{ isConfigured|json_encode }}"
          has-client-configuration="{{ hasClientConfiguration|json_encode }}"
          forward-to-auth-nonce="{{ auth_nonce }}"
          index-action-url="{{ linkTo({'action': 'index', 'module': 'GoogleAnalyticsImporter'}) }}"
          action-url="{{ linkTo({'action': 'configureClient', 'module': 'GoogleAnalyticsImporter'}) }}"
+         strategy="{{ strategy|json_encode }}"
          authorize-url="{{ linkTo({'action': 'forwardToAuth', 'module': 'GoogleAnalyticsImporter'}) }}"></div>
     </ul>
 {% endif %}
 <br>
 <p>{{ 'GoogleAnalyticsImporter_NoDataScreenFollowStepComplete'|translate('<strong>', '</strong>')|raw }}</p>
+<script>
+    $('body').on('click', '#ga3WarningNotification .close', function(){
+        $('#ga3WarningNotification').hide();
+    });
+</script>

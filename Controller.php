@@ -111,6 +111,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $notification = new Notification(Piwik::translate('GoogleAnalyticsImporter_GoogleOauthCompleteWarning', ['<strong>', '</strong>']));
             $notification->context = Notification::CONTEXT_WARNING;
             $notification->raw = true;
+            $notification->flags = Notification::FLAG_CLEAR;
             Notification\Manager::notify('GoogleAnalyticsImporter_OauthCompletionWarning', $notification);
         }
         return $this->renderTemplate('index', [
@@ -255,6 +256,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         Piwik::checkUserHasSuperUserAccess();
 
         Nonce::checkNonce('GoogleAnalyticsImporter.googleClientConfig', Common::getRequestVar('config_nonce'));
+
+        if (GoogleAnalyticsImporter::isConnectAccountsPluginActivated() && GoogleConnect::isStrategyActive()) {
+            GoogleConnect::disableMatomoCloudOverride();
+        }
 
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);

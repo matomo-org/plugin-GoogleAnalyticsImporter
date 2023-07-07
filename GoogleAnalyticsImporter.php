@@ -258,6 +258,9 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep05';
         $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep06';
         $translationKeys[] = 'GoogleAnalyticsImporter_Start';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ReAuthorize';
+        $translationKeys[] = 'GoogleAnalyticsImporter_AccountsConnectedSuccessfully';
+        $translationKeys[] = 'GoogleAnalyticsImporter_UploadSuccessful';
 
         if (Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled()) {
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";
@@ -551,17 +554,20 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function embedGAImportNoData(&$out, $isGA3)
     {
         Piwik::checkUserHasSomeViewAccess();
+        $isConnectAccountsPluginActivated = self::isConnectAccountsPluginActivated();
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
         $view = new View("@GoogleAnalyticsImporter/gaImportNoData");
         $view->nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig', 1200);
         $view->auth_nonce = Nonce::getNonce('gaimport.auth', 1200);
-        $view->isConnectAccountsActivated = self::isConnectAccountsPluginActivated();
+        $view->isConnectAccountsActivated = $isConnectAccountsPluginActivated;
+        $view->strategy = $isConnectAccountsPluginActivated && GoogleConnect::isStrategyActive() ? GoogleConnect::getStrategyName() : GoogleConnect::GOOGLE_AUTH_STRATEGY_CUSTOM;
         $view->radioOptions = self::getRadioOptions();
         $view->manualUploadText = self::getManualUploadText();
         $view->googleAuthUrl = self::getGoogleOAuthUrl();
         $view->isGA3 = $isGA3;
         $view->hasClientConfiguration = $authorization->hasClientConfiguration();
+        $view->isConfigured = $authorization->hasAccessToken();
         $view->selectedConfigOption = Common::getRequestVar('gaSelectedConfigOption', '');;
         $view->isNoDataPage = true;
         $out .= $view->render();

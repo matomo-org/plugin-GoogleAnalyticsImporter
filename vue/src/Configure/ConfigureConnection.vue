@@ -22,11 +22,9 @@
       </div>
     </div>
   </div>
-  <li v-if="isNoDataPage" v-html="getAdvanceConnectStep01Text"></li>
+  <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep01Text)"></li>
   <li v-if="isNoDataPage"
-      v-text="$sanitize(
-              translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep02')
-              )">
+      v-text="translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep02')">
   </li>
   <div class="form-group row">
     <div :class="getClass">
@@ -46,23 +44,34 @@
             <span class="icon-upload"></span> {{ translate('GoogleAnalyticsImporter_Uploading') }}
           </span>
         </button>
+        <span class="system-success connected-message-successful"
+              v-if="isNoDataPage && hasClientConfiguration">
+              <span class="icon-ok"></span>
+              {{ translate('GoogleAnalyticsImporter_UploadSuccessful') }}
+            </span>
       </form>
     </div>
   </div>
-  <li v-if="isNoDataPage" v-html="getAdvanceConnectStep03Text"></li>
+  <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep03Text)"></li>
   <div style="margin-left: 1.2rem" class="complete-note-warning"
-       v-if="isNoDataPage" v-html="getOauthCompleteWarningMessage"></div>
+       v-if="isNoDataPage" v-html="$sanitize(getOauthCompleteWarningMessage)"></div>
   <form target="_blank" method="post" :action="authorizeUrl" v-if="isNoDataPage">
     <input type="hidden" name="auth_nonce" :value="forwardToAuthNonce" />
     <button :disabled="hasClientConfiguration === false"
+            v-text="getAuthorizeText"
             type="submit" class="btn btn-forward-to-Oauth">
-      {{ translate('GoogleAnalyticsImporter_Authorize') }}
     </button>
+    <span class="system-success connected-message-successful"
+          v-if="isNoDataPage
+                && hasClientConfiguration && isConfigured">
+          <span class="icon-ok"></span>
+          {{ translate('GoogleAnalyticsImporter_AccountsConnectedSuccessfully') }}
+        </span>
   </form>
-  <li v-if="isNoDataPage" v-html="getAdvanceConnectStep04Text"></li>
-  <li v-if="isNoDataPage" v-html="getAdvanceConnectStep05Text"></li>
+  <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep04Text)"></li>
+  <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep05Text)"></li>
   <li v-if="isNoDataPage"
-      v-text="$sanitize(translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep06'))">
+      v-text="translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep06')">
   </li>
 </template>
 
@@ -93,6 +102,7 @@ export default defineComponent({
     indexActionUrl: String,
     authorizeUrl: String,
     forwardToAuthNonce: String,
+    isConfigured: Boolean,
   },
   methods: {
     selectConfigFile() {
@@ -179,6 +189,12 @@ export default defineComponent({
         classes += ' m6';
       }
       return classes;
+    },
+    getAuthorizeText() {
+      if (this.isConfigured) {
+        return this.translate('GoogleAnalyticsImporter_ReAuthorize');
+      }
+      return this.translate('GoogleAnalyticsImporter_Authorize');
     },
   },
   mounted() {

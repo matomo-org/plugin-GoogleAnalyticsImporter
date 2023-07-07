@@ -140,11 +140,13 @@
         "NoDataScreenFollowThisSteps": "Follow these steps to set it up:",
         "GAImportNoDataScreenStep01": "Follow the steps %1$sin this guide%2$s to download the OAuth credentials from your Google console.",
         "GAImportNoDataScreenStep02": "Upload the OAuth credentials.",
-        "GAImportNoDataScreenStep03": "Click the \"%1$s\" button (this opens a new tab so you can follow the next steps in this tab)",
-        "GAImportNoDataScreenStep04": "Follow the steps %1$sin this guide%2$s to download the OAuth credentials from your Google console.",
-        "GAImportNoDataScreenStep04Note": "%1$sNote:%2$s Once you click \"%3$s\", Matomo will automatically create a new website for each selected property.",
+        "GAImportNoDataScreenStep03": "Click the \"%1$s\" button (this opens a new tab so you can follow the next steps in this tab).",
+        "GAImportNoDataScreenStep04": "Follow the steps %1$sin this guide%2$s to schedule your import.",
+        "GAImportNoDataScreenStep04Note": "%1$sNote:%2$s Once you click \"%3$s\", Matomo will automatically create a new Matomo website for each selected property.",
         "GAImportNoDataScreenStep05": "Importing data takes time, %1$sclick here to monitor the status of your data import%2$s.",
-        "GAImportNoDataScreenStep06": "To see your imported data, click on the Matomo Site that’s linked with your data import. After refreshing this page, this is also available from the dropdown on the top-left of this screen.",
-        "NoDataScreenFollowStepComplete": "%1$sCongratulations!%2$s You have successfully configured your Google Analytics import. As noted earlier, this data is being imported into a new Matomo website. To verify that data is being imported, visit your Google Analytics Import page in the settings and check that the import job is running."
+        "GAImportNoDataScreenStep06": "To see your data, refresh this page and then select the newly created Matomo website from the dropdown on the top left.",
+        "NoDataScreenFollowStepComplete": "%1$sCongratulations!%2$s You have successfully configured your Google Analytics import. As noted earlier, this data is being imported into a new Matomo website. To verify that data is being imported, visit your Google Analytics Import page in the settings and check that the import job is running.",
+        "AccountsConnectedSuccessfully": "You have successfully connected your Google account!",
+        "UploadSuccessful": "Upload successful!"
     }
 }
