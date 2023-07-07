@@ -10,7 +10,7 @@
 describe("EmptySite_GTM", function () {
     this.timeout(0);
 
-    this.fixture = "Piwik\\Plugins\\ConnectAccounts\\tests\\Fixtures\\EmptySiteWithSiteContentDetectionGA";
+    this.fixture = "Piwik\\Plugins\\GoogleAnalyticsImporter\\tests\\Fixtures\\EmptySiteWithSiteContentDetectionGA";
 
     const generalParams = 'idSite=1&period=day&date=2010-01-03';
 
