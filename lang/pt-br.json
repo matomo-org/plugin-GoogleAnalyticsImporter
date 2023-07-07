@@ -43,6 +43,7 @@
         "GA4Dimension": "Dimensão GA4",
         "GADimension": "Dimensão GA",
         "GoogleAnalyticsInfo": "Informações do Google Analytics",
+        "GoogleOauthCompleteWarning": "%1$sObservação:%2$s Você pode receber um aviso do Google ao concluir o processo OAuth dizendo \"%1$sGoogle não verificou este aplicativo%2$s\". Nesse caso, você pode continuar com segurança clicando em \"%1$sAvançado%2$s\" e, em seguida, \"%1$sGo to matomo.cloud (unsafe)%2$s\".",
         "ImportEndDate": "Data final da importação",
         "ImportJobs": "Trabalhos de Importação",
         "ImportStartDate": "Data de início da importação",
