@@ -78,7 +78,7 @@ final class Each
         $concurrency,
         callable $onFulfilled = null
     ) {
-        return self::ofLimit(
+        return each_limit(
             $iterable,
             $concurrency,
             $onFulfilled,

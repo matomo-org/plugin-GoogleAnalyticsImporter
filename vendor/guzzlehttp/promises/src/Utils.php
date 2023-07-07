@@ -107,7 +107,7 @@ final class Utils
     {
         $results = [];
         foreach ($promises as $key => $promise) {
-            $results[$key] = self::inspect($promise);
+            $results[$key] = inspect($promise);
         }
 
         return $results;
