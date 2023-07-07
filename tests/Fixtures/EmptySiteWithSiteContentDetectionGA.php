@@ -5,7 +5,7 @@
  * @link https://matomo.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
-namespace Piwik\Plugins\ConnectAccounts\tests\Fixtures;
+namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
 use Piwik\Plugins\SitesManager\SitesManager;
 use Piwik\Tests\Framework\Fixture;
@@ -16,7 +16,7 @@ use Piwik\Tests\Framework\Mock\FakeSiteContentDetector;
  * Fixture that adds one site with no visits and configures site content detection test data so that GTM will be
  * detected on the site.
  */
-class EmptySiteWithSiteContentDetectionGTM extends Fixture
+class EmptySiteWithSiteContentDetectionGA extends Fixture
 {
     public $idSite = 1;
 
