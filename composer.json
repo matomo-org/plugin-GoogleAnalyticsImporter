@@ -4,6 +4,7 @@
         "google/apiclient": "^2.13.1",
         "google/apiclient-services": "^0.221",
         "guzzlehttp/guzzle": "^7.0",
+        "guzzlehttp/psr7": "2.5.0",
         "guzzlehttp/promises": "1.5.1",
         "google/analytics-data": "^0.9.4",
         "google/analytics-admin": "^0.10.0",
