@@ -568,7 +568,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $view->isGA3 = $isGA3;
         $view->hasClientConfiguration = $authorization->hasClientConfiguration();
         $view->isConfigured = $authorization->hasAccessToken();
-        $view->selectedConfigOption = Common::getRequestVar('gaSelectedConfigOption', '');;
         $view->isNoDataPage = true;
         $out .= $view->render();
     }

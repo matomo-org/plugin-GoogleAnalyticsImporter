@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
 
-describe("EmptySite_GTM", function () {
+describe("EmptySite_GA", function () {
     this.timeout(0);
 
     this.fixture = "Piwik\\Plugins\\GoogleAnalyticsImporter\\tests\\Fixtures\\EmptySiteWithSiteContentDetectionGA";

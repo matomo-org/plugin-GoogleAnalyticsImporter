@@ -302,11 +302,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         ];
         $isNoDataPage = Common::getRequestVar('isNoDataPage', '');
         if ($isNoDataPage) {
-            $selectedConfigOptionValue = Common::getRequestVar('selectedConfigOptionValue', '');
             $modifiedParameters = [
               'module' => 'CoreHome',
               'action' => 'index',
-              'gaSelectedConfigOption' => $selectedConfigOptionValue,
             ];
         }
         Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified($modifiedParameters));
