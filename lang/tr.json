@@ -43,6 +43,7 @@
         "GA4Dimension": "GA4 boyutu",
         "GADimension": "Google Analytics boyutu",
         "GoogleAnalyticsInfo": "Google Analytics bilgileri",
+        "GoogleOauthCompleteWarning": "%1$sNot:%2$s OAuth işlemini tamamlarken Google \"%1$sGoogle bu uygulamayı doğrulamadı%2$s\" şeklinde bir uyarı görüntüleyebilir. Bu durumda, \"%1$sGelişmiş%2$s\" ve ardından \"%1$smatomo.cloud sitesine git (güvenli değil)%2$s\" seçeneğine tıklayarak güvenle ilerleyebilirsiniz.",
         "ImportEndDate": "İçe aktarma bitiş tarihi",
         "ImportJobs": "İçe aktarma görevleri",
         "ImportStartDate": "İçe aktarma başlangıç tarihi",
