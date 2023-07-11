@@ -69,9 +69,16 @@
         </span>
   </form>
   <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep04Text)"></li>
-  <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep05Text)"></li>
+  <li v-if="isNoDataPage"
+      v-text="translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep05')">
+  </li>
   <li v-if="isNoDataPage"
       v-text="translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep06')">
+  </li>
+  <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep07Text)"></li>
+  <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep08Text)"></li>
+  <li v-if="isNoDataPage"
+      v-text="translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep09')">
   </li>
 </template>
 
@@ -161,15 +168,30 @@ export default defineComponent({
     },
     getAdvanceConnectStep04Text() {
       const faqLink = 'https://matomo.org/faq/general/running-the-google-analytics-import/';
-      return `${this.translate(
+      return this.translate(
         'GoogleAnalyticsImporter_GAImportNoDataScreenStep04',
+        `<a href="${this.indexActionUrl}" target="_blank" rel="noreferrer noopener">`,
+        '</a>',
         `<a href="${faqLink}" target="_blank" rel="noreferrer noopener">`,
         '</a>',
-      )}<br><div style="margin-left: 1.2rem">${this.translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep04Note', '<strong>', '</strong>', this.translate('GoogleAnalyticsImporter_Start'))}</div>`;
+      );
     },
     getAdvanceConnectStep05Text() {
       return this.translate(
         'GoogleAnalyticsImporter_GAImportNoDataScreenStep05',
+        `<a href="${this.indexActionUrl}" target="_blank" rel="noreferrer noopener">`,
+        '</a>',
+      );
+    },
+    getAdvanceConnectStep07Text() {
+      return `${this.translate(
+        'GoogleAnalyticsImporter_GAImportNoDataScreenStep07',
+        this.translate('GoogleAnalyticsImporter_Start'),
+      )}<br><div style="margin-left: 1.2rem">${this.translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep07Note', '<strong>', '</strong>', this.translate('GoogleAnalyticsImporter_Start'))}</div>`;
+    },
+    getAdvanceConnectStep08Text() {
+      return this.translate(
+        'GoogleAnalyticsImporter_GAImportNoDataScreenStep08',
         `<a href="${this.indexActionUrl}" target="_blank" rel="noreferrer noopener">`,
         '</a>',
       );
