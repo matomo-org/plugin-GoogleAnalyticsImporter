@@ -21,7 +21,7 @@
 
     //?module=CoreAdminHome&action=home&idSite=1&period=day&date=yesterday";
     (async () => {
-      const response = await fetch('/index.php?' + new URLSearchParams(searchParams));
+      const response = await fetch(window.piwik.piwik_url + 'index.php?' + new URLSearchParams(searchParams));
       const data = await response.json();
       if ($('.site-without-data').length && data.isGASite) {
         displayPendingNotification('', 'successMessage');

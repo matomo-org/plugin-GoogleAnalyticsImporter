@@ -14,12 +14,19 @@ use Piwik\Container\StaticContainer;
 use Piwik\DataAccess\RawLogDao;
 use Piwik\DataTable;
 use Piwik\Date;
+use Piwik\Http;
 use Piwik\Period;
 use Piwik\Piwik;
+use Piwik\Nonce;
+use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
+use Piwik\View;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\ConnectAccounts\ConnectAccounts;
+use Piwik\Plugins\ConnectAccounts\helpers\ConnectHelper;
+use Piwik\Plugins\ConnectAccounts\Strategy\Google\GoogleConnect;
 use Piwik\Plugins\Referrers\API;
+use Piwik\SettingsPiwik;
 use Piwik\Site;
 use Psr\Log\LoggerInterface;
 
@@ -64,7 +71,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'SitesManager.deleteSite.end'            => 'onSiteDeleted',
             'Template.jsGlobalVariables' => 'addImportedDateRangesForSite',
             'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
-            'AssetManager.getJavaScriptFiles' => 'getJsFiles'
+            'AssetManager.getJavaScriptFiles' => 'getJsFiles',
+            'Template.embedGAImportNoData' => 'embedGAImportNoData'
         ];
     }
 
@@ -240,6 +248,22 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_FutureDateHelp';
         $translationKeys[] = 'GoogleAnalyticsImporter_ScheduleImportDescription';
         $translationKeys[] = 'GoogleAnalyticsImporter_EndDateHelpText';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Authorize';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GoogleOauthCompleteWarning';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep01';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep02';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep03';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep04';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep05';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep06';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep07';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep07Note';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep08';
+        $translationKeys[] = 'GoogleAnalyticsImporter_GAImportNoDataScreenStep09';
+        $translationKeys[] = 'GoogleAnalyticsImporter_Start';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ReAuthorize';
+        $translationKeys[] = 'GoogleAnalyticsImporter_AccountsConnectedSuccessfully';
+        $translationKeys[] = 'GoogleAnalyticsImporter_UploadSuccessful';
 
         if (Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled()) {
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";
@@ -482,5 +506,72 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             return false;
         }
         return true;
+    }
+
+    public static function getRadioOptions()
+    {
+
+        return (!self::isConnectAccountsPluginActivated() ? [] : [
+            'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
+            'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
+        ]);
+    }
+
+    public static function getManualUploadText()
+    {
+        return Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
+            . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
+                '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
+                '</a>',
+            ]);
+    }
+
+    public static function getGoogleOAuthUrl()
+    {
+        $googleAuthUrl = '';
+        $isConnectAccountsActivated = self::isConnectAccountsPluginActivated();
+        $authBaseUrl = $isConnectAccountsActivated ? "https://" . StaticContainer::get('CloudAccountsInstanceId') . '/index.php?' : '';
+        $jwt = Common::getRequestVar('state', '', 'string');
+        if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
+            // verify an existing user by supplying a jwt too
+            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId(),
+                ConnectAccounts::INITIATED_BY_GA);
+        }
+        if($isConnectAccountsActivated) {
+            $googleAuthUrl = $authBaseUrl . Http::buildQuery([
+                    'module' => 'ConnectAccounts',
+                    'action' => 'initiateOauth',
+                    'state' => $jwt,
+                    'strategy' => GoogleConnect::getStrategyName()
+                ]);
+        }
+
+        return $googleAuthUrl;
+    }
+
+    public static function isConnectAccountsPluginActivated()
+    {
+        return Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled();
+    }
+
+    public function embedGAImportNoData(&$out, $isGA3)
+    {
+        Piwik::checkUserHasSomeViewAccess();
+        $isConnectAccountsPluginActivated = self::isConnectAccountsPluginActivated();
+        /** @var Authorization $authorization */
+        $authorization = StaticContainer::get(Authorization::class);
+        $view = new View("@GoogleAnalyticsImporter/gaImportNoData");
+        $view->nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig', 1200);
+        $view->auth_nonce = Nonce::getNonce('gaimport.auth', 1200);
+        $view->isConnectAccountsActivated = $isConnectAccountsPluginActivated;
+        $view->strategy = $isConnectAccountsPluginActivated && GoogleConnect::isStrategyActive() ? GoogleConnect::getStrategyName() : 'CUSTOM';
+        $view->radioOptions = self::getRadioOptions();
+        $view->manualUploadText = self::getManualUploadText();
+        $view->googleAuthUrl = self::getGoogleOAuthUrl();
+        $view->isGA3 = $isGA3;
+        $view->hasClientConfiguration = $authorization->hasClientConfiguration();
+        $view->isConfigured = $authorization->hasAccessToken();
+        $view->isNoDataPage = true;
+        $out .= $view->render();
     }
 }

@@ -106,29 +106,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $maxEndDateDesc = Date::factory($maxEndDate)->toString();
         }
 
-        $isConnectAccountsActivated = Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled();
-        $authBaseUrl = $isConnectAccountsActivated ? "https://" . StaticContainer::get('CloudAccountsInstanceId') . '/index.php?' : '';
-        $jwt = Common::getRequestVar('state', '', 'string');
-        if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
-            // verify an existing user by supplying a jwt too
-            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId(),
-                ConnectAccounts::INITIATED_BY_GA);
-        }
-        $googleAuthUrl = '';
-        if($isConnectAccountsActivated) {
-            $googleAuthUrl = $authBaseUrl . Http::buildQuery([
-                'module' => 'ConnectAccounts',
-                'action' => 'initiateOauth',
-                'state' => $jwt,
-                'strategy' => GoogleConnect::getStrategyName()
-            ]);
-        }
-
         $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
-        if ($isConnectAccountsActivated) {
+        if (GoogleAnalyticsImporter::isConnectAccountsPluginActivated()) {
             $notification = new Notification(Piwik::translate('GoogleAnalyticsImporter_GoogleOauthCompleteWarning', ['<strong>', '</strong>']));
             $notification->context = Notification::CONTEXT_WARNING;
             $notification->raw = true;
+            $notification->flags = Notification::FLAG_CLEAR;
             Notification\Manager::notify('GoogleAnalyticsImporter_OauthCompletionWarning', $notification);
         }
         return $this->renderTemplate('index', [
@@ -184,17 +167,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                     ],
                 ],
             ],
-            'isConnectAccountsActivated' => $isConnectAccountsActivated,
-            'radioOptions' => !$isConnectAccountsActivated ? [] : [
-                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
-                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
-            ],
-            'googleAuthUrl' => $googleAuthUrl,
-            'manualUploadText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
-                . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
-                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
-                    '</a>',
-                ]),
+            'isConnectAccountsActivated' => GoogleAnalyticsImporter::isConnectAccountsPluginActivated(),
+            'radioOptions' => GoogleAnalyticsImporter::getRadioOptions(),
+            'googleAuthUrl' => GoogleAnalyticsImporter::getGoogleOAuthUrl(),
+            'manualUploadText' => GoogleAnalyticsImporter::getManualUploadText(),
         ]);
     }
 
@@ -281,6 +257,10 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         Nonce::checkNonce('GoogleAnalyticsImporter.googleClientConfig', Common::getRequestVar('config_nonce'));
 
+        if (GoogleAnalyticsImporter::isConnectAccountsPluginActivated() && GoogleConnect::isStrategyActive()) {
+            GoogleConnect::disableMatomoCloudOverride();
+        }
+
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
 
@@ -316,10 +296,18 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $errorMessage = substr($errorMessage, 0, 1024);
         }
 
-        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
+        $modifiedParameters = [
             'action' => 'index',
             'error' => $errorMessage,
-        ]));
+        ];
+        $isNoDataPage = Common::getRequestVar('isNoDataPage', '');
+        if ($isNoDataPage) {
+            $modifiedParameters = [
+              'module' => 'CoreHome',
+              'action' => 'index',
+            ];
+        }
+        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified($modifiedParameters));
     }
 
     public function deleteImportStatus()
