@@ -564,7 +564,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $view->nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig', 1200);
         $view->auth_nonce = Nonce::getNonce('gaimport.auth', 1200);
         $view->isConnectAccountsActivated = $isConnectAccountsPluginActivated;
-        $view->strategy = $isConnectAccountsPluginActivated && GoogleConnect::isStrategyActive() ? GoogleConnect::getStrategyName() : GoogleConnect::GOOGLE_AUTH_STRATEGY_CUSTOM;
+        $view->strategy = $isConnectAccountsPluginActivated && GoogleConnect::isStrategyActive() ? GoogleConnect::getStrategyName() : 'CUSTOM';
         $view->radioOptions = self::getRadioOptions();
         $view->manualUploadText = self::getManualUploadText();
         $view->googleAuthUrl = self::getGoogleOAuthUrl();
