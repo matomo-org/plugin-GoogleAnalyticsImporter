@@ -43,7 +43,7 @@
     </ul>
 {% endif %}
 <br>
-<p>{{ 'GoogleAnalyticsImporter_NoDataScreenFollowStepComplete'|translate('<strong>', '</strong>')|raw }}</p>
+<p>{{ 'GoogleAnalyticsImporter_NoDataScreenFollowStepComplete'|translate('<strong>', '</strong>', '<a href="'~ linkTo({'action': 'index', 'module': 'GoogleAnalyticsImporter'}) ~ '" target="_blank" rel="noreferrer noopener  ">', '</a>')|raw }}</p>
 <script>
     $('body').on('click', '#ga3WarningNotification .close', function(){
         $('#ga3WarningNotification').hide();
