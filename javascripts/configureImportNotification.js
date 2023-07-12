@@ -17,7 +17,7 @@
     };
 
     (async () => {
-      const response = await fetch('/index.php?' + new URLSearchParams(searchParams));
+      const response = await fetch(window.piwik.piwik_url + 'index.php?' + new URLSearchParams(searchParams));
       const data = await response.json();
       if (data.showNotification && data.configureURL) {
         showNotification(data.configureURL);

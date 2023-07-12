@@ -14,7 +14,7 @@ describe("EmptySite_GA", function () {
 
     const generalParams = 'idSite=1&period=day&date=2010-01-03';
 
-    it('should show the tracking code if the website has no recorded data and GTM guide', async function () {
+    it('should show no data screen with GA import and with ga3 offset banner', async function () {
         const urlToTest = "?" + generalParams + "&module=CoreHome&action=index";
         await page.goto(urlToTest);
 
