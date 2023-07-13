@@ -133,6 +133,23 @@
         "NoDateSuccessImportMessageLine2": "Historical reports for these properties will be imported in the background. Please be patient as this will take a few days to complete. It's now time to set up the tracking of new data (see instructions below).",
         "OauthFailedMessage": "We encountered an issue during the authorization process for importing your GA reports. To try again, please click the button below. If the problem persists, please contact our support team for assistance. They will assist you in resolving the issue and getting your historical GA data imported.",
         "ConfigureImportNotificationMessage": "Don't miss out on your valuable historical insights! %1$sImport your Google Analytics data for %2$s%3$s into your Matomo platform now.",
-        "FutureDateHelp": "The import process has been stopped because it attempted to import data for a future or present date (%1$s). The importer will automatically retry the import tomorrow to ensure that correct and complete data is imported. "
+        "FutureDateHelp": "The import process has been stopped because it attempted to import data for a future or present date (%1$s). The importer will automatically retry the import tomorrow to ensure that correct and complete data is imported. ",
+        "GoogleOauthCompleteWarning": "%1$sNote:%2$s You may receive a warning from Google when completing the OAuth process saying \"%1$sGoogle hasn’t verified this app%2$s\". In this case, you can safely continue by clicking on \"%1$sAdvanced%2$s\", and then \"%1$sGo to matomo.cloud (unsafe)%2$s\".",
+        "NoDataScreenIntro": "Importing your Google Analytics data is easy with Matomo. You can use this to create a backup of your properties and reporting data, and analyse them using Matomo.",
+        "NoDataScreenOptionsDescription": "You can choose from two options: connecting with your Google Analytics account is the easiest option and works for small and medium traffic websites. If you have many websites or some high-traffic websites, the advanced Google OAuth configuration will allow faster migration of data.",
+        "NoDataScreenFollowThisSteps": "Follow these steps to set it up:",
+        "GAImportNoDataScreenStep01": "Download the OAuth credentials from your Google account by following this %1$sguide%2$s.",
+        "GAImportNoDataScreenStep02": "Upload the OAuth credentials.",
+        "GAImportNoDataScreenStep03": "Click the \"%1$s\" button (this opens a new tab so you can follow the next steps in this tab).",
+        "GAImportNoDataScreenStep04": "Navigate to the %1$sGoogle Analytics Import admin page%2$s. %3$sLearn more%4$s.",
+        "GAImportNoDataScreenStep05": "Select the Import type.",
+        "GAImportNoDataScreenStep06": "Fill out the Schedule an Import form.",
+        "GAImportNoDataScreenStep07": "Click \"%1$s\".",
+        "GAImportNoDataScreenStep07Note": "%1$sNote:%2$s Once you click \"%3$s\", Matomo will automatically create a new Matomo website for each selected property.",
+        "GAImportNoDataScreenStep08": "Importing data takes time, %1$sclick here to monitor the status of your data import%2$s.",
+        "GAImportNoDataScreenStep09": "To see your data, refresh this page and then select the newly created Matomo website from the dropdown on the top left.",
+        "NoDataScreenFollowStepComplete": "%1$sCongratulations!%2$s You have successfully configured your Google Analytics import. As noted earlier, this data is being imported into a new Matomo website. To verify that data is being imported, visit your %3$sGoogle Analytics Import page%4$s in the settings and check that the import job is running.",
+        "AccountsConnectedSuccessfully": "You have successfully connected your Google account!",
+        "UploadSuccessful": "Upload successful!"
     }
 }

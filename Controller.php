@@ -106,49 +106,16 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $maxEndDateDesc = Date::factory($maxEndDate)->toString();
         }
 
-        $isConnectAccountsActivated = Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled();
-        $authBaseUrl = $isConnectAccountsActivated ? "https://" . StaticContainer::get('CloudAccountsInstanceId') . '/index.php?' : '';
-        $jwt = Common::getRequestVar('state', '', 'string');
-        if(empty($jwt) && Piwik::hasUserSuperUserAccess() && $isConnectAccountsActivated) {
-            // verify an existing user by supplying a jwt too
-            $jwt = ConnectHelper::buildOAuthStateJwt(SettingsPiwik::getPiwikInstanceId(),
-                ConnectAccounts::INITIATED_BY_GA);
-        }
-        $googleAuthUrl = '';
-        if($isConnectAccountsActivated) {
-            $googleAuthUrl = $authBaseUrl . Http::buildQuery([
-                'module' => 'ConnectAccounts',
-                'action' => 'initiateOauth',
-                'state' => $jwt,
-                'strategy' => GoogleConnect::getStrategyName()
-            ]);
+        $isConnectAccountsActivated = GoogleAnalyticsImporter::isConnectAccountsPluginActivated();
+        if ($isConnectAccountsActivated) {
+            $notification = new Notification(Piwik::translate('GoogleAnalyticsImporter_GoogleOauthCompleteWarning', ['<strong>', '</strong>']));
+            $notification->context = Notification::CONTEXT_WARNING;
+            $notification->raw = true;
+            $notification->flags = Notification::FLAG_CLEAR;
+            Notification\Manager::notify('GoogleAnalyticsImporter_OauthCompletionWarning', $notification);
         }
 
-        $configureConnectionProps = [
-            'isConnectAccountsActivated' => $isConnectAccountsActivated,
-            'primaryText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel1'),
-            'radioOptions' => !$isConnectAccountsActivated ? [] : [
-                'connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'),
-                'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa'),
-            ],
-            'googleAuthUrl' => $googleAuthUrl,
-            'manualConfigText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
-                . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
-                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
-                    '</a>',
-                ]),
-            'manualConfigNonce' => $nonce,
-            'manualActionUrl' => Url::getCurrentUrlWithoutQueryString() . '?' . Http::buildQuery([
-                    'module' => 'GoogleAnalyticsImporter',
-                    'action' => 'configureClient',
-                ]),
-            'connectAccountsUrl' => $googleAuthUrl,
-            'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_GaImportBtn'),
-            'additionalHelpText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterHelp', [
-                '<strong>',
-                '</strong>'
-            ])
-        ];
+        $configureConnectionProps = GoogleAnalyticsImporter::getConfigureConnectProps($nonce);
 
         $isClientConfigurable = StaticContainer::get('GoogleAnalyticsImporter.isClientConfigurable');
         return $this->renderTemplate('index', [
@@ -292,6 +259,11 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
         Nonce::checkNonce('GoogleAnalyticsImporter.googleClientConfig', Common::getRequestVar('config_nonce'));
 
+        if (GoogleAnalyticsImporter::isConnectAccountsPluginActivated() && GoogleConnect::isStrategyActive()) {
+            GoogleConnect::disableMatomoCloudOverride();
+        }
+
+
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
 
@@ -327,10 +299,18 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $errorMessage = substr($errorMessage, 0, 1024);
         }
 
-        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified([
+        $modifiedParameters = [
             'action' => 'index',
             'error' => $errorMessage,
-        ]));
+        ];
+        $isNoDataPage = Common::getRequestVar('isNoDataPage', '');
+        if ($isNoDataPage) {
+            $modifiedParameters = [
+                'module' => 'CoreHome',
+                'action' => 'index',
+            ];
+        }
+        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified($modifiedParameters));
     }
 
     public function deleteImportStatus()
@@ -729,11 +709,12 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
      * @return array Map of component extensions. Like [ [ 'plugin' => 'PluginName', 'component' => 'ComponentName' ] ]
      * See {@link https://developer.matomo.org/guides/in-depth-vue#allowing-plugins-to-add-content-to-your-vue-components the developer documentation} for more information.
      */
-    public static function getComponentExtensions(): array
+    public static function getComponentExtensions($isNoDataPage = false): array
     {
         $componentExtensions = [];
         Piwik::postEvent('GoogleAnalyticsImporter.getGoogleConfigComponentExtensions', [
-            &$componentExtensions
+            &$componentExtensions,
+            $isNoDataPage
         ]);
         return $componentExtensions;
     }

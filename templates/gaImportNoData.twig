@@ -1,0 +1,39 @@
+{% if isGA3 %}
+    <div class="ga-import-warning alert alert-warning" id="ga3WarningNotification">
+        {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}
+        <button type="button" class="close" data-dismiss="alert"> × </button>
+    </div>
+{% endif %}
+<div class="right">
+    <img src="plugins/GoogleAnalyticsImporter/images/google-analytics.png" style="height: 5rem;">
+</div>
+<p>{{ 'GoogleAnalyticsImporter_NoDataScreenIntro'|translate }}</p>
+<br>
+{% if isConnectAccountsActivated %}
+    <p>{{ 'GoogleAnalyticsImporter_NoDataScreenOptionsDescription'|translate }}</p>
+    <br>
+{% else %}
+    <p>{{ 'GoogleAnalyticsImporter_NoDataScreenFollowThisSteps'|translate }}</p>
+{% endif %}
+<ul class="list-style-decimal" id="{{ isConnectAccountsActivated ? 'manual-advance-option' : 'manual-option' }}">
+<div
+        vue-entry="GoogleAnalyticsImporter.Connect"
+        is-no-data-page="true"
+        extensions="{{ extensions|json_encode }}"
+        is-configured="{{ isConfigured|json_encode }}"
+        has-client-configuration="{{ hasClientConfiguration|json_encode }}"
+        forward-to-auth-nonce="{{ auth_nonce }}"
+        index-action-url="{{ linkTo({'action': 'index', 'module': 'GoogleAnalyticsImporter'}) }}"
+        authorize-url="{{ linkTo({'action': 'forwardToAuth', 'module': 'GoogleAnalyticsImporter'}) }}"
+        configure-connection-props="{{ configureConnectionProps|json_encode }}"
+        hide-content-block="false"
+>
+</div>
+</ul>
+<br>
+<p>{{ 'GoogleAnalyticsImporter_NoDataScreenFollowStepComplete'|translate('<strong>', '</strong>', '<a href="'~ linkTo({'action': 'index', 'module': 'GoogleAnalyticsImporter'}) ~ '" target="_blank" rel="noreferrer noopener  ">', '</a>')|raw }}</p>
+<script>
+    $('body').on('click', '#ga3WarningNotification .close', function(){
+        $('#ga3WarningNotification').hide();
+    });
+</script>
