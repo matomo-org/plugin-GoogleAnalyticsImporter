@@ -246,7 +246,7 @@
 		<logo>plugins/Morpheus/icons/dist/flags/de.png</logo>
 	</row>
 	<row>
-		<label>Sichuan, China</label>
+		<label>Jiangsu, China</label>
 		<nb_visits>45</nb_visits>
 		<nb_actions>174</nb_actions>
 		<sum_visit_length>1364</sum_visit_length>
@@ -291,7 +291,7 @@
 		<region>32</region>
 		<country>cn</country>
 		<country_name>China</country_name>
-		<region_name>Sichuan</region_name>
+		<region_name>Jiangsu</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/cn.png</logo>
 	</row>
 	<row>
@@ -442,7 +442,7 @@
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest, Belgium</label>
+		<label>Brussels Hoofdstedelijk Gewest, Belgium</label>
 		<nb_visits>4</nb_visits>
 		<nb_actions>4</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -487,7 +487,7 @@
 		<region>BRU</region>
 		<country>be</country>
 		<country_name>Belgium</country_name>
-		<region_name>Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest</region_name>
+		<region_name>Brussels Hoofdstedelijk Gewest</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/be.png</logo>
 	</row>
 	<row>
@@ -981,7 +981,7 @@
 		<logo>plugins/Morpheus/icons/dist/flags/us.png</logo>
 	</row>
 	<row>
-		<label>Telšių Apskritis, Lithuania</label>
+		<label>Telšių apskritis, Lithuania</label>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
 		<sum_visit_length>0</sum_visit_length>
@@ -1026,7 +1026,7 @@
 		<region>TE</region>
 		<country>lt</country>
 		<country_name>Lithuania</country_name>
-		<region_name>Telšių Apskritis</region_name>
+		<region_name>Telšių apskritis</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/lt.png</logo>
 	</row>
 	<row>
