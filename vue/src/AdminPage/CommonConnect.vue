@@ -25,6 +25,7 @@
         :authorize-url="authorizeUrl"
         :forward-to-auth-nonce="forwardToAuthNonce"
         :is-configured="isConfigured"
+        :strategy-to-use="strategyToUse"
         :additional-help-text="configConnectProps.additionalHelpText"/>
     </ContentBlock>
     <div v-if="isNoDataPage">
@@ -49,6 +50,7 @@
         :authorize-url="authorizeUrl"
         :forward-to-auth-nonce="forwardToAuthNonce"
         :is-configured="isConfigured"
+        :strategy-to-use="strategyToUse"
         :additional-help-text="configConnectProps.additionalHelpText"/>
     </div>
   </div>
@@ -99,6 +101,7 @@ export default defineComponent({
     indexActionUrl: String,
     authorizeUrl: String,
     forwardToAuthNonce: String,
+    strategyToUse: String,
     isConfigured: Boolean,
   },
   components: {
