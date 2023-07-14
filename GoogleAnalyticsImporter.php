@@ -17,8 +17,6 @@ use Piwik\Date;
 use Piwik\Http;
 use Piwik\Period;
 use Piwik\Piwik;
-use Piwik\Nonce;
-use Piwik\View;
 use Piwik\Plugin\Manager;
 use Piwik\Plugin\ViewDataTable;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
@@ -74,7 +72,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive',
             'AssetManager.getJavaScriptFiles' => 'getJsFiles',
             'GoogleAnalyticsImporter.getGoogleConfigComponentExtensions' => 'getGoogleConfigComponent',
-            'Template.embedGAImportNoData' => 'embedGAImportNoData'
         ];
     }
 
@@ -604,26 +601,5 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                 '</strong>'
             ])
         ];
-    }
-
-    public function embedGAImportNoData(&$out, $isGA3)
-    {
-        Piwik::checkUserHasSomeViewAccess();
-        $isConnectAccountsPluginActivated = self::isConnectAccountsPluginActivated();
-        /** @var Authorization $authorization */
-        $authorization = StaticContainer::get(Authorization::class);
-        $nonce = Nonce::getNonce('GoogleAnalyticsImporter.googleClientConfig', 1200);
-        $view = new View("@GoogleAnalyticsImporter/gaImportNoData");
-        $view->nonce = $nonce;
-        $view->auth_nonce = Nonce::getNonce('gaimport.auth', 1200);
-        $view->isConnectAccountsActivated = $isConnectAccountsPluginActivated;
-        $view->strategy = $isConnectAccountsPluginActivated && GoogleConnect::isStrategyActive() ? GoogleConnect::getStrategyName() : 'CUSTOM';
-        $view->isGA3 = $isGA3;
-        $view->configureConnectionProps = self::getConfigureConnectProps($nonce);
-        $view->extensions = Controller::getComponentExtensions(true);
-        $view->hasClientConfiguration = $authorization->hasClientConfiguration();
-        $view->isConfigured = $authorization->hasAccessToken();
-        $view->isNoDataPage = true;
-        $out .= $view->render();
     }
 }

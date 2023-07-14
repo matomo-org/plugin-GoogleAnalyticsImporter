@@ -27,6 +27,8 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\MobileAppMeasurable\Type;
+use Piwik\Plugins\SitesManager\SiteContentDetection\GoogleAnalytics3;
+use Piwik\Plugins\SitesManager\SiteContentDetection\GoogleAnalytics4;
 use Piwik\Site;
 use Piwik\SettingsPiwik;
 use Piwik\Url;
@@ -695,8 +697,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
             if (empty($status)) {
                 $siteContentDetector = new \Piwik\SiteContentDetector();
-                $siteContentDetector->detectContent();
-                if ($siteContentDetector->ga3 || $siteContentDetector->ga4) {
+                $siteContentDetector->detectContent([GoogleAnalytics3::getId(), GoogleAnalytics4::getId()], $currentIdSite);
+                if ($siteContentDetector->wasDetected(GoogleAnalytics3::getId())
+                    || $siteContentDetector->wasDetected(GoogleAnalytics4::getId())) {
                     $showNotification = true;
                     $settingsUrl = SettingsPiwik::getPiwikUrl() . 'index.php?' . Url::getQueryStringFromParameters([
                             'idSite' => $currentIdSite,

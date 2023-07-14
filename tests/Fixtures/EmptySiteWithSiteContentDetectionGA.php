@@ -7,6 +7,9 @@
  */
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
+use Piwik\Plugins\SEO\Metric\Google;
+use Piwik\Plugins\SitesManager\SiteContentDetection\Cloudflare;
+use Piwik\Plugins\SitesManager\SiteContentDetection\GoogleAnalytics3;
 use Piwik\Plugins\SitesManager\SitesManager;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\SiteContentDetector;
@@ -22,21 +25,9 @@ class EmptySiteWithSiteContentDetectionGA extends Fixture
 
     public function provideContainerConfig()
     {
-        $mockData = [
-            'consentManagerId' => null,
-            'consentManagerName' => null,
-            'consentManagerUrl' => null,
-            'isConnected' => false,
-            'ga3' => true,
-            'ga4' => false,
-            'gtm' => false,
-            'cloudflare' => true,
-            'cms' => SitesManager::SITE_TYPE_UNKNOWN
-        ];
-
         return [
             SiteContentDetector::class => \Piwik\DI::autowire(FakeSiteContentDetector::class)
-                ->constructorParameter('mockData', $mockData)
+                ->constructorParameter('detectedContentDetections', [Cloudflare::getId(), GoogleAnalytics3::getId()])
         ];
     }
 
