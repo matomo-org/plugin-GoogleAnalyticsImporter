@@ -54,7 +54,7 @@
         "GAImportNoDataScreenStep08": "データのインポートには時間がかかります。%1$sclick here to monitor your data import%2$s.",
         "GAImportNoDataScreenStep09": "データを見るには、このページを更新し、左上のドロップダウンから新しく作成したMatomoウェブサイトを選択してください。",
         "GoogleAnalyticsInfo": "Google アナリティクス情報",
-        "GoogleOauthCompleteWarning": "1$sNote:%2$s OAuth プロセスを完了する際に、Google から \"%1$sGoogle hasn't verified this app%2$s\" という警告が表示される場合があります。この場合は、\"%1$sAdvanced%2$s\" をクリックし、\"%1$sGo to matomo.cloud (unsafe)%2$s\" をクリックすると安全に続行できます。",
+        "GoogleOauthCompleteWarning": "%1$sNote:%2$s OAuth プロセスを完了する際に、Google から \"%1$sGoogle hasn't verified this app%2$s\" という警告が表示される場合があります。この場合は、\"%1$sAdvanced%2$s\" をクリックし、\"%1$sGo to matomo.cloud (unsafe)%2$s\" をクリックすると安全に続行できます。",
         "ImportEndDate": "終了日をインポート",
         "ImportJobs": "ジョブのインポート",
         "ImportStartDate": "開始日をインポート",
