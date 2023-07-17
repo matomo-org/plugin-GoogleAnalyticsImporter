@@ -1,6 +1,10 @@
 
 ## Changelog
 
+# 4.6.9
+- Updated dependencies (Guzzle)
+- Added GA import tab in no data screen
+
 # 4.6.8
 - Added OAuth complete warning when configuring/authorizing GA OAuth.
 
