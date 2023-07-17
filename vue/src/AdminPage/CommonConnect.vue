@@ -1,7 +1,7 @@
 <template>
   <div v-for="(refComponent, index) in componentExtensions" :key="index">
     <ContentBlock
-      v-if="hideContentBlock === false && !isNoDataPage"
+      v-if="!isNoDataPage"
       :content-title="isNoDataPage ? '' : translate('GoogleAnalyticsImporter_AdminMenuTitle')"
     >
       <component
@@ -28,7 +28,7 @@
         :strategy-to-use="strategyToUse"
         :additional-help-text="configConnectProps.additionalHelpText"/>
     </ContentBlock>
-    <div v-if="isNoDataPage">
+    <div v-else>
       <component
         :is="refComponent"
         :manual-config-nonce="configConnectProps.manualConfigNonce"
@@ -95,7 +95,6 @@ export default defineComponent({
       type: Object,
       required: true,
     },
-    hideContentBlock: Boolean,
     isNoDataPage: Boolean,
     hasClientConfiguration: Boolean,
     indexActionUrl: String,
