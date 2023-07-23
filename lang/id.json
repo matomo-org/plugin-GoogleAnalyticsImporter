@@ -15,6 +15,7 @@
         "ConfigureClientDesc1": "Untuk mengimpor data Anda dari Google Analytics, Matomo memerlukan akses ke data ini.",
         "ConfigureClientDesc2": "%1$sUntuk memulai, ikuti petunjuk kami untuk mengambil konfigurasi OAuth Client Anda.%2$s Kemudian, unggah konfigurasi klien ini atau tempel ke kolom di bawah ini.",
         "ConfigureTheImporter": "Atur Importir",
+        "ConfigureTheImporterHelp": "%1$sCatatan:%2$s Jika Anda tidak mengimpor data, data Google Analytics 3 Anda akan hilang secara permanen setelah tanggal 31 Desember 2023.",
         "CreationDate": "Tanggal Pembuatan Atribut Web",
         "DeleteUploadedClientConfig": "Jika Anda ingin menghapus konfigurasi klien yang diunggah, klik di bawah ini",
         "DimensionScope": "Cakupan Dimensi",
