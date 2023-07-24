@@ -14,3 +14,4 @@ export { default as ImportStatus } from './ImportStatus/ImportStatus.vue';
 export { default as ConfigureConnection } from './Configure/ConfigureConnection.vue';
 export { default as ClientConfig } from './ClientConfig/ClientConfig.vue';
 export { default as AdminPage } from './AdminPage/AdminPage.vue';
+export { default as Connect } from './AdminPage/CommonConnect.vue';

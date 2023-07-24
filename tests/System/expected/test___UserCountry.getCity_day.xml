@@ -54,7 +54,7 @@
 		<logo>plugins/Morpheus/icons/dist/flags/ca.png</logo>
 	</row>
 	<row>
-		<label>Suzhou, Sichuan, China</label>
+		<label>Suzhou, Jiangsu, China</label>
 		<nb_uniq_visitors>17</nb_uniq_visitors>
 		<nb_visits>27</nb_visits>
 		<nb_actions>103</nb_actions>
@@ -102,7 +102,7 @@
 		<region>32</region>
 		<country>cn</country>
 		<country_name>China</country_name>
-		<region_name>Sichuan</region_name>
+		<region_name>Jiangsu</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/cn.png</logo>
 	</row>
 	<row>
@@ -420,7 +420,7 @@
 		<logo>plugins/Morpheus/icons/dist/flags/fr.png</logo>
 	</row>
 	<row>
-		<label>Brussels, Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest, Belgium</label>
+		<label>Brussels, Brussels Hoofdstedelijk Gewest, Belgium</label>
 		<nb_uniq_visitors>1</nb_uniq_visitors>
 		<nb_visits>1</nb_visits>
 		<nb_actions>1</nb_actions>
@@ -468,7 +468,7 @@
 		<region>BRU</region>
 		<country>be</country>
 		<country_name>Belgium</country_name>
-		<region_name>Bruxelles-Capitale, Région de;Brussels Hoofdstedelijk Gewest</region_name>
+		<region_name>Brussels Hoofdstedelijk Gewest</region_name>
 		<logo>plugins/Morpheus/icons/dist/flags/be.png</logo>
 	</row>
 	<row>

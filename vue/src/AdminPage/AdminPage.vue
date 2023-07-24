@@ -6,28 +6,10 @@
 
 <template>
   <div>
-    <div v-for="(refComponent, index) in componentExtensions" :key="index">
-      <ContentBlock
-        :content-title="translate('GoogleAnalyticsImporter_AdminMenuTitle')"
-      >
-      <component
-        :is="refComponent"
-        :manual-config-nonce="configConnectProps.manualConfigNonce"
-        :base-domain="configConnectProps.baseDomain"
-        :base-url="configConnectProps.baseUrl"
-        :manual-action-url="configConnectProps.manualActionUrl"
-        :primary-text="configConnectProps.primaryText"
-        :radio-options="configConnectProps.radioOptions"
-        :manual-config-text="configConnectProps.manualConfigText"
-        :connect-accounts-url="configConnectProps.connectAccountsUrl"
-        :connect-accounts-btn-text="configConnectProps.connectAccountsBtnText"
-        :auth-url="configConnectProps.authUrl"
-        :unlink-url="configConnectProps.unlinkUrl"
-        :strategy="configConnectProps.strategy"
-        :connected-with="configConnectProps.connectedWith"
-        :additional-help-text="configConnectProps.additionalHelpText"/>
-      </ContentBlock>
-    </div>
+    <CommonConnect
+      :extensions="extensions"
+      :configure-connection-props="configureConnectionProps"
+    ></CommonConnect>
 
     <ClientConfig
       :has-client-configuration="hasClientConfiguration"
@@ -113,7 +95,6 @@ import {
   markRaw,
 } from 'vue';
 import {
-  Notification,
   ContentBlock,
   translate,
   useExternalPluginComponent,
@@ -123,6 +104,7 @@ import ImportScheduler from '../ImportScheduler/ImportScheduler.vue';
 import ImportStatus from '../ImportStatus/ImportStatus.vue';
 import ImportSelector from '../ImportScheduler/ImportSelector.vue';
 import ImportSchedulerGA4 from '../ImportScheduler/ImportSchedulerGA4.vue';
+import CommonConnect from './CommonConnect.vue';
 
 interface AdminPageState {
   selectedImporter: string;
@@ -210,8 +192,8 @@ export default defineComponent({
     },
   },
   components: {
+    CommonConnect,
     ImportSchedulerGA4,
-    Notification,
     ContentBlock,
     ClientConfig,
     ImportScheduler,
