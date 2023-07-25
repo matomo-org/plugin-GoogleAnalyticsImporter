@@ -36,7 +36,7 @@
                      radio-options="{{ radioOptions|json_encode|e('html_attr') }}"
                      manual-config-text="{{ manualUploadText|e('html_attr') }}"
                      connect-accounts-url="{{googleAuthUrl|e('html_attr')}}"
-                     connect-accounts-btn-text="{{ 'ConnectAccounts_GaImportBtn' |translate}}"
+                     connect-accounts-btn-text="{{ 'ConnectAccounts_ConnectWithGoogleText' |translate}}"
                      additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}"></div>
             {% else %}
                 <div vue-entry="GoogleAnalyticsImporter.ConfigureConnection" config-nonce="{{ nonce }}"
