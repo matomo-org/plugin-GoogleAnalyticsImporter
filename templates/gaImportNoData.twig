@@ -1,6 +1,6 @@
 {% if isGA3 %}
 <div class="ga-import-warning" piwik-alert="warning" id="ga3WarningNotification">
-    {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}
+    {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate'|translate('<strong>', '</strong>')|raw }}
     <button type="button" class="close" data-dismiss="alert"> × </button>
 </div>
 {% endif %}
@@ -28,7 +28,7 @@
          has-client-configuration="{{ hasClientConfiguration|json_encode }}"
          connect-accounts-btn-text="{{ 'ConnectAccounts_ConnectWithGoogleText' |translate}}"
          strategy="{{ strategy|json_encode }}"
-         additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}"></div>
+         additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate'|translate('<strong>', '</strong>')|raw }}"></div>
     </ul>
 {% else %}
     <p>{{ 'GoogleAnalyticsImporter_NoDataScreenFollowThisSteps'|translate }}</p>

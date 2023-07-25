@@ -16,7 +16,7 @@
     <div class="col s12 m6">
       <div class="form-help"
            v-html="$sanitize(translate(
-             'GoogleAnalyticsImporter_ConfigureTheImporterHelp',
+             'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate',
              '<strong>',
              '</strong>'))">
       </div>

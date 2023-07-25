@@ -37,7 +37,7 @@
                      manual-config-text="{{ manualUploadText|e('html_attr') }}"
                      connect-accounts-url="{{googleAuthUrl|e('html_attr')}}"
                      connect-accounts-btn-text="{{ 'ConnectAccounts_ConnectWithGoogleText' |translate}}"
-                     additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}"></div>
+                     additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate'|translate('<strong>', '</strong>')|raw }}"></div>
             {% else %}
                 <div vue-entry="GoogleAnalyticsImporter.ConfigureConnection" config-nonce="{{ nonce }}"
                      action-url="{{ linkTo({'action': 'configureClient'}) }}"></div>
