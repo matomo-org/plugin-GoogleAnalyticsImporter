@@ -1,17 +1,17 @@
 {% if isGA3 %}
 <div class="ga-import-warning" piwik-alert="warning" id="ga3WarningNotification">
-    {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}
+    {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate'|translate('<strong>', '</strong>')|raw }}
     <button type="button" class="close" data-dismiss="alert"> × </button>
 </div>
 {% endif %}
 <div class="right">
-    <img src="plugins/GoogleAnalyticsImporter/images/google-analytics.png" style="height: 5rem;">
+    <img src="plugins/GoogleAnalyticsImporter/images/google-analytics.png" style="height: 3rem;">
 </div>
 <p>{{ 'GoogleAnalyticsImporter_NoDataScreenIntro'|translate }}</p>
 <br>
 
 {% if isConnectAccountsActivated %}
-    <p>{{ 'GoogleAnalyticsImporter_NoDataScreenOptionsDescription'|translate }}</p>
+    <p style="max-width: 1500px">{{ 'GoogleAnalyticsImporter_NoDataScreenOptionsDescription'|translate }}</p>
     <br>
     <ul class="list-style-decimal" id="manual-advance-option">
     <div vue-entry="ConnectAccounts.ConfigureConnection" manual-config-nonce="{{ nonce }}"
@@ -26,9 +26,9 @@
          connect-accounts-url="{{googleAuthUrl|e('html_attr')}}"
          is-no-data-page="true"
          has-client-configuration="{{ hasClientConfiguration|json_encode }}"
-         connect-accounts-btn-text="{{ 'ConnectAccounts_GaImportBtn' |translate}}"
+         connect-accounts-btn-text="{{ 'ConnectAccounts_ConnectWithGoogleText' |translate}}"
          strategy="{{ strategy|json_encode }}"
-         additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}"></div>
+         additional-help-text="{{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate'|translate('<strong>', '</strong>')|raw }}"></div>
     </ul>
 {% else %}
     <p>{{ 'GoogleAnalyticsImporter_NoDataScreenFollowThisSteps'|translate }}</p>

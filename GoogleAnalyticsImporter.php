@@ -240,6 +240,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_OauthFailedMessage';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureImportNotificationMessage';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel1';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel2';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel3';

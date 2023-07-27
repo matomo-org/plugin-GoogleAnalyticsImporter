@@ -300,14 +300,16 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             'action' => 'index',
             'error' => $errorMessage,
         ];
+        $hashParams = '';
         $isNoDataPage = Common::getRequestVar('isNoDataPage', '');
         if ($isNoDataPage) {
+            $hashParams = '#?activeTab=ga-import';
             $modifiedParameters = [
               'module' => 'CoreHome',
               'action' => 'index',
             ];
         }
-        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified($modifiedParameters));
+        Url::redirectToUrl(Url::getCurrentUrlWithoutQueryString() . Url::getCurrentQueryStringWithParametersModified($modifiedParameters) . $hashParams);
     }
 
     public function deleteImportStatus()
