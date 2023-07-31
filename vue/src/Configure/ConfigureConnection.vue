@@ -15,7 +15,7 @@
     </div>
     <div class="col s12 m6">
       <div class="form-help"
-           v-html="translate('GoogleAnalyticsImporter_ConfigureTheImporterHelp',
+           v-html="translate('GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate',
            '<strong>', '</strong>')">
       </div>
     </div>

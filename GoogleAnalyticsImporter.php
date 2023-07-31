@@ -268,6 +268,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_OauthFailedMessage';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureImportNotificationMessage';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterHelp';
+        $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel1';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel2';
         $translationKeys[] = 'GoogleAnalyticsImporter_ConfigureTheImporterLabel3';
@@ -595,8 +596,8 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                     'idSite' => Common::getRequestVar('idSite'),
                 ]),
             'connectAccountsUrl' => $googleAuthUrl,
-            'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_GaImportBtn'),
-            'additionalHelpText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterHelp', [
+            'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_ConnectWithGoogleText'),
+            'additionalHelpText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate', [
                 '<strong>',
                 '</strong>'
             ])

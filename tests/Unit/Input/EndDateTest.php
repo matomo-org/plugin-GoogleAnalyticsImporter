@@ -40,8 +40,9 @@ class EndDateTest extends TestCase
         $mockConfig = $this->getMockConfig([
             EndDate::CONFIG_NAME => 'tasdlfjsadf',
         ]);
+        $this->expectExceptionMessage('Invalid max end date: tasdlfjsadf');
         $endDate = new EndDate($mockConfig);
-        $this->assertNull($endDate->getMaxEndDate());
+        $endDate->getMaxEndDate();
     }
 
     public function test_getMaxEndDate_withConfigSectionWithValue_thatIsExplicitDate()

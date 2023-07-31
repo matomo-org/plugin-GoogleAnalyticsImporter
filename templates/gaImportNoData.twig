@@ -1,16 +1,16 @@
 {% if isGA3 %}
     <div class="ga-import-warning alert alert-warning" id="ga3WarningNotification">
-        {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelp'|translate('<strong>', '</strong>')|raw }}
+        {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate'|translate('<strong>', '</strong>')|raw }}
         <button type="button" class="close" data-dismiss="alert"> × </button>
     </div>
 {% endif %}
 <div class="right">
-    <img src="plugins/GoogleAnalyticsImporter/images/google-analytics.png" style="height: 5rem;">
+    <img src="plugins/GoogleAnalyticsImporter/images/google-analytics.png" style="height: 3rem;">
 </div>
 <p>{{ 'GoogleAnalyticsImporter_NoDataScreenIntro'|translate }}</p>
 <br>
 {% if isConnectAccountsActivated %}
-    <p>{{ 'GoogleAnalyticsImporter_NoDataScreenOptionsDescription'|translate }}</p>
+    <p style="max-width: 1500px">{{ 'GoogleAnalyticsImporter_NoDataScreenOptionsDescription'|translate }}</p>
     <br>
 {% else %}
     <p>{{ 'GoogleAnalyticsImporter_NoDataScreenFollowThisSteps'|translate }}</p>
