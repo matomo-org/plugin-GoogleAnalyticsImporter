@@ -1,6 +1,9 @@
 
 ## Changelog
 
+# 4.6.10
+- Google Connect button styling changes for Matomo cloud
+
 # 4.6.9
 - Updated dependencies (Guzzle)
 - Added GA import tab in no data screen
