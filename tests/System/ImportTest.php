@@ -117,6 +117,7 @@ class ImportTest extends SystemTestCase
             'DevicesDetection.getOsFamilies',
             'DevicesDetection.getOsVersions',
             'DevicesDetection.getBrowsers',
+            'DevicesDetection.getBrowserVersions',
         ];
 
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
