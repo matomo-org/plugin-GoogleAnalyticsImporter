@@ -104,13 +104,14 @@ class ImportTest extends SystemTestCase
     public function getApiTestsToRun()
     {
         $apiToTest = [];
-        $apiNotToTest = [
+        $apiNotToTest = $secondaryApiToTest = [
             'Actions.getPageUrls',
             'Actions.getEntryPageUrls',
             'Actions.getExitPageUrls',
             'Actions.getPageTitles',
             'Actions.getEntryPageTitles',
             'Actions.getExitPageTitles',
+            'DevicesDetection.getType',
         ];
 
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
@@ -128,89 +129,24 @@ class ImportTest extends SystemTestCase
         }
 
         return [
-            ['Actions.getPageUrls', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['day', 'week', 'month'],
-            ]],
-
-            ['Actions.getPageUrls', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['year'],
-                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
-            ]],
-
-            ['Actions.getEntryPageUrls', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['day', 'week', 'month'],
-            ]],
-
-            ['Actions.getEntryPageUrls', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['year'],
-                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
-            ]],
-
-            ['Actions.getExitPageUrls', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['day', 'week', 'month'],
-            ]],
-
-            ['Actions.getExitPageUrls', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['year'],
-                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
-            ]],
-
-            ['Actions.getPageTitles', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['day', 'week', 'month'],
-            ]],
-
-            ['Actions.getPageTitles', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['year'],
-                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
-            ]],
-
-            ['Actions.getEntryPageTitles', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['day', 'week', 'month'],
-            ]],
-
-            ['Actions.getEntryPageTitles', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['year'],
-                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
-            ]],
-
-            ['Actions.getExitPageTitles', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['day', 'week', 'month'],
-            ]],
-
-            ['Actions.getExitPageTitles', [
-                'idSite' => self::$fixture->idSite,
-                'date' => self::$fixture->dateTime,
-                'periods' => ['year'],
-                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
-            ]],
-
             [$apiToTest, [
                 'idSite' => self::$fixture->idSite,
                 'date' => self::$fixture->dateTime,
                 'periods' => ['day', 'week', 'month', 'year'],
                 'apiNotToCall' => $apiNotToTest
+            ]],
+
+            [$secondaryApiToTest, [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['day', 'week', 'month'],
+            ]],
+
+            [$secondaryApiToTest, [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['year'],
+                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
             ]],
 
             [['Goals.getDaysToConversion', 'Goals.getVisitsUntilConversion'], [
