@@ -132,6 +132,7 @@ class ImportTest extends SystemTestCase
             'UserCountry.getCity',
             'UserLanguage.getLanguage',
             'UserLanguage.getLanguageCode',
+            'VisitFrequency.get',
         ];
 
         // This one needs a little extra handling
