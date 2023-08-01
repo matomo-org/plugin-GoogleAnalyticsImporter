@@ -112,6 +112,7 @@ class ImportTest extends SystemTestCase
             'Actions.getEntryPageTitles',
             'Actions.getExitPageTitles',
             'DevicesDetection.getType',
+            'DevicesDetection.getBrand',
         ];
 
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
