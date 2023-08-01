@@ -52,7 +52,7 @@
         "GAImportNoDataScreenStep06": "Füllen Sie das Formular \"Import planen\" aus.",
         "GAImportNoDataScreenStep07": "Klicken Sie auf \"%1$s\".",
         "GAImportNoDataScreenStep07Note": "%1$sHinweis:%2$s Sobald Sie auf \"%3$s\" klicken, erstellt Matomo automatisch eine neue Matomo-Website für jede ausgewählte Website.",
-        "GAImportNoDataScreenStep08": "Das Importieren von Daten nimmt Zeit in Anspruch. %1$Klicken Sie hier, um den Status Ihres Datenimports%2$s zu überwachen.",
+        "GAImportNoDataScreenStep08": "Das Importieren von Daten nimmt Zeit in Anspruch. %1$sKlicken Sie hier, um den Status Ihres Datenimports zu überwachen%2$s.",
         "GAImportNoDataScreenStep09": "Um Ihre Daten zu sehen, aktualisieren Sie diese Seite und wählen Sie dann die neu erstellte Matomo-Website aus dem Dropdown-Menü oben links.",
         "GoogleAnalyticsInfo": "Google-Analytics-Info",
         "GoogleOauthCompleteWarning": "%1$sHinweis:%2$s Möglicherweise erhalten Sie beim Abschluss des OAuth-Prozesses eine Warnung von Google mit der Meldung \"%1$sGoogle hat diese App nicht verifiziert%2$s\". In diesem Fall können Sie ohne Bedenken fortfahren, indem Sie auf \"%1$sErweitert%2$s\" und dann auf \"%1$sGehe zu matomo.cloud (unsicher)%2$s\" klicken.",
