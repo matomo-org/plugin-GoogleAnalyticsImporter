@@ -119,7 +119,6 @@ class ImportTest extends SystemTestCase
             'DevicesDetection.getBrowsers',
             'DevicesDetection.getBrowserVersions',
             'DevicesDetection.getBrowserEngines',
-            'Goals.getGoals',
             'Goals.get',
             'Goals.getMetrics',
             'Goals.getDaysToConversion',
@@ -129,7 +128,11 @@ class ImportTest extends SystemTestCase
             'Resolution.getConfiguration',
             'UserCountry.getCountry',
             'UserCountry.getContinent',
+            'UserCountry.getRegion',
         ];
+
+        // This one needs a little extra handling
+        $apiNotToTest[] = 'Goals.getGoals';
 
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
@@ -159,7 +162,7 @@ class ImportTest extends SystemTestCase
                 'periods' => ['day', 'week', 'month'],
             ]],
 
-            [$secondaryApiToTest, [
+            [array_merge($secondaryApiToTest, ['Goals.getGoals']), [
                 'idSite' => self::$fixture->idSite,
                 'date' => self::$fixture->dateTime,
                 'periods' => ['year'],
