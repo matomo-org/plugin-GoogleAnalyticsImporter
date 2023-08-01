@@ -114,6 +114,7 @@ class ImportTest extends SystemTestCase
             'DevicesDetection.getType',
             'DevicesDetection.getBrand',
             'DevicesDetection.getModel',
+            'DevicesDetection.getOsFamilies',
         ];
 
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
