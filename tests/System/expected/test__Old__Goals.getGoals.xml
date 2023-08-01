@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<result>
+	<row key="1">
+		<idsite>1</idsite>
+		<idgoal>1</idgoal>
+		<name>About page</name>
+		<description>(imported from Google Analytics, original id = 1)</description>
+		<match_attribute>manually</match_attribute>
+		<allow_multiple>0</allow_multiple>
+		<revenue>0</revenue>
+		<deleted>0</deleted>
+		<event_value_as_revenue>0</event_value_as_revenue>
+	</row>
+	<row key="2">
+		<idsite>1</idsite>
+		<idgoal>2</idgoal>
+		<name>Table of contents page</name>
+		<description>(imported from Google Analytics, original id = 2)</description>
+		<match_attribute>manually</match_attribute>
+		<allow_multiple>0</allow_multiple>
+		<revenue>0</revenue>
+		<deleted>0</deleted>
+		<event_value_as_revenue>0</event_value_as_revenue>
+	</row>
+	<row key="3">
+		<idsite>1</idsite>
+		<idgoal>3</idgoal>
+		<name>Engaged visits</name>
+		<description>(imported from Google Analytics, original id = 3)</description>
+		<match_attribute>visit_duration</match_attribute>
+		<pattern>900</pattern>
+		<pattern_type>greater_than</pattern_type>
+		<case_sensitive>0</case_sensitive>
+		<allow_multiple>0</allow_multiple>
+		<revenue>0</revenue>
+		<deleted>0</deleted>
+		<event_value_as_revenue>0</event_value_as_revenue>
+	</row>
+	<row key="4">
+		<idsite>1</idsite>
+		<idgoal>4</idgoal>
+		<name>Event goal</name>
+		<description>(imported from Google Analytics, original id = 4)</description>
+		<match_attribute>manually</match_attribute>
+		<allow_multiple>0</allow_multiple>
+		<revenue>0</revenue>
+		<deleted>0</deleted>
+		<event_value_as_revenue>0</event_value_as_revenue>
+	</row>
+	<row key="5">
+		<idsite>1</idsite>
+		<idgoal>5</idgoal>
+		<name>Exact match</name>
+		<description>(imported from Google Analytics, original id = 5)</description>
+		<match_attribute>url</match_attribute>
+		<pattern>http://matthieu.net/blog/blog/about</pattern>
+		<pattern_type>exact</pattern_type>
+		<case_sensitive>0</case_sensitive>
+		<allow_multiple>0</allow_multiple>
+		<revenue>3</revenue>
+		<deleted>0</deleted>
+		<event_value_as_revenue>0</event_value_as_revenue>
+	</row>
+</result>

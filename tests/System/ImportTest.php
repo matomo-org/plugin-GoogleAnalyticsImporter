@@ -119,6 +119,16 @@ class ImportTest extends SystemTestCase
             'DevicesDetection.getBrowsers',
             'DevicesDetection.getBrowserVersions',
             'DevicesDetection.getBrowserEngines',
+            'Goals.getGoals',
+            'Goals.get',
+            'Goals.getMetrics',
+            'Goals.getDaysToConversion',
+            'Goals.getVisitsUntilConversion',
+            'Referrers.getReferrerType',
+            'Resolution.getResolution',
+            'Resolution.getConfiguration',
+            'UserCountry.getCountry',
+            'UserCountry.getContinent',
         ];
 
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
