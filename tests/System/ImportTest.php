@@ -105,7 +105,8 @@ class ImportTest extends SystemTestCase
     {
         $apiToTest = [];
         $apiNotToTest = [
-            'Actions.getPageUrls'
+            'Actions.getPageUrls',
+            'Actions.getEntryPageUrls',
         ];
 
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
@@ -126,7 +127,26 @@ class ImportTest extends SystemTestCase
             ['Actions.getPageUrls', [
                 'idSite' => self::$fixture->idSite,
                 'date' => self::$fixture->dateTime,
-                'periods' => ['day', 'week', 'month', 'year'],
+                'periods' => ['day', 'week', 'month'],
+            ]],
+
+            ['Actions.getPageUrls', [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['year'],
+                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
+            ]],
+
+            ['Actions.getEntryPageUrls', [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['day', 'week', 'month'],
+            ]],
+
+            ['Actions.getEntryPageUrls', [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['year'],
                 'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
             ]],
 
