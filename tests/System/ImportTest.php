@@ -134,6 +134,12 @@ class ImportTest extends SystemTestCase
             'UserLanguage.getLanguageCode',
             'VisitFrequency.get',
             'VisitTime.getVisitInformationPerLocalTime',
+            'VisitTime.getVisitInformationPerServerTime',
+            'VisitTime.getByDayOfWeek',
+            'Actions.getSiteSearchKeywords',
+            'VisitsSummary.get',
+            'VisitsSummary.getVisitsConverted',
+            'VisitsSummary.getSumVisitsLength',
         ];
 
         // This one needs a little extra handling

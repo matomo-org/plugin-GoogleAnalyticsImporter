@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0"?>
 <result>
 	<row>
 		<label>blog</label>
@@ -10,7 +10,6 @@
 		<entry_sum_visit_length>9107</entry_sum_visit_length>
 		<entry_bounce_count>47</entry_bounce_count>
 		<exit_nb_visits>147</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
 		<avg_page_load_time>0</avg_page_load_time>
 		<avg_time_on_page>41</avg_time_on_page>
 		<bounce_rate>31%</bounce_rate>
@@ -1606,7 +1605,6 @@
 		<entry_bounce_count>10</entry_bounce_count>
 		<exit_nb_uniq_visitors>27</exit_nb_uniq_visitors>
 		<exit_nb_visits>44</exit_nb_visits>
-		<avg_bandwidth>0</avg_bandwidth>
 		<avg_page_load_time>0</avg_page_load_time>
 		<avg_time_on_page>21</avg_time_on_page>
 		<bounce_rate>26%</bounce_rate>
