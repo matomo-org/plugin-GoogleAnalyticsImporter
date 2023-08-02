@@ -104,7 +104,46 @@ class ImportTest extends SystemTestCase
     public function getApiTestsToRun()
     {
         $apiToTest = [];
-        $apiNotToTest = [];
+        $apiNotToTest = $secondaryApiToTest = [
+            'Actions.getPageUrls',
+            'Actions.getEntryPageUrls',
+            'Actions.getExitPageUrls',
+            'Actions.getPageTitles',
+            'Actions.getEntryPageTitles',
+            'Actions.getExitPageTitles',
+            'DevicesDetection.getType',
+            'DevicesDetection.getBrand',
+            'DevicesDetection.getModel',
+            'DevicesDetection.getOsFamilies',
+            'DevicesDetection.getOsVersions',
+            'DevicesDetection.getBrowsers',
+            'DevicesDetection.getBrowserVersions',
+            'DevicesDetection.getBrowserEngines',
+            'Goals.get',
+            'Goals.getMetrics',
+            'Goals.getDaysToConversion',
+            'Goals.getVisitsUntilConversion',
+            'Referrers.getReferrerType',
+            'Resolution.getResolution',
+            'Resolution.getConfiguration',
+            'UserCountry.getCountry',
+            'UserCountry.getContinent',
+            'UserCountry.getRegion',
+            'UserCountry.getCity',
+            'UserLanguage.getLanguage',
+            'UserLanguage.getLanguageCode',
+            'VisitFrequency.get',
+            'VisitTime.getVisitInformationPerLocalTime',
+            'VisitTime.getVisitInformationPerServerTime',
+            'VisitTime.getByDayOfWeek',
+            'Actions.getSiteSearchKeywords',
+            'VisitsSummary.get',
+            'VisitsSummary.getVisitsConverted',
+            'VisitsSummary.getSumVisitsLength',
+        ];
+
+        // This one needs a little extra handling
+        $apiNotToTest[] = 'Goals.getGoals';
 
         $config = require PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/config/config.php';
         $recordImporterClasses = $config['GoogleAnalyticsImporter.recordImporters'];
@@ -126,6 +165,19 @@ class ImportTest extends SystemTestCase
                 'date' => self::$fixture->dateTime,
                 'periods' => ['day', 'week', 'month', 'year'],
                 'apiNotToCall' => $apiNotToTest
+            ]],
+
+            [$secondaryApiToTest, [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['day', 'week', 'month'],
+            ]],
+
+            [array_merge($secondaryApiToTest, ['Goals.getGoals']), [
+                'idSite' => self::$fixture->idSite,
+                'date' => self::$fixture->dateTime,
+                'periods' => ['year'],
+                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_5b1' : '',
             ]],
 
             [['Goals.getDaysToConversion', 'Goals.getVisitsUntilConversion'], [
@@ -187,7 +239,7 @@ class ImportTest extends SystemTestCase
                 'idSite' => self::$fixture->idSite,
                 'date' => '2019-07-03',
                 'periods' => 'week',
-                'testSuffix' => '_aggregatedWithTrackedVisit',
+                'testSuffix' => '_aggregatedWithTrackedVisit' . (version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_5b1' : ''),
             ]],
         ];
     }

@@ -1,0 +1,725 @@
+<?xml version="1.0"?>
+<result>
+	<row>
+		<label>Websites</label>
+		<nb_visits>359</nb_visits>
+		<nb_actions>1374</nb_actions>
+		<sum_visit_length>11905</sum_visit_length>
+		<bounce_count>55</bounce_count>
+		<nb_visits_converted>114</nb_visits_converted>
+		<nb_conversions>258</nb_conversions>
+		<revenue>1141780</revenue>
+		<goals>
+			<row idgoal="1">
+				<nb_conversions>62</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>51</nb_visits_converted>
+			</row>
+			<row idgoal="2">
+				<nb_conversions>62</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>55</nb_visits_converted>
+			</row>
+			<row idgoal="3">
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal="4">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="5">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="ecommerceOrder">
+				<nb_conversions>132</nb_conversions>
+				<revenue>1141780</revenue>
+				<items>879</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>238</sum_daily_nb_uniq_visitors>
+		<segment>referrerType==website</segment>
+		<referrer_type>3</referrer_type>
+		<subtable>
+			<row>
+				<label>divebums.com</label>
+				<nb_visits>40</nb_visits>
+				<nb_actions>179</nb_actions>
+				<sum_visit_length>1719</sum_visit_length>
+				<bounce_count>6</bounce_count>
+				<nb_visits_converted>17</nb_visits_converted>
+				<nb_conversions>36</nb_conversions>
+				<revenue>154220</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>6</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>5</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>13</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>11</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>17</nb_conversions>
+						<revenue>154220</revenue>
+						<items>113</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>32</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==divebums.com</segment>
+			</row>
+			<row>
+				<label>divein.com</label>
+				<nb_visits>54</nb_visits>
+				<nb_actions>217</nb_actions>
+				<sum_visit_length>2432</sum_visit_length>
+				<bounce_count>8</bounce_count>
+				<nb_visits_converted>24</nb_visits_converted>
+				<nb_conversions>44</nb_conversions>
+				<revenue>165091</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>11</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>9</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>14</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>13</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>19</nb_conversions>
+						<revenue>165091</revenue>
+						<items>132</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>41</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==divein.com</segment>
+			</row>
+			<row>
+				<label>emperordivers.com</label>
+				<nb_visits>57</nb_visits>
+				<nb_actions>208</nb_actions>
+				<sum_visit_length>998</sum_visit_length>
+				<bounce_count>9</bounce_count>
+				<nb_visits_converted>14</nb_visits_converted>
+				<nb_conversions>35</nb_conversions>
+				<revenue>153543</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>12</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>9</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>4</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>2</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>19</nb_conversions>
+						<revenue>153543</revenue>
+						<items>125</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>39</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==emperordivers.com</segment>
+			</row>
+			<row>
+				<label>google.com</label>
+				<nb_visits>108</nb_visits>
+				<nb_actions>369</nb_actions>
+				<sum_visit_length>4352</sum_visit_length>
+				<bounce_count>17</bounce_count>
+				<nb_visits_converted>40</nb_visits_converted>
+				<nb_conversions>80</nb_conversions>
+				<revenue>276716</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>20</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>19</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>19</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>19</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>2</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>2</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>39</nb_conversions>
+						<revenue>276716</revenue>
+						<items>227</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>50</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==google.com</segment>
+			</row>
+			<row>
+				<label>oahuscubadiving.com</label>
+				<nb_visits>16</nb_visits>
+				<nb_actions>60</nb_actions>
+				<sum_visit_length>248</sum_visit_length>
+				<bounce_count>1</bounce_count>
+				<nb_visits_converted>3</nb_visits_converted>
+				<nb_conversions>10</nb_conversions>
+				<revenue>68559</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>3</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>2</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>1</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>1</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>6</nb_conversions>
+						<revenue>68559</revenue>
+						<items>49</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>12</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==oahuscubadiving.com</segment>
+			</row>
+			<row>
+				<label>phpmyvisites.net</label>
+				<nb_visits>1</nb_visits>
+				<nb_actions>2</nb_actions>
+				<sum_visit_length>44</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<items>0</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==phpmyvisites.net</segment>
+			</row>
+			<row>
+				<label>qwant.com</label>
+				<nb_visits>1</nb_visits>
+				<nb_actions>2</nb_actions>
+				<sum_visit_length>14</sum_visit_length>
+				<bounce_count>0</bounce_count>
+				<nb_visits_converted>0</nb_visits_converted>
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<items>0</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==qwant.com</segment>
+			</row>
+			<row>
+				<label>scubadiverlife.com</label>
+				<nb_visits>82</nb_visits>
+				<nb_actions>337</nb_actions>
+				<sum_visit_length>2098</sum_visit_length>
+				<bounce_count>14</bounce_count>
+				<nb_visits_converted>16</nb_visits_converted>
+				<nb_conversions>53</nb_conversions>
+				<revenue>323651</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>10</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>7</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>11</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>9</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>32</nb_conversions>
+						<revenue>323651</revenue>
+						<items>233</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>62</sum_daily_nb_uniq_visitors>
+				<segment>referrerName==scubadiverlife.com</segment>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>Social Networks</label>
+		<nb_visits>239</nb_visits>
+		<nb_actions>896</nb_actions>
+		<sum_visit_length>10709</sum_visit_length>
+		<bounce_count>56</bounce_count>
+		<nb_visits_converted>59</nb_visits_converted>
+		<nb_conversions>148</nb_conversions>
+		<revenue>780359</revenue>
+		<goals>
+			<row idgoal="1">
+				<nb_conversions>39</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>30</nb_visits_converted>
+			</row>
+			<row idgoal="2">
+				<nb_conversions>25</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>22</nb_visits_converted>
+			</row>
+			<row idgoal="3">
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>1</nb_visits_converted>
+			</row>
+			<row idgoal="4">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="5">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="ecommerceOrder">
+				<nb_conversions>82</nb_conversions>
+				<revenue>780359</revenue>
+				<items>560</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>163</sum_daily_nb_uniq_visitors>
+		<segment>referrerType==social</segment>
+		<referrer_type>7</referrer_type>
+		<subtable>
+			<row>
+				<label>Facebook</label>
+				<nb_visits>91</nb_visits>
+				<nb_actions>279</nb_actions>
+				<sum_visit_length>4305</sum_visit_length>
+				<bounce_count>29</bounce_count>
+				<nb_visits_converted>21</nb_visits_converted>
+				<nb_conversions>47</nb_conversions>
+				<revenue>219053</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>11</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>9</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>11</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>11</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>1</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>24</nb_conversions>
+						<revenue>219053</revenue>
+						<items>161</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>61</sum_daily_nb_uniq_visitors>
+				<url>facebook.com</url>
+				<logo>plugins/Morpheus/icons/dist/socials/facebook.com.png</logo>
+				<segment>referrerType==social;referrerName==Facebook</segment>
+			</row>
+			<row>
+				<label>reddit</label>
+				<nb_visits>85</nb_visits>
+				<nb_actions>342</nb_actions>
+				<sum_visit_length>4180</sum_visit_length>
+				<bounce_count>14</bounce_count>
+				<nb_visits_converted>24</nb_visits_converted>
+				<nb_conversions>55</nb_conversions>
+				<revenue>269527</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>17</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>12</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>10</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>8</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>1</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>1</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>27</nb_conversions>
+						<revenue>269527</revenue>
+						<items>196</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>65</sum_daily_nb_uniq_visitors>
+				<url>reddit.com</url>
+				<logo>plugins/Morpheus/icons/dist/socials/reddit.com.png</logo>
+				<segment>referrerType==social;referrerName==reddit</segment>
+			</row>
+			<row>
+				<label>Twitter</label>
+				<nb_visits>63</nb_visits>
+				<nb_actions>275</nb_actions>
+				<sum_visit_length>2224</sum_visit_length>
+				<bounce_count>13</bounce_count>
+				<nb_visits_converted>14</nb_visits_converted>
+				<nb_conversions>46</nb_conversions>
+				<revenue>291779</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>11</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>9</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>4</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>3</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>31</nb_conversions>
+						<revenue>291779</revenue>
+						<items>203</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>37</sum_daily_nb_uniq_visitors>
+				<url>twitter.com</url>
+				<logo>plugins/Morpheus/icons/dist/socials/twitter.com.png</logo>
+				<segment>referrerType==social;referrerName==Twitter</segment>
+			</row>
+		</subtable>
+	</row>
+	<row>
+		<label>Direct Entry</label>
+		<nb_visits>50</nb_visits>
+		<nb_actions>75</nb_actions>
+		<sum_visit_length>1890</sum_visit_length>
+		<bounce_count>31</bounce_count>
+		<nb_visits_converted>5</nb_visits_converted>
+		<nb_conversions>8</nb_conversions>
+		<revenue>4786</revenue>
+		<goals>
+			<row idgoal="1">
+				<nb_conversions>4</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>3</nb_visits_converted>
+			</row>
+			<row idgoal="2">
+				<nb_conversions>2</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal="3">
+				<nb_conversions>1</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="4">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="5">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="ecommerceOrder">
+				<nb_conversions>1</nb_conversions>
+				<revenue>4786</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>49</sum_daily_nb_uniq_visitors>
+		<max_actions>2</max_actions>
+		<sum_daily_nb_users>0</sum_daily_nb_users>
+		<segment>referrerType==direct</segment>
+		<referrer_type>1</referrer_type>
+	</row>
+	<row>
+		<label>Search Engines</label>
+		<nb_visits>33</nb_visits>
+		<nb_actions>59</nb_actions>
+		<sum_visit_length>7642</sum_visit_length>
+		<bounce_count>23</bounce_count>
+		<nb_visits_converted>2</nb_visits_converted>
+		<nb_conversions>4</nb_conversions>
+		<revenue>0</revenue>
+		<goals>
+			<row idgoal="1">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="2">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="3">
+				<nb_conversions>4</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>2</nb_visits_converted>
+			</row>
+			<row idgoal="4">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="5">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<nb_visits_converted>0</nb_visits_converted>
+			</row>
+			<row idgoal="ecommerceOrder">
+				<nb_conversions>0</nb_conversions>
+				<revenue>0</revenue>
+				<items>0</items>
+			</row>
+		</goals>
+		<sum_daily_nb_uniq_visitors>33</sum_daily_nb_uniq_visitors>
+		<segment>referrerType==search</segment>
+		<referrer_type>2</referrer_type>
+		<subtable>
+			<row>
+				<label>(not provided)</label>
+				<nb_visits>33</nb_visits>
+				<nb_actions>59</nb_actions>
+				<sum_visit_length>7642</sum_visit_length>
+				<bounce_count>23</bounce_count>
+				<nb_visits_converted>2</nb_visits_converted>
+				<nb_conversions>4</nb_conversions>
+				<revenue>0</revenue>
+				<goals>
+					<row idgoal="1">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="2">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="3">
+						<nb_conversions>4</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>2</nb_visits_converted>
+					</row>
+					<row idgoal="4">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="5">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<nb_visits_converted>0</nb_visits_converted>
+					</row>
+					<row idgoal="ecommerceOrder">
+						<nb_conversions>0</nb_conversions>
+						<revenue>0</revenue>
+						<items>0</items>
+					</row>
+				</goals>
+				<sum_daily_nb_uniq_visitors>33</sum_daily_nb_uniq_visitors>
+				<segment>referrerType==search;referrerKeyword==%28not+provided%29</segment>
+			</row>
+		</subtable>
+	</row>
+</result>
