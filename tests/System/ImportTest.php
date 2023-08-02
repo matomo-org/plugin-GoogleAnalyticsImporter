@@ -177,7 +177,7 @@ class ImportTest extends SystemTestCase
                 'idSite' => self::$fixture->idSite,
                 'date' => self::$fixture->dateTime,
                 'periods' => ['year'],
-                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : '',
+                'testSuffix' => version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_5b1' : '',
             ]],
 
             [['Goals.getDaysToConversion', 'Goals.getVisitsUntilConversion'], [
@@ -239,7 +239,7 @@ class ImportTest extends SystemTestCase
                 'idSite' => self::$fixture->idSite,
                 'date' => '2019-07-03',
                 'periods' => 'week',
-                'testSuffix' => '_aggregatedWithTrackedVisit' . (version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_Old' : ''),
+                'testSuffix' => '_aggregatedWithTrackedVisit' . (version_compare(Version::VERSION, '5.0.0-b1', '<=') ? '_5b1' : ''),
             ]],
         ];
     }
