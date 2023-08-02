@@ -133,6 +133,7 @@ class ImportTest extends SystemTestCase
             'UserLanguage.getLanguage',
             'UserLanguage.getLanguageCode',
             'VisitFrequency.get',
+            'VisitTime.getVisitInformationPerLocalTime',
         ];
 
         // This one needs a little extra handling
