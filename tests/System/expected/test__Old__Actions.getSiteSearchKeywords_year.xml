@@ -7,6 +7,7 @@
 		<sum_time_spent>3</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -19,6 +20,7 @@
 		<sum_time_spent>4</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -31,6 +33,7 @@
 		<sum_time_spent>3</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -43,6 +46,7 @@
 		<sum_time_spent>3</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -55,6 +59,7 @@
 		<sum_time_spent>3</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -67,6 +72,7 @@
 		<sum_time_spent>2</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>3</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -79,6 +85,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -91,6 +98,7 @@
 		<sum_time_spent>2</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -103,6 +111,7 @@
 		<sum_time_spent>2</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -115,6 +124,7 @@
 		<sum_time_spent>2</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -127,6 +137,7 @@
 		<sum_time_spent>2</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>2</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -139,6 +150,7 @@
 		<sum_time_spent>2</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -151,6 +163,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -163,6 +176,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -175,6 +189,7 @@
 		<sum_time_spent>0</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -187,6 +202,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -199,6 +215,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -211,6 +228,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -223,6 +241,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -235,6 +254,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -247,6 +267,7 @@
 		<sum_time_spent>0</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>0</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -259,6 +280,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
@@ -271,6 +293,7 @@
 		<sum_time_spent>1</sum_time_spent>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
 		<nb_pages_per_search>1</nb_pages_per_search>
+		<avg_bandwidth>0</avg_bandwidth>
 		<avg_time_on_page>1</avg_time_on_page>
 		<bounce_rate>0%</bounce_rate>
 		<exit_rate>0%</exit_rate>
