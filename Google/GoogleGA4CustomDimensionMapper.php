@@ -9,7 +9,7 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
 use Piwik\Plugins\CustomDimensions\Dimension\Name;
-use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportCustomDimensionException;
+use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportCustomDimensionGA4Exception;
 use Piwik\Plugins\GoogleAnalyticsImporter\OutOfCustomDimensionsException;
 
 class GoogleGA4CustomDimensionMapper
@@ -40,7 +40,7 @@ class GoogleGA4CustomDimensionMapper
             case '2': //Scope:User
                 return 'visit';
             default:
-                throw new CannotImportCustomDimensionException($gaCustomDimension, 'unsupported scope, "' . $scope . '"');
+                throw new CannotImportCustomDimensionGA4Exception($gaCustomDimension, 'unsupported scope, "' . $scope . '"');
         }
     }
 
@@ -59,7 +59,7 @@ class GoogleGA4CustomDimensionMapper
             foreach ($gaCustomDimensions->iterateAllElements() as $gaCustomDimension) {
                 try {
                     $mappedScope = $this->mapScope($gaCustomDimension);
-                } catch (CannotImportCustomDimensionException $ex) {
+                } catch (CannotImportCustomDimensionGA4Exception $ex) {
                     continue;
                 }
 

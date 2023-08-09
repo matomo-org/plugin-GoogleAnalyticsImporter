@@ -133,7 +133,15 @@ class ImporterTestGA4 extends IntegrationTestCase
             'scope' => 1
         ]);
 
-        $this->mockData['customDimensions'] = [$customDim1, $customDim2, $customDim3];
+        $customDim4 = new \Google\Analytics\Admin\V1alpha\CustomDimension([
+            'name' => 'properties/12345/customDimensions/34567893',
+            'parameter_name' => '',
+            'display_name' => 'item_dimension',
+            'description' => 'scope item dimension desc',
+            'scope' => 3
+        ]);
+
+        $this->mockData['customDimensions'] = [$customDim1, $customDim2, $customDim3, $customDim4];
     }
 
     protected static function configureFixture($fixture)

@@ -323,7 +323,7 @@ class ImporterGA4
 
             try {
                 $customDimension = $this->customDimensionMapper->map($gaCustomDimension);
-            } catch (CannotImportCustomDimensionException $ex) {
+            } catch (CannotImportCustomDimensionGA4Exception $ex) {
                 $this->logger->warning($ex->getMessage());
                 $this->logger->warning("Skipping this custom dimension.");
                 continue;
