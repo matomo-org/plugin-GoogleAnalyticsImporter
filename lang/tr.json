@@ -19,6 +19,7 @@
         "ConfigureImportNotificationMessage": "Değerli geçmiş içgörülerinizi unutmayın! %1$s %2$s%3$s için Google Analytics verilerinizi şimdi Matomo platformunuza aktarın.",
         "ConfigureTheImporter": "İçe aktarma yapılandırması",
         "ConfigureTheImporterHelp": "%1$sNot:%2$s Verilerinizi içe aktarmazsanız, Google Analytics 3 verileriniz 31 Aralık 2023 tarihinden sonra kalıcı olarak kaybolacak.",
+        "ConfigureTheImporterHelpNewDate": "%1$sNot:%2$s Verilerinizi içe aktarmıyorsanız, Google Analytics 3 verileriniz 30 Haziran 2024 tarihinden sonra kalıcı olarak kaybolur.",
         "ConfigureTheImporterLabel1": "Bir yedek oluşturmak ve bunları güçlü Matomo analiz araçlarını kullanarak incelemek için Google Analytics mülklerinizi ve raporlama verilerinizi içe aktarın. İçe aktarıcı bağlantısını kurduktan sonra hangi Google Analytics mülklerinin içe aktarılacağını seçin. Matomo her biri için otomatik olarak yeni bir site oluşturur.",
         "ConfigureTheImporterLabel2": "Verilerinizi Google Analytics üzerinden içe aktarmak için Matomo bu verilere erişmelidir.",
         "ConfigureTheImporterLabel3": "Başlamak için, %1$sOAuth İstemci yapılandırmanızı alma yönergelerini izleyin%2$s. Ardından, aşağıdaki düğmeyi kullanarak istemci yapılandırma dosyasını yükleyin.",
