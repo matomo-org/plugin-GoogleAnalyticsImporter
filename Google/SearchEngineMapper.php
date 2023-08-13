@@ -42,6 +42,8 @@ class SearchEngineMapper
         $this->sourcesToSearchEngines['live'] = $this->sourcesToSearchEngines['bing'];
         $this->sourcesToSearchEngines['msn'] = $this->sourcesToSearchEngines['bing'];
         $this->sourcesToSearchEngines['search'] = $this->sourcesToSearchEngines['ask'];
+        $this->sourcesToSearchEngines['ecosia.org'] = $this->sourcesToSearchEngines['ecosia'];
+        $this->sourcesToSearchEngines['qwant.com'] = $this->sourcesToSearchEngines['qwant'];
         $this->sourcesToSearchEngines['avg'] = ['name' => 'xx']; // TODO: not detected by matomo
     }
 

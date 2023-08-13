@@ -263,7 +263,6 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             GoogleConnect::disableMatomoCloudOverride();
         }
 
-
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
 

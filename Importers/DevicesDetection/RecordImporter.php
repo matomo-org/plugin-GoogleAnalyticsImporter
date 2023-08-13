@@ -344,6 +344,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['nintendo browser'] = $result['netfront'];
             $result['nintendo wiiu'] = $result['netfront'];
             $result['nintendo wii'] = $result['netfront'];
+            $result['yabrowser'] = $result['yandex browser'];
             $result['terra'] = 'xx'; // TODO: not detected by devices detection
             $result['mozilla compatible agent'] = 'xx'; // TODO: mostly bots, we could ignore these...
             $result['\'mozilla'] = 'xx';

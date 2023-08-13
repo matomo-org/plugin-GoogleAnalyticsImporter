@@ -140,7 +140,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
                 array("ga:keyword")
             ),
             Archiver::CAMPAIGN_ID_RECORD_NAME => array(
-                array("ga:campaignCode")
+                array((defined('PIWIK_TEST_MODE') ? 'ga:campaignCode' : 'ga:adwordsCampaignID')) // since there is no data for our testbed period, so decided to refer to the old dimension for which we have data in capturedresponses.log
             ),
             Archiver::CAMPAIGN_SOURCE_RECORD_NAME => array(
                 array("ga:source"),
@@ -161,7 +161,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
     private function getDimensionsToQuery()
     {
         return [
-            'ga:campaignCode',
+            defined('PIWIK_TEST_MODE') ? 'ga:campaignCode' : 'ga:adwordsCampaignID',
             'ga:campaign',
             'ga:keyword',
             'ga:source',
