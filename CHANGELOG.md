@@ -1,5 +1,7 @@
-
 ## Changelog
+
+# 4.6.11
+- Ignore custom dimensions assigned the Item scope
 
 # 4.6.10
 - Google Connect button styling changes for Matomo cloud
