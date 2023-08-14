@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.0.1
+- Compatibility with Matomo 5
+
 # 5.0.0
 - Remove all use of AngularJS from the plugin.
 
