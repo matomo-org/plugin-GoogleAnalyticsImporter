@@ -96,5 +96,5 @@ return [
         \Piwik\DI::get(\Piwik\Plugins\GoogleAnalyticsImporter\Diagnostic\RequiredExecutablesCheck::class),
     ]),
 
-    '\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper' => DI\create('\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper')
+    '\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper' => \Piwik\DI::create('\Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper')
 ];
