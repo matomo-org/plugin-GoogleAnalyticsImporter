@@ -17,6 +17,8 @@
         "ConfigureClientDesc2": "%1$sFör att börja följa våra instruktioner att hämta din OAuth-klientkonfiguration.%2$s Antingen laddar du upp klientkonfigurationen eller klistrar in den i fältet nedan.",
         "ConfigureImportNotificationMessage": "Glöm inte bort dina värdefulla historiska insikter! %1$sImportera dina Google Analytics-data för %2$s%3$s till din Matomo-instans nu.",
         "ConfigureTheImporter": "Konfigurera importören",
+        "ConfigureTheImporterHelp": "%1$sNotera:%2$s Ifall du inte importerar dina data så kommer data från Google Analytics 3 att försvinna permanent efter sista december 2023.",
+        "ConfigureTheImporterHelpNewDate": "%1$sNotera:%2$s Ifall du inte importerar dina data kommer data från Google Analytics 3 att vara permanent borta efter sista juni 2024.",
         "CreationDate": "Datum för skapande av webbegendom",
         "DeleteUploadedClientConfig": "Om du vill ta bort den uppladdade klientkonfigurationen, klicka nedan",
         "DimensionScope": "Dimensionsomfång",
