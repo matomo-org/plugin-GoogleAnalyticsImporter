@@ -114,6 +114,7 @@
         "TodaysDate": "dagens dato",
         "Troubleshooting": "Feilsøking",
         "UnsupportedReportInImportRange": "Rapportdata for denne tidsperioden ble importert fra Google Analytics, men denne rapporten finnes ikke i Google Analytics, så det er ingenting å vise her.",
+        "Uploading": "Laster opp …",
         "ViewId": "Google Analytics-visnings-ID",
         "ViewIdHelp": "ID-en tilhørende visningen som skal importeres. Det er et stort tall, for eksempel «3450293».",
         "YesterdaysDate": "gårsdagens dato"
