@@ -19,6 +19,7 @@
         "ConfigureImportNotificationMessage": "No perdeu les vostres valuoses dades històriques! %1$sImporteu ara les vostres dades de Google Analytics per a %2$s%3$s a la vostra plataforma Matomo.",
         "ConfigureTheImporter": "Configurar l'importador",
         "ConfigureTheImporterHelp": "%1$sNota:%2$s Si no les importeu, les vostres dades de Google Analytics 3 les perdreu permanentment el 31 de desembre de 2023.",
+        "ConfigureTheImporterHelpNewDate": "%1$sNota:%2$s si no importeu les vostres dades, les vostres dades de Google Analytics 3 es perdran permanentment després del 30 de juny de 2024.",
         "ConfigureTheImporterLabel1": "Importeu les vostres propietats i dades d'informes de Google Analytics per crear una còpia de seguretat i analitzar-les mitjançant les potents eines d'anàlisi de Matomo. Un cop connecteu l'importador, seleccioneu quines propietats de Google Analytics voleu importar i Matomo crearà automàticament un lloc web nou per a cadascuna.",
         "ConfigureTheImporterLabel2": "Per importar les vostres dades de Google Analytics, Matomo necessita accedir-hi.",
         "ConfigureTheImporterLabel3": "Per començar, %1$sseguiu les nostres instruccions per recuperar la configuració del vostre client OAuth%2$s. A continuació carregueu el fitxer de configuració del client mitjançant el botó següent.",
