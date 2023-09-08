@@ -151,6 +151,8 @@
         "GAImportNoDataScreenStep09": "To see your data, refresh this page and then select the newly created Matomo website from the dropdown on the top left.",
         "NoDataScreenFollowStepComplete": "%1$sCongratulations!%2$s You have successfully configured your Google Analytics import. As noted earlier, this data is being imported into a new Matomo website. To verify that data is being imported, visit your %3$sGoogle Analytics Import page%4$s in the settings and check that the import job is running.",
         "AccountsConnectedSuccessfully": "You have successfully connected your Google account!",
-        "UploadSuccessful": "Upload successful!"
+        "UploadSuccessful": "Upload successful!",
+        "StreamId": "Stream ID",
+        "StreamIdFilter": "Filter by Stream ID"
     }
 }

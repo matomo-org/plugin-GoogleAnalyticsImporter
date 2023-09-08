@@ -38,6 +38,7 @@ class ImportGA4Reports extends ConsoleCommand
         $this->setName('googleanalyticsimporter:import-ga4-reports');
         $this->setDescription('Import GA4 reports from one or more google analytics properties into Matomo sites.');
         $this->addRequiredValueOption('property', null, 'The GA properties to import.');
+        $this->addRequiredValueOption('streamId', null, 'The streamID for which you want to pull data, for multiple value send comma separated streamIds, by default it pulls data for all the streamIds');
         $this->addRequiredValueOption('dates', null, 'The dates to import, eg, 2015-03-04,2015-04-12.');
         $this->addRequiredValueOption('idsite', null, 'The site to import into. This will attempt to continue an existing import.');
         $this->addRequiredValueOption('cvar-count', null, 'The number of custom variables to support (if not supplied defaults to however many are currently available). '
@@ -72,6 +73,8 @@ class ImportGA4Reports extends ConsoleCommand
         $timezone = $input->getOption('timezone');
         $extraCustomDimensions = $this->getExtraCustomDimensions();
         $property = $input->getOption('property');
+        $streamId = $input->getOption('streamId');
+        $streamIDs = $streamId ? explode(',', $streamId) : [];
 
         $isMobileApp = $input->getOption('mobile-app');
         if ($isMobileApp
@@ -135,7 +138,7 @@ class ImportGA4Reports extends ConsoleCommand
             !empty($property)
         ) {
             try {
-                $idSite = $importer->makeSite($property, $timezone, $type, $extraCustomDimensions);
+                $idSite = $importer->makeSite($property, $timezone, $type, $extraCustomDimensions, false, $streamIDs);
             } catch (\Google\Exception $ex) {
                 throw $ex;
             }
@@ -160,6 +163,7 @@ class ImportGA4Reports extends ConsoleCommand
             }
 
             $property = $status['ga']['property'];
+            $streamIDs = $status['streamIds'];
         }
         self::validatePropertyID($property);
 
@@ -272,7 +276,7 @@ class ImportGA4Reports extends ConsoleCommand
 
                 try {
                     $importer->setIsMainImport($isMainImport);
-                    $aborted = $importer->import($idSite, $property, $startDate, $endDate, $lock);
+                    $aborted = $importer->import($idSite, $property, $startDate, $endDate, $lock, '', $streamIDs);
                     if ($aborted == -1) {
                         $shouldFinishImportIfNothingLeft = false;
                     }

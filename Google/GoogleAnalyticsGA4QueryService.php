@@ -55,6 +55,11 @@ class GoogleAnalyticsGA4QueryService
     private $propertyId;
 
     /**
+     * @var array
+     */
+    private $streamIds;
+
+    /**
      * @var callable
      */
     private $onQueryMade;
@@ -90,7 +95,7 @@ class GoogleAnalyticsGA4QueryService
     private $singleAttemptForExceptionCodes = [500, 503];
 
     public function __construct(BetaAnalyticsDataClient $gaClient,AnalyticsAdminServiceClient $gaAdminClient, $propertyId, array $goalsMapping, $idSite, $quotaUser,
-                                GoogleGA4QueryObjectFactory $googleGA4QueryObjectFactory, LoggerInterface $logger)
+                                GoogleGA4QueryObjectFactory $googleGA4QueryObjectFactory, LoggerInterface $logger, $streamIds = [])
     {
         $this->gaClient = $gaClient;
         $this->gaAdminClient = $gaAdminClient;
@@ -100,6 +105,7 @@ class GoogleAnalyticsGA4QueryService
         $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
         $this->metricMapper = new GoogleGA4MetricMapper(Site::isEcommerceEnabledFor($idSite), $goalsMapping);
         $this->quotaUser = $quotaUser;
+        $this->streamIds = $streamIds;
     }
 
     public function query(Date $day, array $dimensions, array $metrics, array $options = [])
@@ -160,7 +166,7 @@ class GoogleAnalyticsGA4QueryService
             ];
         }
 
-        $request = $this->googleGA4QueryObjectFactory->make($this->propertyId, $date, $metricNamesChunk, $options);
+        $request = $this->googleGA4QueryObjectFactory->make($this->propertyId, $date, $metricNamesChunk, $options, $this->streamIds);
 
         $lastGaError = null;
         $this->currentBackoffTime = self::DEFAULT_MIN_BACKOFF_TIME;

@@ -171,6 +171,14 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
                     ],
                 ],
             ],
+            'streamIdsFieldGA4' => [
+                'field1' => [
+                    'key' => 'streamId',
+                    'title' => Piwik::translate('GoogleAnalyticsImporter_StreamId'),
+                    'uiControl' => 'text',
+                    'availableValues' => null,
+                ],
+            ],
             'extensions' => self::getComponentExtensions(),
             'configureConnectionProps' => $configureConnectionProps,
         ]);
@@ -496,6 +504,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $isMobileApp = Common::getRequestVar('isMobileApp', 0, 'int') == 1;
             $timezone = trim(Common::getRequestVar('timezone', '', 'string'));
             $extraCustomDimensions = Common::getRequestVar('extraCustomDimensions', [], $type = 'array');
+            $streamIds = $this->getStreamIdsFromRequest();
             $isVerboseLoggingEnabled = Common::getRequestVar('isVerboseLoggingEnabled', 0, $type = 'int') == 1;
             $forceCustomDimensionSlotCheck = Common::getRequestVar('forceCustomDimensionSlotCheck', 1, $type = 'int') == 1;
 
@@ -718,5 +727,21 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $isNoDataPage
         ]);
         return $componentExtensions;
+    }
+
+    private function getStreamIdsFromRequest()
+    {
+        $streamIds = Common::getRequestVar('streamIds', [], $type = 'array');
+        $ids = [];
+
+        if (!empty($streamIds)) {
+            foreach ($streamIds as $value) {
+                if (!empty($value['streamId'])) {
+                    $ids[] = $value['streamId'];
+                }
+            }
+        }
+
+        return $ids;
     }
 }
