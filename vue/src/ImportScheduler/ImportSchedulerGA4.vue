@@ -250,7 +250,12 @@ export default defineComponent({
       );
     },
     streamIdsFilterHelp() {
-      return 'Stream filter helpetxt';
+      const url = 'https://matomo.org/faq/what-is-data-stream-in-google-analytics-4/';
+      return translate('GoogleAnalyticsImporter_StreamIdFilterHelpText',
+        `<a href="${url}" rel="noreferrer noopener" target="_blank">`,
+        '</a>',
+        '<br><br><b>',
+        '</b>');
     },
     forceIgnoreOutOfCustomDimSlotErrorHelp() {
       const url = 'https://matomo.org/docs/custom-dimensions/';

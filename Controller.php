@@ -509,7 +509,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $forceCustomDimensionSlotCheck = Common::getRequestVar('forceCustomDimensionSlotCheck', 1, $type = 'int') == 1;
 
             $idSite = $importer->makeSite($propertyId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions,
-                $forceCustomDimensionSlotCheck);
+                $forceCustomDimensionSlotCheck, $streamIds);
 
             try {
                 if (empty($idSite)) {

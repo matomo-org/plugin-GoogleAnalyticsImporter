@@ -295,6 +295,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         $translationKeys[] = 'GoogleAnalyticsImporter_AccountsConnectedSuccessfully';
         $translationKeys[] = 'GoogleAnalyticsImporter_UploadSuccessful';
         $translationKeys[] = 'GoogleAnalyticsImporter_StreamIdFilter';
+        $translationKeys[] = 'GoogleAnalyticsImporter_StreamIdFilterHelpText';
 
         if (Manager::getInstance()->isPluginActivated('ConnectAccounts') && ConnectAccounts::isMatomoOAuthEnabled()) {
             $translationKeys[] = "ConnectAccounts_ConfigureGoogleAuthHelp1";
