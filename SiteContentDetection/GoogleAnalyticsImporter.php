@@ -35,10 +35,10 @@ class GoogleAnalyticsImporter extends \Piwik\Plugins\SitesManager\SiteContentDet
 
     public static function getPriority(): int
     {
-        return 35;
+        return 25;
     }
 
-    public function detectByContent(?string $data = null, ?array $headers = null): bool
+    public function isDetected(?string $data = null, ?array $headers = null): bool
     {
         return false;
     }
@@ -55,7 +55,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugins\SitesManager\SiteContentDet
         return true;
     }
 
-    public function renderInstructionsTab(SiteContentDetector $detector = null): ?string
+    public function renderInstructionsTab(SiteContentDetector $detector): string
     {
         $isConnectAccountsPluginActivated = \Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsImporter::isConnectAccountsPluginActivated();
         /** @var Authorization $authorization */
