@@ -46,6 +46,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
         await page.evaluate(() => $('input#startDateGA4').val('2019-06-27').change());
         await page.evaluate(() => $('input#endDateGA4').val('2019-07-02').change());
         await page.evaluate(() => $('input#propertyIdGA4').val('properties/12345').change());
+        await page.evaluate(() => $('div[name=streamIds] input.control_text').val('streamId1').change());
         await page.evaluate(() => $('div[name=extraCustomDimensionsGA4] input.control_text').val('userAgeBracket').change());
         await page.evaluate(() => $('div[name=extraCustomDimensionsGA4] select:eq(0)').val('string:visit').change());
         await page.click('[name=isVerboseLoggingEnabledGA4] label');

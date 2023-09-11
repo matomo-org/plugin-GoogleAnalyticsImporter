@@ -46,7 +46,7 @@ class ImporterTestGA4 extends IntegrationTestCase
         $importStatus = StaticContainer::get(ImportStatus::class);
         $importStatus->startingImport('properties/12345', 'accountid', '', $idSite, [
             ['ga4Dimension' => 'userGender', 'dimensionScope' => 'visit'],
-        ]);
+        ], 'ga4', 'streamId1');
 
         $this->setGaEntities();
 

@@ -117,18 +117,4 @@
 			</row>
 		</subtable>
 	</row>
-	<row>
-		<label>/index</label>
-		<nb_visits>0</nb_visits>
-		<nb_hits>23</nb_hits>
-		<sum_time_spent>846</sum_time_spent>
-		<sum_daily_nb_uniq_visitors>0</sum_daily_nb_uniq_visitors>
-		<avg_bandwidth>0</avg_bandwidth>
-		<avg_page_load_time>0</avg_page_load_time>
-		<avg_time_on_page>37</avg_time_on_page>
-		<bounce_rate>0%</bounce_rate>
-		<exit_rate>0%</exit_rate>
-		<url>http://GA4 (matthieu.net/blog)/</url>
-		<segment>pageUrl==http%253A%252F%252FGA4%2B%2528matthieu.net%252Fblog%2529%252F</segment>
-	</row>
 </result>

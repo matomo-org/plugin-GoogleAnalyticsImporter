@@ -73,6 +73,8 @@ class CaptureRestTransport extends RestTransport
 
         $propertyId = getenv('GA4_PROPERTY_ID');
         $entry = str_replace(str_replace('properties/', '', $propertyId), '12345', $entry);
+        $streamIds = getenv('GA4_STREAM_IDs');
+        $entry = str_replace($streamIds, 'streamId1', $entry);
 
         $this->saveResponse($entry);
         return $response;
