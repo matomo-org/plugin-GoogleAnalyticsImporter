@@ -330,6 +330,9 @@ class ImportStatus
         if (!empty($status['ga'])) {
             if (!empty($status['isGA4'])) {
                 $status['gaInfoPretty'] = 'Import Type: GA4'. "\n" . 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account'];
+                if (!empty($status['streamIds'])) {
+                    $status['gaInfoPretty'].="\nStreamIds: ". implode(', ', $status['streamIds']);
+                }
             } else {
                 $status['gaInfoPretty'] = 'Import Type: Universal Analytics'. "\n" . 'Property: ' . $status['ga']['property'] . "\nAccount: " . $status['ga']['account']
                     . "\nView: " . $status['ga']['view'];

@@ -72,6 +72,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, null, null);
@@ -99,6 +100,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2012-03-04'), Date::factory('2012-03-05'));
@@ -126,6 +128,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2017-03-04'), null);
@@ -153,6 +156,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
@@ -180,6 +184,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-02',
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
@@ -209,6 +214,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-02',
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->finishedImport($idSite);
@@ -237,6 +243,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-02',
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->deleteStatus($idSite);
@@ -280,6 +287,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, null, null);
@@ -307,6 +315,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2012-03-04'), Date::factory('2012-03-05'));
@@ -334,6 +343,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->setImportDateRange($idSite, Date::factory('2017-03-04'), null);
@@ -361,6 +371,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-02'));
@@ -388,6 +399,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-02',
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->dayImportFinished($idSite, Date::factory('2015-03-04'));
@@ -417,6 +429,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-02',
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->finishedImport($idSite);
@@ -445,6 +458,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => '2015-03-02',
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->deleteStatus($idSite);
@@ -484,6 +498,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
@@ -510,6 +525,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
     }
 
@@ -545,6 +561,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->erroredImport($idSite, 'test error message');
@@ -571,6 +588,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
     }
 
@@ -606,6 +624,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
@@ -631,6 +650,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
     }
 
@@ -666,6 +686,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->cloudRateLimitReached($idSite, 'Test Error Message');
@@ -691,6 +712,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
             'error' => 'Test Error Message'
         ], $status);
     }
@@ -727,6 +749,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->rateLimitReachedHourly($idSite);
@@ -752,6 +775,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
     }
 
@@ -787,6 +811,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->rateLimitReached($idSite);
@@ -812,6 +837,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
         ], $status);
     }
 
@@ -848,6 +874,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
             'error' => 'Test Message'
         ], $status);
     }
@@ -884,6 +911,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
         ], $status);
 
         $this->instance->futureDateImportDetected($idSite, '2023-04-18');
@@ -909,6 +937,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => false,
+            'streamIds' => [],
             'future_resume_date' => '2023-04-18'
         ], $status);
     }
@@ -946,6 +975,7 @@ class ImportStatusTest extends IntegrationTestCase
             'reimport_ranges' => [],
             'main_import_progress' => null,
             'isGA4' => true,
+            'streamIds' => [],
             'future_resume_date' => '2023-04-18'
         ], $status);
     }
@@ -1181,6 +1211,7 @@ class ImportStatusTest extends IntegrationTestCase
         $this->instance->startingImport('property3', 'account3', 'view3', 3);
         $this->instance->startingImport('property3', 'account3', 'view3', 10);
         $this->instance->startingImport('properties/1234', 'account', '', 5, [], 'ga4');
+        $this->instance->startingImport('properties/879821', 'account2', '', 9, [], 'ga4', ['streamId1', 'streamId2']);
 
         $statuses = $this->instance->getAllImportStatuses();
         $this->cleanStatuses($statuses);
@@ -1209,6 +1240,33 @@ View: view3',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
+            ],
+            [
+                'status' => 'started',
+                'idSite' => 9,
+                'ga' => [
+                    'property' => 'properties/879821',
+                    'account' => 'account2',
+                    'view' => '',
+                    'import_type' => 'GA4'
+                ],
+                'last_date_imported' => null,
+                'import_end_time' => null,
+                'last_day_archived' => null,
+                'import_range_start' => null,
+                'import_range_end' => null,
+                'extra_custom_dimensions' => [],
+                'days_finished_since_rate_limit' => 0,
+                'site' => new Site(9),
+                'gaInfoPretty' => 'Import Type: GA4
+Property: properties/879821
+Account: account2
+StreamIds: streamId1, streamId2',
+                'reimport_ranges' => [],
+                'main_import_progress' => null,
+                'isGA4' => true,
+                'streamIds' => ['streamId1', 'streamId2'],
             ],
             [
                 'status' => 'started',
@@ -1233,6 +1291,7 @@ Account: account',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => true,
+                'streamIds' => [],
             ],
             [
                 'status' => 'started',
@@ -1258,6 +1317,7 @@ View: view3',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
             ],
             [
                 'status' => 'started',
@@ -1283,6 +1343,7 @@ View: view2',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
             ],
             [
                 'status' => 'started',
@@ -1308,6 +1369,7 @@ View: view',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
             ],
         ], $statuses);
     }
@@ -1391,6 +1453,7 @@ Account: account',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => true,
+                'streamIds' => [],
             ],
             [
                 'status' => 'started',
@@ -1416,6 +1479,7 @@ View: view5',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
             ],
             [
                 'status' => 'killed',
@@ -1441,6 +1505,7 @@ View: view4',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
             ],
             [
                 'status' => 'started',
@@ -1466,6 +1531,7 @@ View: view3',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
             ],
             [
                 'status' => 'killed',
@@ -1491,6 +1557,7 @@ View: view2',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
             ],
             [
                 'status' => 'killed',
@@ -1516,6 +1583,7 @@ View: view',
                 'reimport_ranges' => [],
                 'main_import_progress' => null,
                 'isGA4' => false,
+                'streamIds' => [],
             ],
         ], $statuses);
     }
