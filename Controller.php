@@ -731,7 +731,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
 
     private function getStreamIdsFromRequest()
     {
-        $streamIds = Common::getRequestVar('streamIds', [], $type = 'array');
+        $request = \Piwik\Request::fromRequest();
+        $streamIds = $request->getArrayParameter('streamIds', []);
         $ids = [];
 
         if (!empty($streamIds)) {

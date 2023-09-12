@@ -38,7 +38,7 @@ class ImportGA4Reports extends ConsoleCommand
         $this->setName('googleanalyticsimporter:import-ga4-reports');
         $this->setDescription('Import GA4 reports from one or more google analytics properties into Matomo sites.');
         $this->addRequiredValueOption('property', null, 'The GA properties to import.');
-        $this->addRequiredValueOption('streamId', null, 'The streamID for which you want to pull data, for multiple value send comma separated streamIds, by default it pulls data for all the streamIds');
+        $this->addRequiredValueOption('streamIds', null, 'The streamId for which you want to pull data. For multiple streams, use comma separated streamIds. By default it pulls data for all streams');
         $this->addRequiredValueOption('dates', null, 'The dates to import, eg, 2015-03-04,2015-04-12.');
         $this->addRequiredValueOption('idsite', null, 'The site to import into. This will attempt to continue an existing import.');
         $this->addRequiredValueOption('cvar-count', null, 'The number of custom variables to support (if not supplied defaults to however many are currently available). '
@@ -73,8 +73,7 @@ class ImportGA4Reports extends ConsoleCommand
         $timezone = $input->getOption('timezone');
         $extraCustomDimensions = $this->getExtraCustomDimensions();
         $property = $input->getOption('property');
-        $streamId = $input->getOption('streamId');
-        $streamIDs = $streamId ? explode(',', $streamId) : [];
+        $streamIds = $input->getOption('streamIds') ? explode(',', $input->getOption('streamIds')) : [];
 
         $isMobileApp = $input->getOption('mobile-app');
         if ($isMobileApp
@@ -138,7 +137,7 @@ class ImportGA4Reports extends ConsoleCommand
             !empty($property)
         ) {
             try {
-                $idSite = $importer->makeSite($property, $timezone, $type, $extraCustomDimensions, false, $streamIDs);
+                $idSite = $importer->makeSite($property, $timezone, $type, $extraCustomDimensions, false, $streamIds);
             } catch (\Google\Exception $ex) {
                 throw $ex;
             }
@@ -163,7 +162,7 @@ class ImportGA4Reports extends ConsoleCommand
             }
 
             $property = $status['ga']['property'];
-            $streamIDs = $status['streamIds'];
+            $streamIds = $status['streamIds'];
         }
         self::validatePropertyID($property);
 
@@ -276,7 +275,7 @@ class ImportGA4Reports extends ConsoleCommand
 
                 try {
                     $importer->setIsMainImport($isMainImport);
-                    $aborted = $importer->import($idSite, $property, $startDate, $endDate, $lock, '', $streamIDs);
+                    $aborted = $importer->import($idSite, $property, $startDate, $endDate, $lock, '', $streamIds);
                     if ($aborted == -1) {
                         $shouldFinishImportIfNothingLeft = false;
                     }
