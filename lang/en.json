@@ -153,7 +153,7 @@
         "AccountsConnectedSuccessfully": "You have successfully connected your Google account!",
         "UploadSuccessful": "Upload successful!",
         "StreamId": "Stream ID",
-        "StreamIdFilter": "Filter by Stream ID",
-        "StreamIdFilterHelpText": "The Stream ID for which you want to import data. %1$sLearn more.%2$s %3$sNote:%4$s To import all the data from all the streams, leave it blank."
+        "StreamIdFilter": "Filter by Stream ID (optional)",
+        "StreamIdFilterHelpText": "The Stream ID for which you want to import data. %1$sLearn more.%2$s %3$sNote:%4$s Leave this field blank to import data from all streams."
     }
 }
