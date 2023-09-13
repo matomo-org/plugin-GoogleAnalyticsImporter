@@ -15,6 +15,7 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>9</sum_daily_nb_uniq_visitors>
+		<segment>referrerType==campaign;referrerName==%28organic%29</segment>
 		<referer_type>6</referer_type>
 	</row>
 	<row>
@@ -32,6 +33,7 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>4</sum_daily_nb_uniq_visitors>
+		<segment>referrerType==campaign;referrerName==%28direct%29</segment>
 		<referer_type>6</referer_type>
 	</row>
 	<row>
@@ -49,6 +51,7 @@
 			</row>
 		</goals>
 		<sum_daily_nb_uniq_visitors>1</sum_daily_nb_uniq_visitors>
+		<segment>referrerName==https</segment>
 		<referer_type>3</referer_type>
 	</row>
 </result>

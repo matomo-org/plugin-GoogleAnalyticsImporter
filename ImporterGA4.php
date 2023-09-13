@@ -171,7 +171,7 @@ class ImporterGA4
         $this->isMainImport = $isMainImport;
     }
 
-    public function makeSite($propertyId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [], $forceCustomDimensionSlotCheck = false)
+    public function makeSite($propertyId, $timezone = false, $type = Type::ID, $extraCustomDimensions = [], $forceCustomDimensionSlotCheck = false, $streamIds = [])
     {
         if (class_exists(TagManager::class)) {
             $originalEnableAutoContainerCreation = TagManager::$enableAutoContainerCreation;
@@ -221,7 +221,7 @@ class ImporterGA4
                 $this->customDimensionMapper->checkCustomDimensionCount($availableScopes, $customDimensions, $extraCustomDimensions);
             }
 
-            $this->importStatus->startingImport($propertyId, $webProperty->getAccount(), '', $idSite, $extraCustomDimensions, 'ga4');
+            $this->importStatus->startingImport($propertyId, $webProperty->getAccount(), '', $idSite, $extraCustomDimensions, 'ga4', $streamIds);
 
             return $idSite;
         } finally {
@@ -400,7 +400,7 @@ class ImporterGA4
         passthru($command);
     }
 
-    public function import($idSite, $propertyId, Date $start, Date $end, Lock $lock, $segment = '')
+    public function import($idSite, $propertyId, Date $start, Date $end, Lock $lock, $segment = '', $streamIds = [])
     {
         $date = null;
 
@@ -416,7 +416,7 @@ class ImporterGA4
                 throw new \InvalidArgumentException("Invalid date range, start date is later than end date: {$start},{$end}");
             }
 
-            $recordImporters = $this->getRecordImporters($idSite, $propertyId);
+            $recordImporters = $this->getRecordImporters($idSite, $propertyId, $streamIds);
 
             $site = new Site($idSite);
             $dates = $this->getRecentDatesToImport($start, $endPlusOne, Date::today()->getTimestamp());
@@ -552,10 +552,11 @@ class ImporterGA4
     /**
      * @param $idSite
      * @param $propertyId
+     * @param $streamIds
      * @return RecordImporterGA4[]
      * @throws \Piwik\Exception\DI\NotFoundException
      */
-    private function getRecordImporters($idSite, $propertyId)
+    private function getRecordImporters($idSite, $propertyId, $streamIds = [])
     {
         $this->apiQuotaHelper->trackEvent('Import Attempt','Google_Analytics_Importer');
         if (empty($this->recordImporters)) {
@@ -580,7 +581,7 @@ class ImporterGA4
 
         $gaQuery = new GoogleAnalyticsGA4QueryService(
             $this->gaClient, $this->gaAdminClient, $propertyId, $this->getGoalMapping($idSite), $idSite, $quotaUser,
-            StaticContainer::get(GoogleGA4QueryObjectFactory::class), $this->logger);
+            StaticContainer::get(GoogleGA4QueryObjectFactory::class), $this->logger, $streamIds);
         $gaQuery->setOnQueryMade(function () {
             ++$this->queryCount;
             if($this->maxAvailableQueries != -1 && ($this->queryCount > $this->maxAvailableQueries)){

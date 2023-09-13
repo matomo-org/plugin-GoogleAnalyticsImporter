@@ -55,6 +55,7 @@
           :start-import-nonce="startImportNonce"
           :max-end-date-desc="maxEndDateDesc"
           :extra-custom-dimensions-field="extraCustomDimensionsFieldGa4"
+          :stream-ids-field="streamIdsFieldGa4"
         />
       </div>
     </ContentBlock>
@@ -154,6 +155,10 @@ export default defineComponent({
       required: true,
     },
     extraCustomDimensionsFieldGa4: {
+      type: Object,
+      required: true,
+    },
+    streamIdsFieldGa4: {
       type: Object,
       required: true,
     },

@@ -33,13 +33,13 @@ class GoogleGA4QueryObjectFactory
         $this->logger = $logger;
     }
 
-    public function make($propertyID, Date $date, $metricNames, $options)
+    public function make($propertyID, Date $date, $metricNames, $options, $streamIds = [])
     {
         $dimensionNames = !empty($options['dimensions']) ? $options['dimensions'] : [];
 
         $dimensionFilter = '';
         if (!empty($options['dimensionFilter'])) {
-            $dimensionFilter = $this->makeGaDimensionFilter($options['dimensionFilter']);
+            $dimensionFilter = $this->makeGaDimensionFilter($options['dimensionFilter'], $streamIds);
         }
 
         $dimensions = [];
@@ -145,8 +145,9 @@ class GoogleGA4QueryObjectFactory
         return $segmentDimensions;
     }
 
-    private function makeGaDimensionFilter($gaDimensionFilter)
+    private function makeGaDimensionFilter($gaDimensionFilter, $streamIds)
     {
+        $filterExpressions = [];
         switch ($gaDimensionFilter['filterType']) {
             case 'inList':
                 $filterType = array(
@@ -154,13 +155,34 @@ class GoogleGA4QueryObjectFactory
                     'in_list_filter' => new \Google\Analytics\Data\V1beta\Filter\InListFilter([
                         'values' => $gaDimensionFilter['filterValue'],
                         'case_sensitive' => false
-                    ])
+                    ]),
                 );
                 break;
         }
+
         if (!empty($filterType)) {
+            $filterExpressions[] = new \Google\Analytics\Data\V1beta\FilterExpression(['filter' => new \Google\Analytics\Data\V1beta\Filter($filterType)]);
+        }
+
+        if (!empty($streamIds)) {
+            $filterExpressions[] = new \Google\Analytics\Data\V1beta\FilterExpression(['filter' => new \Google\Analytics\Data\V1beta\Filter(
+                array(
+                    'field_name' => 'streamId',
+                    'in_list_filter' => new \Google\Analytics\Data\V1beta\Filter\InListFilter([
+                        'values' => $streamIds,
+                        'case_sensitive' => false
+                    ]),
+                )
+            )]);
+        }
+
+        if (!empty($filterExpressions)) {
             return new \Google\Analytics\Data\V1beta\FilterExpression([
-                'filter' => new \Google\Analytics\Data\V1beta\Filter($filterType)
+                'and_group' => new \Google\Analytics\Data\V1beta\FilterExpressionList(
+                    [
+                        'expressions' => $filterExpressions
+                    ]
+                )
             ]);
         }
 

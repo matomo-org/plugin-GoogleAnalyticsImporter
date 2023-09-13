@@ -33,6 +33,7 @@
 						<nb_conversions>0</nb_conversions>
 					</row>
 				</goals>
+				<segment>referrerType==campaign;referrerName==%28direct%29</segment>
 			</row>
 			<row>
 				<label>(organic)</label>
@@ -49,6 +50,7 @@
 						<nb_conversions>0</nb_conversions>
 					</row>
 				</goals>
+				<segment>referrerType==campaign;referrerName==%28organic%29</segment>
 			</row>
 		</subtable>
 	</row>
@@ -103,6 +105,7 @@
 						<nb_conversions>0</nb_conversions>
 					</row>
 				</goals>
+				<segment>referrerName==https</segment>
 			</row>
 		</subtable>
 	</row>

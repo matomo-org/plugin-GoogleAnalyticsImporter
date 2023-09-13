@@ -11,6 +11,7 @@ Before running, the following environment variables must be set:
 Note: The below details might not work in your local env when you test with CI=0, to fix that ask Matthieu to give your user a view access to http://matthieu.net/blog GA4 account and replace the property id accordingly
 ``` 
 $ export GA4_PROPERTY_ID=properties/317278922
+$ export GA4_STREAM_IDs=3599588245
 $ export CI=1
 ```
 

@@ -105,8 +105,10 @@ class MockRestTransport extends RestTransport
     private function replaceEnvVars($key)
     {
         $propertyId = getenv('GA4_PROPERTY_ID');
+        $streamIds = getenv('GA4_STREAM_IDs');
         if (!empty($propertyId)) {
             $key = str_replace(str_replace('properties/', '', $propertyId), '12345', $key);
+            $key = str_replace($streamIds, 'streamId1', $key);
         }
 
         return $key;

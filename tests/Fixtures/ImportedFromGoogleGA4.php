@@ -20,7 +20,6 @@ use Piwik\Log\Logger;
 use Piwik\Log\LoggerInterface;
 use Piwik\Option;
 use Piwik\Date;
-use Piwik\Plugins\GoogleAnalyticsImporter\Google\Authorization;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Plugins\GoogleAnalyticsImporter\tests\Framework\CapturingGoogleClientGA4;
@@ -131,8 +130,8 @@ class ImportedFromGoogleGA4 extends Fixture
     private function getGoogleAnalyticsParams()
     {
         if (SystemTestCase::isCIEnvironment()) {
-            $this->clientConfig = Option::get(Authorization::CLIENT_CONFIG_OPTION_NAME);
-            $this->accessToken = Option::get(Authorization::ACCESS_TOKEN_OPTION_NAME);
+            $this->clientConfig = Option::get(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME);
+            $this->accessToken = Option::get(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME);
         } else {
             if (!getenv('PIWIK_TEST_GA_ACCESS_TOKEN')
                 || !getenv('PIWIK_TEST_GA_CLIENT_CONFIG')
@@ -143,8 +142,8 @@ class ImportedFromGoogleGA4 extends Fixture
                 $this->clientConfig = $this->getEnvVar('PIWIK_TEST_GA_CLIENT_CONFIG');
             }
 
-            Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
-            Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
+            Option::set(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
+            Option::set(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
         }
     }
 
@@ -163,19 +162,21 @@ class ImportedFromGoogleGA4 extends Fixture
         $domainParam = $domain ? ('--matomo-domain=' . $domain) : '';
         if (SystemTestCase::isCIEnvironment()) {
             $property = 'properties/12345';
+            $streamIds = 'streamId1';
         } else {
             $property = $this->getEnvVar('GA4_PROPERTY_ID');
+            $streamIds = $this->getEnvVar('GA4_STREAM_IDs');
         }
 
-        Option::set(Authorization::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
-        Option::set(Authorization::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
+        Option::set(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME, $this->accessToken);
+        Option::set(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME, $this->clientConfig);
 
         $command = "php " . PIWIK_INCLUDE_PATH . '/tests/PHPUnit/proxy/console ' . $domainParam
             . ' googleanalyticsimporter:import-ga4-reports ';
         if ($idSiteToResume) {
             $command .= '--idsite=' . $idSiteToResume;
         } else {
-            $command .= ' --dates=' . $dates . ' --property=' . $property . ' --extra-custom-dimension=userAgeBracket,visit';
+            $command .= ' --dates=' . $dates . ' --property=' . $property . ' --streamId='.$streamIds.' --extra-custom-dimension=userAgeBracket,visit';
         }
 
         $timer = new Timer();

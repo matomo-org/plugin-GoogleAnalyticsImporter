@@ -41,6 +41,18 @@
       </Field>
     </div>
 
+    <div name="streamIds">
+      <Field
+        uicontrol="multituple"
+        name="streamIds"
+        v-model="streamIds"
+        :title="translate('GoogleAnalyticsImporter_StreamIdFilter')"
+        :inline-help="streamIdsFilterHelp"
+        :ui-control-attributes="streamIdsField"
+      >
+      </Field>
+    </div>
+
     <div name="isMobileAppGA4">
       <Field
         uicontrol="checkbox"
@@ -120,6 +132,7 @@ interface ExtraCustomDimension {
 interface ImportSchedulerState {
   isStartingImport: boolean;
   extraCustomDimensionsGA4: ExtraCustomDimension[];
+  streamIds: [];
   isVerboseLoggingEnabledGA4: boolean;
   ignoreCustomDimensionSlotCheckGA4: boolean;
   startDateGA4: string;
@@ -142,6 +155,10 @@ export default defineComponent({
       type: Object,
       required: true,
     },
+    streamIdsField: {
+      type: Object,
+      required: true,
+    },
   },
   components: {
     Field,
@@ -150,6 +167,7 @@ export default defineComponent({
     return {
       isStartingImport: false,
       extraCustomDimensionsGA4: [],
+      streamIds: [],
       isVerboseLoggingEnabledGA4: false,
       ignoreCustomDimensionSlotCheckGA4: false,
       startDateGA4: '',
@@ -195,6 +213,7 @@ export default defineComponent({
           isMobileApp: this.isMobileAppGA4 ? '1' : '0',
           timezone: this.timezoneGA4,
           extraCustomDimensions: this.extraCustomDimensionsGA4 as unknown as QueryParameters,
+          streamIds: this.streamIds as unknown as QueryParameters,
           isVerboseLoggingEnabled: this.isVerboseLoggingEnabledGA4 ? '1' : '0',
           forceCustomDimensionSlotCheck: forceCustomDimensionSlotCheck ? '1' : '0',
         },
@@ -229,6 +248,14 @@ export default defineComponent({
         `<a href="${link}" rel="noreferrer noopener" target="_blank">`,
         '</a>',
       );
+    },
+    streamIdsFilterHelp() {
+      const url = 'https://matomo.org/faq/what-is-data-stream-in-google-analytics-4/';
+      return translate('GoogleAnalyticsImporter_StreamIdFilterHelpText',
+        `<a href="${url}" rel="noreferrer noopener" target="_blank">`,
+        '</a>',
+        '<br><br><b>',
+        '</b>');
     },
     forceIgnoreOutOfCustomDimSlotErrorHelp() {
       const url = 'https://matomo.org/docs/custom-dimensions/';
