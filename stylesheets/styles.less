@@ -18,9 +18,18 @@
 
 #site-without-data {
   #start-tracking-details[data-method=GoogleAnalyticsImporter] {
+    .list-style-decimal {
+      list-style-position: outside;
+      margin-left: 1em;
+    }
+
     .form-group.row {
       margin-top: -0.5rem;
       margin-bottom: unset;
+
+      .col {
+        padding-left: 0;
+      }
     }
 
     .ga-import-warning {
@@ -37,7 +46,6 @@
     }
 
     .btn-quick-connect, .advance-upload-button, .btn-forward-to-Oauth {
-      margin-left: 1.5rem;
       margin-top: 1rem;
       margin-bottom: 1.2rem;
     }

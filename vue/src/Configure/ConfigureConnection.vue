@@ -53,7 +53,7 @@
     </div>
   </div>
   <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep03Text)"></li>
-  <div style="margin-left: 1.2rem" class="complete-note-warning"
+  <div class="complete-note-warning"
        v-if="isNoDataPage" v-html="$sanitize(getOauthCompleteWarningMessage)"></div>
   <form target="_blank" method="post" :action="authorizeUrl" v-if="isNoDataPage">
     <input type="hidden" name="auth_nonce" :value="forwardToAuthNonce" />
@@ -187,7 +187,7 @@ export default defineComponent({
       return `${this.translate(
         'GoogleAnalyticsImporter_GAImportNoDataScreenStep07',
         this.translate('GoogleAnalyticsImporter_Start'),
-      )}<br><div style="margin-left: 1.2rem">${this.translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep07Note', '<strong>', '</strong>', this.translate('GoogleAnalyticsImporter_Start'))}</div>`;
+      )}<br><div >${this.translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep07Note', '<strong>', '</strong>', this.translate('GoogleAnalyticsImporter_Start'))}</div>`;
     },
     getAdvanceConnectStep08Text() {
       return this.translate(
