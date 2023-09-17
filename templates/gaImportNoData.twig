@@ -1,12 +1,11 @@
+<h2>{{ 'SitesManager_StepByStepGuide'|translate }}</h2>
+
 {% if isGA3 %}
     <div class="alert alert-warning" id="ga3WarningNotification">
         {{ 'GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate'|translate('<strong>', '</strong>')|raw }}
         <button type="button" class="close" data-dismiss="alert"> × </button>
     </div>
 {% endif %}
-<div class="right">
-    <img src="plugins/GoogleAnalyticsImporter/images/google-analytics.png" style="height: 3rem;">
-</div>
 <p>{{ 'GoogleAnalyticsImporter_NoDataScreenIntro'|translate }}</p>
 <br>
 {% if isConnectAccountsActivated %}
