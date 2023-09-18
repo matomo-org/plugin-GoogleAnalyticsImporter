@@ -315,7 +315,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         $hashParams = '';
         $isNoDataPage = Common::getRequestVar('isNoDataPage', '');
         if ($isNoDataPage) {
-            $hashParams = '#?activeTab=ga-import';
+            $hashParams = '#?activeTab=googleanalyticsimporter';
             $modifiedParameters = [
                 'module' => 'CoreHome',
                 'action' => 'index',

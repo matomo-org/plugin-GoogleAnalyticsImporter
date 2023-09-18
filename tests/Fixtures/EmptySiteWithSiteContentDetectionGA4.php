@@ -9,7 +9,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
 use Piwik\Plugins\SitesManager\SiteContentDetection\Cloudflare;
 use Piwik\Plugins\SitesManager\SiteContentDetection\GoogleAnalytics4;
-use Piwik\Plugins\SitesManager\SitesManager;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\SiteContentDetector;
 use Piwik\Tests\Framework\Mock\FakeSiteContentDetector;

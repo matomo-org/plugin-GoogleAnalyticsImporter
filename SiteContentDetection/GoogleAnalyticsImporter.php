@@ -25,7 +25,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugins\SitesManager\SiteContentDet
 {
     public static function getName(): string
     {
-        return 'Google Analytics Import';
+        return Piwik::translate('GoogleAnalyticsImporter_AdminMenuTitle');
     }
 
     public static function getContentType(): string

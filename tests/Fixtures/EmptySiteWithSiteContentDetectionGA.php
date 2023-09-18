@@ -7,10 +7,8 @@
  */
 namespace Piwik\Plugins\GoogleAnalyticsImporter\tests\Fixtures;
 
-use Piwik\Plugins\SEO\Metric\Google;
 use Piwik\Plugins\SitesManager\SiteContentDetection\Cloudflare;
 use Piwik\Plugins\SitesManager\SiteContentDetection\GoogleAnalytics3;
-use Piwik\Plugins\SitesManager\SitesManager;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\SiteContentDetector;
 use Piwik\Tests\Framework\Mock\FakeSiteContentDetector;
