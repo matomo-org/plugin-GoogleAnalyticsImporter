@@ -24,6 +24,8 @@ use Piwik\Plugins\ConnectAccounts\ConnectAccounts;
 use Piwik\Plugins\Referrers\API;
 use Piwik\Plugins\ConnectAccounts\helpers\ConnectHelper;
 use Piwik\Plugins\ConnectAccounts\Strategy\Google\GoogleConnect;
+use Piwik\Plugins\UsersManager\UserPreferences;
+use Piwik\Request;
 use Piwik\SettingsPiwik;
 use Piwik\Url;
 use Piwik\Site;
@@ -575,6 +577,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
                     'strategy' => GoogleConnect::getStrategyName()
                 ]);
         }
+        $idSite = Request::fromRequest()->getIntegerParameter('idSite', 0);
+        // If for some reason the idSite query parameter isn't set, look up the default site ID
+        if ($idSite < 1) {
+            $idSite = StaticContainer::get(UserPreferences::class)->getDefaultWebsiteId();
+        }
         return  [
             'isConnectAccountsActivated' => $isConnectAccountsActivated,
             'primaryText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel1'),
@@ -592,7 +599,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'manualActionUrl' => Url::getCurrentUrlWithoutQueryString() . '?' . Http::buildQuery([
                     'module' => 'GoogleAnalyticsImporter',
                     'action' => 'configureClient',
-                    'idSite' => Common::getRequestVar('idSite'),
+                    'idSite' => $idSite,
                 ]),
             'connectAccountsUrl' => $googleAuthUrl,
             'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_ConnectWithGoogleText'),
