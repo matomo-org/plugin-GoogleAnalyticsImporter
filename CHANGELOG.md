@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.0.3
+- Release update
+
 # 5.0.2
 - Compatibility with Matomo 5 rc3
 
