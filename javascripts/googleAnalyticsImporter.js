@@ -23,7 +23,7 @@
     (async () => {
       const response = await fetch(window.piwik.piwik_url + '/index.php?' + new URLSearchParams(searchParams));
       const data = await response.json();
-      if ($('.site-without-data').length && data.isGASite) {
+      if ($('#site-without-data').length && data.isGASite) {
         displayPendingNotification('', 'successMessage');
       } else if (data.displayPending) {
         displayPendingNotification(data.availableDate, 'infoMessage');

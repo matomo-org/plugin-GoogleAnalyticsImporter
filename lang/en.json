@@ -154,6 +154,9 @@
         "UploadSuccessful": "Upload successful!",
         "StreamId": "Stream ID",
         "StreamIdFilter": "Filter by Stream ID (optional)",
-        "StreamIdFilterHelpText": "The Stream ID for which you want to import data. %1$sLearn more.%2$s %3$sNote:%4$s Leave this field blank to import data from all streams."
+        "StreamIdFilterHelpText": "The Stream ID for which you want to import data. %1$sLearn more.%2$s %3$sNote:%4$s Leave this field blank to import data from all streams.",
+        "RecommendationTitle": "Import Google Analytics data to Matomo (recommended for you)",
+        "RecommendationText": "We have detected Google Analytics on your site, so you can set up Matomo by importing your Google Analytics data.",
+        "RecommendationButton": "Import data"
     }
 }

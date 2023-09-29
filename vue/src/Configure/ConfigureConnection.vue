@@ -23,9 +23,10 @@
     </div>
   </div>
   <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep01Text)"></li>
-  <li v-if="isNoDataPage"
+  <component :is="isNoDataPage ? 'li' : 'div'">
+  <span v-if="isNoDataPage"
       v-text="translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep02')">
-  </li>
+  </span>
   <div class="form-group row">
     <div :class="getClass">
       <form id="configFileUploadForm" :action="manualActionUrl" method="POST"
@@ -52,22 +53,25 @@
       </form>
     </div>
   </div>
-  <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep03Text)"></li>
-  <div style="margin-left: 1.2rem" class="complete-note-warning"
-       v-if="isNoDataPage" v-html="$sanitize(getOauthCompleteWarningMessage)"></div>
-  <form target="_blank" method="post" :action="authorizeUrl" v-if="isNoDataPage">
-    <input type="hidden" name="auth_nonce" :value="forwardToAuthNonce" />
-    <button :disabled="hasClientConfiguration === false"
-            v-text="getAuthorizeText"
-            type="submit" class="btn btn-forward-to-Oauth">
-    </button>
-    <span class="system-success connected-message-successful"
-          v-if="isNoDataPage
-                && hasClientConfiguration && isConfigured">
-          <span class="icon-ok"></span>
-          {{ translate('GoogleAnalyticsImporter_AccountsConnectedSuccessfully') }}
-        </span>
-  </form>
+  </component>
+  <li v-if="isNoDataPage">
+    <span v-html="$sanitize(getAdvanceConnectStep03Text)"></span>
+    <div class="complete-note-warning"
+         v-html="$sanitize(getOauthCompleteWarningMessage)"></div>
+    <form target="_blank" method="post" :action="authorizeUrl">
+      <input type="hidden" name="auth_nonce" :value="forwardToAuthNonce" />
+      <button :disabled="hasClientConfiguration === false"
+              v-text="getAuthorizeText"
+              type="submit" class="btn btn-forward-to-Oauth">
+      </button>
+      <span class="system-success connected-message-successful"
+            v-if="isNoDataPage
+                  && hasClientConfiguration && isConfigured">
+            <span class="icon-ok"></span>
+            {{ translate('GoogleAnalyticsImporter_AccountsConnectedSuccessfully') }}
+          </span>
+    </form>
+  </li>
   <li v-if="isNoDataPage" v-html="$sanitize(getAdvanceConnectStep04Text)"></li>
   <li v-if="isNoDataPage"
       v-text="translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep05')">
@@ -187,7 +191,7 @@ export default defineComponent({
       return `${this.translate(
         'GoogleAnalyticsImporter_GAImportNoDataScreenStep07',
         this.translate('GoogleAnalyticsImporter_Start'),
-      )}<br><div style="margin-left: 1.2rem">${this.translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep07Note', '<strong>', '</strong>', this.translate('GoogleAnalyticsImporter_Start'))}</div>`;
+      )}<br><div >${this.translate('GoogleAnalyticsImporter_GAImportNoDataScreenStep07Note', '<strong>', '</strong>', this.translate('GoogleAnalyticsImporter_Start'))}</div>`;
     },
     getAdvanceConnectStep08Text() {
       return this.translate(

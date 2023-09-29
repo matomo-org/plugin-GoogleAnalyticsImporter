@@ -28,7 +28,12 @@ class GoogleAnalyticsImporter extends \Piwik\Plugins\SitesManager\SiteContentDet
         return Piwik::translate('GoogleAnalyticsImporter_AdminMenuTitle');
     }
 
-    public static function getContentType(): string
+    public static function getIcon(): string
+    {
+        return './plugins/GoogleAnalyticsImporter/images/ga-icon.svg';
+    }
+
+    public static function getContentType(): int
     {
         return self::TYPE_OTHER;
     }
@@ -43,16 +48,18 @@ class GoogleAnalyticsImporter extends \Piwik\Plugins\SitesManager\SiteContentDet
         return false;
     }
 
-    public function shouldShowInstructionTab(SiteContentDetector $detector = null): bool
+    public function isRecommended(SiteContentDetector $detector): bool
     {
-        return Piwik::hasUserSuperUserAccess() && (
-            $detector->wasDetected(GoogleAnalytics3::getId()) || $detector->wasDetected(GoogleAnalytics4::getId())
-        );
+        return $detector->wasDetected(GoogleAnalytics3::getId()) || $detector->wasDetected(GoogleAnalytics4::getId());
     }
 
-    public function shouldHighlightTabIfShown(): bool
+    public function getRecommendationDetails(SiteContentDetector $detector): array
     {
-        return true;
+        return [
+            'title' => Piwik::translate('GoogleAnalyticsImporter_RecommendationTitle'),
+            'text' => Piwik::translate('GoogleAnalyticsImporter_RecommendationText'),
+            'button' => Piwik::translate('GoogleAnalyticsImporter_RecommendationButton'),
+        ];
     }
 
     public function renderInstructionsTab(SiteContentDetector $detector): string
@@ -71,7 +78,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugins\SitesManager\SiteContentDet
         $view->extensions = Controller::getComponentExtensions(true);
         $view->hasClientConfiguration = $authorization->hasClientConfiguration();
         $view->isConfigured = $authorization->hasAccessToken();
-        $view->isNoDataPage = true;
         return $view->render();
     }
 
