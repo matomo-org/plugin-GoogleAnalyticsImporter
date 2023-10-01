@@ -290,7 +290,9 @@ EOF;
     private function getGaMessageAsJson($message): string
     {
         $message = $this->arrayMapRecursive(function ($item) {
-            if (method_exists($item, 'serializeToJsonString')) {
+            if (is_object($item)
+                && method_exists($item, 'serializeToJsonString')
+            ) {
                 return json_decode($item->serializeToJsonString(), true);
             }
             return $item;
