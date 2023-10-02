@@ -1,5 +1,5 @@
 <template>
-  <div v-for="(refComponent, index) in componentExtensions" :key="index">
+  <template v-for="(refComponent, index) in componentExtensions" :key="index">
     <ContentBlock
       v-if="!isNoDataPage"
       :content-title="isNoDataPage ? '' : translate('GoogleAnalyticsImporter_AdminMenuTitle')"
@@ -28,7 +28,7 @@
         :strategy-to-use="strategyToUse"
         :additional-help-text="configConnectProps.additionalHelpText"/>
     </ContentBlock>
-    <div v-else>
+    <template v-else>
       <component
         :is="refComponent"
         :manual-config-nonce="configConnectProps.manualConfigNonce"
@@ -52,8 +52,8 @@
         :is-configured="isConfigured"
         :strategy-to-use="strategyToUse"
         :additional-help-text="configConnectProps.additionalHelpText"/>
-    </div>
-  </div>
+    </template>
+  </template>
 </template>
 <script lang="ts">
 import {
