@@ -176,7 +176,7 @@ class ImportedFromGoogleGA4 extends Fixture
         if ($idSiteToResume) {
             $command .= '--idsite=' . $idSiteToResume;
         } else {
-            $command .= ' --dates=' . $dates . ' --property=' . $property . ' --streamId='.$streamIds.' --extra-custom-dimension=userAgeBracket,visit';
+            $command .= ' --dates=' . $dates . ' --property=' . $property . ' --streamIds='.$streamIds.' --extra-custom-dimension=userAgeBracket,visit';
         }
 
         $timer = new Timer();
