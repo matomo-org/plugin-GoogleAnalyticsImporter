@@ -27,14 +27,14 @@ describe("GoogleAnalyticsImporterGA4", function () {
         });
     }
 
-    it("should load the settings correctly", async function () {
+    it.only("should load the settings correctly", async function () {
         await page.goto(url);
 
         const content = await page.$('.pageWrap');
         expect(await content.screenshot()).to.matchImage('load');
     });
 
-    it("should load the settings correctly with GA4 option selected", async function () {
+    it.only("should load the settings correctly with GA4 option selected", async function () {
         await page.goto(url);
 
         const content = await page.$('.pageWrap');
@@ -42,7 +42,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
         expect(await content.screenshot()).to.matchImage('load_ga4');
     });
 
-    it("should start an import properly", async function () {
+    it.only("should start an import properly", async function () {
         await page.evaluate(() => $('input#startDateGA4').val('2019-06-27').change());
         await page.evaluate(() => $('input#endDateGA4').val('2019-07-02').change());
         await page.evaluate(() => $('input#propertyIdGA4').val('properties/12345').change());
@@ -62,7 +62,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
         expect(await content.screenshot()).to.matchImage('start_import');
     });
 
-    it('should show the error in the UI when an import fails', async function () {
+    it.only('should show the error in the UI when an import fails', async function () {
         await page.waitForTimeout(70000);
 
         await page.reload({ timeout: 0 });
@@ -74,7 +74,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
         expect(await content.screenshot()).to.matchImage('errored_import');
     });
 
-    it('should manually resume an import when the resume button is clicked', async function () {
+    it.only('should manually resume an import when the resume button is clicked', async function () {
         await page.click('td.actions > a.icon-play');
         await page.waitForNetworkIdle();
         await page.waitForSelector('.pageWrap');
