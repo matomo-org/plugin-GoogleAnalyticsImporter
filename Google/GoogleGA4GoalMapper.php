@@ -15,8 +15,6 @@ use Piwik\Log\LoggerInterface;
 
 class GoogleGA4GoalMapper
 {
-    const FUNNELS_URL = 'https://plugins.matomo.org/Funnels';
-
     /**
      * @var LoggerInterface
      */

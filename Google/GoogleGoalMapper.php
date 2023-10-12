@@ -12,10 +12,10 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportGoalException;
 use Piwik\Plugins\SitesManager\API;
 use Piwik\Log\LoggerInterface;
+use Piwik\Url;
 
 class GoogleGoalMapper
 {
-    const FUNNELS_URL = 'https://plugins.matomo.org/Funnels';
 
     /**
      * @var LoggerInterface
@@ -109,7 +109,7 @@ class GoogleGoalMapper
 
         if (!\Piwik\Plugin\Manager::getInstance()->isPluginActivated('Funnels')) {
             throw new CannotImportGoalException($gaGoal, 'multiple steps in a URL destination goal found, this is only supported in Matomo through the <a href="' .
-                self::FUNNELS_URL . '">Funnels</a> plugin');
+                Url::addCampaignParametersToMatomoLink('https://plugins.matomo.org/Funnels') . '">Funnels</a> plugin');
         }
 
         $result['funnel'] = $this->mapFunnelSteps($gaGoal, $urlMatchDetails);

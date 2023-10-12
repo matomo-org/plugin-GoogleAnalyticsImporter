@@ -592,7 +592,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             'googleAuthUrl' => $googleAuthUrl,
             'manualConfigText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2')
                 . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', [
-                    '<a href="https://matomo.org/faq/general/set-up-google-analytics-import/" rel="noreferrer noopener" target="_blank">',
+                    '<a href="' . Url::addCampaignParametersToMatomoLink('https://matomo.org/faq/general/set-up-google-analytics-import/') . '" rel="noreferrer noopener" target="_blank">',
                     '</a>',
                 ]),
             'manualConfigNonce' => $nonce,
