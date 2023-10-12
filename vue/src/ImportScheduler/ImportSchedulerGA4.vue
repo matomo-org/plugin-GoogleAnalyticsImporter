@@ -121,6 +121,7 @@ import {
   NotificationsStore,
   AjaxHelper,
   parseDate,
+  externalLink,
 } from 'CoreHome';
 import { Field } from 'CorePluginsAdmin';
 
@@ -258,10 +259,9 @@ export default defineComponent({
         '</b>');
     },
     forceIgnoreOutOfCustomDimSlotErrorHelp() {
-      const url = 'https://matomo.org/docs/custom-dimensions/';
       return translate(
         'GoogleAnalyticsImporter_ForceCustomDimensionSlotCheckHelp',
-        `<a href="${url}" rel="noreferrer noopener" target="_blank">`,
+        externalLink('https://matomo.org/docs/custom-dimensions/'),
         '</a>',
       );
     },
