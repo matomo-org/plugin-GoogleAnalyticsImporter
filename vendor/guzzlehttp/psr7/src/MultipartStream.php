@@ -60,7 +60,7 @@ final class MultipartStream implements StreamInterface
             $str .= "{$key}: {$value}\r\n";
         }
 
-        return "--{$this->boundary}\r\n" . trim($str) . "\r\n\r\n";
+        return "--{$this->boundary}\r\n".trim($str)."\r\n\r\n";
     }
 
     /**
@@ -72,7 +72,7 @@ final class MultipartStream implements StreamInterface
 
         foreach ($elements as $element) {
             if (!is_array($element)) {
-                throw new \UnexpectedValueException("An array is expected");
+                throw new \UnexpectedValueException('An array is expected');
             }
             $this->addElement($stream, $element);
         }
