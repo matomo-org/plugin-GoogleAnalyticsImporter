@@ -1,5 +1,9 @@
 ## Changelog
 
+# 5.0.4
+- Updated dependency (Guzzle)
+- Updated translations
+
 # 5.0.3
 - Compatibility with Matomo 5 rc5
 
