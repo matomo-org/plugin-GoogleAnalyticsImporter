@@ -6,16 +6,9 @@ namespace Composer\Autoload;
 
 class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
 {
-    public static $files = array (
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        'decc78cc4436b1292c6c0d151b19445c' => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
-        '1f87db08236948d07391152dccb70f04' => __DIR__ . '/..' . '/google/apiclient-services/autoload.php',
-        'a8d3953fd9959404dd22d3dfcd0a79f0' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        '56823cacd97af379eceaf82ad00b928f' => __DIR__ . '/..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
-    );
+    public static $files = array(
+);
+
 
     public static $prefixLengthsPsr4 = array (
         'p' => 
@@ -177,33 +170,6 @@ class ComposerStaticInitbfe0ce4af7932a343124a58229b00de0
 
     public static $classMap = array (
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'GPBMetadata\\GrpcGcp' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/GPBMetadata/GrpcGcp.php',
-        'Google_AccessToken_Revoke' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_AccessToken_Verify' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_AuthHandler_AuthHandlerFactory' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_AuthHandler_Guzzle5AuthHandler' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_AuthHandler_Guzzle6AuthHandler' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_AuthHandler_Guzzle7AuthHandler' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Client' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Collection' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Exception' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Http_Batch' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Http_MediaFileUpload' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Http_REST' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Model' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Service' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Service_Exception' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Service_Resource' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Task_Composer' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Task_Exception' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Task_Retryable' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Task_Runner' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Google_Utils_UriTemplate' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'Grpc\\Gcp\\AffinityConfig' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig.php',
-        'Grpc\\Gcp\\AffinityConfig_Command' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/AffinityConfig_Command.php',
-        'Grpc\\Gcp\\ApiConfig' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/ApiConfig.php',
-        'Grpc\\Gcp\\ChannelPoolConfig' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/ChannelPoolConfig.php',
-        'Grpc\\Gcp\\MethodConfig' => __DIR__ . '/..' . '/google/grpc-gcp/src/generated/Grpc/Gcp/MethodConfig.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
