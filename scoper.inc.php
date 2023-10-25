@@ -44,8 +44,8 @@ if ($isRenamingReferences) {
 }
 
 $namespacesToIncludeRegexes = array_map(function ($n) {
-    $n = rtrim($n, '\\\\');
-    return '/^' . preg_quote($n) . '(?:\\\\\\\\|$)/';
+    $n = rtrim($n, '\\');
+    return '/^' . preg_quote($n) . '(?:\\\\|$)/';
 }, $namespacesToPrefix);
 
 return [
@@ -76,6 +76,66 @@ function {$matches[1]}(\$klass)
     }
 EOF;
                 }, $content);
+            }
+
+            return $content;
+        },
+
+        // patcher for unit test files that use serialized response strings
+        static function (string $filePath, string $prefix, string $content) use ($isRenamingReferences): string {
+            if (!$isRenamingReferences) {
+                return $content;
+            }
+
+            $unitTestFolder = __DIR__ . '/tests/Unit/Google/';
+            if (strpos($filePath, $unitTestFolder) === 0) {
+                $content = preg_replace_callback('/s:(\d+):"\x00Google\\\\\\\\([^\x00]+)/', function (array $matches): string {
+                    $strSize = (int)$matches[1];
+                    return 's:' . ($strSize + strlen('Matomo\\Dependencies\\GoogleAnalyticsImporter\\'))
+                        . ":\\\"\x00Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\"
+                        . str_replace('\\\\', '\\', $matches[2]);
+                }, $content);
+            }
+
+            return $content;
+        },
+
+        // patcher for captured responses used by tests
+        static function (string $filePath, string $prefix, string $content) use ($isRenamingReferences): string {
+            if (!$isRenamingReferences) {
+                return $content;
+            }
+
+            if ($filePath === __DIR__ . '/tests/resources/capturedresponses.log') {
+                $prefix = 'Matomo\\\\Dependencies\\\\GoogleAnalyticsImporter\\\\';
+                $content = preg_replace_callback('/([sO]):(\\d+):\\\\"Google_/', function ($matches) use ($prefix) {
+                    return $matches[1] . ':' . ((int)$matches[2] + strlen($prefix) - 3) . ':\\"' . $prefix . 'Google_';
+                }, $content);
+            }
+
+            if ($filePath === __DIR__ . '/tests/resources/capturedresponses-ga4.log') {
+                // replace key values all at once
+                $content = str_replace('"Google\\\\', '"Matomo\\\\Dependencies\\\\GoogleAnalyticsImporter\\\\Google\\\\', $content);
+
+                // prefix values in array contents line by line
+                $lines = explode("\n", $content);
+                foreach ($lines as &$line) {
+                    $data = json_decode($line, true);
+                    if (empty($data)) {
+                        continue;
+                    }
+
+                    $responseData = base64_decode($data[1]);
+
+                    $prefix = 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\';
+                    $responseData = preg_replace_callback('/([sO]):(\\d+):"(\x00)?(Google|GuzzleHttp)\\\\/', function ($matches) use ($prefix) {
+                        return $matches[1] . ':' . ((int)$matches[2] + strlen($prefix)) . ":\"" . $matches[3] . $prefix . $matches[4] . '\\';
+                    }, $responseData);
+                    $responseData = base64_encode($responseData);
+
+                    $line = json_encode([$data[0], $responseData]);
+                }
+                $content = implode("\n", $lines);
             }
 
             return $content;
@@ -126,4 +186,5 @@ EOF;
         'PIWIK_TEST_MODE',
         '/^self::/', // work around php-scoper bug
     ],
+    'exclude-functions' => ['Piwik_ShouldPrintBackTraceWithMessage'],
 ];
