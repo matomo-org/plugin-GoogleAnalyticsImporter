@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Piwik - free/libre analytics platform
  *
@@ -6,7 +7,6 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  *
  */
-
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\DevicesDetection;
 
 use DeviceDetector\Parser\Client\Browser;
@@ -20,49 +20,39 @@ use Piwik\Date;
 use Piwik\Plugins\DevicesDetection\Archiver;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsQueryService;
 use Piwik\Log\LoggerInterface;
-use DeviceDetector\Parser\Device\AbstractDeviceParser AS DeviceParser;
-
+use DeviceDetector\Parser\Device\AbstractDeviceParser as DeviceParser;
 class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporter
 {
     const PLUGIN_NAME = 'DevicesDetection';
-
     /**
      * @var array
      */
     private $deviceBrandMap;
-
     /**
      * @var array
      */
     private $operatingSystemMap;
-
     /**
      * @var array
      */
     private $browserMap;
-
     /**
      * @var array
      */
     private $browserEngineMap;
-
     /**
      * @var Transient
      */
     private $cache;
-
     public function __construct(GoogleAnalyticsQueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
-
         $this->cache = StaticContainer::get(Transient::class);
-
         $this->deviceBrandMap = $this->getDeviceBrandMap();
         $this->operatingSystemMap = $this->getOperatingSystemMap();
         $this->browserMap = $this->getBrowserMap();
         $this->browserEngineMap = $this->getBrowserEngineMap();
     }
-
     public function importRecords(Date $day)
     {
         $this->buildDeviceTypeRecord($day);
@@ -71,98 +61,74 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->buildDeviceOsRecords($day);
         $this->buildBrowserRecords($day);
     }
-
     private function buildDeviceTypeRecord(Date $day)
     {
         $this->buildRecord($day, 'ga:deviceCategory', Archiver::DEVICE_TYPE_RECORD_NAME, [$this, 'mapCategory']);
     }
-
     private function buildDeviceBrandsRecord(Date $day)
     {
         $this->buildRecord($day, 'ga:mobileDeviceBranding', Archiver::DEVICE_BRAND_RECORD_NAME, [$this, 'mapBrand']);
     }
-
     private function buildDeviceModelsRecord(Date $day)
     {
         $this->buildRecord($day, 'ga:mobileDeviceModel', Archiver::DEVICE_MODEL_RECORD_NAME, [$this, 'mapModel']);
     }
-
     private function buildDeviceOsRecords(Date $day)
     {
         $this->buildRecord($day, 'ga:operatingSystem', Archiver::OS_RECORD_NAME, [$this, 'mapOs']);
         $this->buildRecord($day, 'ga:operatingSystemVersion', Archiver::OS_VERSION_RECORD_NAME, [$this, 'mapOsVersion']);
-
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:operatingSystem', 'ga:operatingSystemVersion'], $this->getConversionAwareVisitMetrics());
-
         $operatingSystems = new DataTable();
         $operatingSystemVersions = new DataTable();
-
         foreach ($table->getRows() as $row) {
             $os = $this->mapOs($row->getMetadata('ga:operatingSystem'));
             $osVersion = $this->mapOsVersion($row->getMetadata('ga:operatingSystemVersion'));
-
             if (empty($os)) {
                 $os = 'xx';
             }
-
             $this->addRowToTable($operatingSystems, $row, $os);
             $this->addRowToTable($operatingSystemVersions, $row, $os . ';' . $osVersion);
         }
-
         Common::destroy($table);
-
         $this->insertRecord(Archiver::OS_RECORD_NAME, $operatingSystems, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($operatingSystems);
-
         $this->insertRecord(Archiver::OS_VERSION_RECORD_NAME, $operatingSystemVersions, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($operatingSystemVersions);
     }
-
     private function buildBrowserRecords(Date $day)
     {
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = ['ga:browser', 'ga:browserVersion'], $this->getConversionAwareVisitMetrics());
-
         $browsers = new DataTable();
         $browserVersions = new DataTable();
         $browserEngines = new DataTable();
-
         foreach ($table->getRows() as $row) {
             $browser = $this->mapBrowser($row->getMetadata('ga:browser'));
             if (empty($browser)) {
                 $browser = 'xx';
             }
-
             $browserVersion = $this->mapBrowserVersion($row->getMetadata('ga:browserVersion'));
-
             $browserEngine = $this->mapBrowserEngine($row->getMetadata('ga:browser'));
             if (empty($browserEngine)) {
                 $browserEngine = 'xx';
             }
-
             $this->addRowToTable($browsers, $row, $browser);
             $this->addRowToTable($browserVersions, $row, $browser . ';' . $browserVersion);
             $this->addRowToTable($browserEngines, $row, $browserEngine);
         }
-
         Common::destroy($table);
-
         $this->insertRecord(Archiver::BROWSER_ENGINE_RECORD_NAME, $browserEngines, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($browserEngines);
-
         $this->insertRecord(Archiver::BROWSER_RECORD_NAME, $browsers, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($browsers);
-
         $this->insertRecord(Archiver::BROWSER_VERSION_RECORD_NAME, $browserVersions, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($browserVersions);
     }
-
     private function buildRecord(Date $day, $dimension, $recordName, callable $mapper)
     {
         $gaQuery = $this->getGaQuery();
         $table = $gaQuery->query($day, $dimensions = [$dimension], $this->getConversionAwareVisitMetrics());
-
         $record = new DataTable();
         foreach ($table->getRows() as $row) {
             $label = $row->getMetadata($dimension);
@@ -171,20 +137,16 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             } else {
                 $originalLabel = $label;
                 $label = $mapper($label);
-                if ($originalLabel === false || $originalLabel === null || $originalLabel === '') {
+                if ($originalLabel === \false || $originalLabel === null || $originalLabel === '') {
                     $label = 'xx';
                 }
             }
-
             $this->addRowToTable($record, $row, $label);
         }
-
         Common::destroy($table);
-
         $this->insertRecord($recordName, $record, $this->getStandardMaximumRows(), $this->getStandardMaximumRows());
         Common::destroy($record);
     }
-
     protected function mapCategory($category)
     {
         switch ($category) {
@@ -195,88 +157,71 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             case 'mobile':
                 return DeviceParser::DEVICE_TYPE_SMARTPHONE;
             default:
-                $this->getLogger()->warning("Encountered unknown device category in google analytics: $category");
+                $this->getLogger()->warning("Encountered unknown device category in google analytics: {$category}");
                 return 'xx';
         }
     }
-
     protected function mapBrand($brand)
     {
         return $this->getValueFromValueMapping($this->deviceBrandMap, $brand, 'device brand');
     }
-
     protected function mapModel($model)
     {
         return $model;
     }
-
     protected function mapOs($os)
     {
         return $this->getValueFromValueMapping($this->operatingSystemMap, $os, 'operating system');
     }
-
     protected function mapBrowser($browser)
     {
         if (is_numeric($browser)) {
-            return 'xx'; // sometimes GA returns a numeric value for the browser (and no browser version). not sure why.
+            return 'xx';
+            // sometimes GA returns a numeric value for the browser (and no browser version). not sure why.
         }
-
         return $this->getValueFromValueMapping($this->browserMap, $browser, 'browser');
     }
-
     private function mapBrowserEngine($browser)
     {
         return $this->getValueFromValueMapping($this->browserEngineMap, $browser, null);
     }
-
     protected function mapOsVersion($osVersion)
     {
         return $osVersion;
     }
-
     protected function mapBrowserVersion($browserVersion)
     {
         return $browserVersion;
     }
-
     private function buildValueMapping($deviceParserValues)
     {
         $map = [];
         foreach ($deviceParserValues as $short => $long) {
             $lower = trim(strtolower($long));
             $map[$lower] = $short;
-
             $stripped = preg_replace('/[^a-zA-Z0-9]/', '', $lower);
             $map[$stripped] = $short;
         }
         return $map;
     }
-
     private function getValueFromValueMapping(array $valueMapping, $value, $valueType = null)
     {
         $cleanValue = trim(strtolower($value));
         if (isset($valueMapping[$cleanValue])) {
             return $valueMapping[$cleanValue];
         }
-
         $extraCleanValue = preg_replace('/[^a-zA-Z0-9]/', '', $cleanValue);
         if (isset($valueMapping[$extraCleanValue])) {
             return $valueMapping[$extraCleanValue];
         }
-
-        if (!empty($value)
-            && $valueType !== null
-        ) {
-            $this->getLogger()->warning("Encountered unknown $valueType: $value. A new mapping should be added.");
+        if (!empty($value) && $valueType !== null) {
+            $this->getLogger()->warning("Encountered unknown {$valueType}: {$value}. A new mapping should be added.");
         }
-
         return $value;
     }
-
     private function getDeviceBrandMap()
     {
         $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.deviceBrandMap';
-
         $result = $this->cache->fetch($cacheKey);
         if (empty($result)) {
             $result = $this->buildValueMapping(DeviceParser::$deviceBrands);
@@ -289,20 +234,21 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['blackberry'] = $result['rim'];
             $result['tecno'] = $result['tecno mobile'];
             $result['sonyericsson'] = $result['sony ericsson'];
-            $result['mozilla'] = 'xx'; // browser, not a brand
-            $result['feiteng'] = 'xx'; // Feiteng is a processor type, to a brand
-            $result['opera'] = 'xx'; // browser, not a brand
+            $result['mozilla'] = 'xx';
+            // browser, not a brand
+            $result['feiteng'] = 'xx';
+            // Feiteng is a processor type, to a brand
+            $result['opera'] = 'xx';
+            // browser, not a brand
             $result['mobiwire'] = 'xx';
             $result['creative'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;
     }
-
     private function getOperatingSystemMap()
     {
         $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.operatingSystemMap';
-
         $operatingSystems = OperatingSystem::getAvailableOperatingSystems();
         $result = $this->cache->fetch($cacheKey);
         if (empty($result)) {
@@ -313,22 +259,18 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['symbianos'] = $result['symbian os'];
             $result['playstation 3'] = $result['playstation'];
             $result['playstation 4'] = $result['playstation'];
-
             $result['nokia'] = 'xx';
             $result['samsung'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;
     }
-
     private function getBrowserMap()
     {
         $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.browserMap';
-
         $result = $this->cache->fetch($cacheKey);
         if (empty($result)) {
             $availableBrowsers = Browser::getAvailableBrowsers();
-
             $result = $this->buildValueMapping($availableBrowsers);
             $result['edge'] = $result['microsoft edge'];
             $result['safari (in-app)'] = $result['mobile safari'];
@@ -345,38 +287,33 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             $result['nintendo wiiu'] = $result['netfront'];
             $result['nintendo wii'] = $result['netfront'];
             $result['yabrowser'] = $result['yandex browser'];
-            $result['terra'] = 'xx'; // TODO: not detected by devices detection
-            $result['mozilla compatible agent'] = 'xx'; // TODO: mostly bots, we could ignore these...
+            $result['terra'] = 'xx';
+            // TODO: not detected by devices detection
+            $result['mozilla compatible agent'] = 'xx';
+            // TODO: mostly bots, we could ignore these...
             $result['\'mozilla'] = 'xx';
             $result['mozilla'] = 'xx';
             $this->cache->save($cacheKey, $result);
         }
         return $result;
     }
-
     private function getBrowserEngineMap()
     {
         $cacheKey = 'GoogleAnalyticsImporter.DevicesDetection.browserEngineMap';
-
         $result = $this->cache->fetch($cacheKey);
         if (empty($result)) {
             $regexesFile = __DIR__ . '/../../../../vendor/matomo/device-detector/regexes/client/browsers.yml';
-
             $spyc = new Spyc();
             $regexes = $spyc->parseFile($regexesFile);
-
             $result = [];
             foreach ($regexes as $regexInfo) {
                 if (empty($regexInfo['engine']['default'])) {
                     continue;
                 }
-
                 $long = $regexInfo['name'];
                 $engine = $regexInfo['engine']['default'];
-
                 $lower = trim(strtolower($long));
                 $map[$lower] = $engine;
-
                 $stripped = preg_replace('/[^a-zA-Z0-9]/', '', $lower);
                 $result[$stripped] = $engine;
             }
