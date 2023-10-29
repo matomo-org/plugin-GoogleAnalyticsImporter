@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Matomo - free/libre analytics platform
  *
@@ -17,25 +16,29 @@ class ApiQuotaHelper
      * Calculate the daily maximum api quota available for the instance
      * @return int
      */
-    public function getMaxDailyApiQuota() : int
+    public function getMaxDailyApiQuota(): int
     {
         //Local installation. No limitations from google applicable
         return -1;
     }
+
     public function getBalanceApiQuota()
     {
         return $this->getMaxDailyApiQuota();
     }
+
     public function saveApiUsed($numQueries)
     {
         //No need to save since it's a local installation
         return;
     }
+
     public function trackEvent($event, $name)
     {
         //DI to takeover on ConnectAccount
         return;
     }
+
     public function getImportCountForTheDay()
     {
         //Local installation. No limitations from google applicable
