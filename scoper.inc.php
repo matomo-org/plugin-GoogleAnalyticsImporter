@@ -14,7 +14,7 @@ $namespacesToPrefix = json_decode(getenv('MATOMO_NAMESPACES_TO_PREFIX'), true);
 $isRenamingReferences = getenv('MATOMO_RENAME_REFERENCES') == 1;
 $pluginName = getenv('MATOMO_PLUGIN');
 
-$namespacesToExclude = ['bcmath_compat', 'phpseclib3\Math'];
+$namespacesToExclude = [];
 $forceNoGlobalAlias = false;
 
 if ($isRenamingReferences) {
@@ -175,20 +175,6 @@ EOF;
 EOF;
 
                 $content = str_replace('\\spl_autoload_register(function ($class) {', $replace, $content);
-            }
-
-            return $content;
-        },
-
-        // Patcher for making sure that BcMath functions are left without the scoped namespace
-        static function (string $filePath, string $prefix, string $content) use ($isRenamingReferences): string {
-            if ($isRenamingReferences) {
-                return $content;
-            }
-
-            // Remove the newly added namespace
-            if ($filePath === __DIR__ . '/vendor/phpseclib/bcmath_compat/lib/bcmath.php') {
-                $content = str_replace("namespace {$prefix};", '', $content);
             }
 
             return $content;
