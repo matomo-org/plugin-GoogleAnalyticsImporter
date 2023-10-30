@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) InnoCraft Ltd - All rights reserved.
  *
@@ -16,15 +17,12 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Menu\MenuAdmin;
 use Piwik\Piwik;
-
 class Menu extends \Piwik\Plugin\Menu
 {
     public function configureAdminMenu(MenuAdmin $menu)
     {
         if (Piwik::hasUserSuperUserAccess()) {
-            $menu->addSystemItem('GoogleAnalyticsImporter_AdminMenuTitle',
-                $this->urlForAction('index'),
-                $order = 50);
+            $menu->addSystemItem('GoogleAnalyticsImporter_AdminMenuTitle', $this->urlForAction('index'), $order = 50);
         }
     }
 }
