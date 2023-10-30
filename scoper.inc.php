@@ -201,10 +201,10 @@ EOF;
             ];
 
             if (dirname($filePath) === __DIR__ . '/vendor/google/protobuf/src/Google/Protobuf/Internal') {
-                // Update each function to use the new scope
+                // Escape each function so that it doesn't try to use the file's namespace
                 foreach ($functionNames as $functionName) {
                     $pattern = '/(?<!function )\b(' . $functionName . ')(?=\()/';
-                    $content = preg_replace($pattern, '\\' . $prefix . '\\' . $functionName, $content);
+                    $content = preg_replace($pattern, '\\' . $functionName, $content);
                 }
             }
 
@@ -213,6 +213,11 @@ EOF;
             if ($filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger.php') {
                 $content = str_replace('phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\',
                     "{$escapedPrefix}\\\\phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\", $content);
+            }
+
+            // Remove the newly added namespace for the bcmath functions
+            if ($filePath === __DIR__ . '/vendor/phpseclib/bcmath_compat/lib/bcmath.php') {
+                $content = str_replace("namespace {$prefix};", '', $content);
             }
 
             return $content;
