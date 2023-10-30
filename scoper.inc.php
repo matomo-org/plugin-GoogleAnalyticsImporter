@@ -179,6 +179,44 @@ EOF;
 
             return $content;
         },
+
+        // Patcher for making sure that BcMath functions are properly scoped
+        static function (string $filePath, string $prefix, string $content) use ($isRenamingReferences): string {
+            if ($isRenamingReferences) {
+                return $content;
+            }
+
+            $functionNames = [
+                'bcadd',
+                'bccomp',
+                'bcdiv',
+                'bcmod',
+                'bcmul',
+                'bcpow',
+                'bcpowmod',
+                'bcscale',
+                'bcsqrt',
+                'bcsub',
+                'getallheaders',
+            ];
+
+            if (dirname($filePath) === __DIR__ . '/vendor/google/protobuf/src/Google/Protobuf/Internal') {
+                // Update each function to use the new scope
+                foreach ($functionNames as $functionName) {
+                    $pattern = '/(?<!function )\b(' . $functionName . ')(?=\()/';
+                    $content = preg_replace($pattern, '\\' . $prefix . '\\' . $functionName, $content);
+                }
+            }
+
+            // Fix the string reference of a scoped dependency in the Math lib
+            $escapedPrefix = str_replace('\\', '\\\\', $prefix);
+            if ($filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger.php') {
+                $content = str_replace('phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\',
+                    "{$escapedPrefix}\\\\phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\", $content);
+            }
+
+            return $content;
+        },
     ],
     'include-namespaces' => $namespacesToIncludeRegexes,
     'exclude-namespaces' => $namespacesToExclude,
