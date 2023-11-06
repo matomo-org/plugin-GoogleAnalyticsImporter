@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.0.5
+- Added code to remember GA Import baner dismiss action
+
 # 5.0.4
 - Updated dependency (Guzzle)
 - Updated translations
