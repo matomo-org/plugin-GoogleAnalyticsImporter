@@ -1,5 +1,6 @@
 (function () {
   var notificationID = 'ConfigureGAImportNotification';
+  var localStorageID = notificationID + '_' + window.piwik.userLogin + '_shown';
   document.addEventListener("DOMContentLoaded", function (event) {
     window.CoreHome.Matomo.on("matomoPageChange", showNotification);
     window.CoreHome.Matomo.on("piwikPageChange", showNotification);
@@ -7,7 +8,7 @@
   checkForConfigureImporterDisplay();
 
   function checkForConfigureImporterDisplay() {
-    if (!piwik.idSite) {
+    if (!piwik.idSite || window.localStorage.getItem(localStorageID)) {
       return;
     }
     let searchParams = {
@@ -40,5 +41,12 @@
       context: 'info',
       id: notificationID
     });
+
+    var id = notification.notificationId;
+    if (id) {
+      $('body').on('click', '[data-notification-instance-id="'+id+'"] .close', function(){
+        window.localStorage.setItem(localStorageID, "1");
+      });
+    }
   }
 })();
