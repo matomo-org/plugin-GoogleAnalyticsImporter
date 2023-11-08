@@ -162,7 +162,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { MatomoUrl, translate, Matomo } from 'CoreHome';
+import {
+  MatomoUrl,
+  translate,
+  Matomo,
+  externalLink,
+} from 'CoreHome';
 
 export default defineComponent({
   props: {
@@ -192,7 +197,7 @@ export default defineComponent({
     errorMessageBugReportRequest() {
       return translate(
         'GoogleAnalyticsImporter_ErrorMessageBugReportRequest',
-        '<a href="https://forum.matomo.org/" rel="noreferrer noopener" target="_blank">',
+        externalLink('https://forum.matomo.org/'),
         '</a>',
       );
     },

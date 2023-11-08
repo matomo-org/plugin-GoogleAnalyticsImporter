@@ -90,6 +90,7 @@
 import { defineComponent } from 'vue';
 import {
   translate,
+  externalLink,
 } from 'CoreHome';
 
 export default defineComponent({
@@ -146,10 +147,9 @@ export default defineComponent({
   },
   computed: {
     setupGoogleAnalyticsImportFaq() {
-      const url = 'https://matomo.org/faq/general/set-up-google-analytics-import/';
       return translate(
         'GoogleAnalyticsImporter_ConfigureTheImporterLabel3',
-        `<a href="${url}" rel="noreferrer noopener" target="_blank">`,
+        externalLink('https://matomo.org/faq/general/set-up-google-analytics-import/'),
         '</a>',
       );
     },
@@ -157,10 +157,9 @@ export default defineComponent({
       return this.isSelectingFile || this.isUploading;
     },
     getAdvanceConnectStep01Text() {
-      const faqLink = 'https://matomo.org/faq/general/set-up-google-analytics-import/';
       return this.translate(
         'GoogleAnalyticsImporter_GAImportNoDataScreenStep01',
-        `<a href="${faqLink}" target="_blank" rel="noreferrer noopener">`,
+        externalLink('https://matomo.org/faq/general/set-up-google-analytics-import/'),
         '</a>',
       );
     },
@@ -171,19 +170,18 @@ export default defineComponent({
       );
     },
     getAdvanceConnectStep04Text() {
-      const faqLink = 'https://matomo.org/faq/general/running-the-google-analytics-import/';
       return this.translate(
         'GoogleAnalyticsImporter_GAImportNoDataScreenStep04',
         `<a href="${this.indexActionUrl}" target="_blank" rel="noreferrer noopener">`,
         '</a>',
-        `<a href="${faqLink}" target="_blank" rel="noreferrer noopener">`,
+        externalLink('https://matomo.org/faq/general/running-the-google-analytics-import/'),
         '</a>',
       );
     },
     getAdvanceConnectStep05Text() {
       return this.translate(
         'GoogleAnalyticsImporter_GAImportNoDataScreenStep05',
-        `<a href="${this.indexActionUrl}" target="_blank" rel="noreferrer noopener">`,
+        externalLink(this.indexActionUrl),
         '</a>',
       );
     },
