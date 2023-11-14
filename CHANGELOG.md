@@ -1,5 +1,9 @@
 ## Changelog
 
+# 5.0.6
+- Scope vendored libraries to improve compatibility with other plugins
+- Compatibility with PHP 8.3
+
 # 5.0.5
 - Added code to remember GA Import baner dismiss action
 
