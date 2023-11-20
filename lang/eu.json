@@ -1,7 +1,34 @@
 {
     "GoogleAnalyticsImporter": {
-        "Optional": "Aukerazkoa",
+        "AccountId": "Google Analytics kontuaren IDa",
+        "Actions": "Ekintzak",
+        "AdminMenuTitle": "Inportatu Google Analytics",
+        "Authorize": "Baimendu",
+        "Change": "Aldatu",
+        "ConfigurationFile": "Konfigurazio-fitxategia",
+        "ConfigurationText": "Konfigurazio-testua",
+        "ConfigureTheImporter": "Konfiguratu inportatzailea",
+        "ConfigureTheImporterHelp": "%1$sOharra:%2$s Google Analytics 3ko zure datuak inportatzen ez badituzu behin betiko galduko dituzu 2023ko abenduaren 31n.",
+        "ConfigureTheImporterHelpNewDate": "%1$sOharra:%2$s Google Analytics 3ko zure datuak inportatzen ez badituzu behin betiko galduko dituzu 2024ko ekainaren 30ean.",
+        "ConfigureTheImporterLabel1": "Inportatu zure Google Analytics-eko jabetzak eta txostenen datuak babeskopia bat sortu eta Matomoren tresna analitiko ahaltsuekin analizatzeko. Inportatzailea konektatzen duzunean, hautatu Google Analytics-eko zein jabetza inportatu nahi dituzun eta Matomok automatikoki webgune berri bat sortuko du bakoitzarentzat.",
+        "ConfigureTheImporterLabel2": "Google Analytics-eko datuak inportatu ahal izateko Matomok datu horietara sarbidea behar du.",
+        "ConfigureTheImporterLabel3": "Hasteko, %1$sjarraitu gure jarraibideak zure OAuth bezeroaren konfigurazioa eskuratzeko%2$s. Ondoren igo bezeroaren konfigurazio-fitxategia beheko botoia erabiliz.",
+        "EndDate": "Amaiera-data",
+        "GA4Dimension": "GA4 dimentsioa",
+        "GADimension": "GA dimentsioa",
+        "ImporterHelp1": "Google Analytics inportatzaileak OAuth bezeroaren konfigurazioa Google API kontsolan konfiguratzea eskatzen du beste ezer egin aurretik.",
+        "InvalidClientJson": "JSON baliogabea kredentzial-fitxategian, saiatu fitxategia berriz deskargatzen Google API kontsolatik.",
+        "IsMobileApp": "Mugikorreko aplikazioa",
+        "MissingClientConfiguration": "Bezeroaren konfigurazioa falta da edo baliogabea da, mesedez igo berriz.",
+        "None": "Bat ere ez",
+        "Optional": "Hautazkoa",
+        "PropertyId": "Google Analytics-eko jabetzaren IDa",
+        "PropertyIdGA4": "GA4 jabetzaren IDa",
+        "ReAuthorize": "Baimendu berriz",
+        "RequiredFunctionsCheck": "Beharrezko PHP funtzioak",
+        "SettingUp": "Konfiguratzen",
+        "Start": "Hasiera",
         "Status": "Egoera",
-        "Actions": "Ekintzak"
+        "ViewId": "Google Analytics-eko ikuspegiaren IDa"
     }
 }
