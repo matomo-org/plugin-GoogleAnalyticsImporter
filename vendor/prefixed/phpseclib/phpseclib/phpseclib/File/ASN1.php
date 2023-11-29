@@ -20,7 +20,6 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\File;
 
-use DateTime;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Common\Functions\Strings;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\File\ASN1\Element;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Math\BigInteger;
@@ -184,7 +183,7 @@ abstract class ASN1
         if ($decoded === \false) {
             return null;
         }
-        return [self::decode_ber($encoded)];
+        return [$decoded];
     }
     /**
      * Parse BER-encoding (Helper function)
@@ -1292,7 +1291,7 @@ abstract class ASN1
                         return \false;
                     }
                     break;
-                case ($c & 0x80000000) != 0:
+                case ($c & (\PHP_INT_SIZE == 8 ? 0x80000000 : 1 << 31)) != 0:
                     return \false;
                 case $c >= 0x4000000:
                     $v .= chr(0x80 | $c & 0x3f);

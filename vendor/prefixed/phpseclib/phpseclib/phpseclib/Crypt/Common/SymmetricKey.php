@@ -599,11 +599,11 @@ abstract class SymmetricKey
             switch (\true) {
                 // PHP_OS & "\xDF\xDF\xDF" == strtoupper(substr(PHP_OS, 0, 3)), but a lot faster
                 case (\PHP_OS & "\xdf\xdf\xdf") === 'WIN':
-                case (php_uname('m') & "\xdf\xdf\xdf") != 'ARM':
+                case !(is_string(php_uname('m')) && (php_uname('m') & "\xdf\xdf\xdf") == 'ARM'):
                 case defined('PHP_INT_SIZE') && \PHP_INT_SIZE == 8:
                     self::$use_reg_intval = \true;
                     break;
-                case (php_uname('m') & "\xdf\xdf\xdf") == 'ARM':
+                case is_string(php_uname('m')) && (php_uname('m') & "\xdf\xdf\xdf") == 'ARM':
                     switch (\true) {
                         /* PHP 7.0.0 introduced a bug that affected 32-bit ARM processors:
                         
@@ -823,7 +823,7 @@ abstract class SymmetricKey
      * @see Crypt/Hash.php
      * @param string $password
      * @param string $method
-     * @param string[] ...$func_args
+     * @param int|string ...$func_args
      * @throws \LengthException if pbkdf1 is being used and the derived key length exceeds the hash length
      * @throws \RuntimeException if bcrypt is being used and a salt isn't provided
      * @return bool

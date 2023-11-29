@@ -889,7 +889,6 @@ class Rijndael extends BlockCipher
         $c = $this->c;
         // Generating encrypt code:
         $init_encrypt .= '
-            static $tables;
             if (empty($tables)) {
                 $tables = &$this->getTables();
             }
@@ -939,7 +938,6 @@ class Rijndael extends BlockCipher
         $encrypt_block .= ');';
         // Generating decrypt code:
         $init_decrypt .= '
-            static $invtables;
             if (empty($invtables)) {
                 $invtables = &$this->getInvTables();
             }
@@ -987,7 +985,7 @@ class Rijndael extends BlockCipher
                 ' . $dw[$i] . "\n";
         }
         $decrypt_block .= ');';
-        $this->inline_crypt = $this->createInlineCryptFunction(['init_crypt' => '', 'init_encrypt' => $init_encrypt, 'init_decrypt' => $init_decrypt, 'encrypt_block' => $encrypt_block, 'decrypt_block' => $decrypt_block]);
+        $this->inline_crypt = $this->createInlineCryptFunction(['init_crypt' => 'static $tables; static $invtables;', 'init_encrypt' => $init_encrypt, 'init_decrypt' => $init_decrypt, 'encrypt_block' => $encrypt_block, 'decrypt_block' => $decrypt_block]);
     }
     /**
      * Encrypts a message.
