@@ -232,7 +232,7 @@ class Integer extends Base
         list($temp) = $q->add($one)->divide($two);
         $r = $this->value->powMod($temp, static::$modulo[$this->instanceID]);
         while (!$t->equals($one)) {
-            for ($i == clone $one; $i->compare($m) < 0; $i = $i->add($one)) {
+            for ($i = clone $one; $i->compare($m) < 0; $i = $i->add($one)) {
                 if ($t->powMod($two->pow($i), static::$modulo[$this->instanceID])->equals($one)) {
                     break;
                 }
@@ -276,8 +276,11 @@ class Integer extends Base
      */
     public function toBytes()
     {
-        $length = static::$modulo[$this->instanceID]->getLengthInBytes();
-        return str_pad($this->value->toBytes(), $length, "\x00", \STR_PAD_LEFT);
+        if (isset(static::$modulo[$this->instanceID])) {
+            $length = static::$modulo[$this->instanceID]->getLengthInBytes();
+            return str_pad($this->value->toBytes(), $length, "\x00", \STR_PAD_LEFT);
+        }
+        return $this->value->toBytes();
     }
     /**
      * Converts an Integer to a hex string (eg. base-16).
