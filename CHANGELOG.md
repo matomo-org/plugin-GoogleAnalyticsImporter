@@ -1,5 +1,8 @@
 ## Changelog
 
+% 5.0.7
+- Upgraded phpseclib to 3.0.34
+
 # 5.0.6
 - Scope vendored libraries to improve compatibility with other plugins
 - Compatibility with PHP 8.3
