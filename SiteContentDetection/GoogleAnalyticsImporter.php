@@ -51,6 +51,11 @@ class GoogleAnalyticsImporter extends \Piwik\Plugins\SitesManager\SiteContentDet
     }
     public function renderInstructionsTab(SiteContentDetector $detector) : string
     {
+        // Only show the tab if the current user is super user
+        if (!Piwik::hasUserSuperUserAccess()) {
+            return '';
+        }
+
         $isConnectAccountsPluginActivated = \Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsImporter::isConnectAccountsPluginActivated();
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
