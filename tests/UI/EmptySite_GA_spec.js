@@ -64,4 +64,17 @@ describe("EmptySite_GA", function () {
     const pageElement = await page.$('.page');
     expect(await pageElement.screenshot()).to.matchImage('details_ga4');
   });
+
+  it('should not show GA import recommended for admin user', async function () {
+    testEnvironment.detectedContentDetections = ['GoogleAnalytics4', 'Cloudflare'];
+    testEnvironment.connectedConsentManagers = [];
+    testEnvironment.idSitesAdminAccess = [1,2,5];
+    testEnvironment.save();
+
+    const urlToTest = "?" + generalParams + "&module=CoreHome&action=index";
+    await page.goto(urlToTest);
+
+    const pageElement = await page.$('.page');
+    expect(await pageElement.screenshot()).to.matchImage('list_admin');
+  });
 });
