@@ -4,15 +4,15 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit017996f28521185ba9bb3986fe502686
+class ComposerStaticInite6a203f61c7cd9e9f8d8861b1d49590d
 {
     public static $files = array (
+        '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         '6fc8d7e61db31927a11bd66a7e02cbbf' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/functions_include.php',
         '9ffe771412935e32de763feba901e2e0' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/functions_include.php',
         'c17e09b5491f79542d887522db07b799' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '8bdb104f587366cf982cde548067cb60' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
         'a9ba2bc605f8cc31904f6c788ee13386' => __DIR__ . '/../..' . '/google/apiclient-services/autoload.php',
-        '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         '66cfd3a7190309803b5cc0fea03a4cdc' => __DIR__ . '/../..' . '/symfony/deprecation-contracts/function.php',
         'c41a84066d147a2d8e4ba7ebd559db66' => __DIR__ . '/../..' . '/ralouphie/getallheaders/src/getallheaders.php',
     );
@@ -1840,7 +1840,7 @@ class ComposerStaticInit017996f28521185ba9bb3986fe502686
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit017996f28521185ba9bb3986fe502686::$classMap;
+            $loader->classMap = ComposerStaticInite6a203f61c7cd9e9f8d8861b1d49590d::$classMap;
 
         }, null, ClassLoader::class);
     }
