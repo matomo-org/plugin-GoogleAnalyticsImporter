@@ -1,6 +1,9 @@
 ## Changelog
 
-% 5.0.7
+# 5.0.8
+- Added code to hide GA Import tab for no-data screen
+
+# 5.0.7
 - Upgraded phpseclib to 3.0.34
 
 # 5.0.6
