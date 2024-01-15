@@ -17,30 +17,40 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\HttpHandler;
 
+use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\BodySummarizer;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Client;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\ClientInterface;
+use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\HandlerStack;
+use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Middleware;
 class HttpHandlerFactory
 {
     /**
      * Builds out a default http handler for the installed version of guzzle.
      *
      * @param ClientInterface $client
-     * @return Guzzle5HttpHandler|Guzzle6HttpHandler|Guzzle7HttpHandler
+     * @return Guzzle6HttpHandler|Guzzle7HttpHandler
      * @throws \Exception
      */
     public static function build(ClientInterface $client = null)
     {
-        $client = $client ?: new Client();
+        if (is_null($client)) {
+            $stack = null;
+            if (class_exists(BodySummarizer::class)) {
+                // double the # of characters before truncation by default
+                $bodySummarizer = new BodySummarizer(240);
+                $stack = HandlerStack::create();
+                $stack->remove('http_errors');
+                $stack->unshift(Middleware::httpErrors($bodySummarizer), 'http_errors');
+            }
+            $client = new Client(['handler' => $stack]);
+        }
         $version = null;
         if (defined('Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\ClientInterface::MAJOR_VERSION')) {
             $version = ClientInterface::MAJOR_VERSION;
         } elseif (defined('Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\ClientInterface::VERSION')) {
-            /** @phpstan-ignore-next-line */
             $version = (int) substr(ClientInterface::VERSION, 0, 1);
         }
         switch ($version) {
-            case 5:
-                return new Guzzle5HttpHandler($client);
             case 6:
                 return new Guzzle6HttpHandler($client);
             case 7:

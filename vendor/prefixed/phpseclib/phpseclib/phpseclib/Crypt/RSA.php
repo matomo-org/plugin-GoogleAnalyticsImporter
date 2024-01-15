@@ -301,6 +301,7 @@ abstract class RSA extends AsymmetricKey
                 $rsa = openssl_pkey_new(['private_key_bits' => $bits] + $config);
                 openssl_pkey_export($rsa, $privatekeystr, null, $config);
                 // clear the buffer of error strings stemming from a minimalistic openssl.cnf
+                // https://github.com/php/php-src/issues/11054 talks about other errors this'll pick up
                 while (openssl_error_string() !== \false) {
                 }
                 return RSA::load($privatekeystr);

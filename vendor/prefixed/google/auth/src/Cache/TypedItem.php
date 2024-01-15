@@ -20,6 +20,10 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Cache;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Cache\CacheItemInterface;
 /**
  * A cache item.
+ *
+ * This class will be used by MemoryCacheItemPool and SysVCacheItemPool
+ * on PHP 8.0 and above. It is compatible with psr/cache 3.0 (PSR-6).
+ * @see Item for compatiblity with previous versions of PHP.
  */
 final class TypedItem implements CacheItemInterface
 {

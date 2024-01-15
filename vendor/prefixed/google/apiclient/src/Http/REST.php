@@ -46,7 +46,7 @@ class REST
      */
     public static function execute(ClientInterface $client, RequestInterface $request, $expectedClass = null, $config = [], $retryMap = null)
     {
-        $runner = new Runner($config, sprintf('%s %s', $request->getMethod(), (string) $request->getUri()), [get_class(), 'doExecute'], [$client, $request, $expectedClass]);
+        $runner = new Runner($config, sprintf('%s %s', $request->getMethod(), (string) $request->getUri()), [self::class, 'doExecute'], [$client, $request, $expectedClass]);
         if (null !== $retryMap) {
             $runner->setRetryMap($retryMap);
         }
