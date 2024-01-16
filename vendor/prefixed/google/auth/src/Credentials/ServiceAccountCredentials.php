@@ -91,7 +91,7 @@ class ServiceAccountCredentials extends CredentialsLoader implements GetQuotaPro
     /**
      * @var string
      */
-    private string $universeDomain;
+    private $universeDomain;
     /**
      * Create a new ServiceAccountCredentials.
      *

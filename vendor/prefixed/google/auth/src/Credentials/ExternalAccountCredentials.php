@@ -34,9 +34,18 @@ class ExternalAccountCredentials implements FetchAuthTokenInterface, UpdateMetad
 {
     use UpdateMetadataTrait;
     private const EXTERNAL_ACCOUNT_TYPE = 'external_account';
-    private OAuth2 $auth;
-    private ?string $quotaProject;
-    private ?string $serviceAccountImpersonationUrl;
+    /**
+     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\OAuth2
+     */
+    private $auth;
+    /**
+     * @var string|null
+     */
+    private $quotaProject;
+    /**
+     * @var string|null
+     */
+    private $serviceAccountImpersonationUrl;
     /**
      * @param string|string[] $scope   The scope of the access request, expressed either as an array
      *                                 or as a space-delimited string.

@@ -153,7 +153,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
     /**
      * @var string
      */
-    private ?string $universeDomain;
+    private $universeDomain;
     /**
      * @param Iam $iam [optional] An IAM instance.
      * @param string|string[] $scope [optional] the scope of the access request,

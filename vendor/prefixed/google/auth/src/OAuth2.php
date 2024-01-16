@@ -244,37 +244,43 @@ class OAuth2 implements FetchAuthTokenInterface
      * For STS requests.
      * A URI that indicates the target service or resource where the client
      * intends to use the requested security token.
+     * @var string|null
      */
-    private ?string $resource;
+    private $resource;
     /**
      * For STS requests.
      * A fetcher for the "subject_token", which is a security token that
      * represents the identity of the party on behalf of whom the request is
      * being made.
+     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\ExternalAccountCredentialSourceInterface|null
      */
-    private ?ExternalAccountCredentialSourceInterface $subjectTokenFetcher;
+    private $subjectTokenFetcher;
     /**
      * For STS requests.
      * An identifier, that indicates the type of the security token in the
      * subjectToken parameter.
+     * @var string|null
      */
-    private ?string $subjectTokenType;
+    private $subjectTokenType;
     /**
      * For STS requests.
      * A security token that represents the identity of the acting party.
+     * @var string|null
      */
-    private ?string $actorToken;
+    private $actorToken;
     /**
      * For STS requests.
      * An identifier that indicates the type of the security token in the
      * actorToken parameter.
+     * @var string|null
      */
-    private ?string $actorTokenType;
+    private $actorTokenType;
     /**
      * From STS response.
      * An identifier for the representation of the issued security token.
+     * @var string|null
      */
-    private ?string $issuedTokenType = null;
+    private $issuedTokenType;
     /**
      * Create a new OAuthCredentials.
      *

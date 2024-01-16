@@ -25,9 +25,18 @@ use UnexpectedValueException;
  */
 class FileSource implements ExternalAccountCredentialSourceInterface
 {
-    private string $file;
-    private ?string $format;
-    private ?string $subjectTokenFieldName;
+    /**
+     * @var string
+     */
+    private $file;
+    /**
+     * @var string|null
+     */
+    private $format;
+    /**
+     * @var string|null
+     */
+    private $subjectTokenFieldName;
     /**
      * @param string $file                  The file to read the subject token from.
      * @param string $format                The format of the token in the file. Can be null or "json".

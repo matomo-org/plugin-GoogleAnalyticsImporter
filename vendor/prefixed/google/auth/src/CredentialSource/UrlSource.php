@@ -28,13 +28,22 @@ use UnexpectedValueException;
  */
 class UrlSource implements ExternalAccountCredentialSourceInterface
 {
-    private string $url;
-    private ?string $format;
-    private ?string $subjectTokenFieldName;
+    /**
+     * @var string
+     */
+    private $url;
+    /**
+     * @var string|null
+     */
+    private $format;
+    /**
+     * @var string|null
+     */
+    private $subjectTokenFieldName;
     /**
      * @var array<string, string|string[]>
      */
-    private ?array $headers;
+    private $headers;
     /**
      * @param string $url                   The URL to fetch the subject token from.
      * @param string $format                The format of the token in the response. Can be null or "json".

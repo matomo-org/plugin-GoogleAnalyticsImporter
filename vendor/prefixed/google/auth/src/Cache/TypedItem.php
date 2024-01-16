@@ -28,22 +28,27 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Cache\CacheItemInterface;
 final class TypedItem implements CacheItemInterface
 {
     /**
+     * @var string
+     */
+    private $key;
+    /**
      * @var mixed
      */
-    private mixed $value;
+    private $value;
     /**
      * @var \DateTimeInterface|null
      */
-    private ?\DateTimeInterface $expiration;
+    private $expiration;
     /**
      * @var bool
      */
-    private bool $isHit = \false;
+    private $isHit = \false;
     /**
      * @param string $key
      */
-    public function __construct(private string $key)
+    public function __construct(string $key)
     {
+        $this->key = $key;
         $this->key = $key;
         $this->expiration = null;
     }
@@ -56,8 +61,9 @@ final class TypedItem implements CacheItemInterface
     }
     /**
      * {@inheritdoc}
+     * @return mixed
      */
-    public function get() : mixed
+    public function get()
     {
         return $this->isHit() ? $this->value : null;
     }
@@ -76,8 +82,10 @@ final class TypedItem implements CacheItemInterface
     }
     /**
      * {@inheritdoc}
+     * @param mixed $value
+     * @return static
      */
-    public function set(mixed $value) : static
+    public function set($value)
     {
         $this->isHit = \true;
         $this->value = $value;
@@ -85,8 +93,9 @@ final class TypedItem implements CacheItemInterface
     }
     /**
      * {@inheritdoc}
+     * @return static
      */
-    public function expiresAt($expiration) : static
+    public function expiresAt($expiration)
     {
         if ($this->isValidExpiration($expiration)) {
             $this->expiration = $expiration;
@@ -97,8 +106,9 @@ final class TypedItem implements CacheItemInterface
     }
     /**
      * {@inheritdoc}
+     * @return static
      */
-    public function expiresAfter($time) : static
+    public function expiresAfter($time)
     {
         if (is_int($time)) {
             $this->expiration = $this->currentTime()->add(new \DateInterval("PT{$time}S"));

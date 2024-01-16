@@ -27,11 +27,26 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Psr7\Request;
 class AwsNativeSource implements ExternalAccountCredentialSourceInterface
 {
     private const CRED_VERIFICATION_QUERY = 'Action=GetCallerIdentity&Version=2011-06-15';
-    private string $audience;
-    private string $regionalCredVerificationUrl;
-    private ?string $regionUrl;
-    private ?string $securityCredentialsUrl;
-    private ?string $imdsv2SessionTokenUrl;
+    /**
+     * @var string
+     */
+    private $audience;
+    /**
+     * @var string
+     */
+    private $regionalCredVerificationUrl;
+    /**
+     * @var string|null
+     */
+    private $regionUrl;
+    /**
+     * @var string|null
+     */
+    private $securityCredentialsUrl;
+    /**
+     * @var string|null
+     */
+    private $imdsv2SessionTokenUrl;
     /**
      * @param string $audience The audience for the credential.
      * @param string $regionalCredVerificationUrl The regional AWS GetCallerIdentity action URL used to determine the
@@ -81,7 +96,9 @@ class AwsNativeSource implements ExternalAccountCredentialSourceInterface
         // Inject x-goog-cloud-target-resource into header
         $headers['x-goog-cloud-target-resource'] = $this->audience;
         // Format headers as they're expected in the subject token
-        $formattedHeaders = array_map(fn($k, $v) => ['key' => $k, 'value' => $v], array_keys($headers), $headers);
+        $formattedHeaders = array_map(function ($k, $v) {
+            return ['key' => $k, 'value' => $v];
+        }, array_keys($headers), $headers);
         $request = ['headers' => $formattedHeaders, 'method' => 'POST', 'url' => $url];
         return urlencode(json_encode($request) ?: '');
     }
