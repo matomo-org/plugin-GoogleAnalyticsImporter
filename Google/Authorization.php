@@ -94,7 +94,7 @@ class Authorization
             $client->setAccessToken($accessToken);
         }
         //since there ie no host defined when running via console it results in error, but we don't need to set any URI when running console commands so can be ignored
-        if (!empty($clientConfig['web']['redirect_uris']) && !Common::isRunningConsoleCommand() && !PluginsArchiver::isArchivingProcessActive()) {
+        if (!empty($clientConfig['web']['redirect_uris']) && !Common::isRunningConsoleCommand() && !PluginsArchiver::isArchivingProcessActive() && !$this->isMiscCron()) {
             $uri = $this->getValidUri($clientConfig['web']['redirect_uris']);
             if (empty($uri)) {
                 throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_InvalidRedirectUriInClientConfiguration', array(Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode')));
@@ -133,5 +133,12 @@ class Authorization
             }
         }
         return \false;
+    }
+
+    private function isMiscCron()
+    {
+        $currentURL = Url::getCurrentUrlWithoutQueryString();
+
+        return (stripos($currentURL, 'misc/cron/archive.php') !== false);
     }
 }
