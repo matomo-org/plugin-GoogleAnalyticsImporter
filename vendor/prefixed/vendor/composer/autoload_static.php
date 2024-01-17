@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb7c90ab312efc85f149856b8f6eb6688
+class ComposerStaticInit6fe8e666e83e6f3cf68310076c8302cf
 {
     public static $files = array (
         '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -1840,7 +1840,7 @@ class ComposerStaticInitb7c90ab312efc85f149856b8f6eb6688
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInitb7c90ab312efc85f149856b8f6eb6688::$classMap;
+            $loader->classMap = ComposerStaticInit6fe8e666e83e6f3cf68310076c8302cf::$classMap;
 
         }, null, ClassLoader::class);
     }

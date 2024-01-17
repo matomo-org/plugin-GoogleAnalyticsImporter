@@ -51,6 +51,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\NullValue;
  * or extend this class or its child classes by their own.  See the comment of
  * specific functions for more details.
  */
+#[\AllowDynamicProperties]
 class Message
 {
     /**
