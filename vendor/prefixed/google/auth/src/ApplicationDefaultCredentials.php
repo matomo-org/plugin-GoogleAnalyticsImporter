@@ -136,11 +136,13 @@ class ApplicationDefaultCredentials
      * @param string|string[] $defaultScope The default scope to use if no
      *   user-defined scopes exist, expressed either as an Array or as a
      *   space-delimited string.
+     * @param string $universeDomain Specifies a universe domain to use for the
+     *   calling client library
      *
      * @return FetchAuthTokenInterface
      * @throws DomainException if no implementation can be obtained.
      */
-    public static function getCredentials($scope = null, callable $httpHandler = null, array $cacheConfig = null, CacheItemPoolInterface $cache = null, $quotaProject = null, $defaultScope = null)
+    public static function getCredentials($scope = null, callable $httpHandler = null, array $cacheConfig = null, CacheItemPoolInterface $cache = null, $quotaProject = null, $defaultScope = null, string $universeDomain = null)
     {
         $creds = null;
         $jsonKey = CredentialsLoader::fromEnv() ?: CredentialsLoader::fromWellKnownFile();
@@ -152,15 +154,24 @@ class ApplicationDefaultCredentials
             }
             $httpHandler = HttpHandlerFactory::build($client);
         }
+        if (is_null($quotaProject)) {
+            // if a quota project isn't specified, try to get one from the env var
+            $quotaProject = CredentialsLoader::quotaProjectFromEnv();
+        }
         if (!is_null($jsonKey)) {
             if ($quotaProject) {
                 $jsonKey['quota_project_id'] = $quotaProject;
+            }
+            if ($universeDomain) {
+                $jsonKey['universe_domain'] = $universeDomain;
             }
             $creds = CredentialsLoader::makeCredentials($scope, $jsonKey, $defaultScope);
         } elseif (AppIdentityCredentials::onAppEngine() && !GCECredentials::onAppEngineFlexible()) {
             $creds = new AppIdentityCredentials($anyScope);
         } elseif (self::onGce($httpHandler, $cacheConfig, $cache)) {
-            $creds = new GCECredentials(null, $anyScope, null, $quotaProject);
+            $creds = new GCECredentials(null, $anyScope, null, $quotaProject, null, $universeDomain);
+            $creds->setIsOnGce(\true);
+            // save the credentials a trip to the metadata server
         }
         if (is_null($creds)) {
             throw new DomainException(self::notFound());
@@ -250,6 +261,8 @@ class ApplicationDefaultCredentials
             $creds = new ServiceAccountCredentials(null, $jsonKey, null, $targetAudience);
         } elseif (self::onGce($httpHandler, $cacheConfig, $cache)) {
             $creds = new GCECredentials(null, null, $targetAudience);
+            $creds->setIsOnGce(\true);
+            // save the credentials a trip to the metadata server
         }
         if (is_null($creds)) {
             throw new DomainException(self::notFound());
@@ -264,10 +277,9 @@ class ApplicationDefaultCredentials
      */
     private static function notFound()
     {
-        $msg = 'Could not load the default credentials. Browse to ';
-        $msg .= 'https://developers.google.com';
-        $msg .= '/accounts/docs/application-default-credentials';
-        $msg .= ' for more information';
+        $msg = 'Your default credentials were not found. To set up ';
+        $msg .= 'Application Default Credentials, see ';
+        $msg .= 'https://cloud.google.com/docs/authentication/external/set-up-adc';
         return $msg;
     }
     /**

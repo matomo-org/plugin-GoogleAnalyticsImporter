@@ -22,6 +22,7 @@ use DomainException;
 use Exception;
 use Matomo\Dependencies\GoogleAnalyticsImporter\ExpiredException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Firebase\JWT\ExpiredException as ExpiredExceptionV3;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Firebase\JWT\JWT;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Firebase\JWT\Key;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Firebase\JWT\SignatureInvalidException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Cache\MemoryCacheItemPool;
@@ -30,9 +31,9 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Client;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\ClientInterface;
 use InvalidArgumentException;
 use LogicException;
+use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\AES;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\PublicKeyLoader;
-use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\RSA\PublicKey;
-// Firebase v2
+use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Math\BigInteger;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Cache\CacheItemPoolInterface;
 /**
  * Wrapper around Google Access Tokens which provides convenience functions
@@ -178,66 +179,21 @@ class Verify
     }
     private function getJwtService()
     {
-        $jwtClass = 'JWT';
-        if (class_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\JWT')) {
-            $jwtClass = 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\JWT';
-        }
-        if (property_exists($jwtClass, 'leeway') && $jwtClass::$leeway < 1) {
+        $jwt = new JWT();
+        if ($jwt::$leeway < 1) {
             // Ensures JWT leeway is at least 1
             // @see https://github.com/google/google-api-php-client/issues/827
-            $jwtClass::$leeway = 1;
+            $jwt::$leeway = 1;
         }
-        // @phpstan-ignore-next-line
-        return new $jwtClass();
+        return $jwt;
     }
     private function getPublicKey($cert)
     {
-        $bigIntClass = $this->getBigIntClass();
-        $modulus = new $bigIntClass($this->jwt->urlsafeB64Decode($cert['n']), 256);
-        $exponent = new $bigIntClass($this->jwt->urlsafeB64Decode($cert['e']), 256);
+        $modulus = new BigInteger($this->jwt->urlsafeB64Decode($cert['n']), 256);
+        $exponent = new BigInteger($this->jwt->urlsafeB64Decode($cert['e']), 256);
         $component = ['n' => $modulus, 'e' => $exponent];
-        if (class_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\RSA\\PublicKey')) {
-            /** @var PublicKey $loader */
-            $loader = PublicKeyLoader::load($component);
-            return $loader->toString('PKCS8');
-        }
-        $rsaClass = $this->getRsaClass();
-        $rsa = new $rsaClass();
-        $rsa->loadKey($component);
-        return $rsa->getPublicKey();
-    }
-    private function getRsaClass()
-    {
-        if (class_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\RSA')) {
-            return 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\RSA';
-        }
-        if (class_exists('phpseclib\\Crypt\\RSA')) {
-            return 'phpseclib\\Crypt\\RSA';
-        }
-        return 'Crypt_RSA';
-    }
-    private function getBigIntClass()
-    {
-        if (class_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Math\\BigInteger')) {
-            return 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Math\\BigInteger';
-        }
-        if (class_exists('phpseclib\\Math\\BigInteger')) {
-            return 'phpseclib\\Math\\BigInteger';
-        }
-        return 'Math_BigInteger';
-    }
-    private function getOpenSslConstant()
-    {
-        if (class_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\AES')) {
-            return 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\AES::ENGINE_OPENSSL';
-        }
-        if (class_exists('phpseclib\\Crypt\\RSA')) {
-            return 'phpseclib\\Crypt\\RSA::MODE_OPENSSL';
-        }
-        if (class_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\Crypt_RSA')) {
-            return 'CRYPT_RSA_MODE_OPENSSL';
-        }
-        throw new Exception('Cannot find RSA class');
+        $loader = PublicKeyLoader::load($component);
+        return $loader->toString('PKCS8');
     }
     /**
      * phpseclib calls "phpinfo" by default, which requires special
@@ -254,7 +210,7 @@ class Verify
                 define('Matomo\\Dependencies\\GoogleAnalyticsImporter\\MATH_BIGINTEGER_OPENSSL_ENABLED', \true);
             }
             if (!defined('Matomo\\Dependencies\\GoogleAnalyticsImporter\\CRYPT_RSA_MODE')) {
-                define('Matomo\\Dependencies\\GoogleAnalyticsImporter\\CRYPT_RSA_MODE', constant($this->getOpenSslConstant()));
+                define('Matomo\\Dependencies\\GoogleAnalyticsImporter\\CRYPT_RSA_MODE', AES::ENGINE_OPENSSL);
             }
         }
     }

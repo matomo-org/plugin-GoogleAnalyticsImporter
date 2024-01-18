@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit83f530222961a4f93e31c4271a398c2f
+class ComposerStaticInit6fe8e666e83e6f3cf68310076c8302cf
 {
     public static $files = array (
         '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -93,7 +93,7 @@ class ComposerStaticInit83f530222961a4f93e31c4271a398c2f
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Iam\\V1\\Policy' => __DIR__ . '/../..' . '/google/common-protos/metadata/Iam/V1/Policy.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Logging\\Type\\HttpRequest' => __DIR__ . '/../..' . '/google/common-protos/metadata/Logging/Type/HttpRequest.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Logging\\Type\\LogSeverity' => __DIR__ . '/../..' . '/google/common-protos/metadata/Logging/Type/LogSeverity.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Longrunning\\Operations' => __DIR__ . '/../..' . '/google/common-protos/metadata/Longrunning/Operations.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Longrunning\\Operations' => __DIR__ . '/../..' . '/google/longrunning/metadata/Longrunning/Operations.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Protobuf\\Any' => __DIR__ . '/../..' . '/google/protobuf/src/GPBMetadata/Google/Protobuf/Any.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Protobuf\\Api' => __DIR__ . '/../..' . '/google/protobuf/src/GPBMetadata/Google/Protobuf/Api.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Protobuf\\Duration' => __DIR__ . '/../..' . '/google/protobuf/src/GPBMetadata/Google/Protobuf/Duration.php',
@@ -896,7 +896,6 @@ class ComposerStaticInit83f530222961a4f93e31c4271a398c2f
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Api\\Usage' => __DIR__ . '/../..' . '/google/common-protos/src/Api/Usage.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Api\\UsageRule' => __DIR__ . '/../..' . '/google/common-protos/src/Api/UsageRule.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\AuthHandler\\AuthHandlerFactory' => __DIR__ . '/../..' . '/google/apiclient/src/AuthHandler/AuthHandlerFactory.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\AuthHandler\\Guzzle5AuthHandler' => __DIR__ . '/../..' . '/google/apiclient/src/AuthHandler/Guzzle5AuthHandler.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\AuthHandler\\Guzzle6AuthHandler' => __DIR__ . '/../..' . '/google/apiclient/src/AuthHandler/Guzzle6AuthHandler.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\AuthHandler\\Guzzle7AuthHandler' => __DIR__ . '/../..' . '/google/apiclient/src/AuthHandler/Guzzle7AuthHandler.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\AccessToken' => __DIR__ . '/../..' . '/google/auth/src/AccessToken.php',
@@ -907,24 +906,31 @@ class ComposerStaticInit83f530222961a4f93e31c4271a398c2f
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\MemoryCacheItemPool' => __DIR__ . '/../..' . '/google/auth/src/Cache/MemoryCacheItemPool.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\SysVCacheItemPool' => __DIR__ . '/../..' . '/google/auth/src/Cache/SysVCacheItemPool.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\TypedItem' => __DIR__ . '/../..' . '/google/auth/src/Cache/TypedItem.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialSource\\AwsNativeSource' => __DIR__ . '/../..' . '/google/auth/src/CredentialSource/AwsNativeSource.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialSource\\FileSource' => __DIR__ . '/../..' . '/google/auth/src/CredentialSource/FileSource.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialSource\\UrlSource' => __DIR__ . '/../..' . '/google/auth/src/CredentialSource/UrlSource.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialsLoader' => __DIR__ . '/../..' . '/google/auth/src/CredentialsLoader.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\AppIdentityCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/AppIdentityCredentials.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ExternalAccountCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ExternalAccountCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\GCECredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/GCECredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\IAMCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/IAMCredentials.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ImpersonatedServiceAccountCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ImpersonatedServiceAccountCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\InsecureCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/InsecureCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ServiceAccountCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ServiceAccountCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ServiceAccountJwtAccessCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ServiceAccountJwtAccessCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\UserRefreshCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/UserRefreshCredentials.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\ExternalAccountCredentialSourceInterface' => __DIR__ . '/../..' . '/google/auth/src/ExternalAccountCredentialSourceInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\FetchAuthTokenCache' => __DIR__ . '/../..' . '/google/auth/src/FetchAuthTokenCache.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\FetchAuthTokenInterface' => __DIR__ . '/../..' . '/google/auth/src/FetchAuthTokenInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\GCECache' => __DIR__ . '/../..' . '/google/auth/src/GCECache.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\GetQuotaProjectInterface' => __DIR__ . '/../..' . '/google/auth/src/GetQuotaProjectInterface.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\HttpHandler\\Guzzle5HttpHandler' => __DIR__ . '/../..' . '/google/auth/src/HttpHandler/Guzzle5HttpHandler.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\GetUniverseDomainInterface' => __DIR__ . '/../..' . '/google/auth/src/GetUniverseDomainInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\HttpHandler\\Guzzle6HttpHandler' => __DIR__ . '/../..' . '/google/auth/src/HttpHandler/Guzzle6HttpHandler.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\HttpHandler\\Guzzle7HttpHandler' => __DIR__ . '/../..' . '/google/auth/src/HttpHandler/Guzzle7HttpHandler.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\HttpHandler\\HttpClientCache' => __DIR__ . '/../..' . '/google/auth/src/HttpHandler/HttpClientCache.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\HttpHandler\\HttpHandlerFactory' => __DIR__ . '/../..' . '/google/auth/src/HttpHandler/HttpHandlerFactory.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Iam' => __DIR__ . '/../..' . '/google/auth/src/Iam.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\IamSignerTrait' => __DIR__ . '/../..' . '/google/auth/src/IamSignerTrait.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Middleware\\AuthTokenMiddleware' => __DIR__ . '/../..' . '/google/auth/src/Middleware/AuthTokenMiddleware.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Middleware\\ProxyAuthTokenMiddleware' => __DIR__ . '/../..' . '/google/auth/src/Middleware/ProxyAuthTokenMiddleware.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Middleware\\ScopedAccessTokenMiddleware' => __DIR__ . '/../..' . '/google/auth/src/Middleware/ScopedAccessTokenMiddleware.php',
@@ -934,6 +940,7 @@ class ComposerStaticInit83f530222961a4f93e31c4271a398c2f
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\ServiceAccountSignerTrait' => __DIR__ . '/../..' . '/google/auth/src/ServiceAccountSignerTrait.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\SignBlobInterface' => __DIR__ . '/../..' . '/google/auth/src/SignBlobInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\UpdateMetadataInterface' => __DIR__ . '/../..' . '/google/auth/src/UpdateMetadataInterface.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\UpdateMetadataTrait' => __DIR__ . '/../..' . '/google/auth/src/UpdateMetadataTrait.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Client' => __DIR__ . '/../..' . '/google/apiclient/src/Client.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Cloud\\Iam\\V1\\AuditConfigDelta' => __DIR__ . '/../..' . '/google/common-protos/src/Cloud/Iam/V1/AuditConfigDelta.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Cloud\\Iam\\V1\\AuditConfigDelta\\Action' => __DIR__ . '/../..' . '/google/common-protos/src/Cloud/Iam/V1/AuditConfigDelta/Action.php',
@@ -962,13 +969,13 @@ class ComposerStaticInit83f530222961a4f93e31c4271a398c2f
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Http\\MediaFileUpload' => __DIR__ . '/../..' . '/google/apiclient/src/Http/MediaFileUpload.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Http\\REST' => __DIR__ . '/../..' . '/google/apiclient/src/Http/REST.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Iam\\V1\\Logging\\AuditData' => __DIR__ . '/../..' . '/google/common-protos/src/Iam/V1/Logging/AuditData.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\CancelOperationRequest' => __DIR__ . '/../..' . '/google/common-protos/src/LongRunning/CancelOperationRequest.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\DeleteOperationRequest' => __DIR__ . '/../..' . '/google/common-protos/src/LongRunning/DeleteOperationRequest.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\GetOperationRequest' => __DIR__ . '/../..' . '/google/common-protos/src/LongRunning/GetOperationRequest.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\ListOperationsRequest' => __DIR__ . '/../..' . '/google/common-protos/src/LongRunning/ListOperationsRequest.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\ListOperationsResponse' => __DIR__ . '/../..' . '/google/common-protos/src/LongRunning/ListOperationsResponse.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\Operation' => __DIR__ . '/../..' . '/google/common-protos/src/LongRunning/Operation.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\OperationInfo' => __DIR__ . '/../..' . '/google/common-protos/src/LongRunning/OperationInfo.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\CancelOperationRequest' => __DIR__ . '/../..' . '/google/longrunning/src/LongRunning/CancelOperationRequest.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\DeleteOperationRequest' => __DIR__ . '/../..' . '/google/longrunning/src/LongRunning/DeleteOperationRequest.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\GetOperationRequest' => __DIR__ . '/../..' . '/google/longrunning/src/LongRunning/GetOperationRequest.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\ListOperationsRequest' => __DIR__ . '/../..' . '/google/longrunning/src/LongRunning/ListOperationsRequest.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\ListOperationsResponse' => __DIR__ . '/../..' . '/google/longrunning/src/LongRunning/ListOperationsResponse.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\Operation' => __DIR__ . '/../..' . '/google/longrunning/src/LongRunning/Operation.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\LongRunning\\OperationInfo' => __DIR__ . '/../..' . '/google/longrunning/src/LongRunning/OperationInfo.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Model' => __DIR__ . '/../..' . '/google/apiclient/src/Model.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Protobuf\\Any' => __DIR__ . '/../..' . '/google/protobuf/src/Google/Protobuf/Any.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Protobuf\\Api' => __DIR__ . '/../..' . '/google/protobuf/src/Google/Protobuf/Api.php',
@@ -1325,7 +1332,6 @@ class ComposerStaticInit83f530222961a4f93e31c4271a398c2f
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_AccessToken_Revoke' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_AccessToken_Verify' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_AuthHandler_AuthHandlerFactory' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_AuthHandler_Guzzle5AuthHandler' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_AuthHandler_Guzzle6AuthHandler' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_AuthHandler_Guzzle7AuthHandler' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google_Client' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -1834,7 +1840,7 @@ class ComposerStaticInit83f530222961a4f93e31c4271a398c2f
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit83f530222961a4f93e31c4271a398c2f::$classMap;
+            $loader->classMap = ComposerStaticInit6fe8e666e83e6f3cf68310076c8302cf::$classMap;
 
         }, null, ClassLoader::class);
     }

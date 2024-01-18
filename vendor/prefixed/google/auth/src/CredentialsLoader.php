@@ -17,6 +17,8 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth;
 
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Credentials\ExternalAccountCredentials;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Credentials\ImpersonatedServiceAccountCredentials;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Credentials\InsecureCredentials;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Credentials\ServiceAccountCredentials;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Credentials\UserRefreshCredentials;
@@ -26,10 +28,12 @@ use UnexpectedValueException;
  * CredentialsLoader contains the behaviour used to locate and find default
  * credentials files on the file system.
  */
-abstract class CredentialsLoader implements FetchAuthTokenInterface, UpdateMetadataInterface
+abstract class CredentialsLoader implements GetUniverseDomainInterface, FetchAuthTokenInterface, UpdateMetadataInterface
 {
+    use UpdateMetadataTrait;
     const TOKEN_CREDENTIAL_URI = 'https://oauth2.googleapis.com/token';
     const ENV_VAR = 'GOOGLE_APPLICATION_CREDENTIALS';
+    const QUOTA_PROJECT_ENV_VAR = 'GOOGLE_CLOUD_QUOTA_PROJECT';
     const WELL_KNOWN_PATH = 'gcloud/application_default_credentials.json';
     const NON_WINDOWS_WELL_KNOWN_PATH_BASE = '.config';
     const MTLS_WELL_KNOWN_PATH = '.secureConnect/context_aware_metadata.json';
@@ -111,7 +115,7 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface, UpdateMetad
      *   user-defined scopes exist, expressed either as an Array or as a
      *   space-delimited string.
      *
-     * @return ServiceAccountCredentials|UserRefreshCredentials
+     * @return ServiceAccountCredentials|UserRefreshCredentials|ImpersonatedServiceAccountCredentials|ExternalAccountCredentials
      */
     public static function makeCredentials($scope, array $jsonKey, $defaultScope = null)
     {
@@ -125,6 +129,14 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface, UpdateMetad
         if ($jsonKey['type'] == 'authorized_user') {
             $anyScope = $scope ?: $defaultScope;
             return new UserRefreshCredentials($anyScope, $jsonKey);
+        }
+        if ($jsonKey['type'] == 'impersonated_service_account') {
+            $anyScope = $scope ?: $defaultScope;
+            return new ImpersonatedServiceAccountCredentials($anyScope, $jsonKey);
+        }
+        if ($jsonKey['type'] == 'external_account') {
+            $anyScope = $scope ?: $defaultScope;
+            return new ExternalAccountCredentials($anyScope, $jsonKey);
         }
         throw new \InvalidArgumentException('invalid value in the type field');
     }
@@ -154,36 +166,15 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface, UpdateMetad
         return new InsecureCredentials();
     }
     /**
-     * export a callback function which updates runtime metadata.
+     * Fetch a quota project from the environment variable
+     * GOOGLE_CLOUD_QUOTA_PROJECT. Return null if
+     * GOOGLE_CLOUD_QUOTA_PROJECT is not specified.
      *
-     * @return callable updateMetadata function
-     * @deprecated
+     * @return string|null
      */
-    public function getUpdateMetadataFunc()
+    public static function quotaProjectFromEnv()
     {
-        return array($this, 'updateMetadata');
-    }
-    /**
-     * Updates metadata with the authorization token.
-     *
-     * @param array<mixed> $metadata metadata hashmap
-     * @param string $authUri optional auth uri
-     * @param callable $httpHandler callback which delivers psr7 request
-     * @return array<mixed> updated metadata hashmap
-     */
-    public function updateMetadata($metadata, $authUri = null, callable $httpHandler = null)
-    {
-        if (isset($metadata[self::AUTH_METADATA_KEY])) {
-            // Auth metadata has already been set
-            return $metadata;
-        }
-        $result = $this->fetchAuthToken($httpHandler);
-        if (!isset($result['access_token'])) {
-            return $metadata;
-        }
-        $metadata_copy = $metadata;
-        $metadata_copy[self::AUTH_METADATA_KEY] = array('Bearer ' . $result['access_token']);
-        return $metadata_copy;
+        return getenv(self::QUOTA_PROJECT_ENV_VAR) ?: null;
     }
     /**
      * Gets a callable which returns the default device certification.
@@ -237,5 +228,15 @@ abstract class CredentialsLoader implements FetchAuthTokenInterface, UpdateMetad
             throw new UnexpectedValueException('cert source expects "cert_provider_command" to be an array');
         }
         return $clientCertSourceJson;
+    }
+    /**
+     * Get the universe domain from the credential. Defaults to "googleapis.com"
+     * for all credential types which do not support universe domain.
+     *
+     * @return string
+     */
+    public function getUniverseDomain() : string
+    {
+        return self::DEFAULT_UNIVERSE_DOMAIN;
     }
 }

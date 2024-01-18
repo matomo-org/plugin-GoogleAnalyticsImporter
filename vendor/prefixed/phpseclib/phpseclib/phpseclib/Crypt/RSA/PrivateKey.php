@@ -415,9 +415,9 @@ final class PrivateKey extends RSA implements Common\PrivateKey
         if ($key !== false || count($this->primes) == 2) {
             return $key;
         }
-        
+
         $nSize = $this->getSize() >> 1;
-        
+
         $primes = [1 => clone self::$one, clone self::$one];
         $i = 1;
         foreach ($this->primes as $prime) {
@@ -426,15 +426,15 @@ final class PrivateKey extends RSA implements Common\PrivateKey
                 $i++;
             }
         }
-        
+
         $exponents = [];
         $coefficients = [2 => $primes[2]->modInverse($primes[1])];
-        
+
         foreach ($primes as $i => $prime) {
             $temp = $prime->subtract(self::$one);
             $exponents[$i] = $this->modulus->modInverse($temp);
         }
-        
+
         return $type::savePrivateKey($this->modulus, $this->publicExponent, $this->exponent, $primes, $exponents, $coefficients, $this->password, $options);
         */
     }
