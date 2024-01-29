@@ -1,5 +1,9 @@
 ## Changelog
 
+# 5.0.9
+- Added code to fix redirect error exception when executing via misc cron
+- Updating dependencies for PHP 8.3 support
+
 # 5.0.8
 - Added code to hide GA Import tab for no-data screen
 
