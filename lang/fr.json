@@ -87,7 +87,7 @@
         "PhpExecutableMissing": "Matomo ne trouve pas l'exécutable PHP. L'importateur Google Analytics appelle PHP à partir de la ligne de commande pour importer des données. Cet exécutable doit être présent et accessible depuis PHP pour que l'importateur fonctionne.",
         "PropertyId": "ID de propriété Google Analytics",
         "PropertyIdGA4": "Identifiant de propriété GA4",
-        "PropertyIdGA4Help": "L'identifiant de la propriété à importer. Il doit avoir le format suivant: properties/{PROPERTY_ID}, ou {PROPERTY_ID} est un nombre.",
+        "PropertyIdGA4Help": "L'identifiant de la propriété à importer. Il doit avoir le format suivant : properties/{PROPERTY_ID}, ou {PROPERTY_ID} est un nombre.",
         "PropertyIdHelp": "ID de la propriété à importer. Il aura le format suivant : UA-XXXXX-X, où les X sont des chiffres.",
         "RateLimitHelp": "Par défaut, Google Analytics limite le nombre de requêtes que vous pouvez faire à l'API pour un projet spécifique à 50 000 par jour. Il semble que cette tâche d'importation ait dépassé cette limite, donc l'importation ne peut pas continuer jusqu'à demain.",
         "ReAuthorize": "Autoriser à nouveau",
