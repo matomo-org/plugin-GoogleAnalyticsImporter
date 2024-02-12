@@ -210,7 +210,7 @@ EOF;
 
             // Fix the string reference of a scoped dependency in the Math lib
             $escapedPrefix = str_replace('\\', '\\\\', $prefix);
-            if ($filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger.php') {
+            if ($filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger.php' || $filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger/Engines/Engine.php') {
                 $content = str_replace('phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\',
                     "{$escapedPrefix}\\\\phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\", $content);
             }

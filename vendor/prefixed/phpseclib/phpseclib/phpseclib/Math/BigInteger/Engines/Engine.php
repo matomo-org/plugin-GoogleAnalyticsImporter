@@ -187,7 +187,7 @@ abstract class Engine implements \JsonSerializable
      */
     public static function setModExpEngine($engine)
     {
-        $fqengine = '\\phpseclib3\\Math\\BigInteger\\Engines\\' . static::ENGINE_DIR . '\\' . $engine;
+        $fqengine = '\\Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Math\\BigInteger\\Engines\\' . static::ENGINE_DIR . '\\' . $engine;
         if (!class_exists($fqengine) || !method_exists($fqengine, 'isValidEngine')) {
             throw new \InvalidArgumentException("{$engine} is not a valid engine");
         }
@@ -1032,7 +1032,7 @@ abstract class Engine implements \JsonSerializable
     public function createRecurringModuloFunction()
     {
         $class = static::class;
-        $fqengine = !method_exists(static::$modexpEngine[static::class], 'reduce') ? '\\phpseclib3\\Math\\BigInteger\\Engines\\' . static::ENGINE_DIR . '\\DefaultEngine' : static::$modexpEngine[static::class];
+        $fqengine = !method_exists(static::$modexpEngine[static::class], 'reduce') ? '\\Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Math\\BigInteger\\Engines\\' . static::ENGINE_DIR . '\\DefaultEngine' : static::$modexpEngine[static::class];
         if (method_exists($fqengine, 'generateCustomReduction')) {
             $func = $fqengine::generateCustomReduction($this, static::class);
             return eval('return function(' . static::class . ' $x) use ($func, $class) {
