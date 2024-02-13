@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.0.10
+- Fixed bcmath polyfill not working due to missing scoper changes
+
 # 5.0.9
 - Added code to fix redirect error exception when executing via misc cron
 - Updating dependencies for PHP 8.3 support
