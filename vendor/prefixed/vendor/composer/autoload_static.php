@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6f269c00d312484d0620a753c0b2ac76
+class ComposerStaticInitd9e4c2fc1046e5bf4fbe6d02f8bb5522
 {
     public static $files = array (
         '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -23,6 +23,11 @@ class ComposerStaticInit6f269c00d312484d0620a753c0b2ac76
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DivisionByZeroError' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
         'Error' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
+        'GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\Checked' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/Checked.php',
+        'GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\ConformanceService' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/ConformanceService.php',
+        'GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\Syntax' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/Syntax.php',
+        'GPBMetadata\\Google\\Api\\Expr\\V1Beta1\\Expr' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Beta1/Expr.php',
+        'GPBMetadata\\Google\\Api\\Service' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Service.php',
         'GPBMetadata\\GrpcGcp' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/GPBMetadata/GrpcGcp.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\BeforeValidException' => __DIR__ . '/../..' . '/firebase/php-jwt/src/BeforeValidException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\CachedKeySet' => __DIR__ . '/../..' . '/firebase/php-jwt/src/CachedKeySet.php',
@@ -57,14 +62,10 @@ class ComposerStaticInit6f269c00d312484d0620a753c0b2ac76
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Documentation' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Documentation.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Endpoint' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Endpoint.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\CelService' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/CelService.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\Checked' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/Checked.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\ConformanceService' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/ConformanceService.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\Explain' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/Explain.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\PBEval' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/PBEval.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\Syntax' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/Syntax.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Alpha1\\Value' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Alpha1/Value.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Beta1\\Decl' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Beta1/Decl.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Beta1\\Expr' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Beta1/Expr.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Beta1\\PBEval' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Beta1/PBEval.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Beta1\\Source' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Beta1/Source.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Expr\\V1Beta1\\Value' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Expr/V1Beta1/Value.php',
@@ -81,7 +82,6 @@ class ComposerStaticInit6f269c00d312484d0620a753c0b2ac76
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Quota' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Quota.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Resource' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Resource.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Routing' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Routing.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Service' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Service.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\SourceInfo' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/SourceInfo.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\SystemParameter' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/SystemParameter.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Api\\Usage' => __DIR__ . '/../..' . '/google/common-protos/metadata/Api/Usage.php',
@@ -1624,7 +1624,6 @@ class ComposerStaticInit6f269c00d312484d0620a753c0b2ac76
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Formats\\Keys\\PKCS1' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/EC/Formats/Keys/PKCS1.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Formats\\Keys\\PKCS8' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/EC/Formats/Keys/PKCS8.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Formats\\Keys\\PuTTY' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/EC/Formats/Keys/PuTTY.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Formats\\Keys\\XML' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/EC/Formats/Keys/XML.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Formats\\Keys\\libsodium' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/EC/Formats/Keys/libsodium.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Formats\\Signature\\ASN1' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/EC/Formats/Signature/ASN1.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Formats\\Signature\\IEEE' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/EC/Formats/Signature/IEEE.php',
@@ -1835,12 +1834,13 @@ class ComposerStaticInit6f269c00d312484d0620a753c0b2ac76
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\System\\SSH\\Common\\Traits\\ReadBytes' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/System/SSH/Common/Traits/ReadBytes.php',
         'TypeError' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
         'ValueError' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
+        'phpseclib3\\Crypt\\EC\\Formats\\Keys\\XML' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/EC/Formats/Keys/XML.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit6f269c00d312484d0620a753c0b2ac76::$classMap;
+            $loader->classMap = ComposerStaticInitd9e4c2fc1046e5bf4fbe6d02f8bb5522::$classMap;
 
         }, null, ClassLoader::class);
     }
