@@ -37,7 +37,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Ring\Client\StreamHan
 use InvalidArgumentException;
 use LogicException;
 use \Piwik\Plugins\Monolog\Handler\FileHandler as MonologStreamHandler;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Monolog\GASystemLogHandler as MonologSyslogHandler;
+use \Piwik\Plugins\GoogleAnalyticsImporter\Monolog\Handler\GASystemLogHandler as MonologSyslogHandler;
 use \Piwik\Log\Logger;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Cache\CacheItemPoolInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\RequestInterface;
