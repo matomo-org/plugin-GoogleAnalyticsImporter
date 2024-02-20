@@ -156,7 +156,7 @@ EOF;
             }
 
             if ($filePath === __DIR__ . '/vendor/google/apiclient/src/Client.php') {
-                $content = str_replace(['Monolog\Handler\StreamHandler', 'Monolog\Logger'], ['\Piwik\Plugins\Monolog\Handler\FileHandler', '\Piwik\Log\Logger'], $content);
+                $content = str_replace(['Monolog\Handler\StreamHandler', 'Monolog\Handler\SyslogHandler', 'Monolog\Logger'], ['\Piwik\Plugins\Monolog\Handler\FileHandler', 'Matomo\Dependencies\GoogleAnalyticsImporter\Monolog\GASystemLogHandler', '\Piwik\Log\Logger'], $content);
             }
 
             if ($filePath === __DIR__ . '/vendor/google/apiclient/src/aliases.php') {
