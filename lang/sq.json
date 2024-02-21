@@ -69,6 +69,7 @@
         "NotSetInGA": "E paujdisur te Google Analytics",
         "Optional": "Opsionale",
         "PendingGAImportReportNotificationNoData": "Ende po importojmë nga Google Analytics, por duhet të jeni në gjendje të shihni të dhënat tuaja më të freskëta. Do të jeni në gjendje të shihni krejt të dhënat tuaja brenda pak ditësh.",
+        "PendingGAImportReportNotificationSomeData": "Po importojmë ende prej Google Analytics, por duhet të jeni në gjendje të shihni të dhënat tuaja më të freskëta. Deri këtu janë importuar të dhënat deri më %1$s. Nga kjo datë e tutje duhet të jeni në gjendje të shihni të dhënat e importuesit tuaj.",
         "PhpExecutableMissing": "Matomo-ja s’mund të gjejë të ekzekutueshmin PHP. Për të importuar të dhëna, Importuesi Google Analytics përdor PHP-në që nga rreshti i urdhrave. Ky i ekzekutueshëm duhet të jetë i pranishëm dhe i përdorshëm nga PHP-ja, që importuesi të mund të funksionojë.",
         "PropertyId": "ID Vetie Google Analytics",
         "PropertyIdGA4": "ID Vetie GA4",
