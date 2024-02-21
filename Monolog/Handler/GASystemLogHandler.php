@@ -14,8 +14,8 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Monolog\Handler;
 
 // Need to do this, so that we don't have to increase Matomo min version to 5.1.0 atleast
 
-if (class_exists('Piwik\Plugins\Monolog\Handler\SystemLogHandler')) {
-    class GASystemLogHandler extends \Piwik\Plugins\Monolog\Handler\SystemLogHandler
+if (class_exists('Piwik\Plugins\Monolog\Handler\SyslogHandler')) {
+    class GASystemLogHandler extends \Piwik\Plugins\Monolog\Handler\SyslogHandler
     {
     }
 } else {
