@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.0.11
+- Fixed direct usage of Monolog dependencies
+
 # 5.0.10
 - Fixed bcmath polyfill not working due to missing scoper changes
 
