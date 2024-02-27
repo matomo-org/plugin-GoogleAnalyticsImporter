@@ -136,7 +136,7 @@ class ImportGA4Reports extends ConsoleCommand
                 $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Resuming import into existing site {$idSite}.");
             }
             $property = $status['ga']['property'];
-            $streamIds = $status['streamIds'];
+            $streamIds = $status['streamIds'] ?? [];
         }
         self::validatePropertyID($property);
         $lock = self::makeLock();
