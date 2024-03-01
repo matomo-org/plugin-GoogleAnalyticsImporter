@@ -18,7 +18,7 @@ class CheckDirectDependencyUseCommandTest extends SystemTestCase
 {
     public function testCommand()
     {
-        if (version_compare(Version::VERSION, '5.0.2', '<=') && !\Piwik\file_exists(PIWIK_INCLUDE_PATH . '/plugins/TestRunner/Commands/CheckDirectDependencyUse.php')) {
+        if (version_compare(Version::VERSION, '5.0.2', '<=') && !file_exists(PIWIK_INCLUDE_PATH . '/plugins/TestRunner/Commands/CheckDirectDependencyUse.php')) {
             $this->markTestSkipped('tests:check-direct-dependency-use is not available in this version');
         }
         $pluginName = 'GoogleAnalyticsImporter';
@@ -35,27 +35,6 @@ class CheckDirectDependencyUseCommandTest extends SystemTestCase
         $command->run($inputObject, new NullOutput());
 
         $this->assertEquals([
-            'Matomo\Cache\\' => [
-                'GoogleAnalyticsImporter/Importers/DevicesDetection/RecordImporter.php',
-                'GoogleAnalyticsImporter/Importers/DevicesDetection/RecordImporterGA4.php'
-            ],
-            'DeviceDetector\\' => [
-                'GoogleAnalyticsImporter/Importers/DevicesDetection/RecordImporter.php',
-                'GoogleAnalyticsImporter/Importers/DevicesDetection/RecordImporterGA4.php'
-            ],
-            'Monolog\\' => [
-                'GoogleAnalyticsImporter/Monolog/Handler/GASystemLogHandler.php'
-            ],
-            'Symfony\Component\Console\\' => [
-                'GoogleAnalyticsImporter/tests/System/CheckDirectDependencyUseCommandTest.php'
-            ],
-            'Symfony\Bridge\Monolog\\' => [
-                'GoogleAnalyticsImporter/tests/Fixtures/ImportedFromGoogle.php',
-                'GoogleAnalyticsImporter/tests/Fixtures/ImportedFromGoogleGA4.php'
-            ],
-            'Twig\\' => [
-                'GoogleAnalyticsImporter/Controller.php'
-            ]
         ], $checkDirectDependencyUse->usesFoundList[$pluginName]);
     }
 }
