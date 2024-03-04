@@ -22,5 +22,6 @@
     },
     "homepage": "https://matomo.org",
     "license": "GPL v3+",
-    "keywords": ["google", "analytics", "import"]
+    "keywords": ["google", "analytics", "import"],
+    "category": "integration"
 }
