@@ -62,7 +62,7 @@
         "IsVerboseLoggingEnabled": "Ativar Registo Verboso",
         "IsVerboseLoggingEnabledHelp": "Se sua importação estiver falhando por algum motivo em um dia específico, você poderá habilitar o log detalhado para obter mais informações sobre a causa. Habilite-o apenas para a data de falha, pois resultará em uma grande quantidade de saída de log. Após a conclusão da importação, localize os arquivos de log na pasta %1$s com um nome como %2$s. Envie este log com quaisquer relatórios de bugs/solicitações de suporte.",
         "JobWillRunUntilManuallyCancelled": "Nenhuma data final de importação especificada. Este trabalho será executado até ser cancelado manualmente.",
-        "KilledStatusHelp": "Parece que o trabalho de importação foi encerrado. Se você não fez isso sozinho, seu host provavelmente não gosta de processos PHP de execução longa. O trabalho de importação será iniciado novamente na próxima hora, portanto, a importação continuará. Se a velocidade de importação ainda estiver lenta no geral (volte em um dia para ver), consulte o guia do usuário para obter mais informações e soluções alternativas.",
+        "KilledStatusHelp": "Parece que o trabalho de importação foi terminado. Se não foi você que fez isto, então provavelmente o seu servidor não gosta de processos PHP de longa duração. O trabalho de importação começará novamente dentro da próxima hora, por isso a importação ainda irá continuar. Se a velocidade de importação ainda for, no geral, lenta (volte novamente aqui num dia), depois consulte o guia do utilizador para mais informações e soluções alternativas.",
         "LastDayArchived": "Último Dia Arquivado",
         "LastDayImported": "Último Dia Importado",
         "LastResumeTime": "Hora do Último Resumo",
