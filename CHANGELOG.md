@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.0.12
+- Fixes streamIds key not defined warning
+
 # 5.0.11
 - Fixed direct usage of Monolog dependencies
 
