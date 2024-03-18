@@ -1002,6 +1002,8 @@ class SSH2
      * Default Constructor.
      *
      * $host can either be a string, representing the host, or a stream resource.
+     * If $host is a stream resource then $port doesn't do anything, altho $timeout
+     * still will be used
      *
      * @param mixed $host
      * @param int $port
@@ -1067,6 +1069,7 @@ class SSH2
          * @var \WeakReference<SSH2>|SSH2
          */
         self::$connections[$this->getResourceId()] = class_exists('WeakReference') ? \WeakReference::create($this) : $this;
+        $this->timeout = $timeout;
         if (is_resource($host)) {
             $this->fsock = $host;
             return;
@@ -1074,7 +1077,6 @@ class SSH2
         if (Strings::is_stringable($host)) {
             $this->host = $host;
             $this->port = $port;
-            $this->timeout = $timeout;
         }
     }
     /**
@@ -2798,11 +2800,37 @@ class SSH2
     /**
      * Is the connection still active?
      *
+     * $level has 3x possible values:
+     * 0 (default): phpseclib takes a passive approach to see if the connection is still active by calling feof()
+     *    on the socket
+     * 1: phpseclib takes an active approach to see if the connection is still active by sending an SSH_MSG_IGNORE
+     *    packet that doesn't require a response
+     * 2: phpseclib takes an active approach to see if the connection is still active by sending an SSH_MSG_CHANNEL_OPEN
+     *    packet and imediately trying to close that channel. some routers, in particular, however, will only let you
+     *    open one channel, so this approach could yield false positives
+     *
+     * @param int $level
      * @return bool
      */
-    public function isConnected()
+    public function isConnected($level = 0)
     {
-        return $this->bitmap & self::MASK_CONNECTED && is_resource($this->fsock) && !feof($this->fsock);
+        if (!is_int($level) || $level < 0 || $level > 2) {
+            throw new \InvalidArgumentException('$level must be 0, 1 or 2');
+        }
+        if ($level == 0) {
+            return $this->bitmap & self::MASK_CONNECTED && is_resource($this->fsock) && !feof($this->fsock);
+        }
+        try {
+            if ($level == 1) {
+                $this->send_binary_packet(pack('CN', NET_SSH2_MSG_IGNORE, 0));
+            } else {
+                $this->openChannel(self::CHANNEL_KEEP_ALIVE);
+                $this->close_channel(self::CHANNEL_KEEP_ALIVE);
+            }
+            return \true;
+        } catch (\Exception $e) {
+            return \false;
+        }
     }
     /**
      * Have you successfully been logged in?
@@ -2970,6 +2998,9 @@ class SSH2
             throw new ConnectionClosedException($str);
         }
         $start = microtime(\true);
+        $sec = (int) floor($this->curTimeout);
+        $usec = (int) (1000000 * ($this->curTimeout - $sec));
+        stream_set_timeout($this->fsock, $sec, $usec);
         $raw = stream_get_contents($this->fsock, $this->decrypt_block_size);
         if (!strlen($raw)) {
             $this->bitmap = 0;
@@ -3999,7 +4030,9 @@ class SSH2
         return \false;
     }
     /**
-     * Returns all errors
+     * Returns all errors / debug messages on the SSH layer
+     *
+     * If you are looking for messages from the SFTP layer, please see SFTP::getSFTPErrors()
      *
      * @return string[]
      */
@@ -4008,7 +4041,9 @@ class SSH2
         return $this->errors;
     }
     /**
-     * Returns the last error
+     * Returns the last error received on the SSH layer
+     *
+     * If you are looking for messages from the SFTP layer, please see SFTP::getLastSFTPError()
      *
      * @return string
      */
