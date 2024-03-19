@@ -8,7 +8,7 @@
         "guzzlehttp/promises": "1.5.3",
         "google/analytics-data": "^0.9.4",
         "google/analytics-admin": "^0.10.0",
-        "phpseclib/phpseclib": "^3.0.34",
+        "phpseclib/phpseclib": "3.0.36",
         "phpseclib/bcmath_compat": "^2.0"
     },
     "config": {
