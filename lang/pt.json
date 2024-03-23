@@ -53,7 +53,7 @@
         "ImporterHelp3": "%1$sNota:%2$s Esta importação criará um novo idSite onde irá importar seus dados.",
         "ImporterIsConfigured": "O importador está configurado e pode começar a importar os dados através da linha de comandos.",
         "InsufficientScopes": "Suas credenciais OAuth não têm permissão para acessar todos os seus dados do Google Analytics. Verifique se você ativou o acesso à API do Google Analytics e à API de relatórios do Google Analytics.",
-        "InvalidClientJson": "JSON inválido no ficheiro das credenciais; tente transferir novamente o ficheiro da Consola de API Google.",
+        "InvalidClientJson": "JSON inválido no ficheiro das credenciais; tente descarregar o ficheiro novamente da Consola de API Google.",
         "InvalidDateFormat": "A data deve estar no seguinte formato: %1$s",
         "InvalidDateRange": "Intervalo de datas inválido, a data de início deve ser anterior à data de término.",
         "InvalidRedirectUriInClientConfiguration": "Redirect_uris inválido, pelo menos 1 uri deve corresponder ao uri \"%1$s\" no arquivo de configuração carregado",
