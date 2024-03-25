@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.0.13
+- Upgraded phpseclib to 3.0.36
+
 # 5.0.12
 - Fixes streamIds key not defined warning
 
