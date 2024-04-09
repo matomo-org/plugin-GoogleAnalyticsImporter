@@ -76,3 +76,19 @@ jobs:
           upload-artifacts: true
           dependent-plugins: 'matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels'
           github-token: ${{ secrets.TESTS_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+  phpcs:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          lfs: false
+          persist-credentials: false
+        with:
+          php-version: '7.2'
+          tools: cs2pr
+      - name: Check PHP code styles
+        id: phpcs
+        run: ./vendor/bin/phpcs --report-full --report-checkstyle=plugins/GoogleAnalyticsImporter/phpcs-report.xml plugins/GoogleAnalyticsImporter
+      - name: Show PHPCS results in PR
+        if: ${{ always() && steps.phpcs.outcome == 'failure' }}
+        run: cs2pr ./phpcs-report.xml
