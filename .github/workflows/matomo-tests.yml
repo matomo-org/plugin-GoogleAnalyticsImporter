@@ -87,9 +87,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.2'
-          tools: cs2pr
-      - name: Install phpcs
-        run: sudo apt install php-codesniffer
+          tools: cs2pr, phpcs
       - name: Check PHP code styles
         id: phpcs
         run: phpcs --standard=PSR12 --report-full --ignore=vendor/* --report-checkstyle=phpcs-report.xml ./
