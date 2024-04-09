@@ -83,7 +83,6 @@ jobs:
         with:
           lfs: false
           persist-credentials: false
-        with:
           php-version: '7.2'
           tools: cs2pr
       - name: Check PHP code styles
