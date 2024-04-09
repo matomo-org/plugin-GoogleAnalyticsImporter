@@ -64,8 +64,6 @@ jobs:
         with:
           lfs: true
           persist-credentials: false
-      - name: Install phpcs
-          run: sudo apt install php-codesniffer
       - name: running tests
         uses: matomo-org/github-action-tests@main
         with:
@@ -90,6 +88,8 @@ jobs:
         with:
           php-version: '7.2'
           tools: cs2pr
+      - name: Install phpcs
+        run: sudo apt install php-codesniffer
       - name: Check PHP code styles
         id: phpcs
         run: phpcs --standard=PSR12 --report-full --ignore=vendor/* --report-checkstyle=phpcs-report.xml ./
