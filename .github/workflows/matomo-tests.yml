@@ -64,6 +64,8 @@ jobs:
         with:
           lfs: true
           persist-credentials: false
+      - name: Install phpcs
+          run: sudo apt install php-codesniffer
       - name: running tests
         uses: matomo-org/github-action-tests@main
         with:
@@ -83,11 +85,14 @@ jobs:
         with:
           lfs: false
           persist-credentials: false
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
           php-version: '7.2'
           tools: cs2pr
       - name: Check PHP code styles
         id: phpcs
-        run: ./vendor/bin/phpcs --report-full --report-checkstyle=plugins/GoogleAnalyticsImporter/phpcs-report.xml plugins/GoogleAnalyticsImporter
+        run: phpcs --standard=PSR12 --report-full --ignore=vendor/* --report-checkstyle=phpcs-report.xml ./
       - name: Show PHPCS results in PR
         if: ${{ always() && steps.phpcs.outcome == 'failure' }}
         run: cs2pr ./phpcs-report.xml
