@@ -23,14 +23,16 @@ jobs:
         with:
           lfs: false
           persist-credentials: false
+      - name: Install dependencies
+        run: composer install --dev --prefer-dist --no-progress --no-suggest
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: '7.2'
-          tools: cs2pr, phpcs
+          tools: cs2pr
       - name: Check PHP code styles
         id: phpcs
-        run: phpcs --report-full --report-checkstyle=./phpcs-report.xml
+        run: ./vendor/bin/phpcs --report-full --report-checkstyle=./phpcs-report.xml
       - name: Show PHPCS results in PR
         if: ${{ always() && steps.phpcs.outcome == 'failure' }}
         run: cs2pr ./phpcs-report.xml --prepend-filename

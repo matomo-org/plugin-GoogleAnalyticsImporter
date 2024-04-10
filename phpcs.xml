@@ -1,13 +1,11 @@
 <?xml version="1.0"?>
-<ruleset name="matomo" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
+<ruleset name="googleAnalyticsImporter" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/squizlabs/php_codesniffer/phpcs.xsd">
 
-    <description>Matomo Coding Standard</description>
+    <description>Matomo Coding Standard for GoogleAnalyticsImporter plugin</description>
 
     <arg name="extensions" value="php" />
 
-    <file>core</file>
-    <file>plugins</file>
-    <file>tests/PHPUnit</file>
+    <file>.</file>
 
     <exclude-pattern>tests/PHPUnit/proxy/*</exclude-pattern>
     <exclude-pattern>tests/PHPUnit/Unit/Config/test_files/*</exclude-pattern>
@@ -18,7 +16,7 @@
     <!-- exclude all plugins included as submodule as long as they might not fully follow this CS -->
     <exclude-pattern>plugins/(AnonymousPiwikUsageMeasurement|Bandwidth|CustomAlerts|CustomVariables|DeviceDetectorCache|LogViewer|LoginLdap|MarketingCampaignsReporting|Provider|QueuedTracking|SecurityInfo|TagManager|TasksTimetable|TrackingSpamPrevention|TreemapVisualization|VisitorGenerator)/*</exclude-pattern>
 
-    <config name="installed_paths" value="../../vendor/slevomat/coding-standard"/>
+    <config name="installed_paths" value="vendor/slevomat/coding-standard"/>
 
     <!-- Use PSR 12 standard as default -->
     <!-- Some rules are currently excluded/restricted, but those restrictions should be removed in the future -->
