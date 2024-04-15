@@ -8,6 +8,8 @@
     <file>.</file>
 
     <exclude-pattern>tests/javascript/*</exclude-pattern>
+    <exclude-pattern>RecordImporter.php</exclude-pattern>
+    <exclude-pattern>RecordImporterGA4.php</exclude-pattern>
     <exclude-pattern>*/vendor/*</exclude-pattern>
     <exclude-pattern>*/libs/*</exclude-pattern>
     <exclude-pattern>tests/*/*</exclude-pattern>

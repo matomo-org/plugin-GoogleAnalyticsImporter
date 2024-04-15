@@ -51,7 +51,7 @@ abstract class RecordImporter
     {
         return \true;
     }
-    public function abstract importRecords(Date $day);
+    public abstract function importRecords(Date $day);
     public function setRecordInserter(\Piwik\Plugins\GoogleAnalyticsImporter\RecordInserter $recordInserter)
     {
         $this->recordInserter = $recordInserter;
