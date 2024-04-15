@@ -34,7 +34,6 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGoalMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleQueryObjectFactory;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\MaxEndDateReached;
-use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Plugins\TagManager\TagManager;
@@ -323,7 +322,7 @@ class Importer
             }
             $this->importStatus->finishImportIfNothingLeft($idSite);
             unset($recordImporters);
-        } catch (DailyRateLimitReached|CloudApiQuotaExceeded $ex) {
+        } catch (DailyRateLimitReached | CloudApiQuotaExceeded $ex) {
             if ($ex instanceof CloudApiQuotaExceeded) {
                 $this->apiQuotaHelper->trackEvent('Internal Quota Exception Reached', 'Google_Analytics_Importer');
                 $this->importStatus->cloudRateLimitReached($idSite, $ex->getMessage());

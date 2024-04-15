@@ -6,6 +6,7 @@
  * @link http://piwik.org
  * @license http://www.gnu.org/licenses/gpl-3.0.html GPL v3 or later
  */
+
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
@@ -35,7 +36,6 @@ use Piwik\Log\LoggerInterface;
 use Piwik\Plugins\WebsiteMeasurable\Type;
 use Piwik\Plugins\TagManager\TagManager;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\EndDate;
-use Piwik\Plugins\SitesManager\API as SitesManagerAPI;
 use Piwik\Plugins\Goals\API as GoalsAPI;
 use Piwik\Plugins\CustomDimensions\API as CustomDimensionsAPI;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGA4CustomDimensionMapper;
@@ -45,6 +45,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGA4QueryObjectFactory;
 use Piwik\Plugins\GoogleAnalyticsImporter\Input\MaxEndDateReached;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\DailyRateLimitReached;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\HourlyRateLimitReached;
+
 class ImporterGA4
 {
     const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
@@ -118,6 +119,7 @@ class ImporterGA4
      * @var bool
      */
     private $isMainImport = \true;
+
     public function __construct(ReportsProvider $reportsProvider, LoggerInterface $logger, GoogleGA4GoalMapper $goalMapper, GoogleGA4CustomDimensionMapper $customDimensionMapper, \Piwik\Plugins\GoogleAnalyticsImporter\IdMapper $idMapper, \Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate, \Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper $apiQuotaHelper)
     {
         $this->reportsProvider = $reportsProvider;
@@ -130,18 +132,22 @@ class ImporterGA4
         $this->endDate = $endDate;
         $this->apiQuotaHelper = $apiQuotaHelper;
     }
+
     public function setGAClient(BetaAnalyticsDataClient $client)
     {
         $this->gaClient = $client;
     }
+
     public function setGAAdminClient(AnalyticsAdminServiceClient $client)
     {
         $this->gaAdminClient = $client;
     }
+
     public function setIsMainImport($isMainImport)
     {
         $this->isMainImport = $isMainImport;
     }
+
     public function makeSite($propertyId, $timezone = \false, $type = Type::ID, $extraCustomDimensions = [], $forceCustomDimensionSlotCheck = \false, $streamIds = [])
     {
         if (class_exists(TagManager::class)) {
@@ -181,6 +187,35 @@ class ImporterGA4
             }
         }
     }
+
+    private function checkExtraCustomDimensions($extraCustomDimensions)
+    {
+        if (empty($extraCustomDimensions)) {
+            return [];
+        }
+        if (!is_array($extraCustomDimensions)) {
+            throw new \Exception("Invalid value supplied for 'extraCustomDimensions': expected array, got " . gettype($extraCustomDimensions));
+        }
+        $cleaned = [];
+        foreach ($extraCustomDimensions as $index => $field) {
+            if (empty($field['ga4Dimension']) && empty($field['dimensionScope'])) {
+                continue;
+            }
+            if (empty($field['ga4Dimension'])) {
+                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #{$index} is missing the gaDimension property.");
+            }
+            if (empty($field['dimensionScope'])) {
+                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #{$index} is missing the dimensionScope property.");
+            }
+            $dimensionScope = $field['dimensionScope'];
+            if ($dimensionScope !== 'action' && $dimensionScope !== 'visit') {
+                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #{$index} has unknown dimensionScope '{$dimensionScope}'.");
+            }
+            $cleaned[] = ['gaDimension' => $field['ga4Dimension'], 'dimensionScope' => $field['dimensionScope']];
+        }
+        return $cleaned;
+    }
+
     public function importEntities($idSite, $propertyId)
     {
         try {
@@ -192,6 +227,7 @@ class ImporterGA4
             return \true;
         }
     }
+
     private function importGoals($idSite, $propertyId)
     {
         if ($this->isPluginUnavailable('Goals')) {
@@ -224,6 +260,26 @@ class ImporterGA4
             }
         }
     }
+
+    private function isPluginUnavailable($pluginName)
+    {
+        return !Manager::getInstance()->isPluginActivated($pluginName) || !Manager::getInstance()->isPluginLoaded($pluginName) || !Manager::getInstance()->isPluginInFilesystem($pluginName);
+    }
+
+    private function goalExists(array $existingGoals, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
+    {
+        foreach ($existingGoals as $goal) {
+            $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal'], $goal['idsite']);
+            if ($gaGoalId === null) {
+                continue;
+            }
+            if ($gaGoalId == $gaGoal->id) {
+                return \true;
+            }
+        }
+        return \false;
+    }
+
     private function importCustomDimensions($idSite, $propertyId)
     {
         if ($this->isPluginUnavailable('CustomDimensions')) {
@@ -278,11 +334,36 @@ class ImporterGA4
             $this->logger->info("Created Matomo dimension for extra dimension {gaDim} as dimension{id} with scope '{scope}'.", ['gaDim' => $extraEntry['gaDimension'], 'id' => $idDimension, 'scope' => $extraEntry['dimensionScope']]);
         }
     }
+
+    private function customDimensionExists(array $existingCustomDimensions, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension)
+    {
+        foreach ($existingCustomDimensions as $customDimension) {
+            $customDimensionId = $this->idMapper->getGoogleAnalyticsId('customdimension', $customDimension['idcustomdimension'], $customDimension['idsite']);
+            if ($customDimensionId === null) {
+                continue;
+            }
+            if ($customDimensionId == $gaCustomDimension->id) {
+                return \true;
+            }
+        }
+        return \false;
+    }
+
+    private function extraCustomDimensionExists(array $existingCustomDimensions, $gaDimensionName)
+    {
+        foreach ($existingCustomDimensions as $customDimension) {
+            if ($customDimension['name'] == $gaDimensionName) {
+                return \true;
+            }
+        }
+        return \false;
+    }
+
     private function importCustomVariableSlots()
     {
         /** @var ImportConfiguration $importConfiguration */
         $importConfiguration = StaticContainer::get(\Piwik\Plugins\GoogleAnalyticsImporter\ImportConfiguration::class);
-        $numCustomVarSlots = (int) $importConfiguration->getNumCustomVariables();
+        $numCustomVarSlots = (int)$importConfiguration->getNumCustomVariables();
         if ($numCustomVarSlots <= 0) {
             $this->logger->info("Using existing custom variable slots.");
             return;
@@ -300,6 +381,30 @@ class ImporterGA4
         $command .= ' customvariables:set-max-custom-variables ' . $numCustomVarSlots;
         passthru($command);
     }
+
+    private function onError($idSite, \Exception $ex, Date $date = null)
+    {
+        $this->logger->info("Unexpected Error: {ex}", ['ex' => $ex]);
+        if ($this->isGaAuthroizationError($ex)) {
+            $this->importStatus->erroredImport($idSite, Piwik::translate('GoogleAnalyticsImporter_InsufficientScopes'));
+        } else {
+            $dateStr = isset($date) ? $date->toString() : '(unknown)';
+            $this->importStatus->erroredImport($idSite, "Error on day {$dateStr}, " . $ex->getMessage());
+        }
+    }
+
+    private function isGaAuthroizationError(\Exception $ex)
+    {
+        if ($ex->getCode() != 403) {
+            return \false;
+        }
+        $messageContent = @json_decode($ex->getMessage(), \true);
+        if (isset($messageContent['error']['message']) && stristr($messageContent['error']['message'], 'Request had insufficient authentication scopes')) {
+            return \true;
+        }
+        return \false;
+    }
+
     public function import($idSite, $propertyId, Date $start, Date $end, Lock $lock, $segment = '', $streamIds = [])
     {
         $date = null;
@@ -332,7 +437,7 @@ class ImporterGA4
             }
             $this->importStatus->finishImportIfNothingLeft($idSite);
             unset($recordImporters);
-        } catch (DailyRateLimitReached|CloudApiQuotaExceeded $ex) {
+        } catch (DailyRateLimitReached | CloudApiQuotaExceeded $ex) {
             if ($ex instanceof CloudApiQuotaExceeded) {
                 $this->apiQuotaHelper->trackEvent('Internal Quota Exception Reached', 'Google_Analytics_Importer');
                 $this->importStatus->cloudRateLimitReached($idSite, $ex->getMessage());
@@ -359,57 +464,7 @@ class ImporterGA4
         }
         return \false;
     }
-    /**
-     * For use in RecordImporters that need to archive data for segments.
-     * @var RecordImporterGA4[] $recordImporters
-     */
-    public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
-    {
-        $maxEndDate = $this->endDate->getMaxEndDate();
-        if ($maxEndDate && $maxEndDate->isEarlier($date)) {
-            throw new MaxEndDateReached();
-        }
-        $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
-        $archiveWriter->initNewArchive();
-        $recordInserter = new \Piwik\Plugins\GoogleAnalyticsImporter\RecordInserter($archiveWriter);
-        foreach ($recordImporters as $plugin => $recordImporter) {
-            if (!$recordImporter->supportsSite()) {
-                continue;
-            }
-            $this->logger->debug("Importing data for the {plugin} plugin.", ['plugin' => $plugin]);
-            $recordImporter->setRecordInserter($recordInserter);
-            $recordImporter->importRecords($date);
-            // since we recorded some data, at some time, remove the no data message
-            if (!$this->noDataMessageRemoved) {
-                $this->removeNoDataMessage($site->getId());
-                $this->noDataMessageRemoved = \true;
-            }
-            if ($plugin === 'VisitsSummary') {
-                /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporterGA4 $visitsSummaryRecordImporter */
-                $visitsSummaryRecordImporter = $recordImporter;
-                $hasAnyVisitSummaryData = $visitsSummaryRecordImporter->hasSomeNumericData();
-                if (!$hasAnyVisitSummaryData) {
-                    $this->logger->info("No Visit Summary Data found for {$date} [segment = {$segment}], skipping rest of plugins for this day/segment.");
-                    break;
-                }
-            }
-            $this->currentLock->reexpireLock();
-        }
-        $archiveWriter->insertRecord(self::IS_IMPORTED_FROM_GA_NUMERIC, 1);
-        $archiveWriter->finalizeArchive();
-        $this->invalidator->markArchivesAsInvalidated([$site->getId()], [$date], 'week', new Segment($segment, [$site->getId()]), \false, \false, null, $ignorePurgeLogDataDate = \true);
-        Common::destroy($archiveWriter);
-    }
-    private function makeArchiveWriter(Site $site, Date $date, $segment = '', $plugin = null)
-    {
-        $period = Factory::build('day', $date);
-        $segment = new Segment($segment, [$site->getId()]);
-        $params = new Parameters($site, $period, $segment);
-        if (!empty($plugin)) {
-            $params->setRequestedPlugin($plugin);
-        }
-        return new ArchiveWriter($params);
-    }
+
     /**
      * @param $idSite
      * @param $propertyId
@@ -458,6 +513,7 @@ class ImporterGA4
         }
         return $instances;
     }
+
     private function getGoalMapping($idSite)
     {
         $mapping = [];
@@ -473,106 +529,12 @@ class ImporterGA4
         }
         return $mapping;
     }
+
     private function logNoGoalIdFoundException($goal)
     {
         $this->logger->warning("No GA goal ID found mapped for '{$goal['name']}' [idgoal = {$goal['idgoal']}]");
     }
-    public function getQueryCount()
-    {
-        return $this->queryCount;
-    }
-    private function removeNoDataMessage($idSite)
-    {
-        $hadTrafficKey = 'SitesManagerHadTrafficInPast_' . (int) $idSite;
-        Option::set($hadTrafficKey, 1);
-    }
-    private function goalExists(array $existingGoals, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
-    {
-        foreach ($existingGoals as $goal) {
-            $gaGoalId = $this->idMapper->getGoogleAnalyticsId('goal', $goal['idgoal'], $goal['idsite']);
-            if ($gaGoalId === null) {
-                continue;
-            }
-            if ($gaGoalId == $gaGoal->id) {
-                return \true;
-            }
-        }
-        return \false;
-    }
-    private function customDimensionExists(array $existingCustomDimensions, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension)
-    {
-        foreach ($existingCustomDimensions as $customDimension) {
-            $customDimensionId = $this->idMapper->getGoogleAnalyticsId('customdimension', $customDimension['idcustomdimension'], $customDimension['idsite']);
-            if ($customDimensionId === null) {
-                continue;
-            }
-            if ($customDimensionId == $gaCustomDimension->id) {
-                return \true;
-            }
-        }
-        return \false;
-    }
-    private function extraCustomDimensionExists(array $existingCustomDimensions, $gaDimensionName)
-    {
-        foreach ($existingCustomDimensions as $customDimension) {
-            if ($customDimension['name'] == $gaDimensionName) {
-                return \true;
-            }
-        }
-        return \false;
-    }
-    private function isPluginUnavailable($pluginName)
-    {
-        return !Manager::getInstance()->isPluginActivated($pluginName) || !Manager::getInstance()->isPluginLoaded($pluginName) || !Manager::getInstance()->isPluginInFilesystem($pluginName);
-    }
-    private function checkExtraCustomDimensions($extraCustomDimensions)
-    {
-        if (empty($extraCustomDimensions)) {
-            return [];
-        }
-        if (!is_array($extraCustomDimensions)) {
-            throw new \Exception("Invalid value supplied for 'extraCustomDimensions': expected array, got " . gettype($extraCustomDimensions));
-        }
-        $cleaned = [];
-        foreach ($extraCustomDimensions as $index => $field) {
-            if (empty($field['ga4Dimension']) && empty($field['dimensionScope'])) {
-                continue;
-            }
-            if (empty($field['ga4Dimension'])) {
-                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #{$index} is missing the gaDimension property.");
-            }
-            if (empty($field['dimensionScope'])) {
-                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #{$index} is missing the dimensionScope property.");
-            }
-            $dimensionScope = $field['dimensionScope'];
-            if ($dimensionScope !== 'action' && $dimensionScope !== 'visit') {
-                throw new \Exception("Invalid value supplied for 'extraCustomDimensions': field #{$index} has unknown dimensionScope '{$dimensionScope}'.");
-            }
-            $cleaned[] = ['gaDimension' => $field['ga4Dimension'], 'dimensionScope' => $field['dimensionScope']];
-        }
-        return $cleaned;
-    }
-    private function isGaAuthroizationError(\Exception $ex)
-    {
-        if ($ex->getCode() != 403) {
-            return \false;
-        }
-        $messageContent = @json_decode($ex->getMessage(), \true);
-        if (isset($messageContent['error']['message']) && stristr($messageContent['error']['message'], 'Request had insufficient authentication scopes')) {
-            return \true;
-        }
-        return \false;
-    }
-    private function onError($idSite, \Exception $ex, Date $date = null)
-    {
-        $this->logger->info("Unexpected Error: {ex}", ['ex' => $ex]);
-        if ($this->isGaAuthroizationError($ex)) {
-            $this->importStatus->erroredImport($idSite, Piwik::translate('GoogleAnalyticsImporter_InsufficientScopes'));
-        } else {
-            $dateStr = isset($date) ? $date->toString() : '(unknown)';
-            $this->importStatus->erroredImport($idSite, "Error on day {$dateStr}, " . $ex->getMessage());
-        }
-    }
+
     /**
      * @param Date $startDate
      * @param Date $endPlusOne
@@ -590,5 +552,69 @@ class ImporterGA4
             }
         }
         return $dates;
+    }
+
+    /**
+     * For use in RecordImporters that need to archive data for segments.
+     * @var RecordImporterGA4[] $recordImporters
+     */
+    public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
+    {
+        $maxEndDate = $this->endDate->getMaxEndDate();
+        if ($maxEndDate && $maxEndDate->isEarlier($date)) {
+            throw new MaxEndDateReached();
+        }
+        $archiveWriter = $this->makeArchiveWriter($site, $date, $segment, $plugin);
+        $archiveWriter->initNewArchive();
+        $recordInserter = new \Piwik\Plugins\GoogleAnalyticsImporter\RecordInserter($archiveWriter);
+        foreach ($recordImporters as $plugin => $recordImporter) {
+            if (!$recordImporter->supportsSite()) {
+                continue;
+            }
+            $this->logger->debug("Importing data for the {plugin} plugin.", ['plugin' => $plugin]);
+            $recordImporter->setRecordInserter($recordInserter);
+            $recordImporter->importRecords($date);
+            // since we recorded some data, at some time, remove the no data message
+            if (!$this->noDataMessageRemoved) {
+                $this->removeNoDataMessage($site->getId());
+                $this->noDataMessageRemoved = \true;
+            }
+            if ($plugin === 'VisitsSummary') {
+                /** @var \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitsSummary\RecordImporterGA4 $visitsSummaryRecordImporter */
+                $visitsSummaryRecordImporter = $recordImporter;
+                $hasAnyVisitSummaryData = $visitsSummaryRecordImporter->hasSomeNumericData();
+                if (!$hasAnyVisitSummaryData) {
+                    $this->logger->info("No Visit Summary Data found for {$date} [segment = {$segment}], skipping rest of plugins for this day/segment.");
+                    break;
+                }
+            }
+            $this->currentLock->reexpireLock();
+        }
+        $archiveWriter->insertRecord(self::IS_IMPORTED_FROM_GA_NUMERIC, 1);
+        $archiveWriter->finalizeArchive();
+        $this->invalidator->markArchivesAsInvalidated([$site->getId()], [$date], 'week', new Segment($segment, [$site->getId()]), \false, \false, null, $ignorePurgeLogDataDate = \true);
+        Common::destroy($archiveWriter);
+    }
+
+    private function makeArchiveWriter(Site $site, Date $date, $segment = '', $plugin = null)
+    {
+        $period = Factory::build('day', $date);
+        $segment = new Segment($segment, [$site->getId()]);
+        $params = new Parameters($site, $period, $segment);
+        if (!empty($plugin)) {
+            $params->setRequestedPlugin($plugin);
+        }
+        return new ArchiveWriter($params);
+    }
+
+    private function removeNoDataMessage($idSite)
+    {
+        $hadTrafficKey = 'SitesManagerHadTrafficInPast_' . (int)$idSite;
+        Option::set($hadTrafficKey, 1);
+    }
+
+    public function getQueryCount()
+    {
+        return $this->queryCount;
     }
 }

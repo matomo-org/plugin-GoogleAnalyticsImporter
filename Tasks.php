@@ -10,7 +10,6 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Exception\DI\NotFoundException;
 use Piwik\CliMulti\CliPhp;
-use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\SettingsPiwik;

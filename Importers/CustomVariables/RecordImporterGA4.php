@@ -69,15 +69,12 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
                 $table = $gaQuery->query($day, $dimensions = [$keyField, $valueField], $this->getVisitMetrics());
                 $this->processCustomVarQuery($record, $table, Model::SCOPE_VISIT, $keyField, $valueField);
                 Common::destroy($table);
-        
                 $table = $gaQuery->query($day, $dimensions = [$keyField, $valueField], $this->getActionMetrics());
                 $this->processCustomVarQuery($record, $table, Model::SCOPE_PAGE, $keyField, $valueField);
                 Common::destroy($table);
-        
                 $table = $gaQuery->query($day, $dimensions = [$keyField, $valueField], [Metrics::INDEX_GOALS]);
                 $this->processCustomVarQuery($record, $table, Model::SCOPE_CONVERSION, $keyField, $valueField);
                 Common::destroy($table);
-        
                  */
     }
     private function processCustomVarQuery(DataTable $record, DataTable $table, $scope, $keyField, $valueField)

@@ -147,7 +147,8 @@ EOF;
                 return $content;
             }
 
-            if ($filePath === __DIR__ . '/vendor/google/apiclient/src/aliases.php'
+            if (
+                $filePath === __DIR__ . '/vendor/google/apiclient/src/aliases.php'
                 || $filePath === __DIR__ . '/vendor/google/apiclient-services/autoload.php'
             ) {
                 $content = preg_replace_callback('/([\'"])Google_/', function ($matches) {
@@ -215,8 +216,11 @@ EOF;
             // Fix the string reference of a scoped dependency in the Math lib
             $escapedPrefix = str_replace('\\', '\\\\', $prefix);
             if ($filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger.php' || $filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger/Engines/Engine.php') {
-                $content = str_replace('phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\',
-                    "{$escapedPrefix}\\\\phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\", $content);
+                $content = str_replace(
+                    'phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\',
+                    "{$escapedPrefix}\\\\phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\",
+                    $content
+                );
             }
 
             // Remove the newly added namespace for the bcmath functions

@@ -121,27 +121,23 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
                         $exitPageMetrics = [
                             Metrics::INDEX_PAGE_EXIT_NB_VISITS,
                         ];
-            
                         $table = $gaQuery->query($day, $dimensions = [$gaDimension], $exitPageMetrics, [
                             'orderBys' => [
             //                    ['field' => 'ga:exits', 'order' => 'descending'],  Not available in GA4
                                 ['field' => $gaDimension, 'order' => 'ascending'],
                             ],
                         ]);
-            
                         foreach ($table->getRows() as $row) {
                             $label = $row->getMetadata($gaDimension);
                             if (empty($label)) {
                                 $label = parent::NOT_SET_IN_GA_LABEL;
                             }
-            
                             $row->deleteMetadata();
                             $tableRow = $record->getRowFromLabel($label);
                             if (!empty($tableRow)) {
                                 $tableRow->sumRow($row);
                             }
                         }
-            
                         Common::destroy($table);
                          */
             $entryPageMetrics = [

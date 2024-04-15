@@ -8,8 +8,6 @@
  */
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
-use Piwik\Plugins\GoogleAnalyticsImporter\CannotImportGoalException;
-use Piwik\Plugins\SitesManager\API;
 use Piwik\Log\LoggerInterface;
 class GoogleGA4GoalMapper
 {

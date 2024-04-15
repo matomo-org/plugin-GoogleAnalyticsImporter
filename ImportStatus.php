@@ -9,7 +9,6 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 use Piwik\Common;
-use Piwik\Config;
 use Piwik\Container\StaticContainer;
 use Piwik\Exception\UnexpectedWebsiteFoundException;
 use Piwik\Option;
@@ -356,7 +355,7 @@ class ImportStatus
         if (empty($status['reimport_ranges'])) {
             return;
         }
-        $status['reimport_ranges'] = array_filter($status['reimport_ranges'], function ($s) use($datesToImport) {
+        $status['reimport_ranges'] = array_filter($status['reimport_ranges'], function ($s) use ($datesToImport) {
             if (!is_array($s) || count($s) != 2) {
                 return \false;
             }

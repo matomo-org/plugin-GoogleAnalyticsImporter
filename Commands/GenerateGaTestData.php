@@ -137,7 +137,7 @@ class GenerateGaTestData extends ConsoleCommand
     {
         return Development::isEnabled();
     }
-    protected function doExecute() : int
+    protected function doExecute(): int
     {
         $input = $this->getInput();
         $output = $this->getOutput();

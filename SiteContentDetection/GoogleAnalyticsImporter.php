@@ -21,35 +21,35 @@ use Piwik\SiteContentDetector;
 use Piwik\View;
 class GoogleAnalyticsImporter extends \Piwik\Plugins\SitesManager\SiteContentDetection\SiteContentDetectionAbstract
 {
-    public static function getName() : string
+    public static function getName(): string
     {
         return Piwik::translate('GoogleAnalyticsImporter_AdminMenuTitle');
     }
-    public static function getIcon() : string
+    public static function getIcon(): string
     {
         return './plugins/GoogleAnalyticsImporter/images/ga-icon.svg';
     }
-    public static function getContentType() : int
+    public static function getContentType(): int
     {
         return self::TYPE_OTHER;
     }
-    public static function getPriority() : int
+    public static function getPriority(): int
     {
         return 25;
     }
-    public function isDetected(?string $data = null, ?array $headers = null) : bool
+    public function isDetected(?string $data = null, ?array $headers = null): bool
     {
         return \false;
     }
-    public function isRecommended(SiteContentDetector $detector) : bool
+    public function isRecommended(SiteContentDetector $detector): bool
     {
         return $detector->wasDetected(GoogleAnalytics3::getId()) || $detector->wasDetected(GoogleAnalytics4::getId());
     }
-    public function getRecommendationDetails(SiteContentDetector $detector) : array
+    public function getRecommendationDetails(SiteContentDetector $detector): array
     {
         return ['title' => Piwik::translate('GoogleAnalyticsImporter_RecommendationTitle'), 'text' => Piwik::translate('GoogleAnalyticsImporter_RecommendationText'), 'button' => Piwik::translate('GoogleAnalyticsImporter_RecommendationButton')];
     }
-    public function renderInstructionsTab(SiteContentDetector $detector) : string
+    public function renderInstructionsTab(SiteContentDetector $detector): string
     {
         // Only show the tab if the current user is super user
         if (!Piwik::hasUserSuperUserAccess()) {

@@ -9,11 +9,8 @@
  */
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
 use Piwik\Container\StaticContainer;
 use Piwik\Piwik;
-use Piwik\Option;
 class AuthorizationGA4
 {
     const CLIENT_CONFIG_OPTION_NAME = 'GoogleAnalyticsImporter.clientConfiguration';

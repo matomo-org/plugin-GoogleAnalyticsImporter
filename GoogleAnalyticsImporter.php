@@ -258,7 +258,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
             $translation = API::getKeywordNotDefinedString();
             $labelToLookFor = '(not provided)';
         }
-        $returnedValue->filter(function (DataTable $table) use($translation, $labelToLookFor) {
+        $returnedValue->filter(function (DataTable $table) use ($translation, $labelToLookFor) {
             $row = $table->getRowFromLabel($labelToLookFor);
             if (!empty($row)) {
                 $row->setColumn('label', $translation);
@@ -360,7 +360,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public static function datesOverlap($periods, $start_time_key = 'start_time', $end_time_key = 'end_time')
     {
         // order periods by start_time
-        usort($periods, function ($a, $b) use($start_time_key, $end_time_key) {
+        usort($periods, function ($a, $b) use ($start_time_key, $end_time_key) {
             return strtotime($a[$start_time_key]) <=> strtotime($b[$end_time_key]);
         });
         // check two periods overlap
@@ -378,7 +378,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
      * @return bool
      * @throws \Exception
      */
-    public static function canDisplayImportPendingNotice() : array
+    public static function canDisplayImportPendingNotice(): array
     {
         $isGASite = \false;
         $instance = new \Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus();
@@ -452,6 +452,6 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
         if ($idSite < 1) {
             $idSite = StaticContainer::get(UserPreferences::class)->getDefaultWebsiteId();
         }
-        return ['isConnectAccountsActivated' => $isConnectAccountsActivated, 'primaryText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel1'), 'radioOptions' => !$isConnectAccountsActivated ? [] : ['connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'), 'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa')], 'googleAuthUrl' => $googleAuthUrl, 'manualConfigText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2') . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', ['<a href="'.Url::addCampaignParametersToMatomoLink('https://matomo.org/faq/general/set-up-google-analytics-import/').'" rel="noreferrer noopener" target="_blank">', '</a>']), 'manualConfigNonce' => $nonce, 'manualActionUrl' => Url::getCurrentUrlWithoutQueryString() . '?' . Http::buildQuery(['module' => 'GoogleAnalyticsImporter', 'action' => 'configureClient', 'idSite' => $idSite]), 'connectAccountsUrl' => $googleAuthUrl, 'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_ConnectWithGoogleText'), 'additionalHelpText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate', ['<strong>', '</strong>'])];
+        return ['isConnectAccountsActivated' => $isConnectAccountsActivated, 'primaryText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel1'), 'radioOptions' => !$isConnectAccountsActivated ? [] : ['connectAccounts' => Piwik::translate('ConnectAccounts_OptionQuickConnectWithGa'), 'manual' => Piwik::translate('ConnectAccounts_OptionAdvancedConnectWithGa')], 'googleAuthUrl' => $googleAuthUrl, 'manualConfigText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel2') . '<br />' . Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterLabel3', ['<a href="' . Url::addCampaignParametersToMatomoLink('https://matomo.org/faq/general/set-up-google-analytics-import/') . '" rel="noreferrer noopener" target="_blank">', '</a>']), 'manualConfigNonce' => $nonce, 'manualActionUrl' => Url::getCurrentUrlWithoutQueryString() . '?' . Http::buildQuery(['module' => 'GoogleAnalyticsImporter', 'action' => 'configureClient', 'idSite' => $idSite]), 'connectAccountsUrl' => $googleAuthUrl, 'connectAccountsBtnText' => Piwik::translate('ConnectAccounts_ConnectWithGoogleText'), 'additionalHelpText' => Piwik::translate('GoogleAnalyticsImporter_ConfigureTheImporterHelpNewDate', ['<strong>', '</strong>'])];
     }
 }

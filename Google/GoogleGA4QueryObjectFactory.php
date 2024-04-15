@@ -8,7 +8,6 @@
  */
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
-use Piwik\Config;
 use Piwik\Date;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImporterGA4;
 use Piwik\Log\LoggerInterface;

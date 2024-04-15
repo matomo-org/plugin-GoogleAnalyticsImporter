@@ -24,7 +24,7 @@ class ArchiveImportedData extends ConsoleCommand
     /**
      * @return int
      */
-    protected function doExecute() : int
+    protected function doExecute(): int
     {
         $input = $this->getInput();
         $output = $this->getOutput();

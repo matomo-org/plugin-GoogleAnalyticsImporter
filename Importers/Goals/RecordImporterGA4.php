@@ -10,15 +10,11 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\Goals;
 
 use Piwik\Common;
-use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\Date;
 use Piwik\Metrics;
 use Piwik\Plugins\Goals\Archiver;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsGA4QueryService;
-use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
-use Piwik\Plugins\GoogleAnalyticsImporter\ImporterGA4;
-use Piwik\Plugins\VisitFrequency\API as VisitFrequencyAPI;
 use Piwik\Site;
 use Piwik\Tracker\GoalManager;
 use Piwik\Log\LoggerInterface;
@@ -56,9 +52,7 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
                         'segmentId' => 'gaid::-3',
                     ],
                 ];
-        
                 $site = new Site($this->getIdSite());
-        
                 $importer = StaticContainer::get(ImporterGA4::class);
                 foreach ($segments as $segment => $gaSegment) {
                     $childRecordImporter = new RecordImporter($this->getGaClient(), $this->getIdSite(), $this->getLogger(), $gaSegment);

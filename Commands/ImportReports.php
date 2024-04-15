@@ -51,7 +51,7 @@ class ImportReports extends ConsoleCommand
     /**
      * @return int
      */
-    protected function doExecute() : int
+    protected function doExecute(): int
     {
         try {
             return $this->executeImpl();
@@ -63,7 +63,7 @@ class ImportReports extends ConsoleCommand
             return self::FAILURE;
         }
     }
-    protected function executeImpl() : int
+    protected function executeImpl(): int
     {
         $isAccountDeduced = \false;
         $input = $this->getInput();

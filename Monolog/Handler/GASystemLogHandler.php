@@ -23,4 +23,3 @@ if (class_exists('Piwik\Plugins\Monolog\Handler\SyslogHandler')) {
     {
     }
 }
-

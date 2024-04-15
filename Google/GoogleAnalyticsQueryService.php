@@ -13,7 +13,6 @@ use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Date;
 use Piwik\Db;
-use Piwik\Exception\Exception;
 use Piwik\Option;
 use Piwik\Piwik;
 use Piwik\Site;

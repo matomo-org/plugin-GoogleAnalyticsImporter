@@ -9,10 +9,8 @@
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\UserLanguage;
 
 use Piwik\Common;
-use Piwik\Container\StaticContainer;
 use Piwik\DataTable;
 use Piwik\Date;
-use Piwik\Intl\Data\Provider\RegionDataProvider;
 use Piwik\Plugins\UserLanguage\Archiver;
 class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporterGA4
 {
