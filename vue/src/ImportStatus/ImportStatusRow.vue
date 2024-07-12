@@ -96,6 +96,7 @@
         <a
           id="reimport-date-range"
           class="table-command-link"
+          v-if="status.isGA4"
           href
           @click.prevent="$emit('reimport')"
         >
