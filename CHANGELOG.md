@@ -1,5 +1,8 @@
 ## Changelog
 
+# 4.6.12
+- Important: Disabled re-import date range feature for GA3 imports to avoid deleting of existing data
+
 # 4.6.11
 - Ignore custom dimensions assigned the Item scope
 

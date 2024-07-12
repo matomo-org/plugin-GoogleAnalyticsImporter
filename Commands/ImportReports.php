@@ -220,7 +220,9 @@ class ImportReports extends ConsoleCommand
                 return;
             }
 
-            $dateRangesToReImport = empty($status['reimport_ranges']) ? [] : $status['reimport_ranges'];
+            // Disabled reimport of daterange for GA3
+//            $dateRangesToReImport = empty($status['reimport_ranges']) ? [] : $status['reimport_ranges'];
+            $dateRangesToReImport = [];
             $dateRangesToReImport = array_map(function ($d) {
                 return [Date::factory($d[0]), Date::factory($d[1])];
             }, $dateRangesToReImport);

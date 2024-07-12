@@ -64,8 +64,8 @@ class ImportedFromGoogle extends Fixture
         $this->getGoogleAnalyticsParams();
 
         $this->runGoogleImporter($this->importedDateRange1);
-        $this->extendEndDate($idSite = 1, '2019-06-27', '2019-07-02');
-        $this->scheduleReimport($idSite = 1, '2019-06-27', '2019-06-27');
+        $this->extendEndDate($idSite = 1, '2019-06-27', '2019-06-27');
+//        $this->scheduleReimport($idSite = 1, '2019-06-27', '2019-06-27');
 
         $output = $this->runGoogleImporter($this->importedDateRange2, $idSite = 1);
         $this->assertStringContainsString('Importing the following date ranges in order: 2019-06-27,2019-06-27', $output);
