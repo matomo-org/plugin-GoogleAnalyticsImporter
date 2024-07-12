@@ -86,25 +86,6 @@ describe("GoogleAnalyticsImporter", function () {
         expect(await content.screenshot()).to.matchImage('resumed_import');
     });
 
-    it('should schedule a re-import when the modal is used', async function () {
-        await page.waitForTimeout(90000);
-
-        await page.click('#reimport-date-range');
-
-        await page.waitForSelector('#openScheduleReimportModal', { visible: true });
-        await page.type('#re-import-start-date', '2019-06-27');
-        await page.type('#re-import-end-date', '2019-06-27');
-
-        await page.click('#scheduleReimportSubmit');
-        await page.waitForNetworkIdle();
-        await page.waitForSelector('.pageWrap');
-
-        await removeStartResumeFinishTime();
-
-        const content = await page.$('.pageWrap');
-        expect(await content.screenshot()).to.matchImage('reimport_range');
-    });
-
     it("should show that the import finished when the import finishes", async function () {
         let totalTime = 0;
         while (true) { // wait until import finishes

@@ -596,6 +596,9 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             new Site($idSite);
 
             $isGA4 = Common::getRequestVar('isGA4', 0, 'int') == 1;
+            if (!$isGA4) {
+                throw new \Exception('Reimport for GA3 is disabled, as it will lead to data loss for already imported date ranges.');
+            }
             $startDate = Common::getRequestVar('startDate', null, 'string');
             $startDate = Date::factory($startDate);
 
