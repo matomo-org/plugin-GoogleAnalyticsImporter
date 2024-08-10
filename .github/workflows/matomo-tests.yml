@@ -57,6 +57,7 @@ jobs:
           upload-artifacts: ${{ matrix.php == '7.2' && matrix.target == 'maximum_supported_matomo' }}
           dependent-plugins: 'matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels'
           github-token: ${{ secrets.TESTS_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          mysql-engine: 'Tidb'
   UI:
     runs-on: ubuntu-20.04
     steps:
@@ -76,3 +77,4 @@ jobs:
           upload-artifacts: true
           dependent-plugins: 'matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels'
           github-token: ${{ secrets.TESTS_ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+          mysql-engine: 'Tidb'
