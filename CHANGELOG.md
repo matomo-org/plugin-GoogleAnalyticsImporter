@@ -1,5 +1,10 @@
 ## Changelog
 
+# 5.1.0 - 2025-01-20
+- Added code to make GA4 imports work with a proxy
+- Added missing license file
+- Improved UI error messages
+
 # 5.0.22 - 2024-12-16
 - Removed GA3 sunset note and added no hits note for Cloud
 
