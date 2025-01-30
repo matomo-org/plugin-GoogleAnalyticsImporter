@@ -109,9 +109,12 @@ class ImportGA4Reports extends ConsoleCommand
             $gaClient = $googleAuth->getClient();
             $gaAdminClient = $googleAuth->getAdminClient();
         } catch (\Exception $ex) {
-            $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Cannot continue with import, client is misconfigured: " . $ex->getMessage());
-            if (!empty($idSite)) {
-                $importStatus->erroredImport($idSite, $ex->getMessage());
+            $errorMessage = $ex->getMessage();
+            $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Cannot continue with import, client is misconfigured: " . $errorMessage);
+            if ($idSite && stripos($errorMessage, 'an unexpected website was found in the request') !== false) {
+                $importStatus->deleteStatus($idSite);
+            } elseif (!empty($idSite)) {
+                $importStatus->erroredImport($idSite, $errorMessage);
             }
             return self::FAILURE;
         }

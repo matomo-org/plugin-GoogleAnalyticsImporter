@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.1.1 - 2025-02-03
+- Handled an edge case to delete the import if website is deleted
+
 # 5.1.0 - 2025-01-20
 - Added code to make GA4 imports work with a proxy
 - Added missing license file
