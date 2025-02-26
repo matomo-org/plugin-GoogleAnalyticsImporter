@@ -95,6 +95,7 @@
         "NohupExecutableMissing": "Matomo kan de nohup-executable niet vinden. De Google Analytics Importer gebruikt nohup om het importproces uit te voeren, zodat het zelfstandig kan doorgaan nadat een webverzoek is afgelopen. Deze executable moet aanwezig en toegankelijk zijn voor PHP om de importer te laten werken.",
         "None": "Geen",
         "NotSetInGA": "Niet ingesteld in Google Analytics",
+        "NoteImportNotCountedAsHit": "%1$sOpmerking:%2$s gegevens geïmporteerd via Google Analytics Import tellen niet mee voor uw hits-quota.",
         "OauthFailedMessage": "Er is een probleem opgetreden tijdens het autorisatieproces voor het importeren van uw GA-rapporten. Klik op onderstaande knop om het opnieuw te proberen. Als het probleem aanhoudt, neem dan contact op met ons ondersteuningsteam voor assistentie. Zij zullen u helpen om het probleem op te lossen en uw historische GA-gegevens te importeren.",
         "Optional": "Optioneel",
         "PendingGAImportReportNotificationNoData": "We importeren nog steeds uit Google Analytics, maar u zou uw meest recente gegevens moeten kunnen zien. Binnen enkele dagen kunt u al uw gegevens bekijken.",
