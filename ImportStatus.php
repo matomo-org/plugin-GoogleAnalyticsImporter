@@ -330,11 +330,11 @@ class ImportStatus
                     $status['errorDescription'] = Piwik::translate('GoogleAnalyticsImporter_StatusInsufficientProfilePermissionDescription');
                 }
             }
-        } elseif ($status['status'] === self::STATUS_PERMISSION_DENIED) {
+        } elseif (!empty($status['status']) && $status['status'] === self::STATUS_PERMISSION_DENIED) {
             $forumUrl = Url::addCampaignParametersToMatomoLink('https://forum.matomo.org/');
             $status['statusName'] = Piwik::translate('GoogleAnalyticsImporter_StatusPermissionDenied');
             $status['errorDescription'] = Piwik::translate('GoogleAnalyticsImporter_StatusPermissionDeniedDescription', ['<a href="' . $forumUrl . '" target="_blank" rel="noreferrer noopener">', '</a>']);
-        } elseif ($status['status'] === self::STATUS_UNAUTHENTICATED) {
+        } elseif (!empty($status['status']) && $status['status'] === self::STATUS_UNAUTHENTICATED) {
             $status['statusName'] = Piwik::translate('GoogleAnalyticsImporter_StatusUnAuthenticated');
             $status['errorDescription'] = Piwik::translate('GoogleAnalyticsImporter_StatusUnAuthenticatedDescription', ['<a href=https://console.cloud.google.com/" target="_blank" rel="noreferrer noopener">', '</a>']);
         }
