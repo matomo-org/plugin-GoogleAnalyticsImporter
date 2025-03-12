@@ -169,7 +169,12 @@
         "StatusCloudRateLimitedName": "Rate limited (account)",
         "StatusCloudRateLimitedDescription": "Google limits API requests for data imports. This limit is prorated across Matomo cloud customers. For your account, this has been prorated to %1$s requests. You have reached this limit for today, and the importer will automatically retry tomorrow. You can bypass this limit by configuring your Google Analytics import via your Google Analytics account.",
         "StatusKilledName": "Terminated",
-        "StatusKilledDescription": "The import job was terminated. If you did not initiate this, your host may have restricted long-running PHP processes. The import job will automatically restart within the next hour. If the problem persists, refer to the user guide for more information and workarounds, or contact Matomo support."
+        "StatusKilledDescription": "The import job was terminated. If you did not initiate this, your host may have restricted long-running PHP processes. The import job will automatically restart within the next hour. If the problem persists, refer to the user guide for more information and workarounds, or contact Matomo support.",
+        "StatusPermissionDenied": "Permission Denied",
+        "StatusPermissionDeniedDescription": "The import encountered a permission issue, which may persist with further import attempts. Verify that your Google Analytics account has the necessary permissions for data access. For further assistance, please ask for help on the %1$sforums%2$s. To expedite resolution, Matomo support can assist with access to your GA account.",
+        "StatusInsufficientProfilePermissionDescription": "There was an issue because your user account does not have sufficient permissions for the selected profile. Check that your user account has the correct permissions for accessing this profile.",
+        "StatusUnAuthenticated": "Unauthenticated",
+        "StatusUnAuthenticatedDescription": "The request could not be completed due to invalid authentication credentials. An OAuth 2.0 access token, login cookie, or other valid authentication credentials are required. Check you are logged in with the correct credentials and your OAuth 2.0 access token hasn't expired. For more details, refer to the %1$sGoogle Sign-In Web Developer Console%2$s."
 
     }
 }
