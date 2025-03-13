@@ -56,6 +56,9 @@ class CheckDirectDependencyUseCommandTest extends SystemTestCase
             ],
             'Twig' => [
                 'GoogleAnalyticsImporter/Controller.php'
+            ],
+            'GeoIp2' => [
+                'GoogleAnalyticsImporter/Importers/UserCountry/RecordImporterGA4.php'
             ]
         ], $checkDirectDependencyUse->usesFoundList[$pluginName]);
     }
