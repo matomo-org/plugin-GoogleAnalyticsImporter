@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.1.2 - 2025-03-17
+- Started importing region data as the region dimension is now available in the API request
+
 # 5.1.1 - 2025-02-03
 - Handled an edge case to delete the import if website is deleted
 
