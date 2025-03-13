@@ -19,6 +19,7 @@ use Piwik\Piwik;
 use Piwik\Plugins\GoogleAnalyticsImporter\Commands\ImportReports;
 use Piwik\SettingsPiwik;
 use Piwik\Site;
+use Piwik\Url;
 
 // TODO: maybe make an import status entity class
 class ImportStatus
@@ -34,6 +35,8 @@ class ImportStatus
     public const STATUS_RATE_LIMITED_HOURLY = 'rate_limited_hourly';
     public const STATUS_CLOUD_RATE_LIMITED = 'cloud_rate_limited';
     public const STATUS_KILLED = 'killed';
+    public const STATUS_PERMISSION_DENIED = 'PERMISSION_DENIED';
+    public const STATUS_UNAUTHENTICATED = 'UNAUTHENTICATED';
     public static function isImportRunning($status)
     {
         $idSite = $status['idSite'];
@@ -323,7 +326,17 @@ class ImportStatus
                     $status['errorCode'] = $jsonDecoded['error']['code'];
                 }
                 $status['errorDescription'] = $msg;
+                if (stripos($msg, 'User does not have sufficient permissions for this profile') !== false) {
+                    $status['errorDescription'] = Piwik::translate('GoogleAnalyticsImporter_StatusInsufficientProfilePermissionDescription');
+                }
             }
+        } elseif (!empty($status['status']) && $status['status'] === self::STATUS_PERMISSION_DENIED) {
+            $forumUrl = Url::addCampaignParametersToMatomoLink('https://forum.matomo.org/');
+            $status['statusName'] = Piwik::translate('GoogleAnalyticsImporter_StatusPermissionDenied');
+            $status['errorDescription'] = Piwik::translate('GoogleAnalyticsImporter_StatusPermissionDeniedDescription', ['<a href="' . $forumUrl . '" target="_blank" rel="noreferrer noopener">', '</a>']);
+        } elseif (!empty($status['status']) && $status['status'] === self::STATUS_UNAUTHENTICATED) {
+            $status['statusName'] = Piwik::translate('GoogleAnalyticsImporter_StatusUnAuthenticated');
+            $status['errorDescription'] = Piwik::translate('GoogleAnalyticsImporter_StatusUnAuthenticatedDescription', ['<a href=https://console.cloud.google.com/" target="_blank" rel="noreferrer noopener">', '</a>']);
         }
 
         return $status;
