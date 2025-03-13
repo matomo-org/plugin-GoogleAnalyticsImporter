@@ -12,6 +12,7 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Importers\UserCountry;
 use Piwik\Common;
 use Piwik\DataTable;
 use Piwik\Date;
+use Piwik\Plugins\GeoIp2\LocationProvider\GeoIp2;
 use Piwik\Plugins\UserCountry\Archiver;
 
 class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporterGA4
@@ -40,23 +41,31 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
     private function queryRegionsAndCities(Date $day)
     {
         $cities = new DataTable();
-        //        $regions = new DataTable(); // Not Available in GA4
+        $regions = new DataTable();
         $gaQuery = $this->getGaClient();
-        $table = $gaQuery->query($day, ['countryId', 'city'], $this->getConversionAwareVisitMetrics());
+        $table = $gaQuery->query($day, ['countryId', 'region', 'city'], $this->getConversionAwareVisitMetrics());
+        $regionsList = \Piwik\Plugin\Manager::getInstance()->isPluginActivated('GeoIp2') ?  GeoIp2::getRegionNames() : [];
         foreach ($table->getRows() as $row) {
             $country = strtolower($row->getMetadata('countryId'));
-            //            $region = $row->getMetadata('ga:regionIsoCode'); // Not Available in GA4
+            $region = $row->getMetadata('region');
+            if ($country && $region && $regionsList) {
+                $listToSearch = !empty($regionsList[strtoupper($country)]) ? $regionsList[strtoupper($country)] : [];
+                if (!empty($listToSearch)) {
+                    foreach ($listToSearch as $listKey => $list) {
+                        // Need to use iconv as we store region as Île-de-France and GA4 returns as Ile-de-France
+                        if (mb_strtolower(iconv('UTF-8', 'ASCII//TRANSLIT', $region)) === mb_strtolower(iconv('UTF-8', 'ASCII//TRANSLIT', $list))) {
+                            $region = $listKey;
+                            break;
+                        }
+                    }
+                }
+            }
             $city = $row->getMetadata('city');
             //            $lat = $row->getMetadata('ga:latitude'); // Not Available in GA4
             //            $long = $row->getMetadata('ga:longitude');  // Not Available in GA4
-            /** Not available in GA4
-                        // GA returns region as COUNTRY-REGION, we only want the last part here
-                        $regionParts = explode('-', $region);
-                        $region = end($regionParts);
 
-                        $locationRegion = $region . Archiver::LOCATION_SEPARATOR . $country;
-                        $locationCity = $city . Archiver::LOCATION_SEPARATOR . $locationRegion;
-                         */
+            $locationRegion = $region . Archiver::LOCATION_SEPARATOR . $country;
+            $locationCity = $city . Archiver::LOCATION_SEPARATOR . $locationRegion;
             if (!empty($city)) {
                 $topLevelRowCity = $this->addRowToTable($cities, $row, $city);
             }
@@ -72,14 +81,12 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
                             $topLevelRowCity->setMetadata('long', $long);
                         }
 
-                        $this->addRowToTable($regions, $row, $locationRegion);
                          */
+            $this->addRowToTable($regions, $row, $locationRegion);
         }
         $this->insertRecord(Archiver::CITY_RECORD_NAME, $cities);
         Common::destroy($cities);
-        /** Not available in GA4
-            $this->insertRecord(Archiver::REGION_RECORD_NAME, $regions);
-            Common::destroy($regions);
-             */
+        $this->insertRecord(Archiver::REGION_RECORD_NAME, $regions);
+        Common::destroy($regions);
     }
 }
