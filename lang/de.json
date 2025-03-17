@@ -148,6 +148,7 @@
         "StatusFutureDateImportPendingName": "Aktuell",
         "StatusKilledDescription": "Der Import-Job wurde beendet. Wenn Sie dies nicht veranlasst haben, hat Ihr Host möglicherweise lang laufende PHP-Prozesse eingeschränkt. Der Import-Job wird innerhalb der nächsten Stunde automatisch neu gestartet. Wenn das Problem weiterhin besteht, ziehen Sie das Benutzerhandbuch für weitere Informationen und Lösungsansätze heran oder kontaktieren Sie den Matomo-Support.",
         "StatusKilledName": "Beendet",
+        "StatusPermissionDenied": "Zugriff verweigert",
         "StatusRateLimitedDescription": "Standardmäßig begrenzt Google API-Anfragen für jedes Projekt auf 50.000 pro Tag. Dieser Import-Job hat dieses Limit überschritten und wird morgen fortgesetzt.",
         "StatusRateLimitedHourlyDescription": "Standardmäßig begrenzt Google API-Anfragen für jedes Projekt auf 5.000 pro Stunde. Dieser Import-Job hat dieses Limit überschritten und wird fortgesetzt, nachdem das stündliche Limit zurückgesetzt wurde.",
         "StatusRateLimitedHourlyName": "Stundenlimit erreicht",
