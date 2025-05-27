@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.1.3 - 2025-05-28
+- Added fallback URI for valid redirect URI check to solve issues with some Matomo for WordPress install
+
 # 5.1.2 - 2025-03-17
 - Started importing region data as the region dimension is now available in the API request
 
