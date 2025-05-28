@@ -15,6 +15,7 @@ use Piwik\Common;
 use Piwik\Container\StaticContainer;
 use Piwik\Option;
 use Piwik\Piwik;
+use Piwik\SettingsPiwik;
 use Piwik\Url;
 
 class Authorization
@@ -136,8 +137,13 @@ class Authorization
     private function getValidUri($uris)
     {
         $validUri = Url::getCurrentUrlWithoutQueryString() . '?module=GoogleAnalyticsImporter&action=processAuthCode';
+        $settingURL = SettingsPiwik::getPiwikUrl();
+        if (stripos($settingURL, 'index.php') === false) {
+            $settingURL .= 'index.php';
+        }
+        $validUriFallback = $settingURL . '?module=GoogleAnalyticsImporter&action=processAuthCode'; // Some MWP installs was not working as expected when using Url::getCurrentUrlWithoutQueryString()
         foreach ($uris as $uri) {
-            if (stripos($uri, $validUri) !== \FALSE) {
+            if (stripos($uri, $validUri) !== \false || stripos($uri, $validUriFallback) !== \false) {
                 return $uri;
             }
         }
