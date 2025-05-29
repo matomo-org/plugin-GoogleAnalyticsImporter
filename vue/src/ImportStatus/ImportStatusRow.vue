@@ -30,7 +30,7 @@
         <br>
         {{ translate('GoogleAnalyticsImporter_StatusErroredName') }}<span
           v-if="status.errorCode">&nbsp;{{ status.errorCode }}
-      </span>: <span v-html="status.errorDescription"></span>
+      </span>: <span v-html="$sanitize(status.errorDescription)"></span>
       </div>
     </td>
     <td class="last-date-imported">
