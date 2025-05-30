@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.1.4 - 2025-06-09
+- Fixed minor bug in UI
+
 # 5.1.3 - 2025-05-28
 - Added fallback URI for valid redirect URI check to solve issues with some Matomo for WordPress install
 

@@ -9,6 +9,7 @@ import './onWidgetLoaded';
 
 export { default as ImportSchedulerGA4 } from './ImportScheduler/ImportSchedulerGA4.vue';
 export { default as ImportStatus } from './ImportStatus/ImportStatus.vue';
+export { default as ImportStatusRow } from './ImportStatus/ImportStatusRow.vue';
 export { default as ConfigureConnection } from './Configure/ConfigureConnection.vue';
 export { default as ClientConfig } from './ClientConfig/ClientConfig.vue';
 export { default as AdminPage } from './AdminPage/AdminPage.vue';
