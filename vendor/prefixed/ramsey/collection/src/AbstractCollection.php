@@ -142,8 +142,9 @@ abstract class AbstractCollection extends AbstractArray implements CollectionInt
      *     on the elements in this collection.
      * @throws UnsupportedOperationException if unable to call sort() on this
      *     collection.
+     * @param string $order
      */
-    public function sort(?string $propertyOrMethod = null, Sort $order = Sort::Ascending) : CollectionInterface
+    public function sort(?string $propertyOrMethod = null, $order = Sort::Ascending) : CollectionInterface
     {
         $collection = clone $this;
         usort(

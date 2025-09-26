@@ -125,8 +125,9 @@ interface CollectionInterface extends ArrayInterface
      *     on the elements in this collection.
      * @throws UnsupportedOperationException if unable to call sort() on this
      *     collection.
+     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Sort::* $order
      */
-    public function sort(?string $propertyOrMethod = null, Sort $order = Sort::Ascending) : self;
+    public function sort(?string $propertyOrMethod = null, string $order = Sort::Ascending) : self;
     /**
      * Filter out items of the collection which don't match the criteria of
      * given callback.
