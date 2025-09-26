@@ -75,8 +75,11 @@ class Authorization
      * @return \Google\Service\Oauth2\Tokeninfo
      * @throws \Exception
      */
-    protected function getTokenInfo($accessToken, $client)
-    {
+    protected function getTokenInfo(
+        #[\SensitiveParameter]
+        $accessToken,
+        $client
+    ) {
         $service = new \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Oauth2($client);
         return $service->tokeninfo(['access_token' => $accessToken['access_token']]);
     }
