@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.1.5 - 2025-09-29
+- Upgraded grpc package to 1.74.0
+
 # 5.1.4 - 2025-06-09
 - Fixed minor bug in UI
 
