@@ -1,6 +1,10 @@
 {
     "GoogleAnalyticsImporter": {
         "Actions": "Radnje",
-        "IsMobileApp": "Mobilna aplikacija"
+        "EndDate": "Datum kraja",
+        "IsMobileApp": "Mobilna aplikacija",
+        "None": "Ništa",
+        "Start": "Početak",
+        "Timezone": "Vremenska zona"
     }
 }
