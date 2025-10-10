@@ -1,10 +1,23 @@
 {
     "GoogleAnalyticsImporter": {
         "Actions": "Radnje",
+        "Authorize": "Autoriziraj",
+        "ConfigurationFile": "Datoteka konfiguracije",
+        "ConfigurationText": "Tekst konfiguracije",
         "EndDate": "Datum kraja",
         "IsMobileApp": "Mobilna aplikacija",
         "None": "Ništa",
+        "RemoveClientConfiguration": "Ukloni konfiguraciju klijenta",
         "Start": "Početak",
+        "StartDate": "Datum početka",
+        "StatusCloudRateLimitedName": "Ograničena stopa (račun)",
+        "StatusErroredName": "Greška",
+        "StatusFutureDateImportPendingName": "Aktualizirano",
+        "StatusKilledName": "Prekinuto",
+        "StatusPermissionDenied": "Pristup odbijen",
+        "StatusRateLimitedHourlyName": "Ograničena stopa (satno)",
+        "StatusRateLimitedName": "Ograničena stopa (dnevno)",
+        "StatusUnAuthenticated": "Neautentificirano",
         "Timezone": "Vremenska zona"
     }
 }
