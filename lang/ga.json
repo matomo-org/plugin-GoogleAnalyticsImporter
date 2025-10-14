@@ -18,8 +18,6 @@
         "ConfigureClientDesc2": "%1$sTo start follow our instructions to retrieve your OAuth Client configuration.%2$s Ansin uaslódáil cumraíocht an chliaint seo nó greamaigh isteach sa réimse thíos í.",
         "ConfigureImportNotificationMessage": "Ná caill amach ar do léargais luachmhara stairiúla! %1$sImport do shonraí Google Analytics le haghaidh %2$s%3$s isteach i d'ardán Matomo anois.",
         "ConfigureTheImporter": "Cumraigh an tIompórtálaí",
-        "ConfigureTheImporterHelp": "%1$sNote:%2$s Mura n-iompórtálann tú do chuid sonraí, caillfear do shonraí Google Analytics 3 go buan tar éis an 31 Nollaig, 2023.",
-        "ConfigureTheImporterHelpNewDate": "%1$sNote:%2$s Mura n-iompórtálann tú do chuid sonraí, caillfear do shonraí Google Analytics 3 go buan tar éis an 30 Meitheamh, 2024.",
         "ConfigureTheImporterLabel1": "Iompórtáil d'airíonna Google Analytics agus sonraí tuairiscithe chun cúltaca a chruthú agus anailís a dhéanamh orthu ag baint úsáide as uirlisí anailísíochta cumhachtacha Matomo. Nuair a nascann tú an t-allmhaireoir, roghnaigh na hairíonna Google Analytics le hiompórtáil agus cruthóidh Matomo suíomh gréasáin nua go huathoibríoch do gach ceann.",
         "ConfigureTheImporterLabel2": "D'fhonn do chuid sonraí a allmhairiú ó Google Analytics, ní mór rochtain a bheith ag Matomo ar na sonraí seo.",
         "ConfigureTheImporterLabel3": "Chun tús a chur leis,%1$sfollow our instructions to retrieve your OAuth Client configuration%2$s. Ansin uaslódáil an comhad cumraíochta cliant ag baint úsáide as an gcnaipe thíos.",
