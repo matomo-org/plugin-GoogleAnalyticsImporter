@@ -18,8 +18,6 @@
         "ConfigureClientDesc2": "%1$sQë t’ia nisni ndiqni udhëzimet tona për të marrë formësimin tuaj të Klientit OAuth.%2$s Mandej ose ngarkojeni këtë formësim klienti, ose ngjiteni te fusha më poshtë.",
         "ConfigureImportNotificationMessage": "Mos humbni mundësinë për prirje tuajat historike të çmuara! %1$sImportoni që tani të dhënat tuaja Google Analytics për %2$s%3$s platformën tuaj Matomo.",
         "ConfigureTheImporter": "Formësoni Importuesin",
-        "ConfigureTheImporterHelp": "%1$sShënim:%2$s Nëse s’importoni të dhënat tuaja, të dhënat tuaja Google Analytics 3 do të humbin përgjithmonë, pas 31 dhjetorit të 2023-shit.",
-        "ConfigureTheImporterHelpNewDate": "%1$sShënim:%2$s Nëse s’importoni të dhënat tuaja, të dhënat tuaja Google Analytics 3 do të humbin përgjithmonë, pas 30 qershorit të 2024-s.",
         "ConfigureTheImporterLabel1": "Importoni vetitë tuaja Google Analytics dhe të dhëna raportimesh, për të krijuar një kopjeruajtje dhe analizuar ato duke përdorur mjete të fuqishme analizash të Matomo-s. Pasi të lidhni importuesin tuaj, përzgjidhni cilat veti Google Analytics të importohen dhe Matomo do të krijojë automatikisht një sajt të ri për secilën.",
         "ConfigureTheImporterLabel2": "Që të importoni të dhënat tuaja nga Google Analytics, Matomo ka nevojë të hyjë në këto të dhëna.",
         "ConfigureTheImporterLabel3": "Për t’ia filluar, %1$sndiqni udhëzimet tona për të marrë formësimin e Klientit tuaj OAuth%2$s. Mandej ngarkojeni kartelën e formësimit të klientit duke përdorur butonin më poshtë.",
