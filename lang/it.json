@@ -18,8 +18,6 @@
         "ConfigureClientDesc2": "%1$sPer iniziare, segui le nostre istruzioni per recuperare la configurazione del tuo client OAuth.%2$s Quindi carica la configurazione del client o incollala nel campo sottostante.",
         "ConfigureImportNotificationMessage": "Non perdere i tuoi preziosi insights storici! %1$sImporta adesso i tuoi dati di Google Analytics per %2$s%3$s nella tua piattaforma Matomo.",
         "ConfigureTheImporter": "Configura l'Importer",
-        "ConfigureTheImporterHelp": "%1$sNota:%2$s Se non importi i tuoi dati, i tuoi dati di Google Analytics 3 andranno persi definitivamente dopo il 31 dicembre 2023.",
-        "ConfigureTheImporterHelpNewDate": "%1$sNota:%2$s Se non importi i tuoi dati, i dati di Google Analytics 3 andranno persi definitivamente dopo il 30 giugno 2024.",
         "ConfigureTheImporterLabel1": "Importa le tue proprietà di Google Analytics e i dati dei report per creare un backup e analizzarli utilizzando i potenti strumenti di analisi di Matomo. Una volta collegato l'importatore, seleziona quali proprietà di Google Analytics importare e Matomo creerà automaticamente un nuovo sito web per ognuna.",
         "ConfigureTheImporterLabel2": "Per importare i tuoi dati da Google Analytics, Matomo ha bisogno di accedere a questi dati.",
         "ConfigureTheImporterLabel3": "Per iniziare, %1$ssegui le nostre istruzioni per recuperare la configurazione del tuo client OAuth%2$s. Quindi carica il file di configurazione del client utilizzando il pulsante in basso.",
