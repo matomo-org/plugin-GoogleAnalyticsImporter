@@ -18,8 +18,6 @@
         "ConfigureClientDesc2": "%1$sOm te beginnen volgt u onze instructies om uw OAuth Client-configuratie op te halen.%2$s Upload vervolgens deze clientconfiguratie of plak deze in het onderstaande veld.",
         "ConfigureImportNotificationMessage": "Mis uw waardevolle historische inzichten niet! %1$sImporteer nu uw Google Analytics gegevens voor %2$s%3$s in uw Matomo-platform.",
         "ConfigureTheImporter": "Configureer de importfunctionaliteit",
-        "ConfigureTheImporterHelp": "%1$sOpmerking:%2$s Als u uw gegevens niet importeert, gaan uw Google Analytics 3 gegevens definitief verloren na 31 december 2023.",
-        "ConfigureTheImporterHelpNewDate": "%1$sOpmerking:%2$s Indien u uw gegevens niet importeert, dan gaan uw Google Analytics 3 gegevens definitief verloren na 30 juni 2024.",
         "ConfigureTheImporterLabel1": "Importeer uw Google Analytics properties en rapportage data om een backup te maken en analyseer ze met Matomo's krachtige analytics tools. Zodra u de importer aansluit, selecteert u welke Google Analytics properties u wilt importeren en Matomo maakt automatisch een nieuwe website aan voor elk item.",
         "ConfigureTheImporterLabel2": "Om uw gegevens uit Google Analytics te importeren, heeft Matomo toegang tot deze gegevens nodig.",
         "ConfigureTheImporterLabel3": "Om te beginnen, %1$svolg onze instructies om uw OAuth Client-configuratie op te halen%2$s. Upload vervolgens het clientconfiguratiebestand via onderstaande knop.",
