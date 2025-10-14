@@ -18,7 +18,6 @@
         "ConfigureClientDesc2": "%1$sまず、指示に従って OAuth クライアント構成を取得します。%2$s 次に、このクライアント構成をアップロードするか、下のフィールドに貼り付けます。",
         "ConfigureImportNotificationMessage": "貴重な歴史的洞察をお見逃しなく！ %1$s%2$s%3$s の Google Analytics データを Matomo プラットフォームに今すぐインポートします。",
         "ConfigureTheImporter": "インポーターを構成する",
-        "ConfigureTheImporterHelp": "%1$s注意:%2$s データをインポートしないと、2023年12月31日以降、Googleアナリティクス3のデータは永久に失われます。",
         "ConfigureTheImporterLabel1": "Googleアナリティクスのプロパティとレポートデータをインポートしてバックアップを作成し、Matomoの強力なアナリティクスツールを使用して分析します。インポーターを接続したら、インポートするGoogleアナリティクスのプロパティを選択します。",
         "ConfigureTheImporterLabel2": "Googleアナリティクスからデータをインポートするには、Matomoがそのデータにアクセスする必要があります。",
         "ConfigureTheImporterLabel3": "まずは %1$s 指示に従って OAuth クライアント設定を取得してください%2$s。次に、以下のボタンを使用してクライアント設定ファイルをアップロードします。",
