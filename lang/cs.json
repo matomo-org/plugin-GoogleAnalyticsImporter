@@ -12,8 +12,6 @@
         "ConfigureClientDesc1": "K importu dat ze služby Google Analytics potřebuje Matomo přístup k těmto datům.",
         "ConfigureClientDesc2": "%1$sNa začátek postupujte podle našich pokynů a načtěte konfiguraci klienta OAuth.%2$s Poté tuto konfiguraci klienta nahrajte nebo vložte do pole níže.",
         "ConfigureTheImporter": "Konfigurace importéru",
-        "ConfigureTheImporterHelp": "%1$sPoznámka:%2$s Pokud data neimportujete, budou vaše data ze služby Google Analytics 3 po 31. prosinci 2023 trvale ztracena.",
-        "ConfigureTheImporterHelpNewDate": "%1$sPoznámka:%2$s Pokud data neimportujete, budou vaše data ze služby Google Analytics 3 po 30. červnu 2024 trvale ztracena.",
         "ConfigureTheImporterLabel1": "Importujte své vlastnosti Google Analytics a data z hlášení, vytvořte si zálohu a analyzujte je pomocí výkonných analytických nástrojů Matomo. Po připojení importéru vyberte, které vlastnosti Google Analytics chcete importovat, a Matomo pro každou z nich automaticky vytvoří novou webovou stránku.",
         "ConfigureTheImporterLabel2": "K importu dat ze služby Google Analytics potřebuje Matomo přístup k těmto datům.",
         "ConfigureTheImporterLabel3": "Pro začátek %1$ssledujte naše pokyny k načtení konfigurace klienta OAuth%2$s. Poté nahrajte konfigurační soubor klienta pomocí níže uvedeného tlačítka.",

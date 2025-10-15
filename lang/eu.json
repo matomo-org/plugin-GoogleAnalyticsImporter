@@ -18,8 +18,6 @@
         "ConfigureClientDesc2": "%1$sHasteko, jarraitu gure jarraibideak zure OAuth bezeroaren konfigurazioa eskuratzeko.%2$s Ondoren, igo bezero honen konfigurazioa edo itsatsi beheko eremuan.",
         "ConfigureImportNotificationMessage": "Ez galdu zure informazio historiko baliotsua! %1$sInportatu %2$s(r)en Google Analytics datuak%3$s zure Matomo plataformara orain.",
         "ConfigureTheImporter": "Konfiguratu inportatzailea",
-        "ConfigureTheImporterHelp": "%1$sOharra:%2$s Google Analytics 3ko zure datuak inportatzen ez badituzu behin betiko galduko dituzu 2023ko abenduaren 31n.",
-        "ConfigureTheImporterHelpNewDate": "%1$sOharra:%2$s Google Analytics 3ko zure datuak inportatzen ez badituzu behin betiko galduko dituzu 2024ko ekainaren 30ean.",
         "ConfigureTheImporterLabel1": "Inportatu zure Google Analytics-eko jabetzak eta txostenen datuak babeskopia bat sortu eta Matomoren tresna analitiko ahaltsuekin analizatzeko. Inportatzailea konektatzen duzunean, hautatu Google Analytics-eko zein jabetza inportatu nahi dituzun eta Matomok automatikoki webgune berri bat sortuko du bakoitzarentzat.",
         "ConfigureTheImporterLabel2": "Google Analytics-eko datuak inportatu ahal izateko Matomok datu horietara sarbidea behar du.",
         "ConfigureTheImporterLabel3": "Hasteko, %1$sjarraitu gure jarraibideak zure OAuth bezeroaren konfigurazioa eskuratzeko%2$s. Ondoren igo bezeroaren konfigurazio-fitxategia beheko botoia erabiliz.",
