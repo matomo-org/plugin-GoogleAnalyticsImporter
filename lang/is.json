@@ -1,6 +1,7 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Aðgerðir",
         "Status": "Staða",
-        "Actions": "Aðgerðir"
+        "StatusErroredName": "Villa"
     }
 }
