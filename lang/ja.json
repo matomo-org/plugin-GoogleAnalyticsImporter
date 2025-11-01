@@ -133,6 +133,7 @@
         "StartDateHelp": "インポートを開始する日付。 デフォルトでは、これは GA ウェブ プロパティを作成した日です。 (YYYY-MM-DD)",
         "StartFinishTimes": "開始/終了 時間",
         "Status": "ステータス",
+        "StatusErroredName": "エラー",
         "ThereAreNoImportJobs": "表示するインポート ジョブはありません。",
         "ThisJobShouldFinishToday": "このジョブは今日で終わりです。",
         "ThisReportWasImportedFromGoogle": "このレポートは Google アナリティクスからインポートされました。 Matomo(Piwik) と Google アナリティクスの非互換性により、一部のデータが欠落しているか、不明/設定されていないと報告される場合があります。",
