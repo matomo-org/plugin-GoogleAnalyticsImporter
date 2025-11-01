@@ -137,6 +137,7 @@
         "StartDateHelp": "A data de início da importação. Por padrão, este é o dia em que você criou sua propriedade do GA. (AAAA-MM-DD)",
         "StartFinishTimes": "Horas de Início/Fim",
         "Status": "Status",
+        "StatusErroredName": "Erro",
         "StreamId": "ID do fluxo",
         "StreamIdFilter": "Filtrar pelo ID do fluxo (opcional)",
         "StreamIdFilterHelpText": "O ID do fluxo para o qual você deseja importar dados. %1$sSaiba mais.%2$s %3$sNota:%4$s Deixe este campo em branco para importar dados de todos os fluxos.",
