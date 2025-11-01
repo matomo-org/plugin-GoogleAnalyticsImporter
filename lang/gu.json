@@ -1,5 +1,14 @@
 {
     "GoogleAnalyticsImporter": {
-        "Actions": "ક્રિયાઓ"
+        "Actions": "ક્રિયાઓ",
+        "EndDate": "અંતિમ તારીખ",
+        "GAImportNoDataScreenStep07": "\"%1$s\" પર ક્લિક કરો.",
+        "IsMobileApp": "મોબાઈલ એપ",
+        "NoDataScreenFollowThisSteps": "તેને સેટ કરવા માટે આ પગલાંઓ અનુસરો:",
+        "None": "કોઈ નહિ",
+        "Optional": "વૈકલ્પિક",
+        "StartDate": "પ્રારંભ તારીખ",
+        "Status": "સ્થિતિ",
+        "StatusErroredName": "ભૂલ"
     }
 }
