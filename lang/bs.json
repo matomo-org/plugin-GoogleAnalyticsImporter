@@ -1,6 +1,7 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Akcije",
         "Status": "Status",
-        "Actions": "Akcije"
+        "StatusErroredName": "Greška"
     }
 }
