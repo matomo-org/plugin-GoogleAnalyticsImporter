@@ -1,7 +1,11 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Darbības",
+        "EndDate": "Beigu datums",
+        "GAImportNoDataScreenStep07": "Spiediet \"%1$s\".",
         "Optional": "Izvēles",
+        "StartDate": "Sākuma datums",
         "Status": "Statuss",
-        "Actions": "Darbības"
+        "StatusErroredName": "Kļūda"
     }
 }
