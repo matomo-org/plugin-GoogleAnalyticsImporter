@@ -1,8 +1,9 @@
 {
     "GoogleAnalyticsImporter": {
-        "Optional": "Opsyonal",
+        "Actions": "Mga Aksyon",
         "None": "Wala",
+        "Optional": "Opsyonal",
         "Status": "Status",
-        "Actions": "Mga Aksyon"
+        "StatusErroredName": "Mali"
     }
 }
