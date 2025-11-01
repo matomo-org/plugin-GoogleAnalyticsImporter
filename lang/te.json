@@ -1,7 +1,8 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "చర్యలు",
         "Optional": "ఐచ్చికం",
         "Status": "స్థితి",
-        "Actions": "చర్యలు"
+        "StatusErroredName": "పొరపాటు"
     }
 }
