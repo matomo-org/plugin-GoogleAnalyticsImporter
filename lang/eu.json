@@ -136,6 +136,7 @@
         "StartDateHelp": "Zein datatatik aurrera hasi behar den inportatzen. Modu lehenetsian zure GA web jabetza sortu zenuen eguna da. (YYYY-MM-DD)",
         "StartFinishTimes": "Hasiera/Amaiera orduak",
         "Status": "Egoera",
+        "StatusErroredName": "Errorea",
         "StreamId": "Stream IDa",
         "StreamIdFilter": "Iragazi Stream IDaren arabera (hautazkoa)",
         "StreamIdFilterHelpText": "Zein Stream IDren datuak inportatu nahi dituzun. %1$sIkasi gehiago.%2$s %3$sOharra:%4$s Utzi eremu hau hutsik jario guztien datuak inportatzeko.",
