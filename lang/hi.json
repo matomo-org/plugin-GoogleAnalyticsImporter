@@ -1,9 +1,10 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "प्रक्रिया",
         "IsMobileApp": "मोबाइल एप्लिकेशन",
-        "Optional": "वैकल्पिक",
         "None": "कोई नहीं",
+        "Optional": "वैकल्पिक",
         "Status": "स्थिति",
-        "Actions": "प्रक्रिया"
+        "StatusErroredName": "त्रुटि"
     }
 }
