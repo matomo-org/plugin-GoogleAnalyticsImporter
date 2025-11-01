@@ -4,9 +4,14 @@
         "AdminMenuTitle": "導入Google分析",
         "Change": "變更",
         "ConfigureTheImporter": "配置導入程式",
+        "EndDate": "結束日期",
+        "GAImportNoDataScreenStep07": "點擊「%1$s」。",
         "IsMobileApp": "行動應用程式",
+        "NoDataScreenFollowThisSteps": "按照以下步驟設定：",
         "None": "無",
         "Optional": "選擇性",
-        "Status": "狀態"
+        "StartDate": "開始日期",
+        "Status": "狀態",
+        "StatusErroredName": "錯誤"
     }
 }
