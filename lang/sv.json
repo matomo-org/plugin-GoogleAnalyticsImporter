@@ -137,6 +137,7 @@
         "StartDateHelp": "Datumet att börja importera från. Som standard är detta dagen du skapade din GA-webbegendom. (ÅÅÅÅ-MM-DD)",
         "StartFinishTimes": "Start/slut tidpunkter",
         "Status": "Status",
+        "StatusErroredName": "Fel",
         "StreamId": "Stream-ID",
         "StreamIdFilter": "Filtrera efter Stream-ID (valfritt)",
         "StreamIdFilterHelpText": "Stream-ID du vill importera data från. %1$sLär dig mer.%2$s %3$sNotera:%4$s Lämna detta fält tomt för att importera från alla strömmar.",
