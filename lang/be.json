@@ -1,7 +1,8 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Дзеянні",
         "Optional": "Апцыянальна",
         "Status": "Статус",
-        "Actions": "Дзеянні"
+        "StatusErroredName": "Памылка"
     }
 }
