@@ -1,7 +1,8 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "ქმედებები",
         "Optional": "ოფციონალური",
         "Status": "სტატუსი",
-        "Actions": "ქმედებები"
+        "StatusErroredName": "შეცდომა"
     }
 }
