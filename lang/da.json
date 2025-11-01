@@ -1,9 +1,11 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Handlinger",
+        "GAImportNoDataScreenStep07": "Klik på \"%1$s\".",
         "IsMobileApp": "Mobilapp",
-        "Optional": "Valgfri",
         "None": "Ingen",
+        "Optional": "Valgfri",
         "Status": "Status",
-        "Actions": "Handlinger"
+        "StatusErroredName": "Fejl"
     }
 }
