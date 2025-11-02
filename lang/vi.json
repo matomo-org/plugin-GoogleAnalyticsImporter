@@ -1,8 +1,9 @@
 {
     "GoogleAnalyticsImporter": {
-        "Optional": "Tùy chọn",
+        "Actions": "Hành động",
         "None": "Không có gì",
+        "Optional": "Tùy chọn",
         "Status": "Trạng thái",
-        "Actions": "Hành động"
+        "StatusErroredName": "Lỗi"
     }
 }

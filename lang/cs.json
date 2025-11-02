@@ -17,6 +17,8 @@
         "ConfigureTheImporterLabel3": "Pro začátek %1$ssledujte naše pokyny k načtení konfigurace klienta OAuth%2$s. Poté nahrajte konfigurační soubor klienta pomocí níže uvedeného tlačítka.",
         "CreationDate": "Datum vytvoření webové vlastnosti",
         "DeleteUploadedClientConfig": "Pokud chcete nahranou konfiguraci klienta odebrat, klikněte na následující tlačítko",
+        "EndDate": "Datum ukončení",
+        "GAImportNoDataScreenStep07": "Klikněte na \"%1$s\".",
         "ImportJobs": "Import úloh",
         "ImporterHelp1": "Importér Google Analytics vyžaduje nastavení konfigurace klienta OAuth v konzole Google API a teprve poté můžete dělat cokoli dalšího.",
         "ImporterHelp2": "Chcete-li se podívat na průvodce krok za krokem, jak to provést a nastavit tento zásuvný modul %1$sklikněte zde.%2$s",
@@ -40,6 +42,7 @@
         "StartDate": "Datum zahájení",
         "StartDateHelp": "Datum, od kterého se má začít importovat. Ve výchozím nastavení je to den, kdy jste vytvořili webovou vlastnost GA. (RRRR-MM-DD)",
         "Status": "Stav",
+        "StatusErroredName": "Chyba",
         "ViewId": "Google Analytics View ID",
         "ViewIdHelp": "ID zobrazení, které se má importovat. Bude to velké číslo, například 3450293."
     }

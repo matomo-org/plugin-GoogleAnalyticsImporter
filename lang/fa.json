@@ -1,8 +1,12 @@
 {
     "GoogleAnalyticsImporter": {
-        "Optional": "اختیاری",
+        "Actions": "عملیات",
+        "EndDate": "تاریخ پایان",
+        "GAImportNoDataScreenStep07": "کلیک \"%1$s\".",
         "None": "هیچ",
+        "Optional": "اختیاری",
+        "StartDate": "تاریخ شروع",
         "Status": "وضعیت",
-        "Actions": "عملیات"
+        "StatusErroredName": "خطا"
     }
 }

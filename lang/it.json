@@ -136,6 +136,7 @@
         "StartDateHelp": "Data da cui iniziare l'importazione. Per impostazione predefinita, questo è il giorno in cui hai creato la tua proprietà web GA. (AAAA-MM-GG)",
         "StartFinishTimes": "Orari di Inizio/Fine",
         "Status": "Stato",
+        "StatusErroredName": "Errore",
         "StreamId": "ID dello stream",
         "StreamIdFilter": "Filtra per ID dello stream (opzionale)",
         "StreamIdFilterHelpText": "L'ID dello stream per il quale desideri importare i dati. %1$sScopri di più.%2$s %3$sNota:%4$s lascia vuoto questo campo per importare dati da tutti gli stream.",

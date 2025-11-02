@@ -1,9 +1,10 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Akcie",
         "IsMobileApp": "Mobilná aplikácia",
-        "Optional": "Voliteľné",
         "None": "Nič",
+        "Optional": "Voliteľné",
         "Status": "Stav",
-        "Actions": "Akcie"
+        "StatusErroredName": "Chyba"
     }
 }

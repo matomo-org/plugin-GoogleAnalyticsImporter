@@ -1,7 +1,8 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "ดำเนินการ",
         "Optional": "ตัวเลือก",
         "Status": "สถานะ",
-        "Actions": "ดำเนินการ"
+        "StatusErroredName": "ผิดพลาด"
     }
 }

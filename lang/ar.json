@@ -1,7 +1,8 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "الأوامر",
         "Optional": "اختياري",
         "Status": "الحالة",
-        "Actions": "الأوامر"
+        "StatusErroredName": "خطأ"
     }
 }

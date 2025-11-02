@@ -1,7 +1,8 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Dejanja",
         "Optional": "Izbirno",
         "Status": "Status",
-        "Actions": "Dejanja"
+        "StatusErroredName": "Napaka"
     }
 }

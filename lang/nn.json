@@ -1,7 +1,9 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Handlingar",
+        "GAImportNoDataScreenStep07": "Klikk \"%1$s\".",
         "Optional": "Valfri",
         "Status": "Status",
-        "Actions": "Handlingar"
+        "StatusErroredName": "Feil"
     }
 }

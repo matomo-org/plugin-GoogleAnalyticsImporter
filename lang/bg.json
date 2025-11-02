@@ -102,6 +102,7 @@
         "StartDateHelp": "Датата, от която да започне импортирането. По подразбиране това е денят, в който сте създали уеб собствеността си в GA. (YYYY-MM-DD)",
         "StartFinishTimes": "Времена за начало/край",
         "Status": "Състояние",
+        "StatusErroredName": "Грешка",
         "ThereAreNoImportJobs": "Няма задания за импортиране за показване.",
         "ThisJobShouldFinishToday": "Тази задача трябва да приключи днес.",
         "ThisReportWasImportedFromGoogle": "Този отчет е импортиран от Google Analytics. Някои данни може да липсват или да бъдат отчетени като неизвестни/незададени поради несъвместимост между Matomo и Google Analytics.",

@@ -3,9 +3,13 @@
         "Actions": "Действия",
         "AdminMenuTitle": "Импорт Google Analytic",
         "Change": "Изменить",
+        "EndDate": "Конечная дата",
+        "GAImportNoDataScreenStep07": "Нажмите «%1$s».",
         "IsMobileApp": "Мобильное приложение",
         "None": "Нет",
         "Optional": "Необязательно",
-        "Status": "Статус"
+        "StartDate": "Начальная дата",
+        "Status": "Статус",
+        "StatusErroredName": "Ошибка"
     }
 }

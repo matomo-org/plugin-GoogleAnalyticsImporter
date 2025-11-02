@@ -1,7 +1,8 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "অ্যাকশনস",
         "None": "কিছুই না",
         "Status": "অবস্থা",
-        "Actions": "অ্যাকশনস"
+        "StatusErroredName": "ত্রুটি"
     }
 }

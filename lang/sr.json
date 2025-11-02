@@ -1,10 +1,11 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "Mobilna aplikacija",
-        "Optional": "Opciono",
-        "None": "Ništa",
+        "Actions": "Akcije",
         "Change": "Izmena",
+        "IsMobileApp": "Mobilna aplikacija",
+        "None": "Ništa",
+        "Optional": "Opciono",
         "Status": "Status",
-        "Actions": "Akcije"
+        "StatusErroredName": "Greška"
     }
 }

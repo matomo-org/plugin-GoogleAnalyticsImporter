@@ -1,6 +1,7 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "ርምጃዎች",
         "Status": "ሁኔታ",
-        "Actions": "ርምጃዎች"
+        "StatusErroredName": "ስህተት"
     }
 }

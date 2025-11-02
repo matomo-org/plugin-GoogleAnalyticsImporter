@@ -1,9 +1,11 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "활동",
+        "GAImportNoDataScreenStep07": "\"%1$s\"을(를) 클릭하세요.",
         "IsMobileApp": "모바일 앱",
-        "Optional": "옵션",
         "None": "없음",
+        "Optional": "옵션",
         "Status": "상태",
-        "Actions": "활동"
+        "StatusErroredName": "에러"
     }
 }

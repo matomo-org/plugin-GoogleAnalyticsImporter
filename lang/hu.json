@@ -1,8 +1,9 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Műveletek",
         "IsMobileApp": "Mobil alkalmazás",
         "Optional": "Opcionális",
         "Status": "Állapot",
-        "Actions": "Műveletek"
+        "StatusErroredName": "Hiba"
     }
 }

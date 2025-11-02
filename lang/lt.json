@@ -1,8 +1,9 @@
 {
     "GoogleAnalyticsImporter": {
+        "Actions": "Veiksmai",
         "IsMobileApp": "Mobilioji programa",
         "Optional": "Pasirenkama",
         "Status": "Būsena",
-        "Actions": "Veiksmai"
+        "StatusErroredName": "Klaida"
     }
 }
