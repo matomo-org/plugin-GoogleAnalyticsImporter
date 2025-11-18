@@ -8,6 +8,7 @@
         "Optional": "Не обовязково",
         "StartDate": "Дата початку",
         "Status": "Статус",
-        "StatusErroredName": "Помилка"
+        "StatusErroredName": "Помилка",
+        "Troubleshooting": "Усунення проблем"
     }
 }
