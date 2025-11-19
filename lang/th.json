@@ -3,6 +3,7 @@
         "Actions": "ดำเนินการ",
         "Optional": "ตัวเลือก",
         "Status": "สถานะ",
-        "StatusErroredName": "ผิดพลาด"
+        "StatusErroredName": "ผิดพลาด",
+        "Troubleshooting": "การแก้ไขปัญหา"
     }
 }

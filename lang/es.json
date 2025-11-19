@@ -38,6 +38,7 @@
         "StreamId": "ID del flujo",
         "StreamIdFilter": "Filtrar por ID de flujo (opcional)",
         "StreamIdFilterHelpText": "El ID de flujo para el cual desea importar datos. %1$sMás información.%2$s %3$sNota:%4$s Deje este campo en blanco para importar datos de todos los flujos.",
+        "Troubleshooting": "Resolución de problemas",
         "UploadSuccessful": "¡Subida con éxito!",
         "Uploading": "Subiendo…"
     }

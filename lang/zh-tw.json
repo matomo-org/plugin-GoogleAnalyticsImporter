@@ -12,6 +12,7 @@
         "Optional": "選擇性",
         "StartDate": "開始日期",
         "Status": "狀態",
-        "StatusErroredName": "錯誤"
+        "StatusErroredName": "錯誤",
+        "Troubleshooting": "疑難排解"
     }
 }
