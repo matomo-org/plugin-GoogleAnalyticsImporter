@@ -5,6 +5,7 @@
         "AdminMenuTitle": "Importación de Google Analytics",
         "Authorize": "Autorizar",
         "Change": "Cambiar",
+        "ConfigureClientDesc1": "Para importar sus datos de Google Analytics, Matomo necesita acceso a estos datos.",
         "ConfigureTheImporter": "Configurar el importador",
         "ConfigureTheImporterLabel1": "Importe sus ajustes y datos de informes de Google Analytics para crear una copia y analizarlos con las potentes herramientas de análisis de Matomo. Una vez conecte el importador, elija qué ajustes de Google Analytics importar, y Matomo creará automáticamente un nuevo sitio web por cada uno.",
         "ConfigureTheImporterLabel2": "Para importar sus datos de Google Analytics, Matomo necesita acceso a estos datos.",
