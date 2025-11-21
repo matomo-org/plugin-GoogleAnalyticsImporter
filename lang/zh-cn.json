@@ -13,6 +13,7 @@
         "ConfigurationText": "配置文本",
         "ConfigureClientDesc1": "Matomo需要权限访问Google分析数据，以方便导入您的数据",
         "ConfigureTheImporter": "导入选项",
+        "ConfigureTheImporterLabel2": "Matomo需要权限访问Google分析数据，以方便导入您的数据",
         "CreationDate": "网站属性创建时间",
         "DeleteUploadedClientConfig": "如果您想要移除您上传的客户端配置，请点击这里",
         "DimensionScope": "尺寸范围",
