@@ -12,7 +12,7 @@
         "google/analytics-data": "^0.17.1"
     },
     "config": {
-        "platform-check": "false"
+        "platform-check": false
     },
     "replace": {
         "monolog/monolog": "*"
