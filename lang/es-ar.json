@@ -1,10 +1,13 @@
 {
     "GoogleAnalyticsImporter": {
-        "IsMobileApp": "Aplicación móvil",
-        "Optional": "Opcional",
-        "None": "Ninguno",
+        "Actions": "Acciones",
         "Change": "Cambie",
+        "EndDate": "Fecha de finalización",
+        "IsMobileApp": "Aplicación móvil",
+        "None": "Ninguno",
+        "Optional": "Opcional",
+        "StartDate": "Fecha de inicio",
         "Status": "Estado",
-        "Actions": "Acciones"
+        "StatusErroredName": "Error"
     }
 }

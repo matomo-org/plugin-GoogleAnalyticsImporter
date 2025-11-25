@@ -15,6 +15,7 @@
         "ConfigureClientDesc1": "Untuk mengimpor data Anda dari Google Analytics, Matomo memerlukan akses ke data ini.",
         "ConfigureClientDesc2": "%1$sUntuk memulai, ikuti petunjuk kami untuk mengambil konfigurasi OAuth Client Anda.%2$s Kemudian, unggah konfigurasi klien ini atau tempel ke kolom di bawah ini.",
         "ConfigureTheImporter": "Atur Importir",
+        "ConfigureTheImporterLabel2": "Untuk mengimpor data Anda dari Google Analytics, Matomo memerlukan akses ke data ini.",
         "CreationDate": "Tanggal Pembuatan Atribut Web",
         "DeleteUploadedClientConfig": "Jika Anda ingin menghapus konfigurasi klien yang diunggah, klik di bawah ini",
         "DimensionScope": "Cakupan Dimensi",

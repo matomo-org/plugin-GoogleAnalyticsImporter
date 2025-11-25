@@ -15,6 +15,7 @@
         "ConfigureClientDesc1": "Matomo trenger tilgang til denne daten for å importere den fra Google Analytics.",
         "ConfigureClientDesc2": "%1$sFor å starte vår instruks for mottak av ditt OAuth-klientoppsett.%2$s Last så enten opp klientoppsettet eller lim det inn i feltet nedenfor.",
         "ConfigureTheImporter": "Sett opp importøren",
+        "ConfigureTheImporterLabel2": "Matomo trenger tilgang til denne daten for å importere den fra Google Analytics.",
         "CreationDate": "Opprettelsesdato for vev-egenskap",
         "DeleteUploadedClientConfig": "Fjern opplastet klientoppsett ved å klikke nedenfor",
         "DimensionScope": "Dimensjonsomfang",
