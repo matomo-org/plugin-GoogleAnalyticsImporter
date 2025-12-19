@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '616311f9677bdd35910e10b81c6f651c21d0a8e5',
+        'reference' => '9fa7b3c8285d32049c68d3311b37a87b6128782c',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '616311f9677bdd35910e10b81c6f651c21d0a8e5',
+            'reference' => '9fa7b3c8285d32049c68d3311b37a87b6128782c',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -29,12 +29,12 @@
             'dev_requirement' => false,
         ),
         'firebase/php-jwt' => array(
-            'pretty_version' => 'v6.10.1',
-            'version' => '6.10.1.0',
+            'pretty_version' => 'v6.11.1',
+            'version' => '6.11.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../firebase/php-jwt',
             'aliases' => array(),
-            'reference' => '500501c2ce893c824c801da135d02661199f60c5',
+            'reference' => 'd1e91ecf8c598d073d0995afa8cd5c75c6e19e66',
             'dev_requirement' => false,
         ),
         'google/analytics-admin' => array(
