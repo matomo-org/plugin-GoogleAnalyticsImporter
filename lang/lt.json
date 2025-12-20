@@ -1,9 +1,15 @@
 {
     "GoogleAnalyticsImporter": {
         "Actions": "Veiksmai",
+        "ConfigurationFile": "Konfigūracinis failas",
+        "EndDate": "Pabaigos data",
         "IsMobileApp": "Mobilioji programa",
         "Optional": "Pasirenkama",
+        "Schedule": "Tvarkaraščio",
         "Status": "Būsena",
-        "StatusErroredName": "Klaida"
+        "StatusErroredName": "Klaida",
+        "StatusKilledName": "Užbaigta (terminated)",
+        "Timezone": "Laiko juosta",
+        "Uploading": "Siunčiama..."
     }
 }
