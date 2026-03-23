@@ -597,6 +597,11 @@ abstract class SymmetricKey
     {
         if (!isset(self::$use_reg_intval)) {
             switch (\true) {
+                // PHP 8.5, per https://www.php.net/manual/en/migration85.incompatible.php, now emits a warning
+                // "when casting floats (or strings that look like floats) to int if they cannot be represented as one"
+                case \PHP_VERSION_ID >= 80500 && \PHP_INT_SIZE == 4:
+                    self::$use_reg_intval = \false;
+                    break;
                 // PHP_OS & "\xDF\xDF\xDF" == strtoupper(substr(PHP_OS, 0, 3)), but a lot faster
                 case (\PHP_OS & "\xdf\xdf\xdf") === 'WIN':
                 case !function_exists('php_uname'):
@@ -966,7 +971,7 @@ abstract class SymmetricKey
      *
      * @see self::setPassword()
      * @param int $n
-     * @param \phpseclib3\Crypt\Hash $hashObj
+     * @param Hash $hashObj
      * @param string $i
      * @param string $d
      * @param int $count
@@ -2322,7 +2327,7 @@ abstract class SymmetricKey
             return $text;
         }
         $length = ord($text[strlen($text) - 1]);
-        if (!$length || $length > $this->block_size) {
+        if (!$length | $length > $this->block_size) {
             throw new BadDecryptionException("The ciphertext has an invalid padding length ({$length}) compared to the block size ({$this->block_size})");
         }
         return substr($text, 0, -$length);
