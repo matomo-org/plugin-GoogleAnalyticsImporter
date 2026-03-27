@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '616311f9677bdd35910e10b81c6f651c21d0a8e5',
+        'reference' => '1d9833c2212f051bc024e55ad57f6f30e33971a4',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '616311f9677bdd35910e10b81c6f651c21d0a8e5',
+            'reference' => '1d9833c2212f051bc024e55ad57f6f30e33971a4',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -119,12 +119,12 @@
             'dev_requirement' => false,
         ),
         'google/protobuf' => array(
-            'pretty_version' => 'v4.27.3',
-            'version' => '4.27.3.0',
+            'pretty_version' => 'v4.33.6',
+            'version' => '4.33.6.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../google/protobuf',
             'aliases' => array(),
-            'reference' => 'ff079fe467bf86ac8f3359e2eb77a1613ebd204d',
+            'reference' => '84b008c23915ed94536737eae46f41ba3bccfe67',
             'dev_requirement' => false,
         ),
         'grpc/grpc' => array(
