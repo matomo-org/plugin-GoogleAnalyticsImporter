@@ -10,7 +10,7 @@
  * <?php
  * include 'vendor/autoload.php';
  *
- * $private = \phpseclib3\Crypt\RSA::createKey();
+ * $private = Crypt\RSA::createKey();
  * $public = $private->getPublicKey();
  *
  * $plaintext = 'terrafrost';
@@ -26,7 +26,7 @@
  * <?php
  * include 'vendor/autoload.php';
  *
- * $private = \phpseclib3\Crypt\RSA::createKey();
+ * $private = Crypt\RSA::createKey();
  * $public = $private->getPublicKey();
  *
  * $plaintext = 'terrafrost';
@@ -166,7 +166,7 @@ abstract class RSA extends AsymmetricKey
     /**
      * Hash function for the Mask Generation Function
      *
-     * @var \phpseclib3\Crypt\Hash
+     * @var Hash
      */
     protected $mgfHash;
     /**
@@ -178,19 +178,19 @@ abstract class RSA extends AsymmetricKey
     /**
      * Modulus (ie. n)
      *
-     * @var \phpseclib3\Math\BigInteger
+     * @var Math\BigInteger
      */
     protected $modulus;
     /**
      * Modulus length
      *
-     * @var \phpseclib3\Math\BigInteger
+     * @var Math\BigInteger
      */
     protected $k;
     /**
      * Exponent (ie. e or d)
      *
-     * @var \phpseclib3\Math\BigInteger
+     * @var Math\BigInteger
      */
     protected $exponent;
     /**
@@ -229,7 +229,7 @@ abstract class RSA extends AsymmetricKey
     /**
      * Public Exponent
      *
-     * @var \phpseclib3\Math\BigInteger
+     * @var Math\BigInteger
      */
     protected $publicExponent;
     /**
@@ -270,7 +270,7 @@ abstract class RSA extends AsymmetricKey
      *
      * The public key can be extracted from the private key
      *
-     * @return RSA\PrivateKey
+     * @return PrivateKey
      * @param int $bits
      */
     public static function createKey($bits = 2048)
@@ -319,10 +319,9 @@ abstract class RSA extends AsymmetricKey
                 if ($i != $num_primes) {
                     $primes[$i] = BigInteger::randomPrime($regSize);
                 } else {
-                    extract(BigInteger::minMaxBits($bits));
-                    /** @var BigInteger $min
-                     *  @var BigInteger $max
-                     */
+                    $minMax = BigInteger::minMaxBits($bits);
+                    $min = $minMax['min'];
+                    $max = $minMax['max'];
                     list($min) = $min->divide($n);
                     $min = $min->add(self::$one);
                     list($max) = $max->divide($n);
@@ -449,7 +448,7 @@ abstract class RSA extends AsymmetricKey
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-4.1 RFC3447#section-4.1}.
      *
-     * @param bool|\phpseclib3\Math\BigInteger $x
+     * @param bool|Math\BigInteger $x
      * @param int $xLen
      * @return bool|string
      */
@@ -470,7 +469,7 @@ abstract class RSA extends AsymmetricKey
      * See {@link http://tools.ietf.org/html/rfc3447#section-4.2 RFC3447#section-4.2}.
      *
      * @param string $x
-     * @return \phpseclib3\Math\BigInteger
+     * @return Math\BigInteger
      */
     protected function os2ip($x)
     {
@@ -623,7 +622,7 @@ abstract class RSA extends AsymmetricKey
     public function withHash($hash)
     {
         $new = clone $this;
-        // \phpseclib3\Crypt\Hash supports algorithms that PKCS#1 doesn't support.  md5-96 and sha1-96, for example.
+        // Crypt\Hash supports algorithms that PKCS#1 doesn't support.  md5-96 and sha1-96, for example.
         switch (strtolower($hash)) {
             case 'md2':
             case 'md5':
@@ -653,7 +652,7 @@ abstract class RSA extends AsymmetricKey
     public function withMGFHash($hash)
     {
         $new = clone $this;
-        // \phpseclib3\Crypt\Hash supports algorithms that PKCS#1 doesn't support.  md5-96 and sha1-96, for example.
+        // Crypt\Hash supports algorithms that PKCS#1 doesn't support.  md5-96 and sha1-96, for example.
         switch (strtolower($hash)) {
             case 'md2':
             case 'md5':

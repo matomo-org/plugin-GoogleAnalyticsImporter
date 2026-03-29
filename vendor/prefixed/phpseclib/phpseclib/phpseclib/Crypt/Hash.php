@@ -115,7 +115,7 @@ class Hash
     /**
      * Outer XOR (Internal HMAC)
      *
-     * Used only for sha512/*
+     * Used only for sha512
      *
      * @see self::hash()
      * @var string
@@ -124,7 +124,7 @@ class Hash
     /**
      * Inner XOR (Internal HMAC)
      *
-     * Used only for sha512/*
+     * Used only for sha512
      *
      * @see self::hash()
      * @var string
@@ -143,7 +143,7 @@ class Hash
      * umac cipher object
      *
      * @see self::hash()
-     * @var \phpseclib3\Crypt\AES
+     * @var AES
      */
     private $c;
     /**
@@ -173,6 +173,14 @@ class Hash
     private static $marker128;
     private static $maxwordrange64;
     private static $maxwordrange128;
+    /**#@-*/
+    /**#@+
+     * AES_CMAC variables
+     *
+     * @var string
+     */
+    private $k1;
+    private $k2;
     /**#@-*/
     /**
      * Default Constructor.
@@ -255,15 +263,27 @@ class Hash
      */
     public function setHash($hash)
     {
+        $oldHash = $this->hashParam;
         $this->hashParam = $hash = strtolower($hash);
         switch ($hash) {
             case 'umac-32':
             case 'umac-64':
             case 'umac-96':
             case 'umac-128':
+                if ($oldHash != $this->hashParam) {
+                    $this->recomputeAESKey = \true;
+                }
                 $this->blockSize = 128;
                 $this->length = abs(substr($hash, -3)) >> 3;
                 $this->algo = 'umac';
+                return;
+            case 'aes_cmac':
+                if ($oldHash != $this->hashParam) {
+                    $this->recomputeAESKey = \true;
+                }
+                $this->blockSize = 128;
+                $this->length = 16;
+                $this->algo = 'aes_cmac';
                 return;
             case 'md2-96':
             case 'md5-96':
@@ -376,11 +396,15 @@ class Hash
                 // from http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf#page=24
                 $initial = $hash == 'sha512/256' ? ['22312194FC2BF72C', '9F555FA3C84C64C2', '2393B86B6F53B151', '963877195940EABD', '96283EE2A88EFFE3', 'BE5E1E2553863992', '2B0199FC2C85B8AA', '0EB72DDC81C52CA2'] : ['8C3D37C819544DA2', '73E1996689DCD4D6', '1DFAB7AE32FF9C82', '679DD514582F9FCF', '0F6D2B697BD44DA8', '77E36F7304C48942', '3F9D85A86A1D36C8', '1112E6AD91D692A1'];
                 for ($i = 0; $i < 8; $i++) {
-                    $initial[$i] = new BigInteger($initial[$i], 16);
-                    $initial[$i]->setPrecision(64);
+                    if (\PHP_INT_SIZE == 8) {
+                        list(, $initial[$i]) = unpack('J', pack('H*', $initial[$i]));
+                    } else {
+                        $initial[$i] = new BigInteger($initial[$i], 16);
+                        $initial[$i]->setPrecision(64);
+                    }
                 }
                 $this->parameters = compact('initial');
-                $hash = ['Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\Hash', 'sha512'];
+                $hash = ['Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\Hash', \PHP_INT_SIZE == 8 ? 'sha512_64' : 'sha512'];
             }
         }
         if (is_array($hash)) {
@@ -501,12 +525,12 @@ class Hash
         // For each chunk, except the last: endian-adjust, NH hash
         // and add bit-length.  Use results to build Y.
         //
-        $length = new BigInteger(1024 * 8);
+        $length = 1024 * 8;
         $y = '';
         for ($i = 0; $i < count($m) - 1; $i++) {
             $m[$i] = pack('N*', ...unpack('V*', $m[$i]));
             // ENDIAN-SWAP
-            $y .= static::nh($k, $m[$i], $length);
+            $y .= \PHP_INT_SIZE == 8 ? static::nh64($k, $m[$i], $length) : static::nh32($k, $m[$i], $length);
         }
         //
         // For the last chunk: pad to 32-byte boundary, endian-adjust,
@@ -519,60 +543,221 @@ class Hash
         // zeropad
         $m[$i] = pack('N*', ...unpack('V*', $m[$i]));
         // ENDIAN-SWAP
-        $y .= static::nh($k, $m[$i], new BigInteger($length * 8));
+        $y .= \PHP_INT_SIZE == 8 ? static::nh64($k, $m[$i], $length * 8) : static::nh32($k, $m[$i], $length * 8);
         return $y;
     }
     /**
-     * NH Algorithm
+     * 32-bit safe 64-bit Multiply with 2x 32-bit ints
+     *
+     * @param int $x
+     * @param int $y
+     * @return string $x * $y
+     */
+    private static function mul32_64($x, $y)
+    {
+        // see mul64() for a more detailed explanation of how this works
+        $x1 = $x >> 16 & 0xffff;
+        $x0 = $x & 0xffff;
+        $y1 = $y >> 16 & 0xffff;
+        $y0 = $y & 0xffff;
+        // the following 3x lines will possibly yield floats
+        $z2 = $x1 * $y1;
+        $z0 = $x0 * $y0;
+        $z1 = $x1 * $y0 + $x0 * $y1;
+        $a = intval(fmod($z0, 65536));
+        $b = intval($z0 / 65536) + intval(fmod($z1, 65536));
+        $c = intval($z1 / 65536) + intval(fmod($z2, 65536)) + intval($b / 65536);
+        $b = intval(fmod($b, 65536));
+        $d = intval($z2 / 65536) + intval($c / 65536);
+        $c = intval(fmod($c, 65536));
+        $d = intval(fmod($d, 65536));
+        return pack('n4', $d, $c, $b, $a);
+    }
+    /**
+     * 32-bit safe 64-bit Addition with 2x 64-bit strings
+     *
+     * @param int $x
+     * @param int $y
+     * @return int $x * $y
+     */
+    private static function add32_64($x, $y)
+    {
+        list(, $x1, $x2, $x3, $x4) = unpack('n4', $x);
+        list(, $y1, $y2, $y3, $y4) = unpack('n4', $y);
+        $a = $x4 + $y4;
+        $b = $x3 + $y3 + ($a >> 16);
+        $c = $x2 + $y2 + ($b >> 16);
+        $d = $x1 + $y1 + ($c >> 16);
+        return pack('n4', $d, $c, $b, $a);
+    }
+    /**
+     * 32-bit safe 32-bit Addition with 2x 32-bit strings
+     *
+     * @param int $x
+     * @param int $y
+     * @return int $x * $y
+     */
+    private static function add32($x, $y)
+    {
+        // see add64() for a more detailed explanation of how this works
+        $x1 = $x & 0xffff;
+        $x2 = $x >> 16 & 0xffff;
+        $y1 = $y & 0xffff;
+        $y2 = $y >> 16 & 0xffff;
+        $a = $x1 + $y1;
+        $b = $x2 + $y2 + ($a >> 16) << 16;
+        $a &= 0xffff;
+        return $a | $b;
+    }
+    /**
+     * NH Algorithm / 32-bit safe
      *
      * @param string $k string of length 1024 bytes.
      * @param string $m string with length divisible by 32 bytes.
      * @return string string of length 8 bytes.
      */
-    private static function nh($k, $m, $length)
+    private static function nh32($k, $m, $length)
     {
-        $toUInt32 = function ($x) {
-            $x = new BigInteger($x, 256);
-            $x->setPrecision(32);
-            return $x;
-        };
         //
         // Break M and K into 4-byte chunks
         //
-        //$t = strlen($m) >> 2;
-        $m = str_split($m, 4);
+        $k = unpack('N*', $k);
+        $m = unpack('N*', $m);
         $t = count($m);
-        $k = str_split($k, 4);
-        $k = array_pad(array_slice($k, 0, $t), $t, 0);
-        $m = array_map($toUInt32, $m);
-        $k = array_map($toUInt32, $k);
         //
         // Perform NH hash on the chunks, pairing words for multiplication
         // which are 4 apart to accommodate vector-parallelism.
         //
-        $y = new BigInteger();
-        $y->setPrecision(64);
-        $i = 0;
-        while ($i < $t) {
-            $temp = $m[$i]->add($k[$i]);
-            $temp->setPrecision(64);
-            $temp = $temp->multiply($m[$i + 4]->add($k[$i + 4]));
-            $y = $y->add($temp);
-            $temp = $m[$i + 1]->add($k[$i + 1]);
-            $temp->setPrecision(64);
-            $temp = $temp->multiply($m[$i + 5]->add($k[$i + 5]));
-            $y = $y->add($temp);
-            $temp = $m[$i + 2]->add($k[$i + 2]);
-            $temp->setPrecision(64);
-            $temp = $temp->multiply($m[$i + 6]->add($k[$i + 6]));
-            $y = $y->add($temp);
-            $temp = $m[$i + 3]->add($k[$i + 3]);
-            $temp->setPrecision(64);
-            $temp = $temp->multiply($m[$i + 7]->add($k[$i + 7]));
-            $y = $y->add($temp);
+        $i = 1;
+        $y = "\x00\x00\x00\x00\x00\x00\x00\x00";
+        while ($i <= $t) {
+            $temp = self::add32($m[$i], $k[$i]);
+            $temp2 = self::add32($m[$i + 4], $k[$i + 4]);
+            $y = self::add32_64($y, self::mul32_64($temp, $temp2));
+            $temp = self::add32($m[$i + 1], $k[$i + 1]);
+            $temp2 = self::add32($m[$i + 5], $k[$i + 5]);
+            $y = self::add32_64($y, self::mul32_64($temp, $temp2));
+            $temp = self::add32($m[$i + 2], $k[$i + 2]);
+            $temp2 = self::add32($m[$i + 6], $k[$i + 6]);
+            $y = self::add32_64($y, self::mul32_64($temp, $temp2));
+            $temp = self::add32($m[$i + 3], $k[$i + 3]);
+            $temp2 = self::add32($m[$i + 7], $k[$i + 7]);
+            $y = self::add32_64($y, self::mul32_64($temp, $temp2));
             $i += 8;
         }
-        return $y->add($length)->toBytes();
+        return self::add32_64($y, pack('N2', 0, $length));
+    }
+    /**
+     * 64-bit Multiply with 2x 32-bit ints
+     *
+     * @param int $x
+     * @param int $y
+     * @return int $x * $y
+     */
+    private static function mul64($x, $y)
+    {
+        // since PHP doesn't implement unsigned integers we'll implement them with signed integers
+        // to do this we'll use karatsuba multiplication
+        $x1 = $x >> 16;
+        $x0 = $x & 0xffff;
+        $y1 = $y >> 16;
+        $y0 = $y & 0xffff;
+        $z2 = $x1 * $y1;
+        // up to 32 bits long
+        $z0 = $x0 * $y0;
+        // up to 32 bits long
+        $z1 = $x1 * $y0 + $x0 * $y1;
+        // up to 33 bit long
+        // normally karatsuba multiplication calculates $z1 thusly:
+        //$z1 = ($x1 + $x0) * ($y0 + $y1) - $z2 - $z0;
+        // the idea being to eliminate one extra multiplication. for arbitrary precision math that makes sense
+        // but not for this purpose
+        // at this point karatsuba would normally return this:
+        //return ($z2 << 64) + ($z1 << 32) + $z0;
+        // the problem is that the output could be out of range for signed 64-bit ints,
+        // which would cause PHP to switch to floats, which would risk losing the lower few bits
+        // as such we'll OR 4x 16-bit blocks together like so:
+        /*
+          ........  |  ........  |  ........  |  ........
+          upper $z2 |  lower $z2 |  lower $z1 |  lower $z0
+                    | +upper $z1 | +upper $z0 |
+         +   $carry | +   $carry |            |
+        */
+        // technically upper $z1 is 17 bit - not 16 - but the most significant digit of that will
+        // just get added to $carry
+        $a = $z0 & 0xffff;
+        $b = ($z0 >> 16) + ($z1 & 0xffff);
+        $c = ($z1 >> 16) + ($z2 & 0xffff) + ($b >> 16);
+        $b = ($b & 0xffff) << 16;
+        $d = ($z2 >> 16) + ($c >> 16);
+        $c = ($c & 0xffff) << 32;
+        $d = ($d & 0xffff) << 48;
+        return $a | $b | $c | $d;
+    }
+    /**
+     * 64-bit Addition with 2x 64-bit ints
+     *
+     * @param int $x
+     * @param int $y
+     * @return int $x + $y
+     */
+    private static function add64($x, $y)
+    {
+        // doing $x + $y risks returning a result that's out of range for signed 64-bit ints
+        // in that event PHP would convert the result to a float and precision would be lost
+        // so we'll just add 2x 32-bit ints together like so:
+        /*
+           ........ | ........
+           upper $x | lower $x
+          +upper $y |+lower $y
+          +  $carry |
+        */
+        $x1 = $x & 0xffffffff;
+        $x2 = $x >> 32 & 0xffffffff;
+        $y1 = $y & 0xffffffff;
+        $y2 = $y >> 32 & 0xffffffff;
+        $a = $x1 + $y1;
+        $b = $x2 + $y2 + ($a >> 32) << 32;
+        $a &= 0xffffffff;
+        return $a | $b;
+    }
+    /**
+     * NH Algorithm / 64-bit safe
+     *
+     * @param string $k string of length 1024 bytes.
+     * @param string $m string with length divisible by 32 bytes.
+     * @return string string of length 8 bytes.
+     */
+    private static function nh64($k, $m, $length)
+    {
+        //
+        // Break M and K into 4-byte chunks
+        //
+        $k = unpack('N*', $k);
+        $m = unpack('N*', $m);
+        $t = count($m);
+        //
+        // Perform NH hash on the chunks, pairing words for multiplication
+        // which are 4 apart to accommodate vector-parallelism.
+        //
+        $i = 1;
+        $y = 0;
+        while ($i <= $t) {
+            $temp = $m[$i] + $k[$i] & 0xffffffff;
+            $temp2 = $m[$i + 4] + $k[$i + 4] & 0xffffffff;
+            $y = self::add64($y, self::mul64($temp, $temp2));
+            $temp = $m[$i + 1] + $k[$i + 1] & 0xffffffff;
+            $temp2 = $m[$i + 5] + $k[$i + 5] & 0xffffffff;
+            $y = self::add64($y, self::mul64($temp, $temp2));
+            $temp = $m[$i + 2] + $k[$i + 2] & 0xffffffff;
+            $temp2 = $m[$i + 6] + $k[$i + 6] & 0xffffffff;
+            $y = self::add64($y, self::mul64($temp, $temp2));
+            $temp = $m[$i + 3] + $k[$i + 3] & 0xffffffff;
+            $temp2 = $m[$i + 7] + $k[$i + 7] & 0xffffffff;
+            $y = self::add64($y, self::mul64($temp, $temp2));
+            $i += 8;
+        }
+        return pack('J', self::add64($y, $length));
     }
     /**
      * L2-HASH: Second-Layer Hash
@@ -699,6 +884,63 @@ class Hash
     public function hash($text)
     {
         $algo = $this->algo;
+        // https://www.rfc-editor.org/rfc/rfc4493.html
+        // https://en.wikipedia.org/wiki/One-key_MAC
+        if ($algo == 'aes_cmac') {
+            $constZero = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00";
+            if ($this->recomputeAESKey) {
+                if (!is_string($this->key)) {
+                    throw new InsufficientSetupException('No key has been set');
+                }
+                if (strlen($this->key) != 16) {
+                    throw new \LengthException('Key must be 16 bytes long');
+                }
+                // Algorithm Generate_Subkey
+                $constRb = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x87";
+                $this->c = new AES('ecb');
+                $this->c->setKey($this->key);
+                $this->c->disablePadding();
+                $l = $this->c->encrypt($constZero);
+                $msb = ($l & "\x80") == "\x80";
+                $l = new BigInteger($l, 256);
+                $l->setPrecision(128);
+                $l = $l->bitwise_leftShift(1)->toBytes();
+                // make it constant time
+                $k1 = $msb ? $l ^ $constRb : $l | $constZero;
+                $msb = ($k1 & "\x80") == "\x80";
+                $k2 = new BigInteger($k1, 256);
+                $k2->setPrecision(128);
+                $k2 = $k2->bitwise_leftShift(1)->toBytes();
+                // make it constant time
+                $k2 = $msb ? $k2 ^ $constRb : $k2 | $constZero;
+                $this->k1 = $k1;
+                $this->k2 = $k2;
+            }
+            $len = strlen($text);
+            $const_Bsize = 16;
+            $M = strlen($text) ? str_split($text, $const_Bsize) : [''];
+            // Step 2
+            $n = ceil($len / $const_Bsize);
+            // Step 3
+            if ($n == 0) {
+                $n = 1;
+                $flag = \false;
+            } else {
+                $flag = $len % $const_Bsize == 0;
+            }
+            // Step 4
+            $M_last = $flag ? $M[$n - 1] ^ $k1 : self::OMAC_padding($M[$n - 1], $const_Bsize) ^ $k2;
+            // Step 5
+            $x = $constZero;
+            // Step 6
+            $c =& $this->c;
+            for ($i = 0; $i < $n - 1; $i++) {
+                $y = $x ^ $M[$i];
+                $x = $c->encrypt($y);
+            }
+            $y = $M_last ^ $x;
+            return $c->encrypt($y);
+        }
         if ($algo == 'umac') {
             if ($this->recomputeAESKey) {
                 if (!is_string($this->nonce)) {
@@ -939,7 +1181,8 @@ class Hash
             $shift -= 32;
             list($lo, $hi) = $x;
         }
-        return [$hi << $shift | $lo >> 32 - $shift & (1 << $shift) - 1, $lo << $shift | $hi >> 32 - $shift & (1 << $shift) - 1];
+        $mask = -1 ^ -1 << $shift;
+        return [$hi << $shift | $lo >> 32 - $shift & $mask, $lo << $shift | $hi >> 32 - $shift & $mask];
     }
     /**
      * Pure-PHP 64-bit implementation of SHA3
@@ -1024,14 +1267,26 @@ class Hash
         }
     }
     /**
-     * Rotate 64-bit int
+     * Left rotate 64-bit int
      *
      * @param int $x
      * @param int $shift
      */
     private static function rotateLeft64($x, $shift)
     {
-        return $x << $shift | $x >> 64 - $shift & (1 << $shift) - 1;
+        $mask = -1 ^ -1 << $shift;
+        return $x << $shift | $x >> 64 - $shift & $mask;
+    }
+    /**
+     * Right rotate 64-bit int
+     *
+     * @param int $x
+     * @param int $shift
+     */
+    private static function rotateRight64($x, $shift)
+    {
+        $mask = -1 ^ -1 << 64 - $shift;
+        return $x >> $shift & $mask | $x << 64 - $shift;
     }
     /**
      * Pure-PHP implementation of SHA512
@@ -1123,6 +1378,91 @@ class Hash
         // (\phpseclib3\Crypt\Hash::hash() trims the output for hashes but not for HMACs.  as such, we trim the output here)
         $temp = $hash[0]->toBytes() . $hash[1]->toBytes() . $hash[2]->toBytes() . $hash[3]->toBytes() . $hash[4]->toBytes() . $hash[5]->toBytes() . $hash[6]->toBytes() . $hash[7]->toBytes();
         return $temp;
+    }
+    /**
+     * Pure-PHP implementation of SHA512
+     *
+     * @param string $m
+     * @param array $hash
+     * @return string
+     */
+    private static function sha512_64($m, $hash)
+    {
+        static $k;
+        if (!isset($k)) {
+            // Initialize table of round constants
+            // (first 64 bits of the fractional parts of the cube roots of the first 80 primes 2..409)
+            $k = ['428a2f98d728ae22', '7137449123ef65cd', 'b5c0fbcfec4d3b2f', 'e9b5dba58189dbbc', '3956c25bf348b538', '59f111f1b605d019', '923f82a4af194f9b', 'ab1c5ed5da6d8118', 'd807aa98a3030242', '12835b0145706fbe', '243185be4ee4b28c', '550c7dc3d5ffb4e2', '72be5d74f27b896f', '80deb1fe3b1696b1', '9bdc06a725c71235', 'c19bf174cf692694', 'e49b69c19ef14ad2', 'efbe4786384f25e3', '0fc19dc68b8cd5b5', '240ca1cc77ac9c65', '2de92c6f592b0275', '4a7484aa6ea6e483', '5cb0a9dcbd41fbd4', '76f988da831153b5', '983e5152ee66dfab', 'a831c66d2db43210', 'b00327c898fb213f', 'bf597fc7beef0ee4', 'c6e00bf33da88fc2', 'd5a79147930aa725', '06ca6351e003826f', '142929670a0e6e70', '27b70a8546d22ffc', '2e1b21385c26c926', '4d2c6dfc5ac42aed', '53380d139d95b3df', '650a73548baf63de', '766a0abb3c77b2a8', '81c2c92e47edaee6', '92722c851482353b', 'a2bfe8a14cf10364', 'a81a664bbc423001', 'c24b8b70d0f89791', 'c76c51a30654be30', 'd192e819d6ef5218', 'd69906245565a910', 'f40e35855771202a', '106aa07032bbd1b8', '19a4c116b8d2d0c8', '1e376c085141ab53', '2748774cdf8eeb99', '34b0bcb5e19b48a8', '391c0cb3c5c95a63', '4ed8aa4ae3418acb', '5b9cca4f7763e373', '682e6ff3d6b2b8a3', '748f82ee5defb2fc', '78a5636f43172f60', '84c87814a1f0ab72', '8cc702081a6439ec', '90befffa23631e28', 'a4506cebde82bde9', 'bef9a3f7b2c67915', 'c67178f2e372532b', 'ca273eceea26619c', 'd186b8c721c0c207', 'eada7dd6cde0eb1e', 'f57d4f7fee6ed178', '06f067aa72176fba', '0a637dc5a2c898a6', '113f9804bef90dae', '1b710b35131c471b', '28db77f523047d84', '32caab7b40c72493', '3c9ebe0a15c9bebc', '431d67c49c100d4c', '4cc5d4becb3e42b6', '597f299cfc657e2a', '5fcb6fab3ad6faec', '6c44198c4a475817'];
+            for ($i = 0; $i < 80; $i++) {
+                list(, $k[$i]) = unpack('J', pack('H*', $k[$i]));
+            }
+        }
+        // Pre-processing
+        $length = strlen($m);
+        // to round to nearest 112 mod 128, we'll add 128 - (length + (128 - 112)) % 128
+        $m .= str_repeat(chr(0), 128 - ($length + 16 & 0x7f));
+        $m[$length] = chr(0x80);
+        // we don't support hashing strings 512MB long
+        $m .= pack('N4', 0, 0, 0, $length << 3);
+        // Process the message in successive 1024-bit chunks
+        $chunks = str_split($m, 128);
+        foreach ($chunks as $chunk) {
+            $w = [];
+            for ($i = 0; $i < 16; $i++) {
+                list(, $w[]) = unpack('J', Strings::shift($chunk, 8));
+            }
+            // Extend the sixteen 32-bit words into eighty 32-bit words
+            for ($i = 16; $i < 80; $i++) {
+                $temp = [self::rotateRight64($w[$i - 15], 1), self::rotateRight64($w[$i - 15], 8), $w[$i - 15] >> 7 & 0x1ffffffffffffff];
+                $s0 = $temp[0] ^ $temp[1] ^ $temp[2];
+                $temp = [self::rotateRight64($w[$i - 2], 19), self::rotateRight64($w[$i - 2], 61), $w[$i - 2] >> 6 & 0x3ffffffffffffff];
+                $s1 = $temp[0] ^ $temp[1] ^ $temp[2];
+                $w[$i] = $w[$i - 16];
+                $w[$i] = self::add64($w[$i], $s0);
+                $w[$i] = self::add64($w[$i], $w[$i - 7]);
+                $w[$i] = self::add64($w[$i], $s1);
+            }
+            // Initialize hash value for this chunk
+            list($a, $b, $c, $d, $e, $f, $g, $h) = $hash;
+            // Main loop
+            for ($i = 0; $i < 80; $i++) {
+                $temp = [self::rotateRight64($a, 28), self::rotateRight64($a, 34), self::rotateRight64($a, 39)];
+                $s0 = $temp[0] ^ $temp[1] ^ $temp[2];
+                $temp = [$a & $b, $a & $c, $b & $c];
+                $maj = $temp[0] ^ $temp[1] ^ $temp[2];
+                $t2 = self::add64($s0, $maj);
+                $temp = [self::rotateRight64($e, 14), self::rotateRight64($e, 18), self::rotateRight64($e, 41)];
+                $s1 = $temp[0] ^ $temp[1] ^ $temp[2];
+                $ch = $e & $f ^ $g & ~$e;
+                $t1 = self::add64($h, $s1);
+                $t1 = self::add64($t1, $ch);
+                $t1 = self::add64($t1, $k[$i]);
+                $t1 = self::add64($t1, $w[$i]);
+                $h = $g;
+                $g = $f;
+                $f = $e;
+                $e = self::add64($d, $t1);
+                $d = $c;
+                $c = $b;
+                $b = $a;
+                $a = self::add64($t1, $t2);
+            }
+            // Add this chunk's hash to result so far
+            $hash = [self::add64($hash[0], $a), self::add64($hash[1], $b), self::add64($hash[2], $c), self::add64($hash[3], $d), self::add64($hash[4], $e), self::add64($hash[5], $f), self::add64($hash[6], $g), self::add64($hash[7], $h)];
+        }
+        // Produce the final hash value (big-endian)
+        // (\phpseclib3\Crypt\Hash::hash() trims the output for hashes but not for HMACs.  as such, we trim the output here)
+        return pack('J*', ...$hash);
+    }
+    /**
+     *  OMAC Padding
+     *
+     * @link https://www.rfc-editor.org/rfc/rfc4493.html#section-2.4
+     */
+    private static function OMAC_padding($m, $length)
+    {
+        $count = $length - strlen($m) - 1;
+        return "{$m}\x80" . str_repeat("\x00", $count);
     }
     /**
      *  __toString() magic method

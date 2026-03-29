@@ -47,14 +47,14 @@ class Twofish extends BlockCipher
     /**
      * The mcrypt specific name of the cipher
      *
-     * @see \phpseclib3\Crypt\Common\SymmetricKey::cipher_name_mcrypt
+     * @see Common\SymmetricKey::cipher_name_mcrypt
      * @var string
      */
     protected $cipher_name_mcrypt = 'twofish';
     /**
      * Optimizing value while CFB-encrypting
      *
-     * @see \phpseclib3\Crypt\Common\SymmetricKey::cfb_init_len
+     * @see Common\SymmetricKey::cfb_init_len
      * @var int
      */
     protected $cfb_init_len = 800;
@@ -156,12 +156,12 @@ class Twofish extends BlockCipher
     protected static function initialize_static_variables()
     {
         if (is_float(self::$m3[0])) {
-            self::$m0 = array_map('intval', self::$m0);
-            self::$m1 = array_map('intval', self::$m1);
-            self::$m2 = array_map('intval', self::$m2);
-            self::$m3 = array_map('intval', self::$m3);
-            self::$q0 = array_map('intval', self::$q0);
-            self::$q1 = array_map('intval', self::$q1);
+            self::$m0 = array_map([self::class, 'safe_intval'], self::$m0);
+            self::$m1 = array_map([self::class, 'safe_intval'], self::$m1);
+            self::$m2 = array_map([self::class, 'safe_intval'], self::$m2);
+            self::$m3 = array_map([self::class, 'safe_intval'], self::$m3);
+            self::$q0 = array_map([self::class, 'safe_intval'], self::$q0);
+            self::$q1 = array_map([self::class, 'safe_intval'], self::$q1);
         }
         parent::initialize_static_variables();
     }
@@ -208,7 +208,7 @@ class Twofish extends BlockCipher
     /**
      * Setup the key (expansion)
      *
-     * @see \phpseclib3\Crypt\Common\SymmetricKey::_setupKey()
+     * @see Common\SymmetricKey::_setupKey()
      */
     protected function setupKey()
     {
@@ -402,7 +402,7 @@ class Twofish extends BlockCipher
     /**
      * Setup the performance-optimized function for de/encrypt()
      *
-     * @see \phpseclib3\Crypt\Common\SymmetricKey::_setupInlineCrypt()
+     * @see Common\SymmetricKey::_setupInlineCrypt()
      */
     protected function setupInlineCrypt()
     {

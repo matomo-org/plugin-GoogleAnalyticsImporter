@@ -29,7 +29,7 @@ abstract class Base
     /**
      * Finite Field Integer factory
      *
-     * @var \phpseclib3\Math\FiniteField\Integer
+     * @var FiniteField\Integer
      */
     protected $factory;
     /**
@@ -42,7 +42,7 @@ abstract class Base
         return $this->factory->randomInteger();
     }
     /**
-     * Converts a BigInteger to a \phpseclib3\Math\FiniteField\Integer integer
+     * Converts a BigInteger to a FiniteField\Integer integer
      *
      * @return object
      */
@@ -129,7 +129,7 @@ abstract class Base
     /**
      * Returns the Order
      *
-     * @return \phpseclib3\Math\BigInteger
+     * @return BigInteger
      */
     public function getOrder()
     {

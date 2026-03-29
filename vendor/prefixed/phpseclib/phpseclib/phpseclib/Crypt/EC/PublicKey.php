@@ -95,7 +95,8 @@ final class PublicKey extends EC implements Common\PublicKey
         if ($params === \false || count($params) != 2) {
             return \false;
         }
-        extract($params);
+        $r = $params['r'];
+        $s = $params['s'];
         if (self::$engines['OpenSSL'] && in_array($this->hash->getHash(), openssl_get_md_methods())) {
             $sig = $format != 'ASN1' ? ASN1Signature::save($r, $s) : $signature;
             $result = openssl_verify($message, $sig, $this->toString('PKCS8', ['namedCurve' => \false]), $this->hash->getHash());

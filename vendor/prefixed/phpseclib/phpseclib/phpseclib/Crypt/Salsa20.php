@@ -280,6 +280,7 @@ class Salsa20 extends StreamCipher
             foreach ($blocks as &$block) {
                 $block ^= static::salsa20($this->p1 . pack('V', $i++) . $this->p2);
             }
+            unset($block);
             return implode('', $blocks);
         }
         if ($mode == self::ENCRYPT) {
@@ -313,6 +314,7 @@ class Salsa20 extends StreamCipher
                     foreach ($blocks as &$block) {
                         $block ^= static::salsa20($this->p1 . pack('V', $buffer['counter']++) . $this->p2);
                     }
+                    unset($block);
                 }
                 $encrypted = implode('', $blocks);
                 $temp = static::salsa20($this->p1 . pack('V', $buffer['counter']++) . $this->p2);
@@ -329,6 +331,7 @@ class Salsa20 extends StreamCipher
                 foreach ($blocks as &$block) {
                     $block ^= static::salsa20($this->p1 . pack('V', $buffer['counter']++) . $this->p2);
                 }
+                unset($block);
                 $ciphertext .= implode('', $blocks);
             }
         }
@@ -348,7 +351,7 @@ class Salsa20 extends StreamCipher
             $r1 &= 0xffffffff;
             $r2 = ($x & 0xffffffff) >> 32 - $n;
         } else {
-            $x = (int) $x;
+            $x = self::safe_intval($x);
             $r1 = $x << $n;
             $r2 = $x >> 32 - $n;
             $r2 &= (1 << $n) - 1;
@@ -415,7 +418,7 @@ class Salsa20 extends StreamCipher
             static::doubleRound($z[1], $z[2], $z[3], $z[4], $z[5], $z[6], $z[7], $z[8], $z[9], $z[10], $z[11], $z[12], $z[13], $z[14], $z[15], $z[16]);
         }
         for ($i = 1; $i <= 16; $i++) {
-            $x[$i] += $z[$i];
+            $x[$i] = self::safe_intval($x[$i] + $z[$i]);
         }
         return pack('V*', ...$x);
     }

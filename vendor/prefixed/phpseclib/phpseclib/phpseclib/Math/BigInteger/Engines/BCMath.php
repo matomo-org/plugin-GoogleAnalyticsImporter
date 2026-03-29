@@ -35,6 +35,10 @@ class BCMath extends Engine
      */
     const ENGINE_DIR = 'BCMath';
     /**
+     * Test to see if bcmod() accepts 2 or 3 parameters
+     */
+    const BCMOD_THREE_PARAMS = \PHP_VERSION_ID >= 72000;
+    /**
      * Test for engine validity
      *
      * @return bool
@@ -126,8 +130,8 @@ class BCMath extends Engine
             $current = substr($current, 1);
         }
         while (bccomp($current, '0', 0) > 0) {
-            $temp = bcmod($current, '16777216');
-            $value = chr($temp >> 16) . chr($temp >> 8) . chr($temp) . $value;
+            $temp = self::BCMOD_THREE_PARAMS ? bcmod($current, '16777216', 0) : bcmod($current, '16777216');
+            $value = chr($temp >> 16) . chr($temp >> 8 & 0xff) . chr($temp & 0xff) . $value;
             $current = bcdiv($current, '16777216', 0);
         }
         return $this->precision > 0 ? substr(str_pad($value, $this->precision >> 3, chr(0), \STR_PAD_LEFT), -($this->precision >> 3)) : ltrim($value, chr(0));
@@ -141,7 +145,7 @@ class BCMath extends Engine
     public function add(BCMath $y)
     {
         $temp = new self();
-        $temp->value = bcadd($this->value, $y->value);
+        $temp->value = bcadd($this->value, $y->value, 0);
         return $this->normalize($temp);
     }
     /**
@@ -153,7 +157,7 @@ class BCMath extends Engine
     public function subtract(BCMath $y)
     {
         $temp = new self();
-        $temp->value = bcsub($this->value, $y->value);
+        $temp->value = bcsub($this->value, $y->value, 0);
         return $this->normalize($temp);
     }
     /**
@@ -165,7 +169,7 @@ class BCMath extends Engine
     public function multiply(BCMath $x)
     {
         $temp = new self();
-        $temp->value = bcmul($this->value, $x->value);
+        $temp->value = bcmul($this->value, $x->value, 0);
         return $this->normalize($temp);
     }
     /**
@@ -184,7 +188,7 @@ class BCMath extends Engine
         $quotient = new self();
         $remainder = new self();
         $quotient->value = bcdiv($this->value, $y->value, 0);
-        $remainder->value = bcmod($this->value, $y->value);
+        $remainder->value = self::BCMOD_THREE_PARAMS ? bcmod($this->value, $y->value, 0) : bcmod($this->value, $y->value);
         if ($remainder->value[0] == '-') {
             $remainder->value = bcadd($remainder->value, $y->value[0] == '-' ? substr($y->value, 1) : $y->value, 0);
         }
@@ -248,8 +252,7 @@ class BCMath extends Engine
      */
     public function gcd(BCMath $n)
     {
-        extract($this->extendedGCD($n));
-        /** @var BCMath $gcd */
+        $gcd = $this->extendedGCD($n)['gcd'];
         return $gcd;
     }
     /**
@@ -281,7 +284,7 @@ class BCMath extends Engine
      */
     public function bitwise_or(BCMath $x)
     {
-        return $this->bitwiseXorHelper($x);
+        return $this->bitwiseOrHelper($x);
     }
     /**
      * Logical Exclusive Or
@@ -408,7 +411,7 @@ class BCMath extends Engine
         $result->precision = $this->precision;
         $result->bitmask = $this->bitmask;
         if ($result->bitmask !== \false) {
-            $result->value = bcmod($result->value, $result->bitmask->value);
+            $result->value = self::BCMOD_THREE_PARAMS ? bcmod($result->value, $result->bitmask->value, 0) : bcmod($result->value, $result->bitmask->value);
         }
         return $result;
     }
@@ -452,7 +455,7 @@ class BCMath extends Engine
     protected function make_odd()
     {
         if (!$this->isOdd()) {
-            $this->value = bcadd($this->value, '1');
+            $this->value = bcadd($this->value, '1', 0);
         }
     }
     /**
@@ -473,7 +476,7 @@ class BCMath extends Engine
         }
         $value = $this->value;
         foreach (self::PRIMES as $prime) {
-            $r = bcmod($this->value, $prime);
+            $r = self::BCMOD_THREE_PARAMS ? bcmod($this->value, $prime, 0) : bcmod($this->value, $prime);
             if ($r == '0') {
                 return $this->value == $prime;
             }
@@ -509,7 +512,7 @@ class BCMath extends Engine
     public function pow(BCMath $n)
     {
         $temp = new self();
-        $temp->value = bcpow($this->value, $n->value);
+        $temp->value = bcpow($this->value, $n->value, 0);
         return $this->normalize($temp);
     }
     /**
@@ -571,7 +574,8 @@ class BCMath extends Engine
      */
     public function testBit($x)
     {
-        return bccomp(bcmod($this->value, bcpow('2', $x + 1, 0)), bcpow('2', $x, 0), 0) >= 0;
+        $divisor = bcpow('2', $x + 1, 0);
+        return bccomp(self::BCMOD_THREE_PARAMS ? bcmod($this->value, $divisor, 0) : bcmod($this->value, $divisor), bcpow('2', $x, 0), 0) >= 0;
     }
     /**
      * Is Negative?

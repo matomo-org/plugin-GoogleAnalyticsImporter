@@ -45,7 +45,7 @@ final class PrivateKey extends RSA implements Common\PrivateKey
     /**
      * Private Exponent
      *
-     * @var \phpseclib3\Math\BigInteger
+     * @var BigInteger
      */
     protected $privateExponent;
     /**
@@ -53,7 +53,7 @@ final class PrivateKey extends RSA implements Common\PrivateKey
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-5.1.2 RFC3447#section-5.1.2}.
      *
-     * @return bool|\phpseclib3\Math\BigInteger
+     * @return bool|BigInteger
      */
     private function rsadp(BigInteger $c)
     {
@@ -67,7 +67,7 @@ final class PrivateKey extends RSA implements Common\PrivateKey
      *
      * See {@link http://tools.ietf.org/html/rfc3447#section-5.2.1 RFC3447#section-5.2.1}.
      *
-     * @return bool|\phpseclib3\Math\BigInteger
+     * @return bool|BigInteger
      */
     private function rsasp1(BigInteger $m)
     {
@@ -79,8 +79,8 @@ final class PrivateKey extends RSA implements Common\PrivateKey
     /**
      * Exponentiate
      *
-     * @param \phpseclib3\Math\BigInteger $x
-     * @return \phpseclib3\Math\BigInteger
+     * @param BigInteger $x
+     * @return BigInteger
      */
     protected function exponentiate(BigInteger $x)
     {
@@ -140,10 +140,10 @@ final class PrivateKey extends RSA implements Common\PrivateKey
      * Protects against timing attacks by employing RSA Blinding.
      * Returns $x->modPow($this->exponents[$i], $this->primes[$i])
      *
-     * @param \phpseclib3\Math\BigInteger $x
-     * @param \phpseclib3\Math\BigInteger $r
+     * @param BigInteger $x
+     * @param BigInteger $r
      * @param int $i
-     * @return \phpseclib3\Math\BigInteger
+     * @return BigInteger
      */
     private function blind(BigInteger $x, BigInteger $r, $i)
     {
@@ -183,7 +183,7 @@ final class PrivateKey extends RSA implements Common\PrivateKey
         $dbMask = $this->mgf1($h, $emLen - $this->hLen - 1);
         // ie. stlren($db)
         $maskedDB = $db ^ $dbMask;
-        $maskedDB[0] = ~chr(0xff << ($emBits & 7)) & $maskedDB[0];
+        $maskedDB[0] = ~chr(256 - (1 << ($emBits & 7))) & $maskedDB[0];
         $em = $maskedDB . $h . chr(0xbc);
         return $em;
     }

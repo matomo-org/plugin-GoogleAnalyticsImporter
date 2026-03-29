@@ -123,7 +123,7 @@ class ANSI
     /**
      * Default Constructor.
      *
-     * @return \phpseclib3\File\ANSI
+     * @return ANSI
      */
     public function __construct()
     {

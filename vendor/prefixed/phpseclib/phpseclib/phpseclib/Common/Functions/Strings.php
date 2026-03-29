@@ -121,7 +121,9 @@ abstract class Strings
                     // 64-bit floats can be used to get larger numbers then 32-bit signed ints would allow
                     // for. sure, you're not gonna get the full precision of 64-bit numbers but just because
                     // you need > 32-bit precision doesn't mean you need the full 64-bit precision
-                    extract(unpack('Nupper/Nlower', self::shift($data, 8)));
+                    $unpacked = unpack('Nupper/Nlower', self::shift($data, 8));
+                    $upper = $unpacked['upper'];
+                    $lower = $unpacked['lower'];
                     $temp = $upper ? 4294967296 * $upper : 0;
                     $temp += $lower < 0 ? ($lower & 0x7ffffffff) + 0x80000000 : $lower;
                     // $temp = hexdec(bin2hex(self::shift($data, 8)));
@@ -332,7 +334,11 @@ abstract class Strings
                 // from http://graphics.stanford.edu/~seander/bithacks.html#ReverseByteWith32Bits
                 $p1 = $b * 0x802 & 0x22110;
                 $p2 = $b * 0x8020 & 0x88440;
-                $r .= chr(($p1 | $p2) * 0x10101 >> 16);
+                $temp = ($p1 | $p2) * 0x10101;
+                if (is_float($temp)) {
+                    $temp = (int) fmod($temp, 0x7fffffff);
+                }
+                $r .= chr($temp >> 16 & 0xff);
             }
         }
         return $r;
@@ -429,7 +435,7 @@ abstract class Strings
     public static function base64url_encode($data)
     {
         // return str_replace(['+', '/'], ['-', '_'], self::base64_encode($data));
-        return function_exists('sodium_bin2base64') ? sodium_bin2base64($data, \SODIUM_BASE64_VARIANT_URLSAFE) : Base64UrlSafe::encode($data);
+        return function_exists('sodium_bin2base64') ? sodium_bin2base64($data, \SODIUM_BASE64_VARIANT_URLSAFE_NO_PADDING) : Base64UrlSafe::encode($data);
     }
     /**
      * Constant Time Hex Decoder
