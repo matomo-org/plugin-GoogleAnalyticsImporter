@@ -10,7 +10,8 @@
         "phpseclib/phpseclib": "3.0.50",
         "phpseclib/bcmath_compat": "^2.0",
         "google/analytics-admin": "^0.22.2",
-        "google/analytics-data": "^0.17.1"
+        "google/analytics-data": "^0.17.1",
+        "google/protobuf": "4.33.6"
     },
     "config": {
         "platform-check": false

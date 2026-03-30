@@ -11,8 +11,8 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Duration;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\FieldMask;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\MapField;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 use function bccomp;
 function camel2underscore($input)
 {
