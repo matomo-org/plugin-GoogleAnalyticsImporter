@@ -140,8 +140,10 @@ final class PrivateKey extends EC implements Common\PrivateKey
                 if ($shortFormat == 'ASN1') {
                     return $signature;
                 }
-                extract(ASN1Signature::load($signature));
-                return $shortFormat == 'SSH2' ? $format::save($r, $s, $this->getCurve()) : $format::save($r, $s);
+                $loaded = ASN1Signature::load($signature);
+                $r = $loaded['r'];
+                $s = $loaded['s'];
+                return $this->formatSignature($r, $s);
             }
         }
         $e = $this->hash->hash($message);
@@ -185,7 +187,7 @@ final class PrivateKey extends EC implements Common\PrivateKey
         $temp = $kinv->multiply($temp);
         list(, $s) = $temp->divide($this->q);
         */
-        return $shortFormat == 'SSH2' ? $format::save($r, $s, $this->getCurve()) : $format::save($r, $s);
+        return $this->formatSignature($r, $s);
     }
     /**
      * Returns the private key
@@ -222,5 +224,28 @@ final class PrivateKey extends EC implements Common\PrivateKey
             $key = $key->withContext($this->context);
         }
         return $key;
+    }
+    /**
+     * Returns a signature in the appropriate format
+     *
+     * @return string
+     */
+    private function formatSignature(BigInteger $r, BigInteger $s)
+    {
+        $format = $this->sigFormat;
+        $temp = new \ReflectionMethod($format, 'save');
+        $paramCount = $temp->getNumberOfRequiredParameters();
+        // @codingStandardsIgnoreStart
+        switch ($paramCount) {
+            case 2:
+                return $format::save($r, $s);
+            case 3:
+                return $format::save($r, $s, $this->getCurve());
+            case 4:
+                return $format::save($r, $s, $this->getCurve(), $this->getLength());
+        }
+        // @codingStandardsIgnoreEnd
+        // presumably the only way you could get to this is if you were using a custom plugin
+        throw new UnsupportedOperationException("{$format}::save() has {$paramCount} parameters - the only valid parameter counts are 2 or 3");
     }
 }

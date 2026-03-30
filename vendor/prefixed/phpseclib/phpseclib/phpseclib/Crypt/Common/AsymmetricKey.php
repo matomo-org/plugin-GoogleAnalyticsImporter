@@ -28,13 +28,13 @@ abstract class AsymmetricKey
     /**
      * Precomputed Zero
      *
-     * @var \phpseclib3\Math\BigInteger
+     * @var BigInteger
      */
     protected static $zero;
     /**
      * Precomputed One
      *
-     * @var \phpseclib3\Math\BigInteger
+     * @var BigInteger
      */
     protected static $one;
     /**
@@ -46,13 +46,13 @@ abstract class AsymmetricKey
     /**
      * Hash function
      *
-     * @var \phpseclib3\Crypt\Hash
+     * @var Hash
      */
     protected $hash;
     /**
      * HMAC function
      *
-     * @var \phpseclib3\Crypt\Hash
+     * @var Hash
      */
     private $hmac;
     /**
@@ -114,7 +114,7 @@ abstract class AsymmetricKey
      *
      * @param string $key
      * @param string $password optional
-     * @return \phpseclib3\Crypt\Common\PublicKey|\phpseclib3\Crypt\Common\PrivateKey
+     * @return PublicKey|PrivateKey
      */
     public static function load($key, $password = \false)
     {
@@ -465,7 +465,7 @@ abstract class AsymmetricKey
     /**
      * Integer to Octet String
      *
-     * @param \phpseclib3\Math\BigInteger $v
+     * @param BigInteger $v
      * @return string
      */
     private function int2octets($v)
@@ -484,7 +484,7 @@ abstract class AsymmetricKey
      * Bit String to Integer
      *
      * @param string $in
-     * @return \phpseclib3\Math\BigInteger
+     * @return BigInteger
      */
     protected function bits2int($in)
     {

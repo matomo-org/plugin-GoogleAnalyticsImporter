@@ -67,6 +67,13 @@ abstract class EvalBarrett extends Base
             //self::$custom_reduction = \Closure::bind($func, $m, $class);
             return $func;
         }
+        $correctionNeeded = \false;
+        if ($m_length & 1) {
+            $correctionNeeded = \true;
+            $m = clone $m;
+            array_unshift($m->value, 0);
+            $m_length++;
+        }
         $lhs = new $class();
         $lhs_value =& $lhs->value;
         $lhs_value = self::array_repeat(0, $m_length + ($m_length >> 1));
@@ -85,7 +92,8 @@ abstract class EvalBarrett extends Base
         $m = $m->value;
         $m1 = $m1->value;
         $cutoff = count($m) + (count($m) >> 1);
-        $code = '
+        $code = $correctionNeeded ? 'array_unshift($n, 0);' : '';
+        $code .= '
             if (count($n) > ' . 2 * count($m) . ') {
                 $lhs = new ' . $class . '();
                 $rhs = new ' . $class . '();
@@ -116,6 +124,9 @@ abstract class EvalBarrett extends Base
         $subcode = self::generateInlineSubtract1('temp', $m, 'temp2', $class);
         $subcode .= '$temp = $temp2;';
         $code .= self::generateInlineCompare($m, 'temp', $subcode);
+        if ($correctionNeeded) {
+            $code .= 'array_shift($temp);';
+        }
         $code .= 'return $temp;';
         eval('$func = function ($n) { ' . $code . '};');
         self::$custom_reduction = $func;
