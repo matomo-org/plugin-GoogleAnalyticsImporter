@@ -2,6 +2,7 @@
 
 # 5.1.6 - 2026-03-30
 - Upgraded phpseclib package to 3.0.50
+- Upgraded google/protobuf package to 4.33.6
 
 # 5.1.5 - 2025-09-29
 - Upgraded grpc package to 1.74.0
