@@ -22,10 +22,13 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\Formats\Keys;
 
+use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Math\Common\FiniteField\Integer;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\Common\Formats\Keys\PKCS8 as Progenitor;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\BaseCurves\Base as BaseCurve;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\BaseCurves\Montgomery as MontgomeryCurve;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\BaseCurves\TwistedEdwards as TwistedEdwardsCurve;
+use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\Curves\Curve25519;
+use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\Curves\Curve448;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\Curves\Ed25519;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\Curves\Ed448;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Exception\UnsupportedCurveException;
@@ -45,13 +48,13 @@ abstract class PKCS8 extends Progenitor
      *
      * @var array
      */
-    const OID_NAME = ['id-ecPublicKey', 'id-Ed25519', 'id-Ed448'];
+    const OID_NAME = ['id-ecPublicKey', 'id-Ed25519', 'id-Ed448', 'id-X25519', 'id-X448'];
     /**
      * OID Value
      *
      * @var string
      */
-    const OID_VALUE = ['1.2.840.10045.2.1', '1.3.101.112', '1.3.101.113'];
+    const OID_VALUE = ['1.2.840.10045.2.1', '1.3.101.112', '1.3.101.113', '1.3.101.110', '1.3.101.111'];
     /**
      * Break a public or private key down into its constituent components
      *
@@ -73,6 +76,9 @@ abstract class PKCS8 extends Progenitor
             case 'id-Ed25519':
             case 'id-Ed448':
                 return self::loadEdDSA($key);
+            case 'id-X25519':
+            case 'id-X448':
+                return self::loadECDH($key);
         }
         $decoded = ASN1::decodeBER($key[$type . 'Algorithm']['parameters']->element);
         if (!$decoded) {
@@ -130,11 +136,41 @@ abstract class PKCS8 extends Progenitor
         }
         return $components;
     }
+    private static function loadECDH(array $key)
+    {
+        $components = [];
+        if (isset($key['privateKey'])) {
+            $components['curve'] = $key['privateKeyAlgorithm']['algorithm'] == 'id-X25519' ? new Curve25519() : new Curve448();
+            $expected = chr(ASN1::TYPE_OCTET_STRING) . ASN1::encodeLength($components['curve']::SIZE);
+            $privateKey = (string) $key['privateKey'];
+            if (substr($privateKey, 0, 2) != $expected) {
+                throw new \RuntimeException('The first two bytes of the ' . $key['privateKeyAlgorithm']['algorithm'] . ' private key field should be 0x' . bin2hex($expected));
+            }
+            $components['dA'] = new BigInteger(substr($privateKey, 2), 256);
+        }
+        if (isset($key['publicKey'])) {
+            if (!isset($components['curve'])) {
+                $components['curve'] = $key['publicKeyAlgorithm']['algorithm'] == 'id-X25519' ? new Curve25519() : new Curve448();
+            }
+            $components['QA'] = [$components['curve']->convertInteger(new BigInteger(strrev($key['publicKey']), 256))];
+        }
+        if (isset($key['privateKey']) && !isset($components['QA'])) {
+            if ($components['curve'] instanceof Curve25519 && function_exists('sodium_crypto_box_publickey_from_secretkey')) {
+                //$r = pack('H*', '0900000000000000000000000000000000000000000000000000000000000000');
+                //$QA = sodium_crypto_scalarmult($components['dA']->toBytes(), $r);
+                $QA = sodium_crypto_box_publickey_from_secretkey(str_pad($components['dA']->toBytes(), 32, chr(0), \STR_PAD_LEFT));
+                $components['QA'] = [$components['curve']->convertInteger(new BigInteger(strrev($QA), 256))];
+            } else {
+                $components['QA'] = [$components['curve']->multiplyPoint($components['curve']->getBasePoint(), $components['dA'])[0]];
+            }
+        }
+        return $components;
+    }
     /**
      * Convert an EC public key to the appropriate format
      *
      * @param BaseCurve $curve
-     * @param \phpseclib3\Math\Common\FiniteField\Integer[] $publicKey
+     * @param Integer[] $publicKey
      * @param array $options optional
      * @return string
      */
@@ -142,7 +178,7 @@ abstract class PKCS8 extends Progenitor
     {
         self::initialize_static_variables();
         if ($curve instanceof MontgomeryCurve) {
-            throw new UnsupportedCurveException('Montgomery Curves are not supported');
+            return self::wrapPublicKey(str_pad(strrev($publicKey[0]->toBytes()), $curve::SIZE, "\x00", \STR_PAD_RIGHT), null, $curve instanceof Curve25519 ? 'id-X25519' : 'id-X448', $options);
         }
         if ($curve instanceof TwistedEdwardsCurve) {
             return self::wrapPublicKey($curve->encodePoint($publicKey), null, $curve instanceof Ed25519 ? 'id-Ed25519' : 'id-Ed448', $options);
@@ -166,7 +202,7 @@ abstract class PKCS8 extends Progenitor
     {
         self::initialize_static_variables();
         if ($curve instanceof MontgomeryCurve) {
-            throw new UnsupportedCurveException('Montgomery Curves are not supported');
+            return self::wrapPrivateKey(chr(ASN1::TYPE_OCTET_STRING) . ASN1::encodeLength($curve::SIZE) . str_pad($privateKey->toBytes(), $curve::SIZE, "\x00", \STR_PAD_LEFT), [], null, $password, $curve instanceof Curve25519 ? 'id-X25519' : 'id-X448');
         }
         if ($curve instanceof TwistedEdwardsCurve) {
             return self::wrapPrivateKey(chr(ASN1::TYPE_OCTET_STRING) . ASN1::encodeLength($curve::SIZE) . $secret, [], null, $password, $curve instanceof Ed25519 ? 'id-Ed25519' : 'id-Ed448');

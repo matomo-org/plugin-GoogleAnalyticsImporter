@@ -264,7 +264,7 @@ class Hash
     public function setHash($hash)
     {
         $oldHash = $this->hashParam;
-        $this->hashParam = $hash = strtolower($hash);
+        $this->hashParam = $hash = strtolower(str_replace('/', '-', $hash));
         switch ($hash) {
             case 'umac-32':
             case 'umac-64':
@@ -292,8 +292,8 @@ class Hash
             case 'sha256-96':
             case 'sha384-96':
             case 'sha512-96':
-            case 'sha512/224-96':
-            case 'sha512/256-96':
+            case 'sha512-224-96':
+            case 'sha512-256-96':
                 $hash = substr($hash, 0, -3);
                 $this->length = 12;
                 // 96 / 8 = 12
@@ -306,7 +306,7 @@ class Hash
                 $this->length = 20;
                 break;
             case 'sha224':
-            case 'sha512/224':
+            case 'sha512-224':
             case 'sha3-224':
                 $this->length = 28;
                 break;
@@ -314,7 +314,7 @@ class Hash
                 $this->paddingType = self::PADDING_KECCAK;
             // fall-through
             case 'sha256':
-            case 'sha512/256':
+            case 'sha512-256':
             case 'sha3-256':
                 $this->length = 32;
                 break;
@@ -389,12 +389,12 @@ class Hash
                 $hash = ['Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\Hash', \PHP_INT_SIZE == 8 ? 'sha3_64' : 'sha3_32'];
             }
         }
-        if ($hash == 'sha512/224' || $hash == 'sha512/256') {
+        if ($hash == 'sha512-224' || $hash == 'sha512-256') {
             // PHP 7.1.0 introduced sha512/224 and sha512/256 support:
             // http://php.net/ChangeLog-7.php#7.1.0
             if (version_compare(\PHP_VERSION, '7.1.0') < 0) {
                 // from http://csrc.nist.gov/publications/fips/fips180-4/fips-180-4.pdf#page=24
-                $initial = $hash == 'sha512/256' ? ['22312194FC2BF72C', '9F555FA3C84C64C2', '2393B86B6F53B151', '963877195940EABD', '96283EE2A88EFFE3', 'BE5E1E2553863992', '2B0199FC2C85B8AA', '0EB72DDC81C52CA2'] : ['8C3D37C819544DA2', '73E1996689DCD4D6', '1DFAB7AE32FF9C82', '679DD514582F9FCF', '0F6D2B697BD44DA8', '77E36F7304C48942', '3F9D85A86A1D36C8', '1112E6AD91D692A1'];
+                $initial = $hash == 'sha512-256' ? ['22312194FC2BF72C', '9F555FA3C84C64C2', '2393B86B6F53B151', '963877195940EABD', '96283EE2A88EFFE3', 'BE5E1E2553863992', '2B0199FC2C85B8AA', '0EB72DDC81C52CA2'] : ['8C3D37C819544DA2', '73E1996689DCD4D6', '1DFAB7AE32FF9C82', '679DD514582F9FCF', '0F6D2B697BD44DA8', '77E36F7304C48942', '3F9D85A86A1D36C8', '1112E6AD91D692A1'];
                 for ($i = 0; $i < 8; $i++) {
                     if (\PHP_INT_SIZE == 8) {
                         list(, $initial[$i]) = unpack('J', pack('H*', $initial[$i]));
@@ -411,6 +411,14 @@ class Hash
             $b = $this->blockSize >> 3;
             $this->ipad = str_repeat(chr(0x36), $b);
             $this->opad = str_repeat(chr(0x5c), $b);
+        }
+        // PHP's built in hash function does sha3-256 but sha512/256 so we'll update those accordingly
+        switch ($hash) {
+            case 'sha512-224':
+                $hash = 'sha512/224';
+                break;
+            case 'sha512-256':
+                $hash = 'sha512/256';
         }
         $this->algo = $hash;
         $this->computeKey();

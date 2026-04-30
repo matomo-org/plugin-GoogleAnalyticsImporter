@@ -88,6 +88,6 @@ abstract class MontgomeryPrivate
         if (!empty($password) && is_string($password)) {
             throw new UnsupportedFormatException('MontgomeryPrivate private keys do not support encryption');
         }
-        return $privateKey->toBytes();
+        return str_pad($privateKey->toBytes(), $curve::SIZE, "\x00", \STR_PAD_RIGHT);
     }
 }

@@ -14,6 +14,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\Common;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\DSA;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\DSA\Formats\Signature\ASN1 as ASN1Signature;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Math\BigInteger;
+use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Exception\BadConfigurationException;
 /**
  * DSA Private Key
  *
@@ -68,17 +69,29 @@ final class PrivateKey extends DSA implements Common\PrivateKey
     public function sign($message)
     {
         $format = $this->sigFormat;
-        if (self::$engines['OpenSSL'] && in_array($this->hash->getHash(), openssl_get_md_methods())) {
-            $signature = '';
-            $result = openssl_sign($message, $signature, $this->toString('PKCS8'), $this->hash->getHash());
-            if ($result) {
-                if ($this->shortFormat == 'ASN1') {
-                    return $signature;
+        if (self::$forcedEngine === 'libsodium') {
+            throw new BadConfigurationException('Engine libsodium is forced but unsupported for DSA');
+        }
+        if (self::$forcedEngine === 'OpenSSL' && !function_exists('openssl_get_md_methods')) {
+            throw new BadConfigurationException('Engine OpenSSL is forced but unsupported for DSA');
+        }
+        if (function_exists('openssl_get_md_methods') && self::$forcedEngine !== 'PHP') {
+            if (in_array($this->hash->getHash(), openssl_get_md_methods())) {
+                $signature = '';
+                $result = openssl_sign($message, $signature, $this->toString('PKCS8'), $this->hash->getHash());
+                if ($result) {
+                    if ($this->shortFormat == 'ASN1') {
+                        return $signature;
+                    }
+                    $loaded = ASN1Signature::load($signature);
+                    $r = $loaded['r'];
+                    $s = $loaded['s'];
+                    return $format::save($r, $s);
+                } elseif (self::$forcedEngine === 'OpenSSL') {
+                    throw new BadConfigurationException('Engine OpenSSL is forced but was unable to create signature because of ' . openssl_error_string());
                 }
-                $loaded = ASN1Signature::load($signature);
-                $r = $loaded['r'];
-                $s = $loaded['s'];
-                return $format::save($r, $s);
+            } elseif (self::$forcedEngine === 'OpenSSL') {
+                throw new BadConfigurationException('Engine OpenSSL is forced but unsupported for DSA / ' . $this->hash->getHash());
             }
         }
         $h = $this->hash->hash($message);
