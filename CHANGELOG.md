@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.1.7 - 2026-05-11
+- Upgraded phpseclib package to 3.0.51
+
 # 5.1.6 - 2026-03-30
 - Upgraded phpseclib package to 3.0.50
 - Upgraded google/protobuf package to 4.33.6
