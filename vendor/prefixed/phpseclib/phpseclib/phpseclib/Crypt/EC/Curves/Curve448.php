@@ -16,6 +16,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\EC\BaseCurves\M
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Math\BigInteger;
 class Curve448 extends Montgomery
 {
+    const SIZE = 56;
     public function __construct()
     {
         // 2^448 - 2^224 - 1
@@ -46,9 +47,10 @@ class Curve448 extends Montgomery
      */
     public function multiplyPoint(array $p, BigInteger $d)
     {
-        //$r = strrev(sodium_crypto_scalarmult($d->toBytes(), strrev($p[0]->toBytes())));
-        //return [$this->factory->newInteger(new BigInteger($r, 256))];
         $d = $d->toBytes();
+        $d = str_pad($d, 56, "\x00", \STR_PAD_LEFT);
+        //$r = strrev(sodium_crypto_scalarmult($d, strrev($p[0]->toBytes())));
+        //return [$this->factory->newInteger(new BigInteger($r, 256))];
         $d[0] = $d[0] & "\xfc";
         $d = strrev($d);
         $d |= "\x80";
