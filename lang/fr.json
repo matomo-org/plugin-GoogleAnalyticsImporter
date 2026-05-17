@@ -67,7 +67,7 @@
         "InvalidClientJson": "JSON non valide dans le fichier d'informations d'identification, essayez de retélécharger le fichier à partir de la console API Google.",
         "InvalidDateFormat": "La date doit être au format suivant : %1$s",
         "InvalidDateRange": "Plage de dates non valide, la date de début doit être antérieure à la date de fin.",
-        "InvalidRedirectUriInClientConfiguration": "URI de redirection invalides ; au moins une URI doit correspondre à l’URI « %1$s » dans le fichier de configuration téléchargé.",
+        "InvalidRedirectUriInClientConfiguration": "URI de redirection invalides ; au moins une URI doit correspondre à l’URI « %1$s » dans le fichier de configuration téléchargé",
         "IsMobileApp": "Application mobile",
         "IsMobileAppHelp": "Si votre propriété d'analyse concerne une application mobile, cochez cette case. Sinon, l'importation peut échouer si aucune URL n'est associée à votre propriété.",
         "IsVerboseLoggingEnabled": "Activer la journalisation détaillée",
