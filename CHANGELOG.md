@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.1.8 - 2026-05-25
+- Upgraded phpseclib package to 3.0.52
+
 # 5.1.7 - 2026-05-11
 - Upgraded phpseclib package to 3.0.51
 
