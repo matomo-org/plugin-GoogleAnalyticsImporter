@@ -15,6 +15,7 @@ use Piwik\Plugins\GoogleAnalyticsImporter\Importer;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
 use Piwik\Tests\Framework\Fixture;
 use Piwik\Tests\Framework\TestCase\IntegrationTestCase;
+use Piwik\Version;
 
 require_once PIWIK_INCLUDE_PATH . '/plugins/GoogleAnalyticsImporter/vendor/autoload.php';
 /**
@@ -151,7 +152,16 @@ class ImporterTest extends IntegrationTestCase
         $goals = \Piwik\Plugins\Goals\API::getInstance()->getGoals($idSite);
         $this->assertEquals([['idgoal' => '1', 'idsite' => '1', 'name' => 'goal 1', 'description' => '(imported from Google Analytics, original id = 5)', 'match_attribute' => 'event_category', 'pattern' => 'abc', 'pattern_type' => 'regex', 'case_sensitive' => '0', 'allow_multiple' => '0', 'revenue' => '0', 'deleted' => '0', 'event_value_as_revenue' => '0'], ['idgoal' => '2', 'idsite' => '1', 'name' => 'goal 2', 'description' => '(imported from Google Analytics, original id = 6)', 'match_attribute' => 'url', 'pattern' => '^def', 'pattern_type' => 'regex', 'case_sensitive' => '1', 'allow_multiple' => '0', 'revenue' => '0', 'deleted' => '0', 'event_value_as_revenue' => '0'], ['idgoal' => '3', 'idsite' => '1', 'name' => 'goal 3', 'description' => '(imported from Google Analytics, original id = 7)', 'match_attribute' => 'visit_duration', 'pattern' => '45', 'pattern_type' => 'greater_than', 'case_sensitive' => '0', 'allow_multiple' => '0', 'revenue' => '0', 'deleted' => '0', 'event_value_as_revenue' => '0'], ['idgoal' => '4', 'idsite' => '1', 'name' => 'goal 4', 'description' => '(imported from Google Analytics, original id = 8)', 'match_attribute' => 'manually', 'allow_multiple' => '0', 'revenue' => '0', 'deleted' => '0', 'event_value_as_revenue' => '0'], ['idgoal' => '5', 'idsite' => '1', 'name' => 'goal 5', 'description' => '(imported from Google Analytics, original id = 9)', 'match_attribute' => 'manually', 'allow_multiple' => '0', 'revenue' => '0', 'deleted' => '0', 'event_value_as_revenue' => '0']], array_values($goals));
         $customDimensions = \Piwik\Plugins\CustomDimensions\API::getInstance()->getConfiguredCustomDimensions($idSite);
-        $this->assertEquals([['idcustomdimension' => '1', 'idsite' => '1', 'name' => 'cdim 1', 'index' => '1', 'scope' => 'action', 'active' => \true, 'extractions' => [], 'case_sensitive' => \true], ['idcustomdimension' => '2', 'idsite' => '1', 'name' => 'cdim  2', 'index' => '1', 'scope' => 'visit', 'active' => \false, 'extractions' => [], 'case_sensitive' => \true], ['idcustomdimension' => '3', 'idsite' => '1', 'name' => 'ga:userGender', 'index' => '2', 'scope' => 'visit', 'active' => \true, 'extractions' => [], 'case_sensitive' => \true]], $customDimensions);
+        $expectedCustomDimensions = [['idcustomdimension' => '1', 'idsite' => '1', 'name' => 'cdim 1', 'index' => '1', 'scope' => 'action', 'active' => \true, 'extractions' => [], 'case_sensitive' => \true], ['idcustomdimension' => '2', 'idsite' => '1', 'name' => 'cdim  2', 'index' => '1', 'scope' => 'visit', 'active' => \false, 'extractions' => [], 'case_sensitive' => \true], ['idcustomdimension' => '3', 'idsite' => '1', 'name' => 'ga:userGender', 'index' => '2', 'scope' => 'visit', 'active' => \true, 'extractions' => [], 'case_sensitive' => \true]];
+
+        if (version_compare(Version::VERSION, '5.11.0-b1') >= 0) {
+            foreach ($expectedCustomDimensions as &$dimension) {
+                $dimension['description'] = '';
+            }
+            unset($dimension);
+        }
+
+        $this->assertEquals($expectedCustomDimensions, $customDimensions);
     }
 }
 class MockGoogleServiceAnalytics extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics
