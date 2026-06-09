@@ -1629,6 +1629,7 @@ return array(
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Query' => $baseDir . '/guzzlehttp/psr7/src/Query.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Request' => $baseDir . '/guzzlehttp/psr7/src/Request.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Response' => $baseDir . '/guzzlehttp/psr7/src/Response.php',
+    'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Rfc3986' => $baseDir . '/guzzlehttp/psr7/src/Rfc3986.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Rfc7230' => $baseDir . '/guzzlehttp/psr7/src/Rfc7230.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\ServerRequest' => $baseDir . '/guzzlehttp/psr7/src/ServerRequest.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Stream' => $baseDir . '/guzzlehttp/psr7/src/Stream.php',
