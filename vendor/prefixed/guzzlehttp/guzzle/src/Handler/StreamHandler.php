@@ -46,8 +46,8 @@ class StreamHandler
             // Does not support the expect header.
             $request = $request->withoutHeader('Expect');
             // Append a content-length header if body size is zero to match
-            // cURL's behavior.
-            if (0 === $request->getBody()->getSize()) {
+            // the behavior of `CurlHandler`
+            if ((0 === \strcasecmp('PUT', $request->getMethod()) || 0 === \strcasecmp('POST', $request->getMethod())) && 0 === $request->getBody()->getSize()) {
                 $request = $request->withHeader('Content-Length', '0');
             }
             return $this->createResponse($request, $options, $this->createStream($request, $options), $startTime);
@@ -248,8 +248,13 @@ class StreamHandler
         $contextResource = $this->createResource(static function () use($context, $params) {
             return \stream_context_create($context, $params);
         });
-        return $this->createResource(function () use($uri, &$http_response_header, $contextResource, $context, $options, $request) {
+        return $this->createResource(function () use($uri, $contextResource, $context, $options, $request) {
             $resource = @\fopen((string) $uri, 'r', \false, $contextResource);
+            // See https://wiki.php.net/rfc/deprecations_php_8_5#deprecate_the_http_response_header_predefined_variable
+            if (function_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\http_get_last_response_headers')) {
+                /** @var array|null */
+                $http_response_header = \Matomo\Dependencies\GoogleAnalyticsImporter\http_get_last_response_headers();
+            }
             $this->lastHeaders = $http_response_header ?? [];
             if (\false === $resource) {
                 throw new ConnectException(sprintf('Connection refused for URI %s', $uri), $request, null, $context);
@@ -398,8 +403,19 @@ class StreamHandler
     private function add_cert(RequestInterface $request, array &$options, $value, array &$params) : void
     {
         if (\is_array($value)) {
-            $options['ssl']['passphrase'] = $value[1];
+            if (!isset($value[0]) || !\is_string($value[0])) {
+                throw new \InvalidArgumentException('Invalid cert request option');
+            }
+            if (isset($value[1])) {
+                if (!\is_string($value[1])) {
+                    throw new \InvalidArgumentException('Invalid cert request option');
+                }
+                $options['ssl']['passphrase'] = $value[1];
+            }
             $value = $value[0];
+        }
+        if (!\is_string($value)) {
+            throw new \InvalidArgumentException('Invalid cert request option');
         }
         if (!\file_exists($value)) {
             throw new \RuntimeException("SSL certificate not found: {$value}");
@@ -411,6 +427,9 @@ class StreamHandler
      */
     private function add_progress(RequestInterface $request, array &$options, $value, array &$params) : void
     {
+        if (!\is_callable($value)) {
+            throw new \InvalidArgumentException('progress client option must be callable');
+        }
         self::addNotification($params, static function ($code, $a, $b, $c, $transferred, $total) use($value) {
             if ($code == \STREAM_NOTIFY_PROGRESS) {
                 // The upload progress cannot be determined. Use 0 for cURL compatibility:

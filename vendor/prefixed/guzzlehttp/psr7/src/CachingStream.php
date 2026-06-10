@@ -19,6 +19,8 @@ final class CachingStream implements StreamInterface
      * @var StreamInterface
      */
     private $stream;
+    /** @var bool */
+    private $detached = \false;
     /**
      * We will treat the buffer object as the body of the stream
      *
@@ -32,6 +34,9 @@ final class CachingStream implements StreamInterface
     }
     public function getSize() : ?int
     {
+        if ($this->detached) {
+            return null;
+        }
         $remoteSize = $this->remoteStream->getSize();
         if (null === $remoteSize) {
             return null;
@@ -62,8 +67,14 @@ final class CachingStream implements StreamInterface
             // Read the remoteStream until we have read in at least the amount
             // of bytes requested, or we reach the end of the file.
             while ($diff > 0 && !$this->remoteStream->eof()) {
-                $this->read($diff);
-                $diff = $byte - $this->stream->getSize();
+                $previousSize = $this->stream->getSize();
+                $previousSkipReadBytes = $this->skipReadBytes;
+                $data = $this->read($diff);
+                $currentSize = $this->stream->getSize();
+                if ($data === '' && $currentSize === $previousSize && $this->skipReadBytes === $previousSkipReadBytes) {
+                    break;
+                }
+                $diff = $byte - $currentSize;
             }
         } else {
             // We can just do a normal seek since we've already seen this byte.
@@ -88,7 +99,10 @@ final class CachingStream implements StreamInterface
                 $this->skipReadBytes = max(0, $this->skipReadBytes - $len);
             }
             $data .= $remoteData;
-            $this->stream->write($remoteData);
+            // A short cache write would silently corrupt later replays, so fail loudly.
+            if ($this->stream->write($remoteData) !== strlen($remoteData)) {
+                throw new \RuntimeException('Unable to cache the entire read from the remote stream');
+            }
         }
         return $data;
     }
@@ -108,6 +122,18 @@ final class CachingStream implements StreamInterface
     {
         return $this->stream->eof() && $this->remoteStream->eof();
     }
+    public function detach()
+    {
+        if ($this->detached) {
+            return null;
+        }
+        $position = $this->tell();
+        $this->cacheEntireStream();
+        $this->stream->seek($position);
+        $resource = $this->stream->detach();
+        $this->detached = \true;
+        return $resource;
+    }
     /**
      * Close both the remote stream and buffer stream
      */
@@ -115,6 +141,7 @@ final class CachingStream implements StreamInterface
     {
         $this->remoteStream->close();
         $this->stream->close();
+        $this->detached = \true;
     }
     private function cacheEntireStream() : int
     {

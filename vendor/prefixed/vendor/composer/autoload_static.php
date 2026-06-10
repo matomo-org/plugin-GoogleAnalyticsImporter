@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit526446545a9da3fde3e54e1f061b247e
+class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
 {
     public static $files = array (
         '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -1641,6 +1641,7 @@ class ComposerStaticInit526446545a9da3fde3e54e1f061b247e
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Query' => __DIR__ . '/../..' . '/guzzlehttp/psr7/src/Query.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Request' => __DIR__ . '/../..' . '/guzzlehttp/psr7/src/Request.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Response' => __DIR__ . '/../..' . '/guzzlehttp/psr7/src/Response.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Rfc3986' => __DIR__ . '/../..' . '/guzzlehttp/psr7/src/Rfc3986.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Rfc7230' => __DIR__ . '/../..' . '/guzzlehttp/psr7/src/Rfc7230.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\ServerRequest' => __DIR__ . '/../..' . '/guzzlehttp/psr7/src/ServerRequest.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Psr7\\Stream' => __DIR__ . '/../..' . '/guzzlehttp/psr7/src/Stream.php',
@@ -2176,7 +2177,7 @@ class ComposerStaticInit526446545a9da3fde3e54e1f061b247e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit526446545a9da3fde3e54e1f061b247e::$classMap;
+            $loader->classMap = ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775::$classMap;
 
         }, null, ClassLoader::class);
     }

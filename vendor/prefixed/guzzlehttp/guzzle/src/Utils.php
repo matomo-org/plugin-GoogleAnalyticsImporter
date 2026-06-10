@@ -71,7 +71,7 @@ final class Utils
      *
      * The returned handler is not wrapped by any default middlewares.
      *
-     * @return callable(\Psr\Http\Message\RequestInterface, array): \GuzzleHttp\Promise\PromiseInterface Returns the best handler for the given system.
+     * @return callable(\Psr\Http\Message\RequestInterface, array): Promise\PromiseInterface Returns the best handler for the given system.
      *
      * @throws \RuntimeException if no viable Handler is available.
      */
@@ -242,6 +242,9 @@ EOT
      */
     public static function jsonDecode(string $json, bool $assoc = \false, int $depth = 512, int $options = 0)
     {
+        if ($depth < 1) {
+            throw new InvalidArgumentException('json_decode error: Maximum stack depth exceeded');
+        }
         $data = \json_decode($json, $assoc, $depth, $options);
         if (\JSON_ERROR_NONE !== \json_last_error()) {
             throw new InvalidArgumentException('json_decode error: ' . \json_last_error_msg());
