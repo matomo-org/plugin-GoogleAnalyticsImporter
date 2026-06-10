@@ -1,7 +1,7 @@
 ## Changelog
 
 
-# 5.1.9 - 2026-06-10
+# 5.1.9 - 2026-06-22
 - Upgrade packages: guzzle to 7.10.1, psr7 to 2.10.4 & promises to ^2.3,
 
 # 5.1.8 - 2026-05-25
