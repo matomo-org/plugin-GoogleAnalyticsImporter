@@ -475,6 +475,8 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     }
     public function pendingImports()
     {
+        $idSite = Common::getRequestVar('idSite', -1, 'int');
+        Piwik::checkUserHasViewAccess($idSite);
         $pendingImports = \Piwik\Plugins\GoogleAnalyticsImporter\GoogleAnalyticsImporter::canDisplayImportPendingNotice();
         return json_encode($pendingImports);
     }
