@@ -81,8 +81,22 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency\RecordImporter::class,
     ],
     'GoogleAnalyticsGA4Importer.clientConfiguration' => function (Container $c) {
-        $config = @\json_decode(Option::get(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME), \true);
-        $accessToken = @\json_decode(Option::get(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME), \true);
+        $encryption = new \Piwik\Plugins\GoogleAnalyticsImporter\Encryption();
+        // Decrypt stored option values before decoding. Legacy plaintext values pass through
+        // unchanged; an undecryptable value (e.g. missing/rotated key) is treated as empty so
+        // the returned config reports "not configured" instead of failing.
+        $decrypt = function ($value) use ($encryption) {
+            if (!is_string($value) || $value === '') {
+                return $value;
+            }
+            try {
+                return $encryption->decryptString($value);
+            } catch (\Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\SecretConfigurationException $e) {
+                return '';
+            }
+        };
+        $config = @\json_decode($decrypt(Option::get(AuthorizationGA4::CLIENT_CONFIG_OPTION_NAME)), \true);
+        $accessToken = @\json_decode($decrypt(Option::get(AuthorizationGA4::ACCESS_TOKEN_OPTION_NAME)), \true);
         return [
             'type' => 'authorized_user',
             'client_id' => !empty($config['web']['client_id']) ? $config['web']['client_id'] : '',
