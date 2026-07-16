@@ -81,17 +81,23 @@ return [
         \Piwik\Plugins\GoogleAnalyticsImporter\Importers\VisitFrequency\RecordImporter::class,
     ],
     'GoogleAnalyticsGA4Importer.clientConfiguration' => function (Container $c) {
-        $encryption = new \Piwik\Plugins\GoogleAnalyticsImporter\Encryption();
         // Decrypt stored option values before decoding. Legacy plaintext values pass through
         // unchanged; an undecryptable value (e.g. missing/rotated key) is treated as empty so
         // the returned config reports "not configured" instead of failing.
-        $decrypt = function ($value) use ($encryption) {
+        $decrypt = function ($value) use ($c) {
             if (!is_string($value) || $value === '') {
                 return $value;
             }
+            $encryption = new \Piwik\Plugins\GoogleAnalyticsImporter\Encryption();
             try {
                 return $encryption->decryptString($value);
             } catch (\Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\SecretConfigurationException $e) {
+                // Log consistently with Google/Authorization::decryptOptionValue() so a lost or
+                // rotated encryption key can be diagnosed instead of silently losing credentials.
+                $c->get(\Piwik\Log\LoggerInterface::class)->error(
+                    'GoogleAnalyticsImporter: failed to decrypt stored credentials: {message}',
+                    ['message' => $e->getMessage()]
+                );
                 return '';
             }
         };
