@@ -59,6 +59,9 @@ class CheckDirectDependencyUseCommandTest extends SystemTestCase
             ],
             'GeoIp2' => [
                 'GoogleAnalyticsImporter/Importers/UserCountry/RecordImporterGA4.php'
+            ],
+            'DI' => [
+                'GoogleAnalyticsImporter/tests/Integration/OAuthCredentialEncryptionTest.php'
             ]
         ], $checkDirectDependencyUse->usesFoundList[$pluginName]);
     }
