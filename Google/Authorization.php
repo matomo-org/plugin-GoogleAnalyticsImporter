@@ -13,8 +13,11 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 use Piwik\ArchiveProcessor\PluginsArchiver;
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
+use Piwik\Log\LoggerInterface;
 use Piwik\Option;
 use Piwik\Piwik;
+use Piwik\Plugins\GoogleAnalyticsImporter\Encryption;
+use Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\SecretConfigurationException;
 use Piwik\SettingsPiwik;
 use Piwik\Url;
 
@@ -22,6 +25,17 @@ class Authorization
 {
     public const ACCESS_TOKEN_OPTION_NAME = 'GoogleAnalyticsImporter.oauthAccessToken';
     public const CLIENT_CONFIG_OPTION_NAME = 'GoogleAnalyticsImporter.clientConfiguration';
+
+    /**
+     * @var Encryption
+     */
+    private $encryption;
+
+    public function __construct(?Encryption $encryption = null)
+    {
+        $this->encryption = $encryption ?: new Encryption();
+    }
+
     public function hasAccessToken()
     {
         $value = $this->getAccessToken();
@@ -30,7 +44,7 @@ class Authorization
     private function getAccessToken()
     {
         $value = Option::get(self::ACCESS_TOKEN_OPTION_NAME);
-        return $value;
+        return $this->decryptOptionValue($value);
     }
     public function hasClientConfiguration()
     {
@@ -40,8 +54,31 @@ class Authorization
     public function getClientConfiguration()
     {
         $value = Option::get(self::CLIENT_CONFIG_OPTION_NAME);
+        $value = $this->decryptOptionValue($value);
         $value = @json_decode($value, \true);
         return $value;
+    }
+    /**
+     * Decrypts a stored option value. Plaintext (legacy) values are returned unchanged.
+     * If the value is encrypted but cannot be decrypted (e.g. the encryption key is
+     * missing or was rotated), the failure is logged and an empty string is returned so
+     * callers treat the credentials as "not configured" instead of failing during
+     * archiving/cron.
+     */
+    private function decryptOptionValue($value)
+    {
+        if (!is_string($value) || $value === '') {
+            return $value;
+        }
+        try {
+            return $this->encryption->decryptString($value);
+        } catch (SecretConfigurationException $e) {
+            StaticContainer::get(LoggerInterface::class)->error(
+                'GoogleAnalyticsImporter: failed to decrypt stored credentials: {message}',
+                ['message' => $e->getMessage()]
+            );
+            return '';
+        }
     }
     public function validateConfig($config)
     {
@@ -52,7 +89,7 @@ class Authorization
     }
     public function saveConfig($config)
     {
-        Option::set(self::CLIENT_CONFIG_OPTION_NAME, $config);
+        Option::set(self::CLIENT_CONFIG_OPTION_NAME, $this->encryption->encryptString($config));
     }
     public function saveAccessToken($oauthCode, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client $client)
     {
@@ -66,7 +103,7 @@ class Authorization
         if (!is_string($accessToken)) {
             $accessTokenStr = json_encode($accessToken);
         }
-        Option::set(self::ACCESS_TOKEN_OPTION_NAME, $accessTokenStr);
+        Option::set(self::ACCESS_TOKEN_OPTION_NAME, $this->encryption->encryptString($accessTokenStr));
     }
     /**
      * Returns information for the given access token

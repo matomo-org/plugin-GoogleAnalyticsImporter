@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.2.0 - 2026-07-20
+- Added code to encrypt sensitive information in the database
+
 # 5.1.9 - 2026-06-22
 - Upgrade packages: guzzle to 7.10.1, psr7 to 2.10.4 & promises to ^2.3,
 - Enforce View access on the `pendingImports` controller action

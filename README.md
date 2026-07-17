@@ -6,6 +6,17 @@
 
 Import your Google Analytics properties into Matomo. See [the documentation](https://matomo.org/docs/google-analytics-importer/) for more info.
 
+## Encryption key
+
+As of 5.2.0 the OAuth client configuration and access token stored by this plugin are encrypted at rest in the database. The encryption key is generated automatically the first time credentials are saved (or migrated) and is written to `config/config.ini.php`:
+
+```ini
+[GoogleAnalyticsImporter]
+encryption_key = "..."
+```
+
+> **_IMPORTANT:_** This key must be backed up and restored together with the database. The stored credentials can only be decrypted with the matching `encryption_key`. If the key is lost, changed, or not restored alongside a database restore, the previously stored OAuth credentials become unrecoverable and you will need to re-upload the client configuration and re-authorize the importer. When migrating an installation to a new server, copy both the database **and** the `[GoogleAnalyticsImporter] encryption_key` value.
+
 ## Dependencies
 This plugin had its vendored dependencies scoped using [matomo scoper](https://github.com/matomo-org/matomo-scoper). This means that composer packages are prefixed so that they won't conflict with the same libraries used by other plugins.
 If you need to update a dependency, you should be able to run `composer install` to populate the vendor directory and then follow the [instructions for scoping a plugin](https://github.com/matomo-org/matomo-scoper#how-to-scope-a-matomo-plugin). Since the scoper.inc.php file already exists, it will hopefully be as simple as running the scoper for this plugin. Once that's done, you'll also need to make some of the dependencies compatible with Matomo's minimum supported version of PHP.
