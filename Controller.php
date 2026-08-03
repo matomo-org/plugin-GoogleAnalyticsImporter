@@ -194,8 +194,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     /**
      * Processes the response from google oauth service
      *
-     * @return string
-     * @throws \Exception
+     * @return string|null
      */
     public function processAuthCode()
     {
@@ -346,13 +345,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $isVerboseLoggingEnabled = Common::getRequestVar('isVerboseLoggingEnabled', 0, $type = 'int') == 1;
             $forceCustomDimensionSlotCheck = Common::getRequestVar('forceCustomDimensionSlotCheck', 1, $type = 'int') == 1;
             $idSite = $importer->makeSite($propertyId, $timezone, $isMobileApp ? Type::ID : \Piwik\Plugins\WebsiteMeasurable\Type::ID, $extraCustomDimensions, $forceCustomDimensionSlotCheck, $streamIds);
+            /** @var ImportStatus $importStatus */
+            $importStatus = StaticContainer::get(\Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus::class);
             try {
                 if (empty($idSite)) {
                     throw new \Exception("Unable to import site entity.");
                     // sanity check
                 }
-                /** @var ImportStatus $importStatus */
-                $importStatus = StaticContainer::get(\Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus::class);
                 if (!empty($startDate) || !empty($endDate)) {
                     // we set the last imported date to one day before the start date
                     $importStatus->setImportDateRange($idSite, $startDate ?: null, $endDate ?: null);

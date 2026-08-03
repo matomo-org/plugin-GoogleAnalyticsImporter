@@ -77,7 +77,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
         $this->insertRecord(Archiver::REFERRER_TYPE_RECORD_NAME, $this->referrerTypeRecord, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($this->referrerTypeRecord);
         $this->referrerTypeRecord = null;
-        unset($blob);
         unset($this->campaignKeywords);
         // numeric records
         $numericRecords = array(

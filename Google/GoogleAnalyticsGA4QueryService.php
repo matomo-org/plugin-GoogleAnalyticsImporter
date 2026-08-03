@@ -154,7 +154,7 @@ class GoogleAnalyticsGA4QueryService
             try {
                 $this->issuePointlessMysqlQuery();
                 $result = $this->gaClient->runReport($request);
-                if (empty($result)) {
+                if ($result === null) {
                     ++$attempts;
                     $this->backOff($skipReAttempt);
                     $this->logger->info("Google Analytics API returned null for some reason, trying again...");

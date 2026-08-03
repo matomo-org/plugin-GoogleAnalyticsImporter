@@ -81,7 +81,7 @@ class ImportReports extends ConsoleCommand
         }
         $type = $isMobileApp ? \Piwik\Plugins\MobileAppMeasurable\Type::ID : Type::ID;
         $idSite = $this->getIdSite();
-        LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite, $output);
+        LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite);
         $canProcessNow = $this->checkIfCanProcess($idSite);
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);

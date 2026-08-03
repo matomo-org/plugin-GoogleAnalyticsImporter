@@ -277,7 +277,7 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     public function configureImportedReportView(ViewDataTable $view)
     {
         $table = $view->getDataTable();
-        if (empty($table) || !$table instanceof DataTable) {
+        if (!$table instanceof DataTable) {
             return;
         }
         $period = Common::getRequestVar('period', \false);

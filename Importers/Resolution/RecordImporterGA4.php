@@ -47,7 +47,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\Importers
         }
         Common::destroy($table);
         $this->insertRecord(Archiver::CONFIGURATION_RECORD_NAME, $record, $this->getStandardMaximumRows(), null, Metrics::INDEX_NB_VISITS);
-        unset($blob);
         Common::destroy($record);
     }
     private function queryScreenResolution(Date $day)
@@ -64,7 +63,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\Importers
         }
         Common::destroy($table);
         $this->insertRecord(Archiver::RESOLUTION_RECORD_NAME, $record, $this->getStandardMaximumRows(), null, Metrics::INDEX_NB_VISITS);
-        unset($blob);
         Common::destroy($record);
     }
 }

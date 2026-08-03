@@ -88,7 +88,7 @@ class ImportGA4Reports extends ConsoleCommand
         }
         $type = $isMobileApp ? \Piwik\Plugins\MobileAppMeasurable\Type::ID : Type::ID;
         $idSite = $this->getIdSite();
-        LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite, $output);
+        LogToSingleFileProcessor::handleLogToSingleFileInCliCommand($idSite);
         /** @var ImportStatus $importStatus */
         $importStatus = StaticContainer::get(ImportStatus::class);
         $canProcessNow = $this->checkIfCanProcess($idSite);

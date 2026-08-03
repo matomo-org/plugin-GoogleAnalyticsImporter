@@ -27,7 +27,7 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
     protected $columnToSortByBeforeTruncation;
     protected $maximumRowsInDataTable;
     protected $maximumRowsInSubDataTable;
-    public function __construct(GoogleAnalyticsGA4QueryService $gaQuery, $idSite, LoggerInterface $logger, $segmentToApply = null)
+    public function __construct(GoogleAnalyticsGA4QueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
         $this->columnToSortByBeforeTruncation = Metrics::INDEX_NB_VISITS;

@@ -82,9 +82,6 @@ class EndDate
     }
     private function readConfigForcedMaxEndDate(Config $config)
     {
-        if (empty($config)) {
-            return null;
-        }
         $configSection = $config->GoogleAnalyticsImporter;
         $maxEndDate = !empty($configSection[self::CONFIG_NAME]) ? $configSection[self::CONFIG_NAME] : null;
         if (!empty($maxEndDate)) {
