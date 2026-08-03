@@ -9,7 +9,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google_Service_Analytics_Goal;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal as Google_Service_Analytics_Goal;
 use Piwik\API\Request;
 use Piwik\Archive\ArchiveInvalidator;
 use Piwik\ArchiveProcessor\Parameters;
@@ -259,6 +259,7 @@ class Importer
                 $this->logger->info("Extra custom dimension '{gaCustomDimension}' entity already imported.", ['gaCustomDimension' => $extraEntry['gaDimension']]);
                 continue;
             }
+            $idDimension = null;
             try {
                 $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension($idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = \true);
             } catch (\Exception $ex) {

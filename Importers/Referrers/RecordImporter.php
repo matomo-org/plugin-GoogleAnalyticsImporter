@@ -77,7 +77,6 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
         $this->insertRecord(Archiver::REFERRER_TYPE_RECORD_NAME, $this->referrerTypeRecord, $this->maximumRowsInDataTableLevelZero, $this->maximumRowsInSubDataTable, $this->columnToSortByBeforeTruncation);
         Common::destroy($this->referrerTypeRecord);
         $this->referrerTypeRecord = null;
-        unset($blob);
         unset($this->campaignKeywords);
         // numeric records
         $numericRecords = array(Archiver::METRIC_DISTINCT_SEARCH_ENGINE_RECORD_NAME => $distinctSearchEngines, Archiver::METRIC_DISTINCT_SOCIAL_NETWORK_RECORD_NAME => $distinctSocialNetworks, Archiver::METRIC_DISTINCT_KEYWORD_RECORD_NAME => $distinctKeywords, Archiver::METRIC_DISTINCT_CAMPAIGN_RECORD_NAME => $distinctCampaigns, Archiver::METRIC_DISTINCT_WEBSITE_RECORD_NAME => $distinctWebsites);

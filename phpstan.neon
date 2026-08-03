@@ -1,0 +1,31 @@
+parameters:
+    level: 1
+    phpVersion: 70200
+    tmpDir: /tmp/phpstan/GoogleAnalyticsImporter/main
+    paths:
+        - .
+    excludePaths:
+        analyseAndScan:
+            - tests/*
+            - github-action-tests/
+            - scoper.inc.php
+        # still scanned so the prefixed Google classes are discovered even
+        # when the Matomo bootstrap cannot load plugin autoloaders (e.g. CI)
+        analyse:
+            - vendor/
+    ignoreErrors:
+        # WpMatomo and get_option exist only when running inside Matomo for WordPress
+        - '#^Instantiated class WpMatomo\\Site not found\.$#'
+        - '#^Access to constant OPTION_NAME_INSTALL_DATE on an unknown class WpMatomo\\Installer\.$#'
+        - '#^Function get_option not found\.$#'
+    bootstrapFiles:
+        - ../../bootstrap-phpstan.php
+    universalObjectCratesClasses:
+        - Piwik\Config
+        - Piwik\View
+        - Piwik\ViewDataTable\Config
+    scanDirectories:
+        # ../../ does not actually seem to give us anything
+        # that ../plugins/ does not, but including it for
+        # completeness.  It does not seem to slow down performance.
+        - ../../

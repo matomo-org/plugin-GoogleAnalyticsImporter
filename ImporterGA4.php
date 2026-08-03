@@ -311,6 +311,7 @@ class ImporterGA4
                 $this->logger->info("Extra custom dimension '{gaCustomDimension}' entity already imported.", ['gaCustomDimension' => $extraEntry['gaDimension']]);
                 continue;
             }
+            $idDimension = null;
             try {
                 $idDimension = CustomDimensionsAPI::getInstance()->configureNewCustomDimension($idSite, $extraEntry['gaDimension'], $extraEntry['dimensionScope'], $active = \true);
             } catch (\Exception $ex) {

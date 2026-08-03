@@ -162,6 +162,7 @@ abstract class RecordImporterGA4
     protected function getGapLabel(array $gap, $value)
     {
         $range = null;
+        $bounds = [];
         foreach ($gap as $bounds) {
             $upperBound = end($bounds);
             if ($value <= $upperBound) {

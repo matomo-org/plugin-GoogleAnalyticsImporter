@@ -1,5 +1,9 @@
 ## Changelog
 
+# 5.2.1 - 2026-08-03
+- Added PHPStan static analysis (CI check and pre-push hook)
+- Fixed an error that could hide the real failure reason when starting a GA4 import fails
+
 # 5.2.0 - 2026-07-20
 - Added code to encrypt sensitive information in the database
 
