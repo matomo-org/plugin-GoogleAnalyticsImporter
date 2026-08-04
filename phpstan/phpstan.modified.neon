@@ -1,7 +1,7 @@
 includes:
     - ../phpstan.neon
 parameters:
-    # keep in sync with ../phpstan.neon: a higher level here makes the pre-push
-    # hook block on pre-existing errors in files a push merely touches
-    level: 1
+    # touched files are ratcheted up to the plugin-wide goal of level 5,
+    # even where the CI base level is lower
+    level: 5
     tmpDir: /tmp/phpstan/GoogleAnalyticsImporter/modified
