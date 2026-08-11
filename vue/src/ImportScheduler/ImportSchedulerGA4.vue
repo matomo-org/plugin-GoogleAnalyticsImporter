@@ -130,7 +130,7 @@ interface ExtraCustomDimension {
   dimensionScope: string;
 }
 
-interface ImportSchedulerState {
+export interface ImportSchedulerState {
   isStartingImport: boolean;
   extraCustomDimensionsGA4: ExtraCustomDimension[];
   streamIds: [];

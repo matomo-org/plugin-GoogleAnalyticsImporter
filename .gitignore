@@ -16,3 +16,4 @@ vendor/**/composer.lock
 /vue/dist/*.common.js
 /vue/dist/*.map
 /vue/dist/*.development.*
+/vue/dist/*.umd.js

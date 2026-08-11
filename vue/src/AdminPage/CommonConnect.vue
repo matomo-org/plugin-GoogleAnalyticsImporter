@@ -72,7 +72,7 @@ interface ConfigureConnectionRadioOption {
   connectAccounts: string;
   manual: string;
 }
-interface ConfigureConnectionProps {
+export interface ConfigureConnectionProps {
   baseDomain: string;
   baseUrl: string;
   manualConfigNonce: string;

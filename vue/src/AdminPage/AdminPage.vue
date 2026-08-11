@@ -70,6 +70,7 @@
 import {
   defineComponent,
   markRaw,
+  PropType,
 } from 'vue';
 import {
   ContentBlock,
@@ -77,7 +78,7 @@ import {
   useExternalPluginComponent,
 } from 'CoreHome';
 import ClientConfig from '../ClientConfig/ClientConfig.vue';
-import ImportStatus from '../ImportStatus/ImportStatus.vue';
+import ImportStatus, { ImportStatusEntry } from '../ImportStatus/ImportStatus.vue';
 import ImportSchedulerGA4 from '../ImportScheduler/ImportSchedulerGA4.vue';
 import CommonConnect from './CommonConnect.vue';
 
@@ -95,7 +96,7 @@ interface ConfigureConnectionRadioOption {
   manual: string;
 }
 
-interface ConfigureConnectionProps {
+export interface ConfigureConnectionProps {
   baseDomain: string;
   baseUrl: string;
   manualConfigNonce: string;
@@ -137,7 +138,7 @@ export default defineComponent({
       required: true,
     },
     statuses: {
-      type: Array,
+      type: Array as PropType<ImportStatusEntry[]>,
       required: true,
     },
     stopImportNonce: {
