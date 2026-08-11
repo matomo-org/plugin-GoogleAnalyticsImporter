@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
+class ComposerStaticInita54fa553550c24ac72857d9f1575ce74
 {
     public static $files = array (
         '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -13,6 +13,7 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'c17e09b5491f79542d887522db07b799' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
         '8bdb104f587366cf982cde548067cb60' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
         '66cfd3a7190309803b5cc0fea03a4cdc' => __DIR__ . '/../..' . '/symfony/deprecation-contracts/function.php',
+        '4b1964b006cd3cb15789beb45368cd67' => __DIR__ . '/../..' . '/symfony/polyfill-php80/bootstrap.php',
         'c41a84066d147a2d8e4ba7ebd559db66' => __DIR__ . '/../..' . '/ralouphie/getallheaders/src/getallheaders.php',
         '21a0a884fb8771c612b5fc28d989f9f1' => __DIR__ . '/../..' . '/ramsey/uuid/src/functions.php',
     );
@@ -25,6 +26,7 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Error' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
         'GPBMetadata\\Google\\ApiCore\\Tests\\Unit\\Example' => __DIR__ . '/../..' . '/google/gax/metadata/Google/ApiCore/Tests/Unit/Example.php',
         'GPBMetadata\\GrpcGcp' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/GPBMetadata/GrpcGcp.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Attribute' => __DIR__ . '/../..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\BigDecimal' => __DIR__ . '/../..' . '/brick/math/src/BigDecimal.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\BigInteger' => __DIR__ . '/../..' . '/brick/math/src/BigInteger.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\BigNumber' => __DIR__ . '/../..' . '/brick/math/src/BigNumber.php',
@@ -1063,8 +1065,8 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\AccessToken' => __DIR__ . '/../..' . '/google/auth/src/AccessToken.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\ApplicationDefaultCredentials' => __DIR__ . '/../..' . '/google/auth/src/ApplicationDefaultCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CacheTrait' => __DIR__ . '/../..' . '/google/auth/src/CacheTrait.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\FileSystemCacheItemPool' => __DIR__ . '/../..' . '/google/auth/src/Cache/FileSystemCacheItemPool.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\InvalidArgumentException' => __DIR__ . '/../..' . '/google/auth/src/Cache/InvalidArgumentException.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\Item' => __DIR__ . '/../..' . '/google/auth/src/Cache/Item.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\MemoryCacheItemPool' => __DIR__ . '/../..' . '/google/auth/src/Cache/MemoryCacheItemPool.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\SysVCacheItemPool' => __DIR__ . '/../..' . '/google/auth/src/Cache/SysVCacheItemPool.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Cache\\TypedItem' => __DIR__ . '/../..' . '/google/auth/src/Cache/TypedItem.php',
@@ -1074,11 +1076,13 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialSource\\UrlSource' => __DIR__ . '/../..' . '/google/auth/src/CredentialSource/UrlSource.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialsLoader' => __DIR__ . '/../..' . '/google/auth/src/CredentialsLoader.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\AppIdentityCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/AppIdentityCredentials.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ExternalAccountAuthorizedUserCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ExternalAccountAuthorizedUserCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ExternalAccountCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ExternalAccountCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\GCECredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/GCECredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\IAMCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/IAMCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ImpersonatedServiceAccountCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ImpersonatedServiceAccountCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\InsecureCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/InsecureCredentials.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\RegionalAccessBoundaryTrait' => __DIR__ . '/../..' . '/google/auth/src/Credentials/RegionalAccessBoundaryTrait.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ServiceAccountCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ServiceAccountCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ServiceAccountJwtAccessCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ServiceAccountJwtAccessCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\UserRefreshCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/UserRefreshCredentials.php',
@@ -1096,6 +1100,9 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\HttpHandler\\HttpHandlerFactory' => __DIR__ . '/../..' . '/google/auth/src/HttpHandler/HttpHandlerFactory.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Iam' => __DIR__ . '/../..' . '/google/auth/src/Iam.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\IamSignerTrait' => __DIR__ . '/../..' . '/google/auth/src/IamSignerTrait.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Logging\\LoggingTrait' => __DIR__ . '/../..' . '/google/auth/src/Logging/LoggingTrait.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Logging\\RpcLogEvent' => __DIR__ . '/../..' . '/google/auth/src/Logging/RpcLogEvent.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Logging\\StdOutLogger' => __DIR__ . '/../..' . '/google/auth/src/Logging/StdOutLogger.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\MetricsTrait' => __DIR__ . '/../..' . '/google/auth/src/MetricsTrait.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Middleware\\AuthTokenMiddleware' => __DIR__ . '/../..' . '/google/auth/src/Middleware/AuthTokenMiddleware.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Middleware\\ProxyAuthTokenMiddleware' => __DIR__ . '/../..' . '/google/auth/src/Middleware/ProxyAuthTokenMiddleware.php',
@@ -1595,14 +1602,20 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\CurlFactoryInterface' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/CurlFactoryInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\CurlHandler' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/CurlHandler.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\CurlMultiHandler' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\CurlShareHandleState' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/CurlShareHandleState.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\CurlVersion' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/CurlVersion.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\EasyHandle' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/EasyHandle.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\HeaderProcessor' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/HeaderProcessor.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\HostValidator' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/HostValidator.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\MockHandler' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/MockHandler.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\Proxy' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/Proxy.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\ProxyEnvironment' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/ProxyEnvironment.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\StreamHandler' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/StreamHandler.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Handler\\TlsVersion' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Handler/TlsVersion.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\MessageFormatter' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/MessageFormatter.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\MessageFormatterInterface' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/MessageFormatterInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Middleware' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Middleware.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Multiplexing' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Multiplexing.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Pool' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Pool.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\PrepareBodyMiddleware' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/PrepareBodyMiddleware.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\AggregateException' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/AggregateException.php',
@@ -1657,6 +1670,7 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\RequestOptions' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/RequestOptions.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\RetryMiddleware' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/RetryMiddleware.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\TransferStats' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/TransferStats.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\TransportSharing' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/TransportSharing.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Utils' => __DIR__ . '/../..' . '/guzzlehttp/guzzle/src/Utils.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\ParagonIE\\ConstantTime\\Base32' => __DIR__ . '/../..' . '/paragonie/constant_time_encoding/src/Base32.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\ParagonIE\\ConstantTime\\Base32Hex' => __DIR__ . '/../..' . '/paragonie/constant_time_encoding/src/Base32Hex.php',
@@ -1669,6 +1683,7 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\ParagonIE\\ConstantTime\\Encoding' => __DIR__ . '/../..' . '/paragonie/constant_time_encoding/src/Encoding.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\ParagonIE\\ConstantTime\\Hex' => __DIR__ . '/../..' . '/paragonie/constant_time_encoding/src/Hex.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\ParagonIE\\ConstantTime\\RFC4648' => __DIR__ . '/../..' . '/paragonie/constant_time_encoding/src/RFC4648.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\PhpToken' => __DIR__ . '/../..' . '/symfony/polyfill-php80/Resources/stubs/PhpToken.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Cache\\CacheException' => __DIR__ . '/../..' . '/psr/cache/src/CacheException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Cache\\CacheItemInterface' => __DIR__ . '/../..' . '/psr/cache/src/CacheItemInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Cache\\CacheItemPoolInterface' => __DIR__ . '/../..' . '/psr/cache/src/CacheItemPoolInterface.php',
@@ -1690,6 +1705,14 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/../..' . '/psr/http-message/src/UploadedFileInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Http\\Message\\UriFactoryInterface' => __DIR__ . '/../..' . '/psr/http-factory/src/UriFactoryInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Http\\Message\\UriInterface' => __DIR__ . '/../..' . '/psr/http-message/src/UriInterface.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Log\\AbstractLogger' => __DIR__ . '/../..' . '/psr/log/src/AbstractLogger.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Log\\InvalidArgumentException' => __DIR__ . '/../..' . '/psr/log/src/InvalidArgumentException.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Log\\LogLevel' => __DIR__ . '/../..' . '/psr/log/src/LogLevel.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Log\\LoggerAwareInterface' => __DIR__ . '/../..' . '/psr/log/src/LoggerAwareInterface.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Log\\LoggerAwareTrait' => __DIR__ . '/../..' . '/psr/log/src/LoggerAwareTrait.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Log\\LoggerInterface' => __DIR__ . '/../..' . '/psr/log/src/LoggerInterface.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Log\\LoggerTrait' => __DIR__ . '/../..' . '/psr/log/src/LoggerTrait.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Psr\\Log\\NullLogger' => __DIR__ . '/../..' . '/psr/log/src/NullLogger.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Ramsey\\Collection\\AbstractArray' => __DIR__ . '/../..' . '/ramsey/collection/src/AbstractArray.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Ramsey\\Collection\\AbstractCollection' => __DIR__ . '/../..' . '/ramsey/collection/src/AbstractCollection.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Ramsey\\Collection\\AbstractSet' => __DIR__ . '/../..' . '/ramsey/collection/src/AbstractSet.php',
@@ -1833,6 +1856,11 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Ramsey\\Uuid\\Validator\\GenericValidator' => __DIR__ . '/../..' . '/ramsey/uuid/src/Validator/GenericValidator.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Ramsey\\Uuid\\Validator\\ValidatorInterface' => __DIR__ . '/../..' . '/ramsey/uuid/src/Validator/ValidatorInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\StackdriverUtil' => __DIR__ . '/../..' . '/google/grpc-gcp/cloudprober/grpc_gpc_prober/stackdriver_util.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Stringable' => __DIR__ . '/../..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Symfony\\Polyfill\\Php80\\Php80' => __DIR__ . '/../..' . '/symfony/polyfill-php80/Php80.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Symfony\\Polyfill\\Php80\\PhpToken' => __DIR__ . '/../..' . '/symfony/polyfill-php80/PhpToken.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\UnhandledMatchError' => __DIR__ . '/../..' . '/symfony/polyfill-php80/Resources/stubs/UnhandledMatchError.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\ValueError' => __DIR__ . '/../..' . '/symfony/polyfill-php80/Resources/stubs/ValueError.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\bcmath_compat\\BCMath' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/src/BCMath.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Common\\Functions\\Strings' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Common/Functions/Strings.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\AES' => __DIR__ . '/../..' . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
@@ -2177,7 +2205,7 @@ class ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInitc28e574ac8fc1422a9fd03133dc11775::$classMap;
+            $loader->classMap = ComposerStaticInita54fa553550c24ac72857d9f1575ce74::$classMap;
 
         }, null, ClassLoader::class);
     }

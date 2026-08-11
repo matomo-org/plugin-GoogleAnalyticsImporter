@@ -8,18 +8,25 @@ use OpenSSLCertificate;
 use TypeError;
 class Key
 {
-    /** @var string|resource|OpenSSLAsymmetricKey|OpenSSLCertificate */
+    /**
+     * @var string|OpenSSLAsymmetricKey|OpenSSLCertificate
+     */
     private $keyMaterial;
-    /** @var string */
+    /**
+     * @var string
+     */
     private $algorithm;
     /**
-     * @param string|resource|OpenSSLAsymmetricKey|OpenSSLCertificate $keyMaterial
+     * @param string|OpenSSLAsymmetricKey|OpenSSLCertificate $keyMaterial
      * @param string $algorithm
      */
-    public function __construct($keyMaterial, string $algorithm)
+    public function __construct(#[\SensitiveParameter]
+    $keyMaterial, string $algorithm)
     {
-        if (!\is_string($keyMaterial) && !$keyMaterial instanceof OpenSSLAsymmetricKey && !$keyMaterial instanceof OpenSSLCertificate && !\is_resource($keyMaterial)) {
-            throw new TypeError('Key material must be a string, resource, or OpenSSLAsymmetricKey');
+        $this->keyMaterial = $keyMaterial;
+        $this->algorithm = $algorithm;
+        if (!\is_string($keyMaterial) && !$keyMaterial instanceof OpenSSLAsymmetricKey && !(is_resource($keyMaterial) || $keyMaterial instanceof OpenSSLCertificate)) {
+            throw new TypeError('Key material must be a string, OpenSSLCertificate, or OpenSSLAsymmetricKey');
         }
         if (empty($keyMaterial)) {
             throw new InvalidArgumentException('Key material must not be empty');
@@ -27,9 +34,6 @@ class Key
         if (empty($algorithm)) {
             throw new InvalidArgumentException('Algorithm must not be empty');
         }
-        // TODO: Remove in PHP 8.0 in favor of class constructor property promotion
-        $this->keyMaterial = $keyMaterial;
-        $this->algorithm = $algorithm;
     }
     /**
      * Return the algorithm valid for this key
@@ -41,7 +45,7 @@ class Key
         return $this->algorithm;
     }
     /**
-     * @return string|resource|OpenSSLAsymmetricKey|OpenSSLCertificate
+     * @return string|OpenSSLAsymmetricKey|OpenSSLCertificate
      */
     public function getKeyMaterial()
     {

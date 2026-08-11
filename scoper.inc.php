@@ -242,6 +242,17 @@ EOF;
                 $content = str_replace("namespace {$prefix};", '', $content);
             }
 
+            // psr7 calls \get_debug_type() and \preg_last_error_msg() unconditionally, so this polyfill has to keep
+            // declaring them in the global namespace. Its `use` imports a namespace rather than a class, which is why
+            // php-scoper leaves it unprefixed.
+            if ($filePath === __DIR__ . '/vendor/symfony/polyfill-php80/bootstrap.php') {
+                $content = str_replace(
+                    ["namespace {$prefix};", 'use Symfony\\Polyfill\\Php80 as p;'],
+                    ['', "use {$prefix}\\Symfony\\Polyfill\\Php80 as p;"],
+                    $content
+                );
+            }
+
             return $content;
         },
     ],

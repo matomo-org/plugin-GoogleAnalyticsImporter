@@ -20,8 +20,17 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 class ProductData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
     public $itemRevenue;
+    /**
+     * @var string
+     */
     public $productName;
+    /**
+     * @var string
+     */
     public $productQuantity;
+    /**
+     * @var string
+     */
     public $productSku;
     public function setItemRevenue($itemRevenue)
     {
@@ -31,26 +40,44 @@ class ProductData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Mo
     {
         return $this->itemRevenue;
     }
+    /**
+     * @param string
+     */
     public function setProductName($productName)
     {
         $this->productName = $productName;
     }
+    /**
+     * @return string
+     */
     public function getProductName()
     {
         return $this->productName;
     }
+    /**
+     * @param string
+     */
     public function setProductQuantity($productQuantity)
     {
         $this->productQuantity = $productQuantity;
     }
+    /**
+     * @return string
+     */
     public function getProductQuantity()
     {
         return $this->productQuantity;
     }
+    /**
+     * @param string
+     */
     public function setProductSku($productSku)
     {
         $this->productSku = $productSku;
     }
+    /**
+     * @return string
+     */
     public function getProductSku()
     {
         return $this->productSku;

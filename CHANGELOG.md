@@ -1,5 +1,10 @@
 ## Changelog
 
+# 5.2.2 - 2026-08-17
+- Upgraded packages to pick up published security fixes: guzzle to 7.15.3, psr7 to 2.13.0, promises to 2.5.2 & phpseclib to 3.0.56
+- Upgraded the Google API client to v2.19.4, along with google/apiclient-services to v0.454.0, google/auth to v1.53.0 and php-jwt to v7.1.0
+- Upgraded constant_time_encoding to v3.1.3, pulled in by the phpseclib upgrade
+
 # 5.2.1 - 2026-08-03
 - Added PHPStan static analysis (CI check and pre-push hook)
 - Fixed an error that could hide the real failure reason when starting a GA4 import fails

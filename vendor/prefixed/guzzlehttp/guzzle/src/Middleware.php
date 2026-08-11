@@ -8,7 +8,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise as P;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\RequestInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\ResponseInterface;
-use Psr\Log\LoggerInterface;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Log\LoggerInterface;
 /**
  * Functions used to create and wrap handlers with handler middleware.
  */

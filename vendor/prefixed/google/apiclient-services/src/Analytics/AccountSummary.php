@@ -20,46 +20,100 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 class AccountSummary extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'webProperties';
+    /**
+     * Account ID.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Resource type for Analytics AccountSummary.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Account name.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Indicates whether this account is starred or not.
+     *
+     * @var bool
+     */
     public $starred;
     protected $webPropertiesType = WebPropertySummary::class;
     protected $webPropertiesDataType = 'array';
+    /**
+     * Account ID.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Resource type for Analytics AccountSummary.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Account name.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
+    /**
+     * Indicates whether this account is starred or not.
+     *
+     * @param bool $starred
+     */
     public function setStarred($starred)
     {
         $this->starred = $starred;
     }
+    /**
+     * @return bool
+     */
     public function getStarred()
     {
         return $this->starred;
     }
     /**
-     * @param WebPropertySummary[]
+     * List of web properties under this account.
+     *
+     * @param WebPropertySummary[] $webProperties
      */
     public function setWebProperties($webProperties)
     {

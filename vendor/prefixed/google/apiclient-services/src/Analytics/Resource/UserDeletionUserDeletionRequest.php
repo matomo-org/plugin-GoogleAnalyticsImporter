@@ -23,7 +23,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\UserDel
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $userDeletionRequest = $analyticsService->userDeletionRequest;
+ *   $userDeletionRequest = $analyticsService->userDeletion_userDeletionRequest;
  *  </code>
  */
 class UserDeletionUserDeletionRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -34,6 +34,7 @@ class UserDeletionUserDeletionRequest extends \Matomo\Dependencies\GoogleAnalyti
      * @param UserDeletionRequest $postBody
      * @param array $optParams Optional parameters.
      * @return UserDeletionRequest
+     * @throws \Google\Service\Exception
      */
     public function upsert(UserDeletionRequest $postBody, $optParams = [])
     {

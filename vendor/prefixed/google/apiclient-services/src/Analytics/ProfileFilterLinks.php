@@ -22,15 +22,57 @@ class ProfileFilterLinks extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
     protected $collection_key = 'items';
     protected $itemsType = ProfileFilterLink::class;
     protected $itemsDataType = 'array';
+    /**
+     * The maximum number of resources the response can contain, regardless of the
+     * actual number of resources returned. Its value ranges from 1 to 1,000 with
+     * a value of 1000 by default, or otherwise specified by the max-results query
+     * parameter.
+     *
+     * @var int
+     */
     public $itemsPerPage;
+    /**
+     * Collection type.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Link to next page for this profile filter link collection.
+     *
+     * @var string
+     */
     public $nextLink;
+    /**
+     * Link to previous page for this profile filter link collection.
+     *
+     * @var string
+     */
     public $previousLink;
+    /**
+     * The starting index of the resources, which is 1 by default or otherwise
+     * specified by the start-index query parameter.
+     *
+     * @var int
+     */
     public $startIndex;
+    /**
+     * The total number of results for the query, regardless of the number of
+     * results in the response.
+     *
+     * @var int
+     */
     public $totalResults;
+    /**
+     * Email ID of the authenticated user
+     *
+     * @var string
+     */
     public $username;
     /**
-     * @param ProfileFilterLink[]
+     * A list of profile filter links.
+     *
+     * @param ProfileFilterLink[] $items
      */
     public function setItems($items)
     {
@@ -43,58 +85,119 @@ class ProfileFilterLinks extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
     {
         return $this->items;
     }
+    /**
+     * The maximum number of resources the response can contain, regardless of the
+     * actual number of resources returned. Its value ranges from 1 to 1,000 with
+     * a value of 1000 by default, or otherwise specified by the max-results query
+     * parameter.
+     *
+     * @param int $itemsPerPage
+     */
     public function setItemsPerPage($itemsPerPage)
     {
         $this->itemsPerPage = $itemsPerPage;
     }
+    /**
+     * @return int
+     */
     public function getItemsPerPage()
     {
         return $this->itemsPerPage;
     }
+    /**
+     * Collection type.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Link to next page for this profile filter link collection.
+     *
+     * @param string $nextLink
+     */
     public function setNextLink($nextLink)
     {
         $this->nextLink = $nextLink;
     }
+    /**
+     * @return string
+     */
     public function getNextLink()
     {
         return $this->nextLink;
     }
+    /**
+     * Link to previous page for this profile filter link collection.
+     *
+     * @param string $previousLink
+     */
     public function setPreviousLink($previousLink)
     {
         $this->previousLink = $previousLink;
     }
+    /**
+     * @return string
+     */
     public function getPreviousLink()
     {
         return $this->previousLink;
     }
+    /**
+     * The starting index of the resources, which is 1 by default or otherwise
+     * specified by the start-index query parameter.
+     *
+     * @param int $startIndex
+     */
     public function setStartIndex($startIndex)
     {
         $this->startIndex = $startIndex;
     }
+    /**
+     * @return int
+     */
     public function getStartIndex()
     {
         return $this->startIndex;
     }
+    /**
+     * The total number of results for the query, regardless of the number of
+     * results in the response.
+     *
+     * @param int $totalResults
+     */
     public function setTotalResults($totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults()
     {
         return $this->totalResults;
     }
+    /**
+     * Email ID of the authenticated user
+     *
+     * @param string $username
+     */
     public function setUsername($username)
     {
         $this->username = $username;
     }
+    /**
+     * @return string
+     */
     public function getUsername()
     {
         return $this->username;

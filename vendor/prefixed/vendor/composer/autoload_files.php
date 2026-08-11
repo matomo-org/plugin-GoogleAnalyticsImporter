@@ -12,6 +12,7 @@ return array(
     'c17e09b5491f79542d887522db07b799' => $baseDir . '/phpseclib/phpseclib/phpseclib/bootstrap.php',
     '8bdb104f587366cf982cde548067cb60' => $baseDir . '/phpseclib/bcmath_compat/lib/bcmath.php',
     '66cfd3a7190309803b5cc0fea03a4cdc' => $baseDir . '/symfony/deprecation-contracts/function.php',
+    '4b1964b006cd3cb15789beb45368cd67' => $baseDir . '/symfony/polyfill-php80/bootstrap.php',
     'c41a84066d147a2d8e4ba7ebd559db66' => $baseDir . '/ralouphie/getallheaders/src/getallheaders.php',
     '21a0a884fb8771c612b5fc28d989f9f1' => $baseDir . '/ramsey/uuid/src/functions.php',
 );

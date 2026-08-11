@@ -23,7 +23,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Account
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $accountSummaries = $analyticsService->accountSummaries;
+ *   $accountSummaries = $analyticsService->management_accountSummaries;
  *  </code>
  */
 class ManagementAccountSummaries extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -40,6 +40,7 @@ class ManagementAccountSummaries extends \Matomo\Dependencies\GoogleAnalyticsImp
      * @opt_param int start-index An index of the first entity to retrieve. Use this
      * parameter as a pagination mechanism along with the max-results parameter.
      * @return AccountSummaries
+     * @throws \Google\Service\Exception
      */
     public function listManagementAccountSummaries($optParams = [])
     {

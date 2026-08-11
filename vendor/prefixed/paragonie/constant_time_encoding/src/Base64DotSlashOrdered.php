@@ -3,8 +3,9 @@
 declare (strict_types=1);
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\ParagonIE\ConstantTime;
 
+use Matomo\Dependencies\GoogleAnalyticsImporter\Override;
 /**
- *  Copyright (c) 2016 - 2018 Paragon Initiative Enterprises.
+ *  Copyright (c) 2016 - 2022 Paragon Initiative Enterprises.
  *  Copyright (c) 2014 Steve "Sc00bz" Thomas (steve at tobtu dot com)
  *
  *  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -44,6 +45,7 @@ abstract class Base64DotSlashOrdered extends Base64
      * @param int $src
      * @return int
      */
+    #[Override]
     protected static function decode6Bits(int $src) : int
     {
         $ret = -1;
@@ -62,6 +64,7 @@ abstract class Base64DotSlashOrdered extends Base64
      * @param int $src
      * @return string
      */
+    #[Override]
     protected static function encode6Bits(int $src) : string
     {
         $src += 0x2e;

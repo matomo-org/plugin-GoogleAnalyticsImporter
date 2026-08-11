@@ -19,38 +19,74 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class HashClientIdResponse extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var string
+     */
     public $clientId;
+    /**
+     * @var string
+     */
     public $hashedClientId;
+    /**
+     * @var string
+     */
     public $kind;
+    /**
+     * @var string
+     */
     public $webPropertyId;
+    /**
+     * @param string $clientId
+     */
     public function setClientId($clientId)
     {
         $this->clientId = $clientId;
     }
+    /**
+     * @return string
+     */
     public function getClientId()
     {
         return $this->clientId;
     }
+    /**
+     * @param string $hashedClientId
+     */
     public function setHashedClientId($hashedClientId)
     {
         $this->hashedClientId = $hashedClientId;
     }
+    /**
+     * @return string
+     */
     public function getHashedClientId()
     {
         return $this->hashedClientId;
     }
+    /**
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * @param string $webPropertyId
+     */
     public function setWebPropertyId($webPropertyId)
     {
         $this->webPropertyId = $webPropertyId;
     }
+    /**
+     * @return string
+     */
     public function getWebPropertyId()
     {
         return $this->webPropertyId;

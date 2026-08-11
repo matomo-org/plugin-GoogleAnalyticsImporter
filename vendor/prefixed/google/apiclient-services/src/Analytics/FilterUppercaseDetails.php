@@ -19,20 +19,46 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class FilterUppercaseDetails extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Field to use in the filter.
+     *
+     * @var string
+     */
     public $field;
+    /**
+     * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+     *
+     * @var int
+     */
     public $fieldIndex;
+    /**
+     * Field to use in the filter.
+     *
+     * @param string $field
+     */
     public function setField($field)
     {
         $this->field = $field;
     }
+    /**
+     * @return string
+     */
     public function getField()
     {
         return $this->field;
     }
+    /**
+     * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+     *
+     * @param int $fieldIndex
+     */
     public function setFieldIndex($fieldIndex)
     {
         $this->fieldIndex = $fieldIndex;
     }
+    /**
+     * @return int
+     */
     public function getFieldIndex()
     {
         return $this->fieldIndex;

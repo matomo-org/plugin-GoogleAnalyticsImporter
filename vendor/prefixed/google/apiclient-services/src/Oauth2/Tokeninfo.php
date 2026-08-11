@@ -20,65 +20,162 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Oauth2;
 class Tokeninfo extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
     protected $internal_gapi_mappings = ["expiresIn" => "expires_in", "issuedTo" => "issued_to", "userId" => "user_id", "verifiedEmail" => "verified_email"];
+    /**
+     * Who is the intended audience for this token. In general the same as
+     * issued_to.
+     *
+     * @var string
+     */
     public $audience;
+    /**
+     * The email address of the user. Present only if the email scope is present
+     * in the request.
+     *
+     * @var string
+     */
     public $email;
+    /**
+     * The expiry time of the token, as number of seconds left until expiry.
+     *
+     * @var int
+     */
     public $expiresIn;
+    /**
+     * To whom was the token issued to. In general the same as audience.
+     *
+     * @var string
+     */
     public $issuedTo;
+    /**
+     * The space separated list of scopes granted to this token.
+     *
+     * @var string
+     */
     public $scope;
+    /**
+     * The obfuscated user id.
+     *
+     * @var string
+     */
     public $userId;
+    /**
+     * Boolean flag which is true if the email address is verified. Present only
+     * if the email scope is present in the request.
+     *
+     * @var bool
+     */
     public $verifiedEmail;
+    /**
+     * Who is the intended audience for this token. In general the same as
+     * issued_to.
+     *
+     * @param string $audience
+     */
     public function setAudience($audience)
     {
         $this->audience = $audience;
     }
+    /**
+     * @return string
+     */
     public function getAudience()
     {
         return $this->audience;
     }
+    /**
+     * The email address of the user. Present only if the email scope is present
+     * in the request.
+     *
+     * @param string $email
+     */
     public function setEmail($email)
     {
         $this->email = $email;
     }
+    /**
+     * @return string
+     */
     public function getEmail()
     {
         return $this->email;
     }
+    /**
+     * The expiry time of the token, as number of seconds left until expiry.
+     *
+     * @param int $expiresIn
+     */
     public function setExpiresIn($expiresIn)
     {
         $this->expiresIn = $expiresIn;
     }
+    /**
+     * @return int
+     */
     public function getExpiresIn()
     {
         return $this->expiresIn;
     }
+    /**
+     * To whom was the token issued to. In general the same as audience.
+     *
+     * @param string $issuedTo
+     */
     public function setIssuedTo($issuedTo)
     {
         $this->issuedTo = $issuedTo;
     }
+    /**
+     * @return string
+     */
     public function getIssuedTo()
     {
         return $this->issuedTo;
     }
+    /**
+     * The space separated list of scopes granted to this token.
+     *
+     * @param string $scope
+     */
     public function setScope($scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope()
     {
         return $this->scope;
     }
+    /**
+     * The obfuscated user id.
+     *
+     * @param string $userId
+     */
     public function setUserId($userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return string
+     */
     public function getUserId()
     {
         return $this->userId;
     }
+    /**
+     * Boolean flag which is true if the email address is verified. Present only
+     * if the email scope is present in the request.
+     *
+     * @param bool $verifiedEmail
+     */
     public function setVerifiedEmail($verifiedEmail)
     {
         $this->verifiedEmail = $verifiedEmail;
     }
+    /**
+     * @return bool
+     */
     public function getVerifiedEmail()
     {
         return $this->verifiedEmail;

@@ -20,13 +20,22 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 class ColumnHeader extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'dimensions';
+    /**
+     * @var string[]
+     */
     public $dimensions;
     protected $metricHeaderType = MetricHeader::class;
     protected $metricHeaderDataType = '';
+    /**
+     * @param string[]
+     */
     public function setDimensions($dimensions)
     {
         $this->dimensions = $dimensions;
     }
+    /**
+     * @return string[]
+     */
     public function getDimensions()
     {
         return $this->dimensions;

@@ -19,20 +19,46 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class AccountChildLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Link to the list of web properties for this account.
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Type of the child link. Its value is "analytics#webproperties".
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * Link to the list of web properties for this account.
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Type of the child link. Its value is "analytics#webproperties".
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

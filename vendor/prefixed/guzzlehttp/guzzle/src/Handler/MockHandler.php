@@ -7,7 +7,6 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\HandlerStack;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise as P;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\TransferStats;
-use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Utils;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\RequestInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\ResponseInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\StreamInterface;
@@ -131,7 +130,7 @@ class MockHandler implements \Countable
             if ($value instanceof ResponseInterface || $value instanceof \Throwable || $value instanceof PromiseInterface || \is_callable($value)) {
                 $this->queue[] = $value;
             } else {
-                throw new \TypeError('Expected a Response, Promise, Throwable or callable. Found ' . Utils::describeType($value));
+                throw new \TypeError('Expected a Response, Promise, Throwable or callable. Found ' . \get_debug_type($value));
             }
         }
     }

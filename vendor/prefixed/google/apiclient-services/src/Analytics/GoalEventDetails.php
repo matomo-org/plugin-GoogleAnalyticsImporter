@@ -22,9 +22,16 @@ class GoalEventDetails extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goog
     protected $collection_key = 'eventConditions';
     protected $eventConditionsType = GoalEventDetailsEventConditions::class;
     protected $eventConditionsDataType = 'array';
+    /**
+     * Determines if the event value should be used as the value for this goal.
+     *
+     * @var bool
+     */
     public $useEventValue;
     /**
-     * @param GoalEventDetailsEventConditions[]
+     * List of event conditions.
+     *
+     * @param GoalEventDetailsEventConditions[] $eventConditions
      */
     public function setEventConditions($eventConditions)
     {
@@ -37,10 +44,18 @@ class GoalEventDetails extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goog
     {
         return $this->eventConditions;
     }
+    /**
+     * Determines if the event value should be used as the value for this goal.
+     *
+     * @param bool $useEventValue
+     */
     public function setUseEventValue($useEventValue)
     {
         $this->useEventValue = $useEventValue;
     }
+    /**
+     * @return bool
+     */
     public function getUseEventValue()
     {
         return $this->useEventValue;

@@ -19,11 +19,24 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class UnsampledReportDriveDownloadDetails extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Id of the document/file containing the report data.
+     *
+     * @var string
+     */
     public $documentId;
+    /**
+     * Id of the document/file containing the report data.
+     *
+     * @param string $documentId
+     */
     public function setDocumentId($documentId)
     {
         $this->documentId = $documentId;
     }
+    /**
+     * @return string
+     */
     public function getDocumentId()
     {
         return $this->documentId;

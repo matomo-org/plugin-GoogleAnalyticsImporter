@@ -19,20 +19,46 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class CustomDimensionParentLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Link to the property to which the custom dimension belongs.
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Type of the parent link. Set to "analytics#webproperty".
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * Link to the property to which the custom dimension belongs.
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Type of the parent link. Set to "analytics#webproperty".
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

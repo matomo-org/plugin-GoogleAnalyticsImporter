@@ -21,13 +21,20 @@ class AccountTreeResponse extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
 {
     protected $accountType = Account::class;
     protected $accountDataType = '';
+    /**
+     * Resource type for account ticket.
+     *
+     * @var string
+     */
     public $kind;
     protected $profileType = Profile::class;
     protected $profileDataType = '';
     protected $webpropertyType = Webproperty::class;
     protected $webpropertyDataType = '';
     /**
-     * @param Account
+     * The account created.
+     *
+     * @param Account $account
      */
     public function setAccount(Account $account)
     {
@@ -40,16 +47,26 @@ class AccountTreeResponse extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
     {
         return $this->account;
     }
+    /**
+     * Resource type for account ticket.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
     /**
-     * @param Profile
+     * View (Profile) for the account.
+     *
+     * @param Profile $profile
      */
     public function setProfile(Profile $profile)
     {
@@ -63,7 +80,9 @@ class AccountTreeResponse extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
         return $this->profile;
     }
     /**
-     * @param Webproperty
+     * Web property for the account.
+     *
+     * @param Webproperty $webproperty
      */
     public function setWebproperty(Webproperty $webproperty)
     {

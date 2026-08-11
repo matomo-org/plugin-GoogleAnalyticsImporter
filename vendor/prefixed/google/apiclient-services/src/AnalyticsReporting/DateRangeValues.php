@@ -22,6 +22,9 @@ class DateRangeValues extends \Matomo\Dependencies\GoogleAnalyticsImporter\Googl
     protected $collection_key = 'values';
     protected $pivotValueRegionsType = PivotValueRegion::class;
     protected $pivotValueRegionsDataType = 'array';
+    /**
+     * @var string[]
+     */
     public $values;
     /**
      * @param PivotValueRegion[]
@@ -37,10 +40,16 @@ class DateRangeValues extends \Matomo\Dependencies\GoogleAnalyticsImporter\Googl
     {
         return $this->pivotValueRegions;
     }
+    /**
+     * @param string[]
+     */
     public function setValues($values)
     {
         $this->values = $values;
     }
+    /**
+     * @return string[]
+     */
     public function getValues()
     {
         return $this->values;

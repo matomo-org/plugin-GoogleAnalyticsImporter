@@ -19,77 +19,193 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class CustomDimension extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Account ID.
+     *
+     * @var string
+     */
     public $accountId;
+    /**
+     * Boolean indicating whether the custom dimension is active.
+     *
+     * @var bool
+     */
     public $active;
+    /**
+     * Time the custom dimension was created.
+     *
+     * @var string
+     */
     public $created;
+    /**
+     * Custom dimension ID.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Index of the custom dimension.
+     *
+     * @var int
+     */
     public $index;
+    /**
+     * Kind value for a custom dimension. Set to "analytics#customDimension". It
+     * is a read-only field.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Name of the custom dimension.
+     *
+     * @var string
+     */
     public $name;
     protected $parentLinkType = CustomDimensionParentLink::class;
     protected $parentLinkDataType = '';
+    /**
+     * Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.
+     *
+     * @var string
+     */
     public $scope;
+    /**
+     * Link for the custom dimension
+     *
+     * @var string
+     */
     public $selfLink;
+    /**
+     * Time the custom dimension was last modified.
+     *
+     * @var string
+     */
     public $updated;
+    /**
+     * Property ID.
+     *
+     * @var string
+     */
     public $webPropertyId;
+    /**
+     * Account ID.
+     *
+     * @param string $accountId
+     */
     public function setAccountId($accountId)
     {
         $this->accountId = $accountId;
     }
+    /**
+     * @return string
+     */
     public function getAccountId()
     {
         return $this->accountId;
     }
+    /**
+     * Boolean indicating whether the custom dimension is active.
+     *
+     * @param bool $active
+     */
     public function setActive($active)
     {
         $this->active = $active;
     }
+    /**
+     * @return bool
+     */
     public function getActive()
     {
         return $this->active;
     }
+    /**
+     * Time the custom dimension was created.
+     *
+     * @param string $created
+     */
     public function setCreated($created)
     {
         $this->created = $created;
     }
+    /**
+     * @return string
+     */
     public function getCreated()
     {
         return $this->created;
     }
+    /**
+     * Custom dimension ID.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Index of the custom dimension.
+     *
+     * @param int $index
+     */
     public function setIndex($index)
     {
         $this->index = $index;
     }
+    /**
+     * @return int
+     */
     public function getIndex()
     {
         return $this->index;
     }
+    /**
+     * Kind value for a custom dimension. Set to "analytics#customDimension". It
+     * is a read-only field.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Name of the custom dimension.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
     /**
-     * @param CustomDimensionParentLink
+     * Parent link for the custom dimension. Points to the property to which the
+     * custom dimension belongs.
+     *
+     * @param CustomDimensionParentLink $parentLink
      */
     public function setParentLink(CustomDimensionParentLink $parentLink)
     {
@@ -102,34 +218,66 @@ class CustomDimension extends \Matomo\Dependencies\GoogleAnalyticsImporter\Googl
     {
         return $this->parentLink;
     }
+    /**
+     * Scope of the custom dimension: HIT, SESSION, USER or PRODUCT.
+     *
+     * @param string $scope
+     */
     public function setScope($scope)
     {
         $this->scope = $scope;
     }
+    /**
+     * @return string
+     */
     public function getScope()
     {
         return $this->scope;
     }
+    /**
+     * Link for the custom dimension
+     *
+     * @param string $selfLink
+     */
     public function setSelfLink($selfLink)
     {
         $this->selfLink = $selfLink;
     }
+    /**
+     * @return string
+     */
     public function getSelfLink()
     {
         return $this->selfLink;
     }
+    /**
+     * Time the custom dimension was last modified.
+     *
+     * @param string $updated
+     */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
     }
+    /**
+     * @return string
+     */
     public function getUpdated()
     {
         return $this->updated;
     }
+    /**
+     * Property ID.
+     *
+     * @param string $webPropertyId
+     */
     public function setWebPropertyId($webPropertyId)
     {
         $this->webPropertyId = $webPropertyId;
     }
+    /**
+     * @return string
+     */
     public function getWebPropertyId()
     {
         return $this->webPropertyId;

@@ -20,13 +20,22 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 class ReportRow extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'metrics';
+    /**
+     * @var string[]
+     */
     public $dimensions;
     protected $metricsType = DateRangeValues::class;
     protected $metricsDataType = 'array';
+    /**
+     * @param string[]
+     */
     public function setDimensions($dimensions)
     {
         $this->dimensions = $dimensions;
     }
+    /**
+     * @return string[]
+     */
     public function getDimensions()
     {
         return $this->dimensions;

@@ -19,47 +19,112 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class FilterRef extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Account ID to which this filter belongs.
+     *
+     * @var string
+     */
     public $accountId;
+    /**
+     * Link for this filter.
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Filter ID.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Kind value for filter reference.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Name of this filter.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Account ID to which this filter belongs.
+     *
+     * @param string $accountId
+     */
     public function setAccountId($accountId)
     {
         $this->accountId = $accountId;
     }
+    /**
+     * @return string
+     */
     public function getAccountId()
     {
         return $this->accountId;
     }
+    /**
+     * Link for this filter.
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Filter ID.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Kind value for filter reference.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Name of this filter.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;

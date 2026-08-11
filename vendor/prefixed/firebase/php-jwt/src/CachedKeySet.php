@@ -73,7 +73,7 @@ class CachedKeySet implements ArrayAccess
      * @var string|null
      */
     private $defaultAlg;
-    public function __construct(string $jwksUri, ClientInterface $httpClient, RequestFactoryInterface $httpFactory, CacheItemPoolInterface $cache, int $expiresAfter = null, bool $rateLimit = \false, string $defaultAlg = null)
+    public function __construct(string $jwksUri, ClientInterface $httpClient, RequestFactoryInterface $httpFactory, CacheItemPoolInterface $cache, ?int $expiresAfter = null, bool $rateLimit = \false, ?string $defaultAlg = null)
     {
         $this->jwksUri = $jwksUri;
         $this->httpClient = $httpClient;
@@ -159,7 +159,7 @@ class CachedKeySet implements ArrayAccess
             $request = $this->httpFactory->createRequest('GET', $this->jwksUri);
             $jwksResponse = $this->httpClient->sendRequest($request);
             if ($jwksResponse->getStatusCode() !== 200) {
-                throw new UnexpectedValueException(sprintf('HTTP Error: %d %s for URI "%s"', $jwksResponse->getStatusCode(), $jwksResponse->getReasonPhrase(), $this->jwksUri), $jwksResponse->getStatusCode());
+                throw new UnexpectedValueException(\sprintf('HTTP Error: %d %s for URI "%s"', $jwksResponse->getStatusCode(), $jwksResponse->getReasonPhrase(), $this->jwksUri), $jwksResponse->getStatusCode());
             }
             $this->keySet = $this->formatJwksForCache((string) $jwksResponse->getBody());
             if (!isset($this->keySet[$keyId])) {

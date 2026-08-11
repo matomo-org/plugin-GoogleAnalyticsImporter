@@ -19,20 +19,48 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Whether to make the exclusion TEMPORARY or PERMANENT.
+     *
+     * @var string
+     */
     public $exclusionDuration;
+    /**
+     * The segment condition that will cause a user to be removed from an
+     * audience.
+     *
+     * @var string
+     */
     public $segment;
+    /**
+     * Whether to make the exclusion TEMPORARY or PERMANENT.
+     *
+     * @param string $exclusionDuration
+     */
     public function setExclusionDuration($exclusionDuration)
     {
         $this->exclusionDuration = $exclusionDuration;
     }
+    /**
+     * @return string
+     */
     public function getExclusionDuration()
     {
         return $this->exclusionDuration;
     }
+    /**
+     * The segment condition that will cause a user to be removed from an
+     * audience.
+     *
+     * @param string $segment
+     */
     public function setSegment($segment)
     {
         $this->segment = $segment;
     }
+    /**
+     * @return string
+     */
     public function getSegment()
     {
         return $this->segment;

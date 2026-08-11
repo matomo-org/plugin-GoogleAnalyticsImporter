@@ -24,7 +24,9 @@ class RemarketingAudienceStateBasedAudienceDefinition extends \Matomo\Dependenci
     protected $includeConditionsType = IncludeConditions::class;
     protected $includeConditionsDataType = '';
     /**
-     * @param RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions
+     * Defines the conditions to exclude users from the audience.
+     *
+     * @param RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions $excludeConditions
      */
     public function setExcludeConditions(RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions $excludeConditions)
     {
@@ -38,7 +40,9 @@ class RemarketingAudienceStateBasedAudienceDefinition extends \Matomo\Dependenci
         return $this->excludeConditions;
     }
     /**
-     * @param IncludeConditions
+     * Defines the conditions to include users to the audience.
+     *
+     * @param IncludeConditions $includeConditions
      */
     public function setIncludeConditions(IncludeConditions $includeConditions)
     {

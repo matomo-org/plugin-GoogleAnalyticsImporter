@@ -19,20 +19,38 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 
 class CustomDimension extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var int
+     */
     public $index;
+    /**
+     * @var string
+     */
     public $value;
+    /**
+     * @param int
+     */
     public function setIndex($index)
     {
         $this->index = $index;
     }
+    /**
+     * @return int
+     */
     public function getIndex()
     {
         return $this->index;
     }
+    /**
+     * @param string
+     */
     public function setValue($value)
     {
         $this->value = $value;
     }
+    /**
+     * @return string
+     */
     public function getValue()
     {
         return $this->value;

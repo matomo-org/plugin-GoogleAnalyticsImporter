@@ -36,6 +36,7 @@ class Provisioning extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\S
      * @param AccountTicket $postBody
      * @param array $optParams Optional parameters.
      * @return AccountTicket
+     * @throws \Google\Service\Exception
      */
     public function createAccountTicket(AccountTicket $postBody, $optParams = [])
     {
@@ -49,6 +50,7 @@ class Provisioning extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\S
      * @param AccountTreeRequest $postBody
      * @param array $optParams Optional parameters.
      * @return AccountTreeResponse
+     * @throws \Google\Service\Exception
      */
     public function createAccountTree(AccountTreeRequest $postBody, $optParams = [])
     {
