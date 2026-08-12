@@ -78,7 +78,8 @@ class JWT
      * @uses jsonDecode
      * @uses urlsafeB64Decode
      */
-    public static function decode(string $jwt, #[\SensitiveParameter] $keyOrKeyArray, ?stdClass &$headers = null) : stdClass
+    public static function decode(string $jwt, #[\SensitiveParameter]
+        $keyOrKeyArray, ?stdClass &$headers = null) : stdClass
     {
         // Validate JWT
         $timestamp = \is_null(static::$timestamp) ? \time() : static::$timestamp;
@@ -176,7 +177,8 @@ class JWT
      * @uses jsonEncode
      * @uses urlsafeB64Encode
      */
-    public static function encode(array $payload, #[\SensitiveParameter] $key, string $alg, ?string $keyId = null, ?array $head = null) : string
+    public static function encode(array $payload, #[\SensitiveParameter]
+        $key, string $alg, ?string $keyId = null, ?array $head = null) : string
     {
         $header = ['typ' => 'JWT'];
         if (isset($head)) {
@@ -215,7 +217,8 @@ class JWT
      *
      * @throws DomainException Unsupported algorithm or bad key was specified
      */
-    public static function sign(string $msg, #[\SensitiveParameter] $key, string $alg) : string
+    public static function sign(string $msg, #[\SensitiveParameter]
+        $key, string $alg) : string
     {
         if (empty(static::$supported_algs[$alg])) {
             throw new DomainException('Algorithm not supported');
@@ -273,7 +276,8 @@ class JWT
      *
      * @throws DomainException Invalid Algorithm, bad key, or OpenSSL failure
      */
-    private static function verify(string $msg, string $signature, #[\SensitiveParameter] $keyMaterial, string $alg) : bool
+    private static function verify(string $msg, string $signature, #[\SensitiveParameter]
+        $keyMaterial, string $alg) : bool
     {
         if (empty(static::$supported_algs[$alg])) {
             throw new DomainException('Algorithm not supported');
@@ -415,7 +419,8 @@ class JWT
      *
      * @return Key
      */
-    private static function getKey(#[\SensitiveParameter] $keyOrKeyArray, ?string $kid) : Key
+    private static function getKey(#[\SensitiveParameter]
+        $keyOrKeyArray, ?string $kid) : Key
     {
         if ($keyOrKeyArray instanceof Key) {
             return $keyOrKeyArray;
@@ -605,7 +610,8 @@ class JWT
      * @param OpenSSLAsymmetricKey $key RSA key material
      * @throws DomainException Provided key is too short
      */
-    private static function validateRsaKeyLength(#[\SensitiveParameter] OpenSSLAsymmetricKey $key) : void
+    private static function validateRsaKeyLength(#[\SensitiveParameter]
+        OpenSSLAsymmetricKey $key) : void
     {
         if (!($keyDetails = openssl_pkey_get_details($key))) {
             throw new DomainException('Unable to validate key');
@@ -621,7 +627,8 @@ class JWT
      * @param string $algorithm The algorithm
      * @throws DomainException Provided key is too short
      */
-    private static function validateEcKeyLength(#[\SensitiveParameter] OpenSSLAsymmetricKey $key, string $algorithm) : void
+    private static function validateEcKeyLength(#[\SensitiveParameter]
+        OpenSSLAsymmetricKey $key, string $algorithm) : void
     {
         if (!($keyDetails = openssl_pkey_get_details($key))) {
             throw new DomainException('Unable to validate key');
@@ -635,7 +642,8 @@ class JWT
      * @param string|OpenSSLAsymmetricKey|OpenSSLCertificate  $keyMaterial
      * @return non-empty-string
      */
-    private static function validateEdDSAKey(#[\SensitiveParameter] $keyMaterial) : string
+    private static function validateEdDSAKey(#[\SensitiveParameter]
+        $keyMaterial) : string
     {
         if (!\function_exists('sodium_crypto_sign_verify_detached')) {
             throw new DomainException('libsodium is not available');
@@ -658,7 +666,8 @@ class JWT
      * @param string $message
      * @throws DomainException Provided key is invalid
      */
-    private static function signPS256(#[\SensitiveParameter] $key, string $message) : string
+    private static function signPS256(#[\SensitiveParameter]
+        $key, string $message) : string
     {
         if (!class_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\RSA')) {
             throw new DomainException('phpseclib/phpseclib is required for PS256 support');
@@ -684,7 +693,8 @@ class JWT
      * @param string $signature
      * @throws DomainException Provided key is invalid
      */
-    private static function verifyPS256(#[\SensitiveParameter] $key, string $message, string $signature) : bool
+    private static function verifyPS256(#[\SensitiveParameter]
+        $key, string $message, string $signature) : bool
     {
         if (!class_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\RSA')) {
             throw new DomainException('phpseclib/phpseclib is required for PS256 support');

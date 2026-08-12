@@ -47,7 +47,8 @@ abstract class Binary
      * @param string $str
      * @return int
      */
-    public static function safeStrlen(#[SensitiveParameter] string $str) : int
+    public static function safeStrlen(#[SensitiveParameter]
+        string $str) : int
     {
         return strlen($str);
     }
@@ -64,7 +65,8 @@ abstract class Binary
      *
      * @throws TypeError
      */
-    public static function safeSubstr(#[SensitiveParameter] string $str, int $start = 0, ?int $length = null) : string
+    public static function safeSubstr(#[SensitiveParameter]
+        string $str, int $start = 0, ?int $length = null) : string
     {
         if ($length === 0) {
             return '';

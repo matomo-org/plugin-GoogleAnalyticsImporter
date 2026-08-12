@@ -61,7 +61,8 @@ class JWK
      *
      * @uses parseKey
      */
-    public static function parseKeySet(#[\SensitiveParameter] array $jwks, ?string $defaultAlg = null) : array
+    public static function parseKeySet(#[\SensitiveParameter]
+        array $jwks, ?string $defaultAlg = null) : array
     {
         $keys = [];
         if (!isset($jwks['keys'])) {
@@ -96,7 +97,8 @@ class JWK
      *
      * @uses createPemFromModulusAndExponent
      */
-    public static function parseKey(#[\SensitiveParameter] array $jwk, ?string $defaultAlg = null) : ?Key
+    public static function parseKey(#[\SensitiveParameter]
+        array $jwk, ?string $defaultAlg = null) : ?Key
     {
         if (empty($jwk)) {
             throw new InvalidArgumentException('JWK must not be empty');

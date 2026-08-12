@@ -51,7 +51,8 @@ abstract class Hex implements EncoderInterface
      * @throws TypeError
      */
     #[Override]
-    public static function encode(#[SensitiveParameter] string $binString) : string
+    public static function encode(#[SensitiveParameter]
+        string $binString) : string
     {
         if (extension_loaded('sodium')) {
             try {
@@ -79,7 +80,8 @@ abstract class Hex implements EncoderInterface
      * @return string
      * @throws TypeError
      */
-    public static function encodeUpper(#[SensitiveParameter] string $binString) : string
+    public static function encodeUpper(#[SensitiveParameter]
+        string $binString) : string
     {
         $hex = '';
         $len = strlen($binString);
@@ -102,7 +104,8 @@ abstract class Hex implements EncoderInterface
      * @throws RangeException
      */
     #[Override]
-    public static function decode(#[SensitiveParameter] string $encodedString, bool $strictPadding = \false) : string
+    public static function decode(#[SensitiveParameter]
+        string $encodedString, bool $strictPadding = \false) : string
     {
         if (extension_loaded('sodium') && $strictPadding) {
             try {
