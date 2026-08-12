@@ -4,7 +4,7 @@ declare (strict_types=1);
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\ParagonIE\ConstantTime;
 
 use InvalidArgumentException;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Override;
+use Override;
 use RangeException;
 use SensitiveParameter;
 use TypeError;

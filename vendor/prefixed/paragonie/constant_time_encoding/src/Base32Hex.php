@@ -3,7 +3,7 @@
 declare (strict_types=1);
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\ParagonIE\ConstantTime;
 
-use Matomo\Dependencies\GoogleAnalyticsImporter\Override;
+use Override;
 use function pack;
 /**
  *  Copyright (c) 2016 - 2022 Paragon Initiative Enterprises.

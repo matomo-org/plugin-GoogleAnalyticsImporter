@@ -350,6 +350,9 @@ EOF;
     ],
     'include-namespaces' => $namespacesToIncludeRegexes,
     'exclude-namespaces' => $namespacesToExclude,
+    // PHP's own attribute, newer than php-scoper's list of global symbols, so it would otherwise be prefixed to a
+    // class that is not shipped and PHP 8.3's override validation would be silently lost
+    'exclude-classes' => ['Override'],
     'exclude-constants' => [
         'PIWIK_TEST_MODE',
         '/^self::/', // work around php-scoper bug
