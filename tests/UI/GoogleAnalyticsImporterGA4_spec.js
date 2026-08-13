@@ -66,9 +66,9 @@ describe("GoogleAnalyticsImporterGA4", function () {
     it("should load the settings correctly with GA4 option selected", async function () {
         await page.goto(url);
 
+        // there is no importer selection radio — GA4 is the only importer on
+        // this page, so this matches the load screenshot by design
         const content = await page.$('.pageWrap');
-        await page.waitForSelector('input[name=selectedImporter][value=ga4]');
-        await page.evaluate(() => document.querySelector('input[name=selectedImporter][value=ga4]').click());
         expect(await content.screenshot()).to.matchImage('load_ga4');
     });
 
