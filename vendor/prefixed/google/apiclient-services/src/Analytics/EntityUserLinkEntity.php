@@ -26,7 +26,9 @@ class EntityUserLinkEntity extends \Matomo\Dependencies\GoogleAnalyticsImporter\
     protected $webPropertyRefType = WebPropertyRef::class;
     protected $webPropertyRefDataType = '';
     /**
-     * @param AccountRef
+     * Account for this link.
+     *
+     * @param AccountRef $accountRef
      */
     public function setAccountRef(AccountRef $accountRef)
     {
@@ -40,7 +42,9 @@ class EntityUserLinkEntity extends \Matomo\Dependencies\GoogleAnalyticsImporter\
         return $this->accountRef;
     }
     /**
-     * @param ProfileRef
+     * View (Profile) for this link.
+     *
+     * @param ProfileRef $profileRef
      */
     public function setProfileRef(ProfileRef $profileRef)
     {
@@ -54,7 +58,9 @@ class EntityUserLinkEntity extends \Matomo\Dependencies\GoogleAnalyticsImporter\
         return $this->profileRef;
     }
     /**
-     * @param WebPropertyRef
+     * Web property for this link.
+     *
+     * @param WebPropertyRef $webPropertyRef
      */
     public function setWebPropertyRef(WebPropertyRef $webPropertyRef)
     {

@@ -19,20 +19,38 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 
 class ResourceQuotasRemaining extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var int
+     */
     public $dailyQuotaTokensRemaining;
+    /**
+     * @var int
+     */
     public $hourlyQuotaTokensRemaining;
+    /**
+     * @param int
+     */
     public function setDailyQuotaTokensRemaining($dailyQuotaTokensRemaining)
     {
         $this->dailyQuotaTokensRemaining = $dailyQuotaTokensRemaining;
     }
+    /**
+     * @return int
+     */
     public function getDailyQuotaTokensRemaining()
     {
         return $this->dailyQuotaTokensRemaining;
     }
+    /**
+     * @param int
+     */
     public function setHourlyQuotaTokensRemaining($hourlyQuotaTokensRemaining)
     {
         $this->hourlyQuotaTokensRemaining = $hourlyQuotaTokensRemaining;
     }
+    /**
+     * @return int
+     */
     public function getHourlyQuotaTokensRemaining()
     {
         return $this->hourlyQuotaTokensRemaining;

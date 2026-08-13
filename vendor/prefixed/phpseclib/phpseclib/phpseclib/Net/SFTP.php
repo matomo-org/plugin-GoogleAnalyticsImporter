@@ -34,6 +34,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Net;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Common\Functions\Strings;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Exception\FileNotFoundException;
+use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Exception\TimeoutException;
 /**
  * Pure-PHP implementations of SFTP.
  *
@@ -461,6 +462,9 @@ class SFTP extends SSH2
         $this->send_sftp_packet(NET_SFTP_INIT, "\x00\x00\x00\x03");
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_VERSION) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_VERSION. ' . 'Got packet type: ' . $this->packet_type);
         }
         $this->use_request_id = \true;
@@ -523,6 +527,9 @@ class SFTP extends SSH2
                     $this->send_sftp_packet(NET_SFTP_EXTENDED, $packet);
                     $response = $this->get_sftp_packet();
                     if ($this->packet_type != NET_SFTP_STATUS) {
+                        if ($this->is_timeout) {
+                            throw new TimeoutException('Timed out waiting for SFTP packet response');
+                        }
                         throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
                     }
                     list($status) = Strings::unpackSSH2('N', $response);
@@ -716,6 +723,9 @@ class SFTP extends SSH2
                     $this->logError($response);
                     return \false;
                 default:
+                    if ($this->is_timeout) {
+                        throw new TimeoutException('Timed out waiting for SFTP packet response');
+                    }
                     throw new \UnexpectedValueException('Expected NET_SFTP_NAME or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
             }
         }
@@ -784,6 +794,9 @@ class SFTP extends SSH2
                 $this->logError($response);
                 return \false;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS' . 'Got packet type: ' . $this->packet_type);
         }
         if (!$this->close_handle($handle)) {
@@ -915,6 +928,9 @@ class SFTP extends SSH2
                 $this->logError($response, $status);
                 return $status;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         $this->update_stat_cache($dir, []);
@@ -1284,6 +1300,9 @@ class SFTP extends SSH2
                 $this->logError($response);
                 return \false;
         }
+        if ($this->is_timeout) {
+            throw new TimeoutException('Timed out waiting for SFTP packet response');
+        }
         throw new \UnexpectedValueException('Expected NET_SFTP_ATTRS or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
     }
     /**
@@ -1337,6 +1356,9 @@ class SFTP extends SSH2
                 $this->logError($response);
                 break;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         return $this->setstat($filename, $attr, \false);
@@ -1408,6 +1430,7 @@ class SFTP extends SSH2
      * @param bool $recursive
      * @throws \UnexpectedValueException on receipt of unexpected packets
      * @return mixed
+     * @changed in phpseclib 4.0.0
      */
     public function chmod($mode, $filename, $recursive = \false)
     {
@@ -1437,6 +1460,9 @@ class SFTP extends SSH2
             case NET_SFTP_STATUS:
                 $this->logError($response);
                 return \false;
+        }
+        if ($this->is_timeout) {
+            throw new TimeoutException('Timed out waiting for SFTP packet response');
         }
         throw new \UnexpectedValueException('Expected NET_SFTP_ATTRS or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
     }
@@ -1477,6 +1503,9 @@ class SFTP extends SSH2
         */
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         list($status) = Strings::unpackSSH2('N', $response);
@@ -1568,6 +1597,9 @@ class SFTP extends SSH2
                 $this->logError($response);
                 return \false;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_NAME or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         list($count) = Strings::unpackSSH2('N', $response);
@@ -1626,6 +1658,9 @@ class SFTP extends SSH2
         $this->send_sftp_packet($type, $packet);
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         list($status) = Strings::unpackSSH2('N', $response);
@@ -1677,6 +1712,9 @@ class SFTP extends SSH2
         $this->send_sftp_packet(NET_SFTP_MKDIR, Strings::packSSH2('s', $dir) . "\x00\x00\x00\x00");
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         list($status) = Strings::unpackSSH2('N', $response);
@@ -1708,6 +1746,9 @@ class SFTP extends SSH2
         $this->send_sftp_packet(NET_SFTP_RMDIR, Strings::packSSH2('s', $dir));
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         list($status) = Strings::unpackSSH2('N', $response);
@@ -1817,6 +1858,9 @@ class SFTP extends SSH2
                 $this->logError($response);
                 return \false;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         // http://tools.ietf.org/html/draft-ietf-secsh-filexfer-13#section-8.2.3
@@ -1943,6 +1987,9 @@ class SFTP extends SSH2
         while ($i--) {
             $response = $this->get_sftp_packet();
             if ($this->packet_type != NET_SFTP_STATUS) {
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
             }
             list($status) = Strings::unpackSSH2('N', $response);
@@ -1967,6 +2014,9 @@ class SFTP extends SSH2
         //  -- http://tools.ietf.org/html/draft-ietf-secsh-filexfer-13#section-8.1.3
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         list($status) = Strings::unpackSSH2('N', $response);
@@ -2015,6 +2065,9 @@ class SFTP extends SSH2
                 $this->logError($response);
                 return \false;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         if (is_resource($local_file)) {
@@ -2096,6 +2149,8 @@ class SFTP extends SSH2
                             $this->partial_init = \false;
                             $this->init_sftp_connection();
                             return \false;
+                        } elseif ($this->is_timeout) {
+                            throw new TimeoutException('Timed out waiting for SFTP packet response');
                         } else {
                             throw new \UnexpectedValueException('Expected NET_SFTP_DATA or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
                         }
@@ -2147,6 +2202,9 @@ class SFTP extends SSH2
         $this->send_sftp_packet(NET_SFTP_REMOVE, pack('Na*', strlen($path), $path));
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         // if $status isn't SSH_FX_OK it's probably SSH_FX_NO_SUCH_FILE or SSH_FX_PERMISSION_DENIED
@@ -2306,6 +2364,9 @@ class SFTP extends SSH2
                 // presumably SSH_FX_NO_SUCH_FILE or SSH_FX_PERMISSION_DENIED
                 return \false;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
     }
@@ -2330,6 +2391,9 @@ class SFTP extends SSH2
                 // presumably SSH_FX_NO_SUCH_FILE or SSH_FX_PERMISSION_DENIED
                 return \false;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected SSH_FXP_HANDLE or SSH_FXP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
     }
@@ -2542,6 +2606,9 @@ class SFTP extends SSH2
         $this->send_sftp_packet(NET_SFTP_RENAME, $packet);
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         // if $status isn't SSH_FX_OK it's probably SSH_FX_NO_SUCH_FILE or SSH_FX_PERMISSION_DENIED
@@ -2983,6 +3050,7 @@ class SFTP extends SSH2
      * Returns all errors on the SFTP layer
      *
      * @return array
+     * @removed in phpseclib 4.0.0
      */
     public function getSFTPErrors()
     {
@@ -2992,6 +3060,7 @@ class SFTP extends SSH2
      * Returns the last error on the SFTP layer
      *
      * @return string
+     * @removed in phpseclib 4.0.0
      */
     public function getLastSFTPError()
     {
@@ -3117,6 +3186,9 @@ class SFTP extends SSH2
                 $this->logError($response);
                 return \false;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         if ($this->version >= 5) {
@@ -3136,12 +3208,18 @@ class SFTP extends SSH2
                 $this->logError($response);
                 return \false;
             default:
+                if ($this->is_timeout) {
+                    throw new TimeoutException('Timed out waiting for SFTP packet response');
+                }
                 throw new \UnexpectedValueException('Expected NET_SFTP_HANDLE or NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         $packet = Strings::packSSH2('ssQQsQ', 'copy-data', $oldhandle, 0, $size, $newhandle, 0);
         $this->send_sftp_packet(NET_SFTP_EXTENDED, $packet);
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         $this->close_handle($oldhandle);
@@ -3178,10 +3256,16 @@ class SFTP extends SSH2
             $packet = Strings::packSSH2('sss', 'posix-rename@openssh.com', $oldname, $newname);
             $this->send_sftp_packet(NET_SFTP_EXTENDED, $packet);
         } else {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \RuntimeException("Extension 'posix-rename@openssh.com' is not supported by the server. " . "Call getSupportedVersions() to see a list of supported extension");
         }
         $response = $this->get_sftp_packet();
         if ($this->packet_type != NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
         }
         // if $status isn't SSH_FX_OK it's probably SSH_FX_NO_SUCH_FILE or SSH_FX_PERMISSION_DENIED
@@ -3222,6 +3306,9 @@ class SFTP extends SSH2
         $this->send_sftp_packet(NET_SFTP_EXTENDED, $packet);
         $response = $this->get_sftp_packet();
         if ($this->packet_type !== NET_SFTP_EXTENDED_REPLY) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
             throw new \UnexpectedValueException('Expected SSH_FXP_EXTENDED_REPLY. ' . 'Got packet type: ' . $this->packet_type);
         }
         /**
@@ -3242,5 +3329,41 @@ class SFTP extends SSH2
          * uint64        f_namemax    maximum filename length
          */
         return array_combine(['bsize', 'frsize', 'blocks', 'bfree', 'bavail', 'files', 'ffree', 'favail', 'fsid', 'flag', 'namemax'], Strings::unpackSSH2('QQQQQQQQQQQ', $response));
+    }
+    public function hardlink($oldpath, $newpath)
+    {
+        if (!$this->precheck()) {
+            return \false;
+        }
+        if (!isset($this->extensions['hardlink@openssh.com']) || $this->extensions['hardlink@openssh.com'] !== '1') {
+            throw new \RuntimeException("Extension 'hardlink@openssh.com' is not supported by the server. " . "Call getSupportedVersions() to see a list of supported extension");
+        }
+        $oldpath = $this->realpath($oldpath);
+        $newpath = $this->realpath($newpath);
+        if ($oldpath === \false || $newpath === \false) {
+            return \false;
+        }
+        $packet = Strings::packSSH2('sss', 'hardlink@openssh.com', $oldpath, $newpath);
+        $this->send_sftp_packet(NET_SFTP_EXTENDED, $packet);
+        $response = $this->get_sftp_packet();
+        if ($this->packet_type !== NET_SFTP_STATUS) {
+            if ($this->is_timeout) {
+                throw new TimeoutException('Timed out waiting for SFTP packet response');
+            }
+            throw new \UnexpectedValueException('Expected NET_SFTP_STATUS. ' . 'Got packet type: ' . $this->packet_type);
+        }
+        // if $status isn't SSH_FX_OK it's probably SSH_FX_NO_SUCH_FILE or SSH_FX_PERMISSION_DENIED
+        list($status) = Strings::unpackSSH2('N', $response);
+        if ($status !== NET_SFTP_STATUS_OK) {
+            $this->logError($response, $status);
+            return \false;
+        }
+        // this operation will change the ctime and link-count attributes
+        // which could be cached depending on sftp version
+        $this->remove_from_stat_cache($oldpath);
+        // hardlink creation should fail if $newpath exists;
+        // removing it from the cache anyway, just to be sure
+        $this->remove_from_stat_cache($newpath);
+        return \true;
     }
 }

@@ -22,6 +22,9 @@ class PivotHeader extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Co
     protected $collection_key = 'pivotHeaderEntries';
     protected $pivotHeaderEntriesType = PivotHeaderEntry::class;
     protected $pivotHeaderEntriesDataType = 'array';
+    /**
+     * @var int
+     */
     public $totalPivotGroupsCount;
     /**
      * @param PivotHeaderEntry[]
@@ -37,10 +40,16 @@ class PivotHeader extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Co
     {
         return $this->pivotHeaderEntries;
     }
+    /**
+     * @param int
+     */
     public function setTotalPivotGroupsCount($totalPivotGroupsCount)
     {
         $this->totalPivotGroupsCount = $totalPivotGroupsCount;
     }
+    /**
+     * @return int
+     */
     public function getTotalPivotGroupsCount()
     {
         return $this->totalPivotGroupsCount;

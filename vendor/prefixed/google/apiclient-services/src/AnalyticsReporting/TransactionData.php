@@ -19,14 +19,23 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 
 class TransactionData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var string
+     */
     public $transactionId;
     public $transactionRevenue;
     public $transactionShipping;
     public $transactionTax;
+    /**
+     * @param string
+     */
     public function setTransactionId($transactionId)
     {
         $this->transactionId = $transactionId;
     }
+    /**
+     * @return string
+     */
     public function getTransactionId()
     {
         return $this->transactionId;

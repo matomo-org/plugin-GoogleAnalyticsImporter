@@ -19,20 +19,46 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class CustomDataSourceParentLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Link to the web property to which this custom data source belongs.
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Value is "analytics#webproperty".
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * Link to the web property to which this custom data source belongs.
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Value is "analytics#webproperty".
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

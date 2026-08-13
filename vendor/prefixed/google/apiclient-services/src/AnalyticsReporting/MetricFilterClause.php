@@ -22,6 +22,9 @@ class MetricFilterClause extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
     protected $collection_key = 'filters';
     protected $filtersType = MetricFilter::class;
     protected $filtersDataType = 'array';
+    /**
+     * @var string
+     */
     public $operator;
     /**
      * @param MetricFilter[]
@@ -37,10 +40,16 @@ class MetricFilterClause extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
     {
         return $this->filters;
     }
+    /**
+     * @param string
+     */
     public function setOperator($operator)
     {
         $this->operator = $operator;
     }
+    /**
+     * @return string
+     */
     public function getOperator()
     {
         return $this->operator;

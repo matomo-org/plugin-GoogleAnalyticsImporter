@@ -23,6 +23,9 @@ class SegmentFilterClause extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
     protected $dimensionFilterDataType = '';
     protected $metricFilterType = SegmentMetricFilter::class;
     protected $metricFilterDataType = '';
+    /**
+     * @var bool
+     */
     public $not;
     /**
      * @param SegmentDimensionFilter
@@ -52,10 +55,16 @@ class SegmentFilterClause extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
     {
         return $this->metricFilter;
     }
+    /**
+     * @param bool
+     */
     public function setNot($not)
     {
         $this->not = $not;
     }
+    /**
+     * @return bool
+     */
     public function getNot()
     {
         return $this->not;

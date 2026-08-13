@@ -19,20 +19,46 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class UserDeletionRequestId extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Type of user
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * The User's id
+     *
+     * @var string
+     */
     public $userId;
+    /**
+     * Type of user
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;
     }
+    /**
+     * The User's id
+     *
+     * @param string $userId
+     */
     public function setUserId($userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return string
+     */
     public function getUserId()
     {
         return $this->userId;

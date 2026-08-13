@@ -23,6 +23,9 @@ class Report extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
     protected $columnHeaderDataType = '';
     protected $dataType = ReportData::class;
     protected $dataDataType = '';
+    /**
+     * @var string
+     */
     public $nextPageToken;
     /**
      * @param ColumnHeader
@@ -52,10 +55,16 @@ class Report extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
     {
         return $this->data;
     }
+    /**
+     * @param string
+     */
     public function setNextPageToken($nextPageToken)
     {
         $this->nextPageToken = $nextPageToken;
     }
+    /**
+     * @return string
+     */
     public function getNextPageToken()
     {
         return $this->nextPageToken;

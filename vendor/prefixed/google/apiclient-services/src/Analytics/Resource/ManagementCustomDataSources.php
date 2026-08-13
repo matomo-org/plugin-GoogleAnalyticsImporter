@@ -23,7 +23,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\CustomD
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $customDataSources = $analyticsService->customDataSources;
+ *   $customDataSources = $analyticsService->management_customDataSources;
  *  </code>
  */
 class ManagementCustomDataSources extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -43,6 +43,7 @@ class ManagementCustomDataSources extends \Matomo\Dependencies\GoogleAnalyticsIm
      * retrieve. Use this parameter as a pagination mechanism along with the max-
      * results parameter.
      * @return CustomDataSources
+     * @throws \Google\Service\Exception
      */
     public function listManagementCustomDataSources($accountId, $webPropertyId, $optParams = [])
     {

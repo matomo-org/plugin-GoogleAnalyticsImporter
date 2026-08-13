@@ -19,20 +19,46 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class UnsampledReportCloudStorageDownloadDetails extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Id of the bucket the file object is stored in.
+     *
+     * @var string
+     */
     public $bucketId;
+    /**
+     * Id of the file object containing the report data.
+     *
+     * @var string
+     */
     public $objectId;
+    /**
+     * Id of the bucket the file object is stored in.
+     *
+     * @param string $bucketId
+     */
     public function setBucketId($bucketId)
     {
         $this->bucketId = $bucketId;
     }
+    /**
+     * @return string
+     */
     public function getBucketId()
     {
         return $this->bucketId;
     }
+    /**
+     * Id of the file object containing the report data.
+     *
+     * @param string $objectId
+     */
     public function setObjectId($objectId)
     {
         $this->objectId = $objectId;
     }
+    /**
+     * @return string
+     */
     public function getObjectId()
     {
         return $this->objectId;

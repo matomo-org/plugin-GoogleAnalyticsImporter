@@ -58,6 +58,9 @@ abstract class PKCS1 extends Progenitor
         }
         $key = ASN1::asn1map($decoded[0], Maps\DSAPrivateKey::MAP);
         if (is_array($key)) {
+            if ($key['version']->toString() !== '0') {
+                throw new \UnexpectedValueException('Version number is not valid');
+            }
             return $key;
         }
         // PKCS1 DSA public keys are not supported by phpseclib since they can't be used to do

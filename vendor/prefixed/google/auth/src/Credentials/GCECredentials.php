@@ -28,38 +28,41 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\IamSignerTrait;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\ProjectIdProviderInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\SignBlobInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Exception\ClientException;
-use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Exception\ConnectException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Exception\RequestException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Exception\ServerException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Psr7\Request;
 use InvalidArgumentException;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Client\NetworkExceptionInterface;
 /**
  * GCECredentials supports authorization on Google Compute Engine.
  *
  * It can be used to authorize requests using the AuthTokenMiddleware, but will
  * only succeed if being run on GCE:
  *
- *   use Google\Auth\Credentials\GCECredentials;
- *   use Google\Auth\Middleware\AuthTokenMiddleware;
- *   use GuzzleHttp\Client;
- *   use GuzzleHttp\HandlerStack;
+ * ```
+ * use Google\Auth\Credentials\GCECredentials;
+ * use Google\Auth\Middleware\AuthTokenMiddleware;
+ * use GuzzleHttp\Client;
+ * use GuzzleHttp\HandlerStack;
  *
- *   $gce = new GCECredentials();
- *   $middleware = new AuthTokenMiddleware($gce);
- *   $stack = HandlerStack::create();
- *   $stack->push($middleware);
+ * $gce = new GCECredentials();
+ * $middleware = new AuthTokenMiddleware($gce);
+ * $stack = HandlerStack::create();
+ * $stack->push($middleware);
  *
- *   $client = new Client([
- *      'handler' => $stack,
- *      'base_uri' => 'https://www.googleapis.com/taskqueue/v1beta2/projects/',
- *      'auth' => 'google_auth'
- *   ]);
+ * $client = new Client([
+ *    'handler' => $stack,
+ *    'base_uri' => 'https://www.googleapis.com/taskqueue/v1beta2/projects/',
+ *    'auth' => 'google_auth'
+ * ]);
  *
- *   $res = $client->get('myproject/taskqueues/myqueue');
+ * $res = $client->get('myproject/taskqueues/myqueue');
+ * ```
  */
 class GCECredentials extends CredentialsLoader implements SignBlobInterface, ProjectIdProviderInterface, GetQuotaProjectInterface
 {
     use IamSignerTrait;
+    use RegionalAccessBoundaryTrait;
     // phpcs:disable
     const cacheKey = 'GOOGLE_AUTH_PHP_GCE';
     // phpcs:enable
@@ -89,7 +92,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
     /**
      * The metadata path of the project ID.
      */
-    const UNIVERSE_DOMAIN_URI_PATH = 'v1/universe/universe_domain';
+    const UNIVERSE_DOMAIN_URI_PATH = 'v1/universe/universe-domain';
     /**
      * The header whose presence indicates GCE presence.
      */
@@ -170,7 +173,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      */
     private $universeDomain;
     /**
-     * @param Iam $iam [optional] An IAM instance.
+     * @param Iam|null $iam [optional] An IAM instance.
      * @param string|string[] $scope [optional] the scope of the access request,
      *        expressed either as an array or as a space-delimited string.
      * @param string $targetAudience [optional] The audience for the ID token.
@@ -178,10 +181,11 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      *   charges associated with the request.
      * @param string $serviceAccountIdentity [optional] Specify a service
      *   account identity name to use instead of "default".
-     * @param string $universeDomain [optional] Specify a universe domain to use
+     * @param string|null $universeDomain [optional] Specify a universe domain to use
      *   instead of fetching one from the metadata server.
+     * @param bool $enableRegionalAccessBoundary Lookup and include the regional access boundary header.
      */
-    public function __construct(Iam $iam = null, $scope = null, $targetAudience = null, $quotaProject = null, $serviceAccountIdentity = null, string $universeDomain = null)
+    public function __construct(?Iam $iam = null, $scope = null, $targetAudience = null, $quotaProject = null, $serviceAccountIdentity = null, ?string $universeDomain = null, bool $enableRegionalAccessBoundary = \false)
     {
         $this->iam = $iam;
         if ($scope && $targetAudience) {
@@ -203,6 +207,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
         $this->quotaProject = $quotaProject;
         $this->serviceAccountIdentity = $serviceAccountIdentity;
         $this->universeDomain = $universeDomain;
+        $this->enableRegionalAccessBoundary = $enableRegionalAccessBoundary;
     }
     /**
      * The full uri for accessing the default token.
@@ -287,10 +292,10 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      * host.
      * If $httpHandler is not specified a the default HttpHandler is used.
      *
-     * @param callable $httpHandler callback which delivers psr7 request
+     * @param callable|null $httpHandler callback which delivers psr7 request
      * @return bool True if this a GCEInstance, false otherwise
      */
-    public static function onGce(callable $httpHandler = null)
+    public static function onGce(?callable $httpHandler = null)
     {
         $httpHandler = $httpHandler ?: HttpHandlerFactory::build(HttpClientCache::getHttpClient());
         $checkUri = 'http://' . self::METADATA_IP;
@@ -309,7 +314,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
             } catch (ClientException $e) {
             } catch (ServerException $e) {
             } catch (RequestException $e) {
-            } catch (ConnectException $e) {
+            } catch (NetworkExceptionInterface $e) {
             }
         }
         if (\PHP_OS === 'Windows' || \PHP_OS === 'WINNT') {
@@ -350,7 +355,9 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      * Fetches the auth tokens from the GCE metadata host if it is available.
      * If $httpHandler is not specified a the default HttpHandler is used.
      *
-     * @param callable $httpHandler callback which delivers psr7 request
+     * @param callable|null $httpHandler callback which delivers psr7 request
+     * @param array<mixed> $headers [optional] Headers to be inserted
+     *     into the token endpoint request present.
      *
      * @return array<mixed> {
      *     A set of auth related metadata, based on the token type.
@@ -362,7 +369,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      * }
      * @throws \Exception
      */
-    public function fetchAuthToken(callable $httpHandler = null)
+    public function fetchAuthToken(?callable $httpHandler = null, array $headers = [])
     {
         $httpHandler = $httpHandler ?: HttpHandlerFactory::build(HttpClientCache::getHttpClient());
         if (!$this->hasCheckedOnGce) {
@@ -373,7 +380,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
             return [];
             // return an empty array with no access token
         }
-        $response = $this->getFromMetadata($httpHandler, $this->tokenUri, $this->applyTokenEndpointMetrics([], $this->targetAudience ? 'it' : 'at'));
+        $response = $this->getFromMetadata($httpHandler, $this->tokenUri, $this->applyTokenEndpointMetrics($headers, $this->targetAudience ? 'it' : 'at'));
         if ($this->targetAudience) {
             return $this->lastReceivedToken = ['id_token' => $response];
         }
@@ -414,10 +421,10 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      *
      * Subsequent calls will return a cached value.
      *
-     * @param callable $httpHandler callback which delivers psr7 request
+     * @param callable|null $httpHandler callback which delivers psr7 request
      * @return string
      */
-    public function getClientName(callable $httpHandler = null)
+    public function getClientName(?callable $httpHandler = null)
     {
         if ($this->clientName) {
             return $this->clientName;
@@ -438,10 +445,10 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
      *
      * Returns null if called outside GCE.
      *
-     * @param callable $httpHandler Callback which delivers psr7 request
+     * @param callable|null $httpHandler Callback which delivers psr7 request
      * @return string|null
      */
-    public function getProjectId(callable $httpHandler = null)
+    public function getProjectId(?callable $httpHandler = null)
     {
         if ($this->projectId) {
             return $this->projectId;
@@ -460,10 +467,10 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
     /**
      * Fetch the default universe domain from the metadata server.
      *
-     * @param callable $httpHandler Callback which delivers psr7 request
+     * @param callable|null $httpHandler Callback which delivers psr7 request
      * @return string
      */
-    public function getUniverseDomain(callable $httpHandler = null) : string
+    public function getUniverseDomain(?callable $httpHandler = null) : string
     {
         if (null !== $this->universeDomain) {
             return $this->universeDomain;
@@ -479,7 +486,7 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
             // If the metadata server exists, but returns a 404 for the universe domain, the auth
             // libraries should safely assume this is an older metadata server running in GCU, and
             // should return the default universe domain.
-            if (!$e->hasResponse() || 404 != $e->getResponse()->getStatusCode()) {
+            if (404 !== $e->getResponse()->getStatusCode()) {
                 throw $e;
             }
             $this->universeDomain = self::DEFAULT_UNIVERSE_DOMAIN;
@@ -490,6 +497,25 @@ class GCECredentials extends CredentialsLoader implements SignBlobInterface, Pro
             $this->universeDomain = self::DEFAULT_UNIVERSE_DOMAIN;
         }
         return $this->universeDomain;
+    }
+    /**
+     * Updates metadata with the authorization token.
+     *
+     * @param array<mixed> $metadata metadata hashmap
+     * @param string $authUri optional auth uri
+     * @param callable|null $httpHandler callback which delivers psr7 request
+     * @return array<mixed> updated metadata hashmap
+     */
+    public function updateMetadata($metadata, $authUri = null, ?callable $httpHandler = null)
+    {
+        $metadata = parent::updateMetadata($metadata, $authUri, $httpHandler);
+        if ($this->enableRegionalAccessBoundary) {
+            $serviceAccountEmail = $this->getClientName($httpHandler);
+            if (preg_match('/^[^@]+@[^@]+\\.[^@]+$/', $serviceAccountEmail)) {
+                $metadata = $this->updateRegionalAccessBoundaryMetadata($metadata, $this->buildRegionalAccessBoundaryLookupUrl($serviceAccountEmail), $this->getUniverseDomain($httpHandler), $httpHandler);
+            }
+        }
+        return $metadata;
     }
     /**
      * Fetch the value of a GCE metadata server URI.

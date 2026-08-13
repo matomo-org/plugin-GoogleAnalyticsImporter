@@ -4,34 +4,39 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6ea98586d4eb532d8aff385e4abf5020
+class ComposerStaticIniteeeb9b73fbf511c46f3769f495de1da9
 {
     public static $files = array(
 );
 
 
     public static $prefixLengthsPsr4 = array (
-        'p' =>
+        'p' => 
         array (
             'phpseclib3\\' => 11,
         ),
-        'b' =>
+        'b' => 
         array (
             'bcmath_compat\\' => 14,
         ),
-        'R' =>
+        'S' => 
+        array (
+            'Symfony\\Polyfill\\Php80\\' => 23,
+        ),
+        'R' => 
         array (
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
-        'P' =>
+        'P' => 
         array (
+            'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
             'Psr\\Cache\\' => 10,
             'ParagonIE\\ConstantTime\\' => 23,
         ),
-        'G' =>
+        'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
@@ -64,175 +69,183 @@ class ComposerStaticInit6ea98586d4eb532d8aff385e4abf5020
             'GPBMetadata\\Google\\Analytics\\Admin\\' => 35,
             'GPBMetadata\\ApiCore\\' => 20,
         ),
-        'F' =>
+        'F' => 
         array (
             'Firebase\\JWT\\' => 13,
         ),
-        'B' =>
+        'B' => 
         array (
             'Brick\\Math\\' => 11,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'phpseclib3\\' =>
+        'phpseclib3\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpseclib/phpseclib/phpseclib',
         ),
-        'bcmath_compat\\' =>
+        'bcmath_compat\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpseclib/bcmath_compat/src',
         ),
-        'Ramsey\\Uuid\\' =>
+        'Symfony\\Polyfill\\Php80\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
+        ),
+        'Ramsey\\Uuid\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
-        'Ramsey\\Collection\\' =>
+        'Ramsey\\Collection\\' => 
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
-        'Psr\\Http\\Message\\' =>
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
+        'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
             1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Psr\\Http\\Client\\' =>
+        'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
-        'Psr\\Cache\\' =>
+        'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
         ),
-        'ParagonIE\\ConstantTime\\' =>
+        'ParagonIE\\ConstantTime\\' => 
         array (
             0 => __DIR__ . '/..' . '/paragonie/constant_time_encoding/src',
         ),
-        'GuzzleHttp\\Psr7\\' =>
+        'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'GuzzleHttp\\Promise\\' =>
+        'GuzzleHttp\\Promise\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
         ),
-        'GuzzleHttp\\' =>
+        'GuzzleHttp\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'Grpc\\Gcp\\' =>
+        'Grpc\\Gcp\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/grpc-gcp/src',
         ),
-        'Grpc\\' =>
+        'Grpc\\' => 
         array (
             0 => __DIR__ . '/..' . '/grpc/grpc/src/lib',
         ),
-        'Google\\Type\\' =>
+        'Google\\Type\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/src/Type',
         ),
-        'Google\\Service\\' =>
+        'Google\\Service\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/apiclient-services/src',
         ),
-        'Google\\Rpc\\' =>
+        'Google\\Rpc\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/src/Rpc',
         ),
-        'Google\\Protobuf\\' =>
+        'Google\\Protobuf\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/protobuf/src/Google/Protobuf',
         ),
-        'Google\\LongRunning\\' =>
+        'Google\\LongRunning\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/longrunning/src/LongRunning',
         ),
-        'Google\\Iam\\' =>
+        'Google\\Iam\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/src/Iam',
         ),
-        'Google\\Cloud\\' =>
+        'Google\\Cloud\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/src/Cloud',
         ),
-        'Google\\Auth\\' =>
+        'Google\\Auth\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/auth/src',
         ),
-        'Google\\Api\\' =>
+        'Google\\Api\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/src/Api',
         ),
-        'Google\\ApiCore\\LongRunning\\' =>
+        'Google\\ApiCore\\LongRunning\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/longrunning/src/ApiCore/LongRunning',
         ),
-        'Google\\ApiCore\\' =>
+        'Google\\ApiCore\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/gax/src',
         ),
-        'Google\\Analytics\\Data\\' =>
+        'Google\\Analytics\\Data\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/analytics-data/src',
         ),
-        'Google\\Analytics\\Admin\\' =>
+        'Google\\Analytics\\Admin\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/analytics-admin/src',
         ),
-        'Google\\' =>
+        'Google\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/apiclient/src',
         ),
-        'GPBMetadata\\Google\\Type\\' =>
+        'GPBMetadata\\Google\\Type\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/metadata/Type',
         ),
-        'GPBMetadata\\Google\\Rpc\\' =>
+        'GPBMetadata\\Google\\Rpc\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/metadata/Rpc',
         ),
-        'GPBMetadata\\Google\\Protobuf\\' =>
+        'GPBMetadata\\Google\\Protobuf\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/protobuf/src/GPBMetadata/Google/Protobuf',
         ),
-        'GPBMetadata\\Google\\Longrunning\\' =>
+        'GPBMetadata\\Google\\Longrunning\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/longrunning/metadata/Longrunning',
         ),
-        'GPBMetadata\\Google\\Logging\\' =>
+        'GPBMetadata\\Google\\Logging\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/metadata/Logging',
         ),
-        'GPBMetadata\\Google\\Iam\\' =>
+        'GPBMetadata\\Google\\Iam\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/metadata/Iam',
         ),
-        'GPBMetadata\\Google\\Cloud\\' =>
+        'GPBMetadata\\Google\\Cloud\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/metadata/Cloud',
         ),
-        'GPBMetadata\\Google\\Api\\' =>
+        'GPBMetadata\\Google\\Api\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/common-protos/metadata/Api',
         ),
-        'GPBMetadata\\Google\\Analytics\\Data\\' =>
+        'GPBMetadata\\Google\\Analytics\\Data\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/analytics-data/metadata',
         ),
-        'GPBMetadata\\Google\\Analytics\\Admin\\' =>
+        'GPBMetadata\\Google\\Analytics\\Admin\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/analytics-admin/metadata',
         ),
-        'GPBMetadata\\ApiCore\\' =>
+        'GPBMetadata\\ApiCore\\' => 
         array (
             0 => __DIR__ . '/..' . '/google/gax/metadata/ApiCore',
         ),
-        'Firebase\\JWT\\' =>
+        'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
-        'Brick\\Math\\' =>
+        'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
@@ -245,9 +258,9 @@ class ComposerStaticInit6ea98586d4eb532d8aff385e4abf5020
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6ea98586d4eb532d8aff385e4abf5020::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6ea98586d4eb532d8aff385e4abf5020::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit6ea98586d4eb532d8aff385e4abf5020::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticIniteeeb9b73fbf511c46f3769f495de1da9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticIniteeeb9b73fbf511c46f3769f495de1da9::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticIniteeeb9b73fbf511c46f3769f495de1da9::$classMap;
 
         }, null, ClassLoader::class);
     }

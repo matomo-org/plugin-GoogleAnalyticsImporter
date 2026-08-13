@@ -136,7 +136,7 @@ abstract class EC extends AsymmetricKey
             throw new \RuntimeException('createKey() should not be called from final classes (' . static::class . ')');
         }
         $curveName = self::getCurveCase($curve);
-        $curve = '\\phpseclib3\\Crypt\\EC\\Curves\\' . $curveName;
+        $curve = '\\Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Curves\\' . $curveName;
         if (!class_exists($curve)) {
             throw new UnsupportedCurveException('Named Curve of ' . $curveName . ' is not supported');
         }
@@ -161,6 +161,7 @@ abstract class EC extends AsymmetricKey
                     // OPENSSL_KEYTYPE_X25519 introduced in PHP 8.4.0
                     'OpenSSL' => defined('Matomo\\Dependencies\\GoogleAnalyticsImporter\\OPENSSL_KEYTYPE_X25519'),
                 ];
+                break;
             // OPENSSL_KEYTYPE_X448 introduced in PHP 8.4.0
             case 'Curve448':
                 $providers = ['OpenSSL' => defined('Matomo\\Dependencies\\GoogleAnalyticsImporter\\OPENSSL_KEYTYPE_X448')];
@@ -442,7 +443,7 @@ abstract class EC extends AsymmetricKey
     public static function convertPointToPublicKey($curveName, $secret, $toPublicKey = \true)
     {
         $curveName = self::getCurveCase($curveName);
-        $curve = '\\phpseclib3\\Crypt\\EC\\Curves\\' . $curveName;
+        $curve = '\\Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Curves\\' . $curveName;
         if (!class_exists($curve)) {
             throw new UnsupportedCurveException('Named Curve of ' . $curveName . ' is not supported');
         }
@@ -480,7 +481,7 @@ abstract class EC extends AsymmetricKey
     /**
      * Determines the signature padding mode
      *
-     * Valid values are: ASN1, SSH2, Raw
+     * Valid values are: ASN1, IEEE, SSH2, Raw
      *
      * @param string $format
      */

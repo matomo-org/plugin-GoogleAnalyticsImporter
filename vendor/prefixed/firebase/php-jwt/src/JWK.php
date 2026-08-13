@@ -31,6 +31,18 @@ class JWK
         // Len: 64
         'P-384' => '1.3.132.0.34',
     ];
+    // Known standard curves from the IANA JOSE registry which are not supported
+    private const KNOWN_UNSUPPORTED_EC_CURVES = [
+        'P-521',
+        // RFC 7518
+        'Ed25519',
+        // RFC 8037
+        'Ed448',
+        // RFC 8037
+        'X25519',
+        // RFC 8037
+        'X448',
+    ];
     // For keys with "kty" equal to "OKP" (Octet Key Pair), the "crv" parameter must contain the key subtype.
     // This library supports the following subtypes:
     private const OKP_SUBTYPES = ['Ed25519' => \true];
@@ -49,7 +61,8 @@ class JWK
      *
      * @uses parseKey
      */
-    public static function parseKeySet(array $jwks, string $defaultAlg = null) : array
+    public static function parseKeySet(#[\SensitiveParameter]
+        array $jwks, ?string $defaultAlg = null) : array
     {
         $keys = [];
         if (!isset($jwks['keys'])) {
@@ -84,7 +97,8 @@ class JWK
      *
      * @uses createPemFromModulusAndExponent
      */
-    public static function parseKey(array $jwk, string $defaultAlg = null) : ?Key
+    public static function parseKey(#[\SensitiveParameter]
+        array $jwk, ?string $defaultAlg = null) : ?Key
     {
         if (empty($jwk)) {
             throw new InvalidArgumentException('JWK must not be empty');
@@ -125,7 +139,10 @@ class JWK
                     throw new UnexpectedValueException('crv not set');
                 }
                 if (!isset(self::EC_CURVES[$jwk['crv']])) {
-                    throw new DomainException('Unrecognised or unsupported EC curve');
+                    if (!\in_array($jwk['crv'], self::KNOWN_UNSUPPORTED_EC_CURVES)) {
+                        throw new DomainException('Unrecognised EC curve');
+                    }
+                    return null;
                 }
                 if (empty($jwk['x']) || empty($jwk['y'])) {
                     throw new UnexpectedValueException('x and y not set');
@@ -149,6 +166,11 @@ class JWK
                 // This library works internally with EdDSA keys (Ed25519) encoded in standard base64.
                 $publicKey = JWT::convertBase64urlToBase64($jwk['x']);
                 return new Key($publicKey, $jwk['alg']);
+            case 'oct':
+                if (!isset($jwk['k'])) {
+                    throw new UnexpectedValueException('k not set');
+                }
+                return new Key(JWT::urlsafeB64Decode($jwk['k']), $jwk['alg']);
             default:
                 break;
         }
@@ -166,7 +188,7 @@ class JWK
     private static function createPemFromCrvAndXYCoordinates(string $crv, string $x, string $y) : string
     {
         $pem = self::encodeDER(self::ASN1_SEQUENCE, self::encodeDER(self::ASN1_SEQUENCE, self::encodeDER(self::ASN1_OBJECT_IDENTIFIER, self::encodeOID(self::OID)) . self::encodeDER(self::ASN1_OBJECT_IDENTIFIER, self::encodeOID(self::EC_CURVES[$crv]))) . self::encodeDER(self::ASN1_BIT_STRING, \chr(0x0) . \chr(0x4) . JWT::urlsafeB64Decode($x) . JWT::urlsafeB64Decode($y)));
-        return sprintf("-----BEGIN PUBLIC KEY-----\n%s\n-----END PUBLIC KEY-----\n", wordwrap(base64_encode($pem), 64, "\n", \true));
+        return \sprintf("-----BEGIN PUBLIC KEY-----\n%s\n-----END PUBLIC KEY-----\n", wordwrap(base64_encode($pem), 64, "\n", \true));
     }
     /**
      * Create a public key represented in PEM format from RSA modulus and exponent information
@@ -182,6 +204,14 @@ class JWK
     {
         $mod = JWT::urlsafeB64Decode($n);
         $exp = JWT::urlsafeB64Decode($e);
+        // Correct encoding for ASN1, as ints are represented as unsigned in jwk
+        // but signed in ASN1. Prepending null byte makes it unsigned.
+        if (\strlen($mod) > 0 && \ord($mod[0]) >= 128) {
+            $mod = \chr(0) . $mod;
+        }
+        if (\strlen($exp) > 0 && \ord($exp[0]) >= 128) {
+            $exp = \chr(0) . $exp;
+        }
         $modulus = \pack('Ca*a*', 2, self::encodeLength(\strlen($mod)), $mod);
         $publicExponent = \pack('Ca*a*', 2, self::encodeLength(\strlen($exp)), $exp);
         $rsaPublicKey = \pack('Ca*a*a*', 48, self::encodeLength(\strlen($modulus) + \strlen($publicExponent)), $modulus, $publicExponent);

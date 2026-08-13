@@ -9,6 +9,20 @@ use Piwik\Container\Container;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\AuthorizationGA4;
 
 require_once __DIR__ . '/../vendor/autoload.php';
+
+// Composer keys its file-autoloading by a hash of the package and path, which is identical in every plugin that
+// scopes the same package. Whichever plugin loads first marks that hash as done, so the prefixed copies belonging to
+// the others are silently skipped and their functions never get defined. psr7 calls trigger_deprecation()
+// unconditionally, so load our own copy directly if that happened.
+if (!function_exists('Matomo\\Dependencies\\GoogleAnalyticsImporter\\trigger_deprecation')) {
+    require_once __DIR__ . '/../vendor/prefixed/symfony/deprecation-contracts/function.php';
+}
+
+// Same collision applies to the php80 polyfill, which supplies get_debug_type() and preg_last_error_msg() globally.
+// psr7 calls both unconditionally, so on PHP 7 losing that race is fatal.
+if (PHP_VERSION_ID < 80000 && !function_exists('get_debug_type')) {
+    require_once __DIR__ . '/../vendor/prefixed/symfony/polyfill-php80/bootstrap.php';
+}
 return [
     'GoogleAnalyticsImporter.pingMysqlEverySecs' => null,
     'GoogleAnalyticsImporter.useNohup' => \true,

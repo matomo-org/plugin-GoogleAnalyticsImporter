@@ -34,6 +34,10 @@ humbug_phpscoper_expose_class('DivisionByZeroError', 'Matomo\Dependencies\Google
 humbug_phpscoper_expose_class('TypeError', 'Matomo\Dependencies\GoogleAnalyticsImporter\TypeError');
 humbug_phpscoper_expose_class('ArgumentCountError', 'Matomo\Dependencies\GoogleAnalyticsImporter\ArgumentCountError');
 humbug_phpscoper_expose_class('ValueError', 'Matomo\Dependencies\GoogleAnalyticsImporter\ValueError');
+humbug_phpscoper_expose_class('UnhandledMatchError', 'Matomo\Dependencies\GoogleAnalyticsImporter\UnhandledMatchError');
+humbug_phpscoper_expose_class('Stringable', 'Matomo\Dependencies\GoogleAnalyticsImporter\Stringable');
+humbug_phpscoper_expose_class('Attribute', 'Matomo\Dependencies\GoogleAnalyticsImporter\Attribute');
+humbug_phpscoper_expose_class('PhpToken', 'Matomo\Dependencies\GoogleAnalyticsImporter\PhpToken');
 
 // Function aliases. For more information see:
 // https://github.com/humbug/php-scoper/blob/master/docs/further-reading.md#function-aliases
@@ -47,6 +51,13 @@ if (!function_exists('bcpowmod')) { function bcpowmod() { return \Matomo\Depende
 if (!function_exists('bcscale')) { function bcscale() { return \Matomo\Dependencies\GoogleAnalyticsImporter\bcscale(...func_get_args()); } }
 if (!function_exists('bcsqrt')) { function bcsqrt() { return \Matomo\Dependencies\GoogleAnalyticsImporter\bcsqrt(...func_get_args()); } }
 if (!function_exists('bcsub')) { function bcsub() { return \Matomo\Dependencies\GoogleAnalyticsImporter\bcsub(...func_get_args()); } }
+if (!function_exists('fdiv')) { function fdiv() { return \Matomo\Dependencies\GoogleAnalyticsImporter\fdiv(...func_get_args()); } }
+if (!function_exists('get_debug_type')) { function get_debug_type() { return \Matomo\Dependencies\GoogleAnalyticsImporter\get_debug_type(...func_get_args()); } }
+if (!function_exists('get_resource_id')) { function get_resource_id() { return \Matomo\Dependencies\GoogleAnalyticsImporter\get_resource_id(...func_get_args()); } }
 if (!function_exists('getallheaders')) { function getallheaders() { return \Matomo\Dependencies\GoogleAnalyticsImporter\getallheaders(...func_get_args()); } }
+if (!function_exists('preg_last_error_msg')) { function preg_last_error_msg() { return \Matomo\Dependencies\GoogleAnalyticsImporter\preg_last_error_msg(...func_get_args()); } }
+if (!function_exists('str_contains')) { function str_contains() { return \Matomo\Dependencies\GoogleAnalyticsImporter\str_contains(...func_get_args()); } }
+if (!function_exists('str_ends_with')) { function str_ends_with() { return \Matomo\Dependencies\GoogleAnalyticsImporter\str_ends_with(...func_get_args()); } }
+if (!function_exists('str_starts_with')) { function str_starts_with() { return \Matomo\Dependencies\GoogleAnalyticsImporter\str_starts_with(...func_get_args()); } }
 
 return $loader;

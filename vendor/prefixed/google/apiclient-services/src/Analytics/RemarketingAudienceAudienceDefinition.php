@@ -22,7 +22,9 @@ class RemarketingAudienceAudienceDefinition extends \Matomo\Dependencies\GoogleA
     protected $includeConditionsType = IncludeConditions::class;
     protected $includeConditionsDataType = '';
     /**
-     * @param IncludeConditions
+     * Defines the conditions to include users to the audience.
+     *
+     * @param IncludeConditions $includeConditions
      */
     public function setIncludeConditions(IncludeConditions $includeConditions)
     {

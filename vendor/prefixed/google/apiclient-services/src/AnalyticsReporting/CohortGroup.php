@@ -22,6 +22,9 @@ class CohortGroup extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Co
     protected $collection_key = 'cohorts';
     protected $cohortsType = Cohort::class;
     protected $cohortsDataType = 'array';
+    /**
+     * @var bool
+     */
     public $lifetimeValue;
     /**
      * @param Cohort[]
@@ -37,10 +40,16 @@ class CohortGroup extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Co
     {
         return $this->cohorts;
     }
+    /**
+     * @param bool
+     */
     public function setLifetimeValue($lifetimeValue)
     {
         $this->lifetimeValue = $lifetimeValue;
     }
+    /**
+     * @return bool
+     */
     public function getLifetimeValue()
     {
         return $this->lifetimeValue;

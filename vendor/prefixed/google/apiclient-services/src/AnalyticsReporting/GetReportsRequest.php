@@ -22,6 +22,9 @@ class GetReportsRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
     protected $collection_key = 'reportRequests';
     protected $reportRequestsType = ReportRequest::class;
     protected $reportRequestsDataType = 'array';
+    /**
+     * @var bool
+     */
     public $useResourceQuotas;
     /**
      * @param ReportRequest[]
@@ -37,10 +40,16 @@ class GetReportsRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
     {
         return $this->reportRequests;
     }
+    /**
+     * @param bool
+     */
     public function setUseResourceQuotas($useResourceQuotas)
     {
         $this->useResourceQuotas = $useResourceQuotas;
     }
+    /**
+     * @return bool
+     */
     public function getUseResourceQuotas()
     {
         return $this->useResourceQuotas;

@@ -33,6 +33,7 @@ class Userinfo extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Servi
      *
      * @param array $optParams Optional parameters.
      * @return UserinfoModel
+     * @throws \Google\Service\Exception
      */
     public function get($optParams = [])
     {

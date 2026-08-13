@@ -20,38 +20,86 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 class GoalUrlDestinationDetails extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'steps';
+    /**
+     * Determines if the goal URL must exactly match the capitalization of visited
+     * URLs.
+     *
+     * @var bool
+     */
     public $caseSensitive;
+    /**
+     * Determines if the first step in this goal is required.
+     *
+     * @var bool
+     */
     public $firstStepRequired;
+    /**
+     * Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX.
+     *
+     * @var string
+     */
     public $matchType;
     protected $stepsType = GoalUrlDestinationDetailsSteps::class;
     protected $stepsDataType = 'array';
+    /**
+     * URL for this goal.
+     *
+     * @var string
+     */
     public $url;
+    /**
+     * Determines if the goal URL must exactly match the capitalization of visited
+     * URLs.
+     *
+     * @param bool $caseSensitive
+     */
     public function setCaseSensitive($caseSensitive)
     {
         $this->caseSensitive = $caseSensitive;
     }
+    /**
+     * @return bool
+     */
     public function getCaseSensitive()
     {
         return $this->caseSensitive;
     }
+    /**
+     * Determines if the first step in this goal is required.
+     *
+     * @param bool $firstStepRequired
+     */
     public function setFirstStepRequired($firstStepRequired)
     {
         $this->firstStepRequired = $firstStepRequired;
     }
+    /**
+     * @return bool
+     */
     public function getFirstStepRequired()
     {
         return $this->firstStepRequired;
     }
+    /**
+     * Match type for the goal URL. Possible values are HEAD, EXACT, or REGEX.
+     *
+     * @param string $matchType
+     */
     public function setMatchType($matchType)
     {
         $this->matchType = $matchType;
     }
+    /**
+     * @return string
+     */
     public function getMatchType()
     {
         return $this->matchType;
     }
     /**
-     * @param GoalUrlDestinationDetailsSteps[]
+     * List of steps configured for this goal funnel.
+     *
+     * @param GoalUrlDestinationDetailsSteps[] $steps
      */
     public function setSteps($steps)
     {
@@ -64,10 +112,18 @@ class GoalUrlDestinationDetails extends \Matomo\Dependencies\GoogleAnalyticsImpo
     {
         return $this->steps;
     }
+    /**
+     * URL for this goal.
+     *
+     * @param string $url
+     */
     public function setUrl($url)
     {
         $this->url = $url;
     }
+    /**
+     * @return string
+     */
     public function getUrl()
     {
         return $this->url;

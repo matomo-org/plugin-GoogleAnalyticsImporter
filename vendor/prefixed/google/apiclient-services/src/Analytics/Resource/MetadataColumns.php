@@ -23,7 +23,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Columns
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $columns = $analyticsService->columns;
+ *   $columns = $analyticsService->metadata_columns;
  *  </code>
  */
 class MetadataColumns extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -35,6 +35,7 @@ class MetadataColumns extends \Matomo\Dependencies\GoogleAnalyticsImporter\Googl
      * corresponds to the Core Reporting API
      * @param array $optParams Optional parameters.
      * @return Columns
+     * @throws \Google\Service\Exception
      */
     public function listMetadataColumns($reportType, $optParams = [])
     {

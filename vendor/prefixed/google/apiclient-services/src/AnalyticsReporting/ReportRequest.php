@@ -28,9 +28,21 @@ class ReportRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
     protected $dimensionFilterClausesDataType = 'array';
     protected $dimensionsType = Dimension::class;
     protected $dimensionsDataType = 'array';
+    /**
+     * @var string
+     */
     public $filtersExpression;
+    /**
+     * @var bool
+     */
     public $hideTotals;
+    /**
+     * @var bool
+     */
     public $hideValueRanges;
+    /**
+     * @var bool
+     */
     public $includeEmptyRows;
     protected $metricFilterClausesType = MetricFilterClause::class;
     protected $metricFilterClausesDataType = 'array';
@@ -38,13 +50,25 @@ class ReportRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
     protected $metricsDataType = 'array';
     protected $orderBysType = OrderBy::class;
     protected $orderBysDataType = 'array';
+    /**
+     * @var int
+     */
     public $pageSize;
+    /**
+     * @var string
+     */
     public $pageToken;
     protected $pivotsType = Pivot::class;
     protected $pivotsDataType = 'array';
+    /**
+     * @var string
+     */
     public $samplingLevel;
     protected $segmentsType = Segment::class;
     protected $segmentsDataType = 'array';
+    /**
+     * @var string
+     */
     public $viewId;
     /**
      * @param CohortGroup
@@ -102,34 +126,58 @@ class ReportRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
     {
         return $this->dimensions;
     }
+    /**
+     * @param string
+     */
     public function setFiltersExpression($filtersExpression)
     {
         $this->filtersExpression = $filtersExpression;
     }
+    /**
+     * @return string
+     */
     public function getFiltersExpression()
     {
         return $this->filtersExpression;
     }
+    /**
+     * @param bool
+     */
     public function setHideTotals($hideTotals)
     {
         $this->hideTotals = $hideTotals;
     }
+    /**
+     * @return bool
+     */
     public function getHideTotals()
     {
         return $this->hideTotals;
     }
+    /**
+     * @param bool
+     */
     public function setHideValueRanges($hideValueRanges)
     {
         $this->hideValueRanges = $hideValueRanges;
     }
+    /**
+     * @return bool
+     */
     public function getHideValueRanges()
     {
         return $this->hideValueRanges;
     }
+    /**
+     * @param bool
+     */
     public function setIncludeEmptyRows($includeEmptyRows)
     {
         $this->includeEmptyRows = $includeEmptyRows;
     }
+    /**
+     * @return bool
+     */
     public function getIncludeEmptyRows()
     {
         return $this->includeEmptyRows;
@@ -176,18 +224,30 @@ class ReportRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
     {
         return $this->orderBys;
     }
+    /**
+     * @param int
+     */
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
     }
+    /**
+     * @return int
+     */
     public function getPageSize()
     {
         return $this->pageSize;
     }
+    /**
+     * @param string
+     */
     public function setPageToken($pageToken)
     {
         $this->pageToken = $pageToken;
     }
+    /**
+     * @return string
+     */
     public function getPageToken()
     {
         return $this->pageToken;
@@ -206,10 +266,16 @@ class ReportRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
     {
         return $this->pivots;
     }
+    /**
+     * @param string
+     */
     public function setSamplingLevel($samplingLevel)
     {
         $this->samplingLevel = $samplingLevel;
     }
+    /**
+     * @return string
+     */
     public function getSamplingLevel()
     {
         return $this->samplingLevel;
@@ -228,10 +294,16 @@ class ReportRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
     {
         return $this->segments;
     }
+    /**
+     * @param string
+     */
     public function setViewId($viewId)
     {
         $this->viewId = $viewId;
     }
+    /**
+     * @return string
+     */
     public function getViewId()
     {
         return $this->viewId;

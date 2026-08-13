@@ -20,18 +20,36 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 class SearchUserActivityRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'activityTypes';
+    /**
+     * @var string[]
+     */
     public $activityTypes;
     protected $dateRangeType = DateRange::class;
     protected $dateRangeDataType = '';
+    /**
+     * @var int
+     */
     public $pageSize;
+    /**
+     * @var string
+     */
     public $pageToken;
     protected $userType = User::class;
     protected $userDataType = '';
+    /**
+     * @var string
+     */
     public $viewId;
+    /**
+     * @param string[]
+     */
     public function setActivityTypes($activityTypes)
     {
         $this->activityTypes = $activityTypes;
     }
+    /**
+     * @return string[]
+     */
     public function getActivityTypes()
     {
         return $this->activityTypes;
@@ -50,18 +68,30 @@ class SearchUserActivityRequest extends \Matomo\Dependencies\GoogleAnalyticsImpo
     {
         return $this->dateRange;
     }
+    /**
+     * @param int
+     */
     public function setPageSize($pageSize)
     {
         $this->pageSize = $pageSize;
     }
+    /**
+     * @return int
+     */
     public function getPageSize()
     {
         return $this->pageSize;
     }
+    /**
+     * @param string
+     */
     public function setPageToken($pageToken)
     {
         $this->pageToken = $pageToken;
     }
+    /**
+     * @return string
+     */
     public function getPageToken()
     {
         return $this->pageToken;
@@ -80,10 +110,16 @@ class SearchUserActivityRequest extends \Matomo\Dependencies\GoogleAnalyticsImpo
     {
         return $this->user;
     }
+    /**
+     * @param string
+     */
     public function setViewId($viewId)
     {
         $this->viewId = $viewId;
     }
+    /**
+     * @return string
+     */
     public function getViewId()
     {
         return $this->viewId;

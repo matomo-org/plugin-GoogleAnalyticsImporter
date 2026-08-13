@@ -19,38 +19,90 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class AccountRef extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Link for this account.
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Account ID.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Analytics account reference.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Account name.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Link for this account.
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Account ID.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Analytics account reference.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Account name.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;

@@ -19,15 +19,24 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 
 class SegmentFilter extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var bool
+     */
     public $not;
     protected $sequenceSegmentType = SequenceSegment::class;
     protected $sequenceSegmentDataType = '';
     protected $simpleSegmentType = SimpleSegment::class;
     protected $simpleSegmentDataType = '';
+    /**
+     * @param bool
+     */
     public function setNot($not)
     {
         $this->not = $not;
     }
+    /**
+     * @return bool
+     */
     public function getNot()
     {
         return $this->not;

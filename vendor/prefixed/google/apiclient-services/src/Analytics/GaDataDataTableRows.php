@@ -23,7 +23,7 @@ class GaDataDataTableRows extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
     protected $cType = GaDataDataTableRowsC::class;
     protected $cDataType = 'array';
     /**
-     * @param GaDataDataTableRowsC[]
+     * @param GaDataDataTableRowsC[] $c
      */
     public function setC($c)
     {

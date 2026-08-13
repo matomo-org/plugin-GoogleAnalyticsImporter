@@ -19,47 +19,112 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class ProfileSummary extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * View (profile) ID.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Resource type for Analytics ProfileSummary.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * View (profile) name.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Indicates whether this view (profile) is starred or not.
+     *
+     * @var bool
+     */
     public $starred;
+    /**
+     * View (Profile) type. Supported types: WEB or APP.
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * View (profile) ID.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Resource type for Analytics ProfileSummary.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * View (profile) name.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
+    /**
+     * Indicates whether this view (profile) is starred or not.
+     *
+     * @param bool $starred
+     */
     public function setStarred($starred)
     {
         $this->starred = $starred;
     }
+    /**
+     * @return bool
+     */
     public function getStarred()
     {
         return $this->starred;
     }
+    /**
+     * View (Profile) type. Supported types: WEB or APP.
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

@@ -22,6 +22,9 @@ class DimensionFilterClause extends \Matomo\Dependencies\GoogleAnalyticsImporter
     protected $collection_key = 'filters';
     protected $filtersType = DimensionFilter::class;
     protected $filtersDataType = 'array';
+    /**
+     * @var string
+     */
     public $operator;
     /**
      * @param DimensionFilter[]
@@ -37,10 +40,16 @@ class DimensionFilterClause extends \Matomo\Dependencies\GoogleAnalyticsImporter
     {
         return $this->filters;
     }
+    /**
+     * @param string
+     */
     public function setOperator($operator)
     {
         $this->operator = $operator;
     }
+    /**
+     * @return string
+     */
     public function getOperator()
     {
         return $this->operator;

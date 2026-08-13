@@ -23,7 +23,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Account
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $accounts = $analyticsService->accounts;
+ *   $accounts = $analyticsService->management_accounts;
  *  </code>
  */
 class ManagementAccounts extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -40,6 +40,7 @@ class ManagementAccounts extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * this parameter as a pagination mechanism along with the max-results
      * parameter.
      * @return Accounts
+     * @throws \Google\Service\Exception
      */
     public function listManagementAccounts($optParams = [])
     {

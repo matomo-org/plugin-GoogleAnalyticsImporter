@@ -22,9 +22,17 @@ class McfDataRows extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Co
     protected $collection_key = 'conversionPathValue';
     protected $conversionPathValueType = McfDataRowsConversionPathValue::class;
     protected $conversionPathValueDataType = 'array';
+    /**
+     * A primitive dimension value. A primitive metric value.
+     *
+     * @var string
+     */
     public $primitiveValue;
     /**
-     * @param McfDataRowsConversionPathValue[]
+     * A conversion path dimension value, containing a list of interactions with
+     * their attributes.
+     *
+     * @param McfDataRowsConversionPathValue[] $conversionPathValue
      */
     public function setConversionPathValue($conversionPathValue)
     {
@@ -37,10 +45,18 @@ class McfDataRows extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Co
     {
         return $this->conversionPathValue;
     }
+    /**
+     * A primitive dimension value. A primitive metric value.
+     *
+     * @param string $primitiveValue
+     */
     public function setPrimitiveValue($primitiveValue)
     {
         $this->primitiveValue = $primitiveValue;
     }
+    /**
+     * @return string
+     */
     public function getPrimitiveValue()
     {
         return $this->primitiveValue;

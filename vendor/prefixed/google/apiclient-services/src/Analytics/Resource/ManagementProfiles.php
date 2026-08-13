@@ -24,7 +24,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Profile
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $profiles = $analyticsService->profiles;
+ *   $profiles = $analyticsService->management_profiles;
  *  </code>
  */
 class ManagementProfiles extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -37,6 +37,7 @@ class ManagementProfiles extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * for.
      * @param string $profileId ID of the view (profile) to be deleted.
      * @param array $optParams Optional parameters.
+     * @throws \Google\Service\Exception
      */
     public function delete($accountId, $webPropertyId, $profileId, $optParams = [])
     {
@@ -54,6 +55,7 @@ class ManagementProfiles extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * for.
      * @param array $optParams Optional parameters.
      * @return Profile
+     * @throws \Google\Service\Exception
      */
     public function get($accountId, $webPropertyId, $profileId, $optParams = [])
     {
@@ -70,6 +72,7 @@ class ManagementProfiles extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * @param Profile $postBody
      * @param array $optParams Optional parameters.
      * @return Profile
+     * @throws \Google\Service\Exception
      */
     public function insert($accountId, $webPropertyId, Profile $postBody, $optParams = [])
     {
@@ -94,6 +97,7 @@ class ManagementProfiles extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * @opt_param int start-index An index of the first entity to retrieve. Use this
      * parameter as a pagination mechanism along with the max-results parameter.
      * @return Profiles
+     * @throws \Google\Service\Exception
      */
     public function listManagementProfiles($accountId, $webPropertyId, $optParams = [])
     {
@@ -112,6 +116,7 @@ class ManagementProfiles extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * @param Profile $postBody
      * @param array $optParams Optional parameters.
      * @return Profile
+     * @throws \Google\Service\Exception
      */
     public function patch($accountId, $webPropertyId, $profileId, Profile $postBody, $optParams = [])
     {
@@ -129,6 +134,7 @@ class ManagementProfiles extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * @param Profile $postBody
      * @param array $optParams Optional parameters.
      * @return Profile
+     * @throws \Google\Service\Exception
      */
     public function update($accountId, $webPropertyId, $profileId, Profile $postBody, $optParams = [])
     {
