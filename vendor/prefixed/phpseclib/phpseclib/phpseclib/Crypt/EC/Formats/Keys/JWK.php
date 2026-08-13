@@ -65,7 +65,7 @@ abstract class JWK extends Progenitor
             default:
                 throw new \Exception('Only EC and OKP JWK keys are supported');
         }
-        $curve = '\\phpseclib3\\Crypt\\EC\\Curves\\' . str_replace('P-', 'nistp', $key->crv);
+        $curve = '\\Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Curves\\' . str_replace('P-', 'nistp', $key->crv);
         $curve = new $curve();
         if ($curve instanceof TwistedEdwardsCurve) {
             $QA = self::extractPoint(Strings::base64url_decode($key->x), $curve);

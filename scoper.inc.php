@@ -308,14 +308,13 @@ EOF;
                 }
             }
 
-            // Fix the string reference of a scoped dependency in the Math lib
+            // phpseclib builds class names as strings in several places, which php-scoper cannot rewrite. Anchoring
+            // on the opening quote leaves names that are already prefixed alone.
             $escapedPrefix = str_replace('\\', '\\\\', $prefix);
-            if (
-                $filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger.php' || $filePath === __DIR__ . '/vendor/phpseclib/phpseclib/phpseclib/Math/BigInteger/Engines/Engine.php'
-            ) {
+            if (strpos($filePath, __DIR__ . '/vendor/phpseclib/phpseclib/') === 0) {
                 $content = str_replace(
-                    'phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\',
-                    "{$escapedPrefix}\\\\phpseclib3\\\\Math\\\\BigInteger\\\\Engines\\\\",
+                    ["'\\\\phpseclib3\\\\", "'phpseclib3\\\\"],
+                    ["'\\\\{$escapedPrefix}\\\\phpseclib3\\\\", "'{$escapedPrefix}\\\\phpseclib3\\\\"],
                     $content
                 );
             }
