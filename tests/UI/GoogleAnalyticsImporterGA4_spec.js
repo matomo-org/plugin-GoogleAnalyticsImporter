@@ -67,6 +67,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
         await page.goto(url);
 
         const content = await page.$('.pageWrap');
+        await page.waitForSelector('input[name=selectedImporter][value=ga4]');
         await page.evaluate(() => document.querySelector('input[name=selectedImporter][value=ga4]').click());
         expect(await content.screenshot()).to.matchImage('load_ga4');
     });
@@ -77,7 +78,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
         await typeFieldValue('input#propertyIdGA4', 'properties/12345');
         await typeFieldValue('div[name=streamIds] input.control_text', 'streamId1');
         await typeFieldValue('div[name=extraCustomDimensionsGA4] input.control_text', 'userAgeBracket');
-        await setSelectValue('div[name=extraCustomDimensionsGA4] select', 'visit');
+        await setSelectValue('div[name=extraCustomDimensionsGA4] select', 'string:visit');
         await page.click('[name=isVerboseLoggingEnabledGA4] label');
 
         await page.click('#startImportSubmitGA4');
