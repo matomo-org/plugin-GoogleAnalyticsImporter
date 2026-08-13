@@ -14,6 +14,17 @@ describe("GoogleAnalyticsImporterGA4", function () {
 
     var url = "?module=GoogleAnalyticsImporter&action=index&idSite=1&period=day&date=yesterday";
 
+    // set a field value natively and fire real DOM events, since Vue's
+    // v-model does not receive jQuery's synthetic .change()
+    async function setNativeFieldValue(selector, value) {
+        await page.evaluate((selector, value) => {
+            const el = document.querySelector(selector);
+            el.value = value;
+            el.dispatchEvent(new Event('input', { bubbles: true }));
+            el.dispatchEvent(new Event('change', { bubbles: true }));
+        }, selector, value);
+    }
+
     async function removeStartResumeFinishTime() {
         await page.evaluate(() => $('td.import-start-finish-times').html(''));
     }
@@ -38,17 +49,17 @@ describe("GoogleAnalyticsImporterGA4", function () {
         await page.goto(url);
 
         const content = await page.$('.pageWrap');
-        await page.evaluate(() => $('input:radio[name=selectedImporter]').val('ga4').change());
+        await page.evaluate(() => document.querySelector('input[name=selectedImporter][value=ga4]').click());
         expect(await content.screenshot()).to.matchImage('load_ga4');
     });
 
     it("should start an import properly", async function () {
-        await page.evaluate(() => $('input#startDateGA4').val('2019-06-27').change());
-        await page.evaluate(() => $('input#endDateGA4').val('2019-07-02').change());
-        await page.evaluate(() => $('input#propertyIdGA4').val('properties/12345').change());
-        await page.evaluate(() => $('div[name=streamIds] input.control_text').val('streamId1').change());
-        await page.evaluate(() => $('div[name=extraCustomDimensionsGA4] input.control_text').val('userAgeBracket').change());
-        await page.evaluate(() => $('div[name=extraCustomDimensionsGA4] select:eq(0)').val('string:visit').change());
+        await setNativeFieldValue('input#startDateGA4', '2019-06-27');
+        await setNativeFieldValue('input#endDateGA4', '2019-07-02');
+        await setNativeFieldValue('input#propertyIdGA4', 'properties/12345');
+        await setNativeFieldValue('div[name=streamIds] input.control_text', 'streamId1');
+        await setNativeFieldValue('div[name=extraCustomDimensionsGA4] input.control_text', 'userAgeBracket');
+        await setNativeFieldValue('div[name=extraCustomDimensionsGA4] select', 'string:visit');
         await page.click('[name=isVerboseLoggingEnabledGA4] label');
 
         await page.click('#startImportSubmitGA4');
