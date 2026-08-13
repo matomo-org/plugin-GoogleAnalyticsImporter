@@ -14,13 +14,31 @@ describe("GoogleAnalyticsImporterGA4", function () {
 
     var url = "?module=GoogleAnalyticsImporter&action=index&idSite=1&period=day&date=yesterday";
 
-    // set a field value natively and fire real DOM events, since Vue's
-    // v-model does not receive jQuery's synthetic .change()
-    async function setNativeFieldValue(selector, value) {
+    // type into a field with real keyboard events and verify the value arrived
+    // (a freshly rendered field sometimes swallows the first characters);
+    // values set programmatically do not reach the Vue model
+    async function typeFieldValue(selector, text) {
+        for (let attempt = 0; attempt < 3; attempt++) {
+            await (await page.$(selector)).type(text);
+            await page.waitForTimeout(100);
+            const actual = await page.evaluate(
+                (selector) => document.querySelector(selector).value,
+                selector
+            );
+            if (actual === text) {
+                return;
+            }
+            await page.evaluate((selector) => {
+                document.querySelector(selector).value = '';
+            }, selector);
+        }
+    }
+
+    // selects bind v-model to the real <select>, so a native change event works
+    async function setSelectValue(selector, value) {
         await page.evaluate((selector, value) => {
             const el = document.querySelector(selector);
             el.value = value;
-            el.dispatchEvent(new Event('input', { bubbles: true }));
             el.dispatchEvent(new Event('change', { bubbles: true }));
         }, selector, value);
     }
@@ -54,12 +72,12 @@ describe("GoogleAnalyticsImporterGA4", function () {
     });
 
     it("should start an import properly", async function () {
-        await setNativeFieldValue('input#startDateGA4', '2019-06-27');
-        await setNativeFieldValue('input#endDateGA4', '2019-07-02');
-        await setNativeFieldValue('input#propertyIdGA4', 'properties/12345');
-        await setNativeFieldValue('div[name=streamIds] input.control_text', 'streamId1');
-        await setNativeFieldValue('div[name=extraCustomDimensionsGA4] input.control_text', 'userAgeBracket');
-        await setNativeFieldValue('div[name=extraCustomDimensionsGA4] select', 'string:visit');
+        await typeFieldValue('input#startDateGA4', '2019-06-27');
+        await typeFieldValue('input#endDateGA4', '2019-07-02');
+        await typeFieldValue('input#propertyIdGA4', 'properties/12345');
+        await typeFieldValue('div[name=streamIds] input.control_text', 'streamId1');
+        await typeFieldValue('div[name=extraCustomDimensionsGA4] input.control_text', 'userAgeBracket');
+        await setSelectValue('div[name=extraCustomDimensionsGA4] select', 'visit');
         await page.click('[name=isVerboseLoggingEnabledGA4] label');
 
         await page.click('#startImportSubmitGA4');
