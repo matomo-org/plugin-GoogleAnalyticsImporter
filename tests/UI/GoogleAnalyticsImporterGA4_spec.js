@@ -43,6 +43,15 @@ describe("GoogleAnalyticsImporterGA4", function () {
         }, selector, value);
     }
 
+    // Submitting the form navigates, and .pageWrap exists before its contents are
+    // rendered into it, so a capture taken straight away is an empty strip.
+    async function waitForPageContent() {
+        await page.waitForFunction(() => {
+            const wrap = document.querySelector('.pageWrap');
+            return wrap && wrap.getBoundingClientRect().height > 100;
+        });
+    }
+
     async function removeStartResumeFinishTime() {
         await page.evaluate(() => $('td.import-start-finish-times').html(''));
     }
@@ -177,6 +186,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
         await page.click('#removeConfigForm button[type=submit]');
         await page.waitForNetworkIdle();
         await page.waitForSelector('.pageWrap');
+        await waitForPageContent();
 
         await removeStartResumeFinishTime();
 
