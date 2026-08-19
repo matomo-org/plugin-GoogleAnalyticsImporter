@@ -22,7 +22,7 @@ use const STR_PAD_LEFT;
  *
  * @internal
  */
-final readonly class NativeCalculator extends Calculator
+final class NativeCalculator extends Calculator
 {
     /**
      * The max number of digits the platform can natively add, subtract, multiply or divide without overflow.
@@ -32,7 +32,7 @@ final readonly class NativeCalculator extends Calculator
      * Example: 32-bit: max number 1,999,999,999 (9 digits + carry)
      *          64-bit: max number 1,999,999,999,999,999,999 (18 digits + carry)
      */
-    private int $maxDigits;
+    private readonly int $maxDigits;
     /**
      * @pure
      *

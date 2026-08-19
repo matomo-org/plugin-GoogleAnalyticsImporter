@@ -42,7 +42,7 @@ use const FILTER_VALIDATE_INT;
  *
  * This class is immutable.
  */
-final readonly class BigInteger extends BigNumber
+final class BigInteger extends BigNumber
 {
     /**
      * The value, as a string of digits with optional leading minus sign.
@@ -50,7 +50,7 @@ final readonly class BigInteger extends BigNumber
      * No leading zeros must be present.
      * No leading minus sign must be present if the number is zero.
      */
-    private string $value;
+    private readonly string $value;
     /**
      * Protected constructor. Use a factory method to obtain an instance.
      *

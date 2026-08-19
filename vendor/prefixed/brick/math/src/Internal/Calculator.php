@@ -25,7 +25,7 @@ use function substr;
  *
  * @internal
  */
-abstract readonly class Calculator
+abstract class Calculator
 {
     /**
      * The alphabet for converting from and to base 2 to 36, lowercase.

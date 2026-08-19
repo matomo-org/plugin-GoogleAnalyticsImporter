@@ -33,7 +33,7 @@ use const PREG_UNMATCHED_AS_NULL;
  *
  * @phpstan-sealed BigInteger|BigDecimal|BigRational
  */
-abstract readonly class BigNumber implements JsonSerializable, Stringable
+abstract class BigNumber implements JsonSerializable, Stringable
 {
     /**
      * The regular expression used to parse integer or decimal numbers.

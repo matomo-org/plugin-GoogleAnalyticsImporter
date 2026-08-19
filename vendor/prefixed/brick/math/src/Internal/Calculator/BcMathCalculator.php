@@ -18,7 +18,7 @@ use function bcsub;
  *
  * @internal
  */
-final readonly class BcMathCalculator extends Calculator
+final class BcMathCalculator extends Calculator
 {
     #[Override]
     public function add(string $a, string $b) : string

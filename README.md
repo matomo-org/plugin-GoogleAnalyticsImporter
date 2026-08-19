@@ -27,9 +27,9 @@ This is done using the [Rector library](https://github.com/rectorphp/rector-down
 use Rector\Config\RectorConfig;
 
 return static function (RectorConfig $rectorConfig): void {
-    // Matomo requires PHP >= 7.2.5, but PHP 7.3 is close enough. We don't want to downgrade further than necessary.
+    // Matomo 6 requires PHP >= 8.1. We don't want to downgrade further than necessary.
     $rectorConfig->sets([
-        \Rector\Set\ValueObject\DowngradeLevelSetList::DOWN_TO_PHP_73
+        \Rector\Set\ValueObject\DowngradeLevelSetList::DOWN_TO_PHP_81
     ]);
 
     $rectorConfig->skip([
@@ -38,5 +38,7 @@ return static function (RectorConfig $rectorConfig): void {
 };
 ```
 With all that in place, you should be able to run Rector like so: `vendor/bin/rector process {path_to_this_plugin/vendor/prefixed} --config={path_to_config_file}`
+
+The downgrade level has to match this branch's minimum PHP, not Matomo 5's. `brick/math` requires PHP 8.2, so without this step `final readonly class` reaches the scoped tree and is a parse error on 8.1. The `min-php-lint` workflow catches that, since tests only parse a file when something loads it.
 
 > **_NOTE:_**  For Matomo developers, there's an internal DevPluginCommands plugin with a command that handles scoping and running Rector. See the SearchEngineKeywordsPerformance plugin's README.md for more details.

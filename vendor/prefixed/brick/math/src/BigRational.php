@@ -23,16 +23,16 @@ use function substr;
  * Fractions are automatically simplified to lowest terms. For example, `2/4` becomes `1/2`.
  * The denominator is always strictly positive; the sign is carried by the numerator.
  */
-final readonly class BigRational extends BigNumber
+final class BigRational extends BigNumber
 {
     /**
      * The numerator.
      */
-    private BigInteger $numerator;
+    private readonly BigInteger $numerator;
     /**
      * The denominator. Always strictly positive.
      */
-    private BigInteger $denominator;
+    private readonly BigInteger $denominator;
     /**
      * Protected constructor. Use a factory method to obtain an instance.
      *

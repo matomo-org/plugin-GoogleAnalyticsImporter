@@ -30,7 +30,7 @@ use function substr;
  *
  * @internal
  */
-final readonly class GmpCalculator extends Calculator
+final class GmpCalculator extends Calculator
 {
     #[Override]
     public function add(string $a, string $b) : string

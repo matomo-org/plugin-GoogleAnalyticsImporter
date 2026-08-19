@@ -37,7 +37,7 @@ use const PHP_INT_SIZE;
  *
  * The scale of the number is the number of digits after the decimal point. It is always positive or zero.
  */
-final readonly class BigDecimal extends BigNumber
+final class BigDecimal extends BigNumber
 {
     /**
      * The unscaled value of this decimal number.
@@ -46,7 +46,7 @@ final readonly class BigDecimal extends BigNumber
      * No leading zero must be present.
      * No leading minus sign must be present if the value is 0.
      */
-    private string $value;
+    private readonly string $value;
     /**
      * The scale (number of digits after the decimal point) of this decimal number.
      *
@@ -54,7 +54,7 @@ final readonly class BigDecimal extends BigNumber
      *
      * @var non-negative-int
      */
-    private int $scale;
+    private readonly int $scale;
     /**
      * Protected constructor. Use a factory method to obtain an instance.
      *
