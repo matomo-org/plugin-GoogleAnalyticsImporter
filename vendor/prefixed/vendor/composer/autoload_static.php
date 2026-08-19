@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitfc37b62a0f52ff624206412ecdc6f1bd
+class ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae
 {
     public static $files = array (
         '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -32,21 +32,14 @@ class ComposerStaticInitfc37b62a0f52ff624206412ecdc6f1bd
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\BigRational' => __DIR__ . '/../..' . '/brick/math/src/BigRational.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\DivisionByZeroException' => __DIR__ . '/../..' . '/brick/math/src/Exception/DivisionByZeroException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\IntegerOverflowException' => __DIR__ . '/../..' . '/brick/math/src/Exception/IntegerOverflowException.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\InvalidArgumentException' => __DIR__ . '/../..' . '/brick/math/src/Exception/InvalidArgumentException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\MathException' => __DIR__ . '/../..' . '/brick/math/src/Exception/MathException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\NegativeNumberException' => __DIR__ . '/../..' . '/brick/math/src/Exception/NegativeNumberException.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\NoInverseException' => __DIR__ . '/../..' . '/brick/math/src/Exception/NoInverseException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\NumberFormatException' => __DIR__ . '/../..' . '/brick/math/src/Exception/NumberFormatException.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\RandomSourceException' => __DIR__ . '/../..' . '/brick/math/src/Exception/RandomSourceException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\RoundingNecessaryException' => __DIR__ . '/../..' . '/brick/math/src/Exception/RoundingNecessaryException.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Exception\\UnsupportedPlatformException' => __DIR__ . '/../..' . '/brick/math/src/Exception/UnsupportedPlatformException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Internal\\Calculator' => __DIR__ . '/../..' . '/brick/math/src/Internal/Calculator.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Internal\\CalculatorRegistry' => __DIR__ . '/../..' . '/brick/math/src/Internal/CalculatorRegistry.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Internal\\Calculator\\BcMathCalculator' => __DIR__ . '/../..' . '/brick/math/src/Internal/Calculator/BcMathCalculator.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Internal\\Calculator\\GmpCalculator' => __DIR__ . '/../..' . '/brick/math/src/Internal/Calculator/GmpCalculator.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Internal\\Calculator\\NativeCalculator' => __DIR__ . '/../..' . '/brick/math/src/Internal/Calculator/NativeCalculator.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Internal\\DecimalHelper' => __DIR__ . '/../..' . '/brick/math/src/Internal/DecimalHelper.php',
-        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\Internal\\Safe' => __DIR__ . '/../..' . '/brick/math/src/Internal/Safe.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\RoundingMode' => __DIR__ . '/../..' . '/brick/math/src/RoundingMode.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\BeforeValidException' => __DIR__ . '/../..' . '/firebase/php-jwt/src/BeforeValidException.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Firebase\\JWT\\CachedKeySet' => __DIR__ . '/../..' . '/firebase/php-jwt/src/CachedKeySet.php',
@@ -2228,7 +2221,7 @@ class ComposerStaticInitfc37b62a0f52ff624206412ecdc6f1bd
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInitfc37b62a0f52ff624206412ecdc6f1bd::$classMap;
+            $loader->classMap = ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae::$classMap;
 
         }, null, ClassLoader::class);
     }

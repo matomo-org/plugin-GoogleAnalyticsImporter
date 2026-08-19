@@ -4,41 +4,17 @@ declare (strict_types=1);
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigInteger;
-use RuntimeException;
-use function sprintf;
-use const PHP_INT_MAX;
-use const PHP_INT_MIN;
 /**
- * Exception thrown when a native integer overflow occurs.
+ * Exception thrown when an integer overflow occurs.
  */
-final class IntegerOverflowException extends RuntimeException implements MathException
+class IntegerOverflowException extends MathException
 {
     /**
-     * @internal
-     *
-     * @pure
+     * @psalm-pure
      */
-    public function __construct(string $message)
+    public static function toIntOverflow(BigInteger $value) : IntegerOverflowException
     {
-        parent::__construct($message);
-    }
-    /**
-     * @internal
-     *
-     * @pure
-     */
-    public static function integerOutOfRange(BigInteger $value) : self
-    {
-        $message = '%s is out of range [%d, %d] and cannot be represented as an integer.';
-        return new self(sprintf($message, $value->toString(), PHP_INT_MIN, PHP_INT_MAX));
-    }
-    /**
-     * @internal
-     *
-     * @pure
-     */
-    public static function nativeIntegerOverflow(string $expression) : self
-    {
-        return new self(sprintf('Cannot compute %s because the result is outside the native integer range [%d, %d].', $expression, PHP_INT_MIN, PHP_INT_MAX));
+        $message = '%s is out of range %d to %d and cannot be represented as an integer.';
+        return new self(\sprintf($message, (string) $value, \PHP_INT_MIN, \PHP_INT_MAX));
     }
 }
