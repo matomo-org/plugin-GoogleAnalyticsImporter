@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Type;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Localized variant of a text in a particular language.
  *
@@ -15,7 +15,8 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil
 class LocalizedText extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\Message
 {
     /**
-     * Localized string in the language corresponding to `language_code' below.
+     * Localized string in the language corresponding to
+     * [language_code][google.type.LocalizedText.language_code] below.
      *
      * Generated from protobuf field <code>string text = 1;</code>
      */
@@ -35,7 +36,8 @@ class LocalizedText extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
      *     Optional. Data for populating the Message object.
      *
      *     @type string $text
-     *           Localized string in the language corresponding to `language_code' below.
+     *           Localized string in the language corresponding to
+     *           [language_code][google.type.LocalizedText.language_code] below.
      *     @type string $language_code
      *           The text's BCP-47 language code, such as "en-US" or "sr-Latn".
      *           For more information, see
@@ -48,7 +50,8 @@ class LocalizedText extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
         parent::__construct($data);
     }
     /**
-     * Localized string in the language corresponding to `language_code' below.
+     * Localized string in the language corresponding to
+     * [language_code][google.type.LocalizedText.language_code] below.
      *
      * Generated from protobuf field <code>string text = 1;</code>
      * @return string
@@ -58,7 +61,8 @@ class LocalizedText extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
         return $this->text;
     }
     /**
-     * Localized string in the language corresponding to `language_code' below.
+     * Localized string in the language corresponding to
+     * [language_code][google.type.LocalizedText.language_code] below.
      *
      * Generated from protobuf field <code>string text = 1;</code>
      * @param string $var

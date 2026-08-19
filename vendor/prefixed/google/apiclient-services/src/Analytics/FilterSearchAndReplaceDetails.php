@@ -19,47 +19,112 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class FilterSearchAndReplaceDetails extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Determines if the filter is case sensitive.
+     *
+     * @var bool
+     */
     public $caseSensitive;
+    /**
+     * Field to use in the filter.
+     *
+     * @var string
+     */
     public $field;
+    /**
+     * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+     *
+     * @var int
+     */
     public $fieldIndex;
+    /**
+     * Term to replace the search term with.
+     *
+     * @var string
+     */
     public $replaceString;
+    /**
+     * Term to search.
+     *
+     * @var string
+     */
     public $searchString;
+    /**
+     * Determines if the filter is case sensitive.
+     *
+     * @param bool $caseSensitive
+     */
     public function setCaseSensitive($caseSensitive)
     {
         $this->caseSensitive = $caseSensitive;
     }
+    /**
+     * @return bool
+     */
     public function getCaseSensitive()
     {
         return $this->caseSensitive;
     }
+    /**
+     * Field to use in the filter.
+     *
+     * @param string $field
+     */
     public function setField($field)
     {
         $this->field = $field;
     }
+    /**
+     * @return string
+     */
     public function getField()
     {
         return $this->field;
     }
+    /**
+     * The Index of the custom dimension. Required if field is a CUSTOM_DIMENSION.
+     *
+     * @param int $fieldIndex
+     */
     public function setFieldIndex($fieldIndex)
     {
         $this->fieldIndex = $fieldIndex;
     }
+    /**
+     * @return int
+     */
     public function getFieldIndex()
     {
         return $this->fieldIndex;
     }
+    /**
+     * Term to replace the search term with.
+     *
+     * @param string $replaceString
+     */
     public function setReplaceString($replaceString)
     {
         $this->replaceString = $replaceString;
     }
+    /**
+     * @return string
+     */
     public function getReplaceString()
     {
         return $this->replaceString;
     }
+    /**
+     * Term to search.
+     *
+     * @param string $searchString
+     */
     public function setSearchString($searchString)
     {
         $this->searchString = $searchString;
     }
+    /**
+     * @return string
+     */
     public function getSearchString()
     {
         return $this->searchString;

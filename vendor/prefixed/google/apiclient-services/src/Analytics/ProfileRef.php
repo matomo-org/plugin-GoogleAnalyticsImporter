@@ -19,65 +19,158 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class ProfileRef extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Account ID to which this view (profile) belongs.
+     *
+     * @var string
+     */
     public $accountId;
+    /**
+     * Link for this view (profile).
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * View (Profile) ID.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Internal ID for the web property to which this view (profile) belongs.
+     *
+     * @var string
+     */
     public $internalWebPropertyId;
+    /**
+     * Analytics view (profile) reference.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Name of this view (profile).
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Web property ID of the form UA-XXXXX-YY to which this view (profile)
+     * belongs.
+     *
+     * @var string
+     */
     public $webPropertyId;
+    /**
+     * Account ID to which this view (profile) belongs.
+     *
+     * @param string $accountId
+     */
     public function setAccountId($accountId)
     {
         $this->accountId = $accountId;
     }
+    /**
+     * @return string
+     */
     public function getAccountId()
     {
         return $this->accountId;
     }
+    /**
+     * Link for this view (profile).
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * View (Profile) ID.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Internal ID for the web property to which this view (profile) belongs.
+     *
+     * @param string $internalWebPropertyId
+     */
     public function setInternalWebPropertyId($internalWebPropertyId)
     {
         $this->internalWebPropertyId = $internalWebPropertyId;
     }
+    /**
+     * @return string
+     */
     public function getInternalWebPropertyId()
     {
         return $this->internalWebPropertyId;
     }
+    /**
+     * Analytics view (profile) reference.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Name of this view (profile).
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
+    /**
+     * Web property ID of the form UA-XXXXX-YY to which this view (profile)
+     * belongs.
+     *
+     * @param string $webPropertyId
+     */
     public function setWebPropertyId($webPropertyId)
     {
         $this->webPropertyId = $webPropertyId;
     }
+    /**
+     * @return string
+     */
     public function getWebPropertyId()
     {
         return $this->webPropertyId;

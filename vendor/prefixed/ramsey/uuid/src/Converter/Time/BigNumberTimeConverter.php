@@ -17,19 +17,16 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Math\BrickMathCalcul
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Type\Hexadecimal;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Type\Time;
 /**
- * Previously used to integrate moontoast/math as a bignum arithmetic library,
- * BigNumberTimeConverter is deprecated in favor of GenericTimeConverter
+ * Previously used to integrate moontoast/math as a bignum arithmetic library, BigNumberTimeConverter is deprecated in
+ * favor of GenericTimeConverter
  *
- * @deprecated Transition to {@see GenericTimeConverter}.
+ * @deprecated Please transition to {@see GenericTimeConverter}.
  *
- * @psalm-immutable
+ * @immutable
  */
 class BigNumberTimeConverter implements TimeConverterInterface
 {
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Converter\TimeConverterInterface
-     */
-    private $converter;
+    private TimeConverterInterface $converter;
     public function __construct()
     {
         $this->converter = new GenericTimeConverter(new BrickMathCalculator());

@@ -27,7 +27,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Map;
  *
  * Example usage:
  *
- * ```php
+ * ```
  * $map = new TypedMap('string', Foo::class);
  * $map['x'] = new Foo();
  * foreach ($map as $key => $value) {
@@ -49,7 +49,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Map;
  * It is preferable to subclass `AbstractTypedMap` to create your own typed map
  * implementation:
  *
- * ```php
+ * ```
  * class FooTypedMap extends AbstractTypedMap
  * {
  *     public function getKeyType()
@@ -66,7 +66,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Map;
  *
  * … but you also may use the `TypedMap` class:
  *
- * ```php
+ * ```
  * class FooTypedMap extends TypedMap
  * {
  *     public function __constructor(array $data = [])
@@ -83,16 +83,6 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Map;
 class TypedMap extends AbstractTypedMap
 {
     /**
-     * @var string
-     * @readonly
-     */
-    private $keyType;
-    /**
-     * @var string
-     * @readonly
-     */
-    private $valueType;
-    /**
      * Constructs a map object of the specified key and value types,
      * optionally with the specified data.
      *
@@ -100,10 +90,8 @@ class TypedMap extends AbstractTypedMap
      * @param string $valueType The data type of the map's values.
      * @param array<K, T> $data The initial data to set for this map.
      */
-    public function __construct(string $keyType, string $valueType, array $data = [])
+    public function __construct(private readonly string $keyType, private readonly string $valueType, array $data = [])
     {
-        $this->keyType = $keyType;
-        $this->valueType = $valueType;
         parent::__construct($data);
     }
     public function getKeyType() : string

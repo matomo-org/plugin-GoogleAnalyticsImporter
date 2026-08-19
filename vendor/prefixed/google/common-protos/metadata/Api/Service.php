@@ -34,42 +34,7 @@ class Service
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Api::initOnce();
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Type::initOnce();
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Wrappers::initOnce();
-        $pool->internalAddGeneratedFile('
-É
-google/api/service.proto
-google.apigoogle/api/backend.protogoogle/api/billing.protogoogle/api/client.protogoogle/api/context.protogoogle/api/control.protogoogle/api/documentation.protogoogle/api/endpoint.protogoogle/api/http.protogoogle/api/log.protogoogle/api/logging.protogoogle/api/metric.proto#google/api/monitored_resource.protogoogle/api/monitoring.protogoogle/api/quota.protogoogle/api/source_info.proto!google/api/system_parameter.protogoogle/api/usage.protogoogle/protobuf/api.protogoogle/protobuf/type.protogoogle/protobuf/wrappers.proto"‚
-Service
-name (	
-title (	
-producer_project_id (	
-
-id! (	"
-apis (2.google.protobuf.Api$
-types (2.google.protobuf.Type$
-enums (2.google.protobuf.Enum0
-documentation (2.google.api.Documentation$
-backend (2.google.api.Backend
-http	 (2.google.api.Http 
-quota
- (2.google.api.Quota2
-authentication (2.google.api.Authentication$
-context (2.google.api.Context 
-usage (2.google.api.Usage\'
-	endpoints (2.google.api.Endpoint$
-control (2.google.api.Control\'
-logs (2.google.api.LogDescriptor-
-metrics (2.google.api.MetricDescriptorD
-monitored_resources (2\'.google.api.MonitoredResourceDescriptor$
-billing (2.google.api.Billing$
-logging (2.google.api.Logging*
-
-monitoring (2.google.api.Monitoring7
-system_parameters (2.google.api.SystemParameters+
-source_info% (2.google.api.SourceInfo*
-
-publishing- (2.google.api.Publishing4
-config_version (2.google.protobuf.UInt32ValueBn
-com.google.apiBServiceProtoPZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig¢GAPIbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\xc9\r\n\x18google/api/service.proto\x12\ngoogle.api\x1a\x18google/api/backend.proto\x1a\x18google/api/billing.proto\x1a\x17google/api/client.proto\x1a\x18google/api/context.proto\x1a\x18google/api/control.proto\x1a\x1egoogle/api/documentation.proto\x1a\x19google/api/endpoint.proto\x1a\x15google/api/http.proto\x1a\x14google/api/log.proto\x1a\x18google/api/logging.proto\x1a\x17google/api/metric.proto\x1a#google/api/monitored_resource.proto\x1a\x1bgoogle/api/monitoring.proto\x1a\x16google/api/quota.proto\x1a\x1cgoogle/api/source_info.proto\x1a!google/api/system_parameter.proto\x1a\x16google/api/usage.proto\x1a\x19google/protobuf/api.proto\x1a\x1agoogle/protobuf/type.proto\x1a\x1egoogle/protobuf/wrappers.proto\"\x82\x08\n\x07Service\x12\f\n\x04name\x18\x01 \x01(\t\x12\r\n\x05title\x18\x02 \x01(\t\x12\x1b\n\x13producer_project_id\x18\x16 \x01(\t\x12\n\n\x02id\x18! \x01(\t\x12\"\n\x04apis\x18\x03 \x03(\v2\x14.google.protobuf.Api\x12\$\n\x05types\x18\x04 \x03(\v2\x15.google.protobuf.Type\x12\$\n\x05enums\x18\x05 \x03(\v2\x15.google.protobuf.Enum\x120\n\rdocumentation\x18\x06 \x01(\v2\x19.google.api.Documentation\x12\$\n\x07backend\x18\x08 \x01(\v2\x13.google.api.Backend\x12\x1e\n\x04http\x18\t \x01(\v2\x10.google.api.Http\x12 \n\x05quota\x18\n \x01(\v2\x11.google.api.Quota\x122\n\x0eauthentication\x18\v \x01(\v2\x1a.google.api.Authentication\x12\$\n\x07context\x18\f \x01(\v2\x13.google.api.Context\x12 \n\x05usage\x18\x0f \x01(\v2\x11.google.api.Usage\x12'\n\tendpoints\x18\x12 \x03(\v2\x14.google.api.Endpoint\x12\$\n\x07control\x18\x15 \x01(\v2\x13.google.api.Control\x12'\n\x04logs\x18\x17 \x03(\v2\x19.google.api.LogDescriptor\x12-\n\x07metrics\x18\x18 \x03(\v2\x1c.google.api.MetricDescriptor\x12D\n\x13monitored_resources\x18\x19 \x03(\v2'.google.api.MonitoredResourceDescriptor\x12\$\n\x07billing\x18\x1a \x01(\v2\x13.google.api.Billing\x12\$\n\x07logging\x18\x1b \x01(\v2\x13.google.api.Logging\x12*\n\nmonitoring\x18\x1c \x01(\v2\x16.google.api.Monitoring\x127\n\x11system_parameters\x18\x1d \x01(\v2\x1c.google.api.SystemParameters\x12+\n\vsource_info\x18% \x01(\v2\x16.google.api.SourceInfo\x12*\n\npublishing\x18- \x01(\v2\x16.google.api.Publishing\x124\n\x0econfig_version\x18\x14 \x01(\v2\x1c.google.protobuf.UInt32ValueBn\n\x0ecom.google.apiB\fServiceProtoP\x01ZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig\xa2\x02\x04GAPIb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

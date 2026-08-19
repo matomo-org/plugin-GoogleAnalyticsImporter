@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Context;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * `AuditContext` provides information that is needed for audit logging.
  *

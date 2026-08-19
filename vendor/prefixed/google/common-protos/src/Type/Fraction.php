@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Type;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Represents a fraction in terms of a numerator divided by a denominator.
  *

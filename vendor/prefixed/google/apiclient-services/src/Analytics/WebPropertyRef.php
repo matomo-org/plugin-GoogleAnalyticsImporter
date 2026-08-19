@@ -19,56 +19,134 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class WebPropertyRef extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Account ID to which this web property belongs.
+     *
+     * @var string
+     */
     public $accountId;
+    /**
+     * Link for this web property.
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Web property ID of the form UA-XXXXX-YY.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Internal ID for this web property.
+     *
+     * @var string
+     */
     public $internalWebPropertyId;
+    /**
+     * Analytics web property reference.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Name of this web property.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Account ID to which this web property belongs.
+     *
+     * @param string $accountId
+     */
     public function setAccountId($accountId)
     {
         $this->accountId = $accountId;
     }
+    /**
+     * @return string
+     */
     public function getAccountId()
     {
         return $this->accountId;
     }
+    /**
+     * Link for this web property.
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Web property ID of the form UA-XXXXX-YY.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Internal ID for this web property.
+     *
+     * @param string $internalWebPropertyId
+     */
     public function setInternalWebPropertyId($internalWebPropertyId)
     {
         $this->internalWebPropertyId = $internalWebPropertyId;
     }
+    /**
+     * @return string
+     */
     public function getInternalWebPropertyId()
     {
         return $this->internalWebPropertyId;
     }
+    /**
+     * Analytics web property reference.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Name of this web property.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;

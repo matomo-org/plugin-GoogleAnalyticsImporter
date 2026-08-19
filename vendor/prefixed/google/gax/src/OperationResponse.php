@@ -32,12 +32,12 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore;
 
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\Client\OperationsClient;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\OperationsClient as LegacyOperationsClient;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\CancelOperationRequest;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\Client\OperationsClient;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\DeleteOperationRequest;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\GetOperationRequest;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\Operation;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning\OperationsClient as LegacyOperationsClient;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Any;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\Message;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Status;
@@ -55,6 +55,8 @@ use LogicException;
  * more control is required, it is possible to make calls against the
  * Operations API directly instead of via the OperationResponse object
  * using an Operations Client instance.
+ *
+ * @template T = mixed
  */
 class OperationResponse
 {
@@ -64,81 +66,30 @@ class OperationResponse
     const DEFAULT_MAX_POLLING_INTERVAL = 60000;
     const DEFAULT_MAX_POLLING_DURATION = 0;
     private const NEW_CLIENT_NAMESPACE = '\\Client\\';
-    /**
-     * @var string
-     */
-    private $operationName;
-    /**
-     * @var object|null
-     */
-    private $operationsClient;
-    /**
-     * @var string|null
-     */
-    private $operationReturnType;
-    /**
-     * @var string|null
-     */
-    private $metadataReturnType;
-    /**
-     * @var mixed[]
-     */
-    private $defaultPollSettings = ['initialPollDelayMillis' => self::DEFAULT_POLLING_INTERVAL, 'pollDelayMultiplier' => self::DEFAULT_POLLING_MULTIPLIER, 'maxPollDelayMillis' => self::DEFAULT_MAX_POLLING_INTERVAL, 'totalPollTimeoutMillis' => self::DEFAULT_MAX_POLLING_DURATION];
-    /**
-     * @var object|null
-     */
-    private $lastProtoResponse;
-    /**
-     * @var bool
-     */
-    private $deleted = \false;
-    /**
-     * @var mixed[]
-     */
-    private $additionalArgs;
-    /**
-     * @var string
-     */
-    private $getOperationMethod;
-    /**
-     * @var string|null
-     */
-    private $cancelOperationMethod;
-    /**
-     * @var string|null
-     */
-    private $deleteOperationMethod;
-    /**
-     * @var string
-     */
-    private $getOperationRequest;
-    /**
-     * @var string|null
-     */
-    private $cancelOperationRequest;
-    /**
-     * @var string|null
-     */
-    private $deleteOperationRequest;
-    /**
-     * @var string
-     */
-    private $operationStatusMethod;
+    private string $operationName;
+    private ?object $operationsClient;
+    private ?string $operationReturnType;
+    private ?string $metadataReturnType;
+    private array $defaultPollSettings = ['initialPollDelayMillis' => self::DEFAULT_POLLING_INTERVAL, 'pollDelayMultiplier' => self::DEFAULT_POLLING_MULTIPLIER, 'maxPollDelayMillis' => self::DEFAULT_MAX_POLLING_INTERVAL, 'totalPollTimeoutMillis' => self::DEFAULT_MAX_POLLING_DURATION];
+    private ?object $lastProtoResponse;
+    private bool $deleted = \false;
+    private array $additionalArgs;
+    private string $getOperationMethod;
+    private ?string $cancelOperationMethod;
+    private ?string $deleteOperationMethod;
+    private string $getOperationRequest;
+    private ?string $cancelOperationRequest;
+    private ?string $deleteOperationRequest;
+    private string $operationStatusMethod;
     /** @var mixed */
     private $operationStatusDoneValue;
-    /**
-     * @var string|null
-     */
-    private $operationErrorCodeMethod;
-    /**
-     * @var string|null
-     */
-    private $operationErrorMessageMethod;
+    private ?string $operationErrorCodeMethod;
+    private ?string $operationErrorMessageMethod;
     /**
      * OperationResponse constructor.
      *
      * @param string $operationName
-     * @param object $operationsClient
+     * @param object|null $operationsClient
      * @param array $options {
      *                       Optional. Options for configuring the operation response object.
      *
@@ -284,15 +235,16 @@ class OperationResponse
     public function reload()
     {
         if ($this->deleted) {
-            throw new ValidationException("Cannot call reload() on a deleted operation");
+            throw new ValidationException('Cannot call reload() on a deleted operation');
         }
         $requestClass = $this->isNewSurfaceOperationsClient() ? $this->getOperationRequest : null;
         $this->lastProtoResponse = $this->operationsCall($this->getOperationMethod, $requestClass);
     }
     /**
-     * Return the result of the operation. If operationSucceeded() is false, return null.
+     * Return the result of the operation. If operationSucceeded() is false,
+     * return null.
      *
-     * @return mixed|null The result of the operation, or null if operationSucceeded() is false
+     * @return T|null
      */
     public function getResult()
     {
@@ -456,15 +408,21 @@ class OperationResponse
      */
     private function operationsCall(string $method, ?string $requestClass)
     {
-        $args = array_merge([$this->getName()], array_values($this->additionalArgs));
-        if ($requestClass) {
-            if (!method_exists($requestClass, 'build')) {
-                throw new LogicException('Request class must support the static build method');
+        // V1 GAPIC clients have an empty $requestClass
+        if (empty($requestClass)) {
+            if ($this->additionalArgs) {
+                return $this->operationsClient->{$method}($this->getName(), ...array_values($this->additionalArgs));
             }
-            $request = call_user_func_array($requestClass . '::build', $args);
-            $args = [$request];
+            return $this->operationsClient->{$method}($this->getName());
         }
-        return call_user_func_array([$this->operationsClient, $method], $args);
+        if (!method_exists($requestClass, 'build')) {
+            throw new LogicException('Request class must support the static build method');
+        }
+        // In V2 of Compute, the Request "build" methods contain the operation ID last instead
+        // of first. Compute is the only API which uses $additionalArgs, so switching the order
+        // will not break anything.
+        $request = $requestClass::build(...array_merge(array_values($this->additionalArgs), [$this->getName()]));
+        return $this->operationsClient->{$method}($request);
     }
     private function canHaveResult()
     {

@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api\MetricDescriptor;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Additional annotations that can be used to guide the usage of a metric.
  *
@@ -41,6 +41,12 @@ class MetricDescriptorMetadata extends \Matomo\Dependencies\GoogleAnalyticsImpor
      */
     protected $ingest_delay = null;
     /**
+     * The scope of the timeseries data of the metric.
+     *
+     * Generated from protobuf field <code>repeated .google.api.MetricDescriptor.MetricDescriptorMetadata.TimeSeriesResourceHierarchyLevel time_series_resource_hierarchy_level = 4;</code>
+     */
+    private $time_series_resource_hierarchy_level;
+    /**
      * Constructor.
      *
      * @param array $data {
@@ -59,6 +65,8 @@ class MetricDescriptorMetadata extends \Matomo\Dependencies\GoogleAnalyticsImpor
      *           The delay of data points caused by ingestion. Data points older than this
      *           age are guaranteed to be ingested and available to be read, excluding
      *           data loss due to errors.
+     *     @type int[] $time_series_resource_hierarchy_level
+     *           The scope of the timeseries data of the metric.
      * }
      */
     public function __construct($data = NULL)
@@ -77,7 +85,9 @@ class MetricDescriptorMetadata extends \Matomo\Dependencies\GoogleAnalyticsImpor
      */
     public function getLaunchStage()
     {
-        @trigger_error('launch_stage is deprecated.', \E_USER_DEPRECATED);
+        if ($this->launch_stage !== 0) {
+            @trigger_error('launch_stage is deprecated.', \E_USER_DEPRECATED);
+        }
         return $this->launch_stage;
     }
     /**
@@ -167,6 +177,29 @@ class MetricDescriptorMetadata extends \Matomo\Dependencies\GoogleAnalyticsImpor
     {
         GPBUtil::checkMessage($var, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Duration::class);
         $this->ingest_delay = $var;
+        return $this;
+    }
+    /**
+     * The scope of the timeseries data of the metric.
+     *
+     * Generated from protobuf field <code>repeated .google.api.MetricDescriptor.MetricDescriptorMetadata.TimeSeriesResourceHierarchyLevel time_series_resource_hierarchy_level = 4;</code>
+     * @return RepeatedField<int>
+     */
+    public function getTimeSeriesResourceHierarchyLevel()
+    {
+        return $this->time_series_resource_hierarchy_level;
+    }
+    /**
+     * The scope of the timeseries data of the metric.
+     *
+     * Generated from protobuf field <code>repeated .google.api.MetricDescriptor.MetricDescriptorMetadata.TimeSeriesResourceHierarchyLevel time_series_resource_hierarchy_level = 4;</code>
+     * @param int[] $var
+     * @return $this
+     */
+    public function setTimeSeriesResourceHierarchyLevel($var)
+    {
+        $arr = GPBUtil::checkRepeatedField($var, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType::ENUM, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api\MetricDescriptor\MetricDescriptorMetadata\TimeSeriesResourceHierarchyLevel::class);
+        $this->time_series_resource_hierarchy_level = $arr;
         return $this;
     }
 }

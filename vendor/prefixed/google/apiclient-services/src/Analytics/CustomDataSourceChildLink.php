@@ -19,20 +19,48 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class CustomDataSourceChildLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Link to the list of daily uploads for this custom data source. Link to the
+     * list of uploads for this custom data source.
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Value is "analytics#dailyUploads". Value is "analytics#uploads".
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * Link to the list of daily uploads for this custom data source. Link to the
+     * list of uploads for this custom data source.
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Value is "analytics#dailyUploads". Value is "analytics#uploads".
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

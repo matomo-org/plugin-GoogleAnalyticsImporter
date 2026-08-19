@@ -22,7 +22,7 @@ class EntityAdWordsLinkEntity extends \Matomo\Dependencies\GoogleAnalyticsImport
     protected $webPropertyRefType = WebPropertyRef::class;
     protected $webPropertyRefDataType = '';
     /**
-     * @param WebPropertyRef
+     * @param WebPropertyRef $webPropertyRef
      */
     public function setWebPropertyRef(WebPropertyRef $webPropertyRef)
     {

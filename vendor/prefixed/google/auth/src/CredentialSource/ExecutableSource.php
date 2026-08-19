@@ -80,23 +80,14 @@ class ExecutableSource implements ExternalAccountCredentialSourceInterface
     private const SAML_SUBJECT_TOKEN_TYPE = 'urn:ietf:params:oauth:token-type:saml2';
     private const OIDC_SUBJECT_TOKEN_TYPE1 = 'urn:ietf:params:oauth:token-type:id_token';
     private const OIDC_SUBJECT_TOKEN_TYPE2 = 'urn:ietf:params:oauth:token-type:jwt';
-    /**
-     * @var string
-     */
-    private $command;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\ExecutableHandler\ExecutableHandler
-     */
-    private $executableHandler;
-    /**
-     * @var string|null
-     */
-    private $outputFile;
+    private string $command;
+    private ExecutableHandler $executableHandler;
+    private ?string $outputFile;
     /**
      * @param string $command    The string command to run to get the subject token.
-     * @param string $outputFile
+     * @param string|null $outputFile
      */
-    public function __construct(string $command, ?string $outputFile, ExecutableHandler $executableHandler = null)
+    public function __construct(string $command, ?string $outputFile, ?ExecutableHandler $executableHandler = null)
     {
         $this->command = $command;
         $this->outputFile = $outputFile;
@@ -114,12 +105,12 @@ class ExecutableSource implements ExternalAccountCredentialSourceInterface
         return $this->command . '.' . $this->outputFile;
     }
     /**
-     * @param callable $httpHandler unused.
+     * @param callable|null $httpHandler unused.
      * @return string
      * @throws RuntimeException if the executable is not allowed to run.
      * @throws ExecutableResponseError if the executable response is invalid.
      */
-    public function fetchSubjectToken(callable $httpHandler = null) : string
+    public function fetchSubjectToken(?callable $httpHandler = null) : string
     {
         // Check if the executable is allowed to run.
         if (getenv(self::GOOGLE_EXTERNAL_ACCOUNT_ALLOW_EXECUTABLES) !== '1') {

@@ -32,8 +32,8 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Testing;
 
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Code;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\Message;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Code;
 use stdClass;
 /**
  * The MockUnaryCall class is used to mock out the \Grpc\UnaryCall class
@@ -56,7 +56,7 @@ class MockUnaryCall extends \Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\Un
      * @param callable|array|null $deserialize An optional deserialize method for the response object.
      * @param stdClass|null $status An optional status object. If set to null, a status of OK is used.
      */
-    public function __construct($response = null, $deserialize = null, stdClass $status = null)
+    public function __construct($response = null, $deserialize = null, ?stdClass $status = null)
     {
         $this->response = $response;
         $this->deserialize = $deserialize;

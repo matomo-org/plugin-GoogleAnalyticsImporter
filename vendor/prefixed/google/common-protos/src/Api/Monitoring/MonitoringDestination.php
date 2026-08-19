@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api\Monitoring;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Configuration of a specific monitoring destination (the producer project
  * or the consumer project).
@@ -41,7 +41,7 @@ class MonitoringDestination extends \Matomo\Dependencies\GoogleAnalyticsImporter
      *           The monitored resource type. The type must be defined in
      *           [Service.monitored_resources][google.api.Service.monitored_resources]
      *           section.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $metrics
+     *     @type string[] $metrics
      *           Types of the metrics to report to this monitoring destination.
      *           Each type must be defined in
      *           [Service.metrics][google.api.Service.metrics] section.
@@ -85,7 +85,7 @@ class MonitoringDestination extends \Matomo\Dependencies\GoogleAnalyticsImporter
      * [Service.metrics][google.api.Service.metrics] section.
      *
      * Generated from protobuf field <code>repeated string metrics = 2;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getMetrics()
     {
@@ -97,7 +97,7 @@ class MonitoringDestination extends \Matomo\Dependencies\GoogleAnalyticsImporter
      * [Service.metrics][google.api.Service.metrics] section.
      *
      * Generated from protobuf field <code>repeated string metrics = 2;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setMetrics($var)

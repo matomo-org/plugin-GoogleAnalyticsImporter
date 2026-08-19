@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api\Distribution;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Exemplars are example points that may be used to annotate aggregated
  * distribution values. They are metadata that gives information about a
@@ -54,7 +54,7 @@ class Exemplar extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      *           exemplar belongs.
      *     @type \Google\Protobuf\Timestamp $timestamp
      *           The observation (sampling) time of the above value.
-     *     @type array<\Google\Protobuf\Any>|\Google\Protobuf\Internal\RepeatedField $attachments
+     *     @type \Google\Protobuf\Any[] $attachments
      *           Contextual information about the example value. Examples are:
      *             Trace: type.googleapis.com/google.monitoring.v3.SpanContext
      *             Literal string: type.googleapis.com/google.protobuf.StringValue
@@ -135,7 +135,7 @@ class Exemplar extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * single exemplar, and this is enforced by the system.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.Any attachments = 3;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Protobuf\Any>
      */
     public function getAttachments()
     {
@@ -151,7 +151,7 @@ class Exemplar extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * single exemplar, and this is enforced by the system.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.Any attachments = 3;</code>
-     * @param array<\Google\Protobuf\Any>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Protobuf\Any[] $var
      * @return $this
      */
     public function setAttachments($var)

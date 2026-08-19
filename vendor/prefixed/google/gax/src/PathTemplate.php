@@ -52,7 +52,7 @@ class PathTemplate implements ResourceTemplateInterface
      * @param string $path A path template string
      * @throws ValidationException When $path cannot be parsed into a valid PathTemplate
      */
-    public function __construct(string $path = null)
+    public function __construct(?string $path = null)
     {
         if (empty($path)) {
             throw new ValidationException('Cannot construct PathTemplate from empty string');
@@ -78,9 +78,9 @@ class PathTemplate implements ResourceTemplateInterface
      *    can't be parsed.
      * @return string A rendered representation of this path template.
      */
-    public function render(array $bindings)
+    public function render(array $bindings, bool $urlEncode = \false)
     {
-        return $this->resourceTemplate->render($bindings);
+        return $this->resourceTemplate->render($bindings, $urlEncode);
     }
     /**
      * Check if $path matches a resource string.

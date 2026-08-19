@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * A simple descriptor of a resource type.
  * ResourceDescriptor annotates a resource message (either by means of a
@@ -154,7 +154,7 @@ class ResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      *           /[A-Za-z][a-zA-Z0-9]+/. It should start with an upper case character and
      *           should use PascalCase (UpperCamelCase). The maximum number of
      *           characters allowed for the `resource_type_kind` is 100.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $pattern
+     *     @type string[] $pattern
      *           Optional. The relative resource name pattern associated with this resource
      *           type. The DNS prefix of the full resource name shouldn't be specified here.
      *           The path pattern must follow the syntax, which aligns with HTTP binding
@@ -202,7 +202,7 @@ class ResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      *           The same concept of the `singular` field in k8s CRD spec
      *           https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/
      *           Such as "project" for the `resourcemanager.googleapis.com/Project` type.
-     *     @type array<int>|\Google\Protobuf\Internal\RepeatedField $style
+     *     @type int[] $style
      *           Style flag(s) for this resource.
      *           These indicate that a resource is expected to conform to a given
      *           style. See the specific style flags for additional information.
@@ -267,7 +267,7 @@ class ResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * type of resource.
      *
      * Generated from protobuf field <code>repeated string pattern = 2;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getPattern()
     {
@@ -290,7 +290,7 @@ class ResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * type of resource.
      *
      * Generated from protobuf field <code>repeated string pattern = 2;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setPattern($var)
@@ -447,7 +447,7 @@ class ResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * style. See the specific style flags for additional information.
      *
      * Generated from protobuf field <code>repeated .google.api.ResourceDescriptor.Style style = 10;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<int>
      */
     public function getStyle()
     {
@@ -459,7 +459,7 @@ class ResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * style. See the specific style flags for additional information.
      *
      * Generated from protobuf field <code>repeated .google.api.ResourceDescriptor.Style style = 10;</code>
-     * @param array<int>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param int[] $var
      * @return $this
      */
     public function setStyle($var)

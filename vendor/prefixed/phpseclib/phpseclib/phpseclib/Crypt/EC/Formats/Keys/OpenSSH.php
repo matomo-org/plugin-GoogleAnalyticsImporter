@@ -69,7 +69,7 @@ abstract class OpenSSH extends Progenitor
             $qa = self::extractPoint($parsed['publicKey'], $curve);
         } else {
             list($curveName, $publicKey) = Strings::unpackSSH2('ss', $parsed['publicKey']);
-            $curveName = '\\phpseclib3\\Crypt\\EC\\Curves\\' . $curveName;
+            $curveName = '\\Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Curves\\' . $curveName;
             $curve = new $curveName();
             $qa = self::extractPoint("\x00" . $publicKey, $curve);
         }

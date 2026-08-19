@@ -41,7 +41,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\ServerStreamingCall;
 class ForwardingServerStreamingCall extends ForwardingCall
 {
     /** @var ServerStreamingCall */
-    protected $innerCall;
+    protected object $innerCall;
     /**
      * @return mixed An iterator of response values
      */

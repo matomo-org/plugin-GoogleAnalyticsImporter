@@ -14,6 +14,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Tool;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Exception\InvalidPropertyOrMethod;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Exception\UnsupportedOperationException;
+use ReflectionProperty;
 use function is_array;
 use function is_object;
 use function method_exists;
@@ -24,6 +25,10 @@ use function sprintf;
  */
 trait ValueExtractorTrait
 {
+    /**
+     * Returns the type associated with this collection.
+     */
+    public abstract function getType() : string;
     /**
      * Extracts the value of the given property, method, or array key from the
      * element.
@@ -40,7 +45,7 @@ trait ValueExtractorTrait
      * @throws InvalidPropertyOrMethod
      * @throws UnsupportedOperationException
      */
-    protected function extractValue($element, ?string $propertyOrMethod)
+    protected function extractValue(mixed $element, ?string $propertyOrMethod) : mixed
     {
         if ($propertyOrMethod === null) {
             return $element;
@@ -49,10 +54,14 @@ trait ValueExtractorTrait
             throw new UnsupportedOperationException(sprintf('The collection type "%s" does not support the $propertyOrMethod parameter', $this->getType()));
         }
         if (is_array($element)) {
-            if (!isset($element[$propertyOrMethod])) {
-                throw new InvalidPropertyOrMethod(sprintf('Key or index "%s" not found in collection elements', $propertyOrMethod));
+            return $element[$propertyOrMethod] ?? throw new InvalidPropertyOrMethod(sprintf('Key or index "%s" not found in collection elements', $propertyOrMethod));
+        }
+        if (property_exists($element, $propertyOrMethod) && method_exists($element, $propertyOrMethod)) {
+            $reflectionProperty = new ReflectionProperty($element, $propertyOrMethod);
+            if ($reflectionProperty->isPublic()) {
+                return $element->{$propertyOrMethod};
             }
-            return $element[$propertyOrMethod];
+            return $element->{$propertyOrMethod}();
         }
         if (property_exists($element, $propertyOrMethod)) {
             return $element->{$propertyOrMethod};
@@ -60,6 +69,9 @@ trait ValueExtractorTrait
         if (method_exists($element, $propertyOrMethod)) {
             return $element->{$propertyOrMethod}();
         }
-        throw new InvalidPropertyOrMethod(sprintf('Method or property "%s" not defined in %s', $propertyOrMethod, get_class($element)));
+        if (isset($element->{$propertyOrMethod})) {
+            return $element->{$propertyOrMethod};
+        }
+        throw new InvalidPropertyOrMethod(sprintf('Method or property "%s" not defined in %s', $propertyOrMethod, $element::class));
     }
 }

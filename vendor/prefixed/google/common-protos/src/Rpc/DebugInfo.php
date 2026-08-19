@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Describes additional debugging info.
  *
@@ -32,7 +32,7 @@ class DebugInfo extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Prot
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $stack_entries
+     *     @type string[] $stack_entries
      *           The stack trace entries indicating where the error occurred.
      *     @type string $detail
      *           Additional debugging information provided by the server.
@@ -47,7 +47,7 @@ class DebugInfo extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Prot
      * The stack trace entries indicating where the error occurred.
      *
      * Generated from protobuf field <code>repeated string stack_entries = 1;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getStackEntries()
     {
@@ -57,7 +57,7 @@ class DebugInfo extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Prot
      * The stack trace entries indicating where the error occurred.
      *
      * Generated from protobuf field <code>repeated string stack_entries = 1;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setStackEntries($var)

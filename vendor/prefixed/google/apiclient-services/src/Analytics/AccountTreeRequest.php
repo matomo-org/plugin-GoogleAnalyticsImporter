@@ -19,56 +19,114 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class AccountTreeRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var string
+     */
     public $accountName;
+    /**
+     * Resource type for account ticket.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * @var string
+     */
     public $profileName;
+    /**
+     * @var string
+     */
     public $timezone;
+    /**
+     * @var string
+     */
     public $webpropertyName;
+    /**
+     * @var string
+     */
     public $websiteUrl;
+    /**
+     * @param string $accountName
+     */
     public function setAccountName($accountName)
     {
         $this->accountName = $accountName;
     }
+    /**
+     * @return string
+     */
     public function getAccountName()
     {
         return $this->accountName;
     }
+    /**
+     * Resource type for account ticket.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * @param string $profileName
+     */
     public function setProfileName($profileName)
     {
         $this->profileName = $profileName;
     }
+    /**
+     * @return string
+     */
     public function getProfileName()
     {
         return $this->profileName;
     }
+    /**
+     * @param string $timezone
+     */
     public function setTimezone($timezone)
     {
         $this->timezone = $timezone;
     }
+    /**
+     * @return string
+     */
     public function getTimezone()
     {
         return $this->timezone;
     }
+    /**
+     * @param string $webpropertyName
+     */
     public function setWebpropertyName($webpropertyName)
     {
         $this->webpropertyName = $webpropertyName;
     }
+    /**
+     * @return string
+     */
     public function getWebpropertyName()
     {
         return $this->webpropertyName;
     }
+    /**
+     * @param string $websiteUrl
+     */
     public function setWebsiteUrl($websiteUrl)
     {
         $this->websiteUrl = $websiteUrl;
     }
+    /**
+     * @return string
+     */
     public function getWebsiteUrl()
     {
         return $this->websiteUrl;

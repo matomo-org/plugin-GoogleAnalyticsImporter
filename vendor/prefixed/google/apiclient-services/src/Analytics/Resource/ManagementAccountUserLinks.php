@@ -24,7 +24,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\EntityU
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $accountUserLinks = $analyticsService->accountUserLinks;
+ *   $accountUserLinks = $analyticsService->management_accountUserLinks;
  *  </code>
  */
 class ManagementAccountUserLinks extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -35,6 +35,7 @@ class ManagementAccountUserLinks extends \Matomo\Dependencies\GoogleAnalyticsImp
      * @param string $accountId Account ID to delete the user link for.
      * @param string $linkId Link ID to delete the user link for.
      * @param array $optParams Optional parameters.
+     * @throws \Google\Service\Exception
      */
     public function delete($accountId, $linkId, $optParams = [])
     {
@@ -49,6 +50,7 @@ class ManagementAccountUserLinks extends \Matomo\Dependencies\GoogleAnalyticsImp
      * @param EntityUserLink $postBody
      * @param array $optParams Optional parameters.
      * @return EntityUserLink
+     * @throws \Google\Service\Exception
      */
     public function insert($accountId, EntityUserLink $postBody, $optParams = [])
     {
@@ -69,6 +71,7 @@ class ManagementAccountUserLinks extends \Matomo\Dependencies\GoogleAnalyticsImp
      * retrieve. Use this parameter as a pagination mechanism along with the max-
      * results parameter.
      * @return EntityUserLinks
+     * @throws \Google\Service\Exception
      */
     public function listManagementAccountUserLinks($accountId, $optParams = [])
     {
@@ -85,6 +88,7 @@ class ManagementAccountUserLinks extends \Matomo\Dependencies\GoogleAnalyticsImp
      * @param EntityUserLink $postBody
      * @param array $optParams Optional parameters.
      * @return EntityUserLink
+     * @throws \Google\Service\Exception
      */
     public function update($accountId, $linkId, EntityUserLink $postBody, $optParams = [])
     {

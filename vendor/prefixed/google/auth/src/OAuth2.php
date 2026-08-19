@@ -244,50 +244,44 @@ class OAuth2 implements FetchAuthTokenInterface
      * For STS requests.
      * A URI that indicates the target service or resource where the client
      * intends to use the requested security token.
-     * @var string|null
      */
-    private $resource;
+    private ?string $resource;
     /**
      * For STS requests.
      * A fetcher for the "subject_token", which is a security token that
      * represents the identity of the party on behalf of whom the request is
      * being made.
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\ExternalAccountCredentialSourceInterface|null
      */
-    private $subjectTokenFetcher;
+    private ?ExternalAccountCredentialSourceInterface $subjectTokenFetcher;
     /**
      * For STS requests.
      * An identifier, that indicates the type of the security token in the
      * subjectToken parameter.
-     * @var string|null
      */
-    private $subjectTokenType;
+    private ?string $subjectTokenType;
     /**
      * For STS requests.
      * A security token that represents the identity of the acting party.
-     * @var string|null
      */
-    private $actorToken;
+    private ?string $actorToken;
     /**
      * For STS requests.
      * An identifier that indicates the type of the security token in the
      * actorToken parameter.
-     * @var string|null
      */
-    private $actorTokenType;
+    private ?string $actorTokenType;
     /**
      * From STS response.
      * An identifier for the representation of the issued security token.
-     * @var string|null
      */
-    private $issuedTokenType;
+    private ?string $issuedTokenType = null;
     /**
      * From STS response.
      * An identifier for the representation of the issued security token.
      *
      * @var array<mixed>
      */
-    private $additionalOptions;
+    private array $additionalOptions;
     /**
      * Create a new OAuthCredentials.
      *
@@ -489,12 +483,12 @@ class OAuth2 implements FetchAuthTokenInterface
     /**
      * Generates a request for token credentials.
      *
-     * @param callable $httpHandler callback which delivers psr7 request
+     * @param callable|null $httpHandler callback which delivers psr7 request
      * @param array<mixed> $headers [optional] Additional headers to pass to
      *        the token endpoint request.
      * @return RequestInterface the authorization Url.
      */
-    public function generateCredentialsRequest(callable $httpHandler = null, $headers = [])
+    public function generateCredentialsRequest(?callable $httpHandler = null, array $headers = [])
     {
         $uri = $this->getTokenCredentialUri();
         if (is_null($uri)) {
@@ -518,6 +512,9 @@ class OAuth2 implements FetchAuthTokenInterface
                 break;
             case 'refresh_token':
                 $params['refresh_token'] = $this->getRefreshToken();
+                if (isset($this->getAdditionalClaims()['target_audience'])) {
+                    $params['target_audience'] = $this->getAdditionalClaims()['target_audience'];
+                }
                 $this->addClientCredentials($params);
                 break;
             case self::JWT_URN:
@@ -550,12 +547,12 @@ class OAuth2 implements FetchAuthTokenInterface
     /**
      * Fetches the auth tokens based on the current state.
      *
-     * @param callable $httpHandler callback which delivers psr7 request
+     * @param callable|null $httpHandler callback which delivers psr7 request
      * @param array<mixed> $headers [optional] If present, add these headers to the token
      *        endpoint request.
      * @return array<mixed> the response
      */
-    public function fetchAuthToken(callable $httpHandler = null, $headers = [])
+    public function fetchAuthToken(?callable $httpHandler = null, array $headers = [])
     {
         if (is_null($httpHandler)) {
             $httpHandler = HttpHandlerFactory::build(HttpClientCache::getHttpClient());
@@ -569,12 +566,12 @@ class OAuth2 implements FetchAuthTokenInterface
         return $credentials;
     }
     /**
-     * @deprecated
      *
      * Obtains a key that can used to cache the results of #fetchAuthToken.
      *
      * The key is derived from the scopes.
      *
+     * @deprecated
      * @return ?string a key that may be used to cache the auth token.
      */
     public function getCacheKey()
@@ -1429,13 +1426,13 @@ class OAuth2 implements FetchAuthTokenInterface
     /**
      * Get the client ID.
      *
-     * Alias of {@see Google\Auth\OAuth2::getClientId()}.
+     * Alias of {@see OAuth2::getClientId()}.
      *
-     * @param callable $httpHandler
+     * @param callable|null $httpHandler
      * @return string
      * @access private
      */
-    public function getClientName(callable $httpHandler = null)
+    public function getClientName(?callable $httpHandler = null)
     {
         return $this->getClientId();
     }

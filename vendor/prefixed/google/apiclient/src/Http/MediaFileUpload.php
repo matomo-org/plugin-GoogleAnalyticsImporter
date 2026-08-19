@@ -229,7 +229,7 @@ class MediaFileUpload
     private function fetchResumeUri()
     {
         $body = $this->request->getBody();
-        $headers = ['content-type' => 'application/json; charset=UTF-8', 'content-length' => $body->getSize(), 'x-upload-content-type' => $this->mimeType, 'x-upload-content-length' => $this->size, 'expect' => ''];
+        $headers = ['content-type' => 'application/json; charset=UTF-8', 'content-length' => (string) $body->getSize(), 'x-upload-content-type' => $this->mimeType, 'x-upload-content-length' => (string) $this->size, 'expect' => ''];
         foreach ($headers as $key => $value) {
             $this->request = $this->request->withHeader($key, $value);
         }

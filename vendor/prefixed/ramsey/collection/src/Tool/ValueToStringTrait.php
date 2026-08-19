@@ -41,7 +41,7 @@ trait ValueToStringTrait
      *
      * @param mixed $value the value to return as a string.
      */
-    protected function toolValueToString($value) : string
+    protected function toolValueToString(mixed $value) : string
     {
         // null
         if ($value === null) {
@@ -67,13 +67,14 @@ trait ValueToStringTrait
         assert(is_object($value));
         // __toString() is implemented
         if (is_callable([$value, '__toString'])) {
-            return (string) $value->__toString();
+            /** @var string */
+            return $value->__toString();
         }
         // object of type \DateTime
         if ($value instanceof DateTimeInterface) {
             return $value->format('c');
         }
         // unknown type
-        return '(' . get_class($value) . ' Object)';
+        return '(' . $value::class . ' Object)';
     }
 }

@@ -48,21 +48,21 @@ interface CollectionInterface extends ArrayInterface
      * (rather than returning `false`). This preserves the invariant that a
      * collection always contains the specified element after this call returns.
      *
-     * @param mixed $element The element to add to the collection.
+     * @param T $element The element to add to the collection.
      *
      * @return bool `true` if this collection changed as a result of the call.
      *
      * @throws InvalidArgumentException if the collection refuses to add the
      *     $element for any reason other than that it already contains the element.
      */
-    public function add($element) : bool;
+    public function add(mixed $element) : bool;
     /**
      * Returns `true` if this collection contains the specified element.
      *
-     * @param mixed $element The element to check whether the collection contains.
+     * @param T $element The element to check whether the collection contains.
      * @param bool $strict Whether to perform a strict type check on the value.
      */
-    public function contains($element, bool $strict = \true) : bool;
+    public function contains(mixed $element, bool $strict = \true) : bool;
     /**
      * Returns the type associated with this collection.
      */
@@ -71,18 +71,18 @@ interface CollectionInterface extends ArrayInterface
      * Removes a single instance of the specified element from this collection,
      * if it is present.
      *
-     * @param mixed $element The element to remove from the collection.
+     * @param T $element The element to remove from the collection.
      *
      * @return bool `true` if an element was removed as a result of this call.
      */
-    public function remove($element) : bool;
+    public function remove(mixed $element) : bool;
     /**
      * Returns the values from the given property, method, or array key.
      *
      * @param string $propertyOrMethod The name of the property, method, or
      *     array key to evaluate and return.
      *
-     * @return array<int, mixed>
+     * @return list<mixed>
      *
      * @throws InvalidPropertyOrMethod if the $propertyOrMethod does not exist
      *     on the elements in this collection.
@@ -97,7 +97,7 @@ interface CollectionInterface extends ArrayInterface
      *
      * @throws NoSuchElementException if this collection is empty.
      */
-    public function first();
+    public function first() : mixed;
     /**
      * Returns the last item of the collection.
      *
@@ -105,7 +105,7 @@ interface CollectionInterface extends ArrayInterface
      *
      * @throws NoSuchElementException if this collection is empty.
      */
-    public function last();
+    public function last() : mixed;
     /**
      * Sort the collection by a property, method, or array key with the given
      * sort order.
@@ -125,9 +125,8 @@ interface CollectionInterface extends ArrayInterface
      *     on the elements in this collection.
      * @throws UnsupportedOperationException if unable to call sort() on this
      *     collection.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection\Sort::* $order
      */
-    public function sort(?string $propertyOrMethod = null, string $order = Sort::Ascending) : self;
+    public function sort(?string $propertyOrMethod = null, Sort $order = Sort::Ascending) : self;
     /**
      * Filter out items of the collection which don't match the criteria of
      * given callback.
@@ -161,7 +160,7 @@ interface CollectionInterface extends ArrayInterface
      * @throws UnsupportedOperationException if unable to call where() on this
      *     collection.
      */
-    public function where(?string $propertyOrMethod, $value) : self;
+    public function where(?string $propertyOrMethod, mixed $value) : self;
     /**
      * Apply a given callback method on each item of the collection.
      *
@@ -189,13 +188,13 @@ interface CollectionInterface extends ArrayInterface
      *
      * @param callable(TCarry, T): TCarry $callback A callable to apply to each
      *     item of the collection to reduce it to a single value.
-     * @param mixed $initial This is the initial value provided to the callback.
+     * @param TCarry $initial This is the initial value provided to the callback.
      *
      * @return TCarry
      *
      * @template TCarry
      */
-    public function reduce(callable $callback, $initial);
+    public function reduce(callable $callback, mixed $initial) : mixed;
     /**
      * Create a new collection with divergent items between current and given
      * collection.

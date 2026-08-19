@@ -19,29 +19,56 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class GaDataDataTableCols extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var string
+     */
     public $id;
+    /**
+     * @var string
+     */
     public $label;
+    /**
+     * @var string
+     */
     public $type;
+    /**
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * @param string $label
+     */
     public function setLabel($label)
     {
         $this->label = $label;
     }
+    /**
+     * @return string
+     */
     public function getLabel()
     {
         return $this->label;
     }
+    /**
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

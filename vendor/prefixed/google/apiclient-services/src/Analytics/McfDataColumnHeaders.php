@@ -19,29 +19,70 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class McfDataColumnHeaders extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Column Type. Either DIMENSION or METRIC.
+     *
+     * @var string
+     */
     public $columnType;
+    /**
+     * Data type. Dimension and metric values data types such as INTEGER, DOUBLE,
+     * CURRENCY, MCF_SEQUENCE etc.
+     *
+     * @var string
+     */
     public $dataType;
+    /**
+     * Column name.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Column Type. Either DIMENSION or METRIC.
+     *
+     * @param string $columnType
+     */
     public function setColumnType($columnType)
     {
         $this->columnType = $columnType;
     }
+    /**
+     * @return string
+     */
     public function getColumnType()
     {
         return $this->columnType;
     }
+    /**
+     * Data type. Dimension and metric values data types such as INTEGER, DOUBLE,
+     * CURRENCY, MCF_SEQUENCE etc.
+     *
+     * @param string $dataType
+     */
     public function setDataType($dataType)
     {
         $this->dataType = $dataType;
     }
+    /**
+     * @return string
+     */
     public function getDataType()
     {
         return $this->dataType;
     }
+    /**
+     * Column name.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;

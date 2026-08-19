@@ -39,33 +39,29 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\RetrySettings;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
 /**
  * Middleware that adds retry functionality.
+ *
+ * @internal
  */
 class RetryMiddleware implements MiddlewareInterface
 {
     /** @var callable */
     private $nextHandler;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\RetrySettings
-     */
-    private $retrySettings;
-    /**
-     * @var float|null
-     */
-    private $deadlineMs;
+    private RetrySettings $retrySettings;
+    private ?float $deadlineMs;
+    /** @var callable */
+    private $delayHandler;
     /*
      * The number of retries that have already been attempted.
      * The original API call will have $retryAttempts set to 0.
      */
-    /**
-     * @var int
-     */
-    private $retryAttempts;
-    public function __construct(callable $nextHandler, RetrySettings $retrySettings, $deadlineMs = null, $retryAttempts = 0)
+    private int $retryAttempts;
+    public function __construct(callable $nextHandler, RetrySettings $retrySettings, $deadlineMs = null, $retryAttempts = 0, ?callable $delayHandler = null)
     {
         $this->nextHandler = $nextHandler;
         $this->retrySettings = $retrySettings;
         $this->deadlineMs = $deadlineMs;
         $this->retryAttempts = $retryAttempts;
+        $this->delayHandler = $delayHandler ?? [$this, 'sleepMillis'];
     }
     /**
      * @param Call $call
@@ -84,9 +80,17 @@ class RetryMiddleware implements MiddlewareInterface
                 $options['timeoutMillis'] = $this->retrySettings->getInitialRpcTimeoutMillis();
             }
         }
+        // Setting the retry attempt for logging
+        if ($this->retryAttempts > 0) {
+            $options['retryAttempt'] = $this->retryAttempts;
+        }
         // Call the handler immediately if retry settings are disabled.
         if (!$this->retrySettings->retriesEnabled()) {
             return $nextHandler($call, $options);
+        }
+        // Set the deadline before making the call, if it has not been set
+        if (is_null($this->deadlineMs)) {
+            $this->deadlineMs = $this->getCurrentTimeMs() + $this->retrySettings->getTotalTimeoutMillis();
         }
         return $nextHandler($call, $options)->then(null, function ($e) use($call, $options) {
             $retryFunction = $this->getRetryFunction();
@@ -119,19 +123,19 @@ class RetryMiddleware implements MiddlewareInterface
         $maxDelayMs = $this->retrySettings->getMaxRetryDelayMillis();
         $timeoutMult = $this->retrySettings->getRpcTimeoutMultiplier();
         $maxTimeoutMs = $this->retrySettings->getMaxRpcTimeoutMillis();
-        $totalTimeoutMs = $this->retrySettings->getTotalTimeoutMillis();
         $delayMs = $this->retrySettings->getInitialRetryDelayMillis();
         $timeoutMs = $options['timeoutMillis'];
         $currentTimeMs = $this->getCurrentTimeMs();
-        $deadlineMs = $this->deadlineMs ?: $currentTimeMs + $totalTimeoutMs;
-        if ($currentTimeMs >= $deadlineMs) {
+        if ($currentTimeMs >= $this->deadlineMs) {
             throw new ApiException('Retry total timeout exceeded.', \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc\Code::DEADLINE_EXCEEDED, ApiStatus::DEADLINE_EXCEEDED);
         }
-        $delayMs = min($delayMs * $delayMult, $maxDelayMs);
-        $timeoutMs = (int) min($timeoutMs * $timeoutMult, $maxTimeoutMs, $deadlineMs - $this->getCurrentTimeMs());
-        $nextHandler = new RetryMiddleware($this->nextHandler, $this->retrySettings->with(['initialRetryDelayMillis' => $delayMs]), $deadlineMs, $this->retryAttempts + 1);
+        $nextDelayMs = min($delayMs * $delayMult, $maxDelayMs);
+        $timeoutMs = (int) min($timeoutMs * $timeoutMult, $maxTimeoutMs, $this->deadlineMs - $this->getCurrentTimeMs());
+        $nextHandler = new RetryMiddleware($this->nextHandler, $this->retrySettings->with(['initialRetryDelayMillis' => $nextDelayMs]), $this->deadlineMs, $this->retryAttempts + 1, $this->delayHandler);
         // Set the timeout for the call
         $options['timeoutMillis'] = $timeoutMs;
+        // Sleep for the length of the delay
+        ($this->delayHandler)((int) $delayMs);
         return $nextHandler($call, $options);
     }
     protected function getCurrentTimeMs()
@@ -155,5 +159,12 @@ class RetryMiddleware implements MiddlewareInterface
             }
             return \true;
         };
+    }
+    /**
+     * @param int $millis
+     */
+    private function sleepMillis(int $millis)
+    {
+        usleep($millis * 1000);
     }
 }

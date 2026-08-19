@@ -52,11 +52,8 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ValidationExcepti
  */
 class AbsoluteResourceTemplate implements ResourceTemplateInterface
 {
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ResourceTemplate\RelativeResourceTemplate
-     */
-    private $resourceTemplate;
-    /** @var string|bool */
+    private RelativeResourceTemplate $resourceTemplate;
+    /** @var string */
     private $verb;
     /**
      * AbsoluteResourceTemplate constructor.
@@ -80,14 +77,14 @@ class AbsoluteResourceTemplate implements ResourceTemplateInterface
      */
     public function __toString()
     {
-        return sprintf("/%s%s", $this->resourceTemplate, $this->renderVerb());
+        return sprintf('/%s%s', $this->resourceTemplate, $this->renderVerb());
     }
     /**
      * @inheritdoc
      */
-    public function render(array $bindings)
+    public function render(array $bindings, bool $urlEncode = \false)
     {
-        return sprintf("/%s%s", $this->resourceTemplate->render($bindings), $this->renderVerb());
+        return sprintf('/%s%s', $this->resourceTemplate->render($bindings, $urlEncode), $this->renderVerb());
     }
     /**
      * @inheritdoc
@@ -107,7 +104,7 @@ class AbsoluteResourceTemplate implements ResourceTemplateInterface
     public function match(string $path)
     {
         if (empty($path)) {
-            throw $this->matchException($path, "path cannot be empty");
+            throw $this->matchException($path, 'path cannot be empty');
         }
         if ($path[0] !== '/') {
             throw $this->matchException($path, "missing leading '/'");

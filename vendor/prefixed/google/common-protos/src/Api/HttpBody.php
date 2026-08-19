@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Message that represents an arbitrary HTTP body. It should only be used for
  * payload formats that can't be represented as JSON, such as raw binary or
@@ -72,7 +72,7 @@ class HttpBody extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      *           The HTTP Content-Type header value specifying the content type of the body.
      *     @type string $data
      *           The HTTP request/response body as raw binary.
-     *     @type array<\Google\Protobuf\Any>|\Google\Protobuf\Internal\RepeatedField $extensions
+     *     @type \Google\Protobuf\Any[] $extensions
      *           Application specific response metadata. Must be set in the first response
      *           for streaming APIs.
      * }
@@ -133,7 +133,7 @@ class HttpBody extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * for streaming APIs.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.Any extensions = 3;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Protobuf\Any>
      */
     public function getExtensions()
     {
@@ -144,7 +144,7 @@ class HttpBody extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * for streaming APIs.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.Any extensions = 3;</code>
-     * @param array<\Google\Protobuf\Any>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Protobuf\Any[] $var
      * @return $this
      */
     public function setExtensions($var)

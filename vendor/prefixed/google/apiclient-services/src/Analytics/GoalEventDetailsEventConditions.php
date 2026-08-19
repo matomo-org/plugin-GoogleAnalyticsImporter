@@ -19,47 +19,116 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class GoalEventDetailsEventConditions extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL.
+     *
+     * @var string
+     */
     public $comparisonType;
+    /**
+     * Value used for this comparison.
+     *
+     * @var string
+     */
     public $comparisonValue;
+    /**
+     * Expression used for this match.
+     *
+     * @var string
+     */
     public $expression;
+    /**
+     * Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH,
+     * or EXACT.
+     *
+     * @var string
+     */
     public $matchType;
+    /**
+     * Type of this event condition. Possible values are CATEGORY, ACTION, LABEL,
+     * or VALUE.
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * Type of comparison. Possible values are LESS_THAN, GREATER_THAN or EQUAL.
+     *
+     * @param string $comparisonType
+     */
     public function setComparisonType($comparisonType)
     {
         $this->comparisonType = $comparisonType;
     }
+    /**
+     * @return string
+     */
     public function getComparisonType()
     {
         return $this->comparisonType;
     }
+    /**
+     * Value used for this comparison.
+     *
+     * @param string $comparisonValue
+     */
     public function setComparisonValue($comparisonValue)
     {
         $this->comparisonValue = $comparisonValue;
     }
+    /**
+     * @return string
+     */
     public function getComparisonValue()
     {
         return $this->comparisonValue;
     }
+    /**
+     * Expression used for this match.
+     *
+     * @param string $expression
+     */
     public function setExpression($expression)
     {
         $this->expression = $expression;
     }
+    /**
+     * @return string
+     */
     public function getExpression()
     {
         return $this->expression;
     }
+    /**
+     * Type of the match to be performed. Possible values are REGEXP, BEGINS_WITH,
+     * or EXACT.
+     *
+     * @param string $matchType
+     */
     public function setMatchType($matchType)
     {
         $this->matchType = $matchType;
     }
+    /**
+     * @return string
+     */
     public function getMatchType()
     {
         return $this->matchType;
     }
+    /**
+     * Type of this event condition. Possible values are CATEGORY, ACTION, LABEL,
+     * or VALUE.
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

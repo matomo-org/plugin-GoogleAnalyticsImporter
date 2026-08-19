@@ -14,59 +14,7 @@ class ErrorDetails
             return;
         }
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Duration::initOnce();
-        $pool->internalAddGeneratedFile('
-ê
-google/rpc/error_details.proto
-google.rpc"“
-	ErrorInfo
-reason (	
-domain (	5
-metadata (2#.google.rpc.ErrorInfo.MetadataEntry/
-MetadataEntry
-key (	
-value (	:8";
-	RetryInfo.
-retry_delay (2.google.protobuf.Duration"2
-	DebugInfo
-stack_entries (	
-detail (	"y
-QuotaFailure6
-
-violations (2".google.rpc.QuotaFailure.Violation1
-	Violation
-subject (	
-description (	"•
-PreconditionFailure=
-
-violations (2).google.rpc.PreconditionFailure.Violation?
-	Violation
-type (	
-subject (	
-description (	"ƒ
-
-BadRequest?
-field_violations (2%.google.rpc.BadRequest.FieldViolation4
-FieldViolation
-field (	
-description (	"7
-RequestInfo
-
-request_id (	
-serving_data (	"`
-ResourceInfo
-resource_type (	
-resource_name (	
-owner (	
-description (	"V
-Help$
-links (2.google.rpc.Help.Link(
-Link
-description (	
-url (	"3
-LocalizedMessage
-locale (	
-message (	Bl
-com.google.rpcBErrorDetailsProtoPZ?google.golang.org/genproto/googleapis/rpc/errdetails;errdetails¢RPCbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\xca\v\n\x1egoogle/rpc/error_details.proto\x12\ngoogle.rpc\"\x93\x01\n\tErrorInfo\x12\x0e\n\x06reason\x18\x01 \x01(\t\x12\x0e\n\x06domain\x18\x02 \x01(\t\x125\n\x08metadata\x18\x03 \x03(\v2#.google.rpc.ErrorInfo.MetadataEntry\x1a/\n\rMetadataEntry\x12\v\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x028\x01\";\n\tRetryInfo\x12.\n\vretry_delay\x18\x01 \x01(\v2\x19.google.protobuf.Duration\"2\n\tDebugInfo\x12\x15\n\rstack_entries\x18\x01 \x03(\t\x12\x0e\n\x06detail\x18\x02 \x01(\t\"\x8f\x03\n\fQuotaFailure\x126\n\nviolations\x18\x01 \x03(\v2\".google.rpc.QuotaFailure.Violation\x1a\xc6\x02\n\tViolation\x12\x0f\n\x07subject\x18\x01 \x01(\t\x12\x13\n\vdescription\x18\x02 \x01(\t\x12\x13\n\vapi_service\x18\x03 \x01(\t\x12\x14\n\fquota_metric\x18\x04 \x01(\t\x12\x10\n\x08quota_id\x18\x05 \x01(\t\x12Q\n\x10quota_dimensions\x18\x06 \x03(\v27.google.rpc.QuotaFailure.Violation.QuotaDimensionsEntry\x12\x13\n\vquota_value\x18\x07 \x01(\x03\x12\x1f\n\x12future_quota_value\x18\x08 \x01(\x03H\x00\x88\x01\x01\x1a6\n\x14QuotaDimensionsEntry\x12\v\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x028\x01B\x15\n\x13_future_quota_value\"\x95\x01\n\x13PreconditionFailure\x12=\n\nviolations\x18\x01 \x03(\v2).google.rpc.PreconditionFailure.Violation\x1a?\n\tViolation\x12\f\n\x04type\x18\x01 \x01(\t\x12\x0f\n\x07subject\x18\x02 \x01(\t\x12\x13\n\vdescription\x18\x03 \x01(\t\"\xcc\x01\n\nBadRequest\x12?\n\x10field_violations\x18\x01 \x03(\v2%.google.rpc.BadRequest.FieldViolation\x1a}\n\x0eFieldViolation\x12\r\n\x05field\x18\x01 \x01(\t\x12\x13\n\vdescription\x18\x02 \x01(\t\x12\x0e\n\x06reason\x18\x03 \x01(\t\x127\n\x11localized_message\x18\x04 \x01(\v2\x1c.google.rpc.LocalizedMessage\"7\n\vRequestInfo\x12\x12\n\nrequest_id\x18\x01 \x01(\t\x12\x14\n\fserving_data\x18\x02 \x01(\t\"`\n\fResourceInfo\x12\x15\n\rresource_type\x18\x01 \x01(\t\x12\x15\n\rresource_name\x18\x02 \x01(\t\x12\r\n\x05owner\x18\x03 \x01(\t\x12\x13\n\vdescription\x18\x04 \x01(\t\"V\n\x04Help\x12\$\n\x05links\x18\x01 \x03(\v2\x15.google.rpc.Help.Link\x1a(\n\x04Link\x12\x13\n\vdescription\x18\x01 \x01(\t\x12\v\n\x03url\x18\x02 \x01(\t\"3\n\x10LocalizedMessage\x12\x0e\n\x06locale\x18\x01 \x01(\t\x12\x0f\n\x07message\x18\x02 \x01(\tBl\n\x0ecom.google.rpcB\x11ErrorDetailsProtoP\x01Z?google.golang.org/genproto/googleapis/rpc/errdetails;errdetails\xa2\x02\x03RPCb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

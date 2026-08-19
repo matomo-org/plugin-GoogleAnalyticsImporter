@@ -23,7 +23,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Realtim
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $realtime = $analyticsService->realtime;
+ *   $realtime = $analyticsService->data_realtime;
  *  </code>
  */
 class DataRealtime extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -46,6 +46,7 @@ class DataRealtime extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\S
      * @opt_param string sort A comma-separated list of dimensions or metrics that
      * determine the sort order for real time data.
      * @return RealtimeData
+     * @throws \Google\Service\Exception
      */
     public function get($ids, $metrics, $optParams = [])
     {

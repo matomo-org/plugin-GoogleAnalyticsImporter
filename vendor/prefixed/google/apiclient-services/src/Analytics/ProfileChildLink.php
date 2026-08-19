@@ -19,20 +19,46 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class ProfileChildLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Link to the list of goals for this view (profile).
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Value is "analytics#goals".
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * Link to the list of goals for this view (profile).
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Value is "analytics#goals".
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

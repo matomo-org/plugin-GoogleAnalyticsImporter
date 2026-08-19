@@ -16,33 +16,7 @@ class Locations
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Api\Annotations::initOnce();
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Any::initOnce();
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Api\Client::initOnce();
-        $pool->internalAddGeneratedFile('
-Ó
-%google/cloud/location/locations.protogoogle.cloud.locationgoogle/protobuf/any.protogoogle/api/client.proto"[
-ListLocationsRequest
-name (	
-filter (	
-	page_size (
-
-page_token (	"d
-ListLocationsResponse2
-	locations (2.google.cloud.location.Location
-next_page_token (	""
-GetLocationRequest
-name (	"×
-Location
-name (	
-location_id (	
-display_name (	;
-labels (2+.google.cloud.location.Location.LabelsEntry&
-metadata (2.google.protobuf.Any-
-LabelsEntry
-key (	
-value (	:82¤
-	Locations«
-ListLocations+.google.cloud.location.ListLocationsRequest,.google.cloud.location.ListLocationsResponse"?‚Óä“9/v1/{name=locations}Z!/v1/{name=projects/*}/locationsž
-GetLocation).google.cloud.location.GetLocationRequest.google.cloud.location.Location"C‚Óä“=/v1/{name=locations/*}Z#!/v1/{name=projects/*/locations/*}HÊAcloud.googleapis.comÒA.https://www.googleapis.com/auth/cloud-platformBo
-com.google.cloud.locationBLocationsProtoPZ=google.golang.org/genproto/googleapis/cloud/location;locationøbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\xd3\x08\n%google/cloud/location/locations.proto\x12\x15google.cloud.location\x1a\x19google/protobuf/any.proto\x1a\x17google/api/client.proto\"[\n\x14ListLocationsRequest\x12\f\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06filter\x18\x02 \x01(\t\x12\x11\n\tpage_size\x18\x03 \x01(\x05\x12\x12\n\npage_token\x18\x04 \x01(\t\"d\n\x15ListLocationsResponse\x122\n\tlocations\x18\x01 \x03(\v2\x1f.google.cloud.location.Location\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\"\n\x12GetLocationRequest\x12\f\n\x04name\x18\x01 \x01(\t\"\xd7\x01\n\x08Location\x12\f\n\x04name\x18\x01 \x01(\t\x12\x13\n\vlocation_id\x18\x04 \x01(\t\x12\x14\n\fdisplay_name\x18\x05 \x01(\t\x12;\n\x06labels\x18\x02 \x03(\v2+.google.cloud.location.Location.LabelsEntry\x12&\n\x08metadata\x18\x03 \x01(\v2\x14.google.protobuf.Any\x1a-\n\vLabelsEntry\x12\v\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x028\x012\xa4\x03\n\tLocations\x12\xab\x01\n\rListLocations\x12+.google.cloud.location.ListLocationsRequest\x1a,.google.cloud.location.ListLocationsResponse\"?\x82\xd3\xe4\x93\x029\x12\x14/v1/{name=locations}Z!\x12\x1f/v1/{name=projects/*}/locations\x12\x9e\x01\n\vGetLocation\x12).google.cloud.location.GetLocationRequest\x1a\x1f.google.cloud.location.Location\"C\x82\xd3\xe4\x93\x02=\x12\x16/v1/{name=locations/*}Z#\x12!/v1/{name=projects/*/locations/*}\x1aH\xcaA\x14cloud.googleapis.com\xd2A.https://www.googleapis.com/auth/cloud-platformBo\n\x19com.google.cloud.locationB\x0eLocationsProtoP\x01Z=google.golang.org/genproto/googleapis/cloud/location;location\xf8\x01\x01b\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

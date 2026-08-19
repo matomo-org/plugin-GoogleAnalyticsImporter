@@ -19,20 +19,38 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 
 class DateRange extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var string
+     */
     public $endDate;
+    /**
+     * @var string
+     */
     public $startDate;
+    /**
+     * @param string
+     */
     public function setEndDate($endDate)
     {
         $this->endDate = $endDate;
     }
+    /**
+     * @return string
+     */
     public function getEndDate()
     {
         return $this->endDate;
     }
+    /**
+     * @param string
+     */
     public function setStartDate($startDate)
     {
         $this->startDate = $startDate;
     }
+    /**
+     * @return string
+     */
     public function getStartDate()
     {
         return $this->startDate;

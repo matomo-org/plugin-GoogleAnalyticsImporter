@@ -20,24 +20,42 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 class EcommerceData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'products';
+    /**
+     * @var string
+     */
     public $actionType;
+    /**
+     * @var string
+     */
     public $ecommerceType;
     protected $productsType = ProductData::class;
     protected $productsDataType = 'array';
     protected $transactionType = TransactionData::class;
     protected $transactionDataType = '';
+    /**
+     * @param string
+     */
     public function setActionType($actionType)
     {
         $this->actionType = $actionType;
     }
+    /**
+     * @return string
+     */
     public function getActionType()
     {
         return $this->actionType;
     }
+    /**
+     * @param string
+     */
     public function setEcommerceType($ecommerceType)
     {
         $this->ecommerceType = $ecommerceType;
     }
+    /**
+     * @return string
+     */
     public function getEcommerceType()
     {
         return $this->ecommerceType;

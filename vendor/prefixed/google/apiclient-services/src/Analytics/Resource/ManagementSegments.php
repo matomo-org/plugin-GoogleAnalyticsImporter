@@ -23,7 +23,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Segment
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $segments = $analyticsService->segments;
+ *   $segments = $analyticsService->management_segments;
  *  </code>
  */
 class ManagementSegments extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -40,6 +40,7 @@ class ManagementSegments extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * this parameter as a pagination mechanism along with the max-results
      * parameter.
      * @return Segments
+     * @throws \Google\Service\Exception
      */
     public function listManagementSegments($optParams = [])
     {

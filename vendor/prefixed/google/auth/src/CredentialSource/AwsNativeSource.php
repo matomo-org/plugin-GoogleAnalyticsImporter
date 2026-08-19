@@ -27,26 +27,12 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Psr7\Request;
 class AwsNativeSource implements ExternalAccountCredentialSourceInterface
 {
     private const CRED_VERIFICATION_QUERY = 'Action=GetCallerIdentity&Version=2011-06-15';
-    /**
-     * @var string
-     */
-    private $audience;
-    /**
-     * @var string
-     */
-    private $regionalCredVerificationUrl;
-    /**
-     * @var string|null
-     */
-    private $regionUrl;
-    /**
-     * @var string|null
-     */
-    private $securityCredentialsUrl;
-    /**
-     * @var string|null
-     */
-    private $imdsv2SessionTokenUrl;
+    private const ECS_CONTAINER_METADATA_URL = 'http://169.254.170.2';
+    private string $audience;
+    private string $regionalCredVerificationUrl;
+    private ?string $regionUrl;
+    private ?string $securityCredentialsUrl;
+    private ?string $imdsv2SessionTokenUrl;
     /**
      * @param string $audience The audience for the credential.
      * @param string $regionalCredVerificationUrl The regional AWS GetCallerIdentity action URL used to determine the
@@ -59,7 +45,7 @@ class AwsNativeSource implements ExternalAccountCredentialSourceInterface
      * @param string|null $imdsv2SessionTokenUrl Presence of this URL enforces the auth libraries to fetch a Session
      *                                           Token from AWS. This field is required for EC2 instances using IMDSv2.
      */
-    public function __construct(string $audience, string $regionalCredVerificationUrl, string $regionUrl = null, string $securityCredentialsUrl = null, string $imdsv2SessionTokenUrl = null)
+    public function __construct(string $audience, string $regionalCredVerificationUrl, ?string $regionUrl = null, ?string $securityCredentialsUrl = null, ?string $imdsv2SessionTokenUrl = null)
     {
         $this->audience = $audience;
         $this->regionalCredVerificationUrl = $regionalCredVerificationUrl;
@@ -67,7 +53,7 @@ class AwsNativeSource implements ExternalAccountCredentialSourceInterface
         $this->securityCredentialsUrl = $securityCredentialsUrl;
         $this->imdsv2SessionTokenUrl = $imdsv2SessionTokenUrl;
     }
-    public function fetchSubjectToken(callable $httpHandler = null) : string
+    public function fetchSubjectToken(?callable $httpHandler = null) : string
     {
         if (is_null($httpHandler)) {
             $httpHandler = HttpHandlerFactory::build(HttpClientCache::getHttpClient());
@@ -76,7 +62,8 @@ class AwsNativeSource implements ExternalAccountCredentialSourceInterface
         if ($this->imdsv2SessionTokenUrl) {
             $headers = ['X-aws-ec2-metadata-token' => self::getImdsV2SessionToken($this->imdsv2SessionTokenUrl, $httpHandler)];
         }
-        if (!($signingVars = self::getSigningVarsFromEnv())) {
+        $signingVars = self::getSigningVarsFromEnv() ?? self::getSigningVarsFromEcs($httpHandler);
+        if (!$signingVars) {
             if (!$this->securityCredentialsUrl) {
                 throw new \LogicException('Unable to get credentials from ENV, and no security credentials URL provided');
             }
@@ -96,9 +83,7 @@ class AwsNativeSource implements ExternalAccountCredentialSourceInterface
         // Inject x-goog-cloud-target-resource into header
         $headers['x-goog-cloud-target-resource'] = $this->audience;
         // Format headers as they're expected in the subject token
-        $formattedHeaders = array_map(function ($k, $v) {
-            return ['key' => $k, 'value' => $v];
-        }, array_keys($headers), $headers);
+        $formattedHeaders = array_map(fn($k, $v) => ['key' => $k, 'value' => $v], array_keys($headers), $headers);
         $request = ['headers' => $formattedHeaders, 'method' => 'POST', 'url' => $url];
         return urlencode(json_encode($request) ?: '');
     }
@@ -251,6 +236,51 @@ class AwsNativeSource implements ExternalAccountCredentialSourceInterface
     /**
      * @internal
      *
+     * @param callable $httpHandler
+     * @return array{string, string, ?string}|null
+     */
+    public static function getSigningVarsFromEcs(callable $httpHandler) : ?array
+    {
+        // Load the environment variables defined by AWS for the ECS/EKS container metadata.
+        $ecsContainerCredentialsRelativeUri = getenv('AWS_CONTAINER_CREDENTIALS_RELATIVE_URI');
+        $ecsContainerCredentialsFullUri = getenv('AWS_CONTAINER_CREDENTIALS_FULL_URI');
+        $ecsContainerAuthorizationToken = getenv('AWS_CONTAINER_AUTHORIZATION_TOKEN');
+        $ecsContainerAuthorizationTokenFile = getenv('AWS_CONTAINER_AUTHORIZATION_TOKEN_FILE');
+        $credentialsUrl = '';
+        // The full URI takes precedence over the relative URI if both are defined.
+        if ($ecsContainerCredentialsFullUri) {
+            $credentialsUrl = $ecsContainerCredentialsFullUri;
+        } elseif ($ecsContainerCredentialsRelativeUri) {
+            // The relative URI is appended to the default ECS Task Metadata Endpoint.
+            $credentialsUrl = self::ECS_CONTAINER_METADATA_URL . $ecsContainerCredentialsRelativeUri;
+        } else {
+            // Not running in an ECS environment, or metadata is not enabled.
+            return null;
+        }
+        $headers = [];
+        // The authorization token file takes precedence over the direct token variable.
+        if ($ecsContainerAuthorizationTokenFile) {
+            if (is_readable($ecsContainerAuthorizationTokenFile)) {
+                $headers['Authorization'] = trim((string) file_get_contents($ecsContainerAuthorizationTokenFile));
+            } else {
+                throw new \RuntimeException(sprintf('Token file %s is not readable', $ecsContainerAuthorizationTokenFile));
+            }
+        } elseif ($ecsContainerAuthorizationToken) {
+            $headers['Authorization'] = $ecsContainerAuthorizationToken;
+        }
+        // Fetch the temporary AWS credentials from the resolved metadata endpoint.
+        $credsRequest = new Request('GET', $credentialsUrl, $headers);
+        $credsResponse = $httpHandler($credsRequest);
+        $awsCreds = json_decode((string) $credsResponse->getBody(), \true);
+        // Ensure the response has the minimum required credential fields.
+        if (!is_array($awsCreds) || !isset($awsCreds['AccessKeyId']) || !isset($awsCreds['SecretAccessKey'])) {
+            throw new \UnexpectedValueException('Invalid or missing ECS credentials in response');
+        }
+        return [$awsCreds['AccessKeyId'], $awsCreds['SecretAccessKey'], $awsCreds['Token'] ?? null];
+    }
+    /**
+     * @internal
+     *
      * @return array{string, string, ?string}
      */
     public static function getSigningVarsFromEnv() : ?array
@@ -285,7 +315,7 @@ class AwsNativeSource implements ExternalAccountCredentialSourceInterface
      */
     private static function utf8Encode(string $string) : string
     {
-        return mb_convert_encoding($string, 'UTF-8', 'ISO-8859-1');
+        return (string) mb_convert_encoding($string, 'UTF-8', 'ISO-8859-1');
     }
     private static function getSignatureKey(string $key, string $dateStamp, string $regionName, string $serviceName) : string
     {

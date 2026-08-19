@@ -16,30 +16,7 @@ class MonitoredResource
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Api\Label::initOnce();
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Api\LaunchStage::initOnce();
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Struct::initOnce();
-        $pool->internalAddGeneratedFile('
-
-#google/api/monitored_resource.proto
-google.apigoogle/api/launch_stage.protogoogle/protobuf/struct.proto"À
-MonitoredResourceDescriptor
-name (	
-type (	
-display_name (	
-description (	+
-labels (2.google.api.LabelDescriptor-
-launch_stage (2.google.api.LaunchStage"‹
-MonitoredResource
-type (	9
-labels (2).google.api.MonitoredResource.LabelsEntry-
-LabelsEntry
-key (	
-value (	:8"Ê
-MonitoredResourceMetadata.
-system_labels (2.google.protobuf.StructJ
-user_labels (25.google.api.MonitoredResourceMetadata.UserLabelsEntry1
-UserLabelsEntry
-key (	
-value (	:8By
-com.google.apiBMonitoredResourceProtoPZCgoogle.golang.org/genproto/googleapis/api/monitoredres;monitoredresø¢GAPIbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\x8c\x06\n#google/api/monitored_resource.proto\x12\ngoogle.api\x1a\x1dgoogle/api/launch_stage.proto\x1a\x1cgoogle/protobuf/struct.proto\"\xc0\x01\n\x1bMonitoredResourceDescriptor\x12\f\n\x04name\x18\x05 \x01(\t\x12\f\n\x04type\x18\x01 \x01(\t\x12\x14\n\fdisplay_name\x18\x02 \x01(\t\x12\x13\n\vdescription\x18\x03 \x01(\t\x12+\n\x06labels\x18\x04 \x03(\v2\x1b.google.api.LabelDescriptor\x12-\n\flaunch_stage\x18\x07 \x01(\x0e2\x17.google.api.LaunchStage\"\x8b\x01\n\x11MonitoredResource\x12\f\n\x04type\x18\x01 \x01(\t\x129\n\x06labels\x18\x02 \x03(\v2).google.api.MonitoredResource.LabelsEntry\x1a-\n\vLabelsEntry\x12\v\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x028\x01\"\xca\x01\n\x19MonitoredResourceMetadata\x12.\n\rsystem_labels\x18\x01 \x01(\v2\x17.google.protobuf.Struct\x12J\n\vuser_labels\x18\x02 \x03(\v25.google.api.MonitoredResourceMetadata.UserLabelsEntry\x1a1\n\x0fUserLabelsEntry\x12\v\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x028\x01Bv\n\x0ecom.google.apiB\x16MonitoredResourceProtoP\x01ZCgoogle.golang.org/genproto/googleapis/api/monitoredres;monitoredres\xa2\x02\x04GAPIb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

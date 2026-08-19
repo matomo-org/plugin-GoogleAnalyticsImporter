@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * The `Status` type defines a logical error model that is suitable for
  * different programming environments, including REST APIs and RPC APIs. It is
@@ -56,7 +56,7 @@ class Status extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobu
      *           user-facing error message should be localized and sent in the
      *           [google.rpc.Status.details][google.rpc.Status.details] field, or localized
      *           by the client.
-     *     @type array<\Google\Protobuf\Any>|\Google\Protobuf\Internal\RepeatedField $details
+     *     @type \Google\Protobuf\Any[] $details
      *           A list of messages that carry the error details.  There is a common set of
      *           message types for APIs to use.
      * }
@@ -125,7 +125,7 @@ class Status extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobu
      * message types for APIs to use.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.Any details = 3;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Protobuf\Any>
      */
     public function getDetails()
     {
@@ -136,7 +136,7 @@ class Status extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobu
      * message types for APIs to use.
      *
      * Generated from protobuf field <code>repeated .google.protobuf.Any details = 3;</code>
-     * @param array<\Google\Protobuf\Any>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Protobuf\Any[] $var
      * @return $this
      */
     public function setDetails($var)

@@ -19,20 +19,46 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class GoalParentLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Link to the view (profile) to which this goal belongs.
+     *
+     * @var string
+     */
     public $href;
+    /**
+     * Value is "analytics#profile".
+     *
+     * @var string
+     */
     public $type;
+    /**
+     * Link to the view (profile) to which this goal belongs.
+     *
+     * @param string $href
+     */
     public function setHref($href)
     {
         $this->href = $href;
     }
+    /**
+     * @return string
+     */
     public function getHref()
     {
         return $this->href;
     }
+    /**
+     * Value is "analytics#profile".
+     *
+     * @param string $type
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;

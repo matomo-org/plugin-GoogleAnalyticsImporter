@@ -17,21 +17,34 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\HttpHandler;
 
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Logging\LoggingTrait;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\Logging\RpcLogEvent;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\ClientInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\RequestInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\ResponseInterface;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Log\LoggerInterface;
+/**
+ * @deprecated Guzzle 6 is no longer supported; use Guzzle7HttpHandler.
+ */
 class Guzzle6HttpHandler
 {
+    use LoggingTrait;
     /**
      * @var ClientInterface
      */
     private $client;
     /**
-     * @param ClientInterface $client
+     * @var null|LoggerInterface
      */
-    public function __construct(ClientInterface $client)
+    private $logger;
+    /**
+     * @param ClientInterface $client
+     * @param null|LoggerInterface $logger
+     */
+    public function __construct(ClientInterface $client, ?LoggerInterface $logger = null)
     {
         $this->client = $client;
+        $this->logger = $logger;
     }
     /**
      * Accepts a PSR-7 request and an array of options and returns a PSR-7 response.
@@ -42,7 +55,15 @@ class Guzzle6HttpHandler
      */
     public function __invoke(RequestInterface $request, array $options = [])
     {
-        return $this->client->send($request, $options);
+        $requestEvent = null;
+        if ($this->logger) {
+            $requestEvent = $this->requestLog($request, $options);
+        }
+        $response = $this->client->send($request, $options);
+        if ($this->logger) {
+            $this->responseLog($response, $requestEvent);
+        }
+        return $response;
     }
     /**
      * Accepts a PSR-7 request and an array of options and returns a PromiseInterface
@@ -54,6 +75,49 @@ class Guzzle6HttpHandler
      */
     public function async(RequestInterface $request, array $options = [])
     {
-        return $this->client->sendAsync($request, $options);
+        $requestEvent = null;
+        if ($this->logger) {
+            $requestEvent = $this->requestLog($request, $options);
+        }
+        $promise = $this->client->sendAsync($request, $options);
+        if ($this->logger) {
+            $promise->then(function (ResponseInterface $response) use($requestEvent) {
+                $this->responseLog($response, $requestEvent);
+                return $response;
+            });
+        }
+        return $promise;
+    }
+    /**
+     * @internal
+     * @param RequestInterface $request
+     * @param array<mixed> $options
+     */
+    public function requestLog(RequestInterface $request, array $options) : RpcLogEvent
+    {
+        $requestEvent = new RpcLogEvent();
+        $requestEvent->method = $request->getMethod();
+        $requestEvent->url = (string) $request->getUri();
+        $requestEvent->headers = $request->getHeaders();
+        $requestEvent->payload = $request->getBody()->getContents();
+        $requestEvent->retryAttempt = $options['retryAttempt'] ?? null;
+        $requestEvent->serviceName = $options['serviceName'] ?? null;
+        $requestEvent->processId = (int) getmypid();
+        $requestEvent->requestId = $options['requestId'] ?? crc32((string) spl_object_id($request) . getmypid());
+        $this->logRequest($requestEvent);
+        return $requestEvent;
+    }
+    /**
+     * @internal
+     */
+    public function responseLog(ResponseInterface $response, RpcLogEvent $requestEvent) : void
+    {
+        $responseEvent = new RpcLogEvent($requestEvent->milliseconds);
+        $responseEvent->headers = $response->getHeaders();
+        $responseEvent->payload = $response->getBody()->getContents();
+        $responseEvent->status = $response->getStatusCode();
+        $responseEvent->processId = $requestEvent->processId;
+        $responseEvent->requestId = $requestEvent->requestId;
+        $this->logResponse($responseEvent);
     }
 }

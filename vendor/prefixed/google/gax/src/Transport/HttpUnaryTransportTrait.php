@@ -36,6 +36,7 @@ use Exception;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Call;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ValidationException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\HttpHandler\HttpHandlerFactory;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Log\LoggerInterface;
 /**
  * A trait for shared functionality between transports that support only unary RPCs using simple
  * HTTP requests.
@@ -112,12 +113,12 @@ trait HttpUnaryTransportTrait
      * @return callable
      * @throws ValidationException
      */
-    private static function buildHttpHandlerAsync()
+    private static function buildHttpHandlerAsync(null|false|LoggerInterface $logger = null)
     {
         try {
-            return [HttpHandlerFactory::build(), 'async'];
+            return [HttpHandlerFactory::build(logger: $logger), 'async'];
         } catch (Exception $ex) {
-            throw new ValidationException("Failed to build HttpHandler", $ex->getCode(), $ex);
+            throw new ValidationException('Failed to build HttpHandler', $ex->getCode(), $ex);
         }
     }
     /**

@@ -56,7 +56,7 @@ class MockBidiStreamingCall extends Grpc\BidiStreamingCall
      * @param mixed|null $deserialize An optional deserialize method for the response object.
      * @param stdClass|null $status An optional status object. If set to null, a status of OK is used.
      */
-    public function __construct(array $responses, $deserialize = null, stdClass $status = null)
+    public function __construct(array $responses, $deserialize = null, ?stdClass $status = null)
     {
         $this->responses = $responses;
         $this->deserialize = $deserialize;
@@ -86,7 +86,7 @@ class MockBidiStreamingCall extends Grpc\BidiStreamingCall
         } elseif ($this->writesDone) {
             return null;
         } else {
-            throw new ApiException("No more responses to read, but closeWrite() not called - " . "this would be blocking", \Grpc\STATUS_INTERNAL, null);
+            throw new ApiException('No more responses to read, but closeWrite() not called - ' . 'this would be blocking', \Grpc\STATUS_INTERNAL, null);
         }
     }
     /**
@@ -96,10 +96,10 @@ class MockBidiStreamingCall extends Grpc\BidiStreamingCall
     public function getStatus()
     {
         if (count($this->responses) > 0) {
-            throw new ApiException("Calls to getStatus() will block if all responses are not read", \Grpc\STATUS_INTERNAL, null);
+            throw new ApiException('Calls to getStatus() will block if all responses are not read', \Grpc\STATUS_INTERNAL, null);
         }
         if (!$this->writesDone) {
-            throw new ApiException("Calls to getStatus() will block if closeWrite() not called", \Grpc\STATUS_INTERNAL, null);
+            throw new ApiException('Calls to getStatus() will block if closeWrite() not called', \Grpc\STATUS_INTERNAL, null);
         }
         return $this->status;
     }
@@ -112,7 +112,7 @@ class MockBidiStreamingCall extends Grpc\BidiStreamingCall
     public function write($request, array $options = [])
     {
         if ($this->writesDone) {
-            throw new ApiException("Cannot call write() after writesDone()", \Grpc\STATUS_INTERNAL, null);
+            throw new ApiException('Cannot call write() after writesDone()', \Grpc\STATUS_INTERNAL, null);
         }
         if (is_a($request, 'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Protobuf\\Internal\\Message')) {
             /** @var Message $newRequest */

@@ -25,7 +25,7 @@ class GaDataDataTable extends \Matomo\Dependencies\GoogleAnalyticsImporter\Googl
     protected $rowsType = GaDataDataTableRows::class;
     protected $rowsDataType = 'array';
     /**
-     * @param GaDataDataTableCols[]
+     * @param GaDataDataTableCols[] $cols
      */
     public function setCols($cols)
     {
@@ -39,7 +39,7 @@ class GaDataDataTable extends \Matomo\Dependencies\GoogleAnalyticsImporter\Googl
         return $this->cols;
     }
     /**
-     * @param GaDataDataTableRows[]
+     * @param GaDataDataTableRows[] $rows
      */
     public function setRows($rows)
     {

@@ -22,11 +22,44 @@ class McfData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collec
     protected $collection_key = 'rows';
     protected $columnHeadersType = McfDataColumnHeaders::class;
     protected $columnHeadersDataType = 'array';
+    /**
+     * Determines if the Analytics data contains sampled data.
+     *
+     * @var bool
+     */
     public $containsSampledData;
+    /**
+     * Unique ID for this data response.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * The maximum number of rows the response can contain, regardless of the
+     * actual number of rows returned. Its value ranges from 1 to 10,000 with a
+     * value of 1000 by default, or otherwise specified by the max-results query
+     * parameter.
+     *
+     * @var int
+     */
     public $itemsPerPage;
+    /**
+     * Resource type.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Link to next page for this Analytics data query.
+     *
+     * @var string
+     */
     public $nextLink;
+    /**
+     * Link to previous page for this Analytics data query.
+     *
+     * @var string
+     */
     public $previousLink;
     protected $profileInfoType = McfDataProfileInfo::class;
     protected $profileInfoDataType = '';
@@ -34,13 +67,44 @@ class McfData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collec
     protected $queryDataType = '';
     protected $rowsType = McfDataRows::class;
     protected $rowsDataType = 'array';
+    /**
+     * The number of samples used to calculate the result.
+     *
+     * @var string
+     */
     public $sampleSize;
+    /**
+     * Total size of the sample space from which the samples were selected.
+     *
+     * @var string
+     */
     public $sampleSpace;
+    /**
+     * Link to this page.
+     *
+     * @var string
+     */
     public $selfLink;
+    /**
+     * The total number of rows for the query, regardless of the number of rows in
+     * the response.
+     *
+     * @var int
+     */
     public $totalResults;
+    /**
+     * Total values for the requested metrics over all the results, not just the
+     * results returned in this response. The order of the metric totals is same
+     * as the metric order specified in the request.
+     *
+     * @var string[]
+     */
     public $totalsForAllResults;
     /**
-     * @param McfDataColumnHeaders[]
+     * Column headers that list dimension names followed by the metric names. The
+     * order of dimensions and metrics is same as specified in the request.
+     *
+     * @param McfDataColumnHeaders[] $columnHeaders
      */
     public function setColumnHeaders($columnHeaders)
     {
@@ -53,56 +117,110 @@ class McfData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collec
     {
         return $this->columnHeaders;
     }
+    /**
+     * Determines if the Analytics data contains sampled data.
+     *
+     * @param bool $containsSampledData
+     */
     public function setContainsSampledData($containsSampledData)
     {
         $this->containsSampledData = $containsSampledData;
     }
+    /**
+     * @return bool
+     */
     public function getContainsSampledData()
     {
         return $this->containsSampledData;
     }
+    /**
+     * Unique ID for this data response.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * The maximum number of rows the response can contain, regardless of the
+     * actual number of rows returned. Its value ranges from 1 to 10,000 with a
+     * value of 1000 by default, or otherwise specified by the max-results query
+     * parameter.
+     *
+     * @param int $itemsPerPage
+     */
     public function setItemsPerPage($itemsPerPage)
     {
         $this->itemsPerPage = $itemsPerPage;
     }
+    /**
+     * @return int
+     */
     public function getItemsPerPage()
     {
         return $this->itemsPerPage;
     }
+    /**
+     * Resource type.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Link to next page for this Analytics data query.
+     *
+     * @param string $nextLink
+     */
     public function setNextLink($nextLink)
     {
         $this->nextLink = $nextLink;
     }
+    /**
+     * @return string
+     */
     public function getNextLink()
     {
         return $this->nextLink;
     }
+    /**
+     * Link to previous page for this Analytics data query.
+     *
+     * @param string $previousLink
+     */
     public function setPreviousLink($previousLink)
     {
         $this->previousLink = $previousLink;
     }
+    /**
+     * @return string
+     */
     public function getPreviousLink()
     {
         return $this->previousLink;
     }
     /**
-     * @param McfDataProfileInfo
+     * Information for the view (profile), for which the Analytics data was
+     * requested.
+     *
+     * @param McfDataProfileInfo $profileInfo
      */
     public function setProfileInfo(McfDataProfileInfo $profileInfo)
     {
@@ -116,7 +234,9 @@ class McfData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collec
         return $this->profileInfo;
     }
     /**
-     * @param McfDataQuery
+     * Analytics data request query parameters.
+     *
+     * @param McfDataQuery $query
      */
     public function setQuery(McfDataQuery $query)
     {
@@ -130,7 +250,11 @@ class McfData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collec
         return $this->query;
     }
     /**
-     * @param McfDataRows[]
+     * Analytics data rows, where each row contains a list of dimension values
+     * followed by the metric values. The order of dimensions and metrics is same
+     * as specified in the request.
+     *
+     * @param McfDataRows[] $rows
      */
     public function setRows($rows)
     {
@@ -143,42 +267,85 @@ class McfData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collec
     {
         return $this->rows;
     }
+    /**
+     * The number of samples used to calculate the result.
+     *
+     * @param string $sampleSize
+     */
     public function setSampleSize($sampleSize)
     {
         $this->sampleSize = $sampleSize;
     }
+    /**
+     * @return string
+     */
     public function getSampleSize()
     {
         return $this->sampleSize;
     }
+    /**
+     * Total size of the sample space from which the samples were selected.
+     *
+     * @param string $sampleSpace
+     */
     public function setSampleSpace($sampleSpace)
     {
         $this->sampleSpace = $sampleSpace;
     }
+    /**
+     * @return string
+     */
     public function getSampleSpace()
     {
         return $this->sampleSpace;
     }
+    /**
+     * Link to this page.
+     *
+     * @param string $selfLink
+     */
     public function setSelfLink($selfLink)
     {
         $this->selfLink = $selfLink;
     }
+    /**
+     * @return string
+     */
     public function getSelfLink()
     {
         return $this->selfLink;
     }
+    /**
+     * The total number of rows for the query, regardless of the number of rows in
+     * the response.
+     *
+     * @param int $totalResults
+     */
     public function setTotalResults($totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults()
     {
         return $this->totalResults;
     }
+    /**
+     * Total values for the requested metrics over all the results, not just the
+     * results returned in this response. The order of the metric totals is same
+     * as the metric order specified in the request.
+     *
+     * @param string[] $totalsForAllResults
+     */
     public function setTotalsForAllResults($totalsForAllResults)
     {
         $this->totalsForAllResults = $totalsForAllResults;
     }
+    /**
+     * @return string[]
+     */
     public function getTotalsForAllResults()
     {
         return $this->totalsForAllResults;

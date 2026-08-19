@@ -30,8 +30,8 @@ trait UpdateMetadataTrait
     /**
      * export a callback function which updates runtime metadata.
      *
-     * @return callable updateMetadata function
      * @deprecated
+     * @return callable updateMetadata function
      */
     public function getUpdateMetadataFunc()
     {
@@ -42,10 +42,10 @@ trait UpdateMetadataTrait
      *
      * @param array<mixed> $metadata metadata hashmap
      * @param string $authUri optional auth uri
-     * @param callable $httpHandler callback which delivers psr7 request
+     * @param callable|null $httpHandler callback which delivers psr7 request
      * @return array<mixed> updated metadata hashmap
      */
-    public function updateMetadata($metadata, $authUri = null, callable $httpHandler = null)
+    public function updateMetadata($metadata, $authUri = null, ?callable $httpHandler = null)
     {
         $metadata_copy = $metadata;
         // We do need to set the service api usage metrics irrespective even if

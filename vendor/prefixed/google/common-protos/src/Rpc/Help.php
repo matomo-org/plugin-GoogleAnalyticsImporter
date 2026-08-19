@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Provides links to documentation or for performing an out of band action.
  * For example, if a quota check failed with an error indicating the calling
@@ -29,7 +29,7 @@ class Help extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Google\Rpc\Help\Link>|\Google\Protobuf\Internal\RepeatedField $links
+     *     @type \Google\Rpc\Help\Link[] $links
      *           URL(s) pointing to additional information on handling the current error.
      * }
      */
@@ -42,7 +42,7 @@ class Help extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\
      * URL(s) pointing to additional information on handling the current error.
      *
      * Generated from protobuf field <code>repeated .google.rpc.Help.Link links = 1;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Rpc\Help\Link>
      */
     public function getLinks()
     {
@@ -52,7 +52,7 @@ class Help extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\
      * URL(s) pointing to additional information on handling the current error.
      *
      * Generated from protobuf field <code>repeated .google.rpc.Help.Link links = 1;</code>
-     * @param array<\Google\Rpc\Help\Link>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Rpc\Help\Link[] $var
      * @return $this
      */
     public function setLinks($var)

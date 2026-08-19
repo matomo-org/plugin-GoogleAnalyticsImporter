@@ -45,30 +45,12 @@ class Segment
     const WILDCARD_SEGMENT = 1;
     const DOUBLE_WILDCARD_SEGMENT = 2;
     const VARIABLE_SEGMENT = 3;
-    /**
-     * @var int
-     */
-    private $segmentType;
-    /**
-     * @var string|null
-     */
-    private $value;
-    /**
-     * @var string|null
-     */
-    private $key;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ResourceTemplate\RelativeResourceTemplate|null
-     */
-    private $template;
-    /**
-     * @var string|null
-     */
-    private $stringRepr;
-    /**
-     * @var string|null
-     */
-    private $separator;
+    private int $segmentType;
+    private ?string $value;
+    private ?string $key;
+    private ?RelativeResourceTemplate $template;
+    private string $stringRepr;
+    private string $separator;
     /**
      * Segment constructor.
      * @param int $segmentType
@@ -78,7 +60,7 @@ class Segment
      * @param string $separator The separator that belongs at the end of a segment. Ending segments should use '/'.
      * @throws ValidationException
      */
-    public function __construct(int $segmentType, string $value = null, string $key = null, RelativeResourceTemplate $template = null, string $separator = '/')
+    public function __construct(int $segmentType, ?string $value = null, ?string $key = null, ?RelativeResourceTemplate $template = null, string $separator = '/')
     {
         $this->segmentType = $segmentType;
         $this->value = $value;
@@ -90,10 +72,10 @@ class Segment
                 $this->stringRepr = "{$this->value}";
                 break;
             case Segment::WILDCARD_SEGMENT:
-                $this->stringRepr = "*";
+                $this->stringRepr = '*';
                 break;
             case Segment::DOUBLE_WILDCARD_SEGMENT:
-                $this->stringRepr = "**";
+                $this->stringRepr = '**';
                 break;
             case Segment::VARIABLE_SEGMENT:
                 $this->stringRepr = "{{$this->key}={$this->template}}";
@@ -175,7 +157,7 @@ class Segment
      */
     private static function isValidBinding(string $binding)
     {
-        return preg_match("-^[^/]+\$-", $binding) === 1;
+        return preg_match('-^[^/]+$-', $binding) === 1;
     }
     /**
      * Check if $binding is a valid double wildcard binding. Segment bindings may contain any
@@ -186,6 +168,6 @@ class Segment
      */
     private static function isValidDoubleWildcardBinding(string $binding)
     {
-        return preg_match("-^.+\$-", $binding) === 1;
+        return preg_match('-^.+$-', $binding) === 1;
     }
 }

@@ -59,6 +59,9 @@ abstract class PKCS1 extends Progenitor
         }
         $key = ASN1::asn1map($decoded[0], Maps\RSAPrivateKey::MAP);
         if (is_array($key)) {
+            if ($key['version'] === \false) {
+                throw new \UnexpectedValueException('Version number is not valid');
+            }
             $components += ['modulus' => $key['modulus'], 'publicExponent' => $key['publicExponent'], 'privateExponent' => $key['privateExponent'], 'primes' => [1 => $key['prime1'], $key['prime2']], 'exponents' => [1 => $key['exponent1'], $key['exponent2']], 'coefficients' => [2 => $key['coefficient']]];
             if ($key['version'] == 'multi') {
                 foreach ($key['otherPrimeInfos'] as $primeInfo) {

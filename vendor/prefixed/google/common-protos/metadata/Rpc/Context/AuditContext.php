@@ -14,16 +14,7 @@ class AuditContext
             return;
         }
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Struct::initOnce();
-        $pool->internalAddGeneratedFile('
-û
-&google/rpc/context/audit_context.protogoogle.rpc.context"Ç
-AuditContext
-	audit_log (1
-scrubbed_request (2.google.protobuf.Struct2
-scrubbed_response (2.google.protobuf.Struct$
-scrubbed_response_item_count (
-target_resource (	Bk
-com.google.rpc.contextBAuditContextProtoPZ9google.golang.org/genproto/googleapis/rpc/context;contextøbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\xf8\x02\n&google/rpc/context/audit_context.proto\x12\x12google.rpc.context\"\xc7\x01\n\fAuditContext\x12\x11\n\taudit_log\x18\x01 \x01(\f\x121\n\x10scrubbed_request\x18\x02 \x01(\v2\x17.google.protobuf.Struct\x122\n\x11scrubbed_response\x18\x03 \x01(\v2\x17.google.protobuf.Struct\x12\$\n\x1cscrubbed_response_item_count\x18\x04 \x01(\x05\x12\x17\n\x0ftarget_resource\x18\x05 \x01(\tBh\n\x16com.google.rpc.contextB\x11AuditContextProtoP\x01Z9google.golang.org/genproto/googleapis/rpc/context;contextb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

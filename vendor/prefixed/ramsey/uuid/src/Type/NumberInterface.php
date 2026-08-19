@@ -15,7 +15,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Type;
 /**
  * NumberInterface ensures consistency in numeric values returned by ramsey/uuid
  *
- * @psalm-immutable
+ * @immutable
  */
 interface NumberInterface extends TypeInterface
 {

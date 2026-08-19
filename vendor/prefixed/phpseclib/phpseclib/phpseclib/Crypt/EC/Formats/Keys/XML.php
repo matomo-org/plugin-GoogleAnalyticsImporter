@@ -184,7 +184,7 @@ abstract class XML
             if ($name === \false) {
                 throw new UnsupportedCurveException('Curve with OID of ' . $oid . ' is not supported');
             }
-            $curve = '\\phpseclib3\\Crypt\\EC\\Curves\\' . $name;
+            $curve = '\\Matomo\\Dependencies\\GoogleAnalyticsImporter\\phpseclib3\\Crypt\\EC\\Curves\\' . $name;
             if (!class_exists($curve)) {
                 throw new UnsupportedCurveException('Named Curve of ' . $name . ' is not supported');
             }

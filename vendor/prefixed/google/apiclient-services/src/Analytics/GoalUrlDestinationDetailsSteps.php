@@ -19,29 +19,68 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class GoalUrlDestinationDetailsSteps extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Step name.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Step number.
+     *
+     * @var int
+     */
     public $number;
+    /**
+     * URL for this step.
+     *
+     * @var string
+     */
     public $url;
+    /**
+     * Step name.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
+    /**
+     * Step number.
+     *
+     * @param int $number
+     */
     public function setNumber($number)
     {
         $this->number = $number;
     }
+    /**
+     * @return int
+     */
     public function getNumber()
     {
         return $this->number;
     }
+    /**
+     * URL for this step.
+     *
+     * @param string $url
+     */
     public function setUrl($url)
     {
         $this->url = $url;
     }
+    /**
+     * @return string
+     */
     public function getUrl()
     {
         return $this->url;

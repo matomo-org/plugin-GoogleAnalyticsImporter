@@ -20,11 +20,20 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 class PivotValueRegion extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'values';
+    /**
+     * @var string[]
+     */
     public $values;
+    /**
+     * @param string[]
+     */
     public function setValues($values)
     {
         $this->values = $values;
     }
+    /**
+     * @return string[]
+     */
     public function getValues()
     {
         return $this->values;

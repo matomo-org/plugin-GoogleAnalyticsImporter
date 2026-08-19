@@ -14,14 +14,7 @@ class SourceInfo
             return;
         }
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Any::initOnce();
-        $pool->internalAddGeneratedFile('
-ß
-google/api/source_info.proto
-google.api"8
-
-SourceInfo*
-source_files (2.google.protobuf.AnyBq
-com.google.apiBSourceInfoProtoPZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig¢GAPIbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\xdf\x01\n\x1cgoogle/api/source_info.proto\x12\ngoogle.api\"8\n\nSourceInfo\x12*\n\fsource_files\x18\x01 \x03(\v2\x14.google.protobuf.AnyBq\n\x0ecom.google.apiB\x0fSourceInfoProtoP\x01ZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig\xa2\x02\x04GAPIb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

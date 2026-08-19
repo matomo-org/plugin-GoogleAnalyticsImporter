@@ -19,29 +19,68 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class Column extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Map of attribute name and value for this column.
+     *
+     * @var string[]
+     */
     public $attributes;
+    /**
+     * Column id.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Resource type for Analytics column.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Map of attribute name and value for this column.
+     *
+     * @param string[] $attributes
+     */
     public function setAttributes($attributes)
     {
         $this->attributes = $attributes;
     }
+    /**
+     * @return string[]
+     */
     public function getAttributes()
     {
         return $this->attributes;
     }
+    /**
+     * Column id.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Resource type for Analytics column.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;

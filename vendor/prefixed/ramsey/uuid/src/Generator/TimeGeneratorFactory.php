@@ -16,28 +16,12 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Converter\TimeConver
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Provider\NodeProviderInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Provider\TimeProviderInterface;
 /**
- * TimeGeneratorFactory retrieves a default time generator, based on the
- * environment
+ * TimeGeneratorFactory retrieves a default time generator, based on the environment
  */
 class TimeGeneratorFactory
 {
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Provider\NodeProviderInterface
-     */
-    private $nodeProvider;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Converter\TimeConverterInterface
-     */
-    private $timeConverter;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Provider\TimeProviderInterface
-     */
-    private $timeProvider;
-    public function __construct(NodeProviderInterface $nodeProvider, TimeConverterInterface $timeConverter, TimeProviderInterface $timeProvider)
+    public function __construct(private NodeProviderInterface $nodeProvider, private TimeConverterInterface $timeConverter, private TimeProviderInterface $timeProvider)
     {
-        $this->nodeProvider = $nodeProvider;
-        $this->timeConverter = $timeConverter;
-        $this->timeProvider = $timeProvider;
     }
     /**
      * Returns a default time generator, based on the current environment

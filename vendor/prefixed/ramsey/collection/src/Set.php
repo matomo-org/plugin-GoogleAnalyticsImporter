@@ -22,7 +22,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection;
  *
  * Example usage:
  *
- * ``` php
+ * ```
  * $foo = new \My\Foo();
  * $set = new Set(\My\Foo::class);
  *
@@ -39,20 +39,14 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection;
 class Set extends AbstractSet
 {
     /**
-     * @var string
-     * @readonly
-     */
-    private $setType;
-    /**
      * Constructs a set object of the specified type, optionally with the
      * specified data.
      *
      * @param string $setType The type or class name associated with this set.
      * @param array<array-key, T> $data The initial items to store in the set.
      */
-    public function __construct(string $setType, array $data = [])
+    public function __construct(private readonly string $setType, array $data = [])
     {
-        $this->setType = $setType;
         parent::__construct($data);
     }
     public function getType() : string

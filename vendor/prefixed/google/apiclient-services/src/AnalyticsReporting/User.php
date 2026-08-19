@@ -19,20 +19,38 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 
 class User extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var string
+     */
     public $type;
+    /**
+     * @var string
+     */
     public $userId;
+    /**
+     * @param string
+     */
     public function setType($type)
     {
         $this->type = $type;
     }
+    /**
+     * @return string
+     */
     public function getType()
     {
         return $this->type;
     }
+    /**
+     * @param string
+     */
     public function setUserId($userId)
     {
         $this->userId = $userId;
     }
+    /**
+     * @return string
+     */
     public function getUserId()
     {
         return $this->userId;

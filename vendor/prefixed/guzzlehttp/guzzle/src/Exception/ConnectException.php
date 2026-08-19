@@ -6,8 +6,6 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Client\NetworkException
 use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\RequestInterface;
 /**
  * Exception thrown when a connection cannot be established.
- *
- * Note that no response is present for a ConnectException
  */
 class ConnectException extends TransferException implements NetworkExceptionInterface
 {

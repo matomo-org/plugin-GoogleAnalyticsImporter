@@ -24,53 +24,41 @@ use const STR_PAD_LEFT;
 /**
  * CombGenerator generates COMBs (combined UUID/timestamp)
  *
- * The CombGenerator, when used with the StringCodec (and, by proxy, the
- * TimestampLastCombCodec) or the TimestampFirstCombCodec, combines the current
- * timestamp with a UUID (hence the name "COMB"). The timestamp either appears
- * as the first or last 48 bits of the COMB, depending on the codec used.
+ * The CombGenerator, when used with the StringCodec (and, by proxy, the TimestampLastCombCodec) or the
+ * TimestampFirstCombCodec, combines the current timestamp with a UUID (hence the name "COMB"). The timestamp either
+ * appears as the first or last 48 bits of the COMB, depending on the codec used.
  *
- * By default, COMBs will have the timestamp set as the last 48 bits of the
- * identifier.
+ * By default, COMBs will have the timestamp set as the last 48 bits of the identifier.
  *
- * ``` php
+ * ```
  * $factory = new UuidFactory();
  *
  * $factory->setRandomGenerator(new CombGenerator(
  *     $factory->getRandomGenerator(),
- *     $factory->getNumberConverter()
+ *     $factory->getNumberConverter(),
  * ));
  *
  * $comb = $factory->uuid4();
  * ```
  *
- * To generate a COMB with the timestamp as the first 48 bits, set the
- * TimestampFirstCombCodec as the codec.
+ * To generate a COMB with the timestamp as the first 48 bits, set the TimestampFirstCombCodec as the codec.
  *
- * ``` php
+ * ```
  * $factory->setCodec(new TimestampFirstCombCodec($factory->getUuidBuilder()));
  * ```
  *
- * @link https://www.informit.com/articles/printerfriendly/25862 The Cost of GUIDs as Primary Keys
+ * @deprecated Please migrate to {@link https://uuid.ramsey.dev/en/stable/rfc4122/version7.html Version 7, Unix Epoch Time UUIDs}.
+ *
+ * @link https://web.archive.org/web/20240118030355/https://www.informit.com/articles/printerfriendly/25862 The Cost of GUIDs as Primary Keys
  */
 class CombGenerator implements RandomGeneratorInterface
 {
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Generator\RandomGeneratorInterface
-     */
-    private $generator;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Converter\NumberConverterInterface
-     */
-    private $numberConverter;
     public const TIMESTAMP_BYTES = 6;
-    public function __construct(RandomGeneratorInterface $generator, NumberConverterInterface $numberConverter)
+    public function __construct(private RandomGeneratorInterface $generator, private NumberConverterInterface $numberConverter)
     {
-        $this->generator = $generator;
-        $this->numberConverter = $numberConverter;
     }
     /**
-     * @throws InvalidArgumentException if $length is not a positive integer
-     *     greater than or equal to CombGenerator::TIMESTAMP_BYTES
+     * @throws InvalidArgumentException if $length is not a positive integer greater than or equal to CombGenerator::TIMESTAMP_BYTES
      *
      * @inheritDoc
      */
@@ -79,7 +67,11 @@ class CombGenerator implements RandomGeneratorInterface
         if ($length < self::TIMESTAMP_BYTES) {
             throw new InvalidArgumentException('Length must be a positive integer greater than or equal to ' . self::TIMESTAMP_BYTES);
         }
+        if ($length % 2 !== 0) {
+            throw new InvalidArgumentException('Length must be an even number');
+        }
         $hash = '';
+        /** @phpstan-ignore greater.alwaysTrue (TIMESTAMP_BYTES constant could change in child classes) */
         if (self::TIMESTAMP_BYTES > 0 && $length > self::TIMESTAMP_BYTES) {
             $hash = $this->generator->generate($length - self::TIMESTAMP_BYTES);
         }
@@ -87,7 +79,7 @@ class CombGenerator implements RandomGeneratorInterface
         return (string) hex2bin(str_pad(bin2hex($hash), $length - self::TIMESTAMP_BYTES, '0') . $lsbTime);
     }
     /**
-     * Returns current timestamp a string integer, precise to 0.00001 seconds
+     * Returns the current timestamp as a string integer, precise to 0.00001 seconds
      */
     private function timestamp() : string
     {

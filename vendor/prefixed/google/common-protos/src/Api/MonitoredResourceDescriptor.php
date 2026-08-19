@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * An object that describes the schema of a
  * [MonitoredResource][google.api.MonitoredResource] object using a type name
@@ -102,7 +102,7 @@ class MonitoredResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsIm
      *     @type string $description
      *           Optional. A detailed description of the monitored resource type that might
      *           be used in documentation.
-     *     @type array<\Google\Api\LabelDescriptor>|\Google\Protobuf\Internal\RepeatedField $labels
+     *     @type \Google\Api\LabelDescriptor[] $labels
      *           Required. A set of labels used to describe instances of this monitored
      *           resource type. For example, an individual Google Cloud SQL database is
      *           identified by values for the labels `"database_id"` and `"zone"`.
@@ -241,7 +241,7 @@ class MonitoredResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsIm
      * identified by values for the labels `"database_id"` and `"zone"`.
      *
      * Generated from protobuf field <code>repeated .google.api.LabelDescriptor labels = 4;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\LabelDescriptor>
      */
     public function getLabels()
     {
@@ -253,7 +253,7 @@ class MonitoredResourceDescriptor extends \Matomo\Dependencies\GoogleAnalyticsIm
      * identified by values for the labels `"database_id"` and `"zone"`.
      *
      * Generated from protobuf field <code>repeated .google.api.LabelDescriptor labels = 4;</code>
-     * @param array<\Google\Api\LabelDescriptor>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\LabelDescriptor[] $var
      * @return $this
      */
     public function setLabels($var)

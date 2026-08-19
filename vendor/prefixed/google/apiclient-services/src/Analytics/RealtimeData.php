@@ -22,18 +22,56 @@ class RealtimeData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\C
     protected $collection_key = 'rows';
     protected $columnHeadersType = RealtimeDataColumnHeaders::class;
     protected $columnHeadersDataType = 'array';
+    /**
+     * Unique ID for this data response.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Resource type.
+     *
+     * @var string
+     */
     public $kind;
     protected $profileInfoType = RealtimeDataProfileInfo::class;
     protected $profileInfoDataType = '';
     protected $queryType = RealtimeDataQuery::class;
     protected $queryDataType = '';
+    /**
+     * Real time data rows, where each row contains a list of dimension values
+     * followed by the metric values. The order of dimensions and metrics is same
+     * as specified in the request.
+     *
+     * @var string[]
+     */
     public $rows;
+    /**
+     * Link to this page.
+     *
+     * @var string
+     */
     public $selfLink;
+    /**
+     * The total number of rows for the query, regardless of the number of rows in
+     * the response.
+     *
+     * @var int
+     */
     public $totalResults;
+    /**
+     * Total values for the requested metrics over all the results, not just the
+     * results returned in this response. The order of the metric totals is same
+     * as the metric order specified in the request.
+     *
+     * @var string[]
+     */
     public $totalsForAllResults;
     /**
-     * @param RealtimeDataColumnHeaders[]
+     * Column headers that list dimension names followed by the metric names. The
+     * order of dimensions and metrics is same as specified in the request.
+     *
+     * @param RealtimeDataColumnHeaders[] $columnHeaders
      */
     public function setColumnHeaders($columnHeaders)
     {
@@ -46,24 +84,43 @@ class RealtimeData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\C
     {
         return $this->columnHeaders;
     }
+    /**
+     * Unique ID for this data response.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Resource type.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
     /**
-     * @param RealtimeDataProfileInfo
+     * Information for the view (profile), for which the real time data was
+     * requested.
+     *
+     * @param RealtimeDataProfileInfo $profileInfo
      */
     public function setProfileInfo(RealtimeDataProfileInfo $profileInfo)
     {
@@ -77,7 +134,9 @@ class RealtimeData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\C
         return $this->profileInfo;
     }
     /**
-     * @param RealtimeDataQuery
+     * Real time data request query parameters.
+     *
+     * @param RealtimeDataQuery $query
      */
     public function setQuery(RealtimeDataQuery $query)
     {
@@ -90,34 +149,71 @@ class RealtimeData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\C
     {
         return $this->query;
     }
+    /**
+     * Real time data rows, where each row contains a list of dimension values
+     * followed by the metric values. The order of dimensions and metrics is same
+     * as specified in the request.
+     *
+     * @param string[] $rows
+     */
     public function setRows($rows)
     {
         $this->rows = $rows;
     }
+    /**
+     * @return string[]
+     */
     public function getRows()
     {
         return $this->rows;
     }
+    /**
+     * Link to this page.
+     *
+     * @param string $selfLink
+     */
     public function setSelfLink($selfLink)
     {
         $this->selfLink = $selfLink;
     }
+    /**
+     * @return string
+     */
     public function getSelfLink()
     {
         return $this->selfLink;
     }
+    /**
+     * The total number of rows for the query, regardless of the number of rows in
+     * the response.
+     *
+     * @param int $totalResults
+     */
     public function setTotalResults($totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults()
     {
         return $this->totalResults;
     }
+    /**
+     * Total values for the requested metrics over all the results, not just the
+     * results returned in this response. The order of the metric totals is same
+     * as the metric order specified in the request.
+     *
+     * @param string[] $totalsForAllResults
+     */
     public function setTotalsForAllResults($totalsForAllResults)
     {
         $this->totalsForAllResults = $totalsForAllResults;
     }
+    /**
+     * @return string[]
+     */
     public function getTotalsForAllResults()
     {
         return $this->totalsForAllResults;

@@ -53,90 +53,34 @@ use const PHP_INT_SIZE;
 /**
  * FeatureSet detects and exposes available features in the current environment
  *
- * A feature set is used by UuidFactory to determine the available features and
- * capabilities of the environment.
+ * A feature set is used by UuidFactory to determine the available features and capabilities of the environment.
  */
 class FeatureSet
 {
-    /**
-     * @var bool
-     */
-    private $force32Bit = \false;
-    /**
-     * @var bool
-     */
-    private $ignoreSystemNode = \false;
-    /**
-     * @var bool
-     */
-    private $enablePecl = \false;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Provider\TimeProviderInterface|null
-     */
-    private $timeProvider;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Math\CalculatorInterface
-     */
-    private $calculator;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Codec\CodecInterface
-     */
-    private $codec;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Generator\DceSecurityGeneratorInterface
-     */
-    private $dceSecurityGenerator;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Generator\NameGeneratorInterface
-     */
-    private $nameGenerator;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Provider\NodeProviderInterface
-     */
-    private $nodeProvider;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Converter\NumberConverterInterface
-     */
-    private $numberConverter;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Generator\RandomGeneratorInterface
-     */
-    private $randomGenerator;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Converter\TimeConverterInterface
-     */
-    private $timeConverter;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Generator\TimeGeneratorInterface
-     */
-    private $timeGenerator;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Generator\TimeGeneratorInterface
-     */
-    private $unixTimeGenerator;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Builder\UuidBuilderInterface
-     */
-    private $builder;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Validator\ValidatorInterface
-     */
-    private $validator;
+    private ?TimeProviderInterface $timeProvider = null;
+    private CalculatorInterface $calculator;
+    private CodecInterface $codec;
+    private DceSecurityGeneratorInterface $dceSecurityGenerator;
+    private NameGeneratorInterface $nameGenerator;
+    private NodeProviderInterface $nodeProvider;
+    private NumberConverterInterface $numberConverter;
+    private RandomGeneratorInterface $randomGenerator;
+    private TimeConverterInterface $timeConverter;
+    private TimeGeneratorInterface $timeGenerator;
+    private TimeGeneratorInterface $unixTimeGenerator;
+    private UuidBuilderInterface $builder;
+    private ValidatorInterface $validator;
     /**
      * @param bool $useGuids True build UUIDs using the GuidStringCodec
-     * @param bool $force32Bit True to force the use of 32-bit functionality
-     *     (primarily for testing purposes)
+     * @param bool $force32Bit True to force the use of 32-bit functionality (primarily for testing purposes)
      * @param bool $forceNoBigNumber (obsolete)
-     * @param bool $ignoreSystemNode True to disable attempts to check for the
-     *     system node ID (primarily for testing purposes)
-     * @param bool $enablePecl True to enable the use of the PeclUuidTimeGenerator
-     *     to generate version 1 UUIDs
+     * @param bool $ignoreSystemNode True to disable attempts to check for the system node ID (primarily for testing purposes)
+     * @param bool $enablePecl True to enable the use of the PeclUuidTimeGenerator to generate version 1 UUIDs
+     *
+     * @phpstan-ignore constructor.unusedParameter ($forceNoBigNumber is deprecated)
      */
-    public function __construct(bool $useGuids = \false, bool $force32Bit = \false, bool $forceNoBigNumber = \false, bool $ignoreSystemNode = \false, bool $enablePecl = \false)
+    public function __construct(bool $useGuids = \false, private bool $force32Bit = \false, bool $forceNoBigNumber = \false, private bool $ignoreSystemNode = \false, private bool $enablePecl = \false)
     {
-        $this->force32Bit = $force32Bit;
-        $this->ignoreSystemNode = $ignoreSystemNode;
-        $this->enablePecl = $enablePecl;
         $this->randomGenerator = $this->buildRandomGenerator();
         $this->setCalculator(new BrickMathCalculator());
         $this->builder = $this->buildUuidBuilder($useGuids);
@@ -241,7 +185,6 @@ class FeatureSet
         $this->calculator = $calculator;
         $this->numberConverter = $this->buildNumberConverter($calculator);
         $this->timeConverter = $this->buildTimeConverter($calculator);
-        /** @psalm-suppress RedundantPropertyInitializationCheck */
         if (isset($this->timeProvider)) {
             $this->timeGenerator = $this->buildTimeGenerator($this->timeProvider);
         }

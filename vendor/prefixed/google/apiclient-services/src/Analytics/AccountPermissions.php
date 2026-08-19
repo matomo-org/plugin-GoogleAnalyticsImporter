@@ -20,11 +20,26 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 class AccountPermissions extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'effective';
+    /**
+     * All the permissions that the user has for this account. These include any
+     * implied permissions (e.g., EDIT implies VIEW).
+     *
+     * @var string[]
+     */
     public $effective;
+    /**
+     * All the permissions that the user has for this account. These include any
+     * implied permissions (e.g., EDIT implies VIEW).
+     *
+     * @param string[] $effective
+     */
     public function setEffective($effective)
     {
         $this->effective = $effective;
     }
+    /**
+     * @return string[]
+     */
     public function getEffective()
     {
         return $this->effective;
