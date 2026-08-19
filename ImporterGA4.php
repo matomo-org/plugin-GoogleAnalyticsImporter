@@ -340,7 +340,7 @@ class ImporterGA4
         $command = "php " . PIWIK_INCLUDE_PATH . '/console';
         $domain = Config::getInstance()->getConfigHostnameIfSet();
         if (!empty($domain)) {
-            $command .= ' --matomo-domain=' . $domain;
+            $command .= ' --matomo-domain=' . escapeshellarg($domain);
         }
         $command .= ' customvariables:set-max-custom-variables ' . $numCustomVarSlots;
         passthru($command);
