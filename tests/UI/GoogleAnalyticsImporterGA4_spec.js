@@ -18,10 +18,11 @@ describe("GoogleAnalyticsImporterGA4", function () {
     // (a freshly rendered field sometimes swallows the first characters);
     // values set programmatically do not reach the Vue model
     async function typeFieldValue(selector, text) {
+        let actual;
         for (let attempt = 0; attempt < 3; attempt++) {
             await (await page.$(selector)).type(text);
             await page.waitForTimeout(100);
-            const actual = await page.evaluate(
+            actual = await page.evaluate(
                 (selector) => document.querySelector(selector).value,
                 selector
             );
@@ -32,6 +33,8 @@ describe("GoogleAnalyticsImporterGA4", function () {
                 document.querySelector(selector).value = '';
             }, selector);
         }
+
+        throw new Error(`Could not type "${text}" into ${selector}, last value was "${actual}"`);
     }
 
     // selects bind v-model to the real <select>, so a native change event works
