@@ -19,31 +19,76 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class UserDeletionRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * This marks the point in time for which all user data before should be
+     * deleted
+     *
+     * @var string
+     */
     public $deletionRequestTime;
+    /**
+     * Firebase Project Id
+     *
+     * @var string
+     */
     public $firebaseProjectId;
     protected $idType = UserDeletionRequestId::class;
     protected $idDataType = '';
+    /**
+     * Value is "analytics#userDeletionRequest".
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Property ID
+     *
+     * @var string
+     */
     public $propertyId;
+    /**
+     * Web property ID of the form UA-XXXXX-YY.
+     *
+     * @var string
+     */
     public $webPropertyId;
+    /**
+     * This marks the point in time for which all user data before should be
+     * deleted
+     *
+     * @param string $deletionRequestTime
+     */
     public function setDeletionRequestTime($deletionRequestTime)
     {
         $this->deletionRequestTime = $deletionRequestTime;
     }
+    /**
+     * @return string
+     */
     public function getDeletionRequestTime()
     {
         return $this->deletionRequestTime;
     }
+    /**
+     * Firebase Project Id
+     *
+     * @param string $firebaseProjectId
+     */
     public function setFirebaseProjectId($firebaseProjectId)
     {
         $this->firebaseProjectId = $firebaseProjectId;
     }
+    /**
+     * @return string
+     */
     public function getFirebaseProjectId()
     {
         return $this->firebaseProjectId;
     }
     /**
-     * @param UserDeletionRequestId
+     * User ID.
+     *
+     * @param UserDeletionRequestId $id
      */
     public function setId(UserDeletionRequestId $id)
     {
@@ -56,26 +101,50 @@ class UserDeletionRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
     {
         return $this->id;
     }
+    /**
+     * Value is "analytics#userDeletionRequest".
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Property ID
+     *
+     * @param string $propertyId
+     */
     public function setPropertyId($propertyId)
     {
         $this->propertyId = $propertyId;
     }
+    /**
+     * @return string
+     */
     public function getPropertyId()
     {
         return $this->propertyId;
     }
+    /**
+     * Web property ID of the form UA-XXXXX-YY.
+     *
+     * @param string $webPropertyId
+     */
     public function setWebPropertyId($webPropertyId)
     {
         $this->webPropertyId = $webPropertyId;
     }
+    /**
+     * @return string
+     */
     public function getWebPropertyId()
     {
         return $this->webPropertyId;

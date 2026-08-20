@@ -21,15 +21,33 @@ class EntityUserLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google
 {
     protected $entityType = EntityUserLinkEntity::class;
     protected $entityDataType = '';
+    /**
+     * Entity user link ID
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Resource type for entity user link.
+     *
+     * @var string
+     */
     public $kind;
     protected $permissionsType = EntityUserLinkPermissions::class;
     protected $permissionsDataType = '';
+    /**
+     * Self link for this resource.
+     *
+     * @var string
+     */
     public $selfLink;
     protected $userRefType = UserRef::class;
     protected $userRefDataType = '';
     /**
-     * @param EntityUserLinkEntity
+     * Entity for this link. It can be an account, a web property, or a view
+     * (profile).
+     *
+     * @param EntityUserLinkEntity $entity
      */
     public function setEntity(EntityUserLinkEntity $entity)
     {
@@ -42,24 +60,42 @@ class EntityUserLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google
     {
         return $this->entity;
     }
+    /**
+     * Entity user link ID
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Resource type for entity user link.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
     /**
-     * @param EntityUserLinkPermissions
+     * Permissions the user has for this entity.
+     *
+     * @param EntityUserLinkPermissions $permissions
      */
     public function setPermissions(EntityUserLinkPermissions $permissions)
     {
@@ -72,16 +108,26 @@ class EntityUserLink extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google
     {
         return $this->permissions;
     }
+    /**
+     * Self link for this resource.
+     *
+     * @param string $selfLink
+     */
     public function setSelfLink($selfLink)
     {
         $this->selfLink = $selfLink;
     }
+    /**
+     * @return string
+     */
     public function getSelfLink()
     {
         return $this->selfLink;
     }
     /**
-     * @param UserRef
+     * User reference.
+     *
+     * @param UserRef $userRef
      */
     public function setUserRef(UserRef $userRef)
     {

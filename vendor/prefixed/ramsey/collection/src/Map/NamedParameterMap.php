@@ -32,9 +32,8 @@ class NamedParameterMap extends AbstractMap
      * Named parameters defined for this map.
      *
      * @var array<string, string>
-     * @readonly
      */
-    private $namedParameters;
+    private readonly array $namedParameters;
     /**
      * Constructs a new `NamedParameterMap`.
      *
@@ -55,11 +54,7 @@ class NamedParameterMap extends AbstractMap
     {
         return $this->namedParameters;
     }
-    /**
-     * @param mixed $offset
-     * @param mixed $value
-     */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet(mixed $offset, mixed $value) : void
     {
         if (!array_key_exists($offset, $this->namedParameters)) {
             throw new InvalidArgumentException('Attempting to set value for unconfigured parameter \'' . $this->toolValueToString($offset) . '\'');

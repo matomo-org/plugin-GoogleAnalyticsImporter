@@ -23,16 +23,10 @@ use Symfony\Component\Process\Process;
 class ExecutableHandler
 {
     private const DEFAULT_EXECUTABLE_TIMEOUT_MILLIS = 30 * 1000;
-    /**
-     * @var int
-     */
-    private $timeoutMs;
+    private int $timeoutMs;
     /** @var array<string|\Stringable> */
-    private $env = [];
-    /**
-     * @var string|null
-     */
-    private $output;
+    private array $env = [];
+    private ?string $output = null;
     /**
      * @param array<string|\Stringable> $env
      */

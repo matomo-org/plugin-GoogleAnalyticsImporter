@@ -24,7 +24,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\EntityA
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $webPropertyAdWordsLinks = $analyticsService->webPropertyAdWordsLinks;
+ *   $webPropertyAdWordsLinks = $analyticsService->management_webPropertyAdWordsLinks;
  *  </code>
  */
 class ManagementWebPropertyAdWordsLinks extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -38,6 +38,7 @@ class ManagementWebPropertyAdWordsLinks extends \Matomo\Dependencies\GoogleAnaly
      * for.
      * @param string $webPropertyAdWordsLinkId Web property Google Ads link ID.
      * @param array $optParams Optional parameters.
+     * @throws \Google\Service\Exception
      */
     public function delete($accountId, $webPropertyId, $webPropertyAdWordsLinkId, $optParams = [])
     {
@@ -56,6 +57,7 @@ class ManagementWebPropertyAdWordsLinks extends \Matomo\Dependencies\GoogleAnaly
      * @param string $webPropertyAdWordsLinkId Web property-Google Ads link ID.
      * @param array $optParams Optional parameters.
      * @return EntityAdWordsLink
+     * @throws \Google\Service\Exception
      */
     public function get($accountId, $webPropertyId, $webPropertyAdWordsLinkId, $optParams = [])
     {
@@ -72,6 +74,7 @@ class ManagementWebPropertyAdWordsLinks extends \Matomo\Dependencies\GoogleAnaly
      * @param EntityAdWordsLink $postBody
      * @param array $optParams Optional parameters.
      * @return EntityAdWordsLink
+     * @throws \Google\Service\Exception
      */
     public function insert($accountId, $webPropertyId, EntityAdWordsLink $postBody, $optParams = [])
     {
@@ -95,6 +98,7 @@ class ManagementWebPropertyAdWordsLinks extends \Matomo\Dependencies\GoogleAnaly
      * to retrieve. Use this parameter as a pagination mechanism along with the max-
      * results parameter.
      * @return EntityAdWordsLinks
+     * @throws \Google\Service\Exception
      */
     public function listManagementWebPropertyAdWordsLinks($accountId, $webPropertyId, $optParams = [])
     {
@@ -114,6 +118,7 @@ class ManagementWebPropertyAdWordsLinks extends \Matomo\Dependencies\GoogleAnaly
      * @param EntityAdWordsLink $postBody
      * @param array $optParams Optional parameters.
      * @return EntityAdWordsLink
+     * @throws \Google\Service\Exception
      */
     public function patch($accountId, $webPropertyId, $webPropertyAdWordsLinkId, EntityAdWordsLink $postBody, $optParams = [])
     {
@@ -133,6 +138,7 @@ class ManagementWebPropertyAdWordsLinks extends \Matomo\Dependencies\GoogleAnaly
      * @param EntityAdWordsLink $postBody
      * @param array $optParams Optional parameters.
      * @return EntityAdWordsLink
+     * @throws \Google\Service\Exception
      */
     public function update($accountId, $webPropertyId, $webPropertyAdWordsLinkId, EntityAdWordsLink $postBody, $optParams = [])
     {

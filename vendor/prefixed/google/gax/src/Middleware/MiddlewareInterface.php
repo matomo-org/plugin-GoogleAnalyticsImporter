@@ -32,20 +32,19 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Middleware;
 
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\BidiStream;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Call;
-use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ClientStream;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ServerStream;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\BidiStream;
+use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
 /**
  * Middlewares must take a MiddlewareInterface as their first constructor
- * argument {@see Google\ApiCore\Middleware\ResponseMetadataMiddleware}, which
- * represents the next middleware in the chain. This next middleware MUST be
- * invoked by this MiddlewareInterface, and the result must be returned as part
- * of the `__invoke` method implementation.
+ * argument, which represents the next middleware in the chain. This next
+ * middleware MUST be invoked by this MiddlewareInterface, and the result must
+ * be returned as part of the `__invoke` method implementation.
  *
- * To create your own middleware, first implement the interface, as well as pass the handler
- * in through the constructor:
+ * To create your own middleware, first implement the interface, as well as
+ * pass the handler in through the constructor:
  *
  * ```
  * use Google\ApiCore\Call;
@@ -65,8 +64,8 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\BidiStream;
  * }
  * ```
  *
- * Next, add the middleware to any class implementing `GapicClientTrait` by passing in a
- * callable which returns the new middleware:
+ * Next, add the middleware to any class implementing `GapicClientTrait` by
+ * passing in a callable which returns the new middleware:
  *
  * ```
  * $client = new ExampleGoogleApiServiceClient();
@@ -74,6 +73,8 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\BidiStream;
  *     return new MyTestMiddleware($handler);
  * });
  * ```
+ *
+ * @see ResponseMetadataMiddleware
  */
 interface MiddlewareInterface
 {

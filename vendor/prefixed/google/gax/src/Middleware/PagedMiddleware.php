@@ -37,18 +37,16 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Page;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\PagedListResponse;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\PageStreamingDescriptor;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\Message;
-use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
 /**
 * Middleware which wraps the response in an PagedListResponses object.
+*
+* @internal
 */
 class PagedMiddleware implements MiddlewareInterface
 {
     /** @var callable */
     private $nextHandler;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\PageStreamingDescriptor
-     */
-    private $descriptor;
+    private PageStreamingDescriptor $descriptor;
     /**
      * @param callable $nextHandler
      * @param PageStreamingDescriptor $descriptor

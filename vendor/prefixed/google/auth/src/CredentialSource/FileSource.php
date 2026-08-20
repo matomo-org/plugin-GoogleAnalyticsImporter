@@ -25,25 +25,16 @@ use UnexpectedValueException;
  */
 class FileSource implements ExternalAccountCredentialSourceInterface
 {
+    private string $file;
+    private ?string $format;
+    private ?string $subjectTokenFieldName;
     /**
-     * @var string
+     * @param string $file                       The file to read the subject token from.
+     * @param string|null $format                The format of the token in the file. Can be null or "json".
+     * @param string|null $subjectTokenFieldName The name of the field containing the token in the file. This is required
+     *                                           when format is "json".
      */
-    private $file;
-    /**
-     * @var string|null
-     */
-    private $format;
-    /**
-     * @var string|null
-     */
-    private $subjectTokenFieldName;
-    /**
-     * @param string $file                  The file to read the subject token from.
-     * @param string $format                The format of the token in the file. Can be null or "json".
-     * @param string $subjectTokenFieldName The name of the field containing the token in the file. This is required
-     *                                      when format is "json".
-     */
-    public function __construct(string $file, string $format = null, string $subjectTokenFieldName = null)
+    public function __construct(string $file, ?string $format = null, ?string $subjectTokenFieldName = null)
     {
         $this->file = $file;
         if ($format === 'json' && is_null($subjectTokenFieldName)) {
@@ -52,7 +43,7 @@ class FileSource implements ExternalAccountCredentialSourceInterface
         $this->format = $format;
         $this->subjectTokenFieldName = $subjectTokenFieldName;
     }
-    public function fetchSubjectToken(callable $httpHandler = null) : string
+    public function fetchSubjectToken(?callable $httpHandler = null) : string
     {
         $contents = file_get_contents($this->file);
         if ($this->format === 'json') {

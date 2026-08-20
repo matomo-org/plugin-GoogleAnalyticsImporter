@@ -7,6 +7,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\DivisionByZ
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\MathException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\NegativeNumberException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Internal\Calculator;
+use Override;
 /**
  * Immutable, arbitrary-precision signed decimal numbers.
  *
@@ -20,18 +21,14 @@ final class BigDecimal extends BigNumber
      * This is a string of digits with an optional leading minus sign.
      * No leading zero must be present.
      * No leading minus sign must be present if the value is 0.
-     * @readonly
-     * @var string
      */
-    private $value;
+    private readonly string $value;
     /**
      * The scale (number of digits after the decimal point) of this decimal number.
      *
      * This must be zero or more.
-     * @readonly
-     * @var int
      */
-    private $scale;
+    private readonly int $scale;
     /**
      * Protected constructor. Use a factory method to obtain an instance.
      *
@@ -45,9 +42,9 @@ final class BigDecimal extends BigNumber
     }
     /**
      * @psalm-pure
-     * @return static
      */
-    protected static function from(BigNumber $number)
+    #[Override]
+    protected static function from(BigNumber $number) : static
     {
         return $number->toBigDecimal();
     }
@@ -57,18 +54,21 @@ final class BigDecimal extends BigNumber
      * Example: `(12345, 3)` will result in the BigDecimal `12.345`.
      *
      * @param BigNumber|int|float|string $value The unscaled value. Must be convertible to a BigInteger.
-     * @param int                        $scale The scale of the number, positive or zero.
-     *
-     * @throws \InvalidArgumentException If the scale is negative.
+     * @param int                        $scale The scale of the number. If negative, the scale will be set to zero
+     *                                          and the unscaled value will be adjusted accordingly.
      *
      * @psalm-pure
      */
-    public static function ofUnscaledValue($value, int $scale = 0) : BigDecimal
+    public static function ofUnscaledValue(BigNumber|int|float|string $value, int $scale = 0) : BigDecimal
     {
+        $value = (string) BigInteger::of($value);
         if ($scale < 0) {
-            throw new \InvalidArgumentException('The scale cannot be negative.');
+            if ($value !== '0') {
+                $value .= \str_repeat('0', -$scale);
+            }
+            $scale = 0;
         }
-        return new BigDecimal((string) BigInteger::of($value), $scale);
+        return new BigDecimal($value, $scale);
     }
     /**
      * Returns a BigDecimal representing zero, with a scale of zero.
@@ -130,7 +130,7 @@ final class BigDecimal extends BigNumber
      *
      * @throws MathException If the number is not valid, or is not convertible to a BigDecimal.
      */
-    public function plus($that) : BigDecimal
+    public function plus(BigNumber|int|float|string $that) : BigDecimal
     {
         $that = BigDecimal::of($that);
         if ($that->value === '0' && $that->scale <= $this->scale) {
@@ -153,7 +153,7 @@ final class BigDecimal extends BigNumber
      *
      * @throws MathException If the number is not valid, or is not convertible to a BigDecimal.
      */
-    public function minus($that) : BigDecimal
+    public function minus(BigNumber|int|float|string $that) : BigDecimal
     {
         $that = BigDecimal::of($that);
         if ($that->value === '0' && $that->scale <= $this->scale) {
@@ -173,7 +173,7 @@ final class BigDecimal extends BigNumber
      *
      * @throws MathException If the multiplier is not a valid number, or is not convertible to a BigDecimal.
      */
-    public function multipliedBy($that) : BigDecimal
+    public function multipliedBy(BigNumber|int|float|string $that) : BigDecimal
     {
         $that = BigDecimal::of($that);
         if ($that->value === '1' && $that->scale === 0) {
@@ -195,9 +195,8 @@ final class BigDecimal extends BigNumber
      *
      * @throws \InvalidArgumentException If the scale or rounding mode is invalid.
      * @throws MathException             If the number is invalid, is zero, or rounding was necessary.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\RoundingMode::* $roundingMode
      */
-    public function dividedBy($that, ?int $scale = null, string $roundingMode = RoundingMode::UNNECESSARY) : BigDecimal
+    public function dividedBy(BigNumber|int|float|string $that, ?int $scale = null, RoundingMode $roundingMode = RoundingMode::UNNECESSARY) : BigDecimal
     {
         $that = BigDecimal::of($that);
         if ($that->isZero()) {
@@ -226,7 +225,7 @@ final class BigDecimal extends BigNumber
      * @throws MathException If the divisor is not a valid number, is not convertible to a BigDecimal, is zero,
      *                       or the result yields an infinite number of digits.
      */
-    public function exactlyDividedBy($that) : BigDecimal
+    public function exactlyDividedBy(BigNumber|int|float|string $that) : BigDecimal
     {
         $that = BigDecimal::of($that);
         if ($that->value === '0') {
@@ -277,7 +276,7 @@ final class BigDecimal extends BigNumber
      *
      * @throws MathException If the divisor is not a valid decimal number, or is zero.
      */
-    public function quotient($that) : BigDecimal
+    public function quotient(BigNumber|int|float|string $that) : BigDecimal
     {
         $that = BigDecimal::of($that);
         if ($that->isZero()) {
@@ -297,7 +296,7 @@ final class BigDecimal extends BigNumber
      *
      * @throws MathException If the divisor is not a valid decimal number, or is zero.
      */
-    public function remainder($that) : BigDecimal
+    public function remainder(BigNumber|int|float|string $that) : BigDecimal
     {
         $that = BigDecimal::of($that);
         if ($that->isZero()) {
@@ -322,7 +321,7 @@ final class BigDecimal extends BigNumber
      *
      * @throws MathException If the divisor is not a valid decimal number, or is zero.
      */
-    public function quotientAndRemainder($that) : array
+    public function quotientAndRemainder(BigNumber|int|float|string $that) : array
     {
         $that = BigDecimal::of($that);
         if ($that->isZero()) {
@@ -440,10 +439,8 @@ final class BigDecimal extends BigNumber
     {
         return new BigDecimal(Calculator::get()->neg($this->value), $this->scale);
     }
-    /**
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $that
-     */
-    public function compareTo($that) : int
+    #[Override]
+    public function compareTo(BigNumber|int|float|string $that) : int
     {
         $that = BigNumber::of($that);
         if ($that instanceof BigInteger) {
@@ -455,6 +452,7 @@ final class BigDecimal extends BigNumber
         }
         return -$that->compareTo($this);
     }
+    #[Override]
     public function getSign() : int
     {
         return $this->value === '0' ? 0 : ($this->value[0] === '-' ? -1 : 1);
@@ -466,6 +464,29 @@ final class BigDecimal extends BigNumber
     public function getScale() : int
     {
         return $this->scale;
+    }
+    /**
+     * Returns the number of significant digits in the number.
+     *
+     * This is the number of digits to both sides of the decimal point, stripped of leading zeros.
+     * The sign has no impact on the result.
+     *
+     * Examples:
+     *   0 => 0
+     *   0.0 => 0
+     *   123 => 3
+     *   123.456 => 6
+     *   0.00123 => 3
+     *   0.0012300 => 5
+     */
+    public function getPrecision() : int
+    {
+        $value = $this->value;
+        if ($value === '0') {
+            return 0;
+        }
+        $length = \strlen($value);
+        return $value[0] === '-' ? $length - 1 : $length;
     }
     /**
      * Returns a string representing the integral part of this decimal number.
@@ -502,45 +523,54 @@ final class BigDecimal extends BigNumber
     {
         return $this->getFractionalPart() !== \str_repeat('0', $this->scale);
     }
+    #[Override]
     public function toBigInteger() : BigInteger
     {
         $zeroScaleDecimal = $this->scale === 0 ? $this : $this->dividedBy(1, 0);
         return self::newBigInteger($zeroScaleDecimal->value);
     }
+    #[Override]
     public function toBigDecimal() : BigDecimal
     {
         return $this;
     }
+    #[Override]
     public function toBigRational() : BigRational
     {
         $numerator = self::newBigInteger($this->value);
         $denominator = self::newBigInteger('1' . \str_repeat('0', $this->scale));
         return self::newBigRational($numerator, $denominator, \false);
     }
-    /**
-     * @param string $roundingMode
-     */
-    public function toScale(int $scale, $roundingMode = RoundingMode::UNNECESSARY) : BigDecimal
+    #[Override]
+    public function toScale(int $scale, RoundingMode $roundingMode = RoundingMode::UNNECESSARY) : BigDecimal
     {
         if ($scale === $this->scale) {
             return $this;
         }
         return $this->dividedBy(BigDecimal::one(), $scale, $roundingMode);
     }
+    #[Override]
     public function toInt() : int
     {
         return $this->toBigInteger()->toInt();
     }
+    #[Override]
     public function toFloat() : float
     {
         return (float) (string) $this;
     }
+    /**
+     * @return numeric-string
+     */
+    #[Override]
     public function __toString() : string
     {
         if ($this->scale === 0) {
+            /** @var numeric-string */
             return $this->value;
         }
         $value = $this->getUnscaledValueWithLeadingZeros();
+        /** @var numeric-string */
         return \substr($value, 0, -$this->scale) . '.' . \substr($value, -$this->scale);
     }
     /**

@@ -14,16 +14,7 @@ class Log
             return;
         }
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Api\Label::initOnce();
-        $pool->internalAddGeneratedFile('
-
-google/api/log.proto
-google.api"u
-LogDescriptor
-name (	+
-labels (2.google.api.LabelDescriptor
-description (	
-display_name (	Bj
-com.google.apiBLogProtoPZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig¢GAPIbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\x8d\x02\n\x14google/api/log.proto\x12\ngoogle.api\"u\n\rLogDescriptor\x12\f\n\x04name\x18\x01 \x01(\t\x12+\n\x06labels\x18\x02 \x03(\v2\x1b.google.api.LabelDescriptor\x12\x13\n\vdescription\x18\x03 \x01(\t\x12\x14\n\fdisplay_name\x18\x04 \x01(\tBj\n\x0ecom.google.apiB\x08LogProtoP\x01ZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig\xa2\x02\x04GAPIb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

@@ -20,30 +20,70 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 class Columns extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'items';
+    /**
+     * List of attributes names returned by columns.
+     *
+     * @var string[]
+     */
     public $attributeNames;
+    /**
+     * Etag of collection. This etag can be compared with the last response etag
+     * to check if response has changed.
+     *
+     * @var string
+     */
     public $etag;
     protected $itemsType = Column::class;
     protected $itemsDataType = 'array';
+    /**
+     * Collection type.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Total number of columns returned in the response.
+     *
+     * @var int
+     */
     public $totalResults;
+    /**
+     * List of attributes names returned by columns.
+     *
+     * @param string[] $attributeNames
+     */
     public function setAttributeNames($attributeNames)
     {
         $this->attributeNames = $attributeNames;
     }
+    /**
+     * @return string[]
+     */
     public function getAttributeNames()
     {
         return $this->attributeNames;
     }
+    /**
+     * Etag of collection. This etag can be compared with the last response etag
+     * to check if response has changed.
+     *
+     * @param string $etag
+     */
     public function setEtag($etag)
     {
         $this->etag = $etag;
     }
+    /**
+     * @return string
+     */
     public function getEtag()
     {
         return $this->etag;
     }
     /**
-     * @param Column[]
+     * List of columns for a report type.
+     *
+     * @param Column[] $items
      */
     public function setItems($items)
     {
@@ -56,18 +96,34 @@ class Columns extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collec
     {
         return $this->items;
     }
+    /**
+     * Collection type.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Total number of columns returned in the response.
+     *
+     * @param int $totalResults
+     */
     public function setTotalResults($totalResults)
     {
         $this->totalResults = $totalResults;
     }
+    /**
+     * @return int
+     */
     public function getTotalResults()
     {
         return $this->totalResults;

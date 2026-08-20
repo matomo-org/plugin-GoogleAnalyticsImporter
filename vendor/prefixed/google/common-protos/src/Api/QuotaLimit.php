@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * `QuotaLimit` defines a specific limit that applies over a specified duration
  * for a limit type. There can be at most one limit for a duration and limit
@@ -87,8 +87,8 @@ class QuotaLimit extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pro
     protected $metric = '';
     /**
      * Specify the unit of the quota limit. It uses the same syntax as
-     * [Metric.unit][]. The supported unit kinds are determined by the quota
-     * backend system.
+     * [MetricDescriptor.unit][google.api.MetricDescriptor.unit]. The supported
+     * unit kinds are determined by the quota backend system.
      * Here are some examples:
      * * "1/min/{project}" for quota per minute per project.
      * Note: the order of unit components is insignificant.
@@ -163,8 +163,8 @@ class QuotaLimit extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pro
      *           defined within the service config.
      *     @type string $unit
      *           Specify the unit of the quota limit. It uses the same syntax as
-     *           [Metric.unit][]. The supported unit kinds are determined by the quota
-     *           backend system.
+     *           [MetricDescriptor.unit][google.api.MetricDescriptor.unit]. The supported
+     *           unit kinds are determined by the quota backend system.
      *           Here are some examples:
      *           * "1/min/{project}" for quota per minute per project.
      *           Note: the order of unit components is insignificant.
@@ -402,8 +402,8 @@ class QuotaLimit extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pro
     }
     /**
      * Specify the unit of the quota limit. It uses the same syntax as
-     * [Metric.unit][]. The supported unit kinds are determined by the quota
-     * backend system.
+     * [MetricDescriptor.unit][google.api.MetricDescriptor.unit]. The supported
+     * unit kinds are determined by the quota backend system.
      * Here are some examples:
      * * "1/min/{project}" for quota per minute per project.
      * Note: the order of unit components is insignificant.
@@ -418,8 +418,8 @@ class QuotaLimit extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pro
     }
     /**
      * Specify the unit of the quota limit. It uses the same syntax as
-     * [Metric.unit][]. The supported unit kinds are determined by the quota
-     * backend system.
+     * [MetricDescriptor.unit][google.api.MetricDescriptor.unit]. The supported
+     * unit kinds are determined by the quota backend system.
      * Here are some examples:
      * * "1/min/{project}" for quota per minute per project.
      * Note: the order of unit components is insignificant.

@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Settings for Go client libraries.
  *
@@ -21,6 +21,19 @@ class GoSettings extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pro
      */
     protected $common = null;
     /**
+     * Map of service names to renamed services. Keys are the package relative
+     * service names and values are the name to be used for the service client
+     * and call options.
+     * Example:
+     *     publishing:
+     *       go_settings:
+     *         renamed_services:
+     *           Publisher: TopicAdmin
+     *
+     * Generated from protobuf field <code>map<string, string> renamed_services = 2;</code>
+     */
+    private $renamed_services;
+    /**
      * Constructor.
      *
      * @param array $data {
@@ -28,6 +41,15 @@ class GoSettings extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pro
      *
      *     @type \Google\Api\CommonLanguageSettings $common
      *           Some settings.
+     *     @type array|\Google\Protobuf\Internal\MapField $renamed_services
+     *           Map of service names to renamed services. Keys are the package relative
+     *           service names and values are the name to be used for the service client
+     *           and call options.
+     *           Example:
+     *               publishing:
+     *                 go_settings:
+     *                   renamed_services:
+     *                     Publisher: TopicAdmin
      * }
      */
     public function __construct($data = NULL)
@@ -64,6 +86,43 @@ class GoSettings extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pro
     {
         GPBUtil::checkMessage($var, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api\CommonLanguageSettings::class);
         $this->common = $var;
+        return $this;
+    }
+    /**
+     * Map of service names to renamed services. Keys are the package relative
+     * service names and values are the name to be used for the service client
+     * and call options.
+     * Example:
+     *     publishing:
+     *       go_settings:
+     *         renamed_services:
+     *           Publisher: TopicAdmin
+     *
+     * Generated from protobuf field <code>map<string, string> renamed_services = 2;</code>
+     * @return \Google\Protobuf\Internal\MapField
+     */
+    public function getRenamedServices()
+    {
+        return $this->renamed_services;
+    }
+    /**
+     * Map of service names to renamed services. Keys are the package relative
+     * service names and values are the name to be used for the service client
+     * and call options.
+     * Example:
+     *     publishing:
+     *       go_settings:
+     *         renamed_services:
+     *           Publisher: TopicAdmin
+     *
+     * Generated from protobuf field <code>map<string, string> renamed_services = 2;</code>
+     * @param array|\Google\Protobuf\Internal\MapField $var
+     * @return $this
+     */
+    public function setRenamedServices($var)
+    {
+        $arr = GPBUtil::checkMapField($var, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType::STRING, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType::STRING);
+        $this->renamed_services = $arr;
         return $this;
     }
 }

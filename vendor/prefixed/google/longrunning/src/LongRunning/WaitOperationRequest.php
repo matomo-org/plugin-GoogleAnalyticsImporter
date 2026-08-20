@@ -5,10 +5,11 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\LongRunning;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
- * The request message for [Operations.WaitOperation][google.longrunning.Operations.WaitOperation].
+ * The request message for
+ * [Operations.WaitOperation][google.longrunning.Operations.WaitOperation].
  *
  * Generated from protobuf message <code>google.longrunning.WaitOperationRequest</code>
  */

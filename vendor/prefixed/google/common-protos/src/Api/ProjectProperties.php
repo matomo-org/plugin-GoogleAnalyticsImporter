@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * A descriptor for defining project properties for a service. One service may
  * have many consumer projects, and the service may want to behave differently
@@ -39,7 +39,7 @@ class ProjectProperties extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Google\Api\Property>|\Google\Protobuf\Internal\RepeatedField $properties
+     *     @type \Google\Api\Property[] $properties
      *           List of per consumer project-specific properties.
      * }
      */
@@ -52,7 +52,7 @@ class ProjectProperties extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
      * List of per consumer project-specific properties.
      *
      * Generated from protobuf field <code>repeated .google.api.Property properties = 1;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Property>
      */
     public function getProperties()
     {
@@ -62,7 +62,7 @@ class ProjectProperties extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
      * List of per consumer project-specific properties.
      *
      * Generated from protobuf field <code>repeated .google.api.Property properties = 1;</code>
-     * @param array<\Google\Api\Property>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Property[] $var
      * @return $this
      */
     public function setProperties($var)

@@ -14,14 +14,7 @@ class Control
             return;
         }
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Api\Policy::initOnce();
-        $pool->internalAddGeneratedFile('
-ñ
-google/api/control.proto
-google.api"Q
-Control
-environment (	1
-method_policies (2.google.api.MethodPolicyBn
-com.google.apiBControlProtoPZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig¢GAPIbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\xf1\x01\n\x18google/api/control.proto\x12\ngoogle.api\"Q\n\x07Control\x12\x13\n\venvironment\x18\x01 \x01(\t\x121\n\x0fmethod_policies\x18\x04 \x03(\v2\x18.google.api.MethodPolicyBn\n\x0ecom.google.apiB\fControlProtoP\x01ZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig\xa2\x02\x04GAPIb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

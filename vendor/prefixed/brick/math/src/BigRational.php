@@ -7,6 +7,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\DivisionByZ
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\MathException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\NumberFormatException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\RoundingNecessaryException;
+use Override;
 /**
  * An arbitrarily large rational number.
  *
@@ -18,16 +19,12 @@ final class BigRational extends BigNumber
 {
     /**
      * The numerator.
-     * @readonly
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigInteger
      */
-    private $numerator;
+    private readonly BigInteger $numerator;
     /**
      * The denominator. Always strictly positive.
-     * @readonly
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigInteger
      */
-    private $denominator;
+    private readonly BigInteger $denominator;
     /**
      * Protected constructor. Use a factory method to obtain an instance.
      *
@@ -53,9 +50,9 @@ final class BigRational extends BigNumber
     }
     /**
      * @psalm-pure
-     * @return static
      */
-    protected static function from(BigNumber $number)
+    #[Override]
+    protected static function from(BigNumber $number) : static
     {
         return $number->toBigRational();
     }
@@ -74,7 +71,7 @@ final class BigRational extends BigNumber
      *
      * @psalm-pure
      */
-    public static function nd($numerator, $denominator) : BigRational
+    public static function nd(BigNumber|int|float|string $numerator, BigNumber|int|float|string $denominator) : BigRational
     {
         $numerator = BigInteger::of($numerator);
         $denominator = BigInteger::of($denominator);
@@ -171,7 +168,7 @@ final class BigRational extends BigNumber
      *
      * @throws MathException If the number is not valid.
      */
-    public function plus($that) : BigRational
+    public function plus(BigNumber|int|float|string $that) : BigRational
     {
         $that = BigRational::of($that);
         $numerator = $this->numerator->multipliedBy($that->denominator);
@@ -186,7 +183,7 @@ final class BigRational extends BigNumber
      *
      * @throws MathException If the number is not valid.
      */
-    public function minus($that) : BigRational
+    public function minus(BigNumber|int|float|string $that) : BigRational
     {
         $that = BigRational::of($that);
         $numerator = $this->numerator->multipliedBy($that->denominator);
@@ -201,7 +198,7 @@ final class BigRational extends BigNumber
      *
      * @throws MathException If the multiplier is not a valid number.
      */
-    public function multipliedBy($that) : BigRational
+    public function multipliedBy(BigNumber|int|float|string $that) : BigRational
     {
         $that = BigRational::of($that);
         $numerator = $this->numerator->multipliedBy($that->numerator);
@@ -215,7 +212,7 @@ final class BigRational extends BigNumber
      *
      * @throws MathException If the divisor is not a valid number, or is zero.
      */
-    public function dividedBy($that) : BigRational
+    public function dividedBy(BigNumber|int|float|string $that) : BigRational
     {
         $that = BigRational::of($that);
         $numerator = $this->numerator->multipliedBy($that->denominator);
@@ -273,17 +270,17 @@ final class BigRational extends BigNumber
         $denominator = $this->denominator->quotient($gcd);
         return new BigRational($numerator, $denominator, \false);
     }
-    /**
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $that
-     */
-    public function compareTo($that) : int
+    #[Override]
+    public function compareTo(BigNumber|int|float|string $that) : int
     {
         return $this->minus($that)->getSign();
     }
+    #[Override]
     public function getSign() : int
     {
         return $this->numerator->getSign();
     }
+    #[Override]
     public function toBigInteger() : BigInteger
     {
         $simplified = $this->simplified();
@@ -292,30 +289,33 @@ final class BigRational extends BigNumber
         }
         return $simplified->numerator;
     }
+    #[Override]
     public function toBigDecimal() : BigDecimal
     {
         return $this->numerator->toBigDecimal()->exactlyDividedBy($this->denominator);
     }
+    #[Override]
     public function toBigRational() : BigRational
     {
         return $this;
     }
-    /**
-     * @param string $roundingMode
-     */
-    public function toScale(int $scale, $roundingMode = RoundingMode::UNNECESSARY) : BigDecimal
+    #[Override]
+    public function toScale(int $scale, RoundingMode $roundingMode = RoundingMode::UNNECESSARY) : BigDecimal
     {
         return $this->numerator->toBigDecimal()->dividedBy($this->denominator, $scale, $roundingMode);
     }
+    #[Override]
     public function toInt() : int
     {
         return $this->toBigInteger()->toInt();
     }
+    #[Override]
     public function toFloat() : float
     {
         $simplified = $this->simplified();
         return $simplified->numerator->toFloat() / $simplified->denominator->toFloat();
     }
+    #[Override]
     public function __toString() : string
     {
         $numerator = (string) $this->numerator;
@@ -323,7 +323,7 @@ final class BigRational extends BigNumber
         if ($denominator === '1') {
             return $numerator;
         }
-        return $this->numerator . '/' . $this->denominator;
+        return $numerator . '/' . $denominator;
     }
     /**
      * This method is required for serializing the object and SHOULD NOT be accessed directly.

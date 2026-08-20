@@ -14,16 +14,7 @@ class Httpbody
             return;
         }
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Any::initOnce();
-        $pool->internalAddGeneratedFile('
-ó
-google/api/httpbody.proto
-google.api"X
-HttpBody
-content_type (	
-data ((
-
-extensions (2.google.protobuf.AnyBh
-com.google.apiBHttpBodyProtoPZ;google.golang.org/genproto/googleapis/api/httpbody;httpbodyø¢GAPIbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\xf0\x01\n\x19google/api/httpbody.proto\x12\ngoogle.api\"X\n\x08HttpBody\x12\x14\n\fcontent_type\x18\x01 \x01(\t\x12\f\n\x04data\x18\x02 \x01(\f\x12(\n\nextensions\x18\x03 \x03(\v2\x14.google.protobuf.AnyBe\n\x0ecom.google.apiB\rHttpBodyProtoP\x01Z;google.golang.org/genproto/googleapis/api/httpbody;httpbody\xa2\x02\x04GAPIb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

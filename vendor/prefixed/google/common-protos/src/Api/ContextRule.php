@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * A context rule provides information about the context for an individual API
  * element.
@@ -61,16 +61,16 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      *           Selects the methods to which this rule applies.
      *           Refer to [selector][google.api.DocumentationRule.selector] for syntax
      *           details.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $requested
+     *     @type string[] $requested
      *           A list of full type names of requested contexts, only the requested context
      *           will be made available to the backend.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $provided
+     *     @type string[] $provided
      *           A list of full type names of provided contexts. It is used to support
      *           propagating HTTP headers and ETags from the response extension.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $allowed_request_extensions
+     *     @type string[] $allowed_request_extensions
      *           A list of full type names or extension IDs of extensions allowed in grpc
      *           side channel from client to backend.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $allowed_response_extensions
+     *     @type string[] $allowed_response_extensions
      *           A list of full type names or extension IDs of extensions allowed in grpc
      *           side channel from backend to client.
      * }
@@ -112,7 +112,7 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      * will be made available to the backend.
      *
      * Generated from protobuf field <code>repeated string requested = 2;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getRequested()
     {
@@ -123,7 +123,7 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      * will be made available to the backend.
      *
      * Generated from protobuf field <code>repeated string requested = 2;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setRequested($var)
@@ -137,7 +137,7 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      * propagating HTTP headers and ETags from the response extension.
      *
      * Generated from protobuf field <code>repeated string provided = 3;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getProvided()
     {
@@ -148,7 +148,7 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      * propagating HTTP headers and ETags from the response extension.
      *
      * Generated from protobuf field <code>repeated string provided = 3;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setProvided($var)
@@ -162,7 +162,7 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      * side channel from client to backend.
      *
      * Generated from protobuf field <code>repeated string allowed_request_extensions = 4;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getAllowedRequestExtensions()
     {
@@ -173,7 +173,7 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      * side channel from client to backend.
      *
      * Generated from protobuf field <code>repeated string allowed_request_extensions = 4;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setAllowedRequestExtensions($var)
@@ -187,7 +187,7 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      * side channel from backend to client.
      *
      * Generated from protobuf field <code>repeated string allowed_response_extensions = 5;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getAllowedResponseExtensions()
     {
@@ -198,7 +198,7 @@ class ContextRule extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Pr
      * side channel from backend to client.
      *
      * Generated from protobuf field <code>repeated string allowed_response_extensions = 5;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setAllowedResponseExtensions($var)

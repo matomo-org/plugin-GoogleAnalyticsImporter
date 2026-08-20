@@ -19,29 +19,72 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class GaDataColumnHeaders extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Column Type. Either DIMENSION or METRIC.
+     *
+     * @var string
+     */
     public $columnType;
+    /**
+     * Data type. Dimension column headers have only STRING as the data type.
+     * Metric column headers have data types for metric values such as INTEGER,
+     * DOUBLE, CURRENCY etc.
+     *
+     * @var string
+     */
     public $dataType;
+    /**
+     * Column name.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Column Type. Either DIMENSION or METRIC.
+     *
+     * @param string $columnType
+     */
     public function setColumnType($columnType)
     {
         $this->columnType = $columnType;
     }
+    /**
+     * @return string
+     */
     public function getColumnType()
     {
         return $this->columnType;
     }
+    /**
+     * Data type. Dimension column headers have only STRING as the data type.
+     * Metric column headers have data types for metric values such as INTEGER,
+     * DOUBLE, CURRENCY etc.
+     *
+     * @param string $dataType
+     */
     public function setDataType($dataType)
     {
         $this->dataType = $dataType;
     }
+    /**
+     * @return string
+     */
     public function getDataType()
     {
         return $this->dataType;
     }
+    /**
+     * Column name.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;

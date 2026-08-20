@@ -19,31 +19,93 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class ExperimentVariations extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * The name of the variation. This field is required when creating an
+     * experiment. This field may not be changed for an experiment whose status is
+     * ENDED.
+     *
+     * @var string
+     */
     public $name;
+    /**
+     * Status of the variation. Possible values: "ACTIVE", "INACTIVE". INACTIVE
+     * variations are not served. This field may not be changed for an experiment
+     * whose status is ENDED.
+     *
+     * @var string
+     */
     public $status;
+    /**
+     * The URL of the variation. This field may not be changed for an experiment
+     * whose status is RUNNING or ENDED.
+     *
+     * @var string
+     */
     public $url;
+    /**
+     * Weight that this variation should receive. Only present if the experiment
+     * is running. This field is read-only.
+     *
+     * @var 
+     */
     public $weight;
+    /**
+     * True if the experiment has ended and this variation performed
+     * (statistically) significantly better than the original. This field is read-
+     * only.
+     *
+     * @var bool
+     */
     public $won;
+    /**
+     * The name of the variation. This field is required when creating an
+     * experiment. This field may not be changed for an experiment whose status is
+     * ENDED.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
+    /**
+     * Status of the variation. Possible values: "ACTIVE", "INACTIVE". INACTIVE
+     * variations are not served. This field may not be changed for an experiment
+     * whose status is ENDED.
+     *
+     * @param string $status
+     */
     public function setStatus($status)
     {
         $this->status = $status;
     }
+    /**
+     * @return string
+     */
     public function getStatus()
     {
         return $this->status;
     }
+    /**
+     * The URL of the variation. This field may not be changed for an experiment
+     * whose status is RUNNING or ENDED.
+     *
+     * @param string $url
+     */
     public function setUrl($url)
     {
         $this->url = $url;
     }
+    /**
+     * @return string
+     */
     public function getUrl()
     {
         return $this->url;
@@ -56,10 +118,20 @@ class ExperimentVariations extends \Matomo\Dependencies\GoogleAnalyticsImporter\
     {
         return $this->weight;
     }
+    /**
+     * True if the experiment has ended and this variation performed
+     * (statistically) significantly better than the original. This field is read-
+     * only.
+     *
+     * @param bool $won
+     */
     public function setWon($won)
     {
         $this->won = $won;
     }
+    /**
+     * @return bool
+     */
     public function getWon()
     {
         return $this->won;

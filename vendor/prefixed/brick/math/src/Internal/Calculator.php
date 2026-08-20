@@ -30,9 +30,8 @@ abstract class Calculator
     public const ALPHABET = '0123456789abcdefghijklmnopqrstuvwxyz';
     /**
      * The Calculator instance in use.
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Internal\Calculator|null
      */
-    private static $instance;
+    private static ?Calculator $instance = null;
     /**
      * Sets the Calculator instance to use.
      *
@@ -365,9 +364,8 @@ abstract class Calculator
      * @throws RoundingNecessaryException If RoundingMode::UNNECESSARY is provided but rounding is necessary.
      *
      * @psalm-suppress ImpureFunctionCall
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\RoundingMode::* $roundingMode
      */
-    public final function divRound(string $a, string $b, string $roundingMode) : string
+    public final function divRound(string $a, string $b, RoundingMode $roundingMode) : string
     {
         [$quotient, $remainder] = $this->divQR($a, $b);
         $hasDiscardedFraction = $remainder !== '0';
@@ -475,28 +473,16 @@ abstract class Calculator
         if ($bNeg) {
             $bBin = $this->twosComplement($bBin);
         }
-        switch ($operator) {
-            case 'and':
-                $value = $aBin & $bBin;
-                break;
-            case 'or':
-                $value = $aBin | $bBin;
-                break;
-            case 'xor':
-                $value = $aBin ^ $bBin;
-                break;
-        }
-        switch ($operator) {
-            case 'and':
-                $negative = ($aNeg and $bNeg);
-                break;
-            case 'or':
-                $negative = ($aNeg or $bNeg);
-                break;
-            case 'xor':
-                $negative = ($aNeg xor $bNeg);
-                break;
-        }
+        $value = match ($operator) {
+            'and' => $aBin & $bBin,
+            'or' => $aBin | $bBin,
+            'xor' => $aBin ^ $bBin,
+        };
+        $negative = match ($operator) {
+            'and' => $aNeg and $bNeg,
+            'or' => $aNeg or $bNeg,
+            'xor' => $aNeg xor $bNeg,
+        };
         if ($negative) {
             $value = $this->twosComplement($value);
         }

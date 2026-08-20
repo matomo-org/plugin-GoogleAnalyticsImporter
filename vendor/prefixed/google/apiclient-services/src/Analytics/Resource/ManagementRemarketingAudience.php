@@ -24,7 +24,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Remarke
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $remarketingAudience = $analyticsService->remarketingAudience;
+ *   $remarketingAudience = $analyticsService->management_remarketingAudience;
  *  </code>
  */
 class ManagementRemarketingAudience extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -39,6 +39,7 @@ class ManagementRemarketingAudience extends \Matomo\Dependencies\GoogleAnalytics
      * @param string $remarketingAudienceId The ID of the remarketing audience to
      * delete.
      * @param array $optParams Optional parameters.
+     * @throws \Google\Service\Exception
      */
     public function delete($accountId, $webPropertyId, $remarketingAudienceId, $optParams = [])
     {
@@ -58,6 +59,7 @@ class ManagementRemarketingAudience extends \Matomo\Dependencies\GoogleAnalytics
      * retrieve.
      * @param array $optParams Optional parameters.
      * @return RemarketingAudience
+     * @throws \Google\Service\Exception
      */
     public function get($accountId, $webPropertyId, $remarketingAudienceId, $optParams = [])
     {
@@ -75,6 +77,7 @@ class ManagementRemarketingAudience extends \Matomo\Dependencies\GoogleAnalytics
      * @param RemarketingAudience $postBody
      * @param array $optParams Optional parameters.
      * @return RemarketingAudience
+     * @throws \Google\Service\Exception
      */
     public function insert($accountId, $webPropertyId, RemarketingAudience $postBody, $optParams = [])
     {
@@ -98,6 +101,7 @@ class ManagementRemarketingAudience extends \Matomo\Dependencies\GoogleAnalytics
      * parameter as a pagination mechanism along with the max-results parameter.
      * @opt_param string type
      * @return RemarketingAudiences
+     * @throws \Google\Service\Exception
      */
     public function listManagementRemarketingAudience($accountId, $webPropertyId, $optParams = [])
     {
@@ -118,6 +122,7 @@ class ManagementRemarketingAudience extends \Matomo\Dependencies\GoogleAnalytics
      * @param RemarketingAudience $postBody
      * @param array $optParams Optional parameters.
      * @return RemarketingAudience
+     * @throws \Google\Service\Exception
      */
     public function patch($accountId, $webPropertyId, $remarketingAudienceId, RemarketingAudience $postBody, $optParams = [])
     {
@@ -137,6 +142,7 @@ class ManagementRemarketingAudience extends \Matomo\Dependencies\GoogleAnalytics
      * @param RemarketingAudience $postBody
      * @param array $optParams Optional parameters.
      * @return RemarketingAudience
+     * @throws \Google\Service\Exception
      */
     public function update($accountId, $webPropertyId, $remarketingAudienceId, RemarketingAudience $postBody, $optParams = [])
     {

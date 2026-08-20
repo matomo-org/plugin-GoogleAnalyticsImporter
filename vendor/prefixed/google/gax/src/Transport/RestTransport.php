@@ -32,10 +32,11 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Transport;
 
-use BadMethodCallException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ApiException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Call;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\InsecureRequestBuilder;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\RequestBuilder;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ResumableUpload\ResumableUploadTransportInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ServerStream;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ServiceAddressTrait;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Transport\Rest\RestServerStreamingCall;
@@ -48,17 +49,14 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\ResponseInterfa
 /**
  * A REST based transport implementation.
  */
-class RestTransport implements TransportInterface
+class RestTransport implements TransportInterface, ResumableUploadTransportInterface
 {
     use ValidationTrait;
     use ServiceAddressTrait;
     use HttpUnaryTransportTrait {
         startServerStreamingCall as protected unsupportedServerStreamingCall;
     }
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\RequestBuilder
-     */
-    private $requestBuilder;
+    private RequestBuilder $requestBuilder;
     /**
      * @param RequestBuilder $requestBuilder A builder responsible for creating
      *        a PSR-7 request from a set of request information.
@@ -82,16 +80,17 @@ class RestTransport implements TransportInterface
      *
      *    @type callable $httpHandler A handler used to deliver PSR-7 requests.
      *    @type callable $clientCertSource A callable which returns the client cert as a string.
+     *    @type bool $hasEmulator True if the emulator is enabled.
      * }
      * @return RestTransport
      * @throws ValidationException
      */
     public static function build(string $apiEndpoint, string $restConfigPath, array $config = [])
     {
-        $config += ['httpHandler' => null, 'clientCertSource' => null];
+        $config += ['httpHandler' => null, 'clientCertSource' => null, 'hasEmulator' => \false, 'logger' => null];
         list($baseUri, $port) = self::normalizeServiceAddress($apiEndpoint);
-        $requestBuilder = new RequestBuilder("{$baseUri}:{$port}", $restConfigPath);
-        $httpHandler = $config['httpHandler'] ?: self::buildHttpHandlerAsync();
+        $requestBuilder = $config['hasEmulator'] ? new InsecureRequestBuilder("{$baseUri}:{$port}", $restConfigPath) : new RequestBuilder("{$baseUri}:{$port}", $restConfigPath);
+        $httpHandler = $config['httpHandler'] ?: self::buildHttpHandlerAsync($config['logger']);
         $transport = new RestTransport($requestBuilder, $httpHandler);
         if ($config['clientCertSource']) {
             $transport->configureMtlsChannel($config['clientCertSource']);
@@ -104,6 +103,8 @@ class RestTransport implements TransportInterface
     public function startUnaryCall(Call $call, array $options)
     {
         $headers = self::buildCommonHeaders($options);
+        // Add the $call object ID for logging
+        $options['requestId'] = crc32((string) spl_object_id($call) . getmypid());
         // call the HTTP handler
         $httpHandler = $this->httpHandler;
         return $httpHandler($this->requestBuilder->build($call->getMethod(), $call->getMessage(), $headers), $this->getCallOptions($options))->then(function (ResponseInterface $response) use($call, $options) {
@@ -134,7 +135,10 @@ class RestTransport implements TransportInterface
             }
             return $return;
         }, function (\Throwable $ex) {
-            if ($ex instanceof RequestException && $ex->hasResponse()) {
+            // Guzzle 7 carries the response on RequestException, Guzzle 8
+            // only on its ResponseException subclass, hence the
+            // method_exists() check.
+            if ($ex instanceof RequestException && method_exists($ex, 'getResponse') && $ex->getResponse()) {
                 throw ApiException::createFromRequestException($ex);
             }
             throw $ex;
@@ -162,7 +166,30 @@ class RestTransport implements TransportInterface
         if (isset($options['decoderOptions'])) {
             $decoderOptions = $options['decoderOptions'];
         }
-        return new ServerStream($this->_serverStreamRequest($this->httpHandler, $request, $headers, $call->getDecodeType(), $callOptions, $decoderOptions), $call->getDescriptor());
+        return new ServerStream($this->doServerStreamRequest($this->httpHandler, $request, $headers, $call->getDecodeType(), $callOptions, $decoderOptions), $call->getDescriptor());
+    }
+    /**
+     * Sends a raw PSR-7 request.
+     *
+     * @param RequestInterface $request
+     * @param array            $options
+     * @return \Psr\Http\Message\ResponseInterface|\GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendRawRequest(RequestInterface $request, array $options = [])
+    {
+        return ($this->httpHandler)($request, $options);
+    }
+    /**
+     * Builds a PSR-7 request.
+     *
+     * @param string   $method
+     * @param ?Message $message
+     * @param array    $headers
+     * @return RequestInterface
+     */
+    public function buildRequest(string $method, ?Message $message = null, array $headers = []) : RequestInterface
+    {
+        return $this->requestBuilder->build($method, $message, $headers);
     }
     /**
      * Creates and starts a RestServerStreamingCall.
@@ -176,7 +203,7 @@ class RestTransport implements TransportInterface
      *
      * @return RestServerStreamingCall
      */
-    private function _serverStreamRequest($httpHandler, $request, $headers, $decodeType, $callOptions, $decoderOptions = [])
+    private function doServerStreamRequest($httpHandler, $request, $headers, $decodeType, $callOptions, $decoderOptions = [])
     {
         $call = new RestServerStreamingCall($httpHandler, $decodeType, $decoderOptions);
         $call->start($request, $headers, $callOptions);
@@ -197,6 +224,12 @@ class RestTransport implements TransportInterface
             list($cert, $key) = self::loadClientCertSource($this->clientCertSource);
             $callOptions['cert'] = $cert;
             $callOptions['key'] = $key;
+        }
+        if (isset($options['retryAttempt'])) {
+            $callOptions['retryAttempt'] = $options['retryAttempt'];
+        }
+        if (isset($options['requestId'])) {
+            $callOptions['requestId'] = $options['requestId'];
         }
         return $callOptions;
     }

@@ -19,20 +19,48 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class McfDataRowsConversionPathValue extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc.
+     *
+     * @var string
+     */
     public $interactionType;
+    /**
+     * Node value of an interaction on conversion path. Such as source, medium
+     * etc.
+     *
+     * @var string
+     */
     public $nodeValue;
+    /**
+     * Type of an interaction on conversion path. Such as CLICK, IMPRESSION etc.
+     *
+     * @param string $interactionType
+     */
     public function setInteractionType($interactionType)
     {
         $this->interactionType = $interactionType;
     }
+    /**
+     * @return string
+     */
     public function getInteractionType()
     {
         return $this->interactionType;
     }
+    /**
+     * Node value of an interaction on conversion path. Such as source, medium
+     * etc.
+     *
+     * @param string $nodeValue
+     */
     public function setNodeValue($nodeValue)
     {
         $this->nodeValue = $nodeValue;
     }
+    /**
+     * @return string
+     */
     public function getNodeValue()
     {
         return $this->nodeValue;

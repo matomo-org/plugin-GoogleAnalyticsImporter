@@ -28,27 +28,20 @@ use function array_unshift;
 class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
 {
     /**
-     * @var string
-     * @readonly
-     */
-    private $queueType;
-    /**
      * Constructs a double-ended queue (dequeue) object of the specified type,
      * optionally with the specified data.
      *
      * @param string $queueType The type or class name associated with this dequeue.
      * @param array<array-key, T> $data The initial items to store in the dequeue.
      */
-    public function __construct(string $queueType, array $data = [])
+    public function __construct(private readonly string $queueType, array $data = [])
     {
-        $this->queueType = $queueType;
         parent::__construct($this->queueType, $data);
     }
     /**
      * @throws InvalidArgumentException if $element is of the wrong type
-     * @param mixed $element
      */
-    public function addFirst($element) : bool
+    public function addFirst(mixed $element) : bool
     {
         if ($this->checkType($this->getType(), $element) === \false) {
             throw new InvalidArgumentException('Value must be of type ' . $this->getType() . '; value is ' . $this->toolValueToString($element));
@@ -58,27 +51,20 @@ class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
     }
     /**
      * @throws InvalidArgumentException if $element is of the wrong type
-     * @param mixed $element
      */
-    public function addLast($element) : bool
+    public function addLast(mixed $element) : bool
     {
         return $this->add($element);
     }
-    /**
-     * @param mixed $element
-     */
-    public function offerFirst($element) : bool
+    public function offerFirst(mixed $element) : bool
     {
         try {
             return $this->addFirst($element);
-        } catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException) {
             return \false;
         }
     }
-    /**
-     * @param mixed $element
-     */
-    public function offerLast($element) : bool
+    public function offerLast(mixed $element) : bool
     {
         return $this->offer($element);
     }
@@ -87,7 +73,7 @@ class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
      *
      * @throws NoSuchElementException if the queue is empty
      */
-    public function removeFirst()
+    public function removeFirst() : mixed
     {
         return $this->remove();
     }
@@ -96,24 +82,21 @@ class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
      *
      * @throws NoSuchElementException if this queue is empty.
      */
-    public function removeLast()
+    public function removeLast() : mixed
     {
-        if ($this->pollLast() !== null) {
-            throw new NoSuchElementException('Can\'t return element from Queue. Queue is empty.');
-        }
-        return $this->pollLast();
+        return $this->pollLast() ?? throw new NoSuchElementException('Can\'t return element from Queue. Queue is empty.');
     }
     /**
      * @return T | null the head of this queue, or `null` if this queue is empty.
      */
-    public function pollFirst()
+    public function pollFirst() : mixed
     {
         return $this->poll();
     }
     /**
      * @return T | null the tail of this queue, or `null` if this queue is empty.
      */
-    public function pollLast()
+    public function pollLast() : mixed
     {
         return array_pop($this->data);
     }
@@ -122,7 +105,7 @@ class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
      *
      * @throws NoSuchElementException if this queue is empty.
      */
-    public function firstElement()
+    public function firstElement() : mixed
     {
         return $this->element();
     }
@@ -131,24 +114,21 @@ class DoubleEndedQueue extends Queue implements DoubleEndedQueueInterface
      *
      * @throws NoSuchElementException if this queue is empty.
      */
-    public function lastElement()
+    public function lastElement() : mixed
     {
-        if ($this->peekLast() !== null) {
-            throw new NoSuchElementException('Can\'t return element from Queue. Queue is empty.');
-        }
-        return $this->peekLast();
+        return $this->peekLast() ?? throw new NoSuchElementException('Can\'t return element from Queue. Queue is empty.');
     }
     /**
      * @return T | null the head of this queue, or `null` if this queue is empty.
      */
-    public function peekFirst()
+    public function peekFirst() : mixed
     {
         return $this->peek();
     }
     /**
      * @return T | null the tail of this queue, or `null` if this queue is empty.
      */
-    public function peekLast()
+    public function peekLast() : mixed
     {
         $lastIndex = array_key_last($this->data);
         if ($lastIndex === null) {

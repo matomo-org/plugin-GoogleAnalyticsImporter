@@ -12,8 +12,17 @@
 declare (strict_types=1);
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection;
 
-class Sort
+/**
+ * Collection sorting
+ */
+enum Sort : string
 {
-    public const Ascending = 'asc';
-    public const Descending = 'desc';
+    /**
+     * Sort items in a collection in ascending order.
+     */
+    case Ascending = 'asc';
+    /**
+     * Sort items in a collection in descending order.
+     */
+    case Descending = 'desc';
 }

@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * `Endpoint` describes a network address of a service that serves a set of
  * APIs. It is commonly known as a service endpoint. A service may expose
@@ -75,7 +75,7 @@ class Endpoint extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      *
      *     @type string $name
      *           The canonical name of this endpoint.
-     *     @type array<string>|\Google\Protobuf\Internal\RepeatedField $aliases
+     *     @type string[] $aliases
      *           Aliases for this endpoint, these will be served by the same UrlMap as the
      *           parent endpoint, and will be provisioned in the GCP stack for the Regional
      *           Endpoints.
@@ -128,7 +128,7 @@ class Endpoint extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * Endpoints.
      *
      * Generated from protobuf field <code>repeated string aliases = 2;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<string>
      */
     public function getAliases()
     {
@@ -140,7 +140,7 @@ class Endpoint extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * Endpoints.
      *
      * Generated from protobuf field <code>repeated string aliases = 2;</code>
-     * @param array<string>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param string[] $var
      * @return $this
      */
     public function setAliases($var)

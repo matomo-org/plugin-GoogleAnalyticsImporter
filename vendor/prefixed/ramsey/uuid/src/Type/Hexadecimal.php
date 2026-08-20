@@ -20,37 +20,50 @@ use function substr;
 /**
  * A value object representing a hexadecimal number
  *
- * This class exists for type-safety purposes, to ensure that hexadecimal numbers
- * returned from ramsey/uuid methods as strings are truly hexadecimal and not some
- * other kind of string.
+ * This class exists for type-safety purposes, to ensure that hexadecimal numbers returned from ramsey/uuid methods as
+ * strings are truly hexadecimal and not some other kind of string.
  *
- * @psalm-immutable
+ * @immutable
  */
 final class Hexadecimal implements TypeInterface
 {
     /**
-     * @var string
+     * @var non-empty-string
      */
-    private $value;
+    private string $value;
     /**
-     * @param self|string $value The hexadecimal value to store
+     * @param self | string $value The hexadecimal value to store
      */
-    public function __construct($value)
+    public function __construct(self|string $value)
     {
         $this->value = $value instanceof self ? (string) $value : $this->prepareValue($value);
     }
+    /**
+     * @return non-empty-string
+     *
+     * @pure
+     */
     public function toString() : string
     {
         return $this->value;
     }
+    /**
+     * @return non-empty-string
+     */
     public function __toString() : string
     {
         return $this->toString();
     }
+    /**
+     * @return non-empty-string
+     */
     public function jsonSerialize() : string
     {
         return $this->toString();
     }
+    /**
+     * @return non-empty-string
+     */
     public function serialize() : string
     {
         return $this->toString();
@@ -66,8 +79,6 @@ final class Hexadecimal implements TypeInterface
      * Constructs the object from a serialized string representation
      *
      * @param string $data The serialized string representation of the object
-     *
-     * @psalm-suppress UnusedMethodCall
      */
     public function unserialize(string $data) : void
     {
@@ -85,15 +96,19 @@ final class Hexadecimal implements TypeInterface
         // @codeCoverageIgnoreEnd
         $this->unserialize($data['string']);
     }
+    /**
+     * @return non-empty-string
+     */
     private function prepareValue(string $value) : string
     {
         $value = strtolower($value);
-        if (strncmp($value, '0x', strlen('0x')) === 0) {
+        if (str_starts_with($value, '0x')) {
             $value = substr($value, 2);
         }
         if (!preg_match('/^[A-Fa-f0-9]+$/', $value)) {
             throw new InvalidArgumentException('Value must be a hexadecimal number');
         }
+        /** @var non-empty-string */
         return $value;
     }
 }

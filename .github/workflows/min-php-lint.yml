@@ -1,0 +1,49 @@
+name: Minimum PHP lint
+
+# The scoped dependencies in vendor/prefixed are transpiled down to the oldest PHP this plugin supports. Tests do not
+# prove that worked, because a file is only parsed when something loads it, so lint every file against that PHP.
+
+on: pull_request
+
+permissions:
+  actions: read
+  checks: read
+  contents: read
+  deployments: none
+  issues: read
+  packages: none
+  pull-requests: read
+  repository-projects: none
+  security-events: none
+  statuses: read
+
+jobs:
+  min-php-lint:
+    name: Lint scoped dependencies on minimum PHP
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+          persist-credentials: false
+      - name: Setup PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # v2.37.2
+        with:
+          php-version: '8.1'
+      - name: Lint vendor/prefixed
+        run: |
+          if [ ! -d vendor/prefixed ]; then
+            echo "No vendor/prefixed directory to lint."
+            exit 0
+          fi
+          status=0
+          while IFS= read -r file; do
+            if ! error=$(php -l "$file" 2>&1); then
+              echo "::error file=${file}::${error}"
+              status=1
+            fi
+          done < <(find vendor/prefixed -name '*.php')
+          if [ "$status" -ne 0 ]; then
+            echo "Scoped dependencies do not parse on PHP 8.1. Re-run the scoper."
+          fi
+          exit $status

@@ -23,7 +23,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\McfData
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $mcf = $analyticsService->mcf;
+ *   $mcf = $analyticsService->data_mcf;
  *  </code>
  */
 class DataMcf extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -56,6 +56,7 @@ class DataMcf extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Servic
      * @opt_param int start-index An index of the first entity to retrieve. Use this
      * parameter as a pagination mechanism along with the max-results parameter.
      * @return McfData
+     * @throws \Google\Service\Exception
      */
     public function get($ids, $startDate, $endDate, $metrics, $optParams = [])
     {

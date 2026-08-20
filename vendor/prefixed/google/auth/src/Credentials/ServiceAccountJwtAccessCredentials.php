@@ -93,10 +93,10 @@ class ServiceAccountJwtAccessCredentials extends CredentialsLoader implements Ge
      *
      * @param array<mixed> $metadata metadata hashmap
      * @param string $authUri optional auth uri
-     * @param callable $httpHandler callback which delivers psr7 request
+     * @param callable|null $httpHandler callback which delivers psr7 request
      * @return array<mixed> updated metadata hashmap
      */
-    public function updateMetadata($metadata, $authUri = null, callable $httpHandler = null)
+    public function updateMetadata($metadata, $authUri = null, ?callable $httpHandler = null)
     {
         $scope = $this->auth->getScope();
         if (empty($authUri) && empty($scope)) {
@@ -108,11 +108,11 @@ class ServiceAccountJwtAccessCredentials extends CredentialsLoader implements Ge
     /**
      * Implements FetchAuthTokenInterface#fetchAuthToken.
      *
-     * @param callable $httpHandler
+     * @param callable|null $httpHandler
      *
      * @return null|array{access_token:string} A set of auth related metadata
      */
-    public function fetchAuthToken(callable $httpHandler = null)
+    public function fetchAuthToken(?callable $httpHandler = null)
     {
         $audience = $this->auth->getAudience();
         $scope = $this->auth->getScope();
@@ -155,10 +155,10 @@ class ServiceAccountJwtAccessCredentials extends CredentialsLoader implements Ge
      *
      * Returns null if the project ID does not exist in the keyfile.
      *
-     * @param callable $httpHandler Not used by this credentials type.
+     * @param callable|null $httpHandler Not used by this credentials type.
      * @return string|null
      */
-    public function getProjectId(callable $httpHandler = null)
+    public function getProjectId(?callable $httpHandler = null)
     {
         return $this->projectId;
     }
@@ -167,12 +167,23 @@ class ServiceAccountJwtAccessCredentials extends CredentialsLoader implements Ge
      *
      * In this case, it returns the keyfile's client_email key.
      *
-     * @param callable $httpHandler Not used by this credentials type.
+     * @param callable|null $httpHandler Not used by this credentials type.
      * @return string
      */
-    public function getClientName(callable $httpHandler = null)
+    public function getClientName(?callable $httpHandler = null)
     {
         return $this->auth->getIssuer();
+    }
+    /**
+     * Get the private key from the keyfile.
+     *
+     * In this case, it returns the keyfile's private_key key, needed for JWT signing.
+     *
+     * @return string
+     */
+    public function getPrivateKey()
+    {
+        return $this->auth->getSigningKey();
     }
     /**
      * Get the quota project used for this API request

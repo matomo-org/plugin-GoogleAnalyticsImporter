@@ -6,6 +6,6 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception;
 /**
  * Base class for all math exceptions.
  */
-class MathException extends \Exception
+class MathException extends \RuntimeException
 {
 }

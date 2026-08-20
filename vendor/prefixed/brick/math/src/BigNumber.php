@@ -7,6 +7,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\DivisionByZ
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\MathException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\NumberFormatException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Exception\RoundingNecessaryException;
+use Override;
 /**
  * Common interface for arbitrary-precision rational numbers.
  *
@@ -34,14 +35,13 @@ abstract class BigNumber implements \JsonSerializable
      * - strings containing a `.` character or using an exponential notation are returned as BigDecimal
      * - strings containing only digits with an optional leading `+` or `-` sign are returned as BigInteger
      *
-     * @throws NumberFormatException   If the format of the number is not valid.
+     * @throws NumberFormatException If the format of the number is not valid.
      * @throws DivisionByZeroException If the value represents a rational number with a denominator of zero.
+     * @throws RoundingNecessaryException If the value cannot be converted to an instance of the subclass without rounding.
      *
      * @psalm-pure
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $value
-     * @return static
      */
-    public static final function of($value)
+    public static final function of(BigNumber|int|float|string $value) : static
     {
         $value = self::_of($value);
         if (static::class === BigNumber::class) {
@@ -52,10 +52,12 @@ abstract class BigNumber implements \JsonSerializable
         return static::from($value);
     }
     /**
+     * @throws NumberFormatException If the format of the number is not valid.
+     * @throws DivisionByZeroException If the value represents a rational number with a denominator of zero.
+     *
      * @psalm-pure
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $value
      */
-    private static function _of($value) : BigNumber
+    private static function _of(BigNumber|int|float|string $value) : BigNumber
     {
         if ($value instanceof BigNumber) {
             return $value;
@@ -66,7 +68,7 @@ abstract class BigNumber implements \JsonSerializable
         if (is_float($value)) {
             $value = (string) $value;
         }
-        if (strpos($value, '/') !== false) {
+        if (str_contains($value, '/')) {
             // Rational number
             if (\preg_match(self::PARSE_REGEXP_RATIONAL, $value, $matches, \PREG_UNMATCHED_AS_NULL) !== 1) {
                 throw NumberFormatException::invalidFormat($value);
@@ -121,12 +123,11 @@ abstract class BigNumber implements \JsonSerializable
     /**
      * Overridden by subclasses to convert a BigNumber to an instance of the subclass.
      *
-     * @throws MathException If the value cannot be converted.
+     * @throws RoundingNecessaryException If the value cannot be converted.
      *
      * @psalm-pure
-     * @return static
      */
-    protected static abstract function from(BigNumber $number);
+    protected static abstract function from(BigNumber $number) : static;
     /**
      * Proxy method to access BigInteger's protected constructor from sibling classes.
      *
@@ -167,9 +168,8 @@ abstract class BigNumber implements \JsonSerializable
      * @throws MathException             If an argument is not valid.
      *
      * @psalm-pure
-     * @return static
      */
-    public static final function min(...$values)
+    public static final function min(BigNumber|int|float|string ...$values) : static
     {
         $min = null;
         foreach ($values as $value) {
@@ -193,9 +193,8 @@ abstract class BigNumber implements \JsonSerializable
      * @throws MathException             If an argument is not valid.
      *
      * @psalm-pure
-     * @return static
      */
-    public static final function max(...$values)
+    public static final function max(BigNumber|int|float|string ...$values) : static
     {
         $max = null;
         foreach ($values as $value) {
@@ -219,9 +218,8 @@ abstract class BigNumber implements \JsonSerializable
      * @throws MathException             If an argument is not valid.
      *
      * @psalm-pure
-     * @return static
      */
-    public static final function sum(...$values)
+    public static final function sum(BigNumber|int|float|string ...$values) : static
     {
         /** @var static|null $sum */
         $sum = null;
@@ -269,7 +267,7 @@ abstract class BigNumber implements \JsonSerializable
      *
      * @psalm-pure
      */
-    private static function cleanUp(?string $sign, string $number) : string
+    private static function cleanUp(string|null $sign, string $number) : string
     {
         $number = \ltrim($number, '0');
         if ($number === '') {
@@ -279,41 +277,36 @@ abstract class BigNumber implements \JsonSerializable
     }
     /**
      * Checks if this number is equal to the given one.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $that
      */
-    public final function isEqualTo($that) : bool
+    public final function isEqualTo(BigNumber|int|float|string $that) : bool
     {
         return $this->compareTo($that) === 0;
     }
     /**
      * Checks if this number is strictly lower than the given one.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $that
      */
-    public final function isLessThan($that) : bool
+    public final function isLessThan(BigNumber|int|float|string $that) : bool
     {
         return $this->compareTo($that) < 0;
     }
     /**
      * Checks if this number is lower than or equal to the given one.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $that
      */
-    public final function isLessThanOrEqualTo($that) : bool
+    public final function isLessThanOrEqualTo(BigNumber|int|float|string $that) : bool
     {
         return $this->compareTo($that) <= 0;
     }
     /**
      * Checks if this number is strictly greater than the given one.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $that
      */
-    public final function isGreaterThan($that) : bool
+    public final function isGreaterThan(BigNumber|int|float|string $that) : bool
     {
         return $this->compareTo($that) > 0;
     }
     /**
      * Checks if this number is greater than or equal to the given one.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $that
      */
-    public final function isGreaterThanOrEqualTo($that) : bool
+    public final function isGreaterThanOrEqualTo(BigNumber|int|float|string $that) : bool
     {
         return $this->compareTo($that) >= 0;
     }
@@ -368,9 +361,8 @@ abstract class BigNumber implements \JsonSerializable
      * @return int -1 if `$this` is lower than, 0 if equal to, 1 if greater than `$that`.
      *
      * @throws MathException If the number is not valid.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\BigNumber|int|float|string $that
      */
-    public abstract function compareTo($that) : int;
+    public abstract function compareTo(BigNumber|int|float|string $that) : int;
     /**
      * Converts this number to a BigInteger.
      *
@@ -395,9 +387,8 @@ abstract class BigNumber implements \JsonSerializable
      *
      * @throws RoundingNecessaryException If this number cannot be converted to the given scale without rounding.
      *                                    This only applies when RoundingMode::UNNECESSARY is used.
-     * @param \Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\RoundingMode::* $roundingMode
      */
-    public abstract function toScale(int $scale, string $roundingMode = RoundingMode::UNNECESSARY) : BigDecimal;
+    public abstract function toScale(int $scale, RoundingMode $roundingMode = RoundingMode::UNNECESSARY) : BigDecimal;
     /**
      * Returns the exact value of this number as a native integer.
      *
@@ -424,6 +415,7 @@ abstract class BigNumber implements \JsonSerializable
      * this will yield an object equal to this one, without any information loss.
      */
     public abstract function __toString() : string;
+    #[Override]
     public final function jsonSerialize() : string
     {
         return $this->__toString();

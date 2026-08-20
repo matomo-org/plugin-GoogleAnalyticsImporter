@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Rpc;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Describes what preconditions have failed.
  * For example, if an RPC failed because it required the Terms of Service to be
@@ -29,7 +29,7 @@ class PreconditionFailure extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<\Google\Rpc\PreconditionFailure\Violation>|\Google\Protobuf\Internal\RepeatedField $violations
+     *     @type \Google\Rpc\PreconditionFailure\Violation[] $violations
      *           Describes all precondition violations.
      * }
      */
@@ -42,7 +42,7 @@ class PreconditionFailure extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
      * Describes all precondition violations.
      *
      * Generated from protobuf field <code>repeated .google.rpc.PreconditionFailure.Violation violations = 1;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Rpc\PreconditionFailure\Violation>
      */
     public function getViolations()
     {
@@ -52,7 +52,7 @@ class PreconditionFailure extends \Matomo\Dependencies\GoogleAnalyticsImporter\G
      * Describes all precondition violations.
      *
      * Generated from protobuf field <code>repeated .google.rpc.PreconditionFailure.Violation violations = 1;</code>
-     * @param array<\Google\Rpc\PreconditionFailure\Violation>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Rpc\PreconditionFailure\Violation[] $var
      * @return $this
      */
     public function setViolations($var)

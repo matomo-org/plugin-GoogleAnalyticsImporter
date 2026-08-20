@@ -443,14 +443,14 @@ class DES extends BlockCipher
         $des_rounds = $this->des_rounds;
         $init_crypt = 'static $sbox1, $sbox2, $sbox3, $sbox4, $sbox5, $sbox6, $sbox7, $sbox8, $shuffleip, $shuffleinvip;
             if (!$sbox1) {
-                $sbox1 = array_map("self::safe_intval", self::$sbox1);
-                $sbox2 = array_map("self::safe_intval", self::$sbox2);
-                $sbox3 = array_map("self::safe_intval", self::$sbox3);
-                $sbox4 = array_map("self::safe_intval", self::$sbox4);
-                $sbox5 = array_map("self::safe_intval", self::$sbox5);
-                $sbox6 = array_map("self::safe_intval", self::$sbox6);
-                $sbox7 = array_map("self::safe_intval", self::$sbox7);
-                $sbox8 = array_map("self::safe_intval", self::$sbox8);' . '
+                $sbox1 = array_map(["' . self::class . '", "safe_intval"], self::$sbox1);
+                $sbox2 = array_map(["' . self::class . '", "safe_intval"], self::$sbox2);
+                $sbox3 = array_map(["' . self::class . '", "safe_intval"], self::$sbox3);
+                $sbox4 = array_map(["' . self::class . '", "safe_intval"], self::$sbox4);
+                $sbox5 = array_map(["' . self::class . '", "safe_intval"], self::$sbox5);
+                $sbox6 = array_map(["' . self::class . '", "safe_intval"], self::$sbox6);
+                $sbox7 = array_map(["' . self::class . '", "safe_intval"], self::$sbox7);
+                $sbox8 = array_map(["' . self::class . '", "safe_intval"], self::$sbox8);' . '
                 for ($i = 0; $i < 256; ++$i) {
                     $shuffleip[]    =  self::$shuffle[self::$ipmap[$i]];
                     $shuffleinvip[] =  self::$shuffle[self::$invipmap[$i]];

@@ -21,56 +21,134 @@ class RealtimeDataQuery extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
 {
     protected $collection_key = 'sort';
     protected $internal_gapi_mappings = ["maxResults" => "max-results"];
+    /**
+     * List of real time dimensions.
+     *
+     * @var string
+     */
     public $dimensions;
+    /**
+     * Comma-separated list of dimension or metric filters.
+     *
+     * @var string
+     */
     public $filters;
+    /**
+     * Unique table ID.
+     *
+     * @var string
+     */
     public $ids;
+    /**
+     * Maximum results per page.
+     *
+     * @var int
+     */
     public $maxResults;
+    /**
+     * List of real time metrics.
+     *
+     * @var string[]
+     */
     public $metrics;
+    /**
+     * List of dimensions or metrics based on which real time data is sorted.
+     *
+     * @var string[]
+     */
     public $sort;
+    /**
+     * List of real time dimensions.
+     *
+     * @param string $dimensions
+     */
     public function setDimensions($dimensions)
     {
         $this->dimensions = $dimensions;
     }
+    /**
+     * @return string
+     */
     public function getDimensions()
     {
         return $this->dimensions;
     }
+    /**
+     * Comma-separated list of dimension or metric filters.
+     *
+     * @param string $filters
+     */
     public function setFilters($filters)
     {
         $this->filters = $filters;
     }
+    /**
+     * @return string
+     */
     public function getFilters()
     {
         return $this->filters;
     }
+    /**
+     * Unique table ID.
+     *
+     * @param string $ids
+     */
     public function setIds($ids)
     {
         $this->ids = $ids;
     }
+    /**
+     * @return string
+     */
     public function getIds()
     {
         return $this->ids;
     }
+    /**
+     * Maximum results per page.
+     *
+     * @param int $maxResults
+     */
     public function setMaxResults($maxResults)
     {
         $this->maxResults = $maxResults;
     }
+    /**
+     * @return int
+     */
     public function getMaxResults()
     {
         return $this->maxResults;
     }
+    /**
+     * List of real time metrics.
+     *
+     * @param string[] $metrics
+     */
     public function setMetrics($metrics)
     {
         $this->metrics = $metrics;
     }
+    /**
+     * @return string[]
+     */
     public function getMetrics()
     {
         return $this->metrics;
     }
+    /**
+     * List of dimensions or metrics based on which real time data is sorted.
+     *
+     * @param string[] $sort
+     */
     public function setSort($sort)
     {
         $this->sort = $sort;
     }
+    /**
+     * @return string[]
+     */
     public function getSort()
     {
         return $this->sort;

@@ -14,14 +14,7 @@ class Interval
             return;
         }
         \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\Google\Protobuf\Timestamp::initOnce();
-        $pool->internalAddGeneratedFile('
-†
-google/type/interval.protogoogle.type"h
-Interval.
-
-start_time (2.google.protobuf.Timestamp,
-end_time (2.google.protobuf.TimestampBi
-com.google.typeBIntervalProtoPZ<google.golang.org/genproto/googleapis/type/interval;intervalø¢GTPbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\x83\x02\n\x1agoogle/type/interval.proto\x12\vgoogle.type\"h\n\x08Interval\x12.\n\nstart_time\x18\x01 \x01(\v2\x1a.google.protobuf.Timestamp\x12,\n\x08end_time\x18\x02 \x01(\v2\x1a.google.protobuf.TimestampBf\n\x0fcom.google.typeB\rIntervalProtoP\x01Z<google.golang.org/genproto/googleapis/type/interval;interval\xa2\x02\x03GTPb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

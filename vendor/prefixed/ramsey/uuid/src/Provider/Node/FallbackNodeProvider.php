@@ -16,21 +16,15 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Exception\NodeExcept
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Provider\NodeProviderInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Type\Hexadecimal;
 /**
- * FallbackNodeProvider retrieves the system node ID by stepping through a list
- * of providers until a node ID can be obtained
+ * FallbackNodeProvider retrieves the system node ID by stepping through a list of providers until a node ID can be obtained
  */
 class FallbackNodeProvider implements NodeProviderInterface
 {
     /**
-     * @var iterable<NodeProviderInterface>
-     */
-    private $providers;
-    /**
      * @param iterable<NodeProviderInterface> $providers Array of node providers
      */
-    public function __construct(iterable $providers)
+    public function __construct(private iterable $providers)
     {
-        $this->providers = $providers;
     }
     public function getNode() : Hexadecimal
     {
@@ -43,6 +37,6 @@ class FallbackNodeProvider implements NodeProviderInterface
                 continue;
             }
         }
-        throw new NodeException('Unable to find a suitable node provider', 0, $lastProviderException);
+        throw new NodeException(message: 'Unable to find a suitable node provider', previous: $lastProviderException);
     }
 }

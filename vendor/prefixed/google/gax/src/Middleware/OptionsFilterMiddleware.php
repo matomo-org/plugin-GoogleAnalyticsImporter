@@ -34,19 +34,17 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Middleware;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\ArrayTrait;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Call;
-use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
 /**
 * Middleware which filters the $options array.
+*
+* @internal
 */
 class OptionsFilterMiddleware implements MiddlewareInterface
 {
     use ArrayTrait;
     /** @var callable */
     private $nextHandler;
-    /**
-     * @var mixed[]
-     */
-    private $permittedOptions;
+    private array $permittedOptions;
     public function __construct(callable $nextHandler, array $permittedOptions)
     {
         $this->nextHandler = $nextHandler;

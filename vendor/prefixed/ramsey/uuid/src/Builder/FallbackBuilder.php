@@ -17,34 +17,27 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Exception\BuilderNot
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Exception\UnableToBuildUuidException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\UuidInterface;
 /**
- * FallbackBuilder builds a UUID by stepping through a list of UUID builders
- * until a UUID can be constructed without exceptions
+ * FallbackBuilder builds a UUID by stepping through a list of UUID builders until a UUID can be constructed without exceptions
  *
- * @psalm-immutable
+ * @immutable
  */
 class FallbackBuilder implements UuidBuilderInterface
 {
     /**
-     * @var iterable<UuidBuilderInterface>
-     */
-    private $builders;
-    /**
      * @param iterable<UuidBuilderInterface> $builders An array of UUID builders
      */
-    public function __construct(iterable $builders)
+    public function __construct(private iterable $builders)
     {
-        $this->builders = $builders;
     }
     /**
-     * Builds and returns a UuidInterface instance using the first builder that
-     * succeeds
+     * Builds and returns a UuidInterface instance using the first builder that succeeds
      *
      * @param CodecInterface $codec The codec to use for building this instance
      * @param string $bytes The byte string from which to construct a UUID
      *
      * @return UuidInterface an instance of a UUID object
      *
-     * @psalm-pure
+     * @pure
      */
     public function build(CodecInterface $codec, string $bytes) : UuidInterface
     {

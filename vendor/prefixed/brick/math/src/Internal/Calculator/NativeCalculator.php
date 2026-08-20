@@ -4,6 +4,7 @@ declare (strict_types=1);
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Internal\Calculator;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Brick\Math\Internal\Calculator;
+use Override;
 /**
  * Calculator implementation using only native PHP code.
  *
@@ -20,26 +21,20 @@ class NativeCalculator extends Calculator
      * In addition, it is assumed that an extra digit can hold a carry (1) without overflowing.
      * Example: 32-bit: max number 1,999,999,999 (9 digits + carry)
      *          64-bit: max number 1,999,999,999,999,999,999 (18 digits + carry)
-     * @readonly
-     * @var int
      */
-    private $maxDigits;
+    private readonly int $maxDigits;
     /**
      * @codeCoverageIgnore
      */
     public function __construct()
     {
-        switch (\PHP_INT_SIZE) {
-            case 4:
-                $this->maxDigits = 9;
-                break;
-            case 8:
-                $this->maxDigits = 18;
-                break;
-            default:
-                throw new \RuntimeException('The platform is not 32-bit or 64-bit as expected.');
-        }
+        $this->maxDigits = match (\PHP_INT_SIZE) {
+            4 => 9,
+            8 => 18,
+            default => throw new \RuntimeException('The platform is not 32-bit or 64-bit as expected.'),
+        };
     }
+    #[Override]
     public function add(string $a, string $b) : string
     {
         /**
@@ -63,10 +58,12 @@ class NativeCalculator extends Calculator
         }
         return $result;
     }
+    #[Override]
     public function sub(string $a, string $b) : string
     {
         return $this->add($a, $this->neg($b));
     }
+    #[Override]
     public function mul(string $a, string $b) : string
     {
         /**
@@ -99,14 +96,17 @@ class NativeCalculator extends Calculator
         }
         return $result;
     }
+    #[Override]
     public function divQ(string $a, string $b) : string
     {
         return $this->divQR($a, $b)[0];
     }
+    #[Override]
     public function divR(string $a, string $b) : string
     {
         return $this->divQR($a, $b)[1];
     }
+    #[Override]
     public function divQR(string $a, string $b) : array
     {
         if ($a === '0') {
@@ -145,6 +145,7 @@ class NativeCalculator extends Calculator
         }
         return [$q, $r];
     }
+    #[Override]
     public function pow(string $a, int $e) : string
     {
         if ($e === 0) {
@@ -166,6 +167,7 @@ class NativeCalculator extends Calculator
     /**
      * Algorithm from: https://www.geeksforgeeks.org/modular-exponentiation-power-in-modular-arithmetic/
      */
+    #[Override]
     public function modPow(string $base, string $exp, string $mod) : string
     {
         // special case: the algorithm below fails with 0 power 0 mod 1 (returns 1 instead of 0)
@@ -193,6 +195,7 @@ class NativeCalculator extends Calculator
     /**
      * Adapted from https://cp-algorithms.com/num_methods/roots_newton.html
      */
+    #[Override]
     public function sqrt(string $n) : string
     {
         if ($n === '0') {
@@ -379,6 +382,20 @@ class NativeCalculator extends Calculator
         // remainder
         $z = $y;
         // focus length, always $y or $y+1
+        /** @psalm-var numeric-string $b */
+        $nb = $b * 1;
+        // cast to number
+        // performance optimization in cases where the remainder will never cause int overflow
+        if (is_int(($nb - 1) * 10 + 9)) {
+            $r = (int) \substr($a, 0, $z - 1);
+            for ($i = $z - 1; $i < $x; $i++) {
+                $n = $r * 10 + (int) $a[$i];
+                /** @psalm-var int $nb */
+                $q .= \intdiv($n, $nb);
+                $r = $n % $nb;
+            }
+            return [\ltrim($q, '0') ?: '0', (string) $r];
+        }
         for (;;) {
             $focus = \substr($a, 0, $z);
             $cmp = $this->doCmp($focus, $b);

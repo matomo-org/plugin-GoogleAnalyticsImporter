@@ -8,8 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     'phpseclib3\\' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'bcmath_compat\\' => array($vendorDir . '/phpseclib/bcmath_compat/src'),
+    'Symfony\\Polyfill\\Php80\\' => array($vendorDir . '/symfony/polyfill-php80'),
     'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
     'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
+    'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-factory/src', $vendorDir . '/psr/http-message/src'),
     'Psr\\Http\\Client\\' => array($vendorDir . '/psr/http-client/src'),
     'Psr\\Cache\\' => array($vendorDir . '/psr/cache/src'),
@@ -43,7 +45,6 @@ return array(
     'GPBMetadata\\Google\\Api\\' => array($vendorDir . '/google/common-protos/metadata/Api'),
     'GPBMetadata\\Google\\Analytics\\Data\\' => array($vendorDir . '/google/analytics-data/metadata'),
     'GPBMetadata\\Google\\Analytics\\Admin\\' => array($vendorDir . '/google/analytics-admin/metadata'),
-    'GPBMetadata\\ApiCore\\' => array($vendorDir . '/google/gax/metadata/ApiCore'),
     'Firebase\\JWT\\' => array($vendorDir . '/firebase/php-jwt/src'),
     'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
 );

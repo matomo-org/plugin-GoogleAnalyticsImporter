@@ -19,11 +19,20 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class GaDataDataTableRowsC extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var string
+     */
     public $v;
+    /**
+     * @param string $v
+     */
     public function setV($v)
     {
         $this->v = $v;
     }
+    /**
+     * @return string
+     */
     public function getV()
     {
         return $this->v;

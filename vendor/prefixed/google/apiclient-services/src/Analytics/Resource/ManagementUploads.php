@@ -25,7 +25,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Uploads
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $uploads = $analyticsService->uploads;
+ *   $uploads = $analyticsService->management_uploads;
  *  </code>
  */
 class ManagementUploads extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -39,6 +39,7 @@ class ManagementUploads extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
      * deleted.
      * @param AnalyticsDataimportDeleteUploadDataRequest $postBody
      * @param array $optParams Optional parameters.
+     * @throws \Google\Service\Exception
      */
     public function deleteUploadData($accountId, $webPropertyId, $customDataSourceId, AnalyticsDataimportDeleteUploadDataRequest $postBody, $optParams = [])
     {
@@ -56,6 +57,7 @@ class ManagementUploads extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
      * @param string $uploadId Upload Id to retrieve.
      * @param array $optParams Optional parameters.
      * @return Upload
+     * @throws \Google\Service\Exception
      */
     public function get($accountId, $webPropertyId, $customDataSourceId, $uploadId, $optParams = [])
     {
@@ -78,6 +80,7 @@ class ManagementUploads extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
      * Use this parameter as a pagination mechanism along with the max-results
      * parameter.
      * @return Uploads
+     * @throws \Google\Service\Exception
      */
     public function listManagementUploads($accountId, $webPropertyId, $customDataSourceId, $optParams = [])
     {
@@ -95,6 +98,7 @@ class ManagementUploads extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
      * being uploaded belongs.
      * @param array $optParams Optional parameters.
      * @return Upload
+     * @throws \Google\Service\Exception
      */
     public function uploadData($accountId, $webPropertyId, $customDataSourceId, $optParams = [])
     {

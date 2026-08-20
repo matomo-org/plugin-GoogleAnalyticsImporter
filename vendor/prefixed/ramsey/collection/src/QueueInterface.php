@@ -117,7 +117,7 @@ interface QueueInterface extends ArrayInterface
      *
      * @see self::offer()
      *
-     * @param mixed $element The element to add to this queue.
+     * @param T $element The element to add to this queue.
      *
      * @return bool `true` if this queue changed as a result of the call.
      *
@@ -126,7 +126,7 @@ interface QueueInterface extends ArrayInterface
      *     Implementations should use a more-specific exception that extends
      *     `\RuntimeException`.
      */
-    public function add($element) : bool;
+    public function add(mixed $element) : bool;
     /**
      * Retrieves, but does not remove, the head of this queue.
      *
@@ -139,7 +139,7 @@ interface QueueInterface extends ArrayInterface
      *
      * @throws NoSuchElementException if this queue is empty.
      */
-    public function element();
+    public function element() : mixed;
     /**
      * Inserts the specified element into this queue if it is possible to do so
      * immediately without violating capacity restrictions.
@@ -150,11 +150,11 @@ interface QueueInterface extends ArrayInterface
      *
      * @see self::add()
      *
-     * @param mixed $element The element to add to this queue.
+     * @param T $element The element to add to this queue.
      *
      * @return bool `true` if the element was added to this queue, else `false`.
      */
-    public function offer($element) : bool;
+    public function offer(mixed $element) : bool;
     /**
      * Retrieves, but does not remove, the head of this queue, or returns `null`
      * if this queue is empty.
@@ -163,7 +163,7 @@ interface QueueInterface extends ArrayInterface
      *
      * @return T | null the head of this queue, or `null` if this queue is empty.
      */
-    public function peek();
+    public function peek() : mixed;
     /**
      * Retrieves and removes the head of this queue, or returns `null`
      * if this queue is empty.
@@ -172,7 +172,7 @@ interface QueueInterface extends ArrayInterface
      *
      * @return T | null the head of this queue, or `null` if this queue is empty.
      */
-    public function poll();
+    public function poll() : mixed;
     /**
      * Retrieves and removes the head of this queue.
      *
@@ -185,7 +185,7 @@ interface QueueInterface extends ArrayInterface
      *
      * @throws NoSuchElementException if this queue is empty.
      */
-    public function remove();
+    public function remove() : mixed;
     /**
      * Returns the type associated with this queue.
      */

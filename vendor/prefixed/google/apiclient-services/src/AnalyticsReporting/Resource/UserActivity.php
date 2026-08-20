@@ -35,6 +35,7 @@ class UserActivity extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\S
      * @param SearchUserActivityRequest $postBody
      * @param array $optParams Optional parameters.
      * @return SearchUserActivityResponse
+     * @throws \Google\Service\Exception
      */
     public function search(SearchUserActivityRequest $postBody, $optParams = [])
     {

@@ -18,23 +18,17 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Type\Time;
 /**
  * FixedTimeProvider uses a known time to provide the time
  *
- * This provider allows the use of a previously-generated, or known, time
- * when generating time-based UUIDs.
+ * This provider allows the use of a previously generated, or known, time when generating time-based UUIDs.
  */
 class FixedTimeProvider implements TimeProviderInterface
 {
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Type\Time
-     */
-    private $time;
-    public function __construct(Time $time)
+    public function __construct(private Time $time)
     {
-        $this->time = $time;
     }
     /**
      * Sets the `usec` component of the time
      *
-     * @param int|string|IntegerObject $value The `usec` value to set
+     * @param IntegerObject | int | string $value The `usec` value to set
      */
     public function setUsec($value) : void
     {
@@ -43,7 +37,7 @@ class FixedTimeProvider implements TimeProviderInterface
     /**
      * Sets the `sec` component of the time
      *
-     * @param int|string|IntegerObject $value The `sec` value to set
+     * @param IntegerObject | int | string $value The `sec` value to set
      */
     public function setSec($value) : void
     {

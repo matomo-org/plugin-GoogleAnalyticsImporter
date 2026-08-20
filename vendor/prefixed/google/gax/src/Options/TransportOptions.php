@@ -32,25 +32,16 @@
  */
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options;
 
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\GrpcTransportOptions;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\GrpcFallbackTransportOptions;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\RestTransportOptions;
 use ArrayAccess;
-class TransportOptions implements ArrayAccess
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\GrpcFallbackTransportOptions;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\GrpcTransportOptions;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\RestTransportOptions;
+class TransportOptions implements ArrayAccess, OptionsInterface
 {
     use OptionsTrait;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\GrpcTransportOptions
-     */
-    private $grpc;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\GrpcFallbackTransportOptions
-     */
-    private $grpcFallback;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Options\TransportOptions\RestTransportOptions
-     */
-    private $rest;
+    private GrpcTransportOptions $grpc;
+    private GrpcFallbackTransportOptions $grpcFallback;
+    private RestTransportOptions $rest;
     /**
      * @param array $options {
      *    Config options used to construct the transport.
@@ -75,16 +66,34 @@ class TransportOptions implements ArrayAccess
         $this->setGrpcFallback(new GrpcFallbackTransportOptions($arr['grpc-fallback'] ?? []));
         $this->setRest(new RestTransportOptions($arr['rest'] ?? []));
     }
-    public function setGrpc(GrpcTransportOptions $grpc) : void
+    /**
+     * @param GrpcTransportOptions $grpc
+     *
+     * @return $this
+     */
+    public function setGrpc(GrpcTransportOptions $grpc) : self
     {
         $this->grpc = $grpc;
+        return $this;
     }
-    public function setGrpcFallback(GrpcFallbackTransportOptions $grpcFallback) : void
+    /**
+     * @param GrpcFallbackTransportOptions $grpcFallback
+     *
+     * @return $this
+     */
+    public function setGrpcFallback(GrpcFallbackTransportOptions $grpcFallback) : self
     {
         $this->grpcFallback = $grpcFallback;
+        return $this;
     }
-    public function setRest(RestTransportOptions $rest) : void
+    /**
+     * @param RestTransportOptions $rest
+     *
+     * @return $this
+     */
+    public function setRest(RestTransportOptions $rest) : self
     {
         $this->rest = $rest;
+        return $this;
     }
 }

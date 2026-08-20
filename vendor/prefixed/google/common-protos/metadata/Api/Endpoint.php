@@ -13,17 +13,7 @@ class Endpoint
         if (static::$is_initialized == \true) {
             return;
         }
-        $pool->internalAddGeneratedFile('
-ï
-google/api/endpoint.proto
-google.api"M
-Endpoint
-name (	
-aliases (	
-targete (	
-
-allow_cors (Bo
-com.google.apiBEndpointProtoPZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig¢GAPIbproto3', \true);
+        $pool->internalAddGeneratedFile("\n\xef\x01\n\x19google/api/endpoint.proto\x12\ngoogle.api\"M\n\x08Endpoint\x12\f\n\x04name\x18\x01 \x01(\t\x12\x0f\n\x07aliases\x18\x02 \x03(\t\x12\x0e\n\x06target\x18e \x01(\t\x12\x12\n\nallow_cors\x18\x05 \x01(\x08Bo\n\x0ecom.google.apiB\rEndpointProtoP\x01ZEgoogle.golang.org/genproto/googleapis/api/serviceconfig;serviceconfig\xa2\x02\x04GAPIb\x06proto3", \true);
         static::$is_initialized = \true;
     }
 }

@@ -21,6 +21,9 @@ class Segment extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
     protected $dynamicSegmentType = DynamicSegment::class;
     protected $dynamicSegmentDataType = '';
+    /**
+     * @var string
+     */
     public $segmentId;
     /**
      * @param DynamicSegment
@@ -36,10 +39,16 @@ class Segment extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
     {
         return $this->dynamicSegment;
     }
+    /**
+     * @param string
+     */
     public function setSegmentId($segmentId)
     {
         $this->segmentId = $segmentId;
     }
+    /**
+     * @return string
+     */
     public function getSegmentId()
     {
         return $this->segmentId;

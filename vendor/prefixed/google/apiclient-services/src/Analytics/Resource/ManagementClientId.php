@@ -24,7 +24,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\HashCli
  * Typical usage is:
  *  <code>
  *   $analyticsService = new Google\Service\Analytics(...);
- *   $clientId = $analyticsService->clientId;
+ *   $clientId = $analyticsService->management_clientId;
  *  </code>
  */
 class ManagementClientId extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Resource
@@ -35,6 +35,7 @@ class ManagementClientId extends \Matomo\Dependencies\GoogleAnalyticsImporter\Go
      * @param HashClientIdRequest $postBody
      * @param array $optParams Optional parameters.
      * @return HashClientIdResponse
+     * @throws \Google\Service\Exception
      */
     public function hashClientId(HashClientIdRequest $postBody, $optParams = [])
     {

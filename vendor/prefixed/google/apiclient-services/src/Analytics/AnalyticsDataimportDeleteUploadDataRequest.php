@@ -20,11 +20,24 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 class AnalyticsDataimportDeleteUploadDataRequest extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'customDataImportUids';
+    /**
+     * A list of upload UIDs.
+     *
+     * @var string[]
+     */
     public $customDataImportUids;
+    /**
+     * A list of upload UIDs.
+     *
+     * @param string[] $customDataImportUids
+     */
     public function setCustomDataImportUids($customDataImportUids)
     {
         $this->customDataImportUids = $customDataImportUids;
     }
+    /**
+     * @return string[]
+     */
     public function getCustomDataImportUids()
     {
         return $this->customDataImportUids;

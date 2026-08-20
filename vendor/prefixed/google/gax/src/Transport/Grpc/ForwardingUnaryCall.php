@@ -41,7 +41,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Grpc\UnaryCall;
 class ForwardingUnaryCall extends ForwardingCall
 {
     /** @var UnaryCall */
-    protected $innerCall;
+    protected object $innerCall;
     /**
      * Wait for the server to respond with data and a status.
      *

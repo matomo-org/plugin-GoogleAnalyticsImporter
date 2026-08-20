@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * A description of a log type. Example in YAML format:
  *     - name: library.googleapis.com/activity_history
@@ -62,7 +62,7 @@ class LogDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
      *           include the following characters: upper- and lower-case alphanumeric
      *           characters [A-Za-z0-9], and punctuation characters including
      *           slash, underscore, hyphen, period [/_-.].
-     *     @type array<\Google\Api\LabelDescriptor>|\Google\Protobuf\Internal\RepeatedField $labels
+     *     @type \Google\Api\LabelDescriptor[] $labels
      *           The set of labels that are available to describe a specific log entry.
      *           Runtime requests that contain labels not specified here are
      *           considered invalid.
@@ -114,7 +114,7 @@ class LogDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
      * considered invalid.
      *
      * Generated from protobuf field <code>repeated .google.api.LabelDescriptor labels = 2;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\LabelDescriptor>
      */
     public function getLabels()
     {
@@ -126,7 +126,7 @@ class LogDescriptor extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
      * considered invalid.
      *
      * Generated from protobuf field <code>repeated .google.api.LabelDescriptor labels = 2;</code>
-     * @param array<\Google\Api\LabelDescriptor>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\LabelDescriptor[] $var
      * @return $this
      */
     public function setLabels($var)

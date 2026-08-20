@@ -50,27 +50,12 @@ class RestServerStreamingCall implements ServerStreamingCallInterface
     /** @var callable */
     private $httpHandler;
     /** @var array<mixed> */
-    private $decoderOptions;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\RequestInterface
-     */
-    private $originalRequest;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Transport\Rest\JsonStreamDecoder|null
-     */
-    private $decoder;
-    /**
-     * @var string
-     */
-    private $decodeType;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Psr\Http\Message\ResponseInterface|null
-     */
-    private $response;
-    /**
-     * @var \stdClass
-     */
-    private $status;
+    private array $decoderOptions;
+    private RequestInterface $originalRequest;
+    private JsonStreamDecoder $decoder;
+    private string $decodeType;
+    private ?ResponseInterface $response;
+    private stdClass $status;
     /**
      * @param callable $httpHandler
      * @param string $decodeType
@@ -92,7 +77,9 @@ class RestServerStreamingCall implements ServerStreamingCallInterface
             $handler = $this->httpHandler;
             $response = $handler($this->originalRequest, $callOptions)->wait();
         } catch (\Exception $ex) {
-            if ($ex instanceof RequestException && $ex->hasResponse()) {
+            // Guzzle 7 carries the response on RequestException, Guzzle 8 only
+            // on its ResponseException subclass, hence the method_exists() check.
+            if ($ex instanceof RequestException && method_exists($ex, 'getResponse') && $ex->getResponse()) {
                 $ex = ApiException::createFromRequestException(
                     $ex,
                     /* isStream */
@@ -173,7 +160,7 @@ class RestServerStreamingCall implements ServerStreamingCallInterface
      */
     public function cancel()
     {
-        if (!is_null($this->decoder)) {
+        if (isset($this->decoder)) {
             $this->decoder->close();
         }
     }

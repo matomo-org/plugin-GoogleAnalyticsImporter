@@ -22,7 +22,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection;
  *
  * Example usage:
  *
- * ``` php
+ * ```
  * $collection = new \Ramsey\Collection\Collection('My\\Foo');
  * $collection->add(new \My\Foo());
  * $collection->add(new \My\Foo());
@@ -35,7 +35,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection;
  * It is preferable to subclass `AbstractCollection` to create your own typed
  * collections. For example:
  *
- * ``` php
+ * ```
  * namespace My\Foo;
  *
  * class FooCollection extends \Ramsey\Collection\AbstractCollection
@@ -49,7 +49,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection;
  *
  * And then use it similarly to the earlier example:
  *
- * ``` php
+ * ```
  * $fooCollection = new \My\Foo\FooCollection();
  * $fooCollection->add(new \My\Foo());
  * $fooCollection->add(new \My\Foo());
@@ -62,7 +62,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection;
  * The benefit with this approach is that you may do type-checking on the
  * collection object:
  *
- * ``` php
+ * ```
  * if ($collection instanceof \My\Foo\FooCollection) {
  *     // the collection is a collection of My\Foo objects
  * }
@@ -74,11 +74,6 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Collection;
 class Collection extends AbstractCollection
 {
     /**
-     * @var string
-     * @readonly
-     */
-    private $collectionType;
-    /**
      * Constructs a collection object of the specified type, optionally with the
      * specified data.
      *
@@ -86,9 +81,8 @@ class Collection extends AbstractCollection
      *     collection.
      * @param array<array-key, T> $data The initial items to store in the collection.
      */
-    public function __construct(string $collectionType, array $data = [])
+    public function __construct(private readonly string $collectionType, array $data = [])
     {
-        $this->collectionType = $collectionType;
         parent::__construct($data);
     }
     public function getType() : string

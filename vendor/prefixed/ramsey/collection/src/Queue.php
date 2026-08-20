@@ -27,11 +27,6 @@ use function array_key_first;
  */
 class Queue extends AbstractArray implements QueueInterface
 {
-    /**
-     * @var string
-     * @readonly
-     */
-    private $queueType;
     use TypeTrait;
     use ValueToStringTrait;
     /**
@@ -41,9 +36,8 @@ class Queue extends AbstractArray implements QueueInterface
      * @param string $queueType The type or class name associated with this queue.
      * @param array<array-key, T> $data The initial items to store in the queue.
      */
-    public function __construct(string $queueType, array $data = [])
+    public function __construct(private readonly string $queueType, array $data = [])
     {
-        $this->queueType = $queueType;
         parent::__construct($data);
     }
     /**
@@ -54,10 +48,8 @@ class Queue extends AbstractArray implements QueueInterface
      * invoked by other operations when adding values to the queue.
      *
      * @throws InvalidArgumentException if $value is of the wrong type.
-     * @param mixed $offset
-     * @param mixed $value
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet(mixed $offset, mixed $value) : void
     {
         if ($this->checkType($this->getType(), $value) === \false) {
             throw new InvalidArgumentException('Value must be of type ' . $this->getType() . '; value is ' . $this->toolValueToString($value));
@@ -66,9 +58,8 @@ class Queue extends AbstractArray implements QueueInterface
     }
     /**
      * @throws InvalidArgumentException if $value is of the wrong type.
-     * @param mixed $element
      */
-    public function add($element) : bool
+    public function add(mixed $element) : bool
     {
         $this[] = $element;
         return \true;
@@ -78,28 +69,22 @@ class Queue extends AbstractArray implements QueueInterface
      *
      * @throws NoSuchElementException if this queue is empty.
      */
-    public function element()
+    public function element() : mixed
     {
-        if ($this->peek() !== null) {
-            throw new NoSuchElementException('Can\'t return element from Queue. Queue is empty.');
-        }
-        return $this->peek();
+        return $this->peek() ?? throw new NoSuchElementException('Can\'t return element from Queue. Queue is empty.');
     }
-    /**
-     * @param mixed $element
-     */
-    public function offer($element) : bool
+    public function offer(mixed $element) : bool
     {
         try {
             return $this->add($element);
-        } catch (InvalidArgumentException $exception) {
+        } catch (InvalidArgumentException) {
             return \false;
         }
     }
     /**
      * @return T | null
      */
-    public function peek()
+    public function peek() : mixed
     {
         $index = array_key_first($this->data);
         if ($index === null) {
@@ -110,7 +95,7 @@ class Queue extends AbstractArray implements QueueInterface
     /**
      * @return T | null
      */
-    public function poll()
+    public function poll() : mixed
     {
         $index = array_key_first($this->data);
         if ($index === null) {
@@ -125,12 +110,9 @@ class Queue extends AbstractArray implements QueueInterface
      *
      * @throws NoSuchElementException if this queue is empty.
      */
-    public function remove()
+    public function remove() : mixed
     {
-        if ($this->poll() !== null) {
-            throw new NoSuchElementException('Can\'t return element from Queue. Queue is empty.');
-        }
-        return $this->poll();
+        return $this->poll() ?? throw new NoSuchElementException('Can\'t return element from Queue. Queue is empty.');
     }
     public function getType() : string
     {

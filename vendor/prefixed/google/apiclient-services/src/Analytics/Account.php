@@ -21,17 +21,55 @@ class Account extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
     protected $childLinkType = AccountChildLink::class;
     protected $childLinkDataType = '';
+    /**
+     * Time the account was created.
+     *
+     * @var string
+     */
     public $created;
+    /**
+     * Account ID.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Resource type for Analytics account.
+     *
+     * @var string
+     */
     public $kind;
+    /**
+     * Account name.
+     *
+     * @var string
+     */
     public $name;
     protected $permissionsType = AccountPermissions::class;
     protected $permissionsDataType = '';
+    /**
+     * Link for this account.
+     *
+     * @var string
+     */
     public $selfLink;
+    /**
+     * Indicates whether this account is starred or not.
+     *
+     * @var bool
+     */
     public $starred;
+    /**
+     * Time the account was last modified.
+     *
+     * @var string
+     */
     public $updated;
     /**
-     * @param AccountChildLink
+     * Child link for an account entry. Points to the list of web properties for
+     * this account.
+     *
+     * @param AccountChildLink $childLink
      */
     public function setChildLink(AccountChildLink $childLink)
     {
@@ -44,40 +82,74 @@ class Account extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
     {
         return $this->childLink;
     }
+    /**
+     * Time the account was created.
+     *
+     * @param string $created
+     */
     public function setCreated($created)
     {
         $this->created = $created;
     }
+    /**
+     * @return string
+     */
     public function getCreated()
     {
         return $this->created;
     }
+    /**
+     * Account ID.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Resource type for Analytics account.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
+    /**
+     * Account name.
+     *
+     * @param string $name
+     */
     public function setName($name)
     {
         $this->name = $name;
     }
+    /**
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
     /**
-     * @param AccountPermissions
+     * Permissions the user has for this account.
+     *
+     * @param AccountPermissions $permissions
      */
     public function setPermissions(AccountPermissions $permissions)
     {
@@ -90,26 +162,50 @@ class Account extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
     {
         return $this->permissions;
     }
+    /**
+     * Link for this account.
+     *
+     * @param string $selfLink
+     */
     public function setSelfLink($selfLink)
     {
         $this->selfLink = $selfLink;
     }
+    /**
+     * @return string
+     */
     public function getSelfLink()
     {
         return $this->selfLink;
     }
+    /**
+     * Indicates whether this account is starred or not.
+     *
+     * @param bool $starred
+     */
     public function setStarred($starred)
     {
         $this->starred = $starred;
     }
+    /**
+     * @return bool
+     */
     public function getStarred()
     {
         return $this->starred;
     }
+    /**
+     * Time the account was last modified.
+     *
+     * @param string $updated
+     */
     public function setUpdated($updated)
     {
         $this->updated = $updated;
     }
+    /**
+     * @return string
+     */
     public function getUpdated()
     {
         return $this->updated;

@@ -45,30 +45,23 @@ abstract class AbstractMap extends AbstractArray implements MapInterface
         return parent::getIterator();
     }
     /**
-     * @param mixed $offset The offset to set
-     * @param mixed $value The value to set at the given offset.
+     * @param K $offset The offset to set
+     * @param T $value The value to set at the given offset.
      *
      * @inheritDoc
-     * @psalm-suppress MoreSpecificImplementedParamType,DocblockTypeContradiction
      */
-    public function offsetSet($offset, $value) : void
+    public function offsetSet(mixed $offset, mixed $value) : void
     {
         if ($offset === null) {
             throw new InvalidArgumentException('Map elements are key/value pairs; a key must be provided for ' . 'value ' . var_export($value, \true));
         }
         $this->data[$offset] = $value;
     }
-    /**
-     * @param int|string $key
-     */
-    public function containsKey($key) : bool
+    public function containsKey(int|string $key) : bool
     {
         return array_key_exists($key, $this->data);
     }
-    /**
-     * @param mixed $value
-     */
-    public function containsValue($value) : bool
+    public function containsValue(mixed $value) : bool
     {
         return in_array($value, $this->data, \true);
     }
@@ -77,39 +70,40 @@ abstract class AbstractMap extends AbstractArray implements MapInterface
      */
     public function keys() : array
     {
+        /** @var list<K> */
         return array_keys($this->data);
     }
     /**
-     * @param int|string $key The key to return from the map.
-     * @param mixed $defaultValue The default value to use if `$key` is not found.
+     * @param K $key The key to return from the map.
+     * @param T | null $defaultValue The default value to use if `$key` is not found.
      *
      * @return T | null the value or `null` if the key could not be found.
      */
-    public function get($key, $defaultValue = null)
+    public function get(int|string $key, mixed $defaultValue = null) : mixed
     {
         return $this[$key] ?? $defaultValue;
     }
     /**
-     * @param int|string $key The key to put or replace in the map.
-     * @param mixed $value The value to store at `$key`.
+     * @param K $key The key to put or replace in the map.
+     * @param T $value The value to store at `$key`.
      *
      * @return T | null the previous value associated with key, or `null` if
      *     there was no mapping for `$key`.
      */
-    public function put($key, $value)
+    public function put(int|string $key, mixed $value) : mixed
     {
         $previousValue = $this->get($key);
         $this[$key] = $value;
         return $previousValue;
     }
     /**
-     * @param int|string $key The key to put in the map.
-     * @param mixed $value The value to store at `$key`.
+     * @param K $key The key to put in the map.
+     * @param T $value The value to store at `$key`.
      *
      * @return T | null the previous value associated with key, or `null` if
      *     there was no mapping for `$key`.
      */
-    public function putIfAbsent($key, $value)
+    public function putIfAbsent(int|string $key, mixed $value) : mixed
     {
         $currentValue = $this->get($key);
         if ($currentValue === null) {
@@ -118,22 +112,18 @@ abstract class AbstractMap extends AbstractArray implements MapInterface
         return $currentValue;
     }
     /**
-     * @param int|string $key The key to remove from the map.
+     * @param K $key The key to remove from the map.
      *
      * @return T | null the previous value associated with key, or `null` if
      *     there was no mapping for `$key`.
      */
-    public function remove($key)
+    public function remove(int|string $key) : mixed
     {
         $previousValue = $this->get($key);
         unset($this[$key]);
         return $previousValue;
     }
-    /**
-     * @param int|string $key
-     * @param mixed $value
-     */
-    public function removeIf($key, $value) : bool
+    public function removeIf(int|string $key, mixed $value) : bool
     {
         if ($this->get($key) === $value) {
             unset($this[$key]);
@@ -142,13 +132,13 @@ abstract class AbstractMap extends AbstractArray implements MapInterface
         return \false;
     }
     /**
-     * @param int|string $key The key to replace.
-     * @param mixed $value The value to set at `$key`.
+     * @param K $key The key to replace.
+     * @param T $value The value to set at `$key`.
      *
      * @return T | null the previous value associated with key, or `null` if
      *     there was no mapping for `$key`.
      */
-    public function replace($key, $value)
+    public function replace(int|string $key, mixed $value) : mixed
     {
         $currentValue = $this->get($key);
         if ($this->containsKey($key)) {
@@ -156,12 +146,7 @@ abstract class AbstractMap extends AbstractArray implements MapInterface
         }
         return $currentValue;
     }
-    /**
-     * @param int|string $key
-     * @param mixed $oldValue
-     * @param mixed $newValue
-     */
-    public function replaceIf($key, $oldValue, $newValue) : bool
+    public function replaceIf(int|string $key, mixed $oldValue, mixed $newValue) : bool
     {
         if ($this->get($key) === $oldValue) {
             $this[$key] = $newValue;
@@ -174,6 +159,7 @@ abstract class AbstractMap extends AbstractArray implements MapInterface
      */
     public function __serialize() : array
     {
+        /** @var array<K, T> */
         return parent::__serialize();
     }
     /**
@@ -181,6 +167,7 @@ abstract class AbstractMap extends AbstractArray implements MapInterface
      */
     public function toArray() : array
     {
+        /** @var array<K, T> */
         return parent::toArray();
     }
 }

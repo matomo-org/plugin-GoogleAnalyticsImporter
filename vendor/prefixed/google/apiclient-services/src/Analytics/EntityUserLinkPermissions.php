@@ -20,20 +20,56 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 class EntityUserLinkPermissions extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Collection
 {
     protected $collection_key = 'local';
+    /**
+     * Effective permissions represent all the permissions that a user has for
+     * this entity. These include any implied permissions (e.g., EDIT implies
+     * VIEW) or inherited permissions from the parent entity. Effective
+     * permissions are read-only.
+     *
+     * @var string[]
+     */
     public $effective;
+    /**
+     * Permissions that a user has been assigned at this very level. Does not
+     * include any implied or inherited permissions. Local permissions are
+     * modifiable.
+     *
+     * @var string[]
+     */
     public $local;
+    /**
+     * Effective permissions represent all the permissions that a user has for
+     * this entity. These include any implied permissions (e.g., EDIT implies
+     * VIEW) or inherited permissions from the parent entity. Effective
+     * permissions are read-only.
+     *
+     * @param string[] $effective
+     */
     public function setEffective($effective)
     {
         $this->effective = $effective;
     }
+    /**
+     * @return string[]
+     */
     public function getEffective()
     {
         return $this->effective;
     }
+    /**
+     * Permissions that a user has been assigned at this very level. Does not
+     * include any implied or inherited permissions. Local permissions are
+     * modifiable.
+     *
+     * @param string[] $local
+     */
     public function setLocal($local)
     {
         $this->local = $local;
     }
+    /**
+     * @return string[]
+     */
     public function getLocal()
     {
         return $this->local;

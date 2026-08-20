@@ -17,9 +17,10 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Converter\NumberConv
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Converter\TimeConverterInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Ramsey\Uuid\Uuid as BaseUuid;
 /**
- * Nonstandard\Uuid is a UUID that doesn't conform to RFC 4122
+ * Nonstandard\Uuid is a UUID that doesn't conform to RFC 9562 (formerly RFC 4122)
  *
- * @psalm-immutable
+ * @immutable
+ * @pure
  */
 final class Uuid extends BaseUuid
 {

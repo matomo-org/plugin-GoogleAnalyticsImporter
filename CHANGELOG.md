@@ -1,8 +1,9 @@
 ## Changelog
 
-# 6.0.0 - 2026-08-11
+# 6.0.0 - 2026-08-24
 
 - Compatibility with Matomo 6
+- Updated dependencies to address security advisories
 
 # 5.2.1 - 2026-08-03
 - Added PHPStan static analysis (CI check and pre-push hook)

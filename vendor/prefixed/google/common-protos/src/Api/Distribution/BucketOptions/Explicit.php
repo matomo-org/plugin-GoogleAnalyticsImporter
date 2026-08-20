@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api\Distribution\BucketOptions;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Specifies a set of buckets with arbitrary widths.
  * There are `size(bounds) + 1` (= N) buckets. Bucket `i` has the following
@@ -33,7 +33,7 @@ class Explicit extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * @param array $data {
      *     Optional. Data for populating the Message object.
      *
-     *     @type array<float>|\Google\Protobuf\Internal\RepeatedField $bounds
+     *     @type float[] $bounds
      *           The values must be monotonically increasing.
      * }
      */
@@ -46,7 +46,7 @@ class Explicit extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * The values must be monotonically increasing.
      *
      * Generated from protobuf field <code>repeated double bounds = 1;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<float>
      */
     public function getBounds()
     {
@@ -56,7 +56,7 @@ class Explicit extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Proto
      * The values must be monotonically increasing.
      *
      * Generated from protobuf field <code>repeated double bounds = 1;</code>
-     * @param array<float>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param float[] $var
      * @return $this
      */
     public function setBounds($var)

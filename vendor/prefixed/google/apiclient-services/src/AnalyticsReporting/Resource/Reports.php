@@ -35,6 +35,7 @@ class Reports extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Servic
      * @param GetReportsRequest $postBody
      * @param array $optParams Optional parameters.
      * @return GetReportsResponse
+     * @throws \Google\Service\Exception
      */
     public function batchGet(GetReportsRequest $postBody, $optParams = [])
     {

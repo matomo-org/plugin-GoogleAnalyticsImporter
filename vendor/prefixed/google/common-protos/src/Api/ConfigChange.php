@@ -5,8 +5,8 @@
 namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Api;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBType;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\GPBUtil;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 /**
  * Output generated from semantically comparing two versions of a service
  * configuration.
@@ -83,7 +83,7 @@ class ConfigChange extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\P
      *           in JSON format. This field will not be populated if ChangeType == REMOVED.
      *     @type int $change_type
      *           The type for this change, either ADDED, REMOVED, or MODIFIED.
-     *     @type array<\Google\Api\Advice>|\Google\Protobuf\Internal\RepeatedField $advices
+     *     @type \Google\Api\Advice[] $advices
      *           Collection of advice provided for this change, useful for determining the
      *           possible impact of this change.
      * }
@@ -210,7 +210,7 @@ class ConfigChange extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\P
      * possible impact of this change.
      *
      * Generated from protobuf field <code>repeated .google.api.Advice advices = 5;</code>
-     * @return \Google\Protobuf\Internal\RepeatedField
+     * @return RepeatedField<\Google\Api\Advice>
      */
     public function getAdvices()
     {
@@ -221,7 +221,7 @@ class ConfigChange extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\P
      * possible impact of this change.
      *
      * Generated from protobuf field <code>repeated .google.api.Advice advices = 5;</code>
-     * @param array<\Google\Api\Advice>|\Google\Protobuf\Internal\RepeatedField $var
+     * @param \Google\Api\Advice[] $var
      * @return $this
      */
     public function setAdvices($var)

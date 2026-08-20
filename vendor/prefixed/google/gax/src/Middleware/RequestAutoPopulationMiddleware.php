@@ -79,7 +79,7 @@ class RequestAutoPopulationMiddleware implements MiddlewareInterface
                         $request->{$setFieldName}(Uuid::uuid4()->toString());
                         break;
                     default:
-                        throw new \UnexpectedValueException(sprintf("Value type %s::%s not supported for auto population of the field %s", Format::class, Format::name($valueType), $fieldName));
+                        throw new \UnexpectedValueException(sprintf('Value type %s::%s not supported for auto population of the field %s', Format::class, Format::name($valueType), $fieldName));
                 }
             }
         }

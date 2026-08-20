@@ -34,6 +34,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore;
 
 /**
  * For connect to emulator.
+ * @TODO: implement HeaderCredentialsInterface instead of extending CredentialsWrapper
  */
 class InsecureCredentialsWrapper extends CredentialsWrapper
 {

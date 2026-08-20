@@ -19,29 +19,64 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics;
 
 class UserRef extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * Email ID of this user.
+     *
+     * @var string
+     */
     public $email;
+    /**
+     * User ID.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * @var string
+     */
     public $kind;
+    /**
+     * Email ID of this user.
+     *
+     * @param string $email
+     */
     public function setEmail($email)
     {
         $this->email = $email;
     }
+    /**
+     * @return string
+     */
     public function getEmail()
     {
         return $this->email;
     }
+    /**
+     * User ID.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;

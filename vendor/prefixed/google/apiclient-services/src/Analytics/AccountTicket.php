@@ -21,15 +21,33 @@ class AccountTicket extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
 {
     protected $accountType = Account::class;
     protected $accountDataType = '';
+    /**
+     * Account ticket ID used to access the account ticket.
+     *
+     * @var string
+     */
     public $id;
+    /**
+     * Resource type for account ticket.
+     *
+     * @var string
+     */
     public $kind;
     protected $profileType = Profile::class;
     protected $profileDataType = '';
+    /**
+     * Redirect URI where the user will be sent after accepting Terms of Service.
+     * Must be configured in APIs console as a callback URL.
+     *
+     * @var string
+     */
     public $redirectUri;
     protected $webpropertyType = Webproperty::class;
     protected $webpropertyDataType = '';
     /**
-     * @param Account
+     * Account for this ticket.
+     *
+     * @param Account $account
      */
     public function setAccount(Account $account)
     {
@@ -42,24 +60,42 @@ class AccountTicket extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
     {
         return $this->account;
     }
+    /**
+     * Account ticket ID used to access the account ticket.
+     *
+     * @param string $id
+     */
     public function setId($id)
     {
         $this->id = $id;
     }
+    /**
+     * @return string
+     */
     public function getId()
     {
         return $this->id;
     }
+    /**
+     * Resource type for account ticket.
+     *
+     * @param string $kind
+     */
     public function setKind($kind)
     {
         $this->kind = $kind;
     }
+    /**
+     * @return string
+     */
     public function getKind()
     {
         return $this->kind;
     }
     /**
-     * @param Profile
+     * View (Profile) for the account.
+     *
+     * @param Profile $profile
      */
     public function setProfile(Profile $profile)
     {
@@ -72,16 +108,27 @@ class AccountTicket extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\
     {
         return $this->profile;
     }
+    /**
+     * Redirect URI where the user will be sent after accepting Terms of Service.
+     * Must be configured in APIs console as a callback URL.
+     *
+     * @param string $redirectUri
+     */
     public function setRedirectUri($redirectUri)
     {
         $this->redirectUri = $redirectUri;
     }
+    /**
+     * @return string
+     */
     public function getRedirectUri()
     {
         return $this->redirectUri;
     }
     /**
-     * @param Webproperty
+     * Web property for the account.
+     *
+     * @param Webproperty $webproperty
      */
     public function setWebproperty(Webproperty $webproperty)
     {

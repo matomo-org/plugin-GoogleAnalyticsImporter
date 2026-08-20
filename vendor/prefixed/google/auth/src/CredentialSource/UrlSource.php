@@ -28,30 +28,21 @@ use UnexpectedValueException;
  */
 class UrlSource implements ExternalAccountCredentialSourceInterface
 {
-    /**
-     * @var string
-     */
-    private $url;
-    /**
-     * @var string|null
-     */
-    private $format;
-    /**
-     * @var string|null
-     */
-    private $subjectTokenFieldName;
+    private string $url;
+    private ?string $format;
+    private ?string $subjectTokenFieldName;
     /**
      * @var array<string, string|string[]>
      */
-    private $headers;
+    private ?array $headers;
     /**
-     * @param string $url                   The URL to fetch the subject token from.
-     * @param string $format                The format of the token in the response. Can be null or "json".
-     * @param string $subjectTokenFieldName The name of the field containing the token in the response. This is required
+     * @param string $url                        The URL to fetch the subject token from.
+     * @param string|null $format                The format of the token in the response. Can be null or "json".
+     * @param string|null $subjectTokenFieldName The name of the field containing the token in the response. This is required
      *                                      when format is "json".
-     * @param array<string, string|string[]> $headers Request headers to send in with the request to the URL.
+     * @param array<string, string|string[]>|null $headers Request headers to send in with the request to the URL.
      */
-    public function __construct(string $url, string $format = null, string $subjectTokenFieldName = null, array $headers = null)
+    public function __construct(string $url, ?string $format = null, ?string $subjectTokenFieldName = null, ?array $headers = null)
     {
         $this->url = $url;
         if ($format === 'json' && is_null($subjectTokenFieldName)) {
@@ -61,7 +52,7 @@ class UrlSource implements ExternalAccountCredentialSourceInterface
         $this->subjectTokenFieldName = $subjectTokenFieldName;
         $this->headers = $headers;
     }
-    public function fetchSubjectToken(callable $httpHandler = null) : string
+    public function fetchSubjectToken(?callable $httpHandler = null) : string
     {
         if (is_null($httpHandler)) {
             $httpHandler = HttpHandlerFactory::build(HttpClientCache::getHttpClient());

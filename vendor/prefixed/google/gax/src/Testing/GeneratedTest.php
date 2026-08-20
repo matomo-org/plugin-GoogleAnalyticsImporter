@@ -35,7 +35,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Testing;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Serializer;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\DescriptorPool;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\Message;
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\RepeatedField;
 use PHPUnit\Framework\TestCase;
 /**
  * @internal

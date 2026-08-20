@@ -4,10 +4,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Firebase\JWT;
 
 class BeforeValidException extends \UnexpectedValueException implements JWTExceptionWithPayloadInterface
 {
-    /**
-     * @var object
-     */
-    private $payload;
+    private object $payload;
     public function setPayload(object $payload) : void
     {
         $this->payload = $payload;

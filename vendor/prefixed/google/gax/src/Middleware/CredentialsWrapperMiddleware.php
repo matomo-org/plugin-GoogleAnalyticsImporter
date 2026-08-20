@@ -34,19 +34,19 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Middleware;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\Call;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\CredentialsWrapper;
-use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Promise\PromiseInterface;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\HeaderCredentialsInterface;
 /**
 * Middleware which adds a CredentialsWrapper object to the call options.
+*
+* @internal
 */
 class CredentialsWrapperMiddleware implements MiddlewareInterface
 {
     /** @var callable */
     private $nextHandler;
-    /**
-     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\ApiCore\CredentialsWrapper
-     */
-    private $credentialsWrapper;
-    public function __construct(callable $nextHandler, CredentialsWrapper $credentialsWrapper)
+    /** @var HeaderCredentialsInterface */
+    private HeaderCredentialsInterface $credentialsWrapper;
+    public function __construct(callable $nextHandler, HeaderCredentialsInterface $credentialsWrapper)
     {
         $this->nextHandler = $nextHandler;
         $this->credentialsWrapper = $credentialsWrapper;

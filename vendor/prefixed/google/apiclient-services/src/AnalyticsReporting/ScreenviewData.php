@@ -19,38 +19,74 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsRe
 
 class ScreenviewData extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Model
 {
+    /**
+     * @var string
+     */
     public $appName;
+    /**
+     * @var string
+     */
     public $mobileDeviceBranding;
+    /**
+     * @var string
+     */
     public $mobileDeviceModel;
+    /**
+     * @var string
+     */
     public $screenName;
+    /**
+     * @param string
+     */
     public function setAppName($appName)
     {
         $this->appName = $appName;
     }
+    /**
+     * @return string
+     */
     public function getAppName()
     {
         return $this->appName;
     }
+    /**
+     * @param string
+     */
     public function setMobileDeviceBranding($mobileDeviceBranding)
     {
         $this->mobileDeviceBranding = $mobileDeviceBranding;
     }
+    /**
+     * @return string
+     */
     public function getMobileDeviceBranding()
     {
         return $this->mobileDeviceBranding;
     }
+    /**
+     * @param string
+     */
     public function setMobileDeviceModel($mobileDeviceModel)
     {
         $this->mobileDeviceModel = $mobileDeviceModel;
     }
+    /**
+     * @return string
+     */
     public function getMobileDeviceModel()
     {
         return $this->mobileDeviceModel;
     }
+    /**
+     * @param string
+     */
     public function setScreenName($screenName)
     {
         $this->screenName = $screenName;
     }
+    /**
+     * @return string
+     */
     public function getScreenName()
     {
         return $this->screenName;
