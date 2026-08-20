@@ -59,7 +59,7 @@ import {
   translate,
 } from 'CoreHome';
 
-interface ClientConfigState {
+export interface ClientConfigState {
   clientFileToSet: unknown;
   clientConfigTextToSet: string;
 }

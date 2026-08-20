@@ -1,13 +1,13 @@
 parameters:
     level: 1
-    phpVersion: 70200
+    phpVersion: 80100
     tmpDir: /tmp/phpstan/GoogleAnalyticsImporter/main
     paths:
         - .
     excludePaths:
         analyseAndScan:
             - tests/*
-            - github-action-tests/
+            - github-action-tests/ (?)
             - scoper.inc.php
         # still scanned so the prefixed Google classes are discovered even
         # when the Matomo bootstrap cannot load plugin autoloaders (e.g. CI)

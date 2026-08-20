@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.0 - 2026-08-11
+
+- Compatibility with Matomo 6
+
 # 5.2.1 - 2026-08-03
 - Added PHPStan static analysis (CI check and pre-push hook)
 - Fixed an error that could hide the real failure reason when starting a GA4 import fails

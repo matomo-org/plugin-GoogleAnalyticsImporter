@@ -58,13 +58,13 @@
       <div class="modal-footer">
         <a
           id="scheduleReimportSubmit"
-          href
+          href=""
           class="modal-action modal-close btn"
           @click.prevent="scheduleReimport()"
           style="margin-right:3.5px"
         >{{ translate('GoogleAnalyticsImporter_Schedule') }}</a>
         <a
-          href
+          href=""
           class="modal-action modal-close modal-no"
           @click.prevent
         >{{ translate('General_Cancel') }}</a>
@@ -89,13 +89,13 @@
       </div>
       <div class="modal-footer">
         <a
-          href
+          href=""
           class="modal-action modal-close btn"
           @click="changeImportEndDateModal()"
           style="margin-right:3.5px"
         >{{ translate('GoogleAnalyticsImporter_Change') }}</a>
         <a
-          href
+          href=""
           class="modal-action modal-close modal-no"
           @click="cancelEditImportEndDateModal()"
         >{{ translate('General_Cancel') }}</a>
@@ -105,7 +105,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, PropType } from 'vue';
 import {
   AjaxHelper,
   Matomo,
@@ -114,7 +114,10 @@ import {
 import { Field } from 'CorePluginsAdmin';
 import ImportStatusRow from './ImportStatusRow.vue';
 
-interface ImportStatusState {
+// the import status rows come straight from the API and are not otherwise typed
+export type ImportStatusEntry = Record<string, any>;
+
+export interface ImportStatusState {
   editImportEndDateIdSite: string|number|null;
   reimportDateRangeIdSite: string|number|null;
   reimportStartDate: string;
@@ -128,7 +131,7 @@ const { $ } = window;
 export default defineComponent({
   props: {
     statuses: {
-      type: Array,
+      type: Array as PropType<ImportStatusEntry[]>,
       required: true,
     },
     stopImportNonce: {

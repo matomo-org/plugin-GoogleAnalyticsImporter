@@ -9,6 +9,7 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Logger;
 
+use Monolog\LogRecord;
 use Piwik\Log\Logger;
 use Piwik\Container\StaticContainer;
 
@@ -25,11 +26,11 @@ class LogToSingleFileProcessor
     {
         $this->idSite = (int) $idSite;
     }
-    public function __invoke(array $record)
+    public function __invoke(LogRecord $record): LogRecord
     {
         $message = $record['message'];
         if (is_string($message)) {
-            $record['message'] = '(idSite: ' . $this->idSite . ') ' . $record['message'];
+            $record = $record->with(message: '(idSite: ' . $this->idSite . ') ' . $message);
         }
         return $record;
     }

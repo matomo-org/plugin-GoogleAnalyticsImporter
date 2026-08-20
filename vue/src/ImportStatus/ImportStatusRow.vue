@@ -49,7 +49,7 @@
       <div v-if="status.status !== 'finished'">
         <a
           class="edit-import-end-link table-command-link"
-          href
+          href=""
           @click.prevent="$emit('end-import')"
         >{{ translate('GoogleAnalyticsImporter_EditEndDate') }}</a>
       </div>
@@ -58,7 +58,7 @@
           id="reimport-date-range"
           class="table-command-link"
           v-if="status.isGA4"
-          href
+          href=""
           @click.prevent="$emit('reimport')"
         >
           {{ translate('GoogleAnalyticsImporter_ReimportDate') }}
