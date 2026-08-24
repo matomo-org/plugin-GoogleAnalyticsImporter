@@ -1,7 +1,7 @@
 ## Changelog
 
 # 5.2.3 - 2026-08-24
-- Added escapeshell args for matomo domain argument
+- Added escapeshell for matomo domain argument
 
 # 5.2.2 - 2026-08-17
 - Upgraded packages to pick up published security fixes: guzzle to 7.15.3, psr7 to 2.13.0, promises to 2.5.2 & phpseclib to 3.0.56
