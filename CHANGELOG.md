@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.1 - 2026-08-24
+
+- Updated the Chinese (Traditional) translation
+
 # 6.0.0 - 2026-08-24
 
 - Compatibility with Matomo 6
