@@ -1,5 +1,7 @@
 includes:
     - ../phpstan.neon
 parameters:
+    # touched files are ratcheted up to the plugin-wide goal of level 5,
+    # even where the CI base level is lower
     level: 5
     tmpDir: /tmp/phpstan/GoogleAnalyticsImporter/modified

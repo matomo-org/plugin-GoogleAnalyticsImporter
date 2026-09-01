@@ -12,7 +12,7 @@ parameters:
         # still scanned so the prefixed Google classes are discovered even
         # when the Matomo bootstrap cannot load plugin autoloaders (e.g. CI)
         analyse:
-            - vendor/
+            - vendor/ (?)
     ignoreErrors:
         # WpMatomo and get_option exist only when running inside Matomo for WordPress
         - '#^Instantiated class WpMatomo\\Site not found\.$#'
