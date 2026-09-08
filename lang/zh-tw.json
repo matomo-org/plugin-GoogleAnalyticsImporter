@@ -14,7 +14,7 @@
         "CloudRateLimitHelp": "已達到每日雲端速率限制，請明天再試。（注意：GA 預設會限制每天可發出的 API 請求數。這個額度已按比例分配為你的帳戶 %1$s 次請求，此限制會按比例分配給每一位 Matomo Cloud 客戶。看來你已達到上限，請明天再繼續匯入。）",
         "ConfigurationFile": "設定檔",
         "ConfigurationText": "設定內容文字",
-        "ConfigureClientDesc1": "為了從 Google Analytics 匯入你的資料，Matomo 需要存取這些資料的權限。",
+        "ConfigureClientDesc1": "Matomo需要权限访问Google分析数据，以方便导入您的数据",
         "ConfigureClientDesc2": "%1$s首先，請依照我們的說明取得你的 OAuth 客戶端設定。%2$s接著上傳這份客戶端設定，或將它貼到下方的欄位中。",
         "ConfigureImportNotificationMessage": "別錯過你寶貴的歷史洞察！%1$s立即將 %2$s 的 Google Analytics 資料匯入%3$s你的 Matomo 平台。",
         "ConfigureTheImporter": "导入选项",
