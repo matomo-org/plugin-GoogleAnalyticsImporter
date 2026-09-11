@@ -18,6 +18,7 @@ jobs:
     uses: matomo-org/plugin-ci-workflows/.github/workflows/plugin-ci.yml@main
     with:
       plugin-name: GoogleAnalyticsImporter
+      verify-hook: true
       dependent-plugins: 'matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels innocraft/plugin-ConnectAccounts'
     secrets:
       TESTS_ACCESS_TOKEN: ${{ secrets.TESTS_ACCESS_TOKEN }}
