@@ -70,7 +70,7 @@ class ImportStatus
             'import_end_time' => null,
             'last_job_start_time' => $now,
             'last_day_archived' => null,
-            'import_range_start' => null,
+            'import_range_start' => $this->getDefaultImportRangeStart($idSite),
             'import_range_end' => null,
             'extra_custom_dimensions' => $extraCustomDimensions,
             'days_finished_since_rate_limit' => 0,
@@ -80,6 +80,28 @@ class ImportStatus
         ];
         $this->saveStatus($status);
         return $status;
+    }
+    /**
+     * The oldest date there is data to import, used as the start of the import range.
+     *
+     * Imports run backwards, from the end date towards this one. Both finishing an import and switching over
+     * to importing recent days compare progress against the recorded range start, so an import that never
+     * records one can reach the oldest date and then neither finish nor move forward - it just stops making
+     * progress. Both importers create the Matomo site from the GA property's create time immediately before
+     * starting the import, so the site creation date is the property's first day.
+     *
+     * @param int $idSite
+     * @return string|null The date as YYYY-MM-DD, or null if no creation date could be read.
+     */
+    private function getDefaultImportRangeStart($idSite)
+    {
+        try {
+            return Date::factory(Site::getCreationDateFor($idSite))->toString();
+        } catch (\Exception $ex) {
+            // Best effort only - starting an import must not fail over an unreadable creation date. The import
+            // command makes the same lookup as its own fallback, so it still knows where to stop.
+            return null;
+        }
     }
     public function getImportedDateRange($idSite)
     {
@@ -115,7 +137,12 @@ class ImportStatus
     public function setImportDateRange($idSite, Date $startDate = null, Date $endDate = null)
     {
         $status = $this->getImportStatus($idSite);
-        $status['import_range_start'] = $startDate ? $startDate->toString() : '';
+        // Callers that pass no start date mean "leave it as it is", not "clear it" - Controller::startImportGA4()
+        // calls this whenever either date is given, so blanking here would drop the range start set when the
+        // import began.
+        if ($startDate !== null) {
+            $status['import_range_start'] = $startDate->toString();
+        }
         $status['import_range_end'] = $endDate ? $endDate->toString() : '';
         if (!empty($status['import_range_start']) && !empty($status['import_range_end']) && Date::factory($status['import_range_start'])->isLater(Date::factory($status['import_range_end']))) {
             throw new \Exception("The start date cannot be past the end date.");
