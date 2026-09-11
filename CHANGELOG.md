@@ -1,5 +1,8 @@
 ## Changelog
 
+# 5.2.4 - 2026-09-14
+- Fixed imports stalling once they reached the oldest available date, without importing recent data
+
 # 5.2.3 - 2026-08-24
 - Added escapeshell for matomo domain argument
 
