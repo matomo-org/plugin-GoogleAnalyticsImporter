@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.2 - 2026-09-14
+
+- Fixed imports stalling once they reached the oldest available date, without importing recent data
+
 # 6.0.1 - 2026-08-24
 
 - Updated the Chinese (Traditional) translation
