@@ -19,6 +19,6 @@ jobs:
     with:
       plugin-name: GoogleAnalyticsImporter
       verify-hook: true
-      dependent-plugins: 'matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels innocraft/plugin-ConnectAccounts'
+      dependent-plugins: 'matomo-org/plugin-MarketingCampaignsReporting innocraft/plugin-Funnels innocraft/plugin-ConnectAccounts innocraft/plugin-SearchEngineKeywordsPerformance innocraft/plugin-ActivityLog'
     secrets:
       TESTS_ACCESS_TOKEN: ${{ secrets.TESTS_ACCESS_TOKEN }}
