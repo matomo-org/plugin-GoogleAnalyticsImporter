@@ -24,7 +24,6 @@ use Piwik\Option;
 use Piwik\Period\Factory;
 use Piwik\Piwik;
 use Piwik\Plugin\Manager;
-use Piwik\Plugin\ReportsProvider;
 use Piwik\Plugins\Goals\API;
 use Piwik\Plugins\GoogleAnalyticsImporter\ApiQuotaHelper;
 use Piwik\Plugins\GoogleAnalyticsImporter\Exceptions\CloudApiQuotaExceeded;
@@ -50,19 +49,15 @@ class Importer
     public const IS_IMPORTED_FROM_GA_NUMERIC = 'GoogleAnalyticsImporter_isImportedFromGa';
     public const PAGE_SIZE = 100000;
     /**
-     * @var ReportsProvider
-     */
-    private $reportsProvider;
-    /**
      * @var LoggerInterface
      */
     private $logger;
     /**
-     * @var \Google\Service\Analytics
+     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics
      */
     private $gaService;
     /**
-     * @var \Google\Service\AnalyticsReporting
+     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting
      */
     private $gaServiceReporting;
     /**
@@ -94,7 +89,7 @@ class Importer
      */
     private $currentLock = null;
     /**
-     * @var string
+     * @var bool
      */
     private $noDataMessageRemoved = \false;
     /**
@@ -115,9 +110,8 @@ class Importer
      * @var int
      */
     private $maxAvailableQueries = 0;
-    public function __construct(ReportsProvider $reportsProvider, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics $gaService, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting $gaReportingService, LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper, \Piwik\Plugins\GoogleAnalyticsImporter\IdMapper $idMapper, \Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate, ApiQuotaHelper $apiQuotaHelper)
+    public function __construct(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics $gaService, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting $gaReportingService, LoggerInterface $logger, GoogleGoalMapper $goalMapper, GoogleCustomDimensionMapper $customDimensionMapper, \Piwik\Plugins\GoogleAnalyticsImporter\IdMapper $idMapper, \Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus $importStatus, ArchiveInvalidator $invalidator, EndDate $endDate, ApiQuotaHelper $apiQuotaHelper)
     {
-        $this->reportsProvider = $reportsProvider;
         $this->gaService = $gaService;
         $this->gaServiceReporting = $gaReportingService;
         $this->logger = $logger;
@@ -144,7 +138,7 @@ class Importer
             $webproperty = $this->gaService->management_webproperties->get($accountId, $propertyId);
             $view = $this->gaService->management_profiles->get($accountId, $propertyId, $viewId);
             $startDate = Date::factory($webproperty->getCreated())->toString();
-            if (!method_exists(SettingsServer::class, 'isMatomoForWordPress') || !SettingsServer::isMatomoForWordPress()) {
+            if (!SettingsServer::isMatomoForWordPress()) {
                 $siteOptions = ['siteName' => $webproperty->getName(), 'urls' => [$webproperty->getWebsiteUrl()], 'ecommerce' => $view->eCommerceTracking ? 1 : 0, 'siteSearch' => (int) (!empty($view->siteSearchQueryParameters)), 'searchKeywordParameters' => $view->siteSearchQueryParameters, 'searchCategoryParameters' => $view->siteSearchCategoryParameters, 'excludedQueryParameters' => $view->excludeQueryParameters, 'timezone' => empty($timezone) ? $view->timezone : $timezone, 'currency' => $view->currency, 'startDate' => $startDate, 'type' => $type];
                 if ($type === \Piwik\Plugins\MobileAppMeasurable\Type::ID) {
                     unset($siteOptions['urls']);
@@ -221,7 +215,7 @@ class Importer
         }
         $existingCustomDimensions = \Piwik\Plugins\CustomDimensions\API::getInstance()->getConfiguredCustomDimensions($idSite);
         $customDimensions = $this->gaService->management_customDimensions->listManagementCustomDimensions($accountId, $propertyId);
-        /** @var \Google\Service\Analytics\CustomDimension $gaCustomDimension */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\CustomDimension $gaCustomDimension */
         foreach ($customDimensions->getItems() as $gaCustomDimension) {
             if (!preg_match('/ga:dimension([0-9]+)/', $gaCustomDimension->getId(), $matches)) {
                 $this->logger->warning("Could not parse custom dimension ID from GA: {$gaCustomDimension->getId()}");
@@ -350,7 +344,7 @@ class Importer
     }
     /**
      * For use in RecordImporters that need to archive data for segments.
-     * @var RecordImporter[] $recordImporters
+     * @param RecordImporter[] $recordImporters
      */
     public function importDay(Site $site, Date $date, $recordImporters, $segment, $plugin = null)
     {
@@ -472,7 +466,7 @@ class Importer
     private function removeNoDataMessage($idSite)
     {
         $hadTrafficKey = 'SitesManagerHadTrafficInPast_' . (int) $idSite;
-        Option::set($hadTrafficKey, 1);
+        Option::set($hadTrafficKey, '1');
     }
     private function goalExists(array $existingGoals, Google_Service_Analytics_Goal $gaGoal)
     {

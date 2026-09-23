@@ -83,8 +83,4 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
     {
         return $this->getGapLabel(Archiver::$daysSinceLastVisitGap, $value);
     }
-    private function getDurationGapLabel($value)
-    {
-        return $this->getGapLabel($this->secondsGap, $value);
-    }
 }

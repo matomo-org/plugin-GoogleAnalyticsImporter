@@ -1,5 +1,5 @@
 parameters:
-    level: 1
+    level: 5
     phpVersion: 80100
     tmpDir: /tmp/phpstan/GoogleAnalyticsImporter/main
     paths:
@@ -9,15 +9,118 @@ parameters:
             - tests/*
             - github-action-tests/ (?)
             - scoper.inc.php
+            # a developer sample script with a hard-coded local credentials path
+            - test.php
         # still scanned so the prefixed Google classes are discovered even
         # when the Matomo bootstrap cannot load plugin autoloaders (e.g. CI)
         analyse:
             - vendor/ (?)
     ignoreErrors:
+        # a development command that generates traffic until it is interrupted
+        -
+            identifier: while.alwaysTrue
+            path: Commands/GenerateGaTestData.php
+            count: 1
         # WpMatomo and get_option exist only when running inside Matomo for WordPress
         - '#^Instantiated class WpMatomo\\Site not found\.$#'
         - '#^Access to constant OPTION_NAME_INSTALL_DATE on an unknown class WpMatomo\\Installer\.$#'
         - '#^Function get_option not found\.$#'
+        -
+            message: '#^Call to method get_current_matomo_site_id\(\) on an unknown class WpMatomo\\Site\.$#'
+            identifier: class.notFound
+            path: Importer.php
+            count: 1
+        -
+            message: '#^Call to method get_current_matomo_site_id\(\) on an unknown class WpMatomo\\Site\.$#'
+            identifier: class.notFound
+            path: ImporterGA4.php
+            count: 1
+        # the GA3 import is disabled: doExecute() fails before executeImpl(), and the re-import ranges are hard-coded empty
+        -
+            identifier: deadCode.unreachable
+            path: Commands/ImportReports.php
+            count: 1
+        -
+            identifier: arrayValues.list
+            path: Commands/ImportReports.php
+            count: 1
+        -
+            identifier: function.alreadyNarrowedType
+            path: Commands/ImportReports.php
+            count: 1
+        -
+            identifier: notEqual.alwaysFalse
+            path: Commands/ImportReports.php
+            count: 1
+        -
+            identifier: booleanOr.alwaysFalse
+            path: Commands/ImportReports.php
+            count: 1
+        -
+            identifier: smaller.alwaysFalse
+            path: Commands/ImportReports.php
+            count: 1
+        -
+            identifier: if.alwaysFalse
+            path: Commands/ImportReports.php
+            count: 1
+        # Tokeninfo::$access_type is served by Google\Model::__get()
+        -
+            identifier: property.notFound
+            path: Google/Authorization.php
+            count: 1
+        # the importer attaches an id to the Admin API's ConversionEvent and CustomDimension objects
+        -
+            identifier: property.notFound
+            path: Google/GoogleGA4GoalMapper.php
+            count: 1
+        -
+            identifier: property.notFound
+            path: ImporterGA4.php
+            count: 4
+        # runReport() is typed only by its docblock; the guard retries if the client ever returns null
+        -
+            identifier: identical.alwaysFalse
+            path: Google/GoogleAnalyticsGA4QueryService.php
+            count: 1
+        # the Analytics Goal getters are documented non-null but return null for an unset sub-object
+        -
+            identifier: if.alwaysTrue
+            path: Google/GoogleGoalMapper.php
+            count: 3
+        # ViewDataTable::getDataTable() is documented DataTable but can hold a DataTable\Map
+        -
+            identifier: instanceof.alwaysTrue
+            path: GoogleAnalyticsImporter.php
+            count: 1
+        # Db::get() is documented as a union that omits the adapter's update()
+        -
+            identifier: method.notFound
+            path: Importer.php
+            count: 1
+        -
+            identifier: method.notFound
+            path: ImporterGA4.php
+            count: 1
+        # getActionRow() documents $urlPrefix as int, but null means "normalise the URL" and '' means "already normalised"
+        -
+            identifier: argument.type
+            path: Importers/Actions/RecordImporter.php
+            count: 3
+        -
+            identifier: argument.type
+            path: Importers/Actions/RecordImporterGA4.php
+            count: 3
+        # the ecommerce import is parked: its call in importRecords() is commented out
+        -
+            identifier: method.unused
+            path: Importers/Goals/RecordImporterGA4.php
+            count: 1
+        # a shipped update is immutable
+        -
+            identifier: property.onlyWritten
+            path: Updates/5.2.0.php
+            count: 1
     bootstrapFiles:
         - ../../bootstrap-phpstan.php
     universalObjectCratesClasses:

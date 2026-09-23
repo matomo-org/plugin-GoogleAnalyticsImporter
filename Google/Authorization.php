@@ -82,9 +82,18 @@ class Authorization
     }
     public function validateConfig($config)
     {
-        $value = @json_encode($config, \true);
-        if (empty($value)) {
+        $value = json_decode($config, \true);
+        if (!is_array($value)) {
             throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_InvalidClientJson'));
+        }
+        // the GA4 import reads only the 'web' client (config/config.php), while the sign-in flow's
+        // Google\Client::setAuthConfig() prefers an 'installed' one, so only a lone web client works for both
+        $client = !isset($value['installed']) && isset($value['web']) ? $value['web'] : null;
+        $isUsable = is_array($client)
+            && !empty($client['client_id']) && is_string($client['client_id'])
+            && !empty($client['client_secret']) && is_string($client['client_secret']);
+        if (!$isUsable) {
+            throw new \Exception(Piwik::translate('GoogleAnalyticsImporter_MissingClientConfiguration'));
         }
     }
     public function saveConfig($config)
@@ -99,17 +108,14 @@ class Authorization
         if ($tokenInfo->access_type != 'offline') {
             Url::redirectToUrl($client->createAuthUrl());
         }
-        $accessTokenStr = $accessToken;
-        if (!is_string($accessToken)) {
-            $accessTokenStr = json_encode($accessToken);
-        }
+        $accessTokenStr = json_encode($accessToken);
         Option::set(self::ACCESS_TOKEN_OPTION_NAME, $this->encryption->encryptString($accessTokenStr));
     }
     /**
      * Returns information for the given access token
      *
      * @param array $accessToken
-     * @return \Google\Service\Oauth2\Tokeninfo
+     * @return \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Oauth2\Tokeninfo
      * @throws \Exception
      */
     protected function getTokenInfo(
@@ -172,7 +178,7 @@ class Authorization
      * Returns a valid ur
      *
      * @param array $uris
-     * @return string
+     * @return string|false
      */
     private function getValidUri($uris)
     {

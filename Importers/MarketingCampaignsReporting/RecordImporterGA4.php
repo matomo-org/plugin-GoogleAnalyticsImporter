@@ -80,7 +80,7 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
         }
     }
     /**
-     * @param string $name
+     * @param string $recordName
      * @return DataTable
      */
     protected function getRecord($recordName)

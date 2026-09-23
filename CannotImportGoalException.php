@@ -12,19 +12,11 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 class CannotImportGoalException extends \Exception
 {
     /**
-     * @var \Google\Service\Analytics\Goal
-     */
-    private $gaGoal;
-    private $reason;
-    /**
      * CannotImportGoalException constructor.
-     * @param \Google\Service\Analytics\Goal $gaGoal
-     * @param string $string
+     * @param string $reason
      */
     public function __construct(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal $gaGoal, $reason)
     {
         parent::__construct("Unable to import the '{$gaGoal->getName()}' goal: {$reason}.");
-        $this->gaGoal = $gaGoal;
-        $this->reason = $reason;
     }
 }

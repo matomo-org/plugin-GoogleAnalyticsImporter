@@ -44,9 +44,12 @@ class GoogleGA4ResponseDataTableFactory
     }
     public function mergeGaResponse(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\RunReportResponse $response, array $gaMetricsToQuery)
     {
-        /** @var \Google\Analytics\Data\V1beta\Row $gaRow */
-        foreach ($response->getRows() as $gaRow) {
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField $gaRows */
+        $gaRows = $response->getRows();
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\Row $gaRow */
+        foreach ($gaRows as $gaRow) {
             $tableRow = clone $this->defaultRow;
+            /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField $metricValues */
             $metricValues = $gaRow->getMetricValues();
             $gaRowMetrics = [];
             for ($i = 0; $i < $metricValues->count(); $i++) {
@@ -57,6 +60,7 @@ class GoogleGA4ResponseDataTableFactory
             }
             // gather all dimensions to create the label column (we need to be able to find existing rows from dimensions
             // so we combine these dimensions into a single label)
+            /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Protobuf\Internal\RepeatedField $dimensionValues */
             $dimensionValues = $gaRow->getDimensionValues();
             $label = [];
             $gaRowDimensions = [];

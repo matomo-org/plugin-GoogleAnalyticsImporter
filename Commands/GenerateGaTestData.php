@@ -309,7 +309,7 @@ class GenerateGaTestData extends ConsoleCommand
         }
         if ($this->getChance() > 90) {
             // completely new visitor
-            return md5(time());
+            return md5((string) time());
         }
         // returning visitor
         $seed = $this->getRandomElement($this->visitorIdSeeds);
@@ -320,7 +320,7 @@ class GenerateGaTestData extends ConsoleCommand
     {
         $requestBody = http_build_query($params);
         $this->logger->debug('Sending params: {params}', ['params' => $params]);
-        Http::sendHttpRequestBy(Http::getTransportMethod(), 'http://www.google-analytics.com/collect', $timeout = 5, $userAgent = null, $destinationPath = null, $file = null, $followDepth = 0, $acceptLanguage = null, $acceptInvalidSslCert = null, $byteRange = \false, $getExtendedInfo = \false, $httpMethod = 'POST', $httpUsername = null, $httpPassword = null, $requestBody);
+        Http::sendHttpRequestBy(Http::getTransportMethod(), 'http://www.google-analytics.com/collect', $timeout = 5, $userAgent = null, $destinationPath = null, $file = null, $followDepth = 0, $acceptLanguage = \false, $acceptInvalidSslCert = \false, $byteRange = \false, $getExtendedInfo = \false, $httpMethod = 'POST', $httpUsername = null, $httpPassword = null, $requestBody);
     }
     private function getRandomPageDownloadTime()
     {

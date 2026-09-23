@@ -27,7 +27,7 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
      */
     private $segmentToApply;
     /**
-     * @var string
+     * @var array
      */
     private $filters;
     public function __construct(GoogleAnalyticsGA4QueryService $gaQuery, $idSite, LoggerInterface $logger, $segmentToApply = null, $filters = [])

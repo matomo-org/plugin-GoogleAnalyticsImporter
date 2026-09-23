@@ -1,7 +1,7 @@
 {
     "name": "GoogleAnalyticsImporter",
     "description": "Import reports from a Google Analytics account into Matomo.",
-    "version": "6.0.2",
+    "version": "6.0.3",
     "theme": false,
     "require": {
         "matomo": ">=6.0.0-b1,<7.0.0-b1"

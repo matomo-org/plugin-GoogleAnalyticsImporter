@@ -121,7 +121,7 @@ class ImportStatus
             empty($status['last_date_imported']) ||
             $skipRecentDateImportFirst ||
             !Date::factory($status['last_date_imported'])->isEarlier($date) ||
-            !empty($status['future_resume_date']) && Date::factory($status['last_date_imported'])->isEarlier($date)
+            !empty($status['future_resume_date'])
         ) {
             $status['last_date_imported'] = $date->toString();
             $this->setImportedDateRange($idSite, $startDate = null, $date);
@@ -497,19 +497,12 @@ class ImportStatus
         if (empty($idSite)) {
             return null;
         }
-        try {
-            $status = $this->getImportStatus($idSite);
-        } catch (\Exception $ex) {
-            $status = [];
-        }
-        $lastDateImported = isset($status['last_date_imported']) ? $status['last_date_imported'] : null;
-        $mainImportProgress = isset($status['main_import_progress']) ? $status['main_import_progress'] : null;
         $importedDateRange = $this->getImportedDateRange($idSite);
         if (empty($importedDateRange) || empty($importedDateRange[0]) || empty($importedDateRange[1])) {
             return null;
         }
-        $startDate = Date::factory($importedDateRange[0] ?: Site::getCreationDateFor($idSite));
-        $endDate = Date::factory((($importedDateRange[1] ?: $mainImportProgress) ?: $lastDateImported) ?: $startDate);
+        $startDate = Date::factory($importedDateRange[0]);
+        $endDate = Date::factory($importedDateRange[1]);
         return [$startDate, $endDate];
     }
     public function finishImportIfNothingLeft($idSite)

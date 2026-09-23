@@ -172,7 +172,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
         Nonce::checkNonce('gaimport.auth', Common::getRequestVar('auth_nonce'));
         /** @var Authorization $authorization */
         $authorization = StaticContainer::get(Authorization::class);
-        /** @var \Google\Client $client */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Client $client */
         $client = $authorization->getConfiguredClient();
         $state = Nonce::getNonce(self::OAUTH_STATE_NONCE_NAME, 900);
         $client->setState($state);
@@ -194,7 +194,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     /**
      * Processes the response from google oauth service
      *
-     * @return string|null
+     * @return string|void
      */
     public function processAuthCode()
     {
@@ -434,15 +434,13 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
             $importStatus = StaticContainer::get(\Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus::class);
             $status = $importStatus->getImportStatus($idSite);
             //For UI test to work properly after an error
-            if ($isGA4 && defined('PIWIK_TEST_MODE') && $status['import_range_end'] === '2019-07-02') {
+            if (defined('PIWIK_TEST_MODE') && $status['import_range_end'] === '2019-07-02') {
                 $importStatus->setImportDateRange($idSite, $startDate, $endDate);
             }
             $importStatus->reImportDateRange($idSite, $startDate, $endDate);
             $importStatus->resumeImport($idSite);
             // start import now since the scheduled task may not run until tomorrow
-            if ($isGA4) {
-                \Piwik\Plugins\GoogleAnalyticsImporter\Tasks::startImportGA4($importStatus->getImportStatus($idSite));
-            }
+            \Piwik\Plugins\GoogleAnalyticsImporter\Tasks::startImportGA4($importStatus->getImportStatus($idSite));
             echo json_encode(['result' => 'ok']);
             $status = $importStatus->getImportStatus($idSite);
             Piwik::postEvent('GoogleAnalyticsImporter.scheduleReImport.end', [$status]);
@@ -482,7 +480,7 @@ class Controller extends \Piwik\Plugin\ControllerAdmin
     /**
      * Helps to determine whether to show notification to configure GA import
      * To show a notification, User should be admin and some data should have tracked and no import has configured as well as GA has been detected on the site
-     * @return Json
+     * @return string|false
      */
     public function displayConfigureImportNotification()
     {

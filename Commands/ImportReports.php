@@ -290,7 +290,7 @@ class ImportReports extends ConsoleCommand
             throw new \Exception("Either a single --view or both --property and --account must be supplied.");
         }
         $profiles = $service->management_profiles->listManagementProfiles($accountId, $propertyId);
-        /** @var \Google\Service\Analytics\Profile[] $profiles */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Profile[] $profiles */
         $profiles = $profiles->getItems();
         $profile = reset($profiles);
         $profileId = $profile->id;

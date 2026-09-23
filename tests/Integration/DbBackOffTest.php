@@ -45,8 +45,8 @@ class DbBackOffTest extends IntegrationTestCase
         $this->getMockBuilder(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting::class);
         $gaQueryService = new GoogleAnalyticsQueryService($mockReportingService, 'testviewid', [], $idSite = 1, 'testuser', StaticContainer::get(GoogleQueryObjectFactory::class), StaticContainer::get(LoggerInterface::class));
         $gaQueryService->setDbBackOff();
-        $this->assertSame(Date::factory('+1 hour')->toString('Y-m-d H:i'), Date::factory(Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME . $idSite))->toString('Y-m-d H:i'));
+        $this->assertSame(Date::factory('+1 hour')->toString('Y-m-d H:i'), Date::factory((int) Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME . $idSite))->toString('Y-m-d H:i'));
         $gaQueryService->setDbBackOff('D');
-        $this->assertSame(Date::factory('tomorrow')->toString('Y-m-d H:i'), Date::factory(Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME . $idSite))->toString('Y-m-d H:i'));
+        $this->assertSame(Date::factory('tomorrow')->toString('Y-m-d H:i'), Date::factory((int) Option::get(GoogleAnalyticsQueryService::DELAY_OPTION_NAME . $idSite))->toString('Y-m-d H:i'));
     }
 }

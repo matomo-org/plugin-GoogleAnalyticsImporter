@@ -230,7 +230,7 @@ class ImportGA4Reports extends ConsoleCommand
                     $status['last_date_imported'] = null;
                 }
                 // can change in the meantime, so we refetch
-                if (!is_array($datesToImport) || count($datesToImport) != 2) {
+                if (count($datesToImport) != 2) {
                     $output->writeln(LogToSingleFileProcessor::$cliOutputPrefix . "Found broken entry in date ranges to import (entry #{$index}) with improper type, skipping.");
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
                     continue;
