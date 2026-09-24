@@ -49,13 +49,11 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
         Metrics::INDEX_PAGE_ENTRY_SUM_VISIT_LENGTH,
         Metrics::INDEX_PAGE_ENTRY_BOUNCE_COUNT,
     ];
-    private $exitPageMetrics = [Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS];
     private $isMobileApp;
     private $pageTitleDimension;
     //    private $uniquePageviewsMetric; Not available in GA4
     private $hitsMetric;
     private $pageTitleEntryDimensions;
-    private $pageTitleExitDimensions;
     public function __construct(GoogleAnalyticsGA4QueryService $gaQuery, $idSite, LoggerInterface $logger)
     {
         parent::__construct($gaQuery, $idSite, $logger);
@@ -64,7 +62,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
         //        $this->uniquePageviewsMetric = $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:uniquePageviews'; Not available in GA4
         $this->hitsMetric = 'screenPageViews';
         $this->pageTitleEntryDimensions = $this->isMobileApp ? ['unifiedScreenName'] : ['landingPage', 'pageTitle'];
-        //        $this->pageTitleExitDimensions = $this->isMobileApp ? ['ga:exitScreenName'] : ['ga:exitPagePath', 'pageTitle']; Not available in GA4
     }
     public function importRecords(Date $day)
     {
@@ -84,10 +81,7 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
             $this->getPageUrlsRecord($day);
             $this->getPageTitlesRecord($day);
             $this->queryEntryPages($day);
-            $this->queryExitPages($day);
             $this->getSiteSearchs($day);
-            $this->queryPagesFollowingSiteSearch($day);
-            //            $this->querySiteSearchCategories($day); Not available in GA4
             ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_TITLE], $isUrl = \false);
             ArchivingHelper::setFolderPathMetadata($this->dataTables[Action::TYPE_PAGE_URL], $isUrl = \true, $folderPrefix = '');
             $this->replaceDefaultActionName($originalDefaultName);
@@ -110,10 +104,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
         }
         // TODO: bandwidth metrics
         // TODO: downloads, outlinks (requires segment on event and event configuration)
-    }
-    private function queryPagesFollowingSiteSearch(Date $day)
-    {
-        // TODO: there is a ga:searchAfterDestinationPage dimension, but I am not sure how to get number of hits that were after site search, and not ALL hits
     }
     private function insertPageUrlNumericRecords(DataTable $pageUrls)
     {
@@ -148,12 +138,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
     {
         $this->queryEntryPagesForUrls($day);
         $this->queryEntryPagesForTitles($day);
-    }
-    private function queryExitPages(Date $day)
-    {
-        //Not available in GA4
-        //        $this->queryExitPagesForUrls($day);
-        //        $this->queryExitPagesForTitles($day);
     }
     private function getPageTitlesRecord(Date $day)
     {
@@ -349,58 +333,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
         }
         Common::destroy($table);
     }
-    private function queryExitPagesForUrls(Date $day)
-    {
-        if ($this->isMobileApp) {
-            $this->getLogger()->debug("Skipping import of exit page urls for mobile app property.");
-            return;
-        }
-        $gaQuery = $this->getGaClient();
-        $table = $gaQuery->query($day, $dimensions = ['ga:exitPagePath'], $this->exitPageMetrics, ['orderBys' => [['field' => 'ga:exits', 'order' => 'descending'], ['field' => 'ga:exitPagePath', 'order' => 'ascending']]]);
-        $mainUrlWithoutSlash = Site::getMainUrlFor($this->getIdSite());
-        $mainUrlWithoutSlash = rtrim($mainUrlWithoutSlash, '/');
-        foreach ($table->getRows() as $row) {
-            $actionName = $mainUrlWithoutSlash . $row->getMetadata('ga:exitPagePath');
-            $row->deleteColumn('label');
-            if (isset($this->pageUrlsByPagePath[$actionName])) {
-                if ($this->pageUrlsByPagePath[$actionName]->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_VISITS) && $this->pageUrlsByPagePath[$actionName]->getColumn('label') != DataTable::LABEL_SUMMARY_ROW) {
-                    $this->getLogger()->warning("Unexpected error: encountered URL twice in result set: '{$actionName}'");
-                    continue;
-                }
-                $this->pageUrlsByPagePath[$actionName]->sumRow($row, $copyMetadata = \false);
-            }
-        }
-        Common::destroy($table);
-    }
-    private function queryExitPagesForTitles(Date $day)
-    {
-        $exitPageTitleMetrics = $this->exitPageMetrics;
-        if (!$this->isMobileApp) {
-            // remove unique visitors metrics when querying for exit pageTitles, since there is no exitPageTitle dimension.
-            // we have to use exitPagePath + pageTitle, but there can be more than one URL w/ the same page title, and
-            // we can't aggregate unique visitors.
-            $exitPageTitleMetrics = array_diff($exitPageTitleMetrics, [Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS]);
-        }
-        $pageTitleDimension = end($this->pageTitleExitDimensions);
-        // query page titles
-        $gaQuery = $this->getGaClient();
-        $table = $gaQuery->query($day, $this->pageTitleExitDimensions, $exitPageTitleMetrics, ['orderBys' => [['field' => 'ga:exits', 'order' => 'descending'], ['field' => $pageTitleDimension, 'order' => 'ascending']]]);
-        foreach ($table->getRows() as $row) {
-            $pageTitle = $row->getMetadata($pageTitleDimension);
-            $row->deleteColumn('label');
-            if (empty($this->pageTitleRowsByPageTitle[$pageTitle])) {
-                // sanity check
-                continue;
-            }
-            $existingRow = $this->pageTitleRowsByPageTitle[$pageTitle];
-            if ($existingRow->hasColumn(Metrics::INDEX_PAGE_EXIT_NB_UNIQ_VISITORS) && $existingRow->getColumn('label') != DataTable::LABEL_SUMMARY_ROW) {
-                $this->getLogger()->warning("Unexpected error: encountered page title twice in result set: '{$pageTitle}'");
-                continue;
-            }
-            $existingRow->sumRow($row, $copyMetadata = \false);
-        }
-        Common::destroy($table);
-    }
     private function replaceDefaultActionName($originalDefaultName)
     {
         foreach ($this->dataTables as $type => $table) {
@@ -418,33 +350,5 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
                 $this->replaceDefaultActionNameInTable($subtable, $originalDefaultName);
             }
         }
-    }
-    private function querySiteSearchCategories(Date $day)
-    {
-        $record = new DataTable();
-        $gaQuery = $this->getGaClient();
-        $table = $gaQuery->query(
-            $day,
-            $dimensions = ['ga:searchCategory'],
-            array_merge(
-                $this->getConversionAwareVisitMetrics(),
-                $this->getActionMetrics()
-            ),
-            [
-                'mappings' => [
-                    Metrics::INDEX_NB_VISITS => 'ga:searchUniques',
-                    Metrics::INDEX_NB_ACTIONS => 'ga:searchResultViews'
-                ]
-            ]
-        );
-        foreach ($table->getRows() as $row) {
-            $searchCategory = $row->getMetadata('ga:searchCategory');
-            if (empty($searchCategory)) {
-                $searchCategory = self::NOT_SET_IN_GA_LABEL;
-            }
-            $this->addRowToTable($record, $row, $searchCategory);
-        }
-        Common::destroy($table);
-        $this->insertRecord(Archiver::SITE_SEARCH_CATEGORY_RECORD_NAME, $record);
     }
 }

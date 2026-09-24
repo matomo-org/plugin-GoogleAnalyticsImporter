@@ -179,14 +179,8 @@ class GoogleGA4MetricMapper
     }
     public function getGoalSpecificMetricIndicesToGametrics($gaIdGoal)
     {
+        // Not available in GA4
         return [];
-        //Not available in GA4
-        return [
-            Metrics::INDEX_GOAL_NB_CONVERSIONS => "ga:goal{$gaIdGoal}Completions",
-            Metrics::INDEX_GOAL_REVENUE => "ga:goal{$gaIdGoal}Value",
-            // nb_visits_converted is calculated properly in createGoalSpecificMetricArray
-            Metrics::INDEX_GOAL_NB_VISITS_CONVERTED => "ga:goal{$gaIdGoal}ConversionRate",
-        ];
     }
     public function getEcommerceGoalSpecificMetrics()
     {

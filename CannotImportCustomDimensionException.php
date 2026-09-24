@@ -11,15 +11,8 @@ namespace Piwik\Plugins\GoogleAnalyticsImporter;
 
 class CannotImportCustomDimensionException extends \Exception
 {
-    /**
-     * @var \Google\Service\Analytics\CustomDimension
-     */
-    private $gaCustomDimension;
-    private $reason;
     public function __construct(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\CustomDimension $gaCustomDimension, $reason)
     {
         parent::__construct("Unable to import the '{$gaCustomDimension->getName()}' custom dimension: {$reason}.");
-        $this->gaCustomDimension = $gaCustomDimension;
-        $this->reason = $reason;
     }
 }

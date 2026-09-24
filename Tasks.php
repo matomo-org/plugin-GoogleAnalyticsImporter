@@ -208,10 +208,6 @@ class Tasks extends \Piwik\Plugin\Tasks
         }
         return StaticContainer::get('path.tmp') . '/logs/gaimportlog.' . $idSite . '.' . escapeshellcmd($hostname) . '.log';
     }
-    private static function sanitizeArg($gaDimension)
-    {
-        return preg_replace('/[^a-zA-Z0-9:_-]]/', '', $gaDimension);
-    }
     private static function getNohupCommandIfPresent()
     {
         try {

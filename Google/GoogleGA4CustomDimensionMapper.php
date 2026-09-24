@@ -45,7 +45,7 @@ class GoogleGA4CustomDimensionMapper
                     ++$requestedScopes;
                 }
             }
-            /** @var \Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension */
+            /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\CustomDimension $gaCustomDimension */
             foreach ($gaCustomDimensions->iterateAllElements() as $gaCustomDimension) {
                 try {
                     $mappedScope = $this->mapScope($gaCustomDimension);

@@ -39,7 +39,7 @@ class EndDate
         // if Matomo for WordPress is used, then the data will be imported into the same site as the data is also being
         // tracked into by the sounds. So we need to make sure the import ends before Matomo for WordPress was installed
         // otherwise it would potentially always overwrite already aggregated report data
-        if (method_exists(SettingsServer::class, 'isMatomoForWordPress') && SettingsServer::isMatomoForWordPress()) {
+        if (SettingsServer::isMatomoForWordPress()) {
             $installDate = null;
             if (defined('\\WpMatomo\\Installer::OPTION_NAME_INSTALL_DATE')) {
                 $installDate = get_option(\WpMatomo\Installer::OPTION_NAME_INSTALL_DATE);

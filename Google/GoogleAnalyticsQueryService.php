@@ -33,7 +33,7 @@ class GoogleAnalyticsQueryService
      */
     private $maxAttempts = self::DEFAULT_MAX_ATTEMPTS;
     /**
-     * @var \Google\Service\Analytics
+     * @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\AnalyticsReporting
      */
     private $gaService;
     /**
@@ -41,7 +41,7 @@ class GoogleAnalyticsQueryService
      */
     private $viewId;
     /**
-     * @var callable
+     * @var callable|null
      */
     private $onQueryMade;
     /**
@@ -259,6 +259,6 @@ class GoogleAnalyticsQueryService
         if ($backoffLength === 'D') {
             $nextRetry = Date::factory('tomorrow')->getTimestamp();
         }
-        Option::set(self::DELAY_OPTION_NAME . $this->idSite, $nextRetry);
+        Option::set(self::DELAY_OPTION_NAME . $this->idSite, (string) $nextRetry);
     }
 }

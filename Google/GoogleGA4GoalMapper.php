@@ -9,18 +9,8 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
-use Piwik\Log\LoggerInterface;
-
 class GoogleGA4GoalMapper
 {
-    /**
-     * @var LoggerInterface
-     */
-    private $logger;
-    public function __construct(LoggerInterface $logger)
-    {
-        $this->logger = $logger;
-    }
     public function mapManualGoal(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\ConversionEvent $gaGoal)
     {
         $result = $this->mapBasicGoalProperties($gaGoal);
@@ -51,17 +41,5 @@ class GoogleGA4GoalMapper
             'use_event_value_as_revenue' => \false
         ];
         return $result;
-    }
-    private function mapFunnelSteps(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal $gaGoal, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\GoalUrlDestinationDetails $urlMatchDetails)
-    {
-        $steps = [];
-        /** @var \Google\Service\Analytics\GoalUrlDestinationDetailsSteps $step */
-        foreach ($urlMatchDetails->getSteps() as $step) {
-            $steps[] = ['name' => $step->getName(), 'pattern' => $step->getUrl(), 'pattern_type' => 'path_equals', 'required' => \false];
-        }
-        if ($urlMatchDetails->getFirstStepRequired()) {
-            $steps[0]['required'] = \true;
-        }
-        return $steps;
     }
 }

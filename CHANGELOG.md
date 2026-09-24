@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.3 - 2026-10-05
+
+- Fixed an invalid or empty OAuth client configuration being accepted instead of showing an error
+
 # 6.0.2 - 2026-09-14
 
 - Fixed imports stalling once they reached the oldest available date, without importing recent data

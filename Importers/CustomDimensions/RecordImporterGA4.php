@@ -22,8 +22,6 @@ use Piwik\Plugins\CustomDimensions\CustomDimensions;
 use Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleAnalyticsGA4QueryService;
 use Piwik\Plugins\GoogleAnalyticsImporter\IdMapper;
 use Piwik\Plugins\GoogleAnalyticsImporter\ImportStatus;
-use Piwik\Plugins\MobileAppMeasurable\Type;
-use Piwik\Site;
 use Piwik\Log\LoggerInterface;
 
 class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImporterGA4
@@ -31,7 +29,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
     public const PLUGIN_NAME = 'CustomDimensions';
     private $maximumRowsInDataTableLevelZero;
     private $maximumRowsInSubDataTable;
-    private $isMobileApp;
     //    private $uniquePageviewsMetric;  Not available in GA4
     private $hitsMetric;
     private $entryPageDimension;
@@ -41,7 +38,6 @@ class RecordImporterGA4 extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImp
         parent::__construct($gaQuery, $idSite, $logger);
         $this->maximumRowsInDataTableLevelZero = Config::getInstance()->General['datatable_archiving_maximum_rows_custom_dimensions'];
         $this->maximumRowsInSubDataTable = Config::getInstance()->General['datatable_archiving_maximum_rows_subtable_custom_dimensions'];
-        $this->isMobileApp = Site::getTypeFor($this->getIdSite()) == Type::ID;
         //        $this->uniquePageviewsMetric = $this->isMobileApp ? 'ga:uniqueScreenviews' : 'ga:uniquePageviews';
         $this->hitsMetric = 'screenPageViews';
         $this->entryPageDimension = 'unifiedPagePathScreen';

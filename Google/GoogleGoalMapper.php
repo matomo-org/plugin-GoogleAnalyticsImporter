@@ -25,7 +25,6 @@ class GoogleGoalMapper
         $this->logger = $logger;
     }
     /**
-     * @param \Google\Service\Analytics\Goal $gaGoal
      * @throws CannotImportGoalException
      */
     public function map(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal $gaGoal, $idSite)
@@ -54,7 +53,7 @@ class GoogleGoalMapper
             throw new CannotImportGoalException($gaGoal, 'uses multiple event conditions');
         }
         $conditions = $eventDetails->getEventConditions();
-        /** @var \Google\Service\Analytics\GoalEventDetailsEventConditions $condition */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\GoalEventDetailsEventConditions $condition */
         $condition = reset($conditions);
         switch (strtolower($condition->getType())) {
             case 'category':
@@ -157,7 +156,7 @@ class GoogleGoalMapper
     private function mapFunnelSteps(\Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\Goal $gaGoal, \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\GoalUrlDestinationDetails $urlMatchDetails)
     {
         $steps = [];
-        /** @var \Google\Service\Analytics\GoalUrlDestinationDetailsSteps $step */
+        /** @var \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Service\Analytics\GoalUrlDestinationDetailsSteps $step */
         foreach ($urlMatchDetails->getSteps() as $step) {
             $steps[] = ['name' => $step->getName(), 'pattern' => $step->getUrl(), 'pattern_type' => 'path_equals', 'required' => \false];
         }

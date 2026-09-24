@@ -145,11 +145,7 @@ class RecordImporter extends \Piwik\Plugins\GoogleAnalyticsImporter\RecordImport
             if (empty($label)) {
                 $label = parent::NOT_SET_IN_GA_LABEL;
             } else {
-                $originalLabel = $label;
                 $label = $mapper($label);
-                if ($originalLabel === \false || $originalLabel === null || $originalLabel === '') {
-                    $label = 'xx';
-                }
             }
             $this->addRowToTable($record, $row, $label);
         }

@@ -10,7 +10,6 @@
 
 namespace Piwik\Plugins\GoogleAnalyticsImporter\Google;
 
-use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Admin\V1alpha\AnalyticsAdminServiceClient;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Analytics\Data\V1beta\BetaAnalyticsDataClient;
 use Piwik\Common;
 use Piwik\Container\StaticContainer;
@@ -40,10 +39,6 @@ class GoogleAnalyticsGA4QueryService
      */
     private $gaClient;
     /**
-     * @var AnalyticsAdminServiceClient
-     */
-    private $gaAdminClient;
-    /**
      * @var string
      */
     private $propertyId;
@@ -52,7 +47,7 @@ class GoogleAnalyticsGA4QueryService
      */
     private $streamIds;
     /**
-     * @var callable
+     * @var callable|null
      */
     private $onQueryMade;
     /**
@@ -69,13 +64,9 @@ class GoogleAnalyticsGA4QueryService
      */
     private $googleGA4QueryObjectFactory;
     /**
-     * @var GoogleMetricMapper
+     * @var GoogleGA4MetricMapper
      */
     private $metricMapper;
-    /**
-     * @var string
-     */
-    private $quotaUser;
     private $skipAttemptForExceptionCodes = [401, 403];
     private $singleAttemptForExceptionCodes = [500, 503];
 
@@ -83,23 +74,19 @@ class GoogleAnalyticsGA4QueryService
 
     public function __construct(
         BetaAnalyticsDataClient $gaClient,
-        AnalyticsAdminServiceClient $gaAdminClient,
         $propertyId,
         array $goalsMapping,
         $idSite,
-        $quotaUser,
         \Piwik\Plugins\GoogleAnalyticsImporter\Google\GoogleGA4QueryObjectFactory $googleGA4QueryObjectFactory,
         LoggerInterface $logger,
         $streamIds = []
     ) {
         $this->gaClient = $gaClient;
-        $this->gaAdminClient = $gaAdminClient;
         $this->propertyId = $propertyId;
         $this->logger = $logger;
         $this->googleGA4QueryObjectFactory = $googleGA4QueryObjectFactory;
         $this->pingMysqlEverySecs = StaticContainer::get('GoogleAnalyticsImporter.pingMysqlEverySecs') ?: self::PING_MYSQL_EVERY;
         $this->metricMapper = new GoogleGA4MetricMapper(Site::isEcommerceEnabledFor($idSite), $goalsMapping);
-        $this->quotaUser = $quotaUser;
         $this->streamIds = $streamIds;
         $this->idSite = $idSite;
     }
@@ -280,7 +267,7 @@ class GoogleAnalyticsGA4QueryService
         if ($backoffLength === 'D') {
             $nextRetry = Date::factory('tomorrow')->getTimestamp();
         }
-        Option::set(self::DELAY_OPTION_NAME . $this->idSite, $nextRetry);
+        Option::set(self::DELAY_OPTION_NAME . $this->idSite, (string) $nextRetry);
     }
     private function isIgnorableException(\Exception $ex)
     {

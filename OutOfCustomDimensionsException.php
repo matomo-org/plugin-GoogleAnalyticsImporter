@@ -15,8 +15,8 @@ class OutOfCustomDimensionsException extends \Exception
 {
     /**
      * OutOfCustomDimensionsException constructor.
-     * @param int $requestedScopes
-     * @param int $availableScopes
+     * @param int $requestedScopeCount
+     * @param int $availableScopeCount
      */
     public function __construct($requestedScopeCount, $availableScopeCount, $scopeType)
     {
