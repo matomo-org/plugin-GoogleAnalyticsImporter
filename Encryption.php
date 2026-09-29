@@ -23,9 +23,27 @@ class Encryption
      */
     private $configuration;
 
+    /**
+     * @var string|null
+     */
+    private $key;
+
     public function __construct(?Configuration $configuration = null)
     {
         $this->configuration = $configuration ?: new Configuration();
+    }
+
+    /**
+     * Returns an instance that uses the given key instead of the one in the config, eg while the key is rotated.
+     */
+    public static function withKey(
+        #[\SensitiveParameter]
+        string $key
+    ): self {
+        $encryption = new self();
+        $encryption->key = $key;
+
+        return $encryption;
     }
 
     public function isEncrypted($value): bool
@@ -102,9 +120,13 @@ class Encryption
 
     private function getEncryptionKey(bool $createIfMissing): string
     {
-        $key = $createIfMissing
-            ? $this->configuration->getOrCreateEncryptionKey()
-            : $this->configuration->getEncryptionKey();
+        if ($this->key !== null) {
+            $key = $this->key;
+        } else {
+            $key = $createIfMissing
+                ? $this->configuration->getOrCreateEncryptionKey()
+                : $this->configuration->getEncryptionKey();
+        }
 
         if ($key === '') {
             throw new SecretConfigurationException($this->getInvalidKeyMessage());

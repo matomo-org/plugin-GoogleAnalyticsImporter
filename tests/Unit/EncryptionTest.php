@@ -130,4 +130,26 @@ class EncryptionTest extends \PHPUnit\Framework\TestCase
             }
         };
     }
+
+    public function testWithKeyEncryptDecryptRoundTrip()
+    {
+        $encrypted = Encryption::withKey('key-a')->encryptString('very-secret-value');
+
+        $this->assertSame('very-secret-value', Encryption::withKey('key-a')->decryptString($encrypted));
+    }
+
+    public function testWithKeyDecryptWithAnotherKeyThrows()
+    {
+        $encrypted = Encryption::withKey('key-a')->encryptString('very-secret-value');
+
+        $this->expectException(SecretConfigurationException::class);
+        Encryption::withKey('key-b')->decryptString($encrypted);
+    }
+
+    public function testWithKeyRejectsAnEmptyKey()
+    {
+        $this->expectException(SecretConfigurationException::class);
+
+        Encryption::withKey('')->encryptString('very-secret-value');
+    }
 }

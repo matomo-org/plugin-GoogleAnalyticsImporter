@@ -39,7 +39,25 @@ class GoogleAnalyticsImporter extends \Piwik\Plugin
     private static $unsupportedDataTableReports = ["Actions.getDownloads", "Actions.getDownload", "Actions.getOutlinks", "Actions.getOutlink", "Actions.getPageUrlsFollowingSiteSearch", "Actions.getPageTitlesFollowingSiteSearch", "Actions.getSiteSearchNoResultKeywords", "VisitTime.getVisitInformationPerLocalTime", "DevicesDetection.getBrowserEngines", "DevicePlugins.getPlugin", "UserId.getUsers", "Contents.getContentNames", "Contents.getContentPieces", "VisitorInterest.getNumberOfVisitsPerPage", "Provider.getProvider"];
     public function registerEvents()
     {
-        return ['AssetManager.getStylesheetFiles' => 'getStylesheetFiles', 'CronArchive.archiveSingleSite.finish' => 'archivingFinishedForSite', 'Visualization.beforeRender' => 'configureImportedReportView', 'Translate.getClientSideTranslationKeys' => 'getClientSideTranslationKeys', 'API.Request.dispatch.end' => 'translateNotSetLabels', 'SitesManager.deleteSite.end' => 'onSiteDeleted', 'Template.jsGlobalVariables' => 'addImportedDateRangesForSite', 'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive', 'AssetManager.getJavaScriptFiles' => 'getJsFiles', 'GoogleAnalyticsImporter.getGoogleConfigComponentExtensions' => 'getGoogleConfigComponent'];
+        return ['AssetManager.getStylesheetFiles' => 'getStylesheetFiles', 'CronArchive.archiveSingleSite.finish' => 'archivingFinishedForSite', 'Visualization.beforeRender' => 'configureImportedReportView', 'Translate.getClientSideTranslationKeys' => 'getClientSideTranslationKeys', 'API.Request.dispatch.end' => 'translateNotSetLabels', 'SitesManager.deleteSite.end' => 'onSiteDeleted', 'Template.jsGlobalVariables' => 'addImportedDateRangesForSite', 'Archiving.isRequestAuthorizedToArchive' => 'isRequestAuthorizedToArchive', 'AssetManager.getJavaScriptFiles' => 'getJsFiles', 'GoogleAnalyticsImporter.getGoogleConfigComponentExtensions' => 'getGoogleConfigComponent', 'CoreAdminHome.getEncryptionKeyRotationTargets' => 'getEncryptionKeyRotationTargets'];
+    }
+
+    public function getEncryptionKeyRotationTargets(array &$targets): void
+    {
+        $targets['GoogleAnalyticsImporter'] = [
+            'configSection' => Configuration::SECTION_NAME,
+            'configKey' => Configuration::KEY_ENCRYPTION_KEY,
+            'options' => [Authorization::CLIENT_CONFIG_OPTION_NAME, Authorization::ACCESS_TOKEN_OPTION_NAME],
+            'isEncrypted' => function ($value): bool {
+                return (new Encryption())->isEncrypted($value);
+            },
+            'decrypt' => function (string $value, #[\SensitiveParameter] string $key): string {
+                return Encryption::withKey($key)->decryptString($value);
+            },
+            'encrypt' => function (#[\SensitiveParameter] string $value, #[\SensitiveParameter] string $key): string {
+                return Encryption::withKey($key)->encryptString($value);
+            },
+        ];
     }
     public function isRequestAuthorizedToArchive(&$isRequestAuthorizedToArchive, Parameters $params)
     {
