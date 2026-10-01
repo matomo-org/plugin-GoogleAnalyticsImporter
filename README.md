@@ -15,7 +15,7 @@ As of 5.2.0 the OAuth client configuration and access token stored by this plugi
 encryption_key = "..."
 ```
 
-> **_IMPORTANT:_** This key must be backed up and restored together with the database. The stored credentials can only be decrypted with the matching `encryption_key`. If the key is lost, changed, or not restored alongside a database restore, the previously stored OAuth credentials become unrecoverable and you will need to re-upload the client configuration and re-authorize the importer. When migrating an installation to a new server, copy both the database **and** the `[GoogleAnalyticsImporter] encryption_key` value.
+> **_IMPORTANT:_** This key must be backed up and restored together with the database. The stored credentials can only be decrypted with the matching `encryption_key`. If the key is lost, changed, or not restored alongside a database restore, the previously stored OAuth credentials become unrecoverable and you will need to re-upload the client configuration and re-authorize the importer. When migrating an installation to a new server, copy both the database **and** the `[GoogleAnalyticsImporter] encryption_key` value. To replace the key, run `./console core:rotate-encryption-keys --plugin=GoogleAnalyticsImporter` on a Matomo version that provides it: it re-encrypts the stored credentials with the new key, whereas editing `encryption_key` by hand makes them unrecoverable.
 
 ## Dependencies
 This plugin had its vendored dependencies scoped using [matomo scoper](https://github.com/matomo-org/matomo-scoper). This means that composer packages are prefixed so that they won't conflict with the same libraries used by other plugins.
