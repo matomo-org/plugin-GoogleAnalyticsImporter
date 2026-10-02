@@ -1,0 +1,34 @@
+# Runs composer update, rebuilds vendor/prefixed and opens a pull request with the result. Dependabot
+# cannot do this: it updates composer.lock but cannot regenerate the scoped tree. The logic lives in
+# matomo-org/plugin-ci-workflows; see the "Vendored dependencies update" section of its README.md.
+
+name: Vendored dependencies update
+
+on:
+  schedule:
+    # Monday, after the Saturday build and the Sunday branch sweep. Keeps the minute and hour of
+    # matomo-tests.yml's cron, so the fleet stays staggered.
+    - cron: '10 3 * * 1'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  update:
+    strategy:
+      fail-fast: false
+      matrix:
+        # 5.x-dev is left out until its composer.json pins config.platform.php, which the
+        # called workflow requires.
+        branch: ['6.x-dev']
+    # Granted here because a called workflow can only reduce permissions, never elevate them.
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: matomo-org/plugin-ci-workflows/.github/workflows/plugin-vendored-deps-update.yml@main
+    with:
+      branch: ${{ matrix.branch }}
+    secrets:
+      # Not GITHUB_TOKEN: a pull request opened with it starts no CI. This org token can push and
+      # open pull requests, and its pull requests start CI.
+      DEPS_PR_TOKEN: ${{ secrets.TESTS_ACCESS_TOKEN }}
