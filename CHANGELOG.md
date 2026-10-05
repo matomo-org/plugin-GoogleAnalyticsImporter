@@ -4,7 +4,7 @@
 
 - Support rotating the encryption key of the stored Google OAuth client configuration and access token with the `core:rotate-encryption-keys` console command (available from the Matomo release that introduces it)
 
-# 6.0.3 - 2026-10-05
+# 6.0.3 - 2026-09-28
 
 - Fixed an invalid or empty OAuth client configuration being accepted instead of showing an error
 
