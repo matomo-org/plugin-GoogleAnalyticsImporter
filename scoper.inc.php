@@ -12,6 +12,12 @@ use Isolated\Symfony\Component\Finder\Finder;
 
 $dependenciesToPrefix = json_decode(getenv('MATOMO_DEPENDENCIES_TO_PREFIX'), true);
 $namespacesToPrefix = json_decode(getenv('MATOMO_NAMESPACES_TO_PREFIX'), true);
+// google/grpc-gcp loads its generated GPBMetadata\GrpcGcp through a classmap, and matomo-scoper only collects
+// namespaces from psr-4 and psr-0 autoload entries, so that class would otherwise be left global. Appending to a
+// missing list would quietly prefix only this namespace, rather than failing on it below
+if (is_array($namespacesToPrefix)) {
+    $namespacesToPrefix[] = 'GPBMetadata';
+}
 $isRenamingReferences = getenv('MATOMO_RENAME_REFERENCES') == 1;
 $pluginName = getenv('MATOMO_PLUGIN');
 
