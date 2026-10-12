@@ -13,8 +13,8 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\DSA;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\Common;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\DSA;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\DSA\Formats\Signature\ASN1 as ASN1Signature;
-use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Math\BigInteger;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Exception\BadConfigurationException;
+use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Math\BigInteger;
 /**
  * DSA Private Key
  *

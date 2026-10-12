@@ -19,6 +19,7 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth;
 
 use Matomo\Dependencies\GoogleAnalyticsImporter\Firebase\JWT\JWT;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Firebase\JWT\Key;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\CredentialSource\X509Source;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\HttpHandler\HttpClientCache;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\HttpHandler\HttpHandlerFactory;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Psr7\Query;
@@ -43,7 +44,8 @@ class OAuth2 implements FetchAuthTokenInterface
     // 1 minute
     const JWT_URN = 'urn:ietf:params:oauth:grant-type:jwt-bearer';
     const STS_URN = 'urn:ietf:params:oauth:grant-type:token-exchange';
-    private const STS_REQUESTED_TOKEN_TYPE = 'urn:ietf:params:oauth:token-type:access_token';
+    private const TOKEN_TYPE_ACCESS_TOKEN = 'urn:ietf:params:oauth:token-type:access_token';
+    private const TOKEN_TYPE_MTLS = 'urn:ietf:params:oauth:token-type:mtls';
     /**
      * TODO: determine known methods from the keys of JWT::methods.
      *
@@ -524,7 +526,7 @@ class OAuth2 implements FetchAuthTokenInterface
                 $token = $this->subjectTokenFetcher->fetchSubjectToken($httpHandler);
                 $params['subject_token'] = $token;
                 $params['subject_token_type'] = $this->subjectTokenType;
-                $params += array_filter(['resource' => $this->resource, 'audience' => $this->audience, 'scope' => $this->getScope(), 'requested_token_type' => self::STS_REQUESTED_TOKEN_TYPE, 'actor_token' => $this->actorToken, 'actor_token_type' => $this->actorTokenType]);
+                $params += array_filter(['resource' => $this->resource, 'audience' => $this->audience, 'scope' => $this->getScope(), 'requested_token_type' => self::TOKEN_TYPE_ACCESS_TOKEN, 'actor_token' => $this->actorToken, 'actor_token_type' => $this->actorTokenType]);
                 if ($this->additionalOptions) {
                     $params['options'] = json_encode($this->additionalOptions);
                 }
@@ -545,6 +547,16 @@ class OAuth2 implements FetchAuthTokenInterface
         return new Request('POST', $uri, $headers, Query::build($params));
     }
     /**
+     * @return array{cert?: string, ssl_key?: string}
+     */
+    private function generateCredentialsRequestOptions() : array
+    {
+        if ($this->subjectTokenType === self::TOKEN_TYPE_MTLS && $this->subjectTokenFetcher instanceof X509Source) {
+            return ['cert' => $this->subjectTokenFetcher->getCertPath(), 'ssl_key' => $this->subjectTokenFetcher->getKeyPath()];
+        }
+        return [];
+    }
+    /**
      * Fetches the auth tokens based on the current state.
      *
      * @param callable|null $httpHandler callback which delivers psr7 request
@@ -557,7 +569,7 @@ class OAuth2 implements FetchAuthTokenInterface
         if (is_null($httpHandler)) {
             $httpHandler = HttpHandlerFactory::build(HttpClientCache::getHttpClient());
         }
-        $response = $httpHandler($this->generateCredentialsRequest($httpHandler, $headers));
+        $response = $httpHandler($this->generateCredentialsRequest($httpHandler, $headers), $this->generateCredentialsRequestOptions());
         $credentials = $this->parseTokenResponse($response);
         $this->updateToken($credentials);
         if (isset($credentials['scope'])) {

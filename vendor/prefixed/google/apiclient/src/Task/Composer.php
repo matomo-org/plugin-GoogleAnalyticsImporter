@@ -49,7 +49,7 @@ class Composer
             return;
         }
         $event->getIO()->write(sprintf('Removing %d google services', $servicesToRemoveCount));
-        $pathsToRemove = iterator_to_array($finder);
+        $pathsToRemove = iterator_to_array(is_array($finder) ? new \ArrayIterator($finder) : $finder);
         foreach ($pathsToRemove as $pathToRemove) {
             $realpath = $pathToRemove->getRealPath();
             $filesystem->remove($realpath);

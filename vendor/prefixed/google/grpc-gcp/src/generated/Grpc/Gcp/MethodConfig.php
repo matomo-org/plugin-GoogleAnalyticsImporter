@@ -26,7 +26,7 @@ class MethodConfig extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\P
     private $affinity = null;
     public function __construct()
     {
-        \GPBMetadata\GrpcGcp::initOnce();
+        \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\GrpcGcp::initOnce();
         parent::__construct();
     }
     /**

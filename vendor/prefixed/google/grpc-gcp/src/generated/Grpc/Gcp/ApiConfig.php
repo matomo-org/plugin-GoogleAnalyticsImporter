@@ -24,7 +24,7 @@ class ApiConfig extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google\Prot
     private $method;
     public function __construct()
     {
-        \GPBMetadata\GrpcGcp::initOnce();
+        \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\GrpcGcp::initOnce();
         parent::__construct();
     }
     /**

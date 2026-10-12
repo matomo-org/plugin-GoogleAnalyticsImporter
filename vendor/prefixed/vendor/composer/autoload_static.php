@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae
+class ComposerStaticInit93d29e0f177fa4c3485dfcfc2cfef203
 {
     public static $files = array (
         '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -24,7 +24,6 @@ class ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DivisionByZeroError' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
         'Error' => __DIR__ . '/../..' . '/phpseclib/bcmath_compat/lib/bcmath.php',
-        'GPBMetadata\\GrpcGcp' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/GPBMetadata/GrpcGcp.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Attribute' => __DIR__ . '/../..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\BigDecimal' => __DIR__ . '/../..' . '/brick/math/src/BigDecimal.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Brick\\Math\\BigInteger' => __DIR__ . '/../..' . '/brick/math/src/BigInteger.php',
@@ -140,6 +139,7 @@ class ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Type\\PostalAddress' => __DIR__ . '/../..' . '/google/common-protos/metadata/Type/PostalAddress.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Type\\Quaternion' => __DIR__ . '/../..' . '/google/common-protos/metadata/Type/Quaternion.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\Google\\Type\\Timeofday' => __DIR__ . '/../..' . '/google/common-protos/metadata/Type/Timeofday.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GPBMetadata\\GrpcGcp' => __DIR__ . '/../..' . '/google/grpc-gcp/src/generated/GPBMetadata/GrpcGcp.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\AccessToken\\Revoke' => __DIR__ . '/../..' . '/google/apiclient/src/AccessToken/Revoke.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\AccessToken\\Verify' => __DIR__ . '/../..' . '/google/apiclient/src/AccessToken/Verify.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Analytics\\Admin\\V1alpha\\AccessBetweenFilter' => __DIR__ . '/../..' . '/google/analytics-admin/src/V1alpha/AccessBetweenFilter.php',
@@ -1088,6 +1088,7 @@ class ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialSource\\ExecutableSource' => __DIR__ . '/../..' . '/google/auth/src/CredentialSource/ExecutableSource.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialSource\\FileSource' => __DIR__ . '/../..' . '/google/auth/src/CredentialSource/FileSource.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialSource\\UrlSource' => __DIR__ . '/../..' . '/google/auth/src/CredentialSource/UrlSource.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialSource\\X509Source' => __DIR__ . '/../..' . '/google/auth/src/CredentialSource/X509Source.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\CredentialsLoader' => __DIR__ . '/../..' . '/google/auth/src/CredentialsLoader.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\AppIdentityCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/AppIdentityCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ExternalAccountAuthorizedUserCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ExternalAccountAuthorizedUserCredentials.php',
@@ -1099,6 +1100,7 @@ class ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\RegionalAccessBoundaryTrait' => __DIR__ . '/../..' . '/google/auth/src/Credentials/RegionalAccessBoundaryTrait.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ServiceAccountCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ServiceAccountCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\ServiceAccountJwtAccessCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/ServiceAccountJwtAccessCredentials.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\StaticCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/StaticCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\Credentials\\UserRefreshCredentials' => __DIR__ . '/../..' . '/google/auth/src/Credentials/UserRefreshCredentials.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\ExecutableHandler\\ExecutableHandler' => __DIR__ . '/../..' . '/google/auth/src/ExecutableHandler/ExecutableHandler.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\Google\\Auth\\ExecutableHandler\\ExecutableResponseError' => __DIR__ . '/../..' . '/google/auth/src/ExecutableHandler/ExecutableResponseError.php',
@@ -2221,7 +2223,7 @@ class ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInitc511e6b3067dd9fdac87192fdcb4d7ae::$classMap;
+            $loader->classMap = ComposerStaticInit93d29e0f177fa4c3485dfcfc2cfef203::$classMap;
 
         }, null, ClassLoader::class);
     }
