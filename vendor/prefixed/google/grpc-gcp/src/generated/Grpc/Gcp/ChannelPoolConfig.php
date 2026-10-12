@@ -32,7 +32,7 @@ class ChannelPoolConfig extends \Matomo\Dependencies\GoogleAnalyticsImporter\Goo
     private $max_concurrent_streams_low_watermark = 0;
     public function __construct()
     {
-        \GPBMetadata\GrpcGcp::initOnce();
+        \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\GrpcGcp::initOnce();
         parent::__construct();
     }
     /**

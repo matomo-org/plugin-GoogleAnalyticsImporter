@@ -34,7 +34,6 @@ namespace Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\System\SSH;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Common\Functions\Strings;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\Common\PublicKey;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\PublicKeyLoader;
-use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Crypt\RSA;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Exception\BadConfigurationException;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\Net\SSH2;
 use Matomo\Dependencies\GoogleAnalyticsImporter\phpseclib3\System\SSH\Agent\Identity;

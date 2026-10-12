@@ -34,9 +34,9 @@ humbug_phpscoper_expose_class('DivisionByZeroError', 'Matomo\Dependencies\Google
 humbug_phpscoper_expose_class('TypeError', 'Matomo\Dependencies\GoogleAnalyticsImporter\TypeError');
 humbug_phpscoper_expose_class('ArgumentCountError', 'Matomo\Dependencies\GoogleAnalyticsImporter\ArgumentCountError');
 humbug_phpscoper_expose_class('ValueError', 'Matomo\Dependencies\GoogleAnalyticsImporter\ValueError');
-humbug_phpscoper_expose_class('UnhandledMatchError', 'Matomo\Dependencies\GoogleAnalyticsImporter\UnhandledMatchError');
-humbug_phpscoper_expose_class('Stringable', 'Matomo\Dependencies\GoogleAnalyticsImporter\Stringable');
 humbug_phpscoper_expose_class('Attribute', 'Matomo\Dependencies\GoogleAnalyticsImporter\Attribute');
+humbug_phpscoper_expose_class('Stringable', 'Matomo\Dependencies\GoogleAnalyticsImporter\Stringable');
+humbug_phpscoper_expose_class('UnhandledMatchError', 'Matomo\Dependencies\GoogleAnalyticsImporter\UnhandledMatchError');
 humbug_phpscoper_expose_class('PhpToken', 'Matomo\Dependencies\GoogleAnalyticsImporter\PhpToken');
 
 // Function aliases. For more information see:

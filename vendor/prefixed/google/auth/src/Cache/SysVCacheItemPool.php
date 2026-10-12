@@ -287,7 +287,10 @@ class SysVCacheItemPool implements CacheItemPoolInterface
             @shm_detach($shmid);
         }
     }
-    private function attachShm() : SysvSharedMemory|false
+    /**
+     * @return \SysvSharedMemory|false
+     */
+    private function attachShm() : SysvSharedMemory|bool
     {
         return shm_attach($this->sysvKey, $this->options['memsize'], $this->options['perm']);
     }

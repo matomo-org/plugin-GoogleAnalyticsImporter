@@ -25,7 +25,7 @@ class AffinityConfig extends \Matomo\Dependencies\GoogleAnalyticsImporter\Google
     private $affinity_key = '';
     public function __construct()
     {
-        \GPBMetadata\GrpcGcp::initOnce();
+        \Matomo\Dependencies\GoogleAnalyticsImporter\GPBMetadata\GrpcGcp::initOnce();
         parent::__construct();
     }
     /**

@@ -21,6 +21,7 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\CredentialSource\Aws
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\CredentialSource\ExecutableSource;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\CredentialSource\FileSource;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\CredentialSource\UrlSource;
+use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\CredentialSource\X509Source;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\ExecutableHandler\ExecutableHandler;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\ExternalAccountCredentialSourceInterface;
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Auth\FetchAuthTokenInterface;
@@ -60,7 +61,7 @@ class ExternalAccountCredentials implements FetchAuthTokenInterface, UpdateMetad
     private ?string $workforcePoolUserProject;
     private ?string $projectId;
     /** @var array<mixed> */
-    private ?array $lastImpersonatedAccessToken;
+    private array $lastImpersonatedAccessToken;
     private string $universeDomain;
     /**
      * @param string|string[] $scope   The scope of the access request, expressed either as an array
@@ -150,6 +151,12 @@ class ExternalAccountCredentials implements FetchAuthTokenInterface, UpdateMetad
             $timeoutMs = $credentialSource['executable']['timeout_millis'] ?? null;
             return new ExecutableSource($credentialSource['executable']['command'], $outputFile, $timeoutMs ? new ExecutableHandler($env, $timeoutMs) : new ExecutableHandler($env));
         }
+        if (isset($credentialSource['certificate'])) {
+            if (!array_key_exists('certificate_config_location', $credentialSource['certificate'])) {
+                throw new InvalidArgumentException('x509 source requires a certificate_config_location to be set in the JSON file.');
+            }
+            return new X509Source($credentialSource['certificate']['certificate_config_location'], $credentialSource['certificate']['trust_chain_path'] ?? null);
+        }
         throw new InvalidArgumentException('Unable to determine credential source from json key.');
     }
     private static function getServiceAccountImpersonationEmail(string $serviceAccountImpersonationUrl) : string|null
@@ -233,7 +240,7 @@ class ExternalAccountCredentials implements FetchAuthTokenInterface, UpdateMetad
      * FetcherCacheKey.Scope.[ServiceAccount].[TokenType].[WorkforcePoolUserProject]
      * FetcherCacheKey.Audience.[ServiceAccount].[TokenType].[WorkforcePoolUserProject]
      *
-     * @return ?string;
+     * @return ?string
      */
     public function getCacheKey() : ?string
     {

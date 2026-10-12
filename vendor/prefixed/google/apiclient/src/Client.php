@@ -35,7 +35,6 @@ use Matomo\Dependencies\GoogleAnalyticsImporter\Google\AuthHandler\AuthHandlerFa
 use Matomo\Dependencies\GoogleAnalyticsImporter\Google\Http\REST;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Client as GuzzleClient;
 use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\ClientInterface;
-use Matomo\Dependencies\GoogleAnalyticsImporter\GuzzleHttp\Ring\Client\StreamHandler;
 use InvalidArgumentException;
 use LogicException;
 use \Piwik\Plugins\Monolog\Handler\FileHandler as MonologStreamHandler;
@@ -990,27 +989,7 @@ class Client
     }
     protected function createDefaultHttpClient()
     {
-        $guzzleVersion = null;
-        if (defined('Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\ClientInterface::MAJOR_VERSION')) {
-            $guzzleVersion = ClientInterface::MAJOR_VERSION;
-        } elseif (defined('Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\ClientInterface::VERSION')) {
-            $guzzleVersion = (int) substr(ClientInterface::VERSION, 0, 1);
-        }
-        if (5 === $guzzleVersion) {
-            $options = ['base_url' => $this->config['base_path'], 'defaults' => ['exceptions' => \false]];
-            if ($this->isAppEngine()) {
-                if (class_exists(StreamHandler::class)) {
-                    // set StreamHandler on AppEngine by default
-                    $options['handler'] = new StreamHandler();
-                    $options['defaults']['verify'] = '/etc/ca-certificates.crt';
-                }
-            }
-        } elseif (6 === $guzzleVersion || 7 === $guzzleVersion) {
-            // guzzle 6 or 7
-            $options = ['base_uri' => $this->config['base_path'], 'http_errors' => \false];
-        } else {
-            throw new LogicException('Could not find supported version of Guzzle.');
-        }
+        $options = ['base_uri' => $this->config['base_path'], 'http_errors' => \false];
         return new GuzzleClient($options);
     }
     /**

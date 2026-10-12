@@ -53,6 +53,7 @@ trait CacheTrait
         if ($cacheItem->isHit()) {
             return $cacheItem->get();
         }
+        return null;
     }
     /**
      * Saves the value in the cache when that is available.
