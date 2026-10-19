@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.5 - 2026-10-26
+
+- Updated guzzle to 7.15.5, phpseclib to 3.0.57 and the Google API client to v2.20.1
+
 # 6.0.4 - 2026-10-05
 
 - Support rotating the encryption key of the stored Google OAuth client configuration and access token with the `core:rotate-encryption-keys` console command (available from the Matomo release that introduces it)
