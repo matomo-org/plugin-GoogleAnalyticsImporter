@@ -2,9 +2,7 @@
 
 # 6.0.5 - 2026-10-26
 
-- Upgraded packages: guzzle to 7.15.5, psr7 to 2.13.1, promises to 2.5.3 & phpseclib to 3.0.57
-- Upgraded the Google API client to v2.20.1, along with google/auth to v1.55.1, google/gax to v1.49.0, google/common-protos to 4.14.2, google/longrunning to 0.8.5 and php-jwt to v7.2.1
-- Upgraded ramsey/uuid to 4.9.4 and symfony/polyfill-php80 to v1.43.0
+- Updated dependencies, including guzzle, phpseclib and the Google API client
 
 # 6.0.4 - 2026-10-05
 
