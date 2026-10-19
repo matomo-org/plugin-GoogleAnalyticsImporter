@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit93d29e0f177fa4c3485dfcfc2cfef203
+class ComposerStaticInitecfefed33684b090a99d0f39dd066eb6
 {
     public static $files = array (
         '3b866681a14a27c0c8adec54ba7f6a5c' => __DIR__ . '/../..' . '/google/apiclient/src/aliases.php',
@@ -1648,6 +1648,7 @@ class ComposerStaticInit93d29e0f177fa4c3485dfcfc2cfef203
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\PromisorInterface' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/PromisorInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\RejectedPromise' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/RejectedPromise.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\RejectionException' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/RejectionException.php',
+        'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\State' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/State.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\TaskQueue' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/TaskQueue.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\TaskQueueInterface' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/TaskQueueInterface.php',
         'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\Utils' => __DIR__ . '/../..' . '/guzzlehttp/promises/src/Utils.php',
@@ -2223,7 +2224,7 @@ class ComposerStaticInit93d29e0f177fa4c3485dfcfc2cfef203
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->classMap = ComposerStaticInit93d29e0f177fa4c3485dfcfc2cfef203::$classMap;
+            $loader->classMap = ComposerStaticInitecfefed33684b090a99d0f39dd066eb6::$classMap;
 
         }, null, ClassLoader::class);
     }
