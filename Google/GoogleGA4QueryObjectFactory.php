@@ -33,10 +33,7 @@ class GoogleGA4QueryObjectFactory
     public function make($propertyID, Date $date, $metricNames, $options, $streamIds = [])
     {
         $dimensionNames = !empty($options['dimensions']) ? $options['dimensions'] : [];
-        $dimensionFilter = '';
-        if (!empty($options['dimensionFilter'])) {
-            $dimensionFilter = $this->makeGaDimensionFilter($options['dimensionFilter'], $streamIds);
-        }
+        $dimensionFilter = $this->makeGaDimensionFilter($options['dimensionFilter'] ?? [], $streamIds);
         $dimensions = [];
         foreach ($dimensionNames as $gaDimension) {
             $dimensions[] = $this->makeGaDimension($gaDimension);
@@ -114,7 +111,8 @@ class GoogleGA4QueryObjectFactory
     private function makeGaDimensionFilter($gaDimensionFilter, $streamIds)
     {
         $filterExpressions = [];
-        switch ($gaDimensionFilter['filterType']) {
+        $filterType = null;
+        switch ($gaDimensionFilter['filterType'] ?? null) {
             case 'inList':
                 $filterType = array(
                     'field_name' => $gaDimensionFilter['dimension'],
