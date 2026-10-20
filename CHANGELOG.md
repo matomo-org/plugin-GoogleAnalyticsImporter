@@ -1,6 +1,6 @@
 ## Changelog
 
-# 6.0.6 - 2026-10-20
+# 6.0.6 - 2026-10-26
 
 - Fixed GA4 imports including data from all data streams of a property instead of only the selected streams. Sites already imported with only some streams selected need to be re-imported to correct their data
 
