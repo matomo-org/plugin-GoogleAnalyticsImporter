@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.6 - 2026-10-26
+
+- Fixed GA4 imports including data from all data streams of a property instead of only the selected streams. Sites already imported with only some streams selected need to be re-imported to correct their data
+
 # 6.0.5 - 2026-10-19
 
 - Updated guzzle to 7.15.5, phpseclib to 3.0.57 and the Google API client to v2.20.1
