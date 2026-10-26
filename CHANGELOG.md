@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.6
+
+- Updated dependencies
+
 # 6.0.5 - 2026-10-19
 
 - Updated guzzle to 7.15.5, phpseclib to 3.0.57 and the Google API client to v2.20.1

@@ -1635,6 +1635,7 @@ return array(
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\PromisorInterface' => $baseDir . '/guzzlehttp/promises/src/PromisorInterface.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\RejectedPromise' => $baseDir . '/guzzlehttp/promises/src/RejectedPromise.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\RejectionException' => $baseDir . '/guzzlehttp/promises/src/RejectionException.php',
+    'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\State' => $baseDir . '/guzzlehttp/promises/src/State.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\TaskQueue' => $baseDir . '/guzzlehttp/promises/src/TaskQueue.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\TaskQueueInterface' => $baseDir . '/guzzlehttp/promises/src/TaskQueueInterface.php',
     'Matomo\\Dependencies\\GoogleAnalyticsImporter\\GuzzleHttp\\Promise\\Utils' => $baseDir . '/guzzlehttp/promises/src/Utils.php',
