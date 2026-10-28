@@ -153,6 +153,24 @@ EOF;
 EOF;
         $this->assertEquals($expected, $request);
     }
+    public function test_make_addsStreamIdFilter_whenNoOtherDimensionFilterIsUsed()
+    {
+        $metrics = ['somemetric'];
+        $options = ['dimensions' => ['someDim']];
+        $request = $this->instance->make('testpropertyid', Date::factory('2015-02-04'), $metrics, $options, ['stream1', 'stream2']);
+        $request = json_decode($this->getGaMessageAsJson($request), \true);
+        $expected = ['andGroup' => ['expressions' => [['filter' => ['fieldName' => 'streamId', 'inListFilter' => ['values' => ['stream1', 'stream2']]]]]]];
+        $this->assertEquals($expected, $request['dimensionFilter']);
+    }
+    public function test_make_combinesStreamIdFilterWithOtherDimensionFilter()
+    {
+        $metrics = ['somemetric'];
+        $options = ['dimensions' => ['someDim'], 'dimensionFilter' => ['filterType' => 'inList', 'dimension' => 'someOtherDim', 'filterValue' => ['someValue']]];
+        $request = $this->instance->make('testpropertyid', Date::factory('2015-02-04'), $metrics, $options, ['stream1']);
+        $request = json_decode($this->getGaMessageAsJson($request), \true);
+        $expected = ['andGroup' => ['expressions' => [['filter' => ['fieldName' => 'someOtherDim', 'inListFilter' => ['values' => ['someValue']]]], ['filter' => ['fieldName' => 'streamId', 'inListFilter' => ['values' => ['stream1']]]]]]];
+        $this->assertEquals($expected, $request['dimensionFilter']);
+    }
     /**
      * @dataProvider getTestDataForGetOrderByMetric
      */
