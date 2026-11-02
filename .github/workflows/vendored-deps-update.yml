@@ -6,9 +6,9 @@ name: Vendored dependencies update
 
 on:
   schedule:
-    # Monday, after the Saturday build and the Sunday branch sweep. Keeps the minute and hour of
-    # matomo-tests.yml's cron, so the fleet stays staggered.
-    - cron: '10 3 * * 1'
+    # Sunday evening UTC is Monday morning in NZ, so the update pull request can be merged before
+    # that afternoon's weekly release.
+    - cron: '17 19 * * 0'
   workflow_dispatch:
 
 permissions: {}
