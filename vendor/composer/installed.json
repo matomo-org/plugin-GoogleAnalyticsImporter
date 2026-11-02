@@ -24,6 +24,7 @@
                 "vimeo/psalm": "6.8.8"
             },
             "time": "2025-03-29T13:50:30+00:00",
+            "published-time": "2025-03-29T13:51:27+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -97,6 +98,7 @@
                 "phpseclib/phpseclib": "Support PS256 (RSASSA-PSS) signatures"
             },
             "time": "2026-09-28T17:51:46+00:00",
+            "published-time": "2026-09-28T18:08:24+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -167,6 +169,7 @@
                 "ext-protobuf": "Provides a significant increase in throughput over the pure PHP protobuf implementation. See https://cloud.google.com/php/grpc for installation instructions."
             },
             "time": "2024-06-01T03:14:01+00:00",
+            "published-time": "2024-06-01T03:17:19+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -220,6 +223,7 @@
                 "ext-protobuf": "Provides a significant increase in throughput over the pure PHP protobuf implementation. See https://cloud.google.com/php/grpc for installation instructions."
             },
             "time": "2024-06-01T03:14:01+00:00",
+            "published-time": "2024-06-01T03:17:21+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -284,6 +288,7 @@
                 "cache/filesystem-adapter": "For caching certs and tokens (using Google\\Client::setCache)"
             },
             "time": "2026-09-25T18:54:19+00:00",
+            "published-time": "2026-09-25T18:54:32+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -342,6 +347,7 @@
                 "phpunit/phpunit": "^9.6"
             },
             "time": "2026-08-10T01:06:25+00:00",
+            "published-time": "2026-08-10T02:00:12+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -369,17 +375,17 @@
         },
         {
             "name": "google/auth",
-            "version": "v1.55.2",
-            "version_normalized": "1.55.2.0",
+            "version": "v1.55.3",
+            "version_normalized": "1.55.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-auth-library-php.git",
-                "reference": "293fdf064cfc5b77a22bb7406b59f149b3fb70e8"
+                "reference": "81d6d2bd311ba5fb579e52f6c8aa2d660379de75"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/293fdf064cfc5b77a22bb7406b59f149b3fb70e8",
-                "reference": "293fdf064cfc5b77a22bb7406b59f149b3fb70e8",
+                "url": "https://api.github.com/repos/googleapis/google-auth-library-php/zipball/81d6d2bd311ba5fb579e52f6c8aa2d660379de75",
+                "reference": "81d6d2bd311ba5fb579e52f6c8aa2d660379de75",
                 "shasum": ""
             },
             "require": {
@@ -406,7 +412,8 @@
             "suggest": {
                 "phpseclib/phpseclib": "May be used in place of OpenSSL for signing strings or for token management. Please require version ^2."
             },
-            "time": "2026-10-16T21:30:20+00:00",
+            "time": "2026-10-28T23:00:54+00:00",
+            "published-time": "2026-10-29T13:53:15+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -436,7 +443,7 @@
             "support": {
                 "docs": "https://cloud.google.com/php/docs/reference/auth/latest",
                 "issues": "https://github.com/googleapis/google-auth-library-php/issues",
-                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.55.2"
+                "source": "https://github.com/googleapis/google-auth-library-php/tree/v1.55.3"
             },
             "install-path": "../google/auth"
         },
@@ -463,6 +470,7 @@
                 "phpunit/phpunit": "^9.6"
             },
             "time": "2026-09-01T17:33:42+00:00",
+            "published-time": "2026-09-01T17:42:05+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -539,6 +547,7 @@
                 "phpunit/phpunit": "^9.6"
             },
             "time": "2026-08-24T22:04:34+00:00",
+            "published-time": "2026-08-24T22:13:11+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -596,6 +605,7 @@
                 "phpunit/phpunit": "^9.0"
             },
             "time": "2026-03-12T22:56:09+00:00",
+            "published-time": "2026-03-12T22:59:33+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -619,24 +629,25 @@
         },
         {
             "name": "google/longrunning",
-            "version": "0.8.5",
-            "version_normalized": "0.8.5.0",
+            "version": "0.9.0",
+            "version_normalized": "0.9.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/php-longrunning.git",
-                "reference": "ca83fbce2e20556f9abdb939efce14f642336acd"
+                "reference": "ccecf40953cefbddb569fd67b27bd0cf8a1381da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/php-longrunning/zipball/ca83fbce2e20556f9abdb939efce14f642336acd",
-                "reference": "ca83fbce2e20556f9abdb939efce14f642336acd",
+                "url": "https://api.github.com/repos/googleapis/php-longrunning/zipball/ccecf40953cefbddb569fd67b27bd0cf8a1381da",
+                "reference": "ccecf40953cefbddb569fd67b27bd0cf8a1381da",
                 "shasum": ""
             },
             "require-dev": {
                 "google/gax": "^1.38.0",
                 "phpunit/phpunit": "^9.0"
             },
-            "time": "2026-09-28T17:51:46+00:00",
+            "time": "2026-10-28T01:51:30+00:00",
+            "published-time": "2026-10-28T02:09:10+00:00",
             "type": "library",
             "extra": {
                 "component": {
@@ -660,7 +671,7 @@
             ],
             "description": "Google LongRunning Client for PHP",
             "support": {
-                "source": "https://github.com/googleapis/php-longrunning/tree/v0.8.5"
+                "source": "https://github.com/googleapis/php-longrunning/tree/v0.9.0"
             },
             "install-path": "../google/longrunning"
         },
@@ -689,6 +700,7 @@
                 "ext-bcmath": "Need to support JSON deserialization"
             },
             "time": "2026-03-18T17:32:05+00:00",
+            "published-time": "2026-03-18T17:32:11+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -737,6 +749,7 @@
                 "google/protobuf": "To get started using grpc quickly, install the native protobuf library."
             },
             "time": "2026-07-03T09:39:53+00:00",
+            "published-time": "2026-07-03T09:46:25+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -800,6 +813,7 @@
                 "psr/log": "Required for using the Log middleware"
             },
             "time": "2026-10-25T21:35:21+00:00",
+            "published-time": "2026-10-25T21:37:23+00:00",
             "type": "library",
             "extra": {
                 "bamarni-bin": {
@@ -913,6 +927,7 @@
                 "phpunit/phpunit": "^8.5.52 || ^9.6.34"
             },
             "time": "2026-10-18T12:46:59+00:00",
+            "published-time": "2026-10-18T12:47:39+00:00",
             "type": "library",
             "extra": {
                 "bamarni-bin": {
@@ -1013,6 +1028,7 @@
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
             "time": "2026-10-17T23:49:46+00:00",
+            "published-time": "2026-10-17T23:51:00+00:00",
             "type": "library",
             "extra": {
                 "bamarni-bin": {
@@ -1123,6 +1139,7 @@
                 "vimeo/psalm": "^4|^5|^6"
             },
             "time": "2025-09-24T15:06:41+00:00",
+            "published-time": "2025-09-24T15:07:11+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1196,6 +1213,7 @@
                 "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
             },
             "time": "2020-10-15T08:29:30+00:00",
+            "published-time": "2020-10-15T08:34:16+00:00",
             "type": "library",
             "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
@@ -1252,6 +1270,7 @@
                 "ext-gmp": "Will enable faster math operations"
             },
             "time": "2024-06-06T14:17:54+00:00",
+            "published-time": "2024-09-02T20:14:35+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1319,6 +1338,7 @@
                 "ext-openssl": "Install the OpenSSL extension in order to speed up a wide variety of cryptographic operations."
             },
             "time": "2026-08-26T12:13:21+00:00",
+            "published-time": "2026-08-26T12:16:21+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1420,6 +1440,7 @@
                 "php": ">=8.0.0"
             },
             "time": "2021-02-03T23:26:27+00:00",
+            "published-time": "2021-02-03T23:27:34+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1473,6 +1494,7 @@
                 "psr/http-message": "^1.0 || ^2.0"
             },
             "time": "2023-09-23T14:17:50+00:00",
+            "published-time": "2023-09-23T14:18:12+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1528,6 +1550,7 @@
                 "psr/http-message": "^1.0 || ^2.0"
             },
             "time": "2024-04-15T12:06:14+00:00",
+            "published-time": "2024-05-10T07:32:19+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1585,6 +1608,7 @@
                 "php": "^7.2 || ^8.0"
             },
             "time": "2023-04-04T09:54:51+00:00",
+            "published-time": "2023-04-04T09:55:35+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1641,6 +1665,7 @@
                 "php": ">=8.0.0"
             },
             "time": "2024-09-11T13:17:53+00:00",
+            "published-time": "2024-09-11T13:21:14+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1698,6 +1723,7 @@
                 "phpunit/phpunit": "^5 || ^6.5"
             },
             "time": "2019-03-08T08:55:37+00:00",
+            "published-time": "2019-03-08T09:01:32+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -1760,6 +1786,7 @@
                 "roave/security-advisories": "dev-latest"
             },
             "time": "2025-03-22T05:38:12+00:00",
+            "published-time": "2025-03-22T05:39:22+00:00",
             "type": "library",
             "extra": {
                 "captainhook": {
@@ -1851,6 +1878,7 @@
                 "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
             },
             "time": "2026-09-16T11:39:30+00:00",
+            "published-time": "2026-09-16T11:41:15+00:00",
             "type": "library",
             "extra": {
                 "captainhook": {
@@ -1901,6 +1929,7 @@
                 "php": ">=7.1"
             },
             "time": "2024-09-25T14:11:13+00:00",
+            "published-time": "2024-11-27T12:25:26+00:00",
             "type": "library",
             "extra": {
                 "thanks": {
@@ -1971,6 +2000,7 @@
                 "php": ">=7.2"
             },
             "time": "2026-09-25T15:50:05+00:00",
+            "published-time": "2026-09-30T10:23:35+00:00",
             "type": "library",
             "extra": {
                 "thanks": {
