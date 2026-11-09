@@ -1,6 +1,6 @@
 ## Changelog
 
-# 6.0.7
+# 6.0.7 - 2026-11-09
 
 - Updated dependencies
 
