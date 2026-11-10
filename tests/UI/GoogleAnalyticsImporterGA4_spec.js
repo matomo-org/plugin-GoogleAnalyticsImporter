@@ -55,6 +55,25 @@ describe("GoogleAnalyticsImporterGA4", function () {
         });
     }
 
+    // the import runs in a background process, so reload until its row reaches the expected state
+    async function reloadUntilImportRowHas(selector, timeoutMs) {
+        const start = Date.now();
+        while (true) {
+            await page.reload();
+            await page.waitForSelector('.importStatusesTable tbody tr');
+
+            if (await page.$(`.importStatusesTable tbody td.actions > ${selector}`)) {
+                return;
+            }
+
+            if (Date.now() - start > timeoutMs) {
+                throw new Error(`timeout waiting for ${selector} in the import status row`);
+            }
+
+            await page.waitForTimeout(2000);
+        }
+    }
+
     async function removeStartResumeFinishTime() {
         await page.evaluate(() => $('td.import-start-finish-times').html(''));
     }
@@ -105,10 +124,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
     });
 
     it('should show the error in the UI when an import fails', async function () {
-        await page.waitForTimeout(70000);
-
-        await page.reload({ timeout: 0 });
-        await page.waitForSelector('.pageWrap');
+        await reloadUntilImportRowHas('a.icon-play', 70000);
 
         await removeStartResumeFinishTime();
 
@@ -128,7 +144,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
     });
 
     it('should schedule a re-import when the modal is used', async function () {
-        await page.waitForTimeout(90000);
+        await reloadUntilImportRowHas('a.icon-play', 90000);
 
         await page.click('#reimport-date-range');
 
@@ -147,26 +163,7 @@ describe("GoogleAnalyticsImporterGA4", function () {
     });
 
     it("should show that the import finished when the import finishes", async function () {
-        let totalTime = 0;
-        while (true) { // wait until import finishes
-            await page.waitForTimeout(30000);
-
-            await page.reload();
-            await page.waitForSelector('.pageWrap');
-
-            const elem = await page.$('td.actions > a.icon-delete');
-            if (elem) {
-                break;
-            }
-
-            console.log('waiting...');
-
-            totalTime += 30;
-
-            if (totalTime > 60 * 14) {
-                throw new Error('timeout waiting for import to finish...');
-            }
-        }
+        await reloadUntilImportRowHas('a.icon-delete', 14 * 60 * 1000);
 
         await removeStartResumeFinishTime();
 
