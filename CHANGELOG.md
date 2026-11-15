@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.8
+
+- Fixed PHP deprecation notices on PHP 8.4 and newer
+
 # 6.0.7 - 2026-11-09
 
 - Updated dependencies

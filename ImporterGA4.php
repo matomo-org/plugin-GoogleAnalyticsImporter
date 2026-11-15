@@ -609,7 +609,7 @@ class ImporterGA4
         }
         return \false;
     }
-    private function onError($idSite, \Exception $ex, Date $date = null)
+    private function onError($idSite, \Exception $ex, ?Date $date = null)
     {
         $this->logger->info("Unexpected Error: {ex}", ['ex' => $ex]);
         if ($this->isGaAuthroizationError($ex)) {
