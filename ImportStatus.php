@@ -134,7 +134,7 @@ class ImportStatus
         }
         $this->saveStatus($status);
     }
-    public function setImportDateRange($idSite, Date $startDate = null, Date $endDate = null)
+    public function setImportDateRange($idSite, ?Date $startDate = null, ?Date $endDate = null)
     {
         $status = $this->getImportStatus($idSite);
         // Callers that pass no start date mean "leave it as it is", not "clear it" - Controller::startImportGA4()
@@ -399,7 +399,7 @@ class ImportStatus
             return lcfirst(Piwik::translate('General_Unknown'));
         }
     }
-    public function setImportedDateRange($idSite, Date $startDate = null, Date $endDate = null)
+    public function setImportedDateRange($idSite, ?Date $startDate = null, ?Date $endDate = null)
     {
         $optionName = self::IMPORTED_DATE_RANGE_PREFIX . $idSite;
         $dates = $this->getImportedDateRange($idSite);
