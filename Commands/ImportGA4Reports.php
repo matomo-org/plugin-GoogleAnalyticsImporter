@@ -232,7 +232,9 @@ class ImportGA4Reports extends ConsoleCommand
 
             foreach (array_values($dateRangesToImport) as $index => $datesToImport) {
                 $status = $importStatus->getImportStatus($idSite);
-                $isDoNotImportLatestDatesFirst = !empty($status['do_not_import_latest_dates_first']);
+                $isReimportEntry = $index < count($dateRangesToReImport);
+                // the flag only describes how the main import range progresses, reimport ranges are always imported normally
+                $isDoNotImportLatestDatesFirst = !$isReimportEntry && !empty($status['do_not_import_latest_dates_first']);
                 if ($isDoNotImportLatestDatesFirst) {
                     $status['last_date_imported'] = null;
                 }
@@ -289,7 +291,6 @@ class ImportGA4Reports extends ConsoleCommand
                         Tasks::startArchive($status, $wait = \true, $startDate, $checkImportIsRunning = \false);
                     }
                 }
-                $isReimportEntry = $index < count($dateRangesToReImport);
                 if ($isReimportEntry) {
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
                 }

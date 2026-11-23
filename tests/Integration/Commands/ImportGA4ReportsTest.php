@@ -27,7 +27,10 @@ use Symfony\Component\Console\Tester\CommandTester;
  */
 class ImportGA4ReportsTest extends IntegrationTestCase
 {
-    public function testResumingFinishedImportWithSingleReimportRangeAndNoDatesOptionImportsReimportRange()
+    /**
+     * @dataProvider getLeftoverDoNotImportLatestDatesFirstFlag
+     */
+    public function testResumingFinishedImportWithSingleReimportRangeAndNoDatesOptionImportsReimportRange(bool $doNotImportLatestDatesFirst)
     {
         $idSite = Fixture::createWebsite('2020-01-01 00:00:00');
 
@@ -43,6 +46,8 @@ class ImportGA4ReportsTest extends IntegrationTestCase
         $status['last_day_archived'] = '2023-01-01';
         $status['main_import_progress'] = '2023-01-01';
         $status['reimport_ranges'] = [['2023-03-01', '2023-03-05']];
+        // can be left over from an earlier run that imported future dates
+        $status['do_not_import_latest_dates_first'] = $doNotImportLatestDatesFirst;
         $importStatus->saveStatus($status);
 
         $authorization = $this->createMock(AuthorizationGA4::class);
@@ -70,5 +75,13 @@ class ImportGA4ReportsTest extends IntegrationTestCase
         $this->assertEquals(0, $result, $commandTester->getDisplay());
         $this->assertEquals([['2023-03-01', '2023-03-05']], $importedRanges);
         $this->assertEquals([], $importStatus->getImportStatus($idSite)['reimport_ranges']);
+    }
+
+    public function getLeftoverDoNotImportLatestDatesFirstFlag(): array
+    {
+        return [
+            'flag not set' => [false],
+            'flag left set from an earlier run' => [true],
+        ];
     }
 }
