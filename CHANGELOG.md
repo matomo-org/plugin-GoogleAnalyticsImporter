@@ -1,5 +1,9 @@
 ## Changelog
 
+# 6.0.9 - 2026-11-23
+
+- Updated translations
+
 # 6.0.8 - 2026-11-16
 
 - Fixed PHP deprecation notices on PHP 8.4 and newer
