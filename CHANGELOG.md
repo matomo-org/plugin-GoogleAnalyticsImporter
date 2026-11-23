@@ -1,6 +1,6 @@
 ## Changelog
 
-# 6.0.10 - 2026-11-23
+# 6.0.10
 
 - Fix "isLater() on null" when resuming a GA4 import with only one reimport range
 
