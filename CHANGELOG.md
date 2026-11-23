@@ -2,7 +2,7 @@
 
 # 6.0.9 - 2026-11-23
 
-- Fix "isLater() on null" when resuming a GA4 import with only one reimport range
+- Updated translations
 
 # 6.0.8 - 2026-11-16
 
