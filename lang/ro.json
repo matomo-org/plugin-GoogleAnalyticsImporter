@@ -158,7 +158,7 @@
         "StatusRateLimitedHourlyName": "Limitat (orar)",
         "StatusRateLimitedName": "Limitat (zilnic)",
         "StatusUnAuthenticated": "Neautentificat",
-        "StatusUnAuthenticatedDescription": "Cererea nu a putut fi finalizată din cauza unor credențiale de autentificare invalide. Este necesar un token de acces OAuth 2.0, un cookie de autentificare sau alte credențiale de autentificare valide. Verificați dacă sunteți conectat cu credențialele corecte și dacă token-ul de acces OAuth 2.0 nu a expirat. Pentru mai multe detalii, consultați %1$sGoogle Sign-In Web Developer Console%2$s.",
+        "StatusUnAuthenticatedDescription": "Cererea nu a putut fi finalizată din cauza unor credențiale de autentificare invalide. Este necesar un token de acces OAuth 2.0, un cookie de autentificare sau alte credențiale de autentificare valide. Verificați dacă sunteți conectat cu credențialele corecte și dacă tokenul de acces OAuth 2.0 nu a expirat. Pentru mai multe detalii, consultați %1$sGoogle Sign-In Web Developer Console%2$s.",
         "StreamId": "ID flux",
         "StreamIdFilter": "Filtrare după ID flux (opțional)",
         "StreamIdFilterHelpText": "ID-ul fluxului pentru care doriți să importați datele. %1$sAflați mai multe.%2$s %3$sNotă:%4$s Lăsați acest câmp gol pentru a importa datele din toate fluxurile.",
