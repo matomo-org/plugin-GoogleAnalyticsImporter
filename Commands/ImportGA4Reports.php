@@ -253,7 +253,8 @@ class ImportGA4Reports extends ConsoleCommand
                 } else {
                     $lastDateImported = !empty($status['last_date_imported']) ? $status['last_date_imported'] : null;
                 }
-                if (!empty($lastDateImported) && $isFutureDateImport) {
+                // future_resume_date is where the main import stopped, it does not apply to reimport ranges
+                if (!empty($lastDateImported) && $isFutureDateImport && !$isReimportEntry) {
                     $startDate = Date::factory($status['future_resume_date']);
                 } else {
                     if ($isDoNotImportLatestDatesFirst) {

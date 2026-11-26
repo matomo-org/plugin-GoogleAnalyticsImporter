@@ -88,6 +88,28 @@ class ImportGA4ReportsTest extends ConsoleCommandTestCase
         $this->assertEmpty($status['do_not_import_latest_dates_first'] ?? null);
     }
 
+    public function testResumingFutureDateImportWithReimportRangeImportsReimportRange()
+    {
+        $today = Date::factory('today')->toString();
+        $idSite = $this->createImportWithStatus([
+            // the main import stopped at today's date and waits for it to be importable
+            'status' => ImportStatus::STATUS_FUTURE_DATE_IMPORT_PENDING,
+            'import_range_end' => null,
+            'future_resume_date' => $today,
+            'last_date_imported' => Date::factory('yesterday')->toString(),
+            'main_import_progress' => Date::factory('yesterday')->toString(),
+            'do_not_import_latest_dates_first' => true,
+        ]);
+
+        $importedRanges = $this->runImportCommand($idSite);
+
+        $this->assertEquals([
+            ['2023-03-01', '2023-03-05', false],
+            [$today, $today, true],
+        ], $importedRanges);
+        $this->assertEquals([], $this->getImportStatus($idSite)['reimport_ranges']);
+    }
+
     private function createImportWithStatus(array $statusOverrides): int
     {
         $idSite = Fixture::createWebsite('2020-01-01 00:00:00');
