@@ -216,7 +216,14 @@ class ImportGA4Reports extends ConsoleCommand
             // continuous)
 
             // If no date ranges to re-import and import reached till startDate, check if futureDates need to be imported or not and update the start and EdnDate
-            if (count($dateRangesToImport) == 1 && !empty($status['last_day_archived'])  && $status['last_day_archived'] === $status['import_range_start'] && $dates[1]->isLater(Date::factory('yesterday')) && !empty($status['import_start_time'])) {
+            if (
+                empty($dateRangesToReImport)
+                && count($dateRangesToImport) == 1
+                && !empty($status['last_day_archived'])
+                && $status['last_day_archived'] === $status['import_range_start']
+                && $dates[1]->isLater(Date::factory('yesterday'))
+                && !empty($status['import_start_time'])
+            ) {
                 $dateRangesToImport[0][0] = Date::factory($status['import_start_time'])->subDay(1);
                 $status['do_not_import_latest_dates_first'] = true;
                 $status['main_import_progress'] = $dateRangesToImport[0][0]->toString();
@@ -225,7 +232,9 @@ class ImportGA4Reports extends ConsoleCommand
 
             foreach (array_values($dateRangesToImport) as $index => $datesToImport) {
                 $status = $importStatus->getImportStatus($idSite);
-                $isDoNotImportLatestDatesFirst = !empty($status['do_not_import_latest_dates_first']);
+                $isReimportEntry = $index < count($dateRangesToReImport);
+                // the flag only describes how the main import range progresses, reimport ranges are always imported normally
+                $isDoNotImportLatestDatesFirst = !$isReimportEntry && !empty($status['do_not_import_latest_dates_first']);
                 if ($isDoNotImportLatestDatesFirst) {
                     $status['last_date_imported'] = null;
                 }
@@ -244,7 +253,8 @@ class ImportGA4Reports extends ConsoleCommand
                 } else {
                     $lastDateImported = !empty($status['last_date_imported']) ? $status['last_date_imported'] : null;
                 }
-                if (!empty($lastDateImported) && $isFutureDateImport) {
+                // future_resume_date is where the main import stopped, it does not apply to reimport ranges
+                if (!empty($lastDateImported) && $isFutureDateImport && !$isReimportEntry) {
                     $startDate = Date::factory($status['future_resume_date']);
                 } else {
                     if ($isDoNotImportLatestDatesFirst) {
@@ -282,7 +292,6 @@ class ImportGA4Reports extends ConsoleCommand
                         Tasks::startArchive($status, $wait = \true, $startDate, $checkImportIsRunning = \false);
                     }
                 }
-                $isReimportEntry = $index < count($dateRangesToReImport);
                 if ($isReimportEntry) {
                     $importStatus->removeReImportEntry($idSite, $datesToImport);
                 }
