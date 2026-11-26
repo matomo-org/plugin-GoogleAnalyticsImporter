@@ -2,8 +2,8 @@
 
 # 6.0.10
 
-- Fix "isLater() on null" when resuming a GA4 import with only one reimport range
-- Fix scheduled GA4 reimport ranges failing with an invalid date error after an import of future dates
+- Fixed "isLater() on null" when resuming a GA4 import with only one reimport range
+- Fixed scheduled GA4 reimport ranges failing with an invalid date error after an import of future dates
 
 # 6.0.9 - 2026-11-23
 

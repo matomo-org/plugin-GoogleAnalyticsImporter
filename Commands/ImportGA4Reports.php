@@ -217,8 +217,8 @@ class ImportGA4Reports extends ConsoleCommand
 
             // If no date ranges to re-import and import reached till startDate, check if futureDates need to be imported or not and update the start and EdnDate
             if (
-                count($dateRangesToImport) == 1
-                && !empty($dates)
+                empty($dateRangesToReImport)
+                && count($dateRangesToImport) == 1
                 && !empty($status['last_day_archived'])
                 && $status['last_day_archived'] === $status['import_range_start']
                 && $dates[1]->isLater(Date::factory('yesterday'))

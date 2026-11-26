@@ -49,7 +49,6 @@ class CheckDirectDependencyUseCommandTest extends SystemTestCase
                 'GoogleAnalyticsImporter/Monolog/Handler/GASystemLogHandler.php'
             ],
             'Symfony\Component\Console' => [
-                'GoogleAnalyticsImporter/tests/Integration/Commands/ImportGA4ReportsTest.php',
                 'GoogleAnalyticsImporter/tests/System/CheckDirectDependencyUseCommandTest.php'
             ],
             'Symfony\Bridge\Monolog' => [
