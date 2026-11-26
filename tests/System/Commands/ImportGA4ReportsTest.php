@@ -103,10 +103,11 @@ class ImportGA4ReportsTest extends ConsoleCommandTestCase
 
         $importedRanges = $this->runImportCommand($idSite);
 
-        $this->assertEquals([
-            ['2023-03-01', '2023-03-05', false],
-            [$today, $today, true],
-        ], $importedRanges);
+        $this->assertCount(2, $importedRanges);
+        $this->assertEquals(['2023-03-01', '2023-03-05', false], $importedRanges[0]);
+        // the main range's end comes from Date::factory('today') during the run, so only its start is fixed
+        $this->assertEquals($today, $importedRanges[1][0]);
+        $this->assertTrue($importedRanges[1][2]);
         $this->assertEquals([], $this->getImportStatus($idSite)['reimport_ranges']);
     }
 
